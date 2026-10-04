@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 50 tests, ~5 min
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 52 tests, ~8 min
 gateware/build.sh m6_puck_proto
 ```
 
@@ -41,6 +41,13 @@ gateware/build.sh m6_puck_proto
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
 - Not published: the LT8618SX 1080p path (init sequence provenance unclear).
+- Tang Nano 20K pins 52-56 are SSPI configuration pins (52/53 are also the
+  HDMI DDC lines) and are not used. The RX5808 SPI DATA/SEL therefore leave on
+  LED pins 19/20 (J6-17/J6-16). Shared-pin risks: `gateware/BRINGUP.md` section 5.
+- Bring-up starts with `m3_probe` (wiring check over USB-UART), then M4, then M6:
+  `gateware/BRINGUP.md`.
+- Formal proofs: `gateware/formal/run.sh`; every proof has a negative control
+  that must give a counterexample from reset.
 
 ## How to work here
 

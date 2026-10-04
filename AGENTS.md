@@ -76,6 +76,13 @@ like AI output.
 - Read it back as the person receiving it before you post. If it sounds like
   a press release or a chatbot, rewrite it.
 - No sourcing (shops, prices, purchase links) in these repositories.
+- Before a part goes into a schematic or BOM, check its lifecycle status
+  (Active / NRND / EOL) and named successor at the manufacturer, and recheck
+  the whole BOM before ordering boards. Parts go quietly obsolete (example from
+  OpenDrone #proposals: Johanson 2450AT18A100E -> 2450AT18A0100001E). The
+  TVP5150AM1 is the part rev A depends on most.
+- Antennas for any on-board ESP32-C5 (C5VRX) must cover 5.8 GHz: it receives
+  the video through its Wi-Fi radio. A 2.4 GHz-only chip antenna will not do.
 - Do not commit datasheets, scraped web pages or third-party code without a
   licence that allows it; cite sources instead.
 

@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 52 tests, ~8 min
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 78 tests, ~12 min
 gateware/build.sh m6_puck_proto
 ```
 
@@ -33,7 +33,12 @@ gateware/build.sh m6_puck_proto
   `fb_backend` (SDRAM triple buffer, or low-latency ring + `genlock_timing`).
 - Mixer rule (integer): blend when |d|*256 < 38*max, switch when > 64*max of
   per-line HF energy; bad lines (sync errors, decoder unlocked, forced) lose.
-  Bit-exact against `gateware/model/line_mixer_ref.py`.
+  The line-level timing model is `gateware/model/line_mixer_ref.py`. Tests
+  cover VBI, lag, loss, recovery and constant F; no full M4/M6 hardware acceptance.
+- Pairing waits 4096 system cycles (63.2 us at 64.8 MHz). Channel expiry is
+  262144 cycles (4.05 ms), including VBI. Whole lines only; stale output keys
+  are dropped. A captured decoder fault survives recovery, and current faults
+  also block queued lines. Epoch comparisons use an 8-bit modular counter.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
   oscillator); init 00h=00, 03h=0Dh, 0Dh=47h; status 88h/89h; I2C address by
   YOUT7 strap; both decoders share an address, so each has its own SDA.
@@ -44,7 +49,8 @@ gateware/build.sh m6_puck_proto
 - Tang Nano 20K pins 52-56 are SSPI configuration pins (52/53 are also the
   HDMI DDC lines) and are not used. The RX5808 SPI DATA/SEL therefore leave on
   LED pins 19/20 (J6-17/J6-16). Shared-pin risks: `gateware/BRINGUP.md` section 5.
-- Bring-up starts with `m3_probe` (wiring check over USB-UART), then M4, then M6:
+- Bring-up starts with M0 HDMI, then `m3_probe` (wiring check over USB-UART),
+  a separate SDRAM acceptance test (still to be implemented), M4 A, M4 A+B, M6:
   `gateware/BRINGUP.md`.
 - Formal proofs: `gateware/formal/run.sh`; every proof has a negative control
   that must give a counterexample from reset.
@@ -95,7 +101,10 @@ like AI output.
 
 ## Open work (see REVIEW.md for the risks)
 
-- Hardware bring-up order: M0 -> M2 -> M4 -> M6 on a Tang Nano 20K.
+- SDRAM timing model and memory-test top; buffer ownership across clocks;
+  genlock minimum frame period; I2C timeout and decoder reinitialisation.
+- Hardware bring-up: M0 -> M3 -> memory test -> M4 A -> M4 A+B -> M6.
+  The original M2 top taps a Moneagle decoder and lacks module init/reset.
 - Formal checks (SymbiYosys) of the CDC handshakes, async FIFO and genlock.
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX

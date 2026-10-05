@@ -3,8 +3,9 @@
 OpenVRX is an open-source analog 5.8 GHz FPV **video receiver** family built
 around an FPGA. Two receivers listen to the same channel, two video decoders
 digitise both pictures, and the FPGA picks or blends the better signal **line
-by line** before sending clean HDMI to goggles, XR glasses or a TV. Nothing
-here has been built yet: the project is in the *planned / early design* stage.
+by line** before sending 720p DVI/HDMI to a display. The gateware is simulated
+and builds, but **no hardware prototype has been tested**. A 1080p output
+for XR glasses is a separate planned step.
 
 This repository is the family hub. Boards and gateware live in their own
 repositories.
@@ -19,14 +20,10 @@ repositories.
 
 ## Why
 
-Analog FPV is still the lowest-latency, cheapest and most robust video link,
-but the receivers are old (RTC6715-era modules) and diversity is usually a
-switch between whole pictures. Digitising both receivers lets an FPGA judge
-every video line on its own and keep the cleaner one, or blend the two, while
-adding almost no latency. The same FPGA can then drive modern displays
-(HDMI, XR glasses) that analog receivers cannot. Commercial alternatives are
-either closed goggles modules or screens; a portable, display-less analog
-ground station with line mixing and HDMI out does not seem to exist.
+The aim is an analog ground receiver with HDMI output and diversity decisions
+for each video line. Digitising both receivers lets the FPGA select a line
+or blend two similar lines. Whether this improves real RF reception, and how
+much delay the complete camera-to-display chain adds, remain bench questions.
 
 ## Specifications (targets, not measured)
 
@@ -38,7 +35,7 @@ ground station with line mixing and HDMI out does not seem to exist.
 | FPGA | GW2AR-18 (Tang Nano 20K) for development; GW5A-25 considered |
 | Output | 720p60 DVI/HDMI from the FPGA; 1080p60 via an HDMI transmitter planned |
 | Latency, buffered mode | one to three fields (SDRAM triple buffer) |
-| Latency, low-latency mode | about 0.1 ms (top of picture) to 0.8 ms (bottom), output genlocked to the input |
+| Internal low-latency path | about 0.1–0.8 ms in a scaled simulation after decoder line delivery; complete camera-to-display latency unmeasured |
 | UI | 2 buttons, 128x32 OLED, on-screen display, UART measurement log |
 | Power (Puck) | 2S Li-ion, USB-C PD in/out (planned) |
 
@@ -46,15 +43,17 @@ ground station with line mixing and HDMI out does not seem to exist.
 
 - Hobby budget, staged purchases; development on a Tang Nano 20K first.
 - Fully open toolchain: Yosys, nextpnr-himbaechel, Apicula, Icarus Verilog, cocotb.
-- Legal channels only: the UI flags channels outside the Swedish/EU 5725-5875 MHz band.
+- The UI flags channels outside 5725-5875 MHz; the flag describes the channel table, not a tested RF transmitter.
 
 ## How this was made, and what is verified
 
 Most of the design work so far (gateware, models, tests, the rev A schematic
-script and the research notes) was done with heavy AI assistance (Claude),
-directed and reviewed by the project owner. Everything is checked in
-simulation against independent Python models, but **no part has run on real
-hardware yet**. Treat it as a well-tested proposal, not a proven design.
+script and the research notes) was done with AI assistance, directed and
+reviewed by the project owner. Reference models and negative controls cover
+individual modules and selected video cases; they do not validate the entire
+M4/M6 receiver. SDRAM timing and buffer ownership, genlock's minimum frame
+period and decoder recovery still need work. **No part has run on real
+hardware yet.**
 [REVIEW.md](REVIEW.md) lists what we are least sure about. Please try to
 break it.
 

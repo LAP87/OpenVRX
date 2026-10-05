@@ -1,149 +1,136 @@
 # Arbetsplan efter granskningen 2026-10-05
 
-Underlag: [reviews/2026-10-05/ADVERSARIAL_REVIEW.md](reviews/2026-10-05/ADVERSARIAL_REVIEW.md). Fynden ligger som issues; index i LAP87/OpenVRX#3. Den här planen säger i vilken ordning de åtgärdas, hur varje åtgärd ska vara konstruerad och hur den räknas som klar.
+Underlag: [reviews/2026-10-05/ADVERSARIAL_REVIEW.md](reviews/2026-10-05/ADVERSARIAL_REVIEW.md). Fynden ligger som issues; index i LAP87/OpenVRX#3. Första passet är gjort samma dag. Det här dokumentet säger vad som är gjort, var det avviker från planen, vad som återstår och i vilken ordning.
 
-## Status
+**Inget är mätt på hårdvara.** "Simulerat" betyder mot modell i testsviten, "byggt" betyder syntes och place-and-route med öppen verktygskedja.
+
+## Läge
 
 | Fas | Innehåll | Issues | Läge |
 |---|---|---|---|
 | 0 | Issues och plan | hub #3 | klar |
-| 1 | Radnumrering från V-biten | Core #4 | se "Utfört" |
-| 2 | Mixern: parning, hälsa, radordning, test | Core #1 #2 #3 #5 | se "Utfört" |
-| 3 | Uppstart och stift | Core #6 #8 #9 #12, Puck #1 | se "Utfört" |
-| 4 | SDRAM | Core #7 | se "Utfört" |
-| 5 | Utgångsvägen | Core #10 #11 #15 #16 | se "Utfört" |
-| 6 | Smått | Core #13 #14, hub #2, Puck #2–#4 | se "Utfört" |
-| 7 | Alternativa vägar (forskning) | hub #1 | se "Utfört" |
+| 1 | Radnumrering från vertikalsläckningen | Core #4 | klar, simulerat |
+| 2 | Mixern | Core #1 #2 #3 #5 | klar, simulerat och byggt |
+| 3 | Uppstart och stift | Core #6 #8 #9 #12 | klar i Core, simulerat och byggt. Rev A-kortet (Puck #1) återstår |
+| 4 | SDRAM | Core #7 | klar, simulerat och byggt. Fas och läspunkt avgörs av minnestestet på kortet |
+| 5 | Utgångsvägen | Core #10 #11 #15 #16 | klar, simulerat och byggt |
+| 6 | Smått | Core #13 #14, hub #2, Puck #4 | klart utom det som är ägarens beslut. Puck #2 och #3 väntar på nästa schemavarv |
+| 7 | Alternativa vägar | hub #1 | tre underlag skrivna; förslagen står under "Nästa steg" |
 | 8 | Mätningar när kortet finns | alla | väntar på hårdvara |
 
-Avsnittet "Utfört" sist i dokumentet fylls i efter varje arbetspass, med commit och testläge.
+Grenar, inget är pushat: Core `fix/review-2026-10-05` (delspåren `fix/bringup-pins` och `fix/sdram-capture` är sammanslagna dit), navet och Puck `review-2026-10-05`.
 
-## Arbetssätt
-
-- Grenar: Core `fix/review-2026-10-05` (delspåren `fix/sdram-capture` och `fix/bringup-pins` slås ihop dit), navet och Puck `review-2026-10-05`. En commit per åtgärd.
-- Varje RTL-ändring får en simulering mot modell och en negativ kontroll (AGENTS.md). Test som visar felet skrivs först och ska fallera på koden före ändringen.
-- Ett tungt jobb i taget (place-and-route). Simuleringar får gå parallellt.
-- Siffror märks "simulerat", "byggt" eller "mätt på hårdvara". Inget i den här planen är mätt på hårdvara.
-
-## Fas 1. Radnumrering från V-biten (Core #4)
-
-Rad 0 är första radstart efter vertikalsläckning: minst två giltiga synkord i följd med V = 1 sedan förra radstarten. F-biten används inte för numreringen. Register 15h lämnas orört, så att fast F betyder två lika fält.
-
-Klart när: `bt656_rx.v` är bitexakt mot `model/bt656.py` på alla vektorer, inklusive en ny med fast F; mixern parar en sådan källa även när dekodrarna startat på olika rader.
-
-## Fas 2. Mixern (Core #1, #2, #3, #5)
-
-### Krav
-
-1. En rad från en kanal som är `bad` visas inte om den andra kanalen levererar en bra rad för samma läge.
-2. Radnumren i utströmmen stiger strikt inom ett fält. Fältgränser går att se på F-bit eller radnummer.
-3. Är en kanal död, olåst eller ur takt är utströmmen den andra kanalens rader, alla, i ordning.
-4. Är båda friska och i takt gäller dagens regel per rad (blanda, byt med hysteres), bitexakt mot modellen.
-5. Inget beslut beror på hur lång vertikalsläckningen är.
-
-### Konstruktion
-
-- **Parning.** Två rader paras om de har samma radnummer och kom inom `T_PAIR` (1 024 cykler, 15,8 µs) från varandra. F-biten ingår inte i parningen. En rad vars partner inte kommit inom `T_PAIR` avgörs ensam. Äldst rad först.
-- **I takt.** `in_step` sätts av varje parad rad och släcks efter `N_STEP` (8) ensamma rader i följd.
-- **Ensam rad från aktuell kanal** visas om den ligger i ordning.
-- **Ensam rad från den andra kanalen** visas bara som lucktätning: kanalerna är i takt, raden är bra, den aktuella kanalen har ingen rad som kom före radens tidsgräns, och raden ligger i ordning.
-- **Byte av aktuell kanal utan parning.** (a) Hälsa: den aktuella kanalens åtta senaste rader är alla dåliga och den andras åtta senaste alla bra. (b) Tystnad: den aktuella kanalen har inte levererat något på `N_STEP` av den andras rader om kanalerna var i takt när den tystnade, annars `N_DEAD` (40, längre än en släckning). Tvingat läge från menyn går samma väg, eftersom det gör den andra kanalens rader dåliga.
-- **Radordning.** Mixern håller reda på senast utsläppta rad och på vilket fält varje kanal är i (en fälträknare per kanal, som stegas när kanalens radnummer börjar om). En rad släpps ut om den börjar ett nytt fält eller har högre nummer än den senaste. Utströmmens F-bit låses vid fältets första rad.
-- **Väntetid.** Är den andra kanalen tyst sedan `N_DEAD` rader avgörs rader utan att vänta på `T_PAIR`.
-- **Ringbufferten.** En rad som delvis tappats för att ringen var full sparas inte. `overflow` förs ut i loggen.
-- `alive` finns kvar som lysdiodssignal men styr inget.
-
-Regeln för parade rader (`decide_pair`) ändras inte, så jämförelsen mot flyttalsprototypen i `mixer/` gäller fortfarande.
-
-### Test
-
-- `model/line_mixer_ref.py` får tid som indata och modellerar allt ovan.
-- `sim/test_mixer.py` kör fält med minst 20 släckrader. Scenarier: frisk och i takt; tappad rad; trasigt synkord; kanal som tystnar; olåst kanal i takt; olåst kanal ur takt (halvt fält, 2, 5 och 12 rader); olåst kanal som är aktuell vid start; F-bit som skiljer mellan kanalerna; fast F.
-- Invarianterna 1–3 som slumptest över fasläge mellan kanalerna, på RTL:ens utström.
-- Negativ kontroll: de nya testen körs mot mixern före ändringen och ska fallera.
-
-Klart när: alla test ovan går igenom, RTL och modell ger samma beslut och ord i de scenarier som inte ligger på en tidsgräns, och körningarna E1–E5 i granskningen ger noll rader från den olåsta kanalen.
-
-## Fas 3. Uppstart och stift (Core #6, #8, #9, #12; Puck #1)
-
-Beslut:
-- RESETB flyttas från stift 25 till stift 18 (J6-18, bank 6). M3/M4/M6 får tre lysdioder (15–17). Inga vanliga utgångar i bank 4 och 5 i byggen med TMDS.
-- Lysdioder: M3 hjärtslag, SCLK A, SCLK B. M4/M6 hjärtslag (1 Hz låst, 4 Hz olåst), rader A, rader B.
-- M4 får samma RX5808-styrning som M3.
-- Kanalen skrivs 0,5 s efter reset och sedan varannan sekund så länge ingen dekoder är låst, aldrig när någon är låst. SPI-DATA vilar hög.
-- `tvp_ctrl` läser tillbaka 03h vid pollningen och gör om init om värdet är fel. `dev_err` släcks vid nästa kvitterade transaktion. 15h skrivs inte.
-- SECAM maskas ur autoswitchen om databladet stöder det.
-- Statusexempel, modellvärden och BRINGUP rättas efter databladets tabeller.
-- Pull-testet lämnar `d[7]` orörd.
-- Vakttest: inga utgångar på stift 25–42 i TMDS-byggen, och en fuse-jämförelse med stift 25 som negativ kontroll.
-
-Klart när: M3, M4 och M6 bygger, TMDS-klockparets IOB-fuses i M4 och M6 är lika med M0:s, och testsviten går igenom.
-
-Puck: rev A-skriptet, netlistan, BOM:en och stiftkontrollen ändras tillsammans med nästa bump av Core-submodulen (Puck #1). Kräver SKiDL och görs inte i det här passet.
-
-## Fas 4. SDRAM (Core #7)
-
-- Klockfas 225° och NESTangs tider (2/2/6) om inte en hämtningsgräns bryts.
-- Modellen får riktig lästiming (tAC, tOH) och uttalade antaganden för de två kortfördröjningarna, med negativa kontroller för varje regel.
-- Läspunkten blir valbar under drift.
-- Ny toppmodul `m2a_memtest`: skriver och läser hela minnet, räknar fel per DQ-bit och per plats i bursten för varje läspunkt, skriver en rad per pass över UART.
-
-Klart när: minnestestet i simulering hittar rätt läspunkt både med antagna fördröjningar och med noll fördröjning, och M2 och M2a bygger.
-
-## Fas 5. Utgångsvägen (Core #10, #11, #15, #16)
-
-I den här ordningen, eftersom varje steg bygger på det förra:
-
-1. **Fjärde bufferten (#11).** Skrivaren undantar senast publicerad, näst senast publicerad och den som den tror visas. Klart när invarianten "bufferten som skrivs visas inte" håller i E7b.
-2. **Ett radantal för båda fälten (#15).** Det minsta av de två senaste fältens radantal används för alla bilder.
-3. **Fältförskjutning (#15).** Det nedre fältet (F = 1 med BT.656:s V-lägen) läggs en halv källrad lägre. Ingen förskjutning när F inte växlar. Polariteten är en parameter tills den är mätt på hårdvara.
-4. **Följsam buffring (#16).** BUF visar fältet som skrivs när skrivaren ligger tillräckligt före vid bildstart (2 rader för NTSC, 40 för PAL in i 60 Hz), annars senaste hela fält. Standardtiming ut. Väntad latens 0,1–17 ms i stället för 17–34 ms.
-5. **Genlock-fönster (#10).** Låst generator tar bara `trig` i ett fönster kring väntad bildstart, och låser om först efter flera triggrar i följd på ny fas. Formellt bevis för undre gräns på bildlängden, med negativ kontroll.
-
-## Fas 6. Smått
-
-- `snowlog.py` på Windows (Core #13).
-- README-hänvisningar och två formuleringar (Core #14).
-- AGENTS.md: uppstartsordning och "bit-exact" (hub #2). Inköpsregeln och licensstycket kräver ägarens beslut.
-- EMI-tabellen: mellanfrekvensens övertoner (Puck #4).
-- Rev A: PTC, temperaturklass, PLL-filter, ESD, jordstift (Puck #2, #3). Görs med nästa schemavarv.
-
-## Fas 7. Alternativa vägar
-
-Tre underlag skrivs i `research/` (2026-10-05):
-- dekoder och synk: hur kommersiella mottagare håller bilden stilla, andra dekoderkretsar, direkt digitalisering, tidbaskorrektion;
-- utgång och latens: vad XR-glasögon och bryggor tar emot, 1080p-vägar, deinterlacing;
-- RF: mottagarkretsar, diversity, kvalitetsmått, egenstörning.
-
-Förslag som kommit ur granskningen och ska prövas mot underlagen:
-- **Svänghjul.** En intern rad- och fälträknare i FPGA:n som låser långsamt till den friskare dekodern. Varje rad placeras efter ankomsttid mot svänghjulet i stället för efter dekoderns eget radnummer. Då kan en dekoder med fel radnummer men rätt radtiming fortfarande bidra, och bilden hoppar inte när en dekoder tappar V-låset.
-- **Döljning.** En rad som är dålig i båda kanalerna skrivs inte, så att förra fältets rad står kvar.
-- **Snabbare låsbesked.** Låsbitarna pollas var 20:e ms. En avbrottssignal från dekodern eller tätare pollning kortar tiden en olåst kanal kan visas.
-- **Fältmedel av HF-energin** som mått när raderna inte går att para.
-
-## Fas 8. När kortet finns
-
-I den här ordningen. Varje rad är en mätning som simuleringen inte kan ersätta.
-
-| Steg | Mätning | Avgör |
-|---|---|---|
-| M0 | Bild på tre skärmar | HDMI-nivåer, klockparets tålighet |
-| M2a | Minnestest, alla läspunkter | SDRAM-fas och läspunkt (Core #7) |
-| M3 | Proben med båda dekodrarna | Kablage, `fld` med den egna kameran (sammanflätad eller inte) |
-| M3 | Dra ur videon till en dekoder | Om TVP5150 fortsätter leverera rader utan signal, och med vilken timing (antagande i Core #2) |
-| M4 | Antenn av, en mottagare i taget | Mixerns byte, tid till byte |
-| M4 | Skriv om samma kanal med bild på | Om omskrivning stör bilden (Core #8) |
-| M4 | Stillbild med vågräta kanter | Fältförskjutningens polaritet (Core #15) |
-| M6 | LOW mot HDMI-skärm, brygga och XR-glasögon | 750/751 rader (hub #1) |
-| M6 | Snö-mätaren med dekoderkort och HDMI av/på | Egenstörning, även mellanfrekvensen (Puck #4) |
-
-## Beslut som är ägarens
-
-- Ska grenarna pushas och bli pull requests?
-- Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och `research/` (hub #2).
-- Licensstycket i `docs/GATEWARE_PLAN.md` (hub #2).
-- Rev A: RESETB på J6-18 och övriga schemaändringar (Puck #1–#3).
+Testsviten i Core: 274 test (52 före passet). Byggt ur grenens topp: M1, M2, M2s, M2a, M3, M4, M6; alla klockor klarar sina krav, och HDMI-paren i M4 och M6 packas som i M0. Siffrorna står i Core `gateware/README.md`.
 
 ## Utfört
 
-Fylls i efter varje pass.
+### Fas 1. Radnumrering (Core 92a2025)
+
+Rad 0 är första radstart efter minst två synkord i följd med V = 1. F-biten ingår inte. En källa med fast F (som TVP5150AM1 ger för icke sammanflätat) numreras nu som alla andra. Negativ kontroll: mottagaren före ändringen faller på den nya vektorn `f_stuck_fields`.
+
+### Fas 2. Mixern (Core 57cd08d)
+
+Reglerna står i Core `gateware/README.md` (M4) och i sin helhet i `model/line_mixer_ref.py`: parning på radnummer inom 15,8 µs, ensamma rader bara från aktuell kanal eller som lucktätning i takt, kanalbyte på hälsa (åtta rader) eller tystnad (8 respektive 40 rader), stigande radordning, ingen tidsgräns i klocktid.
+
+- `sim/test_mixer.py`: 14 scenarier på fält med riktig släcklucka, varje beslut och varje ord mot modellen. `model/test_line_mixer_ref.py`: fem egenskaper på 25 slumpade radföljder var.
+- Negativa kontroller: ändrad `N_STEP` eller `N_DEAD` fäller motsvarande test, och mixern före ändringen fäller 7 av 12 scenariokontroller (körd en gång för hand).
+
+Avvikelser från planen:
+- "Avgör utan att vänta när den andra kanalen är tyst" är inte infört. Varje ensam rad väntar 15,8 µs. Det håller RTL och modell lika oberoende av hur upptagen mixern är.
+- Lucktätningen kräver att den andra kanalen inte levererade *någon* rad inom 15,8 µs, vilket avgörs per rad vid ankomsten (inte när raden behandlas).
+- `overflow` syns nu i M6:s logg (Core 4964da3): raden slutar med `!` när mixern har tappat en rad.
+
+### Fas 3. Uppstart och stift (Core dc36058, sju commits)
+
+RESETB på stift 18, tre lysdioder, M4 styr RX5808, kanalen skrivs om medan ingen dekoder är låst, `tvp_ctrl` läser tillbaka 03h och startar om en återställd dekoder, SECAM maskas (04h = FCh), statusexempel och BRINGUP rättade, vakttest för utgångar i HDMI-bankerna. Detaljer i commit-meddelandena och `gateware/BRINGUP.md`.
+
+Avvikelser: kanalen skrivs alltid 0,5 s efter start, även om en dekoder redan är låst. Rev 3921 av Tang-kortet är kontrollerad mot schemat (BOOT-bygeln); rev 3850 är det inte.
+
+### Fas 4. SDRAM (Core db5ba3b, sex commits)
+
+Simuleringsmodell med en riktig krets tider (tAC, tOH, protokollkontroller, negativa kontroller per regel), klockfas 225° och tiderna 2/2/6, läspunkt valbar under drift, minnestestet `m2a_memtest`.
+
+Det som kom fram:
+- De gamla tiderna 1/1 gav 15,4 ns för tRCD och tRP där databladet kräver 18 ns.
+- Läsning i burst är inte provad på hårdvara någonstans uppströms. Läspunkten måste träffa ett fönster på 11,9 ns, och var det ligger beror på kortets fördröjning. Med de antagna fördröjningarna (3 + 3 ns) är läsningen ren; med noll fördröjning är ingen läspunkt ren vid 225°.
+- Minnestestet mäter sitt eget bygge: I/O-registren placeras fritt. Delspåret provade nextpnr:s `--vopt ireg_in_iob --vopt oreg_in_iob --vopt ioreg_in_iob`, som lägger registren i I/O-cellerna och gör resultatet oberoende av placeringen. Det är inte infört, eftersom det ändrar alla byggen. Se "Nästa steg".
+
+### Fas 5. Utgångsvägen (Core dba75d9, 9404d7d, 5436a8f)
+
+- **Fältminne med fyra buffertar.** Vilken buffert en bild visar bestäms i SDRAM-domänen. Skrivaren får aldrig bufferten som visas, dess reserv eller den nyss publicerade (V-3).
+- **Lagrade rader.** En bit per rad och buffert. En rad som saknas ersätts av raden ovanför (högst två i följd), sedan av förra fältets rad. Visningen kan inte få en halvskriven rad.
+- **Följsam buffring.** En bild visar fältet som skrivs när skrivaren ligger 4 rader före (44 för PAL in i 60 Hz). Översta raden blir 0,3–17 ms gammal i stället för 17–33 ms (NTSC, räknat ur radtiderna; simulerat i nedskalad bild).
+- **Ett radantal.** Skalan följer det mindre av de två senaste fältens radantal när de skiljer högst 2. Ett avklippt fält sträcks inte ut.
+- **Fältfas ur ankomsttid.** `field_phase.v` avgör vilket fält som är det nedre på att fälten kommer omväxlande en radtid längre och kortare isär. Det nedre fältet ritas en halv källrad lägre.
+- **LOW.** Bildstarten för det tidiga fältet fördröjs med halva skillnaden, så att utbilderna blir lika långa (annars växlar de med tre rader, vilket underlaget om utgången visade). En enstaka tidig trigger kortar inte längre bilden; tre i följd ger en kort bild och sedan ingen på 32 bilder. Formellt bevisat: undre och övre gräns för bildlängden, avstånd mellan korta bilder.
+
+Avvikelser från planen:
+- Fältförskjutningens riktning är ingen parameter. Den följer av ankomsttiden: fältet som kommer sent ligger lägre. Det behöver bekräftas på hårdvara men inte ställas in.
+- Buffertvalet flyttades till SDRAM-domänen i stället för att undanta tre buffertar på skrivarsidan. Fyra buffertar behövs ändå, för reservfältet.
+
+### Fas 6. Smått
+
+- `snowlog.py` går på Windows och hoppar över skadade rader (Core 38d93ed). COM-portsvägen är inte provad mot en riktig port.
+- Core-README: läget efter passet, sökvägar, M5C-raden, formuleringen om XR-glasögon, vad latenssiffrorna räknar från (Core 6bcdfc7, #14).
+- AGENTS.md: uppstartsordning, mixerns och fältminnets fakta, dekoderns init-lista, stiftregeln (hub #2, de delar som inte är ägarens beslut).
+- EMI-tabellen i puckkonceptet: övertonerna i mellanfrekvensbandet och två mätsteg (Puck a9d6976, 152c236).
+- M6-bygget (Core 567ca8d): efter sammanslagningarna byggde M6 inte med seed 0, se "Kända svagheter".
+
+### Fas 7. Underlag (navet e2ead95)
+
+`research/DEKODER_OCH_SYNK_ROBUSTHET_2026-10-05.md`, `research/UTGANG_OCH_LATENS_2026-10-05.md`, `research/RF_DIVERSITY_OCH_EGENSTORNING_2026-10-05.md`. Varje påstående har sitt slag av belägg angivet.
+
+## Kända svagheter efter passet
+
+- **M6-bygget är seed-beroende.** Med seed 0 och 1 kan nextpnr inte lägga kortets klocka på det globala klocknätet; med 2 och 3 går det. Orsaken är inte utredd. `boards/m6_puck_proto.seed` håller seed 2. En ändring i M6 kan kräva ett annat.
+- **27 MHz-domänen i M6** når 64–69 MHz och har ett eget krav på 54 MHz. Den kritiska vägen är menyns frekvensräkning i `puck_ui.v`.
+- **Testsviten tar längre tid:** 16 minuter i följd (5 minuter förut, med 52 test). Simuleringarna är oberoende av varandra; med tio åt gången tar sviten 5 minuter.
+- **Lägesbyte BUF/LOW under drift** är inte simulerat.
+- **Mixerns gränsfall.** Rader som kommer inom några klockcykler från parningsfönstrets kant kan avgöras olika i RTL och modell. Testen håller sig borta från kanten.
+- **Klockdomänsövergångarna i `fb_backend.v`** är fortfarande inte formellt bevisade.
+
+## Återstår ur granskningen
+
+- **Rev A-kortet** (Puck #1–#3): RESETB till J6-18 och pull-down-motståndet (bildar nu en delare med lysdioden, uppskattat 1,4 V före konfigurering), PTC, temperaturklass, PLL-filter, ESD, jordstift. Kräver SKiDL och görs med nästa schemavarv, tillsammans med en bump av Core-submodulen.
+- **Ägarens beslut**, se sist.
+
+## Nästa steg
+
+Ordnade efter nytta mot insats. De tre första går att göra utan hårdvara.
+
+1. **I/O-register i I/O-cellerna** (`--vopt ireg_in_iob` med flera). Gör SDRAM-timingen och dekoderingångarna oberoende av placeringen. Kräver att alla toppmoduler byggs om och att fuse-vakterna går igenom. Liten insats.
+2. **Ett bildläge i stället för två.** Fältminnet visar redan fältet som skrivs. Med genlockad tidsbas och bildstart några rader efter fältstart ger samma väg ungefär `LOW`:s latens (uppskattat 0,2 ms överst, 0,9 ms nederst), med täckning av saknade rader och utan ringbuffertens 16-radersgräns. Då försvinner en specialväg, och omlåsning kan ske utan skräp i bilden eftersom fältminnet faller tillbaka på senaste hela fält. Nackdel: `LOW` blir beroende av SDRAM. Ägarens val.
+3. **Svänghjulstidbas** (dekoderunderlaget, avsnitt 5). Rader placeras efter ankomsttid mot en egen rad- och fälträknare. Fältfasen ur ankomsttid och genlockens fönster är första stegen dit. Fortsättningen behöver mätvärden först: hur mycket dekoderns radtider skakar vid svag signal, och vad den gör när den tappar H-låset.
+4. **Dekoderinställningar.** Lås videostandarden (28h) och TV/VCR-läget (02h) lika på båda. Använd den klibbiga biten "lost lock" (88h bit 4) som underlag för mixern först när den har loggats på riktig signal; i simulering går det inte att veta om den hjälper eller stjälper.
+5. **Kvalitetsmått som inte beror på bilden.** Räkna lumasampel utanför 16–235 per rad (kräver ingen hårdvara) och logga det bredvid snövärdet. Om klick syns där kan måttet ta över från HF-energin, och blandningen kan viktas efter brus (RF-underlaget, avsnitt 2 och 3).
+6. **Döljning av rader som är dåliga i båda kanalerna.** Fältminnet kan redan ersätta en rad. Mixern behöver bara låta bli att skriva enstaka sådana rader. Längre följder ska fortfarande visas: brus är bättre än stillbild.
+7. **Interpolation i höjdled med två rader**, och i sidled vid 720p (utgångsunderlaget, avsnitt 4).
+8. **1080p för XR-glasögon.** Direkt TMDS ur GW5A-25 är inom databladet men inte visat med öppen verktygskedja; ADV7513 och TFP410 är reserver (utgångsunderlaget, avsnitt 3).
+9. **RF.** Antennhöjd, egenstörning i mellanfrekvensbandet, linjär 5 V per mottagare (RF-underlaget). Mekanik och kort, inte gateware.
+
+## Mätningar när kortet finns
+
+I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
+
+| Steg | Mätning | Avgör |
+|---|---|---|
+| M0 | Bild på tre skärmar | HDMI-nivåer |
+| M3 | Proben med båda dekodrarna | Kablage; `fld` med den egna kameran (sammanflätad eller inte); om 03h läses tillbaka som 0Dh (annars startas dekodern om vid varje pollning och `ri` går till FF) |
+| M3 | Dra ur videon till en dekoder | Om TVP5150 fortsätter leverera rader utan signal och med vilken timing; hur ofta 88h bit 4 sätts |
+| M2a | Minnestestet, fas 180°, 225°, 270° | SDRAM-fas och läspunkt. Resultatet gäller andra byggen bara om läspunkt 5 är ren en fas åt vardera hållet |
+| M2 | Bild från en dekoder, `BUF` | Fältminnet på riktig SDRAM; rader som ersätts syns i bilden |
+| M4 | Antenn av, en mottagare i taget | Mixerns byte och tid till byte; `!` i loggen ska inte komma |
+| M4 | Skriv om samma kanal med bild på | Om omskrivning av RX5808 stör bilden |
+| M4 | Stillbild med vågräta kanter, sammanflätad kamera | Att det nedre fältet hamnar lägre (kanterna ska stå still, inte hoppa) |
+| M6 | `BUF` mot HDMI-skärm | Att följsam buffring inte ger rivning; upplevd latens mot `RT_EN = 0` |
+| M6 | `LOW` mot skärm, goggles, brygga | Om mottagaren tar 750/751 rader, och vad den gör vid omlåsning (en kort bild) |
+| M6 | Snö-loggen med dekoderkort och HDMI av/på, vid svag signal | Egenstörning, även i mellanfrekvensbandet |
+
+## Beslut som är ägarens
+
+- Ska grenarna pushas och bli pull requests? Inget är pushat.
+- Ett bildläge i stället för två (punkt 2 ovan).
+- I/O-register i I/O-cellerna för alla byggen (punkt 1 ovan).
+- Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).
+- Licensstycket i `docs/GATEWARE_PLAN.md`, och upphovsnotisen i `sdram_burst.v` (hub #2).
+- Rev A: RESETB på J6-18 och övriga schemaändringar (Puck #1–#3).

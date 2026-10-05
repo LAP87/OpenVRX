@@ -20,23 +20,40 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 52 tests, ~8 min
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 274 tests, ~16 min
 gateware/build.sh m6_puck_proto
 ```
 
 ## Facts to rely on
 
 - Milestone tops in Core: `m0` test pattern, `m1`/`m2` single decoder (M2 via
-  SDRAM), `m4_dual_mix` (two decoders + mixer), `m6_puck_proto` (M4 + RX5808
-  SPI + OLED menu + OSD + UART log). Status table: `gateware/README.md`.
+  SDRAM), `m2a_memtest` (SDRAM memory test), `m3_probe` (wiring check),
+  `m4_dual_mix` (two decoders + mixer), `m6_puck_proto` (M4 + RX5808 SPI +
+  OLED menu + OSD + UART log). Status table: `gateware/README.md`.
 - Video path: `chan_capture` -> async FIFO -> `mix_chan` -> `line_mixer` ->
-  `fb_backend` (SDRAM triple buffer, or low-latency ring + `genlock_timing`).
-- Mixer rule (integer): blend when |d|*256 < 38*max, switch when > 64*max of
-  per-line HF energy; bad lines (sync errors, decoder unlocked, forced) lose.
-  Bit-exact against `gateware/model/line_mixer_ref.py`.
+  `fb_backend` (`fb_sdram` field store with four buffers, or low-latency
+  ring + `genlock_timing`).
+- Line numbers restart at vertical blanking (two timing codes with V = 1),
+  not at the F bit: a TVP5150AM1 holds F at 1 for what it takes to be
+  non-interlaced. Which field of an interlaced pair a field is comes from
+  its arrival time (`field_phase.v`).
+- Mixer: two lines pair when they carry the same line number and arrive
+  within 15.8 us. A paired line is decided on per-line HF energy (integer:
+  blend when |d|*256 < 38*max, switch when > 64*max); bad lines (sync
+  errors, decoder unlocked, forced) lose. A line without a partner is shown
+  only from the current channel, or to fill a gap while the channels are in
+  step. No wall-clock timeout takes part. `sim/test_mixer.py` compares every
+  decision and output word with `gateware/model/line_mixer_ref.py`, on
+  fields with a real blanking interval.
+- Field store: the buffer a frame shows is chosen in the SDRAM clock domain;
+  the display never gets a line that was not stored whole, and a frame shows
+  the field being written when the writer is far enough ahead. Compared with
+  `gateware/model/fb_ref.py` in `sim/test_fb.py`.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
-  oscillator); init 00h=00, 03h=0Dh, 0Dh=47h; status 88h/89h; I2C address by
-  YOUT7 strap; both decoders share an address, so each has its own SDA.
+  oscillator); init 00h=00, 04h=FCh, 0Dh=47h, then 03h=0Dh last (03h is read
+  back at every poll and the list is written again if it is wrong); status
+  88h/89h; I2C address by YOUT7 strap; both decoders share an address, so
+  each has its own SDA.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
@@ -44,8 +61,12 @@ gateware/build.sh m6_puck_proto
 - Tang Nano 20K pins 52-56 are SSPI configuration pins (52/53 are also the
   HDMI DDC lines) and are not used. The RX5808 SPI DATA/SEL therefore leave on
   LED pins 19/20 (J6-17/J6-16). Shared-pin risks: `gateware/BRINGUP.md` section 5.
-- Bring-up starts with `m3_probe` (wiring check over USB-UART), then M4, then M6:
-  `gateware/BRINGUP.md`.
+- No single-ended output in the banks of the TMDS pairs (pins 25-42): Apicula
+  then packs the TMDS clock pair differently. RESETB is on LED pin 18
+  (J6-18). `gateware/tools/test_tmds_bank_outputs.py` guards it; run it after
+  any Apicula upgrade.
+- Bring-up order: M0, then `m3_probe` (wiring check over USB-UART), `m2a_memtest`
+  (SDRAM phase and read sample point), M2, M4, M6: `gateware/BRINGUP.md`.
 - Formal proofs: `gateware/formal/run.sh`; every proof has a negative control
   that must give a counterexample from reset.
 
@@ -95,8 +116,10 @@ like AI output.
 
 ## Open work (see REVIEW.md for the risks)
 
-- Hardware bring-up order: M0 -> M2 -> M4 -> M6 on a Tang Nano 20K.
-- Formal checks (SymbiYosys) of the CDC handshakes, async FIFO and genlock.
+- Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
+  that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
+- Formal checks of the CDC handshakes in `fb_backend.v` (the async FIFO and the
+  genlock timing are proven, `gateware/formal/run.sh`).
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX
   (ESP32-C5) receiver comparison with the snow meter.

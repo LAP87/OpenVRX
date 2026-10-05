@@ -1,0 +1,241 @@
+# Raw output of the review runs, 2026-10-05 (WSL Ubuntu 24.04, Icarus Verilog 12.0, OpenVRX-Core dec88d6, unmodified RTL)
+
+===== Baseline: the project's own test suite =====
+....................................................                     [100%]
+============================= slowest 15 durations =============================
+87.88s call     gateware/sim/test_probe.py::test_probe_reports
+35.21s call     gateware/sim/test_m5c.py::test_m5c_bt1120
+33.65s call     gateware/sim/test_m2.py::test_m2_low_latency
+32.18s call     gateware/tools/test_formal.py::test_formal_proofs
+31.04s call     gateware/sim/test_m2.py::test_m2_end_to_end
+12.89s call     gateware/sim/test_puck_ui.py::test_puck_ui
+9.95s call     gateware/sim/test_mixer.py::test_mixer_against_model
+9.91s call     gateware/sim/test_mixer.py::test_unlocked_decoder_loses
+9.38s call     gateware/tools/test_lvds_bank_inputs.py::test_inputs_beside_lvds_keep_their_own_io_type
+8.06s call     tests/latency/test_analyze_latency.py::test_delay_longer_than_blink_period_is_measured_correctly
+7.70s call     gateware/sim/test_mixer.py::test_dead_channel_switches
+4.60s call     gateware/sim/test_bt656_rx.py::test_bt656_rx_matches_model
+4.45s call     gateware/sim/test_m1_input.py::test_m1_input_path
+4.44s call     tests/latency/test_analyze_latency.py::test_known_delays_recovered
+4.14s call     tests/latency/test_analyze_latency.py::test_unnamed_screens_are_kept_apart
+52 passed in 306.59s (0:05:06)
+exit=0 wall=299s
+
+
+===== The project's sim/test_mixer.py with VBI changed from 2 to 20 =====
+27c27
+< LINES, VBI, FIELDS = 10, 2, 5
+---
+> LINES, VBI, FIELDS = 10, 20, 5
+        dropped until A counts as dead (TIMEOUT), then everything comes from B."""
+        timeout = 60000                                      # 0.92 ms ~ 14 lines at 15.4 ns
+        a_full, b = stream('a', 1, {1: 0}), stream('b', 2, {1: 60})     # A clean, B snowy in field 1
+        a = a_full[:2 * (VBI + LINES) * 1716]
+        dec, out, end = run_sim(a, b, HERE / 'build' / 'tb_mixer_dead', [f'-Ptb_mixer.TIMEOUT={timeout}'])
+        assert end is not None and end[0] == 0
+        m = model(a, b)
+        n_paired = sum(1 for _, p, *_ in m.trace if p == 0b11)
+        # up to the moment A disappears the RTL matches the model
+        assert dec[:n_paired] == m.trace[:n_paired]
+        rest = dec[n_paired:]
+        assert m.cur == 0, 'scenario: A must be the current channel when it disappears'
+        assert rest and all(p == 0b10 for _, p, *_ in rest), rest      # only B lines left
+        dropped = [r for r in rest if r[0] == 0b00]
+        shown = [r for r in rest if r[0] == 0b10]
+        line_ns = 1716 * T_B
+>       assert 1 <= len(dropped) <= timeout * 15.4 / line_ns + 3, f'{len(dropped)} lines dropped'
+E       AssertionError: 0 lines dropped
+E       assert 1 <= 0
+E        +  where 0 = len([])
+test_review_vbi20.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED test_review_vbi20.py::test_dead_channel_switches - AssertionError: 0 l...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed in 37.99s
+E        +  where 0 = len([])
+
+test_review_vbi20.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED test_review_vbi20.py::test_dead_channel_switches - AssertionError: 0 l...
+1 failed, 2 passed in 58.62s
+
+===== E1 =====
+E1 fields of 24 lines + 20 blanking lines; snow A/B per field: [(0, 60), (60, 0), (0, 'bump'), (0, 'bump'), (0, 'bump')]
+   decisions: rtl 119, model 119; first mismatch at index 48
+   rtl   (1, 3, 0, 0)  (use, pop, field, line)
+   model (2, 3, 0, 0)
+   field 0: rtl {'A': 24}  model {'A': 24}
+   field 1: rtl {'B': 24}  model {'B': 24}
+   field 2: rtl {'A': 24}  model {'B': 24}
+   field 3: rtl {'A': 24}  model {'B': 24}
+   field 4: rtl {'A': 23}  model {'B': 23}
+   events: [('alive_a', 1, 1.336), ('alive_b', 1, 1.342), ('alive_a', 0, 3.806), ('cur', 1, 3.806), ('alive_b', 0, 3.814), ('alive_a', 1, 4.13), ('cur', 0, 4.13), ('alive_b', 1, 4.141), ('cur', 1, 4.141), ('alive_a', 0, 6.599), ('alive_b', 0, 6.613), ('alive_a', 1, 6.923), ('cur', 0, 6.923), ('alive_b', 1, 6.94), ('alive_a', 0, 9.393), ('cur', 1, 9.393), ('alive_b', 0, 9.412), ('alive_a', 1, 9.717), ('cur', 0, 9.717), ('alive_b', 1, 9.739), ('alive_a', 0, 12.187), ('cur', 1, 12.187), ('alive_b', 0, 12.211), ('alive_a', 1, 12.511), ('cur', 0, 12.511), ('alive_b', 1, 12.538)]
+E1 VERDICT: MISMATCH (71 of 119 decisions differ from the model)
+
+
+===== E2, E2b, E3, E3b =====
+review_e2_default: TIMEOUT=65536, dead receiver is B; window 25.0..89.8 ms = 3.9 fields
+   lines shown from the good receiver: 458
+   lines shown from the dead receiver: 432   blended: 0
+   good lines thrown away:             484
+   `cur` changes in the window: [(0, 26.0), (1, 34.28), (0, 42.66), (1, 50.92), (0, 59.33), (1, 67.55), (0, 76.0), (1, 84.19)]
+   field starts fb_sdram would see: 8 (real fields in the window: 3.9)
+review_e2_default VERDICT: 51 % of the good receiver's lines are discarded, 432 snow lines from the unlocked decoder are displayed instead
+
+review_e2_long_timeout: TIMEOUT=262144, dead receiver is B; window 25.0..89.8 ms = 3.9 fields
+   lines shown from the good receiver: 942
+   lines shown from the dead receiver: 0   blended: 0
+   good lines thrown away:             0
+   `cur` changes in the window: []
+   field starts fb_sdram would see: 4 (real fields in the window: 3.9)
+review_e2_long_timeout VERDICT: 0 % of the good receiver's lines are discarded, 0 snow lines from the unlocked decoder are displayed instead
+
+review_e3_default: TIMEOUT=65536, dead receiver is A (cur at reset); window 25.0..89.8 ms = 3.9 fields
+   lines shown from the good receiver: 468
+   lines shown from the dead receiver: 422   blended: 0
+   good lines thrown away:             472
+   `cur` changes in the window: [(1, 25.96), (0, 34.34), (1, 42.6), (0, 51.01), (1, 59.23), (0, 67.68), (1, 75.87), (0, 84.34)]
+   field starts fb_sdram would see: 8 (real fields in the window: 3.9)
+review_e3_default VERDICT: 50 % of the good receiver's lines are discarded, 422 snow lines from the unlocked decoder are displayed instead
+
+review_e3_long_timeout: TIMEOUT=262144, dead receiver is A (cur at reset); window 25.0..89.8 ms = 3.9 fields
+   lines shown from the good receiver: 940
+   lines shown from the dead receiver: 0   blended: 0
+   good lines thrown away:             0
+   `cur` changes in the window: []
+   field starts fb_sdram would see: 4 (real fields in the window: 3.9)
+review_e3_long_timeout VERDICT: 0 % of the good receiver's lines are discarded, 0 snow lines from the unlocked decoder are displayed instead
+
+
+
+===== E3c, E4, E4d =====
+review_e3c_long_timeout_dead_first: TIMEOUT=262144, dead receiver is A (cur at reset); window 25.0..81.5 ms = 3.4 fields
+   lines shown from the good receiver: 0
+   lines shown from the dead receiver: 831   blended: 0
+   good lines thrown away:             811
+   `cur` changes in the window: []
+   field starts fb_sdram would see: 3 (real fields in the window: 3.4)
+review_e3c_long_timeout_dead_first VERDICT: 100 % of the good receiver's lines are discarded, 831 snow lines from the unlocked decoder are displayed instead
+
+review_e4_lag2: B lags A by 2 lines, TIMEOUT=262144
+   decisions (use, pop): {('A', 1): 166, ('B', 2): 166, ('A', 3): 6}
+   shown from A (good, current): 172; shown from B (unlocked): 166; overflow events: []
+   field starts fb_sdram would see: 3 (real fields in the window: 2.9)
+review_e4_lag2 VERDICT: 166 lines from the unlocked decoder displayed, 3 field boundaries signalled for 2.9 real fields
+review_e4_lag5: B lags A by 5 lines, TIMEOUT=262144
+   decisions (use, pop): {('A', 1): 166, ('B', 2): 166, ('A', 3): 6}
+   shown from A (good, current): 172; shown from B (unlocked): 166; overflow events: []
+   field starts fb_sdram would see: 160 (real fields in the window: 2.9)
+review_e4_lag5 VERDICT: 166 lines from the unlocked decoder displayed, 160 field boundaries signalled for 2.9 real fields
+review_e4_lag12: B lags A by 12 lines, TIMEOUT=262144
+   decisions (use, pop): {('A', 1): 166, ('drop', 2): 145, ('B', 2): 21, ('A', 3): 6}
+   shown from A (good, current): 172; shown from B (unlocked): 21; overflow events: []
+   field starts fb_sdram would see: 6 (real fields in the window: 2.9)
+review_e4_lag12 VERDICT: 21 lines from the unlocked decoder displayed, 6 field boundaries signalled for 2.9 real fields
+
+review_e4_lag5_default: B lags A by 5 lines, TIMEOUT=65536
+   decisions (use, pop): {('A', 1): 166, ('B', 2): 166, ('A', 3): 6}
+   shown from A (good, current): 172; shown from B (unlocked): 166; overflow events: []
+   field starts fb_sdram would see: 160 (real fields in the window: 2.9)
+review_e4_lag5_default VERDICT: 166 lines from the unlocked decoder displayed, 160 field boundaries signalled for 2.9 real fields
+
+===== E3c: when the last lines of each field leave the mixer =====
+   line 238 of field 0 left the mixer at    16.574 ms,     63.5 us after line 237
+   line 239 of field 0 left the mixer at    16.638 ms,     63.5 us after line 238
+   line 240 of field 0 left the mixer at    17.971 ms,   1333.3 us after line 239
+   line 241 of field 0 left the mixer at    18.035 ms,     63.5 us after line 240
+   line 238 of field 1 left the mixer at    33.209 ms,     63.5 us after line 237
+   line 239 of field 1 left the mixer at    33.273 ms,     63.5 us after line 238
+   line 240 of field 1 left the mixer at    34.606 ms,   1333.3 us after line 239
+   line 241 of field 1 left the mixer at    34.669 ms,     63.5 us after line 240
+   line 238 of field 0 left the mixer at    49.844 ms,     63.5 us after line 237
+   line 239 of field 0 left the mixer at    49.908 ms,     63.5 us after line 238
+   line 240 of field 0 left the mixer at    51.241 ms,   1333.3 us after line 239
+   line 241 of field 0 left the mixer at    51.304 ms,     63.5 us after line 240
+
+===== E5, E5b =====
+review_e5_same_start: 12 fields of 100 active + 20 blanking lines, F stuck at 1, B enabled 10 lines after A
+   model, decoder A: line numbers [0, 1, 2] ... end of field 0: 99, start of field 1: 100, max 1198; numbering restarts 0 times in 12 fields
+   RTL mixer2 (TIMEOUT raised so that `alive` stays out of it): decisions (use, pop) {('blend', 3): 1199}
+   paired lines: 1199 of 1199 decisions; highest line number emitted: 1023 (a field has 100 lines)
+   field starts fb_sdram / the low-latency trigger would see: 1 (real fields: 12)
+review_e5_same_start VERDICT: 1199 paired decisions of 1199; 1 field starts seen for 12 real fields
+
+review_e5b_offset: 12 fields of 100 active + 20 blanking lines, F stuck at 1, B enabled 30 lines after A
+   model, decoder A: line numbers [0, 1, 2] ... end of field 0: 99, start of field 1: 100, max 1198; numbering restarts 0 times in 12 fields
+   RTL mixer2 (TIMEOUT raised so that `alive` stays out of it): decisions (use, pop) {('A', 1): 1197, ('drop', 2): 1189}
+   paired lines: 0 of 2386 decisions; highest line number emitted: 1023 (a field has 100 lines)
+   field starts fb_sdram / the low-latency trigger would see: 1 (real fields: 12)
+review_e5b_offset VERDICT: 0 paired decisions of 2386; 1 field starts seen for 12 real fields
+
+===== E6 =====
+frame showing field 5 (11 active lines; previous field had 12): fb_display.lines = 11
+   output row  0: shows ['field 5 line 0']
+   output row 29: shows ['field 5 line 8']
+   output row 30: shows ['field 5 line 9']
+   output row 32: shows ['field 5 line 9']
+   output row 33: shows ['field 5 line 10']
+   output row 34: shows ['field 5 line 10']
+   output row 35: shows ['field 5 line 10']
+frame showing field 6 (12 active lines; previous field had 11): fb_display.lines = 11
+   output row  0: shows ['field 6 line 0']
+   output row 29: shows ['field 6 line 8']
+   output row 30: shows ['field 6 line 9']
+   output row 32: shows ['field 6 line 9']
+   output row 33: shows ['field 6 line 10']
+   output row 34: shows ['field 6 line 10']
+   output row 35: shows ['field 6 line 10']
+
+===== E7 (input slower than output) =====
+pass 1, no delay: publication -> next frame start (ns) for publications 3..5: [691131.8, 686643.8, 682155.8] | ['violations 0']
+delay  682008 ns: nearest publication   +136.0 ns from a frame start | violations 0
+delay  682045 ns: nearest publication    +89.8 ns from a frame start | violations 0
+delay  682082 ns: nearest publication    +59.0 ns from a frame start | violations 0
+delay  682119 ns: nearest publication    +12.8 ns from a frame start | violations 0
+delay  682156 ns: nearest publication    -18.0 ns from a frame start | violations 0
+delay  682193 ns: nearest publication    -48.8 ns from a frame start | violations 0
+delay  682230 ns: nearest publication    -95.0 ns from a frame start | violations 0
+delay  682267 ns: nearest publication   -125.8 ns from a frame start | violations 0
+delay  682304 ns: nearest publication   -172.0 ns from a frame start | violations 0
+
+===== E7b (input faster than output) =====
+input faster than output: pass 1, no delay: publication -> next frame start (ns) for publications 3..5: [711059.4, 711376.2, 711693.0] | ['violations 0']
+input faster than output: delay  710911 ns: nearest publication   -152.2 ns from a frame start | violations 0
+input faster than output: delay  710948 ns: nearest publication   +133.8 ns from a frame start | violations 0
+input faster than output: delay  710985 ns: nearest publication    +87.6 ns from a frame start | violations 0
+input faster than output: delay  711022 ns: nearest publication    +56.8 ns from a frame start | violations 0
+input faster than output: delay  711059 ns: nearest publication    +10.6 ns from a frame start | violations 65976 | first 4400452.8 buf 2 row 39; last 5284517.8 row 38; rows 0..39 (40 rows)
+input faster than output: delay  711096 ns: nearest publication    -20.2 ns from a frame start | violations 65976 | first 4400479.6 buf 2 row 39; last 5284544.6 row 38; rows 0..39 (40 rows)
+input faster than output: delay  711133 ns: nearest publication    -51.0 ns from a frame start | violations 0
+input faster than output: delay  711170 ns: nearest publication    -97.2 ns from a frame start | violations 0
+input faster than output: delay  711207 ns: nearest publication   -128.0 ns from a frame start | violations 0
+
+===== Bank 5 packing, minimal designs (review_lvds_bank.py) =====
+   cell clk_IBUF_I                   IBUF         X0Y6/IOBA
+   cell extra_OBUF_O                 OBUF         X5Y54/IOBA
+   cell led_OBUF_O                   OBUF         X0Y46/IOBB
+   cell led_OBUF_O_1                 OBUF         X0Y46/IOBA
+   cell q_DFF_Q_1_D_IBUF_O           IBUF         X13Y54/IOBA
+   cell q_DFF_Q_2_D_IBUF_O           IBUF         X7Y54/IOBB
+   cell q_DFF_Q_3_D_IBUF_O           IBUF         X7Y54/IOBA
+   cell q_DFF_Q_D_IBUF_O             IBUF         X13Y54/IOBB
+   cell tmds_clk_n_OBUF_O            OBUF         X23Y54/IOBB
+   cell tmds_clk_p_OBUF_O            OBUF         X23Y54/IOBA
+TMDS clock pair (33/34) tile (54, 23): fuses set base=18 out25=16 ctrl=18
+   out25 vs base: only out25 []  only base [(24, 5), (27, 48)]
+   ctrl  vs base: only ctrl  []  only base []
+
+VERDICT TMDS clock pair (33/34): output on pin 25 changes its IOB fuses: True; output on pin 72 (other bank): False
+
+===== TMDS pair fuses in the project's own bitstreams (review_tmds_fuses.py) =====
+tile (54, 23) (tmds_clk_n pair): IOB fuses set m0=18  m4_dual_mix=16 (only in m0: [(24, 5), (27, 48)], only in m4_dual_mix: [])  m6_puck_proto=16 (only in m0: [(24, 5), (27, 48)], only in m6_puck_proto: [])
+tile (54, 29) (tmds_d_n pair): IOB fuses set m0=18  m4_dual_mix=18 (only in m0: [], only in m4_dual_mix: [])  m6_puck_proto=18 (only in m0: [], only in m6_puck_proto: [])
+tile (54, 33) (tmds_d_n pair): IOB fuses set m0=18  m4_dual_mix=18 (only in m0: [], only in m4_dual_mix: [])  m6_puck_proto=18 (only in m0: [], only in m6_puck_proto: [])
+tile (54, 39) (tmds_d_n pair): IOB fuses set m0=18  m4_dual_mix=18 (only in m0: [], only in m4_dual_mix: [])  m6_puck_proto=18 (only in m0: [], only in m6_puck_proto: [])
+
+===== gateware/build.sh (summary of the nextpnr logs; all clocks constrained to 75 MHz by build.sh) =====
+m0_testpattern  built (used for the fuse comparison above)
+m4_dual_mix     built, exit 0, 237 s. LUT4 7034/20736 (33 %), DFF 4014/15552, BSRAM 24/46, rPLL 2/2
+                post-route: mix.b_clk 129.48 MHz, mix.a_clk 152.14, clocks.clk_27 196.97, sd_clk 101.53, clk_pixel 99.45  (all PASS at 75.00 MHz)
+m6_puck_proto   built, exit 0, 339 s. LUT4 10330/20736 (49 %), DFF 5185/15552, BSRAM 24/46, rPLL 2/2
+                post-route: mix.b_clk 124.72 MHz, mix.a_clk 145.52, clocks.clk_27 130.72, sd_clk 93.98, clk_pixel 129.27  (all PASS at 75.00 MHz)

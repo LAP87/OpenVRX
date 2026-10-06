@@ -22,7 +22,7 @@ Grenar, pushade 2026-10-06: Core `fix/review-2026-10-05` (delspåren `fix/bringu
 
 Issues 2026-10-06: Core #1–#16, Puck #1 och #4 är stängda med en kommentar om vad som gjordes och vad som återstår att mäta. Öppna: navet #1–#3 (ägarens beslut, index), Puck #2–#3 (nästa schemavarv).
 
-Testsviten i Core: 274 test (52 före passet). Byggt ur grenens topp: M1, M2, M2s, M2a, M3, M4, M6; alla klockor klarar sina krav, och HDMI-paren i M4 och M6 packas som i M0. Siffrorna står i Core `gateware/README.md`.
+Testsviten i Core: 284 test (52 före passet). Byggt ur grenens topp: M1, M2, M2s, M2a, M3, M4, M6; alla klockor klarar sina krav, och HDMI-paren i M4 och M6 packas som i M0. Siffrorna står i Core `gateware/README.md`.
 
 ## Utfört
 
@@ -87,9 +87,16 @@ Avvikelser från planen:
 - **M6-bygget är seed-beroende.** Med seed 0 och 1 kan nextpnr inte lägga kortets klocka på det globala klocknätet; med 2 och 3 går det. Orsaken är inte utredd. `boards/m6_puck_proto.seed` håller seed 2. En ändring i M6 kan kräva ett annat.
 - **27 MHz-domänen i M6** når 64–69 MHz och har ett eget krav på 54 MHz. Den kritiska vägen är menyns frekvensräkning i `puck_ui.v`.
 - **Testsviten tar längre tid:** 16 minuter i följd (5 minuter förut, med 52 test). Simuleringarna är oberoende av varandra; med tio åt gången tar sviten 5 minuter.
-- **Lägesbyte BUF/LOW under drift** är inte simulerat.
 - **Mixerns gränsfall.** Rader som kommer inom några klockcykler från parningsfönstrets kant kan avgöras olika i RTL och modell. Testen håller sig borta från kanten.
 - **Klockdomänsövergångarna i `fb_backend.v`** är fortfarande inte formellt bevisade.
+
+## Andra passet, 2026-10-06
+
+- **Lägesbyte `BUF`/`LOW` under drift är simulerat** (Core a6d23fd, test skrivet av en Sonnet-agent). Bildlängder, X/Z och SDRAM-protokoll är rena över båda bytena. Testet hittade ett fel: första bilden efter `LOW` → `BUF` visade ett sju fält gammalt fält. Två orsaker, båda rättade (Core 62a69be): `fb_display.v` behöll "har ett publicerat fält" från före `LOW`, och `fb_sdram.v` publicerade det halva fält skrivaren gick med i, vars saknade rader lästes rått ur bufferten. Nu släpps det fältet utan publicering (gäller även vid start) och publicerade fält glöms medan `LOW` är aktivt. Modell, händelselogg och M2-testet följer. Negativa kontroller: utan vardera delen faller testet.
+- **I/O-register i I/O-cellerna** (Core-gren `exp/ioreg-in-iob`, Sonnet-agent): `IOREG=1` i `build.sh`, alla nio toppar byggda med och utan. Inga timingfel, LUT4 oförändrat, DFF 1–2 % färre, HDMI-paren packas som M0. I M2a hamnar alla 32 DQ-ingångsregister i I/O-cellerna, men DQ-utdata, utgångsaktiveringen, DQM och SDRAM-klockan ligger kvar i logiken; orsaken är inte utredd (gissning: ett register driver alla 32 stift). Rekommendation: inför för M2a, övriga SDRAM-toppar efter att minnestestet har körts på kortet med och utan. Ägarens beslut.
+- **Rev A** (Puck 828976c–bdb99d1, 17cdbea): PTC 0,75 A hållström (#2 stängt), I-klassad dekoder (livscykeln inte kontrollerad), 4,7 µF efter PLL_AVDD-ferriterna, probjord vid 27 MHz-headrarna, 47/27 ohm beskrivet. Kvar i #3: ESD-klamp efter delaren, firmware-patch (kräver flerbyteskrivning i `i2c_master.v`).
+- **README-tabellen** i Core hade siffror från placeringen; `build.sh` skriver nu tabellen efter routning (Codex) och tabellen byggs om med den.
+- Issues uppdaterade, se "Läge".
 
 ## Återstår ur granskningen
 
@@ -100,7 +107,7 @@ Avvikelser från planen:
 
 Ordnade efter nytta mot insats. De tre första går att göra utan hårdvara.
 
-1. **I/O-register i I/O-cellerna** (`--vopt ireg_in_iob` med flera). Gör SDRAM-timingen och dekoderingångarna oberoende av placeringen. Kräver att alla toppmoduler byggs om och att fuse-vakterna går igenom. Liten insats.
+1. **I/O-register i I/O-cellerna.** Experimentet är gjort (se "Andra passet"); kvar är beslutet, och att ta reda på varför DQ-utgångarna inte hamnar i cellerna.
 2. **Ett bildläge i stället för två.** Fältminnet visar redan fältet som skrivs. Med genlockad tidsbas och bildstart några rader efter fältstart ger samma väg ungefär `LOW`:s latens (uppskattat 0,2 ms överst, 0,9 ms nederst), med täckning av saknade rader och utan ringbuffertens 16-radersgräns. Då försvinner en specialväg, och omlåsning kan ske utan skräp i bilden eftersom fältminnet faller tillbaka på senaste hela fält. Nackdel: `LOW` blir beroende av SDRAM. Ägarens val.
 3. **Svänghjulstidbas** (dekoderunderlaget, avsnitt 5). Rader placeras efter ankomsttid mot en egen rad- och fälträknare. Fältfasen ur ankomsttid och genlockens fönster är första stegen dit. Fortsättningen behöver mätvärden först: hur mycket dekoderns radtider skakar vid svag signal, och vad den gör när den tappar H-låset.
 4. **Dekoderinställningar.** Lås videostandarden (28h) och TV/VCR-läget (02h) lika på båda. Använd den klibbiga biten "lost lock" (88h bit 4) som underlag för mixern först när den har loggats på riktig signal; i simulering går det inte att veta om den hjälper eller stjälper.
@@ -132,7 +139,7 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 
 - Ska grenarna bli pull requests mot `main`? De är pushade men inte sammanslagna.
 - Ett bildläge i stället för två (punkt 2 ovan).
-- I/O-register i I/O-cellerna för alla byggen (punkt 1 ovan).
+- I/O-register i I/O-cellerna: för M2a nu, övriga efter mätning (gren `exp/ioreg-in-iob`).
 - Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).
 - Licensstycket i `docs/GATEWARE_PLAN.md`, och upphovsnotisen i `sdram_burst.v` (hub #2).
 - Rev A: övriga schemaändringar (Puck #2–#3).

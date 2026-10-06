@@ -11,14 +11,16 @@ Underlag: [reviews/2026-10-05/ADVERSARIAL_REVIEW.md](reviews/2026-10-05/ADVERSAR
 | 0 | Issues och plan | hub #3 | klar |
 | 1 | Radnumrering från vertikalsläckningen | Core #4 | klar, simulerat |
 | 2 | Mixern | Core #1 #2 #3 #5 | klar, simulerat och byggt |
-| 3 | Uppstart och stift | Core #6 #8 #9 #12 | klar i Core, simulerat och byggt. Rev A-kortet (Puck #1) återstår |
+| 3 | Uppstart och stift | Core #6 #8 #9 #12, Puck #1 | klar i Core, simulerat och byggt. Rev A har RESETB på J6-18 (Puck 4a45f6a) |
 | 4 | SDRAM | Core #7 | klar, simulerat och byggt. Fas och läspunkt avgörs av minnestestet på kortet |
 | 5 | Utgångsvägen | Core #10 #11 #15 #16 | klar, simulerat och byggt |
 | 6 | Smått | Core #13 #14, hub #2, Puck #4 | klart utom det som är ägarens beslut. Puck #2 och #3 väntar på nästa schemavarv |
 | 7 | Alternativa vägar | hub #1 | tre underlag skrivna; förslagen står under "Nästa steg" |
 | 8 | Mätningar när kortet finns | alla | väntar på hårdvara |
 
-Grenar, inget är pushat: Core `fix/review-2026-10-05` (delspåren `fix/bringup-pins` och `fix/sdram-capture` är sammanslagna dit), navet och Puck `review-2026-10-05`.
+Grenar, pushade 2026-10-06: Core `fix/review-2026-10-05` (delspåren `fix/bringup-pins` och `fix/sdram-capture` är sammanslagna dit), navet och Puck `review-2026-10-05`. Codex-grenarna från 2026-10-06 är inarbetade: latensparningen och klocktabellen i `build.sh` (Core 74e0bfa), stiftkontraktet `tools/board_contract.py` (Core f02a98e), överlämningen i navet (6dcca08) och RESETB-flytten i Puck (4a45f6a). Puck-submodulen pekar på Core-grenen (e605ef3).
+
+Issues 2026-10-06: Core #1–#16, Puck #1 och #4 är stängda med en kommentar om vad som gjordes och vad som återstår att mäta. Öppna: navet #1–#3 (ägarens beslut, index), Puck #2–#3 (nästa schemavarv).
 
 Testsviten i Core: 274 test (52 före passet). Byggt ur grenens topp: M1, M2, M2s, M2a, M3, M4, M6; alla klockor klarar sina krav, och HDMI-paren i M4 och M6 packas som i M0. Siffrorna står i Core `gateware/README.md`.
 
@@ -91,7 +93,7 @@ Avvikelser från planen:
 
 ## Återstår ur granskningen
 
-- **Rev A-kortet** (Puck #1–#3): RESETB till J6-18 och pull-down-motståndet (bildar nu en delare med lysdioden, uppskattat 1,4 V före konfigurering), PTC, temperaturklass, PLL-filter, ESD, jordstift. Kräver SKiDL och görs med nästa schemavarv, tillsammans med en bump av Core-submodulen.
+- **Rev A-kortet** (Puck #2–#3): PTC, temperaturklass, PLL-filter, ESD-klamp efter delaren, jordstift, 47/27 ohm på ingången. RESETB-flytten är gjord (Puck #1). SKiDL finns i Core-miljön i WSL; Puck-testet går där.
 - **Ägarens beslut**, se sist.
 
 ## Nästa steg
@@ -128,9 +130,9 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 
 ## Beslut som är ägarens
 
-- Ska grenarna pushas och bli pull requests? Inget är pushat.
+- Ska grenarna bli pull requests mot `main`? De är pushade men inte sammanslagna.
 - Ett bildläge i stället för två (punkt 2 ovan).
 - I/O-register i I/O-cellerna för alla byggen (punkt 1 ovan).
 - Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).
 - Licensstycket i `docs/GATEWARE_PLAN.md`, och upphovsnotisen i `sdram_burst.v` (hub #2).
-- Rev A: RESETB på J6-18 och övriga schemaändringar (Puck #1–#3).
+- Rev A: övriga schemaändringar (Puck #2–#3).

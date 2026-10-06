@@ -1,0 +1,99 @@
+{
+  "checked_at": "2026-10-05T22:10:02+02:00",
+  "builds": {
+    "m3_probe": {
+      "last_routed_clocks": {
+        "pb.clk": {
+          "fmax_MHz": 135.94,
+          "result": "PASS",
+          "requirement_MHz": 75.0
+        },
+        "pa.clk": {
+          "fmax_MHz": 157.31,
+          "result": "PASS",
+          "requirement_MHz": 75.0
+        },
+        "conv.clk": {
+          "fmax_MHz": 178.64,
+          "result": "PASS",
+          "requirement_MHz": 75.0
+        }
+      },
+      "bitstream_sha256": "51e26c1a57fe13afe0c75e543737b94bb92ecb3fcfafe16944e61f323fb2dd60",
+      "LUT4": "2356",
+      "BSRAM": "0"
+    },
+    "m4_dual_mix": {
+      "last_routed_clocks": {
+        "mix.b_clk": {
+          "fmax_MHz": 137.8,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "mix.a_clk": {
+          "fmax_MHz": 132.54,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "clocks.clk_27": {
+          "fmax_MHz": 209.47,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "sd_clk": {
+          "fmax_MHz": 85.46,
+          "result": "PASS",
+          "requirement_MHz": 64.8
+        },
+        "clk_pixel": {
+          "fmax_MHz": 110.44,
+          "result": "PASS",
+          "requirement_MHz": 74.25
+        }
+      },
+      "bitstream_sha256": "648e7cfcc278251954fb7a6bcdbbe5a6eebd108e8a891a3196e472481f93a2ee",
+      "LUT4": "7072",
+      "BSRAM": "24",
+      "archived_bitstream_sha256": "1d35fdaf6e409801a4baa866b17c7d655646d9739f8c3f184f1896fb66d274f7"
+    },
+    "m6_puck_proto": {
+      "last_routed_clocks": {
+        "mix.b_clk": {
+          "fmax_MHz": 123.59,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "mix.a_clk": {
+          "fmax_MHz": 146.11,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "clocks.clk_27": {
+          "fmax_MHz": 82.67,
+          "result": "PASS",
+          "requirement_MHz": 27.0
+        },
+        "sd_clk": {
+          "fmax_MHz": 87.9,
+          "result": "PASS",
+          "requirement_MHz": 64.8
+        },
+        "clk_pixel": {
+          "fmax_MHz": 106.81,
+          "result": "PASS",
+          "requirement_MHz": 74.25
+        }
+      },
+      "bitstream_sha256": "d49799b4225c0469143cc78c690fdd6f223b088ea5164f3e33fb4c9e4c6c04b1",
+      "LUT4": "10324",
+      "BSRAM": "24",
+      "archived_bitstream_sha256": "e9fa74ae90948a2e3070917d8112238383e924f24b2f18151d70d9501368130e"
+    }
+  },
+  "source_changes_during_audit": {
+    "OpenVRX": [],
+    "OpenVRX-Core": [],
+    "OpenVRX-Puck": [],
+    "OpenVRX-Puck/core": []
+  }
+}

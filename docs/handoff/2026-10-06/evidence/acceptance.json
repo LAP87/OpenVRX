@@ -1,0 +1,53 @@
+{
+  "repositories": {
+    "OpenVRX-Core": {
+      "commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+      "branch": "bringup-pins",
+      "clean": true
+    },
+    "OpenVRX-Puck": {
+      "commit": "e65cd8e25e40712d7c76075931b7715defc85474",
+      "branch": "resetb-j6-18",
+      "clean": true
+    },
+    "OpenVRX": {
+      "commit": "e4244600485145a3591ab69227b5dabaf624de54",
+      "branch": "main",
+      "clean": true
+    }
+  },
+  "puck_core_commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+  "core_tests": {
+    "passed": 78,
+    "seconds": 710.42
+  },
+  "puck_tests": {
+    "passed": 1,
+    "seconds": 1.28
+  },
+  "hardware_tested": false,
+  "schematic": {
+    "core_commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+    "parts": 110,
+    "connected_nets": 83,
+    "erc_errors": 0,
+    "erc_warnings": 0,
+    "repeat_identical_except_date": true,
+    "canonical_sha256": {
+      "dekoderkort.net": "8a95e417a19e95a7862fd98b5b269c83bded94bd7c86f2a9af8ea2174684232b",
+      "dekoderkort_bom.csv": "fb56fbfa20851455c77e93d53cbdfa5ba00ea0865beb4c0da07c9154a98f57e5",
+      "dekoderkort_kopplingar.md": "f4fe9c583c618210478a19b5fc511c53b19a08dfcbbf85b14c1ee1c976e854bf"
+    },
+    "sha256": {
+      "dekoderkort.net": "c337f2368c6b9f0090e9020e0ac077226e0fc5c966803333a2c2aaae17cfd971",
+      "dekoderkort_bom.csv": "fb56fbfa20851455c77e93d53cbdfa5ba00ea0865beb4c0da07c9154a98f57e5",
+      "dekoderkort_kopplingar.md": "f4fe9c583c618210478a19b5fc511c53b19a08dfcbbf85b14c1ee1c976e854bf"
+    },
+    "random_tag_warnings": 0,
+    "netlist_warnings": "empty root tag required by KiCad; footprint libraries unavailable"
+  },
+  "development_acceptance_date": "2026-10-05",
+  "handoff_branch": "codex/handoff-2026-10-06",
+  "build_archive": "../artifacts/core-builds-1a1e5c7.tar.gz",
+  "build_archive_sha256": "d953b3219a802b6f23175f8012b4d87e88deb5361ffa8899ca2955a75a6a069e"
+}

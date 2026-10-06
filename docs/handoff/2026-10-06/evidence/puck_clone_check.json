@@ -1,0 +1,9 @@
+{
+  "branch": "codex/handoff-2026-10-06",
+  "puck_commit": "e65cd8e25e40712d7c76075931b7715defc85474",
+  "core_submodule_commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+  "clean": true,
+  "inherited_references_present": true,
+  "checked_date": "2026-10-06",
+  "check_host": "Linux development workstation; fresh clone from GitHub"
+}

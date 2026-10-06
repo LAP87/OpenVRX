@@ -1,0 +1,238 @@
+WARNING: KICAD8_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: KICAD9_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: KICAD10_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: KICAD_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: KICAD6_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: KICAD7_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap_external>:999=>/tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488]
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+SCHEMATIC AUDIT {"design_check_problems": [], "part_count": 110, "checked_core_submodule": "dec88d6a6ad7a9b9bb197f2c50142d46c47abcc3", "core_led_assignment": "assign led = ~{locked_ok, have_video, cur, b_lines, a_lines, sec[24]};", "header_reset_pin": [18]}
+ERC INFO: No errors or warnings found while running ERC.
+
+WARNING: Missing tag on PWR_IN instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:125.
+WARNING: Random tag 09HVarYG70 generated for PWR_IN.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 24NrGpOSIq generated for C.
+WARNING: Missing tag on LDO_AP7361C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:96.
+WARNING: Random tag H3SzyPZiUG generated for LDO_AP7361C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag AzQuiABlRB generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag zosF3KuACl generated for C.
+WARNING: Missing tag on LDO_AP2112K instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:107.
+WARNING: Random tag losUxnyxG4 generated for LDO_AP2112K.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag eJFwOIG5zF generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag rqnThb7z1J generated for C.
+WARNING: Missing tag on LDO_AP2112K instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:107.
+WARNING: Random tag qW9bRaT6Zj generated for LDO_AP2112K.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 5t6IbGAVoW generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 5MkJ0ovGGg generated for C.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag FSJH1MgncK generated for R.
+WARNING: Missing tag on CONN_1x20 instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:117.
+WARNING: Random tag piY6KzIF9O generated for CONN_1x20.
+WARNING: Missing tag on CONN_1x20 instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:117.
+WARNING: Random tag g2_mfNJ_dv generated for CONN_1x20.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag yVMdm4yMQJ generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 2302LL4qm_ generated for R.
+WARNING: Missing tag on JP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag qdf7Fr6GdL generated for JP.
+WARNING: Missing tag on JP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag ByfylQaeVQ generated for JP.
+WARNING: Missing tag on TVP5150AM1PBS instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:85.
+WARNING: Random tag qrLBMOzqk4 generated for TVP5150AM1PBS.
+WARNING: Missing tag on FB instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag Z7bOl0lrj5 generated for FB.
+WARNING: Missing tag on FB instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag IcJsuWWVSu generated for FB.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag Hwvjeq0A90 generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag IcRxHcVT1w generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag xCljpAV6UA generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag FB5gYG8eJi generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag StBpiGllr7 generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag OT9fsldpcd generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag yjzLPfS6HB generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag unqWCMokvP generated for C.
+WARNING: Missing tag on VIDEO_IN_A instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:125.
+WARNING: Random tag PbhgjblGOY generated for VIDEO_IN_A.
+WARNING: Missing tag on F instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag GyRTZAZnxZ generated for F.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 3RSz68Xjs1 generated for C.
+WARNING: Missing tag on ESD instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:272.
+WARNING: Random tag jaDgHHpN38 generated for ESD.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag hMJKiTHJOJ generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag OzxNpodh7A generated for R.
+WARNING: Missing tag on L instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag tG48Z6JqjK generated for L.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag bSKaageffd generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 0NXB1Izqeh generated for C.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:291.
+WARNING: Random tag vosdCy1jyH generated for TP.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag uqgBfeUCrJ generated for C.
+WARNING: Missing tag on XTAL instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:303.
+WARNING: Random tag MWIth_h6AB generated for XTAL.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag IjxJtd45HK generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag lK2mONbpjB generated for C.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag gDlWKoNcas generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag cq6EnpCK7C generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 0BFCUN7loY generated for R.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag em2cJX4TOx generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag N8C5WGiXy3 generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag jNZucwUWIN generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag IgZxiK9PwS generated for TP.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag W3JbqNFUdG generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag Wt23Fwxm_S generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag t6Nlb66OPa generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag bFXx3CQK11 generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag PJqZnO17p8 generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 7EEw8VCXhs generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag usixRSbroM generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag mAZJlXaXQr generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag ZI3n9MeeX2 generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 589v94MjxD generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag YWHrS24pzX generated for R.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:353.
+WARNING: Random tag __Ldrjjc42 generated for TP.
+WARNING: Missing tag on TVP5150AM1PBS instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:85.
+WARNING: Random tag uNGq1CanFe generated for TVP5150AM1PBS.
+WARNING: Missing tag on FB instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag yilg662yyh generated for FB.
+WARNING: Missing tag on FB instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag LancTxqDyf generated for FB.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag HIEcDMm3hM generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag borFa6bpPr generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag TqBlpQk8qu generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag cvg1v0tp9S generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag ftgOrpyTLi generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag srPRz5FQvL generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag j8G2HYfZ2v generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag iLPQ6jHzvv generated for C.
+WARNING: Missing tag on VIDEO_IN_B instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:125.
+WARNING: Random tag uTX5kj7OOr generated for VIDEO_IN_B.
+WARNING: Missing tag on F instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag LPruHOL8g8 generated for F.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag nFis4y7sI3 generated for C.
+WARNING: Missing tag on ESD instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:272.
+WARNING: Random tag OBLobOL5tt generated for ESD.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag FXmMVXgjmM generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 9t_Dfyybsr generated for R.
+WARNING: Missing tag on L instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 8IPIDUXMUi generated for L.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 7gwSDMCjRu generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag xfvg2w7Vg5 generated for C.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:291.
+WARNING: Random tag xaHXtXemPP generated for TP.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag yBz3Tzv_a2 generated for C.
+WARNING: Missing tag on XTAL instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:303.
+WARNING: Random tag uYVmJ5VGFT generated for XTAL.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag g0a3jkeq4q generated for C.
+WARNING: Missing tag on C instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag c627RmfbMr generated for C.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag ez98O75gaL generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag EVo43opAB2 generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag aYfUAu7Ju9 generated for R.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag iv5LBL_7ZB generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag ffCdQsllDZ generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag ulrBAr5CsN generated for TP.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:328.
+WARNING: Random tag Y30T4qT9hb generated for TP.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 0JqBKcF3iV generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag RImLwuHS3T generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag 8IL1BdnBuD generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag m_HxdM8GYE generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag RM4CjVpNx1 generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag jlis8FBMd_ generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag LQxAck8nGU generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag fBXWFmJeBC generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag mpTctptczZ generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag omvfcinQ6c generated for R.
+WARNING: Missing tag on R instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:46.
+WARNING: Random tag ex71RScQc6 generated for R.
+WARNING: Missing tag on TP instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:353.
+WARNING: Random tag 4e3j0ODj3m generated for TP.
+WARNING: Missing tag on MH instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:358.
+WARNING: Random tag d_ViohCSvr generated for MH.
+WARNING: Missing tag on MH instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:358.
+WARNING: Random tag 6812Mhe_A3 generated for MH.
+WARNING: Missing tag on MH instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:358.
+WARNING: Random tag EEQeJynSvd generated for MH.
+WARNING: Missing tag on MH instantiated at /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Puck/design/rev_a/dekoderkort.py:358.
+WARNING: Random tag w50O9UJ2rL generated for MH.
+WARNING: Missing tag on  instantiated at /tmp/openvrx-audit-20261005-_b4uamwj/<frozen importlib._bootstrap>:488.
+INFO: 226 warnings found while generating netlist.
+INFO: 0 errors found while generating netlist.
+

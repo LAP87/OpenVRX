@@ -1,8 +1,8 @@
 # Invitation to adversarial review
 
-OpenVRX has never run on hardware. Everything below passes our own
-simulations, and that is the problem: the models and the RTL come from the
-same understanding, so a misread datasheet is wrong in both. We are asking
+OpenVRX has never run on hardware. Passing our own simulations is not enough:
+the models and the RTL come from the same understanding, so a misread
+datasheet can be wrong in both. We are asking
 for people to **prove us wrong** before we spend money on boards.
 
 The most useful replies are a concrete failure: "this breaks when X, because
@@ -30,7 +30,7 @@ Ordered from "most likely broken" to "probably fine".
    lines may smear more than it helps. (`OpenVRX-Core: gateware/rtl/line_mixer.v`,
    `mixer/`)
 2. **Pairing lines from two decoders.** Each TVP5150 runs on its own crystal
-   and clock; lines are paired by (field, line number) after async FIFOs. What
+   and clock; lines are paired by (epoch, field, line number) after async FIFOs. What
    happens when one decoder slips a line, loses vertical sync, or two fields
    disagree? (`mix_chan.v`, `line_mixer.v`)
 3. **TVP5150AM1 bring-up.** Register values (00h, 03h, 0Dh) and status reads
@@ -39,16 +39,20 @@ Ordered from "most likely broken" to "probably fine".
    `OpenVRX-Puck: design/rev_a/`)
 4. **SDRAM on the Tang Nano 20K.** Controller timing and clock phase were
    checked against a behavioural model, not the real embedded SDRAM.
+   The model's read timing and the actual DQ sampling phase need separate
+   acceptance before framebuffer tests can establish real memory operation.
    (`sdram_burst.v`, `clocks_sdram.v`)
 5. **Clock-domain crossings.** The Gray-code async FIFO is now proven by
    k-induction with two free clocks (no overflow/underflow, data integrity),
    with negative controls (`gateware/formal/run.sh`). The toggle handshakes in
-   `fb_backend.v` are still only simulated. Are the proof's assumptions
+   `fb_backend.v` still have an unresolved buffer-ownership race. Are the proof's assumptions
    (registers start at reset, free clocks) the right ones?
 6. **Low-latency mode.** The 720p output is genlocked to the input fields:
    frames alternate 750/751 lines (NTSC) and the first line waits for the
    input. Will real sinks (TVs, XR glasses, capture cards) accept a varying
-   vertical total? (`genlock_timing.v`, `fb_backend.v`)
+   vertical total? A trigger during active video can also shorten a frame;
+   the current proof bounds maximum duration but does not establish a minimum.
+   (`genlock_timing.v`, `fb_backend.v`)
 7. **Open-toolchain pitfalls.** Apicula has miscompiled signed comparisons in
    other projects (we removed all `signed` arithmetic), and newer Apicula packs
    single-ended inputs beside a true-LVDS output as LVDS receivers (we test
@@ -73,6 +77,16 @@ Ordered from "most likely broken" to "probably fine".
 - The 1080p path through an LT8618SX is not published: its init sequence is
   derived from a vendor driver whose provenance we have not cleared.
 - Power design (2S, USB-C PD in/out) is a concept only.
+- Decoder initialisation runs once; power-loss recovery and a stuck-low I2C
+  clock are unresolved. A lock flag alone does not establish recovery.
+
+## Local corrections, 2026-10-05
+
+Core's 78-test suite includes line loss, long VBI, lagging/forced channels,
+return after missing fields, constant F and negative controls. RESETB/SPI
+roles on LED3/4/5 are explicit and checked by Puck before export. These checks
+address reproduced mixer and handoff defects; real decoder phase, integrated
+backend behaviour and RF mixing benefit remain open.
 
 ## How to report
 

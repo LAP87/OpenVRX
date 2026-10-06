@@ -1,0 +1,9 @@
+{
+  "design_check_problems": [],
+  "part_count": 110,
+  "checked_core_submodule": "dec88d6a6ad7a9b9bb197f2c50142d46c47abcc3",
+  "core_led_assignment": "assign led = ~{locked_ok, have_video, cur, b_lines, a_lines, sec[24]};",
+  "header_reset_pin": [
+    18
+  ]
+}

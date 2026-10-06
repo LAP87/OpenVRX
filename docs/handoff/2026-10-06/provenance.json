@@ -1,0 +1,55 @@
+{
+  "OpenVRX-Core": {
+    "base_commit": "dec88d6a6ad7a9b9bb197f2c50142d46c47abcc3",
+    "base_branch": "bringup-pins",
+    "inherited_branch": "codex/inherited-claude-2026-10-05",
+    "inherited_commit": "8a0eef4559fcb8fbe254047e7642dfb27fd0ff90",
+    "accepted_commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+    "handoff_branch": "codex/handoff-2026-10-06",
+    "changed_or_new_files": {
+      "gateware/BRINGUP.md": "da0d0b16d7631f2294c184f0dc99ef9956535ee386466935198d157fd3e7c91f",
+      "gateware/README.md": "34e9d75e140454a228d073182d513f67915d5177a02fe0f822c5395cdff179b6",
+      "gateware/boards/m3_probe.cst": "ea7185d44f7a5c07a1859fd53c067cb6e1ca1feb6a3b22e7492382691742be26",
+      "gateware/boards/m4_dual_mix.cst": "c28dccd3b33ea3415107345219ebda1810e628474d25452a055c62d5a6a7a5da",
+      "gateware/boards/m4_dual_mix.sdc": "e4589da09ee11bcdfee870ed74017fef10a253f3d059e6866f63822bbc0a5e59",
+      "gateware/boards/m6_puck_proto.cst": "0dd7a663b2363d3945597e7b9a76272307138f961372a2177bbd38c8bcfbded2",
+      "gateware/boards/m6_puck_proto.sdc": "e4589da09ee11bcdfee870ed74017fef10a253f3d059e6866f63822bbc0a5e59",
+      "gateware/build.sh": "90c1bc6b0d1c65c6912a5dc0f872e8323f38bba09ded3a8b0b50a2f7685cdeb8",
+      "gateware/rtl/puck_ui.v": "25ac58f244a81dd577b8cbc27d0fde969656be65b8ed1bc520bb254d85e1d3bd",
+      "gateware/rtl/rx5808_spi.v": "c374de90dc13ffb72ddbdde7074626198efa87952fd8b75b01e4c0cec5261074",
+      "gateware/rtl/rx_tune.v": "4cb65a406e841d7ff84755f58a787ca20c252b471fa6524a6d96ff9d82188194",
+      "gateware/rtl/tvp_ctrl.v": "e831a78a4d97d7f669679a9b6673f5501477f8044158f4fab19c8bef90a48805",
+      "gateware/sim/i2c_slave_model.v": "792c87dd781454cc21dc31d05c636d70aa599239c6d23c87728f8cf0ec319596",
+      "gateware/sim/tb_probe.v": "716801303537d2690cecf1adbcceff7e4c388fcbd8c74478fcde9b40e722a523",
+      "gateware/sim/tb_rx_tune.v": "4edb7641fec306870e6311bc91d6e9e18a137efe12ffd488d50debbd75beea59",
+      "gateware/sim/tb_tvp_ctrl.v": "6ccdf87f61d4699a525bc886bbea90535cb338627693664afa20620dd18e028d",
+      "gateware/sim/test_probe.py": "54e0028f734325e832c9c10e35feb0d29baa6b0025fff26585ceed47ec37231a",
+      "gateware/sim/test_rx_tune.py": "dcb6f0319b865e35d2035f756ac7a084218cbd8626f51fa0f6fdb39547c148bd",
+      "gateware/sim/test_tvp_ctrl.py": "c1be6a876845e2a9e4a59d70a5f6537cb2741baf4e6ee2746aeef0bf8a768010",
+      "gateware/tools/test_hdmi_bank_outputs.py": "88e22117d24f22ce3454481821b2b202fb5c0dcbf330c263113b551cb8d7e5e4",
+      "gateware/top/m3_probe.v": "151038e01d4869d4920137d6b5e9f21af437d07951cf1636a1a221b1e7e30349",
+      "gateware/top/m4_dual_mix.v": "af01aeee419f0c410f849aa487fbea231f9c1a99b166ea69bcf6dd0d33d47d02",
+      "gateware/top/m6_puck_proto.v": "e7c4e01d4c8d0259320282aec126fe573c5edc3484961f2b2eacf4ee771c24b9"
+    }
+  },
+  "OpenVRX-Puck": {
+    "base_commit": "bdee8e46719713163edaa7c2d27adc07377020dd",
+    "base_branch": "resetb-j6-18",
+    "inherited_branch": "codex/inherited-claude-2026-10-05",
+    "inherited_commit": "fc2ab71c83fd2ce5eeda1dd17c11322b1238bb31",
+    "accepted_commit": "e65cd8e25e40712d7c76075931b7715defc85474",
+    "handoff_branch": "codex/handoff-2026-10-06",
+    "changed_or_new_files": {
+      "design/rev_a/README.md": "ef19edfda66550a65f98eb02f368c1fbc1fb42d06e1f0382b7e0172ab00afb78",
+      "design/rev_a/dekoderkort.py": "8b39fad617a1197e65f0e21964a6412ec3dfe23753414709e0fef62b63858bcb"
+    }
+  },
+  "OpenVRX": {
+    "base_commit": "4fd0f119f6de6aa44840d518ba974f6cc7b37faa",
+    "base_branch": "main",
+    "inherited_commit": "4fd0f119f6de6aa44840d518ba974f6cc7b37faa",
+    "accepted_commit": "e4244600485145a3591ab69227b5dabaf624de54",
+    "handoff_branch": "codex/handoff-2026-10-06",
+    "changed_or_new_files": {}
+  }
+}

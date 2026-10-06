@@ -1,0 +1,14 @@
+{
+  "m0_testpattern": {
+    "returncode": 0,
+    "clock_rows": 2
+  },
+  "m3_probe": {
+    "returncode": 0,
+    "clock_rows": 3
+  },
+  "m4_dual_mix": {
+    "returncode": 0,
+    "clock_rows": 5
+  }
+}

@@ -66,7 +66,8 @@ gateware/build.sh m6_puck_proto
   (J6-18). `gateware/tools/test_tmds_bank_outputs.py` guards it; run it after
   any Apicula upgrade.
 - Bring-up order: M0, then `m3_probe` (wiring check over USB-UART), `m2a_memtest`
-  (SDRAM phase and read sample point), M2, M4, M6: `gateware/BRINGUP.md`.
+  (SDRAM phase and read sample point), M2, M4 with one decoder, M4 with both,
+  M6: `gateware/BRINGUP.md`.
 - Formal proofs: `gateware/formal/run.sh`; every proof has a negative control
   that must give a counterexample from reset.
 

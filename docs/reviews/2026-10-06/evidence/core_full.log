@@ -1,0 +1,116 @@
+........................................................................ [ 25%]
+........................................................................ [ 50%]
+........................................................................ [ 76%]
+...........................F...........FFF..........................     [100%]
+=================================== FAILURES ===================================
+______________________________ test_probe_reports ______________________________
+
+    def test_probe_reports():
+        log = run()
+        assert 'RESULT spi_idle_bad=0' in log, log[-500:]       # SPI CLK low and DATA high between frames
+>       text = ''.join(chr(int(h, 16)) for h in re.findall(r'^U (\w\w)$', log, re.M))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+gateware/sim/test_probe.py:64:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x7fcd97388130>
+
+>   text = ''.join(chr(int(h, 16)) for h in re.findall(r'^U (\w\w)$', log, re.M))
+                       ^^^^^^^^^^
+E   ValueError: invalid literal for int() with base 16: 'xx'
+
+gateware/sim/test_probe.py:64: ValueError
+_________________________________ test_m4_pins _________________________________
+
+    def test_m4_pins():
+>       check_all(run(4))
+
+gateware/sim/test_top_pins.py:140:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+gateware/sim/test_top_pins.py:132: in check_all
+    check_line_leds(r)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = {'name': 'm4_dual_mix', 'clk_hz': 27000, 't_lock': 7000000, 't_end': 14000000, ...}
+
+    def check_line_leds(r):
+        """LED1 follows lines from A, LED2 lines from B (B delivers none before T_B)."""
+>       assert led_at(r, T_B - 10_000)[:2] == '10', led_at(r, T_B - 10_000)           # led2 dark, led1 lit
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: 111
+E       assert '11' == '10'
+E
+E         - 10
+E         + 11
+
+gateware/sim/test_top_pins.py:105: AssertionError
+----------------------------- Captured stderr call -----------------------------
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+_________________________________ test_m6_pins _________________________________
+
+    def test_m6_pins():
+>       check_all(run(6))
+
+gateware/sim/test_top_pins.py:144:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+gateware/sim/test_top_pins.py:132: in check_all
+    check_line_leds(r)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = {'name': 'm6_puck_proto', 'clk_hz': 135000, 't_lock': 14000000, 't_end': 28000000, ...}
+
+    def check_line_leds(r):
+        """LED1 follows lines from A, LED2 lines from B (B delivers none before T_B)."""
+>       assert led_at(r, T_B - 10_000)[:2] == '10', led_at(r, T_B - 10_000)           # led2 dark, led1 lit
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: 111
+E       assert '11' == '10'
+E
+E         - 10
+E         + 11
+
+gateware/sim/test_top_pins.py:105: AssertionError
+----------------------------- Captured stderr call -----------------------------
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+______________ test_without_lock_led0_stays_fast_and_writes_go_on ______________
+
+    def test_without_lock_led0_stays_fast_and_writes_go_on():
+        """Negative control: the decoders never report lock."""
+        r = run(4, locks=False)
+        check_resetb(r)
+>       check_line_leds(r)
+
+gateware/sim/test_top_pins.py:151:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = {'name': 'm4_dual_mix', 'clk_hz': 27000, 't_lock': 7000000, 't_end': 14000000, ...}
+
+    def check_line_leds(r):
+        """LED1 follows lines from A, LED2 lines from B (B delivers none before T_B)."""
+>       assert led_at(r, T_B - 10_000)[:2] == '10', led_at(r, T_B - 10_000)           # led2 dark, led1 lit
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: 111
+E       assert '11' == '10'
+E
+E         - 10
+E         + 11
+
+gateware/sim/test_top_pins.py:105: AssertionError
+----------------------------- Captured stderr call -----------------------------
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62: warning: wait expression is constant false.
+<workspace>/private/notes/review_2026-10-06/checkouts/Core/gateware/sim/gowin_prim_stubs.v:62:        : The statement will block permanently.
+=========================== short test summary info ============================
+FAILED gateware/sim/test_probe.py::test_probe_reports - ValueError: invalid l...
+FAILED gateware/sim/test_top_pins.py::test_m4_pins - AssertionError: 111
+FAILED gateware/sim/test_top_pins.py::test_m6_pins - AssertionError: 111
+FAILED gateware/sim/test_top_pins.py::test_without_lock_led0_stays_fast_and_writes_go_on
+4 failed, 280 passed in 1976.84s (0:32:56)

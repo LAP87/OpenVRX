@@ -92,6 +92,13 @@ Avvikelser från planen:
 
 ## Andra passet, 2026-10-06
 
+Codex fortsatte på `main` enligt projektägarens instruktion. [Granskningen 2026-10-06](reviews/2026-10-06/README.md) innehåller nya verifieringar, felreproduktioner och nästa avgränsade pass. Den skiljer dagens kontroller från de tidigare resultaten nedan.
+
+- **Byggartefakter och testsökvägar** (Core `e6bf0a9`, `6a61a17`): frysta byggindata, hashmanifest, felaktiga/gamla bitströmmar avvisas och variantnamn följer alla artefakter. 25 verktygskontroller, 5 probe/top-tester och två riktiga byggen gröna. Core har 308 insamlade tester; ingen ny sammanhängande 308-körning påstås.
+- **Tre öppna funktionsfel**: kort aktiv BT.656-rad godkänns med gammal svans, 88h-NACK döljs av senare ACK, och borttagen första bildrad kan ge okända bildord med aktiv video. Reproducerade i Fables bas, ännu inte rättade. Den dokumenterade LOW-payloadbuggen reproduceras också i formal-grenen.
+- **Puck/Core synkade**: gitlänken uppdaterad till Core `6a61a17`; kontraktstest och ny isolerad 114-delars export gröna, ERC 0/0. Industrivarianten TVP5150AM1IPBSR är Active enligt TI:s exakta artikelnummer 2026-10-06; småvolymstillgång är fortfarande okontrollerad.
+- **Nattgrenarna** är separata. Ny riktad verifiering: brus 9 gröna, flerbytes-I²C 12 gröna, formellt test grönt. Deras hela sviter och sammanslagen funktion är inte omkörda av Codex.
+
 - **Lägesbyte `BUF`/`LOW` under drift är simulerat** (Core a6d23fd, test skrivet av en Sonnet-agent). Bildlängder, X/Z och SDRAM-protokoll är rena över båda bytena. Testet hittade ett fel: första bilden efter `LOW` → `BUF` visade ett sju fält gammalt fält. Två orsaker, båda rättade (Core 62a69be): `fb_display.v` behöll "har ett publicerat fält" från före `LOW`, och `fb_sdram.v` publicerade det halva fält skrivaren gick med i, vars saknade rader lästes rått ur bufferten. Nu släpps det fältet utan publicering (gäller även vid start) och publicerade fält glöms medan `LOW` är aktivt. Modell, händelselogg och M2-testet följer. Negativa kontroller: utan vardera delen faller testet.
 - **I/O-register i I/O-cellerna** (Core-gren `exp/ioreg-in-iob`, Sonnet-agent): `IOREG=1` i `build.sh`, alla nio toppar byggda med och utan. Inga timingfel, LUT4 oförändrat, DFF 1–2 % färre, HDMI-paren packas som M0. I M2a hamnar alla 32 DQ-ingångsregister i I/O-cellerna, men DQ-utdata, utgångsaktiveringen, DQM och SDRAM-klockan ligger kvar i logiken; orsaken är inte utredd (gissning: ett register driver alla 32 stift). Rekommendation: inför för M2a, övriga SDRAM-toppar efter att minnestestet har körts på kortet med och utan. Ägarens beslut.
 - **Rev A** (Puck 828976c–bdb99d1, 17cdbea): PTC 0,75 A hållström (#2 stängt), I-klassad dekoder (livscykeln inte kontrollerad), 4,7 µF efter PLL_AVDD-ferriterna, probjord vid 27 MHz-headrarna, 47/27 ohm beskrivet. Kvar i #3: ESD-klamp efter delaren, firmware-patch (kräver flerbyteskrivning i `i2c_master.v`).
@@ -140,7 +147,7 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 
 ## Beslut som är ägarens
 
-- Ska grenarna bli pull requests mot `main`? De är pushade men inte sammanslagna.
+- Granskningens basgrenar används på `main` enligt projektägarens instruktion 2026-10-06. Nattgrenarna och I/O-experimentet är fortsatt separata; deras integration återstår.
 - Ett bildläge i stället för två (punkt 2 ovan).
 - I/O-register i I/O-cellerna: för M2a nu, övriga efter mätning (gren `exp/ioreg-in-iob`).
 - Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).

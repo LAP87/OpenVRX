@@ -1,0 +1,57 @@
+[
+  {
+    "label": "missing_first_line_default",
+    "command": [
+      "python3",
+      "repro/run_missing_first_line.py",
+      "--default-only"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 13.24
+  },
+  {
+    "label": "noise_targeted",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "gateware/sim/test_noise_stats.py",
+      "gateware/sim/test_puck_ui.py",
+      "gateware/tools/test_snowlog.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 41.87
+  },
+  {
+    "label": "i2c_targeted",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "gateware/sim/test_i2c_master.py",
+      "gateware/sim/test_tvp_ctrl.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 8.52
+  },
+  {
+    "label": "formal_targeted",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "gateware/tools/test_formal.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 69.25
+  }
+]

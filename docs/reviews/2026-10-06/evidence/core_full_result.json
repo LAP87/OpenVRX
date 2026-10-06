@@ -1,0 +1,18 @@
+{
+  "commit": "e5585bab98343fa2289d7a8165752b1e7206b54a",
+  "command": [
+    "<workspace>/private/notes/review_2026-10-06/checkouts/Core/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/latency",
+    "mixer",
+    "gateware/model",
+    "gateware/sim",
+    "gateware/tools"
+  ],
+  "returncode": 1,
+  "elapsed_seconds": 1977.14
+}

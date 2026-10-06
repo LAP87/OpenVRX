@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "core_commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+  "parts": 114,
+  "nets": 83,
+  "erc_errors": 0,
+  "erc_warnings": 0,
+  "design_problems": [],
+  "contract_test": "1 passed in 1.30s"
+}

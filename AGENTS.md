@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 274 tests, ~16 min
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 308 collected on Core main, runtime depends on the host
 gateware/build.sh m6_puck_proto
 ```
 
@@ -46,9 +46,11 @@ gateware/build.sh m6_puck_proto
   decision and output word with `gateware/model/line_mixer_ref.py`, on
   fields with a real blanking interval.
 - Field store: the buffer a frame shows is chosen in the SDRAM clock domain;
-  the display never gets a line that was not stored whole, and a frame shows
-  the field being written when the writer is far enough ahead. Compared with
-  `gateware/model/fb_ref.py` in `sim/test_fb.py`.
+  a frame can show the field being written when the writer is far enough
+  ahead. Compared with `gateware/model/fb_ref.py` in `sim/test_fb.py`.
+  A missing first line can still cause an unwritten line to be fetched while
+  video is active; the model shares this fallback policy. Reproduction and
+  the other open capture/status bugs: `docs/reviews/2026-10-06/README.md`.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
   oscillator); init 00h=00, 04h=FCh, 0Dh=47h, then 03h=0Dh last (03h is read
   back at every poll and the list is written again if it is wrong); status

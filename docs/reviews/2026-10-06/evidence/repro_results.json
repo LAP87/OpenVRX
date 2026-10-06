@@ -1,0 +1,100 @@
+{
+  "commit": "e5585bab98343fa2289d7a8165752b1e7206b54a",
+  "meaning": "documented observations reproduced",
+  "cases": {
+    "short_active": "MARKER n=0 words=360 length=1716 xy_bad=0 active=1440\nROW n=0 count=1 bad=0 overflow=0 tail=20802080\nMARKER n=1 words=360 length=1716 xy_bad=0 active=1440\nROW n=1 count=1 bad=0 overflow=0 tail=30803080\nMARKER n=2 words=360 length=1716 xy_bad=0 active=1440\nROW n=2 count=1 bad=0 overflow=0 tail=40804080\nMARKER n=3 words=360 length=1716 xy_bad=0 active=1440\nROW n=3 count=1 bad=0 overflow=0 tail=50805080\nMARKER n=4 words=359 length=1716 xy_bad=0 active=1436\nROW n=4 count=1 bad=0 overflow=0 tail=20802080\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/short_active.v:61: $finish called at 86085000 (1ps)\n",
+    "short_active_control": "MARKER n=0 words=360 length=1716 xy_bad=0 active=1440\nROW n=0 count=1 bad=0 overflow=0 tail=20802080\nMARKER n=1 words=360 length=1716 xy_bad=0 active=1440\nROW n=1 count=1 bad=0 overflow=0 tail=30803080\nMARKER n=2 words=360 length=1716 xy_bad=0 active=1440\nROW n=2 count=1 bad=0 overflow=0 tail=40804080\nMARKER n=3 words=360 length=1716 xy_bad=0 active=1440\nROW n=3 count=1 bad=0 overflow=0 tail=50805080\nMARKER n=4 words=359 length=1716 xy_bad=0 active=1436\nROW n=4 count=0 bad=0 overflow=0 tail=20802080\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/short_active.v:61: $finish called at 86085000 (1ps)\n",
+    "partial_nack": "POSITIVE status_valid=1 dev_err=0 status=000e\nAFTER_NACK88 status_valid=1 dev_err=0 status=000e\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/tvp_partial_nack.v:15: $finish called at 830000 (1ps)\n",
+    "ll_guard0": "SEND n=0 payload=0 time=11328000\nRECEIVE n=0 expected=0 actual=0 time=11358000\nSEND n=1 payload=3 time=27960000\nRECEIVE n=1 expected=3 actual=2 time=27987000\nDONE guard=0 sent=2 received=2\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/ll_payload.v:63: $finish called at 28436100 (1ps)\n",
+    "ll_guard1": "SEND n=0 payload=0 time=11328000\nRECEIVE n=0 expected=0 actual=0 time=11358000\nSEND n=1 payload=3 time=27960000\nRECEIVE n=1 expected=3 actual=3 time=27987000\nDONE guard=1 sent=2 received=2\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/ll_payload.v:63: $finish called at 28744100 (1ps)\n",
+    "i2c_stuck0": "I2C stuck=0 busy=0 completions=1\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/i2c_held_low.v:20: $finish called at 20040000 (1ps)\n",
+    "i2c_stuck1": "I2C stuck=1 busy=1 completions=0\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/i2c_held_low.v:20: $finish called at 20040000 (1ps)\n",
+    "genlock": "FRAME 1\nFRAME 2\nFRAME 170\nFRAME 338\nFRAME 506\nFRAME 772\n<workspace>/OpenVRX/docs/reviews/2026-10-06/repro/genlock.v:19: $finish called at 8365000 (1ps)\n",
+    "full_rows": {
+      "rt_en": 0,
+      "video_frames_with_unknown_words": [],
+      "sdram_protocol_errors": 0
+    },
+    "missing_first": {
+      "rt_en": 0,
+      "video_frames_with_unknown_words": [
+        {
+          "pixel_cycle": 198041,
+          "lines": 12,
+          "video": 1,
+          "unknown": [
+            [
+              0,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              2,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              3,
+              -1,
+              -1,
+              -1
+            ]
+          ]
+        }
+      ],
+      "sdram_protocol_errors": 0
+    },
+    "missing_first_default": {
+      "rt_en": 1,
+      "video_frames_with_unknown_words": [
+        {
+          "pixel_cycle": 198041,
+          "lines": 12,
+          "video": 1,
+          "unknown": [
+            [
+              0,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              1,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              2,
+              -1,
+              -1,
+              -1
+            ],
+            [
+              3,
+              -1,
+              -1,
+              -1
+            ]
+          ]
+        }
+      ],
+      "sdram_protocol_errors": 0
+    }
+  },
+  "control_commit": "1a1e5c7fb7b8f9a991e27cd70f871a923f42ce7b",
+  "genlock_periods": [
+    168,
+    168,
+    168,
+    266
+  ]
+}

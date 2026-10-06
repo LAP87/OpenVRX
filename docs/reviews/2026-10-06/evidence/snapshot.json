@@ -1,0 +1,45 @@
+{
+  "Core": {
+    "repo": "OpenVRX-Core",
+    "ref": "origin/fix/review-2026-10-05",
+    "commit": "e5585bab98343fa2289d7a8165752b1e7206b54a",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Core"
+  },
+  "Hub": {
+    "repo": "OpenVRX",
+    "ref": "origin/review-2026-10-05",
+    "commit": "1c57184372ad869073b15911c69896bd4a64afd9",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Hub"
+  },
+  "Puck": {
+    "repo": "OpenVRX-Puck",
+    "ref": "origin/review-2026-10-05",
+    "commit": "17cdbea713c32d0b44e4fb410eb9900eb82760ac",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Puck",
+    "core_commit": "f02a98e5d3ebd75ae69dee32170db89d806b5cad"
+  },
+  "Core-noise": {
+    "repo": "OpenVRX-Core",
+    "ref": "origin/feat/noise-metric",
+    "commit": "a6640b003fc950e9cb89eed8d06dd72712a6da38",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Core-noise"
+  },
+  "Core-i2c": {
+    "repo": "OpenVRX-Core",
+    "ref": "origin/feat/i2c-multibyte",
+    "commit": "013300aba631d7d85da1c3af2d8d12d87f2fa05c",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Core-i2c"
+  },
+  "Core-formal": {
+    "repo": "OpenVRX-Core",
+    "ref": "origin/formal/fb-backend-cdc",
+    "commit": "53e5ab2da0002ee19d4b8160f46590e6628b1c3f",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Core-formal"
+  },
+  "Core-ioreg": {
+    "repo": "OpenVRX-Core",
+    "ref": "origin/exp/ioreg-in-iob",
+    "commit": "215ee5ecb43beb6559156d6c5125121d9e88ea1b",
+    "checkout": "<workspace>/private/notes/review_2026-10-06/checkouts/Core-ioreg"
+  }
+}

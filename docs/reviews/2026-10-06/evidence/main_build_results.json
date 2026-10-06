@@ -1,0 +1,63 @@
+[
+  {
+    "top": "m0_testpattern",
+    "options": {},
+    "prefix": "m0_testpattern",
+    "returncode": 0,
+    "elapsed_seconds": 36.91,
+    "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+    "verify_returncode": 0,
+    "verify_output": "verified <workspace>/OpenVRX-Core/gateware/build/m0_testpattern.build.json\n",
+    "bitstream_sha256": "63ff3c7ee2f7e4114eaba826a728e0b412c16826c696cc93d773621cd2635c44",
+    "timing": {
+      "clk_pixel": {
+        "max_mhz": 146.41,
+        "passed": true,
+        "required_mhz": 75.0
+      },
+      "clocks.clk_27": {
+        "max_mhz": 350.75,
+        "passed": true,
+        "required_mhz": 75.0
+      }
+    },
+    "manifest_git": {
+      "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+      "dirty": false
+    },
+    "tool_versions": {
+      "apycula": "0.32",
+      "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+      "yowasp-yosys": "0.69.0.0.post1233"
+    }
+  },
+  {
+    "top": "m2a_memtest",
+    "options": {
+      "SDRAM_PHASE": "12"
+    },
+    "prefix": "m2a_memtest_phase12",
+    "returncode": 0,
+    "elapsed_seconds": 61.14,
+    "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+    "verify_returncode": 0,
+    "verify_output": "verified <workspace>/OpenVRX-Core/gateware/build/m2a_memtest_phase12.build.json\n",
+    "bitstream_sha256": "6dff3616c7c120abdcbd9908dcc48dbed488ececf29c6a1570f921c2b6a04711",
+    "timing": {
+      "sd_clk": {
+        "max_mhz": 82.93,
+        "passed": true,
+        "required_mhz": 75.0
+      }
+    },
+    "manifest_git": {
+      "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+      "dirty": false
+    },
+    "tool_versions": {
+      "apycula": "0.32",
+      "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+      "yowasp-yosys": "0.69.0.0.post1233"
+    }
+  }
+]

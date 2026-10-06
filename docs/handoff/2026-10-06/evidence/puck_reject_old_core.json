@@ -1,0 +1,10 @@
+{
+  "returncode": 1,
+  "core_commit": "dec88d6a6ad7a9b9bb197f2c50142d46c47abcc3",
+  "outputs_unchanged": true,
+  "sha256": {
+    "design/rev_a/out/dekoderkort.net": "1eec378fe3da1ab4a5c663885aa4976d01f12c06b826eadaee1712b624a32c97",
+    "design/rev_a/out/dekoderkort_bom.csv": "3c825c474445c420428f11554fe5a5cdd90a7189169e4efc6d7137bc0b6a0600",
+    "design/rev_a/out/dekoderkort_kopplingar.md": "004045834085b4dd424e17c3c94387e2080a4d32749221b9e10e6654b880f8fb"
+  }
+}

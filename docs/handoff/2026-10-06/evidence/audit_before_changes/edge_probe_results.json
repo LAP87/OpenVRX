@@ -1,0 +1,23 @@
+{
+  "genlock": {
+    "frame_cycles": [
+      1,
+      2,
+      170,
+      338,
+      506,
+      562,
+      828
+    ],
+    "period_cycles": [
+      168,
+      168,
+      168,
+      56,
+      266
+    ],
+    "natural_locked_min_cycles": 154
+  },
+  "i2c_normal_nack": "I2C stuck=0 busy=0 completions=1\n/tmp/openvrx-audit-20261005-_b4uamwj/i2c_tb.v:20: $finish called at 20040000 (1ps)",
+  "i2c_clock_held_low": "I2C stuck=1 busy=1 completions=0\n/tmp/openvrx-audit-20261005-_b4uamwj/i2c_tb.v:20: $finish called at 20040000 (1ps)"
+}

@@ -59,6 +59,9 @@ break it.
 
 Detailed notes in `research/` and `docs/` are in Swedish for now.
 
+The [2026-10-06 handoff](docs/handoff/2026-10-06/README.md) records the
+takeover snapshot, development changes, acceptance logs and next work.
+
 ## Contributing
 
 Issues and pull requests are welcome in the board or core repository they

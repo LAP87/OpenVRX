@@ -1,0 +1,8 @@
+echo "built $out/$out_fs"
+# nextpnr prints the clock table twice: an estimate after placement, then the result after routing. Show the last.
+grep -E "LUT4|DFF|OSER10|rPLL|BSRAM" "$top.pnr.log" | tail -6 || true
+tac "$top.pnr.log" | awk '/Max frequency for clock/ {print; seen=1; next} seen {exit}' | tac
+.......................................................                  [100%]
+55 passed in 574.41s (0:09:34)
+
+[exited with code 0]

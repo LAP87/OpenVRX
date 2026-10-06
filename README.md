@@ -59,6 +59,9 @@ break it.
 
 Detailed notes in `research/` and `docs/` are in Swedish for now.
 
+The [component and research register](research/komponentregister/README.md)
+tracks parts, alternatives, project references and their source evidence.
+
 The [2026-10-06 handoff](docs/handoff/2026-10-06/README.md) records the
 takeover snapshot, development changes, acceptance logs and next work.
 

@@ -85,7 +85,7 @@ Avvikelser från planen:
 ## Kända svagheter efter passet
 
 - **M6-bygget är seed-beroende.** Med seed 0 och 1 kan nextpnr inte lägga kortets klocka på det globala klocknätet; med 2 och 3 går det. Orsaken är inte utredd. `boards/m6_puck_proto.seed` håller seed 2. En ändring i M6 kan kräva ett annat.
-- **27 MHz-domänen i M6** når 64–69 MHz och har ett eget krav på 54 MHz. Den kritiska vägen är menyns frekvensräkning i `puck_ui.v`.
+- **27 MHz-domänen i M6** har ett eget krav på 54 MHz. Efter routning (Core e5585ba) når den 98,5 MHz; placeringsuppskattningen sade 64–69. Den kritiska vägen är menyns frekvensräkning i `puck_ui.v`. **M2a** har minst marginal av alla: 83 MHz mot kravet 75.
 - **Testsviten tar längre tid:** 16 minuter i följd (5 minuter förut, med 52 test). Simuleringarna är oberoende av varandra; med tio åt gången tar sviten 5 minuter.
 - **Mixerns gränsfall.** Rader som kommer inom några klockcykler från parningsfönstrets kant kan avgöras olika i RTL och modell. Testen håller sig borta från kanten.
 - **Klockdomänsövergångarna i `fb_backend.v`** är fortfarande inte formellt bevisade.
@@ -95,7 +95,7 @@ Avvikelser från planen:
 - **Lägesbyte `BUF`/`LOW` under drift är simulerat** (Core a6d23fd, test skrivet av en Sonnet-agent). Bildlängder, X/Z och SDRAM-protokoll är rena över båda bytena. Testet hittade ett fel: första bilden efter `LOW` → `BUF` visade ett sju fält gammalt fält. Två orsaker, båda rättade (Core 62a69be): `fb_display.v` behöll "har ett publicerat fält" från före `LOW`, och `fb_sdram.v` publicerade det halva fält skrivaren gick med i, vars saknade rader lästes rått ur bufferten. Nu släpps det fältet utan publicering (gäller även vid start) och publicerade fält glöms medan `LOW` är aktivt. Modell, händelselogg och M2-testet följer. Negativa kontroller: utan vardera delen faller testet.
 - **I/O-register i I/O-cellerna** (Core-gren `exp/ioreg-in-iob`, Sonnet-agent): `IOREG=1` i `build.sh`, alla nio toppar byggda med och utan. Inga timingfel, LUT4 oförändrat, DFF 1–2 % färre, HDMI-paren packas som M0. I M2a hamnar alla 32 DQ-ingångsregister i I/O-cellerna, men DQ-utdata, utgångsaktiveringen, DQM och SDRAM-klockan ligger kvar i logiken; orsaken är inte utredd (gissning: ett register driver alla 32 stift). Rekommendation: inför för M2a, övriga SDRAM-toppar efter att minnestestet har körts på kortet med och utan. Ägarens beslut.
 - **Rev A** (Puck 828976c–bdb99d1, 17cdbea): PTC 0,75 A hållström (#2 stängt), I-klassad dekoder (livscykeln inte kontrollerad), 4,7 µF efter PLL_AVDD-ferriterna, probjord vid 27 MHz-headrarna, 47/27 ohm beskrivet. Kvar i #3: ESD-klamp efter delaren, firmware-patch (kräver flerbyteskrivning i `i2c_master.v`).
-- **README-tabellen** i Core hade siffror från placeringen; `build.sh` skriver nu tabellen efter routning (Codex) och tabellen byggs om med den.
+- **README-tabellen** i Core hade siffror från placeringen; alla nio toppar är ombyggda ur 62a69be och tabellen visar siffror efter routning (Core e5585ba). Alla klockor klarar sina krav, HDMI-paren i M4 och M6 som M0, verktygstesten 16 gröna. Hela sviten: 284 gröna.
 - Issues uppdaterade, se "Läge".
 
 ## Återstår ur granskningen

@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 308 collected on Core main, runtime depends on the host
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 332 on Core main, runtime depends on the host
 gateware/build.sh m6_puck_proto
 ```
 
@@ -121,8 +121,9 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Formal checks of the CDC handshakes in `fb_backend.v` (the async FIFO and the
-  genlock timing are proven, `gateware/formal/run.sh`).
+- The CDC handshakes of `fb_backend.v` are proven (`gateware/formal/run.sh`);
+  what the proofs do not cover (metastability, SDRAM latency for the line
+  buffer, the low-latency ring) is listed in `gateware/formal/README.md`.
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX
   (ESP32-C5) receiver comparison with the snow meter.

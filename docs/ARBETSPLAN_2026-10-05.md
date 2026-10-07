@@ -88,7 +88,8 @@ Avvikelser från planen:
 - **27 MHz-domänen i M6** har ett eget krav på 54 MHz. Efter routning (Core e5585ba) når den 98,5 MHz; placeringsuppskattningen sade 64–69. Den kritiska vägen är menyns frekvensräkning i `puck_ui.v`. **M2a** har minst marginal av alla: 83 MHz mot kravet 75.
 - **Testsviten tar längre tid:** 16 minuter i följd (5 minuter förut, med 52 test). Simuleringarna är oberoende av varandra; med tio åt gången tar sviten 5 minuter.
 - **Mixerns gränsfall.** Rader som kommer inom några klockcykler från parningsfönstrets kant kan avgöras olika i RTL och modell. Testen håller sig borta från kanten.
-- **Klockdomänsövergångarna i `fb_backend.v`** är fortfarande inte formellt bevisade.
+- **Klockdomänsövergångarna i `fb_backend.v`** är bevisade sedan 2026-10-07, utom det som står i Core `gateware/formal/README.md` (metastabilitet, SDRAM-latens för radbufferten, lågfördröjningsringen).
+- **27 MHz-domänen i M6** nådde 65 MHz mot kravet 54 i bygget av Core f13581c (99 i 62a69be). Samma kritiska väg, menyns kanaltabell till RX5808:s skiftregister; skillnaden är placering. Marginalen mot de verkliga 27 MHz krymper.
 
 ## Andra passet, 2026-10-06
 
@@ -108,6 +109,18 @@ Codex fortsatte på `main` enligt projektägarens instruktion. [Granskningen 202
 - **Flerbyteskrivning I2C** (Core `feat/i2c-multibyte`, 013300a): `i2c_master.v` skriver upp till 256 databyte efter registeradressen (`wextra`, `wreq`) och stoppar direkt efter en NACK; en byte fungerar som förut, init-listan är orörd. Simulerat mot `model/i2c_ref.py` (1, 2, 8 och 256 byte, NACK mitt i och på första byten, frånvarande adress, återläsning); en slav utan autoinkrement och en master som inte avbryter fäller testet. Sviten 288 gröna. Kvar: patchdata och laddsteg (Core `gateware/README.md` under M4 säger vad som krävs), prov mot en riktig TVP5150AM1.
 - **Klockdomänsövergångarna i `fb_backend.v`** (Core `formal/fb-backend-cdc`, 53e5ab2): synkroniserarna ligger nu i `cdc_sync.v`, simulerat oförändrat. Formellt bevisat för 27–108 MHz mot 74,25 MHz: toggle-handskakningarna tappar eller dubblerar inga händelser och levererar rätt data, `ll_mode` är rätt i båda domänerna från tredje flanken efter ett byte (inte andra: ett första sampel kan bli det gamla värdet), och en radbegäran under en aktiv rad går aldrig till platsen som läses. Sex negativa kontroller, bland dem synkroniseraren borttagen. Sviten 284 gröna. Inte bevisat, med skäl i Core `gateware/formal/README.md`: att två steg räcker mot metastabilitet, SDRAM-latensen för radbufferten, lågfördröjningsringen. Öppet fel: `s_ll_lines` kan ändras en SDRAM-klocka efter triggern när ett fält slutar direkt efter rad 1. Följden är fel radantal i en bild. En rättning är föreslagen men inte införd.
 
+## Tredje passet, 2026-10-07
+
+Opus tog in nattgrenarna och rättade det som [granskningen 2026-10-06](reviews/2026-10-06/README.md) lämnade öppet, ett paket i taget på Core `main`, med hela sviten och byggen efter sista paketet. Core `main` 8b5f0ae: 332 test gröna, M0, M2, M2s, M3, M4 och M6 byggda utan fel med alla klockor inom krav och HDMI-paren som M0. Puck `main` 4c64aae pekar dit; Puck-testet grönt.
+
+- **Nattgrenarna** (brus, flerbytes-I2C, CDC-bevis) är sammanslagna i Core `main` (1672097); README-konflikterna gällde bara testantalet. Sviten 318 gröna vid sammanslagningen.
+- **Lågfördröjningstriggerns radantal** (Core 186f98d): `toggle_tx` i `cdc_sync.v` håller radantalet från vändning till vändning och vänder högst var 16:e klocka. Codex fall (tre rader skickade, två mottagna) ger nu tre, `sim/test_ll_payload.py`; en kopia med det ohållna värdet tar emot två igen. Sändarsidan är formellt bevisad mot villkoren i toggle-beviset.
+- **I2C som fastnar** (Core 57f8763): `i2c_master.v` ger upp när SCL hålls låg längre än 10 ms, släpper linjerna och avslutar med NACK och `stuck`. Simulerat med kort och fastlåst SCL; en kopia utan tidsgräns hänger.
+- **F1, ofullständig rad** (Core 2a69d69): `mix_chan.v` lagrar bara rader vars 360 ord kom i följd. En sådan rad räknas som dålig och som inte levererad, så den andra kanalens rad fyller luckan. RTL och modell lika i ett nytt mixerscenario; en kopia som lagrar raden avviker från modellen.
+- **F3, saknad första rad** (Core 9be0d33): utan rad ovanför och utan reservfält skriver fältminnet en svart rad i radbufferten i stället för att läsa oskrivet minne. `test_fb` kräver nu oberoende av modellen att varje läst rad är lagrad, i alla 16 fältminnestest. Den gamla regeln ger okända ord i en bild med video igen.
+- **F2, statuspoll** (Core f13581c): en pollrunda gäller bara hel. Ett NACK på 88h, 89h eller 03h gör statusen ogiltig till nästa hela runda, och en återställd dekoder också. Proben visar `st ----` i fönstret där en dekoder återställdes (`BRINGUP.md`). En kopia som lämnar statusen giltig fångas.
+- Codex reproduktioner i `reviews/2026-10-06/repro/` gäller basen e5585ba och är inte körda mot Core `main`. Varje fall finns nu som regressionstest i Core med en negativ kontroll som återställer felet.
+
 ## Återstår ur granskningen
 
 - **Rev A-kortet** (Puck #2–#3): PTC, temperaturklass, PLL-filter, ESD-klamp efter delaren, jordstift, 47/27 ohm på ingången. RESETB-flytten är gjord (Puck #1). SKiDL finns i Core-miljön i WSL; Puck-testet går där.
@@ -121,7 +134,7 @@ Ordnade efter nytta mot insats. De tre första går att göra utan hårdvara.
 2. **Ett bildläge i stället för två.** Fältminnet visar redan fältet som skrivs. Med genlockad tidsbas och bildstart några rader efter fältstart ger samma väg ungefär `LOW`:s latens (uppskattat 0,2 ms överst, 0,9 ms nederst), med täckning av saknade rader och utan ringbuffertens 16-radersgräns. Då försvinner en specialväg, och omlåsning kan ske utan skräp i bilden eftersom fältminnet faller tillbaka på senaste hela fält. Nackdel: `LOW` blir beroende av SDRAM. Ägarens val.
 3. **Svänghjulstidbas** (dekoderunderlaget, avsnitt 5). Rader placeras efter ankomsttid mot en egen rad- och fälträknare. Fältfasen ur ankomsttid och genlockens fönster är första stegen dit. Fortsättningen behöver mätvärden först: hur mycket dekoderns radtider skakar vid svag signal, och vad den gör när den tappar H-låset.
 4. **Dekoderinställningar.** Lås videostandarden (28h) och TV/VCR-läget (02h) lika på båda. Använd den klibbiga biten "lost lock" (88h bit 4) som underlag för mixern först när den har loggats på riktig signal; i simulering går det inte att veta om den hjälper eller stjälper.
-5. **Kvalitetsmått som inte beror på bilden.** Räkna lumasampel utanför 16–235 per rad (kräver ingen hårdvara) och logga det bredvid snövärdet. Om klick syns där kan måttet ta över från HF-energin, och blandningen kan viktas efter brus (RF-underlaget, avsnitt 2 och 3).
+5. **Kvalitetsmått som inte beror på bilden.** Brusmåttet (lumasampel utanför 16–235) räknas och loggas i M6 sedan 2026-10-07. Kvar: logga det på riktig signal. Om klick syns där kan måttet ta över från HF-energin, och blandningen kan viktas efter brus (RF-underlaget, avsnitt 2 och 3).
 6. **Döljning av rader som är dåliga i båda kanalerna.** Fältminnet kan redan ersätta en rad. Mixern behöver bara låta bli att skriva enstaka sådana rader. Längre följder ska fortfarande visas: brus är bättre än stillbild.
 7. **Interpolation i höjdled med två rader**, och i sidled vid 720p (utgångsunderlaget, avsnitt 4).
 8. **1080p för XR-glasögon.** Direkt TMDS ur GW5A-25 är inom databladet men inte visat med öppen verktygskedja; ADV7513 och TFP410 är reserver (utgångsunderlaget, avsnitt 3).
@@ -147,7 +160,7 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 
 ## Beslut som är ägarens
 
-- Granskningens basgrenar används på `main` enligt projektägarens instruktion 2026-10-06. Nattgrenarna och I/O-experimentet är fortsatt separata; deras integration återstår.
+- Granskningens basgrenar används på `main` enligt projektägarens instruktion 2026-10-06, och nattgrenarna är sammanslagna där 2026-10-07 på ägarens begäran. I/O-experimentet (`exp/ioreg-in-iob`) är fortsatt separat och bygger på en äldre bas.
 - Ett bildläge i stället för två (punkt 2 ovan).
 - I/O-register i I/O-cellerna: för M2a nu, övriga efter mätning (gren `exp/ioreg-in-iob`).
 - Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).

@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 332 on Core main, runtime depends on the host
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 368 on Core main, runtime depends on the host
 gateware/build.sh m6_puck_proto
 ```
 
@@ -52,9 +52,10 @@ gateware/build.sh m6_puck_proto
   video is active; the model shares this fallback policy. Reproduction and
   the other open capture/status bugs: `docs/reviews/2026-10-06/README.md`.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
-  oscillator); init 00h=00, 04h=FCh, 0Dh=47h, then 03h=0Dh last (03h is read
-  back at every poll and the list is written again if it is wrong); status
-  88h/89h; I2C address by YOUT7 strap; both decoders share an address, so
+  oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=20h
+  (VCR mode), then 03h=0Dh last (03h is read back at every poll and the list
+  is written again if it is wrong); status 88h/89h, 88h bit 4 (lost lock,
+  cleared by the read) in the M6 log; I2C address by YOUT7 strap; both decoders share an address, so
   each has its own SDA.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);

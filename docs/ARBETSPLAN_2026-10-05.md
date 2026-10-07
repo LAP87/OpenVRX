@@ -121,6 +121,14 @@ Opus tog in nattgrenarna och rättade det som [granskningen 2026-10-06](reviews/
 - **F2, statuspoll** (Core f13581c): en pollrunda gäller bara hel. Ett NACK på 88h, 89h eller 03h gör statusen ogiltig till nästa hela runda, och en återställd dekoder också. Proben visar `st ----` i fönstret där en dekoder återställdes (`BRINGUP.md`). En kopia som lämnar statusen giltig fångas.
 - Codex reproduktioner i `reviews/2026-10-06/repro/` gäller basen e5585ba och är inte körda mot Core `main`. Varje fall finns nu som regressionstest i Core med en negativ kontroll som återställer felet.
 
+## Fjärde passet, 2026-10-08
+
+Opus enligt [NATTPASS_2026-10-07.md](NATTPASS_2026-10-07.md), tre grenar ur Core `main`, var och en sammanslagen med `--no-ff` efter hela sviten. Core `main` a71b94f: 368 test gröna. Inget är kört på hårdvara.
+
+- **27 MHz-domänen i M6** (`feat/puck-ui-timing`, sammanslagen i Core 1d5c1c6): kanaltabellens uppslag och MHz-siffrorna (nu en tabell per kanal i stället för division) är register i `puck_ui.v`. Simulerat med oförändrat facit; negativa kontroller med fel syntesord och fel frekvens i en tabellrad. Byggt med seed 0–3: alla fyra routar, 27 MHz-domänen 109, 116, 127 och 115 MHz mot 54. Varför seed 0 och 1 inte routade förut är inte utrett. Kvar: ta bort SDC-raden med 54 MHz-kravet om det önskas.
+- **Rader som är dåliga i båda kanalerna** (`feat/mixer-double-bad`, sammanslagen i 8839b0f): mixern skriver inte en sådan rad om raden före i fältet var frisk; i en följd lämnas bara den första ute. Modell, egenskapstest (25 slumpade följder), fyra mixerscenarier och ett fältminnestest; negativa kontroller: RTL som skriver raden ändå, och RTL som lämnar ute varje sådan rad. M4 byggt. Fynd: en utelämnad sista rad gör fältet en rad kortare för fältminnet, så bilden skalas från en rad färre under två fält (vid NTSC 242 i stället för 243). Det går inte att undvika i mixern utan att röra `fb_sdram.v`.
+- **Dekoderinställningar** (`feat/decoder-settings`, sammanslagen i a71b94f): init-listan skriver 28h = 00h och 02h = 20h (VCR-läge) före 03h. Videostandarden är kvar på autoswitch, eftersom pucken tar både NTSC- och PAL-kameror och underlaget inte tar upp blandad användning. M6-loggen har en flagga per dekoder för 88h bit 4 (`L`, `-` eller `?`); `snowlog.py` läser den och de äldre raderna. Simulerat mot slavmodellen; negativa kontroller med fel registervärde, fel ordning och fel bit. M6 byggt (27 MHz-domänen 123 MHz). Kvar: vilket fast TV/VCR-läge som håller låset bäst, och om flaggan säger något på riktig signal. Briefen hänvisar till underlagets avsnitt 6, men underlaget har inget sådant; registerlistan står i avsnitt 2.
+
 ## Återstår ur granskningen
 
 - **Rev A-kortet** (Puck #2–#3): PTC, temperaturklass, PLL-filter, ESD-klamp efter delaren, jordstift, 47/27 ohm på ingången. RESETB-flytten är gjord (Puck #1). SKiDL finns i Core-miljön i WSL; Puck-testet går där.

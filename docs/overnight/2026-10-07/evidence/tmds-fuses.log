@@ -1,0 +1,12 @@
+tile (54, 23) tmds_clk_n_OBUF_O: 18 IOB fuses set in m0_testpattern
+    m4_dual_mix: same
+    m6_puck_proto: same
+tile (54, 29) tmds_d_n_OBUF_O_2: 18 IOB fuses set in m0_testpattern
+    m4_dual_mix: same
+    m6_puck_proto: same
+tile (54, 33) tmds_d_n_OBUF_O_1: 18 IOB fuses set in m0_testpattern
+    m4_dual_mix: same
+    m6_puck_proto: same
+tile (54, 39) tmds_d_n_OBUF_O: 18 IOB fuses set in m0_testpattern
+    m4_dual_mix: same
+    m6_puck_proto: same

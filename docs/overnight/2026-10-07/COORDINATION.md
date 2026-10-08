@@ -24,7 +24,7 @@ verifierat på hårdvara. Ingen reset, stash, clean eller force-push.
 | Luna/max, avslutad med kreditfel | Sparade `WORKPLAN.md` och `tasks.json`; root har tagit över granskning och uppdatering. |
 | Användarens Vibe, överlämnat utkast | Navets `REVIEW.md`, `AGENTS.md`, `VIBE_REPORT.md`. Rapporten beskriver avslutat dokumentationsarbete; root får granska och checka in. |
 | Codex/root, R02 | Core `gateware/sim/fuzz_campaign.py`, nytt `test_fuzz_campaign.py`. Inga RTL-ändringar. |
-| Codex/root, R03 | Granskade delar av `model/fuzz_stream.py`, `sim/test_fuzz_chain.py`, `sim/FUZZ_2026-10-07.md`; de två valda grencommitsen är ännu oincheckade. |
+| Codex/root, R03/R06 | `sim/test_fuzz_chain.py`, `sim/tb_chain.v`, `sim/FUZZ_2026-10-07.md` och granskade delar av `model/fuzz_stream.py`. Strikt checksum och täckning behålls; bänken räknar riktiga rader. Fjärrens `main` `0e0bf49` är integrerad lokalt till `aece6eb`; fullsviten körs fryst före push. |
 | Codex/root, R04 | Core `gateware/sim/test_mixer.py` för B-spegeltest. Modellen får en observationslista över fältstarter från ec06c56 för #18-diagnostik; utdataregler och RTL är oförändrade. M4/M6-verifiering och byggstatus. |
 | Codex/root, samordning | Denna fil, plan, tasklistan, status/evidence, slutgranskning av navdokument, Git/commit/push och eventuell verifierad Puck-gitlänk. |
 
@@ -32,6 +32,11 @@ Vibes historiska rapport bevaras. Root rättar faktapåståenden i de
 överlämnade dokumenten och antecknar rättelserna i körjournalen. Ingen
 annan agent äger Core-filerna i den här arbetskopian. Fuzzkampanjen på en
 annan värd hör till Opus; starta inte samma rundor igen.
+
+Opus har nu pushat kampanjens tester/logg till fjärrens main. Inga RTL-
+eller byggindata har ändrats jämfört med 7cc4eda. Root behåller historiken
+och granskar egna kontrolländringar ovanpå den nya basen. Fynd OVN-F1 och
+rättelsen av antagandet om blank LOW→BUF-bild finns i `LOW_BUF_FINDING.md`.
 
 Ett tungt test- eller byggjobb åt gången mellan repona, under
 `flock /home/lenny/openvrx-review/build.lock <kommando>`. Ändra inga
@@ -45,3 +50,12 @@ Ett agentbesked eller en avslutad process räcker inte som acceptance;
 root granskar resultatet innan exakt ägda filer checkas in. Ingen ny Luna
 startas automatiskt efter kreditfelet. Spara checkpoint och stoppa
 fortsättningen vid 08:00, eller tidigare om verifierbara paket är klara.
+
+## Checkpoint 06:03
+
+PAL-processen och dess riktiga resume är klara. Fullsviten kör nu ensam
+under låset från `private/notes/overnight_2026-10-07/final-core-aece6eb`.
+Levande status/resultat finns i `evidence/final-suite.json`; låt processen
+slutföras och starta ingen kopia. Core main har lokalt två granskade
+commits, men har ännu inte pushats. Pucks core/ är rent på 82c4134 och
+ska bara flyttas efter accepterad Core-grind och push. R08 anger nästa steg.

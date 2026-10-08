@@ -129,3 +129,18 @@ resultatet.
 2. Testantalet är avgjort (396, verifierat av baslinjen) — ingen åtgärd.
 3. R02–R08 ägs av Codex/Luna enligt `WORKPLAN.md`; denna rapport är mitt
    enda andra bidrag.
+
+## Codex/root: rättelse 2026-10-08 05:33
+
+Påståendet ovan att frö 126:s LOW → BUF-bild saknar video är motbevisat.
+En uppspelning med samma kamera-/kontrollfiler och enbart extra
+observationsloggning visar video i BUF före första publicerade BUF-fältet.
+Alla 72 provtagna aktiva rader har RGB skild från blankbilden. Den
+ursprungliga strikta checksumkontrollen behålls. Se
+[fyndet och nästa rättningspaket](LOW_BUF_FINDING.md) samt råvärden i
+[evidence](evidence/transition-probe-126.json).
+
+Rapportens tidigare beskrivning bevaras som daterad överlämning; den
+utgör inte godkännande av `3ad2c2b`. Opus har senare sammanfogat
+nattgrenen till fjärrens `main` `0e0bf49`; root granskar den nya
+integrationsbasen innan egna ändringar checkas in och pushas.

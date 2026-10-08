@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 396 on Core main, runtime depends on the host
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # count/provenance: gateware/README.md
 gateware/build.sh m6_puck_proto
 ```
 
@@ -157,7 +157,13 @@ like AI output.
   not go down; the field store then merges two output fields into one. The
   fix needs a decision on what the mixer's F bit means;
   `sim/test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
-  xfail on `fuzz/chain-2026-10-07`; it is not yet part of the main baseline.
+  xfail on Core main since `0e0bf49`. The overnight review narrows the
+  expected exception to the exact unmarked boundary after RTL/model agreement.
+- OVN-F1: LOW -> BUF between the last blanking line's gate sample and
+  the next active frame can retain video before a BUF field is published.
+  Seed 126's read-only replay disproves the earlier blank-frame assumption.
+  Keep strict read checksums and display-coverage thresholds; the bounded
+  follow-up is in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
 - Fresh M4/M6 verification, selected campaign changes and remaining branch
   research are recorded in `docs/overnight/2026-10-07/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest

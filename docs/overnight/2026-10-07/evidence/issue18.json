@@ -1,0 +1,23 @@
+{
+  "issue": "LAP87/OpenVRX-Core#18",
+  "simulated": true,
+  "hardware_verified": false,
+  "decisions": 124,
+  "words": 21960,
+  "rtl_model_agree": true,
+  "unmarked_starts": [
+    [
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        15
+      ]
+    ]
+  ],
+  "model_sha256": "e7cf5b99a28488a2109ec3cf08013a063317444239c4eee3d6a4dfff8e719bf4",
+  "ported_from": "ec06c569825c5a1428677513757b7515176f2646",
+  "xfail_exception": "UnmarkedOutputField"
+}

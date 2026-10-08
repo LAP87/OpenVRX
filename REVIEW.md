@@ -110,7 +110,14 @@ Ordered from "most likely broken" to "probably fine".
   not go down; the field store then merges two output fields into one. The
   fix needs a decision on what the mixer's F bit means;
   `test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
-  xfail on `fuzz/chain-2026-10-07`, not part of the current main baseline.
+  xfail on Core main since `0e0bf49`; the overnight review restricts it
+  to the exact unmarked boundary after RTL/model agreement.
+- OVN-F1: a LOW -> BUF switch between the last blanking line's gate
+  sample and the next active frame can show RGB before a BUF field is
+  published. A read-only replay of seed 126 has 72 nonblank RGB samples,
+  45 before publication. The earlier claim of a blank frame is disproved;
+  strict read checksums are retained. The switch-frame contract and a
+  bounded fix packet are in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
 - The 2026-10-07 test count (396) is verified: the frozen baseline suite run
   of `7cc4eda` (night 2026-10-07/08) finished with 395 passed, 1 xfailed
   (the #17 test) in 1:25:56. Fresh M4/M6 verification after the mixer fixes

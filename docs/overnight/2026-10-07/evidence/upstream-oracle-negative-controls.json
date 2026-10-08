@@ -1,0 +1,23 @@
+{
+  "upstream_revision": "0e0bf49",
+  "strict_read_negative": {
+    "groups": [],
+    "notes": [
+      "read outside a frame: line (-1, 0): checksum 8f8f8f8e, the SDRAM held 8f8f8f8f when the read began"
+    ]
+  },
+  "store_age_negative": {
+    "notes": [
+      "age, a channel a field ahead of the camera (no decoder can): stale store field"
+    ]
+  },
+  "coverage_negative": {
+    "result": "pass",
+    "checked": 0,
+    "notes": [
+      "only 0 output lines checked (mode switches)"
+    ]
+  },
+  "observed": "All three weakened upstream paths fail the new expectations; integrated light gate passes.",
+  "hardware_verified": false
+}

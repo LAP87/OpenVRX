@@ -1,0 +1,50 @@
+{
+  "integration_base": "0e0bf49",
+  "reanalysed_saved_logs": true,
+  "new_rtl_simulation": false,
+  "records": [
+    {
+      "seed": 48,
+      "checked": 648,
+      "groups": [],
+      "findings": [],
+      "known": [],
+      "notes": [],
+      "stimuli_match_retained_hex": true,
+      "rtl_matches_retained_source": true,
+      "checker_sha256": "a5ba6c8ecf9c301089475b34b396e1972ca9719696c60315bf516beb55f2064e"
+    },
+    {
+      "seed": 126,
+      "checked": 216,
+      "groups": [
+        "store/read"
+      ],
+      "findings": [
+        {
+          "block": "store",
+          "kind": "read",
+          "t": 0,
+          "detail": "line (0, 5): checksum db82d583, the SDRAM held 6a4f29aa when the read began"
+        }
+      ],
+      "known": [
+        {
+          "block": "output",
+          "kind": "xz",
+          "t": 11829399,
+          "detail": "X/Z on an output in the line ending at pixel clock 882791",
+          "issue": "LAP87/OpenVRX-Core#17"
+        }
+      ],
+      "notes": [
+        "read outside a frame: line (0, 5): checksum db82d583, the SDRAM held 6a4f29aa when the read began",
+        "frame at 11.67 ms has 240 source lines for 72: not checked"
+      ],
+      "stimuli_match_retained_hex": true,
+      "rtl_matches_retained_source": true,
+      "checker_sha256": "a5ba6c8ecf9c301089475b34b396e1972ca9719696c60315bf516beb55f2064e"
+    }
+  ],
+  "hardware_verified": false
+}

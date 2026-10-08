@@ -1,6 +1,15 @@
 # Nattplan för OpenVRX, 7–8 oktober 2026
 
-Stopptid är **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**. Inga nya paket eller långa körningar startas efter den tiden. Den här planen gäller Core `main` vid `7cc4eda`; den fortsätter inte på nattgrenen. Allt som nattens tester visar ska kallas simulerat eller byggt. Inget har körts på hårdvara.
+Stopptid är **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**. Inga nya paket eller långa körningar startas efter den tiden. Planen startade på Core `main` `7cc4eda`; Opus har under körningen sammanfogat nattgrenen till fjärrens `main` `0e0bf49`. Root integrerar granskade egna kontroller ovanpå den revisionen och kör en ny fryst slutgrind. Allt som nattens tester visar ska kallas simulerat eller byggt. Inget har körts på hårdvara.
+
+## Granskningsbeslut under körningen
+
+- `cb2c10f`: density/fields behövs för riktade uppspelningar; density 1,0 har samma scenarier på sex representativa frön som basversionen.
+- `3ad2c2b`: avvisad. Frö 126 har synlig RGB i BUF före första publicerade fältet. Varje SDRAM-läsnings checksumma ska fortfarande kontrolleras, även utan efterföljande bildbeslut. Se [OVN-F1](LOW_BUF_FINDING.md).
+- `ec06c56`: modellens observationslista och minimala #18-scenario används. Root avgränsar xfail till den exakta omarkerade fältstarten; andra modell-/bänkfel ska falla.
+- `154f41b`: radantal mäts av bänken för PAL-bilder med blandad radlängd. Små positiva och negativa gränsfall behåller V_TOTAL/MAX_WAIT/HOLD-reglerna.
+- Fjärrens senare åldersklassificeringar bevaras som Opus arbete, men generatorns försprång får bara undanta kameraålder, inte fältminnets egen ålder. För liten bildtäckning ska fortfarande vara ett benchfel även vid lägesbyte.
+- R05:s breda nya kampanj skjuts upp för att undvika dubbelarbete. R06 använder ett nytt kontrakt, frö 49 och åtta fält i full PAL/LOW-geometri.
 
 ## Nuläge och bevisvärde
 
@@ -29,7 +38,7 @@ Användarens redan körande Vibe-session har lämnat `VIBE_REPORT.md` och ändra
 | Prioritet | Risk eller lucka | Belägg och gräns |
 |---|---|---|
 | P0 | Falsk återupptagning av fuzzrundor | `gateware/sim/fuzz_campaign.py:44-47` använder bara `key`/frö i `done`; `:99-117` tar parametrar men sparar inte körkontraktet. Olika geometri, density, fields, classes, force eller RTL kan därför återanvända gamla resultat. |
-| P1 | Fuzz-oraklet kan fälla på en SDRAM-läsning som aldrig visas | `gateware/sim/test_fuzz_chain.py:474-480` rapporterar checksummeskillnad direkt vid läsning. Invarianten i samma fil `:21-32` gäller rader som visas. Branchfyndet d2/126 säger att LOW→BUF kan läsa gammalt innehåll i en bild utan video; verifiera på `main` innan oraklet ändras. |
+| P1 | LOW→BUF kan visa innehåll före första publicerade fältet | Frö 126 och observationskörningen motbevisar grenens antagande om en bild utan video. Alla 72 aktiva RGB-prov avviker från blankbilden. Strikt checksumkontroll behålls; RTL-fynd och framtida rättningspaket finns i `LOW_BUF_FINDING.md`. |
 | P1 | LOW visar video innan genlock/ring är redo efter BUF→LOW | 14 av 18 riktade switchfrön rapporteras i `gateware/sim/FUZZ_2026-10-07.md:33`; `fb_display.v:87-94` väljer `have_video` ur `ll_alive`, och `fb_backend.v:193-200` räknar livstecken från triggern. Core #17 är öppet. Detta kräver ett tydligt beteendekontrakt; ingen tyst policyändring. |
 | P1 | En ny mixerfältstart syns inte nedströms om F och radnummer inte markerar den | Core #18 är öppet. Reproduktionen i ec06c56 granskas separat: modellens observationslista får tas in utan regeländring och xfail måste avgränsas till just den kända fältmarkeringen. Ingen ålderskontroll försvagas. |
 | P1 | Senaste mixerfixen saknar spegeltest för B som återvänder | `line_mixer.v:156-162` byter domarkanal med `c_alt`. `test_mixer.py:532-551` testar A:s återkomst och dess gamla RTL-kontroll; ingen motsvarande B-följd syns i testerna. Det är en täckningslucka, inte ett observerat nytt RTL-fel. |
@@ -73,7 +82,7 @@ Granska att navets status och gamla kända-fel-listor skiljer dagens `main` frå
 
 ### R02 — strikt kontrakt för fuzz-resumning
 
-**Ägare:** Codex/root. **Status:** planned. **Filer:** `OpenVRX-Core/gateware/sim/fuzz_campaign.py` och nytt riktat test `OpenVRX-Core/gateware/sim/test_fuzz_campaign.py`.
+**Ägare:** Codex/root. **Status:** 28 små kontraktstest samt riktig process-pool-körning/resume är klara; hela integrationssviten körs i R08. **Filer:** `OpenVRX-Core/gateware/sim/fuzz_campaign.py` och nytt riktat test `OpenVRX-Core/gateware/sim/test_fuzz_campaign.py`.
 
 Ändra inte bildlogik. Spara ett kanoniskt körkontrakt intill round-JSONL: geometry, density, fields, classes, force samt Core-revision och hash för relevanta RTL-, bench- och modellfiler. Resumning med samma kontrakt ska hoppa över färdiga seeds och fortsätta återstående; återanvändning med annat kontrakt ska avvisas före skrivning eller simstart med tydlig instruktion att skapa ett nytt round-namn. Äldre JSONL utan kontrakt får sammanfattas men inte återupptas som verifierade. De saknar det ursprungliga kontraktet; skriv inte över dem.
 
@@ -110,7 +119,7 @@ print(json.dumps(run_seed(126, work=work, keep=True, density=2.5)))
 PY
 ```
 
-**Acceptance:** seed 48 matchar RTL och modell på `7cc4eda`; seed 126 kategoriseras som synlig felrad, icke visad rad eller annan avvikelse med en konkret första händelse. Om oraklet ändras ska kontrollen av visade pixlar/fältminnesfacit finnas kvar, och befintlig negativ displaykontroll ska fortfarande fällas. Notera att branchens r3/d1/f1/d2-resultat inte är nattverifierade på `main`.
+**Acceptance och utfall:** seed 48 matchar RTL och modell på `7cc4eda` (648 rader). Seed 126 har en checksumavvikelse före första BUF-beslutet och synlig RGB innan publicerat fält. `3ad2c2b` avvisas; resultatet med det experimentella oraklet sparas som experiment, inte godkänd grön verifiering. Befintlig negativ displaykontroll fälls fortfarande. Branchens rundresultat tillskrivs sina egna orakelversioner.
 
 **Villkorat:** density/fields-funktionerna i `cb2c10f` tas bara in om de behövs för riktade körningar efter egen granskning. För density 1 ska representativa seedscenarier och klassurval vara identiska med basversionen. För olika round-kontrakt ska R02 avvisa resumning. Annars lämnas ändringarna på nattgrenen.
 
@@ -150,7 +159,7 @@ Kör dessa rader bara om de granskade flaggorna finns på `main`, kontraktet fun
 
 **Ägare:** Codex/root. **Depends on:** R02, R03. **Filer:** ny round och workkatalog under `OpenVRX-Core/gateware/sim/build/fuzz/`; endast om fel uppstår får motsvarande test/model/RTL-filer öppnas för ett separat avgränsat paket.
 
-Gör en riktad fullgeometrikörning som tvingar PAL och lägesbyte till LOW. Kör minst 8 fält så att byte/start inte förbrukar nästan hela det observerbara fönstret. I denna branch `run_seed` tar `n_fields` direkt om CLI-flaggan `--fields` inte har godkänts; använd unik work-katalog som inte finns sedan tidigare. Ett 4-fältsfrö i full geometri är uppskattat till cirka 7 minuter; 8 fält kan ta runt 14 minuter.
+Gör en riktad fullgeometrikörning som tvingar PAL och lägesbyte till LOW. Frö 49 väljs framför 17: bytet kommer efter 34,68 ms och lämnar cirka 108 ms i LOW, så fler hela LOW-bilder hinner observeras. Kör minst 8 fält så att byte/start inte förbrukar nästan hela det observerbara fönstret. I denna branch `run_seed` tar `n_fields` direkt om CLI-flaggan `--fields` inte har godkänts; använd unik work-katalog som inte finns sedan tidigare. Ett 4-fältsfrö i full geometri är uppskattat till cirka 7 minuter; 8 fält kan ta runt 14 minuter.
 
 Om CLI-stödet fortfarande saknas, använd:
 
@@ -158,7 +167,7 @@ Om CLI-stödet fortfarande saknas, använd:
 flock /home/lenny/openvrx-review/build.lock .venv/bin/python - <<'PY'
 from pathlib import Path
 from gateware.sim.test_fuzz_chain import run_seed
-r = run_seed(17, force=('pal', 'mode_switch'), geometry='full', n_fields=8,
+r = run_seed(49, ['pal', 'mode_switch'], force=('pal', 'mode_switch'), geometry='full', n_fields=8,
              keep=True,
              work=Path('gateware/sim/build/fuzz/overnight-pal-low-full-20261008'))
 print(r)
@@ -220,3 +229,20 @@ Läs line_mixer.v, line_mixer_ref.py och sim/test_mixer.py på main. Lägg till 
 ```text
 Kör en enda riktad fullgeometrisim på main, PAL+mode_switch, minst 8 fält. Kontrollera att LOW verkligen förekommer och att minst två hela utbilder räknas; om bench/few_lines uppstår, öka fält eller förbättra exakt testgräns utan att sänka invarianten. Använd unik round/work-path och samma låskontrakt, flock, inga parallella jobb. Ingen RTL-ändring utan lokal reproduktion, modell, negativ kontroll, riktat sim och berörda M4/M6-builds. Spara stderr/JSONL och första avvikelse. Starta inte om mindre än 25 minuter före stopptid. Ändra inte #17-regeln utan ägarbeslut.
 ```
+
+## Checkpoint inför slutgrinden, 2026-10-08 06:03
+
+R00–R04 och R06:s verifierbara del är klara. PAL/LOW full geometri
+kontrollerade fyra hela LOW-bilder och 2 880 rader, bara känt #17.
+R03:s integrerade kontroll hittar fortfarande seed 126:s `store/read`;
+frö 48 är grönt med 648 rader. R05 är avsiktligt uppskjutet och #17/#18
+samt OVN-F1 ligger kvar som dokumenterade beteendefrågor/fynd.
+
+R08 kör hela sviten från fryst Core `aece6eb` (434 insamlade test), en
+process under låset. Vänta på slutresultat och oförändrade källhashar.
+Pusha sedan granskad Core main, flytta en ren Puck-gitlänk till den
+accepterade revisionen, kör Puck-testet och pusha dess main. Uppdatera
+slutresultat i navet, granska/checka in endast ägda filer och pusha.
+Om sviten faller, spara första avvikelsen och triagera före kodpush.
+Avsluta automationen efter acceptance eller vid 08:00. Starta inget nytt
+paket efter stopptiden; runnern avbryter sin egen grupp vid 07:58 om nödvändigt.

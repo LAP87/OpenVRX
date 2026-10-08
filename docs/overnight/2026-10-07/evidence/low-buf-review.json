@@ -1,0 +1,12 @@
+{
+  "seed": 126,
+  "read_only_probe": true,
+  "stimulus_matches_replay": true,
+  "hardware_verified": false,
+  "samples": 72,
+  "nonblank_rgb_samples": 72,
+  "buf_video_before_pub_samples": 45,
+  "observation_file": "transition-probe-126.json",
+  "rejected_change": "3ad2c2b",
+  "decision": "Keep strict read checksum, including a read without a frame decision."
+}

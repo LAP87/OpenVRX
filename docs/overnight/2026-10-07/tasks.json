@@ -70,7 +70,7 @@
         "OpenVRX-Core/gateware/sim/fuzz_campaign.py",
         "OpenVRX-Core/gateware/sim/test_fuzz_campaign.py"
       ],
-      "status": "verification",
+      "status": "complete",
       "acceptance": [
         "Round-kontrakt omfattar geometry, density, fields, classes, force, Core-revision och relevanta RTL/bench/model-källhashar.",
         "Resume med samma kontrakt hoppar över färdiga seed-nycklar och kör endast saknade.",
@@ -80,11 +80,13 @@
       ],
       "evidence": [
         "evidence/campaign-contract-tests.log",
-        "evidence/light-regressions.log"
+        "evidence/integrated-light-gate.log",
+        "evidence/r06-pal-low-full.json",
+        "evidence/r06-pal-resume.log"
       ],
       "notes": [
-        "28 runner unit tests and five checksum visibility cases pass; model/light gate 190 passed.",
-        "Real process-pool campaign verification pending after targeted RTL gate."
+        "28 runner controls pass; integrated light/model gate: 249 passed, 15 deselected.",
+        "Real process-pool PAL campaign completed one seed; identical-source resume ran zero seeds, zero left."
       ]
     },
     {
@@ -98,9 +100,10 @@
       "owned_files": [
         "OpenVRX-Core/gateware/model/fuzz_stream.py",
         "OpenVRX-Core/gateware/sim/test_fuzz_chain.py",
-        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md"
+        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md",
+        "OpenVRX-Core/gateware/sim/tb_chain.v"
       ],
-      "status": "planned",
+      "status": "complete",
       "acceptance": [
         "Diffen main..origin/fuzz/chain-2026-10-07 har granskats commit för commit, särskilt cb2c10f och 3ad2c2b, utan branchbyte, merge eller blind cherry-pick.",
         "Seed 48 på main bekräftar mixer-pair-join-fixen eller lämnar en konkret reproduktion.",
@@ -108,10 +111,22 @@
         "Befintlig negativ displaykontroll fångar fortfarande en felaktig visad rad om oraklet justeras.",
         "Rapporterade r3/d1/f1/d2-resultat tillskrivs inte main utan reproduktion."
       ],
-      "evidence": [],
+      "evidence": [
+        "LOW_BUF_FINDING.md",
+        "evidence/r03-seed48.json",
+        "evidence/r03-seed126.json",
+        "evidence/transition-probe-126.json",
+        "evidence/integrated-density-parity.json",
+        "evidence/integrated-retained-log-review.json",
+        "evidence/upstream-oracle-negative-controls.json"
+      ],
       "notes": [
-        "cb2c10f and 3ad2c2b applied for review; density 1.0 parity verified on six seeds.",
-        "Added five small checksum/display visibility tests; real seed replay pending."
+        "Integrated upstream main through 0e0bf49 while preserving history.",
+        "Density/fields retained; all original density=1 scenario fields match baseline on six seeds; new ahead field is diagnostic metadata only.",
+        "3ad2c2b rejected for strict read checking: retained seed 126 has store/read and visible RGB before publication.",
+        "Upstream negative controls prove unassociated corrupt read and store age were ignored, and zero coverage passed with switches. Guard tests now pass.",
+        "Retained-log review with integrated checker: seed 48 pass/648 lines; seed 126 store/read/216 lines plus known #17.",
+        "Line-count bench from 154f41b retained, with valid/long/short boundary controls."
       ]
     },
     {
@@ -128,7 +143,7 @@
         "OpenVRX-Core/gateware/sim/test_mixer.py",
         "OpenVRX-Core/gateware/README.md"
       ],
-      "status": "in_progress",
+      "status": "complete",
       "acceptance": [
         "B saknar rader i ett utfält, A bär fältet och B återvänder som vald kanal; alla beslut och utord jämförs med modellen.",
         "En meningsfull negativ kontroll med gamla current-channel-only-villkoret faller i det spegelvända fallet.",
@@ -138,11 +153,12 @@
       ],
       "evidence": [
         "evidence/m4_dual_mix.build.json",
-        "evidence/m6_puck_proto.build.json"
+        "evidence/m6_puck_proto.build.json",
+        "evidence/targeted-mixer-display.log"
       ],
       "notes": [
-        "Both builds manifest-verified; all input hashes match archived 7cc4eda RTL.",
-        "A/B mirror and old-rule negative controls are now running."
+        "29 passed, 1 expected #18 xfail in 1325.61s; both A/B return cases and old-rule controls pass; display address mutation detected.",
+        "All M4/M6 input hashes match frozen 7cc4eda. No RTL behavior change."
       ]
     },
     {
@@ -181,17 +197,22 @@
       "owned_files": [
         "OpenVRX-Core/gateware/sim/build/fuzz/overnight-pal-low-full-20261008/"
       ],
-      "status": "planned",
+      "status": "complete",
       "acceptance": [
         "Scenariot är fullgeometri, PAL och innehåller LOW; minst 8 fält används så att tillräckligt många hela utbilder kontrolleras.",
         "Minst två hela utbilder har kontrollerats; bench/few_lines leder till fler fält eller klassjustering, aldrig sänkt kontrollgräns.",
         "Evidence anger antalet kontrollerade linjer, #17-kända händelser, första avvikelse och total körtid.",
         "Starta inte om mindre än 25 minuter före stopptid; flock-låset ska vara ledigt."
       ],
-      "evidence": [],
+      "evidence": [
+        "evidence/r06-pal-low-full.json",
+        "evidence/r06-pal.log",
+        "evidence/r06-pal-resume.log"
+      ],
       "notes": [
-        "Om --fields inte finns efter R03 använder root den dokumenterade direkta run_seed(..., n_fields=8) hjälparen.",
-        "Fynd under Core #17 klassas mot den öppna frågan om när LOW får visa video."
+        "Full PAL, seed 49, forced pal/mode_switch, eight fields, one process-pool worker under flock, retained logs.",
+        "Four complete LOW video frames, 2880 display lines checked, 1160.8s. Only known #17 switch_video; no new groups.",
+        "Same source/contract resume: ran zero seeds, zero left; no duplicate simulation."
       ]
     },
     {
@@ -210,7 +231,7 @@
         "OpenVRX-Core/gateware/model/line_mixer_ref.py",
         "OpenVRX-Core/gateware/sim/test_mixer.py"
       ],
-      "status": "planned",
+      "status": "diagnosed_requires_owner",
       "acceptance": [
         "Det riktade xfail-scenariot återger avvikelsen med minsta användbara trigger-/ring-/linjeantalbevis eller motbevisas på rätt revision.",
         "Xfail omfattar bara den öppna issue #17-regeln och gömmer inga andra fel.",
@@ -219,10 +240,16 @@
         "#18-reproduktionen har RTL/modell-agreement före avgränsat xfail för UnmarkedOutputField.",
         "Inga ändringar av F-regel eller bredare åldersklassificering."
       ],
-      "evidence": [],
+      "evidence": [
+        "evidence/baseline-core-7cc4eda.log",
+        "evidence/targeted-mixer-display.log",
+        "evidence/issue18.json",
+        "LOW_BUF_FINDING.md"
+      ],
       "notes": [
         "#17 reproduced by baseline strict xfail; no behavior-policy change.",
-        "Minimal #18 reproduction from ec06c56 under review: observational newfield trace only; xfail accepts only UnmarkedOutputField. No chain-age reclassification imported."
+        "Minimal #18 reproduction from ec06c56 under review: observational newfield trace only; xfail accepts only UnmarkedOutputField. No chain-age reclassification imported.",
+        "New OVN-F1: LOW→BUF on last blank line shows RGB before have_pub. Saved reproduction and bounded future fix plan; no RTL policy changed."
       ]
     },
     {
@@ -244,9 +271,16 @@
         "OpenVRX/docs/overnight/2026-10-07/evidence/",
         "OpenVRX-Core/README.md",
         "OpenVRX-Core/gateware/README.md",
-        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md"
+        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md",
+        "OpenVRX/docs/overnight/2026-10-07/WORKPLAN.md",
+        "OpenVRX/docs/overnight/2026-10-07/tasks.json",
+        "OpenVRX/docs/overnight/2026-10-07/COORDINATION.md",
+        "OpenVRX/docs/overnight/2026-10-07/LOW_BUF_FINDING.md",
+        "OpenVRX/AGENTS.md",
+        "OpenVRX/REVIEW.md",
+        "OpenVRX-Puck/core"
       ],
-      "status": "planned",
+      "status": "verification",
       "acceptance": [
         "STATUS/evidence skiljer baslinje, riktade tester, kampanjresultat, M4/M6 builds, branch-only uppgifter och hårdvarupåståenden.",
         "Varje RTL-fix har modelljämförelse, meningsfull negativ kontroll, riktat test och berörda byggen.",
@@ -256,8 +290,11 @@
       ],
       "evidence": [],
       "notes": [
-        "Om komplett acceptance inte ryms lämnas ändringen utan merge/push enligt rootens beslut.",
-        "Ingen reset, clean eller stash i delad checkout; endast egna commits får revertas."
+        "Reviewed local Core checkpoint 2871bff and integrated main aece6eb; not pushed before final gate.",
+        "Frozen final suite is running from private/notes/overnight_2026-10-07/final-core-aece6eb, revision aece6eb6e4a5a74e92795de4067eb1565ccc82fb.",
+        "Runner: private/notes/overnight_2026-10-07/final_suite_runner.py, exec session 15021. Do not start another heavy job.",
+        "Durable progress: evidence/final-suite.json and final-suite.log. Runner stops its own process group by 05:58 UTC if unfinished.",
+        "After passed suite: update count/provenance docs, review/push Core main, update clean Puck gitlink and test, push Hub status."
       ]
     }
   ],

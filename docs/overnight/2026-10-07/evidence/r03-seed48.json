@@ -1,0 +1,175 @@
+{
+  "contract": {
+    "schema": 1,
+    "geometry": "scaled",
+    "density": 2.5,
+    "fields": 10,
+    "class_sets": [
+      null
+    ],
+    "force": [],
+    "source": {
+      "revision": "7cc4eda2022334ed6f2f618548d59d72a5f6b7c2",
+      "files": {
+        "gateware/rtl/bt656_rx.v": "5118486625892f424a01b3c994dd799521da819c54b90397523e9b5181f9df35",
+        "gateware/rtl/word_packer.v": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+        "gateware/rtl/async_fifo.v": "bb357b5750356fd0969ffd17d4c03ab6b412edf3dbaf38774f8e51907c8985d0",
+        "gateware/rtl/dual_clock_ram.v": "e7b5974eeff4cd2f782bfbbfea7f4127a95e808cee2b9eb2f5a73f09f79a2478",
+        "gateware/rtl/chan_capture.v": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+        "gateware/rtl/mix_chan.v": "e5e8f588ee1318c66c64ec5542459590ad72c4adac1b234b27b0bd4a41db90fd",
+        "gateware/rtl/line_mixer.v": "860781da5f269d2f3057ff9123b30744ed53c9ef8e692ab69818ee4f6672b3af",
+        "gateware/rtl/snow_stats.v": "c7043dcef628fc519d8a7755bc8d60a3195d7f743360e8e4f1c9fc3bc12cfa7d",
+        "gateware/rtl/noise_stats.v": "6ab5ebc913bc72a9de2d30af5ce6df88def74144f2d0d1b0a5d2f682781838a2",
+        "gateware/rtl/mixer2.v": "93ab61143aef518933f5ea965bf7fba75a5a91d72843587aa280406d48fdbbb6",
+        "gateware/rtl/sdram_burst.v": "122c2d89514d9903378e4519d8365d0ff7567e2a949229f2d59aec6849f3aa6c",
+        "gateware/rtl/field_phase.v": "08b563aa5dada0dbd3163b91e7694784e01133ce2c68a64fe3c9d98ec09230e1",
+        "gateware/rtl/fb_sdram.v": "ebabf3c6f60a4c6cef4e3c42929a19dbbebb66ec686cc4d3b6dd5e2ee8f7ac77",
+        "gateware/rtl/genlock_timing.v": "41bc89599ea917fad43ddbc0d75b99a4f1af229c4ab73253ade3c118c408662d",
+        "gateware/rtl/ycbcr2rgb.v": "b10d2c6a79bd63150b19e12ac148fc874a6330ec0968946eed77f4cf8b9528f5",
+        "gateware/rtl/cdc_sync.v": "eaaf9f7ab7d9004320ee611c11a0d148a5aa2fe3daad9c2ee320ccdc310a4e92",
+        "gateware/rtl/fb_display.v": "f883489eef2c4235730cedbdd200b0fd5dc05d8d632f74c93ed9641295ca0fd9",
+        "gateware/rtl/fb_backend.v": "18b16608c5525c4ec551a16c2f51983dbf4c3950f81c2c690d59e65e1e6bce13",
+        "gateware/rtl/font5x7.vh": "b2ffa85ec66f89017bd6f299f4b855f3c9124d752c027a0a026501ee290fd310",
+        "gateware/rtl/vtx_channels.vh": "8c788b7c47e68504a07e5eaecbff1be3f326a52929a2faf83338235ebe723e3b",
+        "gateware/model/bt656.py": "0b3fb086d1926b57e8eb025fa0ad1ba00e858a5a50adfb53b9e05e0c81bfd0f1",
+        "gateware/model/fb_ref.py": "cce8529b7d1161bb2e3dd6f0b92cf589b98cb4da08f64ef9dc1261b52e42e7c2",
+        "gateware/model/font5x7.py": "b2260e303a79a40767e9addd3fce4df623e9dbefa7900e776567f39549b65f80",
+        "gateware/model/fuzz_stream.py": "ef1a251ae94abe914075d795a9116c70ccfbf1fdac0771a6005135b75088a8a9",
+        "gateware/model/i2c_ref.py": "f7a8b062126580d4cacde4b2728ada33998839115a22db4b263ee1bf358ded1e",
+        "gateware/model/line_mixer_ref.py": "e7cf5b99a28488a2109ec3cf08013a063317444239c4eee3d6a4dfff8e719bf4",
+        "gateware/model/make_vectors.py": "4495be53a3a8c8e2084bf97a0667e5f0d1e3296a0f802c1d54150cd423efad0e",
+        "gateware/model/test_bt656.py": "edb8111644499d1598479e92fac1ee686dd6ae120fcfdecad37addb765744a06",
+        "gateware/model/test_fb_ref.py": "2f2577dbe62a16fd836c41d13d4eebccdb86de14781c18a7edf213f8744cd1ba",
+        "gateware/model/test_line_mixer_ref.py": "b9e9a43ab67c9cae501ae51ae5dba7f58f71fb44487a0c0a7da4e87b9fd23622",
+        "gateware/model/vtx_channels.py": "da835ffbea99af872189a399483688ea94b31727198bcda1d2c51f401a3adcd8",
+        "gateware/sim/fuzz_campaign.py": "383f32f3fd159f2e77c3876e0db7af86a2c9fc74d6a42fe42390d78f3cc04431",
+        "gateware/sim/test_fuzz_chain.py": "a4d36e8e62704ec07d9a648390973b74632efd0cb88c702d087d842d4302fbf8",
+        "gateware/sim/tb_chain.v": "5d1482ae802970511a667b09b20d887946da926dabf95516eb017525abda5dff",
+        "gateware/sim/sdram_model.v": "6a227885c3b0f0c4daa785761d34a95a1a11933a22488a2d5bcdcc094d9dfe19"
+      },
+      "simulator": {
+        "iverilog": "340ff90a5bf9e86c5af5a1a1ff60ee2c253fa3adbc3925f81458765c19d71ed0",
+        "vvp": "54ec54b6ea8ad4fbc67d56341f09b8205f9c7c34666ab5df98f807812562f0c0"
+      },
+      "python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]"
+    }
+  },
+  "contract_sha256": "83da5304a60c37d6309d81bf96b055fa8a6c29c693eb71d35ed5bf7833f37ee0",
+  "result": {
+    "seed": 48,
+    "classes": [
+      "b_silent",
+      "bit_error",
+      "ext_nolock",
+      "f_stuck",
+      "field_drop",
+      "field_len",
+      "line_long",
+      "luma_click",
+      "noise_line",
+      "pal",
+      "progressive",
+      "sav_late",
+      "sav_missing",
+      "xy_error"
+    ],
+    "enabled": null,
+    "std": "pal",
+    "ll0": 0,
+    "geometry": "scaled",
+    "density": 2.5,
+    "n_fields": 10,
+    "result": "pass",
+    "known": [],
+    "groups": [],
+    "first": null,
+    "findings": [],
+    "edges": [],
+    "notes": [],
+    "checked": 648,
+    "seconds": 191.4,
+    "used": {
+      "b_silent": [
+        "B silent (blank) from field 2 line 11 for 7 lines"
+      ],
+      "bit_error": [
+        "B: field 7 line 9",
+        "B: field 3 line 26",
+        "A: field 2 line 20",
+        "A: field 7 line 31",
+        "A: field 0 line 24",
+        "A: field 7 line 19",
+        "B: field 7 line 28",
+        "B: field 1 line 21",
+        "B: field 8 line 30",
+        "B: field 6 line 25",
+        "A: field 9 line 21"
+      ],
+      "ext_nolock": [
+        "B: no lock 12.62-16.70 ms",
+        "B: no lock 20.79-22.49 ms"
+      ],
+      "f_stuck": [
+        "B: F = 1 from field 6"
+      ],
+      "field_drop": [
+        "A: field 5 silent"
+      ],
+      "field_len": [
+        "active lines [30, 28, 29, 28, 29, 30, 29, 28, 30, 28]"
+      ],
+      "line_long": [
+        "A: field 5 line 33 +2 bytes",
+        "B: field 3 line 28 +241 bytes",
+        "B: field 6 line 25 +2 bytes"
+      ],
+      "luma_click": [
+        "A: field 5 line 25",
+        "B: field 1 line 13"
+      ],
+      "noise_line": [
+        "A: field 9 line 21",
+        "A: field 5 line 36",
+        "A: field 9 line 27",
+        "A: field 8 line 30"
+      ],
+      "pal": [
+        "PAL"
+      ],
+      "progressive": [
+        "non-interlaced, F = 1"
+      ],
+      "sav_late": [
+        "A: field 0 line 29 SAV 1 bytes late"
+      ],
+      "sav_missing": [
+        "B: field 2 line 13",
+        "A: field 8 line 30"
+      ],
+      "xy_error": [
+        "B: field 4 line 21 eav 2 bit(s) -> d0 bad",
+        "B: field 1 line 34 eav 1 bit(s) -> db corrected",
+        "A: field 1 line 34 eav 3 bit(s) -> 78 bad"
+      ]
+    }
+  },
+  "entrypoint": "test_fuzz_chain.run_seed",
+  "keep": true,
+  "work": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/sim/build/fuzz/overnight-replay-48-20261008",
+  "helper_sha256": "75a4d7ef579ce94f59eeedb0da8cddac1ba8c04910bafdbc9fb52f5767862aed",
+  "hardware_verified": false,
+  "visibility_comparison": {
+    "old_store_findings": [],
+    "new_store_display_findings": [],
+    "checksum_mismatches": [],
+    "checked": 648,
+    "old_checker_revision": "7cc4eda2022334ed6f2f618548d59d72a5f6b7c2"
+  },
+  "review": {
+    "original_result_uses_experimental_oracle": "3ad2c2b",
+    "accepted_as_main_green": true,
+    "original_checker_comparison": "7cc4eda on the same retained logs",
+    "decision": "No strict store findings in seed 48; 648 display lines checked.",
+    "hardware_verified": false
+  }
+}

@@ -1,6 +1,6 @@
 # Nattens status, 7–8 oktober
 
-Uppdaterad 2026-10-08 06:03 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
+Uppdaterad 2026-10-08 07:00 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
 Arbete sker på `main` i alla tre repo. Inget har körts på hårdvara.
 
 ## Verifierat
@@ -50,6 +50,9 @@ Samma källor/kontrakt återupptogs genom riktiga process-pool-runnern:
 
 Opus fjärr-main `0e0bf49` är integrerad med bevarad historik. Codex lokala
 Core-commits är `2871bff` och `aece6eb`; de väntar på slutgrind före push.
+Fjärren har därefter gått till `059aadd`, enbart med kampanjlogg: slutliga
+totalsiffror och Opus egen rättelse som bekräftar OVN-F1. Dessa fyra
+commits ändrar ingen kod; loggen integreras efter slutgrinden.
 Alla RTL-/byggindata är oförändrade. Den nya frysta sviten startade
 05:54 Europe/Stockholm från `final-core-aece6eb`, med **434 insamlade test**.
 Runnern sparar returstatus och jämför samtliga 171 frysta källfilers hash
@@ -67,7 +70,8 @@ grönt med 648 rader, frö 126 har `store/read` och 216 kontrollerade rader.
 
 ## Samordning och återstående gränser
 
-Hub-checkpoint `f1ddbab` är pushad. Core-kod är integrerad lokalt och
+Hub-checkpoint `454b308` är pushad; navet har därefter fast-forwardats
+till Opus dokumentationsrättelse `76a1121`. Core-kod är integrerad lokalt och
 väntar på slutverifiering före push. Puck `9d2fb57` har fortfarande rent `core/` på `82c4134`;
 gitlänken uppdateras bara till accepterad/pushad Core-revision.
 

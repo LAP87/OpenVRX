@@ -1,6 +1,6 @@
 # Nattplan för OpenVRX, 7–8 oktober 2026
 
-Stopptid är **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**. Inga nya paket eller långa körningar startas efter den tiden. Planen startade på Core `main` `7cc4eda`; Opus har under körningen sammanfogat nattgrenen till fjärrens `main` `0e0bf49`. Root integrerar granskade egna kontroller ovanpå den revisionen och kör en ny fryst slutgrind. Allt som nattens tester visar ska kallas simulerat eller byggt. Inget har körts på hårdvara.
+Stopptid är **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**. Inga nya paket eller långa körningar startas efter den tiden. Planen startade på Core `main` `7cc4eda`; Opus har under körningen sammanfogat nattgrenen till fjärrens `main` `0e0bf49`. Root integrerar granskade egna kontroller ovanpå den revisionen och kör en ny fryst slutgrind. Senare fjärr-main `059aadd` ändrar bara kampanjloggen och bekräftar OVN-F1; loggcommitsen integreras med bevarad historik efter grinden. Allt som nattens tester visar ska kallas simulerat eller byggt. Inget har körts på hårdvara.
 
 ## Granskningsbeslut under körningen
 
@@ -23,7 +23,7 @@ Verktygen finns i Core-trädet på denna Linuxvärd (`.venv` och `.tools/iverilo
 
 Den frysta baslinjen på `7cc4eda` är klar: **395 passed, 1 xfailed på 1:25:56**, totalt 396 test. Xfail gäller Core #17. Den äldre överlämningens 394 var inaktuellt. README-byggtabellen vid start angav M4 från `2a23e05` och M6 från `330cc9a`; root bygger därför om båda efter senaste mixerfixen, ett i taget. Aktuella resultat finns i `STATUS.md` och evidence.
 
-`gateware/sim/FUZZ_2026-10-07.md` på `main` redovisar r1, r2, e0 och e1. En separat fjärrgren `origin/fuzz/chain-2026-10-07` innehåller senare material som **inte** ingår i `main`: `cb2c10f` lägger till `density`/`fields`, och `3ad2c2b` ändrar hur checksumfel kopplas till den rad som faktiskt visas. Grenens rapportering nämner r3, d1, f1 och ett d2-fynd. Det är underlag för separat granskning och riktad reproduktion, inte godkännande att merga eller cherry-picka.
+Vid planstart redovisade `gateware/sim/FUZZ_2026-10-07.md` på `main` r1, r2, e0 och e1. Då innehöll fjärrgrenen `origin/fuzz/chain-2026-10-07` senare material som då **inte** ingick i `main`: `cb2c10f` lägger till `density`/`fields`, och `3ad2c2b` ändrar hur checksumfel kopplas till den rad som faktiskt visas. Grenens rapportering nämner r3, d1, f1 och ett d2-fynd. Det är underlag för separat granskning och riktad reproduktion, inte godkännande att merga eller cherry-picka.
 
 Användarens redan körande Vibe-session har lämnat `VIBE_REPORT.md` och ändrat navets två dokumentationsfiler. Root granskar dem före commit. Codex extra CLI-anrop misslyckades före arbete; det säger inget om den befintliga sessionens autentisering. Codex ska inte starta eller styra Vibe. Luna på max sparade denna plan och tasklistan innan ett kreditfel avbröt agenten; root slutför granskning och genomförande utan ny provider eller köpta credits.
 
@@ -204,7 +204,7 @@ Fortsätt OpenVRX-nattplanen till 2026-10-08 08:00 Europe/Stockholm. Läs COORDI
 
 ## Små, färdiga Luna-prompter
 
-Dessa är överlämningsprompter för avgränsade paket; de aktiverar inte arbetet här. Enligt nuvarande `COORDINATION.md` äger Luna planfilerna, medan root avgör och gör eventuell senare omfördelning av kodfiler.
+Dessa är överlämningsprompter för avgränsade paket; de aktiverar inte arbetet här. Luna sparade planfilerna före kreditfelet; root har nu tagit över deras granskning och uppdatering enligt `COORDINATION.md`. Inga nya agentförsök startas.
 
 **R02 — kampanjkontrakt:**
 

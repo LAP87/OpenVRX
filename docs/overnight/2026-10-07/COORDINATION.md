@@ -59,3 +59,13 @@ Levande status/resultat finns i `evidence/final-suite.json`; låt processen
 slutföras och starta ingen kopia. Core main har lokalt två granskade
 commits, men har ännu inte pushats. Pucks core/ är rent på 82c4134 och
 ska bara flyttas efter accepterad Core-grind och push. R08 anger nästa steg.
+
+## Fjärrkontroll 07:00
+
+Navet har fast-forwardats till `76a1121`, bara ändringar i Opus
+`docs/ARBETSPLAN_2026-10-05.md`. Core-fjärren står på `059aadd`;
+diffen från `0e0bf49` rör bara `sim/FUZZ_2026-10-07.md`. Den uppdaterar
+kampanjtotalsiffror och bekräftar OVN-F1 samt den felaktiga kontrollen
+3ad2c2b. Bevara dessa fyra fjärrcommits och rootens strikta kontroller
+vid integration efter slutgrinden. Den frysta koden är fortfarande
+`aece6eb`; ingen ny testkörning eller RTL-ändring har startats.

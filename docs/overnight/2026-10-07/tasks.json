@@ -294,7 +294,8 @@
         "Frozen final suite is running from private/notes/overnight_2026-10-07/final-core-aece6eb, revision aece6eb6e4a5a74e92795de4067eb1565ccc82fb.",
         "Runner: private/notes/overnight_2026-10-07/final_suite_runner.py, exec session 15021. Do not start another heavy job.",
         "Durable progress: evidence/final-suite.json and final-suite.log. Runner stops its own process group by 05:58 UTC if unfinished.",
-        "After passed suite: update count/provenance docs, review/push Core main, update clean Puck gitlink and test, push Hub status."
+        "After passed suite: update count/provenance docs, review/push Core main, update clean Puck gitlink and test, push Hub status.",
+        "07:00 remote check: Hub fast-forwarded to 76a1121. Core origin/main 059aadd differs from 0e0bf49 only in FUZZ_2026-10-07.md: final campaign totals and Opus OVN-F1 correction. Preserve these four commits when integrating the log after the frozen aece6eb gate; no code rerun needed for documentation only."
       ]
     }
   ],

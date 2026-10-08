@@ -1,0 +1,50 @@
+{
+  "captured_at": "2026-10-08T05:43:31.682835+00:00",
+  "core_tested_revision": "aece6eb6e4a5a74e92795de4067eb1565ccc82fb",
+  "core_final_revision": "fb6896afffbec3327d2807a0b93ca2cc6fc08f9c",
+  "puck_final_revision": "8917d27d07588de10eb37d85f0bf0f97706905ce",
+  "puck_core_gitlink": "fb6896afffbec3327d2807a0b93ca2cc6fc08f9c",
+  "hub_parent_at_capture": "2793051cfb6efdce22a4c2639443608df0d71e06",
+  "source_files": 171,
+  "unchanged_files": 168,
+  "changed_documentation": {
+    "README.md": {
+      "tested_sha256": "0eab68ffaa31f569f19a72af9e59db7ff452ba784556e991366d25d0869bd3f1",
+      "final_sha256": "c5e8c314462f5446f96a5b558a2d3b5b9ba95120da2b4d2d2fbc568cf9d003f1"
+    },
+    "gateware/README.md": {
+      "tested_sha256": "19034cf7359231c85c9a1ed7864138eaa6988d52c83b10e0b95d1dd8c89f043e",
+      "final_sha256": "12f9869e335883cb8355e6664e865609763f010df76d90bcb4ac0ac5f1c0773f"
+    },
+    "gateware/sim/FUZZ_2026-10-07.md": {
+      "tested_sha256": "a1bcd5834cec32de9d26144a9bcc6ad963bd97790a1990f97f03117912e59a71",
+      "final_sha256": "504b7c6b880b72983c8111352a2f45390ced0fbf9c512e7a7290146cc2a86c1b"
+    }
+  },
+  "code_diff_from_tested_revision": false,
+  "upstream_log_revision": "059aadddba6360e822d2a64aa9f11ec826bcab3c",
+  "core_main_pushed": true,
+  "puck_main_pushed": true,
+  "core_and_puck_clean": true,
+  "final_suite_summary": "432 passed, 2 xfailed in 5162.59s (1:26:02)",
+  "final_suite_json_sha256": "5b56b661d66894cc707734b32b2498643e4010e2836df082e819e05b0819764e",
+  "final_suite_log_sha256": "1238f2972cb2e842075495dfd82233519d29c9483b8a5c7f5137618063024f51",
+  "puck_test_summary": "1 passed in 1.35s",
+  "build_manifest_verification": {
+    "verified_against_final_core": true,
+    "returncodes": {
+      "m4_dual_mix": 0,
+      "m6_puck_proto": 0
+    },
+    "sha256": {
+      "m4_dual_mix": "7b496f026f9a5f781a0b1dbd1b8aa5500f1ee11dc8c8713a71286533b173cc5c",
+      "m6_puck_proto": "8b721eb036bd33e871a17f75ada7886a994a5a6c2c7427569d0b03643aed14e2"
+    }
+  },
+  "open_findings": [
+    "Core #17",
+    "Core #18",
+    "OVN-F1"
+  ],
+  "hardware_verified": false
+}

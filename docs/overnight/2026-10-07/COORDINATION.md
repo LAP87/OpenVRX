@@ -69,3 +69,13 @@ kampanjtotalsiffror och bekräftar OVN-F1 samt den felaktiga kontrollen
 3ad2c2b. Bevara dessa fyra fjärrcommits och rootens strikta kontroller
 vid integration efter slutgrinden. Den frysta koden är fortfarande
 `aece6eb`; ingen ny testkörning eller RTL-ändring har startats.
+
+## Slutacceptance, 2026-10-08 07:43
+
+Fullsviten är klar: 432 passed, 2 xfailed, returstatus 0, oförändrade
+171 källhashar. Core `fb6896a` integrerar Opus slutlogg med bevarad historik
+och är pushad. Puck `8917d27` är pushad med samma rena Core-gitlänk;
+1 kontraktstest passerar. Ingen tung process eller bygglåshållare finns
+kvar. Root äger slutrapporten och dess evidence; den pushas i avslutet.
+Stoppa sedan automationen; starta inget nytt paket. #17/#18 och OVN-F1
+ligger kvar för ägarbeslut enligt slutrapporten.

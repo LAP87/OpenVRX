@@ -246,3 +246,13 @@ slutresultat i navet, granska/checka in endast ägda filer och pusha.
 Om sviten faller, spara första avvikelsen och triagera före kodpush.
 Avsluta automationen efter acceptance eller vid 08:00. Starta inget nytt
 paket efter stopptiden; runnern avbryter sin egen grupp vid 07:58 om nödvändigt.
+
+## Slutacceptance, 2026-10-08 07:43
+
+Fryst `aece6eb`: 432 passed, 2 xfailed (#17/#18), returstatus 0;
+alla 171 källhashar oförändrade. Core `fb6896a` och Puck `8917d27` är
+pushade till main. Core skiljer bara i tre Markdown-filer från den testade
+revisionen; Pucks kontraktstest passerar. R05 är uppskjutet för att undvika
+Opus överlapp; R07:s ägarbeslut och OVN-F1 är öppna. Navets slutrapport
+och evidence pushas i avslutet, därefter stoppas automationen.
+[Slutrapport](FINAL_REPORT.md), [integration](evidence/final-integration.json).

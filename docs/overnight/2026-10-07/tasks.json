@@ -248,7 +248,7 @@
       ],
       "notes": [
         "#17 reproduced by baseline strict xfail; no behavior-policy change.",
-        "Minimal #18 reproduction from ec06c56 under review: observational newfield trace only; xfail accepts only UnmarkedOutputField. No chain-age reclassification imported.",
+        "Accepted minimal #18 reproduction from ec06c56: observational newfield trace only; xfail accepts only UnmarkedOutputField after RTL/model agreement. No F-bit policy change.",
         "New OVN-F1: LOW→BUF on last blank line shows RGB before have_pub. Saved reproduction and bounded future fix plan; no RTL policy changed."
       ]
     },
@@ -278,7 +278,8 @@
         "OpenVRX/docs/overnight/2026-10-07/LOW_BUF_FINDING.md",
         "OpenVRX/AGENTS.md",
         "OpenVRX/REVIEW.md",
-        "OpenVRX-Puck/core"
+        "OpenVRX-Puck/core",
+        "OpenVRX/docs/overnight/2026-10-07/FINAL_REPORT.md"
       ],
       "status": "verification",
       "acceptance": [
@@ -288,14 +289,21 @@
         "Root har granskat diffar, arbetsträd, commits/push och eventuell Puck-submodulhantering.",
         "Inga nya paket startas efter 2026-10-08T08:00:00+02:00."
       ],
-      "evidence": [],
+      "evidence": [
+        "FINAL_REPORT.md",
+        "evidence/final-suite.json",
+        "evidence/final-suite.log",
+        "evidence/final-integration.json",
+        "evidence/final-puck.json",
+        "evidence/final-puck.log",
+        "evidence/final-build-verification.log"
+      ],
       "notes": [
-        "Reviewed local Core checkpoint 2871bff and integrated main aece6eb; not pushed before final gate.",
-        "Frozen final suite is running from private/notes/overnight_2026-10-07/final-core-aece6eb, revision aece6eb6e4a5a74e92795de4067eb1565ccc82fb.",
-        "Runner: private/notes/overnight_2026-10-07/final_suite_runner.py, exec session 15021. Do not start another heavy job.",
-        "Durable progress: evidence/final-suite.json and final-suite.log. Runner stops its own process group by 05:58 UTC if unfinished.",
-        "After passed suite: update count/provenance docs, review/push Core main, update clean Puck gitlink and test, push Hub status.",
-        "07:00 remote check: Hub fast-forwarded to 76a1121. Core origin/main 059aadd differs from 0e0bf49 only in FUZZ_2026-10-07.md: final campaign totals and Opus OVN-F1 correction. Preserve these four commits when integrating the log after the frozen aece6eb gate; no code rerun needed for documentation only."
+        "Frozen aece6eb final gate: 432 passed, 2 xfailed (#17/#18), returncode 0, 5162.59s; all 171 source hashes unchanged. Finished 05:20 UTC.",
+        "Core fb6896a pushed to main, preserving upstream 059aadd and strict guards. Only three Markdown files differ from tested aece6eb; all other 168 files byte-identical.",
+        "Puck 8917d27 pushed to main; clean core gitlink fb6896a; schematic/gateware contract and negative controls: 1 passed in 1.35s.",
+        "M4/M6 manifests verify against final Core. No heavy process or lock holder remains.",
+        "Final Hub report/evidence ready for reviewed commit/push; pause automation after that acceptance. R05 deferred; R07 owner decisions and OVN-F1 remain open."
       ]
     }
   ],

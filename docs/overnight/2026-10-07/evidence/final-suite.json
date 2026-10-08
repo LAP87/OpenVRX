@@ -13,7 +13,7 @@
     "gateware/tools"
   ],
   "started_at": "2026-10-08T03:54:01.992403+00:00",
-  "status": "running",
+  "status": "passed",
   "source_before": {
     ".gitignore": "87dad2882739a3112882db7b1769f40d64548146ef393f928d3c96f228143c8f",
     "LICENSE": "253ad3f89603e728abfa60c36fbcaf8225cf55c1eab12725f19fb3d74d647f3a",
@@ -188,5 +188,15 @@
     "tests/latency/test_analyze_latency.py": "7af51eb48d6689208c2a989ae998cbdce315afa9ac27fd5b00580382d898f572"
   },
   "hardware_verified": false,
-  "runner_sha256": "ef45c73f8de268d7c838876282d0c51cbb7ef68a0e0d9f07dec92809a2799dfa"
+  "runner_sha256": "ef45c73f8de268d7c838876282d0c51cbb7ef68a0e0d9f07dec92809a2799dfa",
+  "returncode": 0,
+  "seconds": 5162.89,
+  "ended_at": "2026-10-08T05:20:04.887196+00:00",
+  "source_after_matches": true,
+  "summary": "432 passed, 2 xfailed in 5162.59s (1:26:02)",
+  "passed": 432,
+  "failed": 0,
+  "xfailed": 2,
+  "xpassed": 0,
+  "skipped": 0
 }

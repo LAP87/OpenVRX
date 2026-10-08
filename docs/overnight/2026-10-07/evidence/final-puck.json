@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-08T05:39:08.228265+00:00",
+  "command": [
+    "flock",
+    "-n",
+    "/home/lenny/openvrx-review/build.lock",
+    "../OpenVRX-Core/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_dekoderkort.py"
+  ],
+  "puck_parent_revision": "9d2fb57f765805c655fec039dff6b96a00b56d70",
+  "core_revision": "fb6896afffbec3327d2807a0b93ca2cc6fc08f9c",
+  "hardware_verified": false,
+  "inputs_sha256": {
+    "tests/test_dekoderkort.py": "8a7053958deb7e2b425cf0b835b591f79892c12183435f95ec23fd089bb903c4",
+    "design/rev_a/dekoderkort.py": "9fe8ed10a4269465533e774e4f1b02ad881cd412620436868dcce111c7795b4d",
+    "core/gateware/tools/board_contract.py": "a1008e82fa209d9475f8123bd76e748c2d2a7195863951378e23d4747921d060",
+    "core/gateware/boards/m4_dual_mix.cst": "e4f3e640e1cee8b6eeabbc327943f3576eea30f3a1997a1e466ba8154f9d93ff",
+    "core/gateware/boards/m6_puck_proto.cst": "3231b3a9b8b2d6a7deb9a25a272babef882e695012bc20830c3a9913b7793c44",
+    "core/gateware/top/m4_dual_mix.v": "dfe9cc2570feb162676364ec0b7e924e6cb1336e112da975aba1710c29f82cb6",
+    "core/gateware/top/m6_puck_proto.v": "3f735f8eae56a8eeab17cf27224ceceee68e5a0cbd432ed808fd7d7fdb32fb73"
+  },
+  "returncode": 0,
+  "seconds": 1.7,
+  "ended_at": "2026-10-08T05:39:09.931394+00:00",
+  "summary": "1 passed in 1.35s"
+}

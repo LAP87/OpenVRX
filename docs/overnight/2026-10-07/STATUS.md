@@ -1,6 +1,6 @@
 # Nattens status, 7–8 oktober
 
-Uppdaterad 2026-10-08 07:00 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
+Uppdaterad 2026-10-08 07:43 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
 Arbete sker på `main` i alla tre repo. Inget har körts på hårdvara.
 
 ## Verifierat
@@ -46,18 +46,27 @@ Samma källor/kontrakt återupptogs genom riktiga process-pool-runnern:
 [Resultat/kontrakt](evidence/r06-pal-low-full.json),
 [körlogg](evidence/r06-pal.log), [resume](evidence/r06-pal-resume.log).
 
-## Slutgrind pågår
+## Slutgrind godkänd och kod pushad
 
-Opus fjärr-main `0e0bf49` är integrerad med bevarad historik. Codex lokala
-Core-commits är `2871bff` och `aece6eb`; de väntar på slutgrind före push.
-Fjärren har därefter gått till `059aadd`, enbart med kampanjlogg: slutliga
-totalsiffror och Opus egen rättelse som bekräftar OVN-F1. Dessa fyra
-commits ändrar ingen kod; loggen integreras efter slutgrinden.
-Alla RTL-/byggindata är oförändrade. Den nya frysta sviten startade
-05:54 Europe/Stockholm från `final-core-aece6eb`, med **434 insamlade test**.
-Runnern sparar returstatus och jämför samtliga 171 frysta källfilers hash
-före/efter. Den avslutar sin egen processgrupp senast 07:58 om sviten
-inte är klar. [Pågående metadata](evidence/final-suite.json).
+Fryst Core `aece6eb`: **432 passed, 2 xfailed (#17/#18)** på 5162,59 s
+(1:26:02), returstatus 0. Körningen avslutades 07:20 Europe/Stockholm.
+Samtliga 171 källhashar var oförändrade före/efter. Båda xfail är väntade;
+OVN-F1 är fortfarande öppet och fångas i den riktade uppspelningen av frö
+126, som inte är ett av regressionssvitens fasta frön.
+[Slutmetadata](evidence/final-suite.json), [rålogg](evidence/final-suite.log).
+
+Opus loggcommits till `059aadd` är integrerade med bevarad historik,
+inklusive hans egen OVN-F1-rättelse. Core **`fb6896a` är pushad till main**.
+Bara tre Markdown-filer skiljer den från den frysta testade revisionen;
+alla 168 övriga filer är byte-identiska. M4/M6-manifesten verifierar även
+mot denna slutliga Core-kod.
+[Integration/källjämförelse](evidence/final-integration.json),
+[manifestverifiering](evidence/final-build-verification.log).
+
+Puck **`8917d27` är pushad till main** med `core/` på `fb6896a`.
+Schema-/gateware-kontraktet med negativa kontroller: **1 passed på 1,35 s**,
+returstatus 0. Enda Puck-ändringen är gitlänken. Core, Puck och submodulen
+är rena. [Testmetadata](evidence/final-puck.json), [rålogg](evidence/final-puck.log).
 
 De snabba kontrollerna på den integrerade koden gav **249 passed,
 15 deselected** på 2,68 s. De tre försvagade upstream-vägarna har
@@ -70,10 +79,9 @@ grönt med 648 rader, frö 126 har `store/read` och 216 kontrollerade rader.
 
 ## Samordning och återstående gränser
 
-Hub-checkpoint `454b308` är pushad; navet har därefter fast-forwardats
-till Opus dokumentationsrättelse `76a1121`. Core-kod är integrerad lokalt och
-väntar på slutverifiering före push. Puck `9d2fb57` har fortfarande rent `core/` på `82c4134`;
-gitlänken uppdateras bara till accepterad/pushad Core-revision.
+Navets föregående checkpoint `2793051` är pushad. R08:s slutrapport,
+status och råevidence granskas och pushas i detta avslut. Fullsvitens
+process och bygglåset är avslutade; ingen kopia har startats.
 
 Luna/max sparade planen före kreditfel. Root slutför arbetet; ingen ny
 provider, köpta credits eller automatiska omförsök. Användarens Vibe har
@@ -83,5 +91,6 @@ provider, köpta credits eller automatiska omförsök. Användarens Vibe har
 #17 och #18 kräver ägarbeslut om LOW:s start och mixerns F-bit. OVN-F1
 har en avgränsad framtida rättningsplan. Inga RTL-regler, bildlägen, stift,
 IOB, SDC, licens- eller BOM-beslut ändras i detta pass. R05:s breda nya
-fuzz skjuts upp för att undvika Opus redan utförda rundor. Slutlig svit,
-commits, push och stoppläge fylls i efter verifiering.
+fuzz skjuts upp för att undvika Opus redan utförda rundor. Alla verifierbara
+nattpaket är accepterade; R05 är uppskjutet och R07:s beteendebeslut är öppna. Automationen stoppas efter navets slutpush.
+[Slutrapport](FINAL_REPORT.md).

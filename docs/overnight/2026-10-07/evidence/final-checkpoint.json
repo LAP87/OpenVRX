@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-08T05:47:34.495596+00:00",
+  "automation_id": "openvrx-nattarbete-till-8-oktober",
+  "automation_status": "PAUSED",
+  "automation_updated_at": 1791438349448,
+  "hub_report_revision": "0865e80c23ce74877c9003028a8042ecb5299e63",
+  "core_revision": "fb6896afffbec3327d2807a0b93ca2cc6fc08f9c",
+  "puck_revision": "8917d27d07588de10eb37d85f0bf0f97706905ce",
+  "r08_status": "complete",
+  "r05_status": "deferred",
+  "r07_status": "diagnosed_requires_owner",
+  "hardware_verified": false
+}

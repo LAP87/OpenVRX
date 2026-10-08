@@ -2,7 +2,7 @@
 
 Uppdaterad 2026-10-08. Stopptid 08:00 Europe/Stockholm (06:00 UTC).
 Användaren har bett Codex att ta över, kontrollera och checka in arbete på
-`main`. Användarens Mistral Vibe CLI arbetar i en egen terminal.
+`main`. Användarens Mistral Vibe CLI lämnade en dokumentationsöverlämning.
 **Codex ska inte starta, styra eller konfigurera Vibe.**
 
 ## Start och gränser
@@ -79,3 +79,10 @@ och är pushad. Puck `8917d27` är pushad med samma rena Core-gitlänk;
 kvar. Root äger slutrapporten och dess evidence; den pushas i avslutet.
 Stoppa sedan automationen; starta inget nytt paket. #17/#18 och OVN-F1
 ligger kvar för ägarbeslut enligt slutrapporten.
+
+## Avslut, 2026-10-08 07:47
+
+R08 är komplett. Navets slutrapport/evidence är pushade i `0865e80` och
+appens sparade heartbeat-status är PAUSED. Slutstatusen följer med denna
+uppdatering. Inga nya agent-, bygg- eller simuleringspaket startas.
+[Slutrapport](FINAL_REPORT.md), [avslutsmetadata](evidence/final-checkpoint.json).

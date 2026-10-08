@@ -1,6 +1,6 @@
 # Nattens status, 7–8 oktober
 
-Uppdaterad 2026-10-08 07:43 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
+Uppdaterad 2026-10-08 07:47 Europe/Stockholm. Stopptid: 08:00 (06:00 UTC).
 Arbete sker på `main` i alla tre repo. Inget har körts på hårdvara.
 
 ## Verifierat
@@ -79,9 +79,10 @@ grönt med 648 rader, frö 126 har `store/read` och 216 kontrollerade rader.
 
 ## Samordning och återstående gränser
 
-Navets föregående checkpoint `2793051` är pushad. R08:s slutrapport,
-status och råevidence granskas och pushas i detta avslut. Fullsvitens
-process och bygglåset är avslutade; ingen kopia har startats.
+Navets slutrapport och råevidence är pushade i `0865e80`; denna uppdatering
+sparar avslutsstatusen. Fullsvitens process och bygglåset är avslutade.
+Nattens automation är **PAUSED**, verifierat i appens sparade status.
+[Avslutsmetadata](evidence/final-checkpoint.json).
 
 Luna/max sparade planen före kreditfel. Root slutför arbetet; ingen ny
 provider, köpta credits eller automatiska omförsök. Användarens Vibe har
@@ -92,5 +93,6 @@ provider, köpta credits eller automatiska omförsök. Användarens Vibe har
 har en avgränsad framtida rättningsplan. Inga RTL-regler, bildlägen, stift,
 IOB, SDC, licens- eller BOM-beslut ändras i detta pass. R05:s breda nya
 fuzz skjuts upp för att undvika Opus redan utförda rundor. Alla verifierbara
-nattpaket är accepterade; R05 är uppskjutet och R07:s beteendebeslut är öppna. Automationen stoppas efter navets slutpush.
+nattpaket är accepterade; R05 är uppskjutet och R07:s beteendebeslut är öppna.
+R08 är komplett och automationen är stoppad före 08:00.
 [Slutrapport](FINAL_REPORT.md).

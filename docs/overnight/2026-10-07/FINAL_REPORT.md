@@ -1,8 +1,9 @@
 # Slutrapport för OpenVRX, 7–8 oktober 2026
 
-Sparad 2026-10-08 07:43 Europe/Stockholm. Core och Puck är granskade och pushade
-till `main`. Inget har körts på hårdvara. Navets slutrapport och evidence
-pushas i detta avslut; därefter stoppas nattens automation.
+Slutfört 2026-10-08 07:47 Europe/Stockholm. Alla tre repo är granskade och pushade
+till `main`. Navets rapport/evidence finns i `0865e80`; avslutsstatusen
+följer med denna uppdatering. Nattens automation är **PAUSED**, verifierat
+i appens sparade status. Inget har körts på hårdvara.
 
 ## Resultat och källversioner
 

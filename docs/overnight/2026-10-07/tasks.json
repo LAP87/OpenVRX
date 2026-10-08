@@ -281,7 +281,7 @@
         "OpenVRX-Puck/core",
         "OpenVRX/docs/overnight/2026-10-07/FINAL_REPORT.md"
       ],
-      "status": "verification",
+      "status": "complete",
       "acceptance": [
         "STATUS/evidence skiljer baslinje, riktade tester, kampanjresultat, M4/M6 builds, branch-only uppgifter och hårdvarupåståenden.",
         "Varje RTL-fix har modelljämförelse, meningsfull negativ kontroll, riktat test och berörda byggen.",
@@ -296,16 +296,18 @@
         "evidence/final-integration.json",
         "evidence/final-puck.json",
         "evidence/final-puck.log",
-        "evidence/final-build-verification.log"
+        "evidence/final-build-verification.log",
+        "evidence/final-checkpoint.json"
       ],
       "notes": [
         "Frozen aece6eb final gate: 432 passed, 2 xfailed (#17/#18), returncode 0, 5162.59s; all 171 source hashes unchanged. Finished 05:20 UTC.",
         "Core fb6896a pushed to main, preserving upstream 059aadd and strict guards. Only three Markdown files differ from tested aece6eb; all other 168 files byte-identical.",
         "Puck 8917d27 pushed to main; clean core gitlink fb6896a; schematic/gateware contract and negative controls: 1 passed in 1.35s.",
         "M4/M6 manifests verify against final Core. No heavy process or lock holder remains.",
-        "Final Hub report/evidence ready for reviewed commit/push; pause automation after that acceptance. R05 deferred; R07 owner decisions and OVN-F1 remain open."
-      ]
+        "Final Hub report/evidence pushed in 0865e80. Heartbeat is PAUSED, verified in saved app state before the 06:00 UTC stop. R05 remains deferred; R07 owner decisions and OVN-F1 remain open."
+      ],
+      "completed_at": "2026-10-08T05:47:34.495596+00:00"
     }
   ],
-  "plan_authorship": "Luna max wrote draft; stopped by credit error. Codex/root reviewed and continues."
+  "plan_authorship": "Luna max wrote the draft and stopped on credit error. Codex/root reviewed and completed the verifiable packages; R05 deferred and R07 owner decisions remain open."
 }

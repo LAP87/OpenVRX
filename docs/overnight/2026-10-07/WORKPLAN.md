@@ -1,6 +1,13 @@
 # Nattplan för OpenVRX, 7–8 oktober 2026
 
-Stopptid är **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**. Inga nya paket eller långa körningar startas efter den tiden. Planen startade på Core `main` `7cc4eda`; Opus har under körningen sammanfogat nattgrenen till fjärrens `main` `0e0bf49`. Root integrerar granskade egna kontroller ovanpå den revisionen och kör en ny fryst slutgrind. Senare fjärr-main `059aadd` ändrar bara kampanjloggen och bekräftar OVN-F1; loggcommitsen integreras med bevarad historik efter grinden. Allt som nattens tester visar ska kallas simulerat eller byggt. Inget har körts på hårdvara.
+Nattpasset är avslutat före **2026-10-08 08:00 Europe/Stockholm (06:00 UTC)**.
+R08 är komplett och automationen är PAUSED. Core `fb6896a` och Puck `8917d27`
+är pushade till main, navets slutrapport/evidence i `0865e80`. Fryst
+`aece6eb` gav 432 passed, 2 xfailed och oförändrade 171 källhashar; slutlig
+Core skiljer bara i tre Markdown-filer. Planen började på `7cc4eda` och
+Opus historia till `059aadd` är bevarad. R05 är uppskjutet och R07:s
+ägarbeslut samt OVN-F1 är öppna. Allt är simulerat eller byggt; inget har
+körts på hårdvara. Se [slutrapporten](FINAL_REPORT.md).
 
 ## Granskningsbeslut under körningen
 
@@ -256,3 +263,9 @@ revisionen; Pucks kontraktstest passerar. R05 är uppskjutet för att undvika
 Opus överlapp; R07:s ägarbeslut och OVN-F1 är öppna. Navets slutrapport
 och evidence pushas i avslutet, därefter stoppas automationen.
 [Slutrapport](FINAL_REPORT.md), [integration](evidence/final-integration.json).
+
+## Avslut, 2026-10-08 07:47
+
+Navets slutrapport och evidence är pushade i `0865e80`. Automationen är
+PAUSED och R08 är komplett; [avslutsmetadata](evidence/final-checkpoint.json).
+Inga nya paket startas av nattkörningen.

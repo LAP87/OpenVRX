@@ -21,6 +21,7 @@ ignorerade `gateware/sim/build/fuzz/`. Filerna här är publicerbara utdrag.
 | `final-suite.json`, `final-suite.log` | Slutgrind från fryst aece6eb: 432 passed, 2 xfailed, returstatus 0; alla 171 källhashar oförändrade. |
 | `final-integration.json`, `final-build-verification.log` | Pushad Core fb6896a, bara tre Markdown-ändringar från testad kod; M4/M6-manifest mot slutkoden. |
 | `final-puck.json`, `final-puck.log` | Puck 8917d27 med core fb6896a; 1 kontraktstest med negativa kontroller passerar. |
+| `final-checkpoint.json` | Navets rapportcommit, pushade Core/Puck-revisioner, R08 komplett och verifierad PAUSED-status före stopptid. |
 
 R06:s äldre vsync-noteringar uttrycker perioder i nominella 1650-klockors-
 rader; de är inte det faktiska radantalet för en PAL-bild med varierande

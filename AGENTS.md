@@ -57,8 +57,9 @@ gateware/build.sh m6_puck_proto
   written black (Y 16, Cb/Cr 128) without reading the SDRAM in BUF mode
   (review 2026-10-06, F3). The LOW ring's startup gate remains open as #17.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
-  oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=20h
-  (VCR mode), then 03h=0Dh last (03h is read back at every poll and the list
+  oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=30h
+  (TV mode; the owner wants both modes compared on the bench before the
+  choice is fixed, possibly as a menu setting), then 03h=0Dh last (03h is read back at every poll and the list
   is written again if it is wrong); status 88h/89h, 88h bit 4 (lost lock,
   cleared by the read) in the M6 log; I2C address by YOUT7 strap; both decoders share an address, so
   each has its own SDA. A poll round (88h, 89h, 03h) counts only as a

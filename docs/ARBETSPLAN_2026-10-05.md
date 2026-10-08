@@ -143,6 +143,14 @@ Långkörningen enligt [NATTPASS_2026-10-07_LANG.md](NATTPASS_2026-10-07_LANG.md
 - **Mixerns gränsfall** (se "Kända svagheter"): modellen är exakt på de cykler då `mix_chan` tar varje rad (`line_mixer_ref.arrival_cycle`), också vid parningsfönstrets kant; `test_mixer.py::test_pairing_window_edge` med negativ kontroll, och 177 frön med B vid kanten utan avvikelse.
 - **Iakttagelser** (inte fel mot README, i loggen): en genlock-kapning före vsync-raderna ger skärmen en lång bild; första `LOW`-bilden efter ett byte skalas från 240 rader (vid PAL saknas de nedersta 48 i den bilden); efter `LOW` → `BUF` har fältminnet kvar gamla lagrad-bitar till första ordet. Rättelse: jag skrev att de bilderna saknar video; Codex visade att första `BUF`-bilden kan ha video (OVN-F1, `docs/overnight/2026-10-07/LOW_BUF_FINDING.md`), och min kontrolländring Core 3ad2c2b, som gjorde läsfelet till en notering, släppte igenom det. Kampanjloggen har rättelsen.
 
+## Femte passet, 2026-10-08 (Fable, dagtid)
+
+- **Nattens arbete granskat:** Opus fyra grenar och långkörningen, Codex nattkoordinering, Mistrals dokumentutkast. Hela sviten på Core `main` 8b5f0ae: 432 gröna, 2 xfail.
+- **TV-läge** (Core 8ac74bc): 02h = 30h (bit 5:4 = 11 är TV enligt SLES209E; Opus hade 20h = VCR). Ägaren vill prova båda på bänken innan valet låses, kanske som menyinställning; noterat i README och AGENTS.md.
+- **M6 utan eget SDC-krav** (samma commit): 27 MHz-domänen får 75 MHz som alla andra; byggt, 121 MHz.
+- **Core #17 och Codex OVN-F1 rättade** (Core e873f4b): en `LOW`-bild har video bara om den startades av en trigger från det här `LOW`-passet (`genlock_timing.v` rapporterar `triggered`), fältet ringskrivaren gick med i triggar inte, triggerräknaren nollställs utanför `LOW`, och ett lägesbyte släcker resten av bilden. Efter första triggerstartade bilden hålls videon så länge triggers kommer (en flyttad källa river i tre bilder i stället för att bli svart). Tre negativa kontroller för hand. Fältminne 16, störningskedja 22, övrigt 249 gröna.
+- Kvar: #18 (mixerns F-bit, ägarens beslut), SDRAM-fas och allt annat som kräver kortet.
+
 ## Återstår ur granskningen
 
 - **Rev A-kortet** (Puck #2–#3): PTC, temperaturklass, PLL-filter, ESD-klamp efter delaren, jordstift, 47/27 ohm på ingången. RESETB-flytten är gjord (Puck #1). SKiDL finns i Core-miljön i WSL; Puck-testet går där.

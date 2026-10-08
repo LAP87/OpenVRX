@@ -149,7 +149,9 @@ Långkörningen enligt [NATTPASS_2026-10-07_LANG.md](NATTPASS_2026-10-07_LANG.md
 - **TV-läge** (Core 8ac74bc): 02h = 30h (bit 5:4 = 11 är TV enligt SLES209E; Opus hade 20h = VCR). Ägaren vill prova båda på bänken innan valet låses, kanske som menyinställning; noterat i README och AGENTS.md.
 - **M6 utan eget SDC-krav** (samma commit): 27 MHz-domänen får 75 MHz som alla andra; byggt, 121 MHz.
 - **Core #17 och Codex OVN-F1 rättade** (Core e873f4b): en `LOW`-bild har video bara om den startades av en trigger från det här `LOW`-passet (`genlock_timing.v` rapporterar `triggered`), fältet ringskrivaren gick med i triggar inte, triggerräknaren nollställs utanför `LOW`, och ett lägesbyte släcker resten av bilden. Efter första triggerstartade bilden hålls videon så länge triggers kommer (en flyttad källa river i tre bilder i stället för att bli svart). Tre negativa kontroller för hand. Fältminne 16, störningskedja 22, övrigt 249 gröna.
-- Kvar: #18 (mixerns F-bit, ägarens beslut), SDRAM-fas och allt annat som kräver kortet.
+- **#18 rättat** (Core e113cf6, ägarens val): mixerns F-bit växlar vid varje utfält; återgång är en rad i RTL och en i modellen om bilden på kortet säger det. Samma commit gör #17-fixens lägesbytestest helt (det hade inte körts), återgår till den strikta LOW-regeln, och noterar att en avklippt bild saknar egen vsync-puls (hopp till synkraderna provades och förkastades). Hela sviten 433 gröna, ingen xfail kvar.
+- **TV/VCR som menyinställning** är nästa steg om bänken visar skillnad: kräver att tvp_ctrl kan skriva om 02h på begäran.
+- Kvar: SDRAM-fas och allt annat som kräver kortet.
 
 ## Återstår ur granskningen
 

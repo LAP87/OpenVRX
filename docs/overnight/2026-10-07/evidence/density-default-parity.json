@@ -1,0 +1,32 @@
+[
+  {
+    "seed": 0,
+    "equal": true,
+    "sha256": "0df31020b92eb3400b8ee1111fc40beb63c7c926df1318d512dd23e91587e1fb"
+  },
+  {
+    "seed": 17,
+    "equal": true,
+    "sha256": "8cc8d74a2d7321285532bcfb4d5d67dbb9fc96b48edd723200203a9be2a1419f"
+  },
+  {
+    "seed": 48,
+    "equal": true,
+    "sha256": "adf4e3cfa7a61b0df2f905ec9a8fecf6d22b809001d2741aaffa11d9299a1984"
+  },
+  {
+    "seed": 85,
+    "equal": true,
+    "sha256": "c9dfcd307d66eb5973a9c555642bf62dcdc502be458d01b1336c068c11b6e15a"
+  },
+  {
+    "seed": 126,
+    "equal": true,
+    "sha256": "c396f649695e02798353354f33f6a48f0bec0e1c6f0e4f2b96829d56b036e998"
+  },
+  {
+    "seed": 233,
+    "equal": true,
+    "sha256": "7d4d9cfe86a80ecf4a3081f2335fcc49146651f8a98a862f56a9e69c505ea28f"
+  }
+]

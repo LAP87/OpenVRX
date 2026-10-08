@@ -1,0 +1,265 @@
+{
+  "plan": "WORKPLAN.md",
+  "stop_at": "2026-10-08T08:00:00+02:00",
+  "timezone": "Europe/Stockholm",
+  "stop_at_utc": "2026-10-08T06:00:00Z",
+  "base_revisions": {
+    "OpenVRX": "4d43600",
+    "OpenVRX-Core": "7cc4eda",
+    "OpenVRX-Puck": "9d2fb57",
+    "OpenVRX-Puck/core": "82c4134"
+  },
+  "tasks": [
+    {
+      "id": "R00",
+      "title": "Fryst baslinje och startgrind",
+      "dependencies": [],
+      "owner": "Codex/root",
+      "owned_files": [
+        "private/notes/overnight_2026-10-07/baseline-core-7cc4eda/",
+        "OpenVRX/docs/overnight/2026-10-07/STATUS.md",
+        "OpenVRX/docs/overnight/2026-10-07/evidence/"
+      ],
+      "status": "complete",
+      "acceptance": [
+        "Fryst checkout är 7cc4eda och dess renhetsstatus framgår av evidence.",
+        "Core-baslinjesvitens rå utdata, returstatus, testantal och varaktighet är sparade.",
+        "Rapporterade 394 respektive README:s 396 test har jämförts med live-resultatet.",
+        "Det gemensamma flock-låset är släppt innan nästa tunga jobb startar."
+      ],
+      "evidence": [
+        "evidence/baseline-core-7cc4eda.log"
+      ],
+      "notes": [
+        "395 passed, 1 xfailed in 5156.04s; exit 0; frozen 7cc4eda."
+      ]
+    },
+    {
+      "id": "R01",
+      "title": "Navets dokumentationsgranskning",
+      "dependencies": [],
+      "owner": "Mistral Vibe CLI",
+      "owned_files": [
+        "OpenVRX/REVIEW.md",
+        "OpenVRX/AGENTS.md",
+        "OpenVRX/docs/overnight/2026-10-07/VIBE_REPORT.md"
+      ],
+      "status": "complete",
+      "acceptance": [
+        "Faktapåståenden har jämförts med Core main 7cc4eda.",
+        "Core #17 och skillnaden mellan rapporterade och live-verifierade tester/byggen är tydligt beskrivna.",
+        "Ingen Core/Puck-kod, planfil, BOM, submodul eller Git-state har ändrats."
+      ],
+      "evidence": [
+        "VIBE_REPORT.md"
+      ],
+      "notes": [
+        "Utkast från användarens befintliga Vibe-session; root granskar före commit.",
+        "Extra CLI-anropets fel säger inget om sessionens autentisering. Starta eller styr inte Vibe.",
+        "Root corrected noise-metric claim, proof clock models, branch-only #18 test and moving campaign/build status. VIBE_REPORT.md retained as dated handoff."
+      ]
+    },
+    {
+      "id": "R02",
+      "title": "Strict kontrakt för fuzz-resumning",
+      "dependencies": [
+        "R00"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX-Core/gateware/sim/fuzz_campaign.py",
+        "OpenVRX-Core/gateware/sim/test_fuzz_campaign.py"
+      ],
+      "status": "verification",
+      "acceptance": [
+        "Round-kontrakt omfattar geometry, density, fields, classes, force, Core-revision och relevanta RTL/bench/model-källhashar.",
+        "Resume med samma kontrakt hoppar över färdiga seed-nycklar och kör endast saknade.",
+        "Ändrat kontrakt eller legacy-JSONL utan manifest avvisas före simulering och före filändring.",
+        "Enhetstest: samma kontrakt återupptas; ändrat geometry/density/fields/classes/force/hash avvisas och JSONL förblir byte-identisk.",
+        "Verifiering: flock /home/lenny/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_fuzz_campaign.py"
+      ],
+      "evidence": [
+        "evidence/campaign-contract-tests.log",
+        "evidence/light-regressions.log"
+      ],
+      "notes": [
+        "28 runner unit tests and five checksum visibility cases pass; model/light gate 190 passed.",
+        "Real process-pool campaign verification pending after targeted RTL gate."
+      ]
+    },
+    {
+      "id": "R03",
+      "title": "Separat granskning och riktad reproduktion av nattgrenens fuzz-delta",
+      "dependencies": [
+        "R00",
+        "R02"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX-Core/gateware/model/fuzz_stream.py",
+        "OpenVRX-Core/gateware/sim/test_fuzz_chain.py",
+        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md"
+      ],
+      "status": "planned",
+      "acceptance": [
+        "Diffen main..origin/fuzz/chain-2026-10-07 har granskats commit för commit, särskilt cb2c10f och 3ad2c2b, utan branchbyte, merge eller blind cherry-pick.",
+        "Seed 48 på main bekräftar mixer-pair-join-fixen eller lämnar en konkret reproduktion.",
+        "Seed 126 klassas som fel på en visad rad, checksumskillnad på en icke-visad rad eller annat avgränsat fel.",
+        "Befintlig negativ displaykontroll fångar fortfarande en felaktig visad rad om oraklet justeras.",
+        "Rapporterade r3/d1/f1/d2-resultat tillskrivs inte main utan reproduktion."
+      ],
+      "evidence": [],
+      "notes": [
+        "cb2c10f and 3ad2c2b applied for review; density 1.0 parity verified on six seeds.",
+        "Added five small checksum/display visibility tests; real seed replay pending."
+      ]
+    },
+    {
+      "id": "R04",
+      "title": "Spegelvänd pair-join-täckning och aktuella M4/M6-byggen",
+      "dependencies": [
+        "R00",
+        "R03"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX-Core/gateware/rtl/line_mixer.v",
+        "OpenVRX-Core/gateware/model/line_mixer_ref.py",
+        "OpenVRX-Core/gateware/sim/test_mixer.py",
+        "OpenVRX-Core/gateware/README.md"
+      ],
+      "status": "in_progress",
+      "acceptance": [
+        "B saknar rader i ett utfält, A bär fältet och B återvänder som vald kanal; alla beslut och utord jämförs med modellen.",
+        "En meningsfull negativ kontroll med gamla current-channel-only-villkoret faller i det spegelvända fallet.",
+        "Riktade pair-join-test och mixerfilen passerar.",
+        "M4 och M6 har byggts från den verifierade källrevisionen, manifestet verifierar och PNR-loggarna saknar ERROR.",
+        "Kommandon körs ett i taget under flock /home/lenny/openvrx-review/build.lock."
+      ],
+      "evidence": [
+        "evidence/m4_dual_mix.build.json",
+        "evidence/m6_puck_proto.build.json"
+      ],
+      "notes": [
+        "Both builds manifest-verified; all input hashes match archived 7cc4eda RTL.",
+        "A/B mirror and old-rule negative controls are now running."
+      ]
+    },
+    {
+      "id": "R05",
+      "title": "Selektiv tät fuzz på nya frön",
+      "dependencies": [
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX-Core/gateware/sim/build/fuzz/overnight-density25-s50-99-main-*/"
+      ],
+      "status": "deferred",
+      "acceptance": [
+        "Endast nya seeds 50–99 körs vid density 2.5; tidigare rapporterade fulla rundor startas inte om för totalsiffran.",
+        "Högst ett worker-jobb åt gången; rundor/checkpoints återupptas bara med identiskt kontrakt.",
+        "Varje avslutat seed har result, contract digest, geometry, density/fields, första avvikelse och tid.",
+        "Omgångens avvikelser triageras innan nästa omgång startas."
+      ],
+      "evidence": [],
+      "notes": [
+        "Nattgrenen fortsatte efter planutkastet. Undvik dubbletter av dess densitetsrundor."
+      ],
+      "blocked_reason": "Opus campaign overlap"
+    },
+    {
+      "id": "R06",
+      "title": "Riktad PAL/LOW-simulering med full geometri",
+      "dependencies": [
+        "R02",
+        "R03"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX-Core/gateware/sim/build/fuzz/overnight-pal-low-full-20261008/"
+      ],
+      "status": "planned",
+      "acceptance": [
+        "Scenariot är fullgeometri, PAL och innehåller LOW; minst 8 fält används så att tillräckligt många hela utbilder kontrolleras.",
+        "Minst två hela utbilder har kontrollerats; bench/few_lines leder till fler fält eller klassjustering, aldrig sänkt kontrollgräns.",
+        "Evidence anger antalet kontrollerade linjer, #17-kända händelser, första avvikelse och total körtid.",
+        "Starta inte om mindre än 25 minuter före stopptid; flock-låset ska vara ledigt."
+      ],
+      "evidence": [],
+      "notes": [
+        "Om --fields inte finns efter R03 använder root den dokumenterade direkta run_seed(..., n_fields=8) hjälparen.",
+        "Fynd under Core #17 klassas mot den öppna frågan om när LOW får visa video."
+      ]
+    },
+    {
+      "id": "R07",
+      "title": "Core #17: reproduktion och diagnostik, ingen policyändring",
+      "dependencies": [
+        "R00",
+        "R03",
+        "R06"
+      ],
+      "owner": "Codex/root; beteendebeslut av projektägaren",
+      "owned_files": [
+        "OpenVRX-Core/gateware/sim/test_fb.py",
+        "OpenVRX-Core/gateware/sim/test_fuzz_chain.py",
+        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md",
+        "OpenVRX-Core/gateware/model/line_mixer_ref.py",
+        "OpenVRX-Core/gateware/sim/test_mixer.py"
+      ],
+      "status": "planned",
+      "acceptance": [
+        "Det riktade xfail-scenariot återger avvikelsen med minsta användbara trigger-/ring-/linjeantalbevis eller motbevisas på rätt revision.",
+        "Xfail omfattar bara den öppna issue #17-regeln och gömmer inga andra fel.",
+        "Ingen ändring av have_video/genlock-beteende görs utan uttryckligt ägarbeslut.",
+        "Om beslut saknas vid stopptid markeras #17 som blockerad och öppen.",
+        "#18-reproduktionen har RTL/modell-agreement före avgränsat xfail för UnmarkedOutputField.",
+        "Inga ändringar av F-regel eller bredare åldersklassificering."
+      ],
+      "evidence": [],
+      "notes": [
+        "#17 reproduced by baseline strict xfail; no behavior-policy change.",
+        "Minimal #18 reproduction from ec06c56 under review: observational newfield trace only; xfail accepts only UnmarkedOutputField. No chain-age reclassification imported."
+      ]
+    },
+    {
+      "id": "R08",
+      "title": "Slutgranskning och status före stopptid",
+      "dependencies": [
+        "R00",
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "owner": "Codex/root",
+      "owned_files": [
+        "OpenVRX/docs/overnight/2026-10-07/STATUS.md",
+        "OpenVRX/docs/overnight/2026-10-07/evidence/",
+        "OpenVRX-Core/README.md",
+        "OpenVRX-Core/gateware/README.md",
+        "OpenVRX-Core/gateware/sim/FUZZ_2026-10-07.md"
+      ],
+      "status": "planned",
+      "acceptance": [
+        "STATUS/evidence skiljer baslinje, riktade tester, kampanjresultat, M4/M6 builds, branch-only uppgifter och hårdvarupåståenden.",
+        "Varje RTL-fix har modelljämförelse, meningsfull negativ kontroll, riktat test och berörda byggen.",
+        "Öppna blockers och saknade Vibe- eller ägarbeslut är synliga.",
+        "Root har granskat diffar, arbetsträd, commits/push och eventuell Puck-submodulhantering.",
+        "Inga nya paket startas efter 2026-10-08T08:00:00+02:00."
+      ],
+      "evidence": [],
+      "notes": [
+        "Om komplett acceptance inte ryms lämnas ändringen utan merge/push enligt rootens beslut.",
+        "Ingen reset, clean eller stash i delad checkout; endast egna commits får revertas."
+      ]
+    }
+  ],
+  "plan_authorship": "Luna max wrote draft; stopped by credit error. Codex/root reviewed and continues."
+}

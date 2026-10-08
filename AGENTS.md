@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 368 on Core main, runtime depends on the host
+.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # 396 on Core main, runtime depends on the host
 gateware/build.sh m6_puck_proto
 ```
 
@@ -40,23 +40,41 @@ gateware/build.sh m6_puck_proto
 - Mixer: two lines pair when they carry the same line number and arrive
   within 15.8 us. A paired line is decided on per-line HF energy (integer:
   blend when |d|*256 < 38*max, switch when > 64*max); bad lines (sync
-  errors, decoder unlocked, forced) lose. A line without a partner is shown
-  only from the current channel, or to fill a gap while the channels are in
-  step. No wall-clock timeout takes part. `sim/test_mixer.py` compares every
-  decision and output word with `gateware/model/line_mixer_ref.py`, on
-  fields with a real blanking interval.
+  errors, decoder unlocked, forced) lose. A pair is decided on the partner
+  when the current channel has no line in the output field. A line without
+  a partner is shown only from the current channel, or to fill a gap while
+  the channels are in step. A line is stored only when its 360 words
+  arrived in order since the last marker; a line bad on both receivers is
+  left out unless the line before it was left out too (two or more in a row
+  are shown: noise beats a still picture). No wall-clock timeout takes
+  part. `sim/test_mixer.py` compares every decision and output word with
+  `gateware/model/line_mixer_ref.py`, on fields with a real blanking
+  interval.
 - Field store: the buffer a frame shows is chosen in the SDRAM clock domain;
   a frame can show the field being written when the writer is far enough
   ahead. Compared with `gateware/model/fb_ref.py` in `sim/test_fb.py`.
-  A missing first line can still cause an unwritten line to be fetched while
-  video is active; the model shares this fallback policy. Reproduction and
-  the other open capture/status bugs: `docs/reviews/2026-10-06/README.md`.
+  A missing line with no line above it and no stored fallback line is
+  written black (Y 16, Cb/Cr 128) without reading the SDRAM in BUF mode
+  (review 2026-10-06, F3). The LOW ring's startup gate remains open as #17.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
   oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=20h
   (VCR mode), then 03h=0Dh last (03h is read back at every poll and the list
   is written again if it is wrong); status 88h/89h, 88h bit 4 (lost lock,
   cleared by the read) in the M6 log; I2C address by YOUT7 strap; both decoders share an address, so
-  each has its own SDA.
+  each has its own SDA. A poll round (88h, 89h, 03h) counts only as a
+  whole: one NACK invalidates the decoder's status until the next whole
+  round (review 2026-10-06, F2).
+- I2C (`i2c_master.v`): one transaction writes up to 256 data bytes after
+  the register address, and the master gives up when a slave stretches SCL
+  longer than 10 ms (STRETCH_MAX), ending with NACK and `stuck`, so a
+  held-low SCL cannot block the shared bus for good.
+- The M6 log line carries, per channel, the snow value (mean line HF
+  energy, the mixer's own metric) and a noise count (luma samples outside
+  16-235 over the last 1024 lines). Whether that count separates receiver
+  noise from picture content needs measurement on a real signal. The mixer
+  does not use the noise count. The
+  line also ends with a lost-lock flag per decoder. `tools/snowlog.py`
+  reads the current line and the two older formats.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
@@ -72,7 +90,13 @@ gateware/build.sh m6_puck_proto
   (SDRAM phase and read sample point), M2, M4 with one decoder, M4 with both,
   M6: `gateware/BRINGUP.md`.
 - Formal proofs: `gateware/formal/run.sh`; every proof has a negative control
-  that must give a counterexample from reset.
+  that must give a counterexample from reset. The CDC handshakes of
+  `fb_backend.v` and `fb_display.v` are proven through `rtl/cdc_sync.v`;
+  the low-latency trigger's line count crosses through `toggle_tx`, which
+  holds the value from flip to flip and flips at most every 16 clocks.
+  What the proofs do not cover (metastability, SDRAM latency for the line
+  buffer, the low-latency ring, reset mid-run) is listed in
+  `gateware/formal/README.md`.
 
 ## How to work here
 
@@ -122,9 +146,24 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- The CDC handshakes of `fb_backend.v` are proven (`gateware/formal/run.sh`);
-  what the proofs do not cover (metastability, SDRAM latency for the line
-  buffer, the low-latency ring) is listed in `gateware/formal/README.md`.
+- Core #17: in low-latency mode, frames with video are shown before the
+  output has locked after a BUF -> LOW switch (and after reset in LOW),
+  reading ring slots not written since the switch. Fixing it needs a rule
+  for when LOW may show video; `sim/test_fb.py::test_low_after_switch_shows_whole_fields`
+  is xfail until then.
+- Core #18: when the mixer starts a new output field out of step (the
+  current receiver goes quiet, the other takes over), nothing in the word
+  stream marks the start if the F bit is unchanged and the line number does
+  not go down; the field store then merges two output fields into one. The
+  fix needs a decision on what the mixer's F bit means;
+  `sim/test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
+  xfail on `fuzz/chain-2026-10-07`; it is not yet part of the main baseline.
+- Fresh M4/M6 verification, selected campaign changes and remaining branch
+  research are recorded in `docs/overnight/2026-10-07/STATUS.md`. Branch
+  results do not establish acceptance of main. Verify the build manifest
+  against the sources and artifacts before flashing.
+- I/O registers in the I/O cells (Core branch `exp/ioreg-in-iob`): built
+  and compared, decision pending with the owner.
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX
   (ESP32-C5) receiver comparison with the snow meter.

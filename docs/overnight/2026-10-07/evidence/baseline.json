@@ -1,0 +1,17 @@
+{
+  "revision": "7cc4eda2022334ed6f2f618548d59d72a5f6b7c2",
+  "frozen": "git archive",
+  "command": ".venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools",
+  "lock": "/home/lenny/openvrx-review/build.lock",
+  "exit_code": 0,
+  "collected": 396,
+  "passed": 395,
+  "xfailed": 1,
+  "seconds": 5156.04,
+  "xfail_issue": "LAP87/OpenVRX-Core#17",
+  "m4_inputs_match_archived_revision": true,
+  "m4_input_count": 46,
+  "hardware_verified": false,
+  "m6_inputs_match_archived_revision": true,
+  "m6_input_count": 48
+}

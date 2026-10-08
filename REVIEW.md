@@ -27,32 +27,48 @@ Ordered from "most likely broken" to "probably fine".
 1. **Does line mixing actually help?** The selection rule (per-line HF energy,
    sync errors, hysteresis) was tuned on synthetic noise. Real receiver noise
    near the range limit may not look like that, and blending two decoders'
-   lines may smear more than it helps. (`OpenVRX-Core: gateware/rtl/line_mixer.v`,
+   lines may smear more than it helps. A count of luma samples outside
+   16-235 has been logged in M6 since 2026-10-07; whether it separates
+   receiver noise from picture content needs measurement on a real signal.
+   (`OpenVRX-Core: gateware/rtl/line_mixer.v`,
    `mixer/`)
 2. **Pairing lines from two decoders.** Each TVP5150 runs on its own crystal
-   and clock; lines are paired by (epoch, field, line number) after async FIFOs. What
-   happens when one decoder slips a line, loses vertical sync, or two fields
-   disagree? (`mix_chan.v`, `line_mixer.v`)
-3. **TVP5150AM1 bring-up.** Register values (00h, 03h, 0Dh) and status reads
-   (88h/89h) come from the datasheet only. Pin strapping, reset timing, crystal
+   and clock; lines with the same number are paired within an arrival
+   window after async FIFOs, and field counters decide output admission.
+   The 2026-10-07 fuzz campaign (`gateware/sim/FUZZ_2026-10-07.md`)
+   ran two disturbed streams through the whole chain in simulation and fixed
+   what it broke: run-on lines, field phase measured from reset, a mixer
+   rule that froze the output when a receiver returned, and pairs decided on
+   a channel with no line in the output field. Two faults it found are still
+   open: Core #17 and Core #18. Still unmeasured: the phase between two real
+   decoders. (`mix_chan.v`, `line_mixer.v`)
+3. **TVP5150AM1 bring-up.** Register values (00h, 04h, 0Dh, 28h, 02h, 03h)
+   and status reads (88h/89h) come from the datasheet only. A poll round now
+   counts only as a whole, and a slave holding SCL low times out after 10 ms;
+   both are simulated against slave models. Pin strapping, reset timing, crystal
    load and the 2.3 V XTAL1 limit are in the rev A schematic. (`tvp_ctrl.v`,
-   `OpenVRX-Puck: design/rev_a/`)
-4. **SDRAM on the Tang Nano 20K.** Controller timing and clock phase were
-   checked against a behavioural model, not the real embedded SDRAM.
-   The model's read timing and the actual DQ sampling phase need separate
-   acceptance before framebuffer tests can establish real memory operation.
-   (`sdram_burst.v`, `clocks_sdram.v`)
-5. **Clock-domain crossings.** The Gray-code async FIFO is now proven by
-   k-induction with two free clocks (no overflow/underflow, data integrity),
-   with negative controls (`gateware/formal/run.sh`). The toggle handshakes in
-   `fb_backend.v` still have an unresolved buffer-ownership race. Are the proof's assumptions
-   (registers start at reset, free clocks) the right ones?
+   `i2c_master.v`, `OpenVRX-Puck: design/rev_a/`)
+4. **SDRAM on the Tang Nano 20K.** The model is timing-aware (datasheet
+   times, protocol checks, selectable read sample point) and `m2a_memtest`
+   is built, but the DQ sampling phase and the clock phase are still checked
+   against the model only, not the real embedded SDRAM. The memory test on
+   the card decides. (`sdram_burst.v`, `clocks_sdram.v`, `top/m2a_memtest.v`)
+5. **Clock-domain crossings.** The async FIFO and the `fb_backend.v` /
+   `fb_display.v` handshakes have k-induction proofs and negative controls
+   (`gateware/formal/run.sh`, `gateware/formal/README.md`). Toggle and level
+   crossings use two free clocks; the sender uses one clock and the
+   line-buffer-slot proof uses the display timing model. Not
+   proven: metastability beyond two stages, SDRAM latency for the line
+   buffer, the low-latency ring, reset mid-run. Are the proof's assumptions
+   (registers start at reset, free clocks, 27-108 MHz against 74.25 MHz) the
+   right ones?
 6. **Low-latency mode.** The 720p output is genlocked to the input fields:
    frames alternate 750/751 lines (NTSC) and the first line waits for the
    input. Will real sinks (TVs, XR glasses, capture cards) accept a varying
-   vertical total? A trigger during active video can also shorten a frame;
-   the current proof bounds maximum duration but does not establish a minimum.
-   (`genlock_timing.v`, `fb_backend.v`)
+   vertical total? The minimum frame duration is now bounded and proven.
+   Still open is Core #17: frames with video are shown before the output has
+   locked after a BUF -> LOW switch, reading unwritten ring slots.
+   (`genlock_timing.v`, `fb_backend.v`, `fb_display.v`)
 7. **Open-toolchain pitfalls.** Apicula has miscompiled signed comparisons in
    other projects (we removed all `signed` arithmetic), and newer Apicula packs
    single-ended inputs beside a true-LVDS output as LVDS receivers (we test
@@ -62,7 +78,9 @@ Ordered from "most likely broken" to "probably fine".
    Some also reach other parts of the board (HDMI hot-plug and CEC, the BL616
    SPI bus, the LCD backlight driver, the WS2812). The list and the risks are in
    `OpenVRX-Core: gateware/BRINGUP.md`, section 5. Older board revisions (3921,
-   3850) wire pins 71-76 and 86 to the BL616. What did we miss?
+   3850) wire pins 71-76 and 86 to the BL616. RESETB left the TMDS bank for
+   LED pin 18 on 2026-10-05, guarded by `tools/test_tmds_bank_outputs.py`.
+   What did we miss?
 9. **Self-interference.** An FPGA, SDRAM and HDMI a few centimetres from two
    5.8 GHz receivers. Pixel-clock harmonics land near some channels (5791.5
    MHz near F4 5800). Is the shielding and layout plan in
@@ -77,8 +95,26 @@ Ordered from "most likely broken" to "probably fine".
 - The 1080p path through an LT8618SX is not published: its init sequence is
   derived from a vendor driver whose provenance we have not cleared.
 - Power design (2S, USB-C PD in/out) is a concept only.
-- Decoder initialisation runs once; power-loss recovery and a stuck-low I2C
-  clock are unresolved. A lock flag alone does not establish recovery.
+- Decoder recovery is simulated only: re-init of a reset decoder, whole poll
+  rounds and the SCL-stretch timeout are tested against slave models.
+  Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
+  (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
+- Core #17 is open: in low-latency mode, frames with video are shown before
+  the output has locked after a BUF -> LOW switch or after reset in LOW,
+  reading ring slots not written since the switch. Fixing it needs a rule for
+  when LOW may show video; `test_fb.py::test_low_after_switch_shows_whole_fields`
+  is xfail until then.
+- Core #18 is open: when the mixer starts a new output field out of step
+  (the current receiver goes quiet, the other takes over), the word stream
+  does not mark the start if the F bit is unchanged and the line number does
+  not go down; the field store then merges two output fields into one. The
+  fix needs a decision on what the mixer's F bit means;
+  `test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
+  xfail on `fuzz/chain-2026-10-07`, not part of the current main baseline.
+- The 2026-10-07 test count (396) is verified: the frozen baseline suite run
+  of `7cc4eda` (night 2026-10-07/08) finished with 395 passed, 1 xfailed
+  (the #17 test) in 1:25:56. Fresh M4/M6 verification after the mixer fixes
+  is recorded in `docs/overnight/2026-10-07/STATUS.md` with build manifests.
 
 ## Local corrections, 2026-10-05
 
@@ -87,6 +123,36 @@ return after missing fields, constant F and negative controls. RESETB/SPI
 roles on LED3/4/5 are explicit and checked by Puck before export. These checks
 address reproduced mixer and handoff defects; real decoder phase, integrated
 backend behaviour and RF mixing benefit remain open.
+
+## Local corrections, 2026-10-07
+
+Merged into Core `main` `7cc4eda` by the night worker. The frozen baseline
+suite run of that revision passed: 395 passed, 1 xfailed (the #17 test) in
+1:25:56, so the 396-test count is verified. Build numbers below are reported.
+Nothing has run on hardware.
+
+- The three night branches are merged: the per-line noise metric (luma
+  samples outside 16-235, logged in M6 next to the snow values),
+  multi-byte I2C writes, and the formal CDC proofs of `fb_backend.v`.
+- The 2026-10-06 review's F1, F2 and F3 are fixed: incomplete lines are not
+  stored (`mix_chan.v`), a poll round counts only as a whole (`tvp_ctrl.v`),
+  and a missing first line falls back to a black line instead of unwritten
+  SDRAM (`fb_sdram.v`). Each has a regression test with a negative control.
+- The low-latency trigger's line count is held across its clock-domain
+  crossing (`cdc_sync.v` `toggle_tx`), and `i2c_master.v` gives up when SCL
+  is stretched longer than 10 ms.
+- The M6 menu's channel-table lookup is registered; the 27 MHz domain
+  routes at 109-127 MHz across seeds 0-3 against its 54 MHz requirement
+  (built, `gateware/README.md`).
+- The fuzz campaign through the whole picture chain
+  (`gateware/sim/FUZZ_2026-10-07.md`) fixed run-on BT.656 lines, field
+  phase measured from reset, X written to SDRAM when the writer starts
+  mid-line, a noise counter restarted by a short line, and a mixer rule that
+  froze the output when a receiver returned. Open: Core #17 and Core #18.
+  Later test/log changes remain on `fuzz/chain-2026-10-07` under separate
+  review; the overnight status records which ones have been accepted.
+- Core reports 396 tests; the previous handoff said 394. The baseline run
+  decided: 396 (395 passed, 1 xfailed).
 
 ## How to report
 

@@ -2,7 +2,7 @@
 
 Register över 313 komponent-, projekt- och gränssnittsposter, grundat på
 projektsamtalet, befintliga research-anteckningar och den exporterade rev A BOM:en.
-Upprättat 2026-10-06. Alla 114 schemapositioner i BOM-exporten är mappade,
+Uppdaterat 2026-10-08. Alla 114 schemapositioner i BOM-exporten är mappade,
 även generiska delar, testpunkter, monteringshål och DNP-positioner.
 
 [components.csv](components.csv) är registret som ändras. Det innehåller även
@@ -19,9 +19,13 @@ projekt, verktyg och implementerade gränssnitt. Inget av detta betyder att
 OpenVRX har körts på hårdvara. **Research**, **Referens** och **Planerat** är
 separata från ett valt eller verifierat komponentval.
 
-Hemma: Eachine Moneagle i förpackning. Beställt: Tang Nano 20K och analog
-kamera med VTX. Kamera/VTX-modell och Tang-kortrevision saknas. Övrigt innehav
-är **ej uppgivet**; antalet i `design_qty` gäller konstruktionen, inte lagret.
+Hemma: Eachine Moneagle i förpackning och ett kamera/VTX-set som ägaren uppger
+ankom 2026-10-08. Kartongetiketten är `S2-OSD`; lösbladet är märkt
+`5.8G 40CH AIO FPV CAMERA`. Exakt modell och kretskort är inte identifierade.
+Beställt: Tang Nano 20K; ägaren väntar leverans 2026-10-09 (ej mottaget per
+2026-10-08). Lösbladets uppgifter har inte verifierats mot hårdvaran; inget
+har provats på hårdvara. Övrigt innehav är **ej uppgivet**; antalet i
+`design_qty` gäller konstruktionen, inte lagret.
 Kontrollerad livscykel innebär inte kontrollerad tillgång.
 
 `C` identifierar fysisk komponent, modul, produkt eller kortfamilj; `B` en
@@ -81,14 +85,14 @@ kontroll innan komponentval. Butiker, priser och inköpslänkar ingår inte.
 
 | ID | Namn och varianter | Klass / typ | Projektläge | Roll och underlag |
 |---|---|---|---|---|
-| C001 | Tang Nano 20K | fpga_devboard / development_board | Core mål; Beställt | Beställd utvecklingsplattform. Kortrevision ej känd. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md), SRC20 |
+| C001 | Tang Nano 20K | fpga_devboard / development_board | Core mål; Beställt | Beställd utvecklingsplattform. Kortrevision ej känd; ägaren väntar leverans 2026-10-09 (ej mottagen 2026-10-08). [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md), SRC20, SRC28 |
 | C002 | GW2AR-18 (GW2AR-LV18QN88C8/I7 (konceptnotation);GW2AR (familjenamn)) | fpga / ic | Core mål | FPGA-familjen på Tang Nano 20K; Core byggs för denna. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC06](https://github.com/LAP87/OpenVRX-Puck/blob/f194c71b19963bf77223c184ab81b3f3406b9f17/design/REV_A_KONCEPT.md) |
 | C003 | TVP5150AM1 | video_decoder / ic | Core mål | Dekoderfamilj som Core styr. Exakt rev A MPN har en separat BOM-post. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC04](https://github.com/LAP87/OpenVRX-Puck/blob/f194c71b19963bf77223c184ab81b3f3406b9f17/design/rev_a/out/dekoderkort_bom.csv), [SRC05](https://github.com/LAP87/OpenVRX-Puck/blob/f194c71b19963bf77223c184ab81b3f3406b9f17/design/rev_a/LIFECYCLE.md) |
 | C004 | RX5808 | analog_receiver / module | Core mål | Två separata mottagarmoduler planerade; SPI-styrning finns i Core. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md), [SRC11](https://github.com/LAP87/OpenVRX/blob/8544f23bac9c506f779d32182009ab8153e5f4d2/research/RF_DIVERSITY_OCH_EGENSTORNING_2026-10-05.md) |
 | C005 | RTC6715 | rf_receiver / ic | Core mål | Kretsen som RX5808-styrningen utgår från. Modulernas kretsmärkning behöver kontrolleras. [SRC11](https://github.com/LAP87/OpenVRX/blob/8544f23bac9c506f779d32182009ab8153e5f4d2/research/RF_DIVERSITY_OCH_EGENSTORNING_2026-10-05.md) |
 | C006 | SSD1306 | oled_controller / ic | Core mål | Core har styrning för en 128×32 I2C OLED. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md) |
 | C007 | Eachine Moneagle | fpv_monitor / complete_product | Referens; Hemma | Finns hemma i förpackning. Intern kretsbestyckning och revision på vårt exemplar ej kontrollerade. [SRC15](https://github.com/LAP87/OpenVRX/blob/8544f23bac9c506f779d32182009ab8153e5f4d2/research/MONEAGLE_TEARDOWN.md), SRC20 |
-| C008 | Analog kamera med VTX, modell okänd | analog_camera_vtx / module | Planerat; Beställt | Beställt enligt projektägaren; kamera och VTX registrerade som ett set tills modellerna är kända. SRC20 |
+| C008 | Analog kamera med VTX, modell okänd | analog_camera_vtx / module | Planerat; Hemma | Ankommen 2026-10-08 enligt ägaren. Förpackning märkt 'S2-OSD'; lösblad '5.8G 40CH AIO FPV CAMERA' (observerad text, inte bekräftad MPN/modell). Endast kartong och blad syns; PCB ej visat. Bladet uppger 5,8 GHz/25 mW, 40 kanaler A/B/E/F/R, NTSC/PAL, 800 TVL, 1/4 CMOS; matningsuppgifterna skiljer sig: anslutningsnot 1S/3,7–5 V, specifikationstabell 3–5,5 V. Bladets ledarfärger: röd +, svart GND, gul kamera OUT→FC video IN, vit FC video OUT→VTX IN. Fristående videoloop, faktisk pinout och matningsgräns ej verifierade; ingen hårdvarutest. SRC20, SRC28 |
 | C009 | TVP5150AM1 breakoutmodul | video_decoder_module / module | Planerat | Extern modulväg för bring-up; ska skiljas från det egna rev A-kortet. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md) |
 | C010 | OLED 128×32 med SSD1306 | ui_display / module | Planerat | M6 menyvisning. Ett modulnamn utöver själva styrkretsen. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md), [SRC03](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/BRINGUP.md) |
 | C011 | EM638325-6 | sdram / ic | Referens | Databladets tider används i SDRAM-modellen. Det identifierar inte automatiskt minnet i vår GW2AR-kapsel. [SRC02](https://github.com/LAP87/OpenVRX-Core/blob/6a61a17647fe47d483c7bac53a6437e869ed589d/gateware/README.md) |
@@ -481,3 +485,4 @@ kontroll innan komponentval. Butiker, priser och inköpslänkar ingår inte.
 | SRC25 | [OpenVTX RTC6705 ersättning](https://github.com/OpenDrone-hw/OpenVTX/blob/e9415b9973194807b669cee8a1131bee32234ec0/research/rtc6705-replacement.md). Extern research och beräknade förslag. Komponentnamn registrerade; kretsarnas funktion, livscykel och lämplighet inte omkontrollerade om inte posten uttryckligen anger en ny primärkontroll. | e9415b997319; 2026-08-24 | 2026-10-06 |
 | SRC26 | [Puck rev A schemakälla](https://github.com/LAP87/OpenVRX-Puck/blob/f194c71b19963bf77223c184ab81b3f3406b9f17/design/rev_a/dekoderkort.py) | f194c71b1996 | 2026-10-06 |
 | SRC27 | [Divimath analog VTX produktbeskrivning](https://www.divimath.com/products/divimath-dual-band-analog-vtx). Tillverkarens analogprodukt; ingen komponentlista eller lokal hårdvaruverifiering. | Ingen versionslåsning | 2026-10-06 |
+| SRC28 | Projektägarens leveransuppgift och foto av kamera/VTX-märkning. Ägaruppgift i projektchatt: kamera/VTX ankommit 2026-10-08; Tang Nano väntas 2026-10-09 (ännu ej mottaget). Foton visar kartongetikett 'S2-OSD' och lösblad '5.8G 40CH AIO FPV CAMERA'; endast emballage och blad, inget kretskort. Specifikationer och pinout återges som lösbladets påståenden; ingen hårdvaruidentifikation eller provning. | Ingen versionslåsning; 2026-10-08 | 2026-10-08 |

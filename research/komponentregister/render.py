@@ -83,7 +83,7 @@ def render():
 
 Register över {len(parts)} komponent-, projekt- och gränssnittsposter, grundat på
 projektsamtalet, befintliga research-anteckningar och den exporterade rev A BOM:en.
-Upprättat 2026-10-06. Alla {len(bom_refs)} schemapositioner i BOM-exporten är mappade,
+Uppdaterat 2026-10-08. Alla {len(bom_refs)} schemapositioner i BOM-exporten är mappade,
 även generiska delar, testpunkter, monteringshål och DNP-positioner.
 
 [components.csv](components.csv) är registret som ändras. Det innehåller även
@@ -100,9 +100,13 @@ projekt, verktyg och implementerade gränssnitt. Inget av detta betyder att
 OpenVRX har körts på hårdvara. **Research**, **Referens** och **Planerat** är
 separata från ett valt eller verifierat komponentval.
 
-Hemma: Eachine Moneagle i förpackning. Beställt: Tang Nano 20K och analog
-kamera med VTX. Kamera/VTX-modell och Tang-kortrevision saknas. Övrigt innehav
-är **ej uppgivet**; antalet i `design_qty` gäller konstruktionen, inte lagret.
+Hemma: Eachine Moneagle i förpackning och ett kamera/VTX-set som ägaren uppger
+ankom 2026-10-08. Kartongetiketten är `S2-OSD`; lösbladet är märkt
+`5.8G 40CH AIO FPV CAMERA`. Exakt modell och kretskort är inte identifierade.
+Beställt: Tang Nano 20K; ägaren väntar leverans 2026-10-09 (ej mottaget per
+2026-10-08). Lösbladets uppgifter har inte verifierats mot hårdvaran; inget
+har provats på hårdvara. Övrigt innehav är **ej uppgivet**; antalet i
+`design_qty` gäller konstruktionen, inte lagret.
 Kontrollerad livscykel innebär inte kontrollerad tillgång.
 
 `C` identifierar fysisk komponent, modul, produkt eller kortfamilj; `B` en

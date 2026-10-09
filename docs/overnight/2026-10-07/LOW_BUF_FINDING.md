@@ -100,3 +100,12 @@ kampanjen. Resultaten hör till olika kontrakt. Råloggar på denna värd:
 `private/notes/evening_2026-10-08/c3/ovn-f1-e113-seed126` och
 `ovn-f1-e113-seed126-probe`. Kompakt journal:
 [ovn-f1-e113-replay.json](../2026-10-08/evidence/ovn-f1-e113-replay.json).
+
+
+## Verifierad rättning 2026-10-09
+
+Ren C1-main `629806f` gav samma store/read-checksummefel och X/Z som det separata strikta e113-RTL-kontraktet. Den första rättningen `7e5fe09` tog bort checksummefelet, men seed 126 läste fortfarande en aldrig komplett skriven ringplats. `39c7dc9` visade den platsen svart och passerade fröet, men dess fullsvit avslöjade en missad negativ kontroll: fel ringadress kunde godtas som svart. Rå FAIL (323 pass, 1 fel) är bevarad.
+
+På `8d7b0e9` binds LOW-skrivningens adress, ordindex och data till den oberoende mixerströmmen. Den verkliga felvarianten avvisas med `display/ll_word`; identiskt seed 126 ger PASS med 216 kontrollerade rader, utan fynd, known, edges eller notes. Alla sex stimulus-/råloggfiler är byte-identiska med `39c7dc9`. Giltighetsmasken visar svart för aldrig initialiserade ringplatser och behåller äldre data i redan initialiserade platser. Triggergrind, F-bit och publiceringsregel är oförändrade.
+
+Hela den frysta 490-testsviten är grön. M4 seed 0 och M6 seed 3 klarar 75 MHz på alla fem klockor; manifest och fyra HDMI-par är verifierade. Källan är accepterad och mergad till Core `edb85d0`. Den nya 260-frökampanjen återstår: det testade fröet stänger inte alla möjliga LOW→BUF-faser, och inget hårdvaruförlopp är verifierat. Se [C3_fix.json](../2026-10-08/evidence/C3_fix.json) för det källbundna acceptanskvittot och arkivhasharna.

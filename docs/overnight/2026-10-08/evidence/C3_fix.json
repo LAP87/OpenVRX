@@ -1,0 +1,235 @@
+{
+  "acceptance_sha256": "0ad1443dc8927ba6a721044b1e1b13a26807d3b41e225915a517f65f17111de0",
+  "accepted": true,
+  "archived_artifacts": [
+    {
+      "name": "m0_testpattern.build.json",
+      "sha256": "6a0d545ea4d50fcf6403ac0166476733e7bc645149f1b42ed9a79e2bd9ee01b8"
+    },
+    {
+      "name": "m0_testpattern.cst",
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596"
+    },
+    {
+      "name": "m0_testpattern.fs",
+      "sha256": "63ff3c7ee2f7e4114eaba826a728e0b412c16826c696cc93d773621cd2635c44"
+    },
+    {
+      "name": "m0_testpattern.pnr.json",
+      "sha256": "bcf47cdecb445ae071a315ae3bebd6cfeede9005925c92d2025dd45a93513ed3"
+    },
+    {
+      "name": "m0_testpattern.pnr.log",
+      "sha256": "21484fcea30bc753be4749f9be15219adc36f9bfde365d4812fbd0d339c987ef"
+    },
+    {
+      "name": "m0_testpattern.stat.txt",
+      "sha256": "f720fc3f74bf7ca4c73b729a682ad460cea708cac9015b08f788f13403c32813"
+    },
+    {
+      "name": "m0_testpattern.synth.json",
+      "sha256": "d8d7099b9fceab1c26c59ecdedb242845539c5cac9be3538086a5ed04ca0ab38"
+    },
+    {
+      "name": "m0_testpattern.yosys.log",
+      "sha256": "8997c813c38ab50b2dbfc9d4fee27bb330abc54be5eeea3c2376d20a8e2d0b98"
+    },
+    {
+      "name": "m4_dual_mix.build.json",
+      "sha256": "135aedd90adfb6bd2ef021fd80fbaf701f73b73c650e20336abc2b7c4b049c53"
+    },
+    {
+      "name": "m4_dual_mix.cst",
+      "sha256": "4f1d7e522e4eb262e2e9fd0c88f12417264df2345cca38e13312a97bb84bc321"
+    },
+    {
+      "name": "m4_dual_mix.fs",
+      "sha256": "97f1be876a2e53260b38fa7cbaa46412a365e31a35220b6f07d6297e33c68854"
+    },
+    {
+      "name": "m4_dual_mix.pnr.json",
+      "sha256": "4e379ec87b023bc0f8b8151daffa1c2216befaa3bdc6f4c8b1af82598b204a9f"
+    },
+    {
+      "name": "m4_dual_mix.pnr.log",
+      "sha256": "2d8f8d9fe6d369fe203de2b4c92be0edd080e4f2f5f8d0e3a07c0298dbf7acff"
+    },
+    {
+      "name": "m4_dual_mix.stat.txt",
+      "sha256": "7d9316aa8ea673c0dbed265d2f1d3b5b111209c49e0090e9b350a293b6d9745d"
+    },
+    {
+      "name": "m4_dual_mix.synth.json",
+      "sha256": "60b0c63cdb236bb3cb9f42efe2259d7eca21785782015b87b7ea232eaec3d641"
+    },
+    {
+      "name": "m4_dual_mix.yosys.log",
+      "sha256": "9bd489cdfa6d78d4bf9c79c863b77e704052c6accd8618a03a7dd4cfd62ec87f"
+    },
+    {
+      "name": "m6_puck_proto.build.json",
+      "sha256": "fc7f2e880052f012de6e0105479f16c9f734be52a2ee24740380c5bc6669b42a"
+    },
+    {
+      "name": "m6_puck_proto.cst",
+      "sha256": "f480ca6f22b010415b53043542d06bb0af6a8b7687d194fd0a18967dbcac904c"
+    },
+    {
+      "name": "m6_puck_proto.fs",
+      "sha256": "b3602c4349cb86a930239f7bdd1a4a8c506ee2aff038586fbef10bc7827393a9"
+    },
+    {
+      "name": "m6_puck_proto.pnr.json",
+      "sha256": "bec267ccf2f48b256d5dd4eba7869a97eef4d5ca4aef15558cbf351e000f705d"
+    },
+    {
+      "name": "m6_puck_proto.pnr.log",
+      "sha256": "33da87da3d8c16c41ff957fd6546c5f6b4cae97e1db6acce05d6fb86e09947c6"
+    },
+    {
+      "name": "m6_puck_proto.stat.txt",
+      "sha256": "f0a47182dc1124e0d36d6d4d8abe6ab0e89e3e18c81b656edf9706ee74450876"
+    },
+    {
+      "name": "m6_puck_proto.synth.json",
+      "sha256": "418310fc01f1e16215118aadca373d43f0484be6bfd25d2ad2751ac7b9a1ca00"
+    },
+    {
+      "name": "m6_puck_proto.yosys.log",
+      "sha256": "643b79d141a8de055d0fd46451bd23dcde58daba58b481440ebb591ba4b91f4a"
+    }
+  ],
+  "build_gate": {
+    "hdmi_pairs_match_m0": 4,
+    "logs_without_ERROR": true,
+    "state": "PASS",
+    "summary_sha256": "1f9a421547ee8e0d03d8388ba8a0ff23d33cf39576639eee3d816223e2244c31"
+  },
+  "c2_seed2_gate_satisfied": false,
+  "full_suite": {
+    "complete_file_set": true,
+    "duration_seconds": 4861.264,
+    "files": 39,
+    "formal_proofs": 7,
+    "negative_counterexamples": 14,
+    "outcomes": {
+      "failed": 0,
+      "not_reported": 0,
+      "passed": 490,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_hashes_unchanged": true,
+    "summary_sha256": "d6e323f9be26f41d3e8c29d820e694ae8d1947d59f09ba71d360014293056ed3"
+  },
+  "hardware_verified": false,
+  "integration": {
+    "core_main": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+    "documentation_commit": "96df311",
+    "puck_main": "514668805c04a556c9b1571bac7ea389160e91ab",
+    "puck_test": {
+      "passed": 1,
+      "seconds": 2.34
+    }
+  },
+  "manifests": {
+    "m0_testpattern": {
+      "inputs_sha256": null,
+      "path": "m0_testpattern.build.json",
+      "sha256": "6a0d545ea4d50fcf6403ac0166476733e7bc645149f1b42ed9a79e2bd9ee01b8",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 146.41,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 350.75,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    },
+    "m4_dual_mix": {
+      "inputs_sha256": "3518375cac89ef88ed0004412c1e282c5e5e7e8f1db8a9923421035d44259347",
+      "path": "m4_dual_mix.build.json",
+      "sha256": "135aedd90adfb6bd2ef021fd80fbaf701f73b73c650e20336abc2b7c4b049c53",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 104.8,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 228.73,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 137.49,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 163.16,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 101.46,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    },
+    "m6_puck_proto": {
+      "inputs_sha256": "aa5bdfcfe88b35ffd509efc78537c0ef256ecfe8e6c7e65ad76aeb1b7be193b5",
+      "path": "m6_puck_proto.build.json",
+      "sha256": "fc7f2e880052f012de6e0105479f16c9f734be52a2ee24740380c5bc6669b42a",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 127.84,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 119.7,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 142.65,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 137.46,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 108.87,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    }
+  },
+  "new_campaign": "NOT_STARTED",
+  "schema": "openvrx-c3-fix-evidence-v1",
+  "seed126": {
+    "actual_wrong_slot_negative_caught": true,
+    "checked_lines": 216,
+    "preflight_acceptance_sha256": "dca8a6e204510f70788de8b59943f585b402afaaca8faf8913052f3821700240",
+    "result": "PASS"
+  },
+  "source": {
+    "branch": "fix/c3-scaled-fallback-readstart",
+    "clean": true,
+    "frozen_source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-8d7b0e9",
+    "revision": "8d7b0e9e4d5df807af96f1acd13d44a6124e8b55",
+    "source_contract_sha256": "a59078c6b33de8596ae9b0d313fe98aeaa985572b83384fb9e887be726ff5b9f",
+    "source_file_count": 157
+  }
+}

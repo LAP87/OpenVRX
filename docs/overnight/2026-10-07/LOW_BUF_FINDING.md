@@ -69,3 +69,34 @@ kontrollera andra arbetare innan filer tas. Återanvänd inte en gammal
 fuzz-round med ändrade källor. Råloggarna finns på denna värd under
 `OpenVRX-Core/gateware/sim/build/fuzz/overnight-transition-probe-126-20261008`
 och R03:s sparade workkatalog. Ingen hårdvara har verifierat fyndet.
+
+## Omspelning på Fables bas, 2026-10-09
+
+`e113cf6`-RTL/modell med C1:s strikta checker (`8a9b3fcc…`) kördes som
+separat hybriddiagnostik: seed 126, scaled, density 2,5, 10 fält. Kamera-
+och kontrollfiler är byte-identiska med det historiska scenariot. Källor
+är oförändrade före/efter körningen.
+
+Den fulla uppspelningen rapporterar fortfarande `store/read`: rad (0, 5),
+checksumma `db82d583` mot `6a4f29aa` vid lässtart. Den rapporterar också
+`output/xz` på pixelklocka 882791. Uppspelningen är alltså underkänd;
+fynden får inte döljas genom undantag för läsning utan bildbeslut.
+
+Den separata pixelobservationen i det gamla LOW→BUF-fönstret ger ett annat
+utfall än `7cc4eda`: alla 72 prov har `have_video=0` och RGB `202020`.
+De första 45 ligger före BUF-publicering. Detta överensstämmer med den
+frysta källans gråvärde och visar att just denna synliga faslucka inte
+återkommer i `e113cf6`-scenariot. Det är ingen garanti för alla bytesfaser
+eller en ren kedjekörning.
+
+Observationsskriptet använde först äldre gråvärdet `404040` och gav råstatus
+FAIL. Den råa rapporten bevaras. Ett separat källbundet analyskvitto jämför
+med `fb_display.v`:s faktiska blankgren `202020`; negativa kontroller för
+öppen videogrind, avvikande RGB och saknat prov avvisas. Det ändrar inga
+RTL-, checksumme- eller täckningsregler.
+
+C1-källan `629806f` får en egen strikt seed-126-diagnostik före den nya
+kampanjen. Resultaten hör till olika kontrakt. Råloggar på denna värd:
+`private/notes/evening_2026-10-08/c3/ovn-f1-e113-seed126` och
+`ovn-f1-e113-seed126-probe`. Kompakt journal:
+[ovn-f1-e113-replay.json](../2026-10-08/evidence/ovn-f1-e113-replay.json).

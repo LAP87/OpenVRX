@@ -1,0 +1,161 @@
+{
+  "checker_overlay_sha256": "8a9b3fccd8afd5247ea0daf0835f586bc5a904f1091e9efdaaa1d42e2402a320",
+  "hardware_verified": false,
+  "hybrid_diagnostic": true,
+  "pixel_observation": {
+    "before_publication_count": 45,
+    "before_publication_nonblank_count": 0,
+    "before_publication_open_gate_count": 0,
+    "expected_blank_rgb_from_frozen_rtl": "202020",
+    "hardware_verified": false,
+    "negative_controls_rejected": [
+      "open_gate",
+      "nonblank_rgb",
+      "lost_sample"
+    ],
+    "other_replay_findings": [
+      "store/read",
+      "output/xz"
+    ],
+    "raw_probe_sha256": "bb84e813f159796cdea5b724eef3dee88abf3a550625085ca2fe5fd2fb493e7e",
+    "raw_probe_state_preserved": "FAIL",
+    "reason_for_raw_failure": "historical blank constant404040; frozen e113cf6 uses202020",
+    "rtl_sha256": "701c5976b4cf5ae98b432b98f3b07acf76ba23c77aeedd028a3a048af994dc88",
+    "sample_count": 72,
+    "scope": "seed126 historical LOW-to-BUF window only; not broad phase coverage or clean full replay",
+    "source_unchanged": true,
+    "state": "PASS_OBSERVED_WINDOW",
+    "stimulus_byte_matches": {
+      "a.hex": true,
+      "b.hex": true,
+      "ctl.hex": true
+    }
+  },
+  "replay": {
+    "checked": 144,
+    "classes": [
+      "b_drift",
+      "b_swap",
+      "dec_reset",
+      "f_wrong",
+      "field_len",
+      "line_drop",
+      "line_long",
+      "line_short",
+      "luma_click",
+      "mode_switch",
+      "noise_line",
+      "sav_missing",
+      "vbi_short",
+      "xy_error"
+    ],
+    "contract_sha256": "a6e4d6db4c697a668e993e9308fc7517aabd8bbd697a5426e53317093d4ed94f",
+    "density": 2.5,
+    "edges": [],
+    "enabled": null,
+    "findings": [
+      {
+        "block": "store",
+        "detail": "line (0, 5): checksum db82d583, the SDRAM held 6a4f29aa when the read began",
+        "kind": "read",
+        "t": 0
+      },
+      {
+        "block": "output",
+        "detail": "X/Z on an output in the line ending at pixel clock 882791",
+        "kind": "xz",
+        "t": 11829399
+      }
+    ],
+    "first": {
+      "block": "store",
+      "detail": "line (0, 5): checksum db82d583, the SDRAM held 6a4f29aa when the read began",
+      "kind": "read",
+      "t": 0
+    },
+    "force": [],
+    "geometry": "scaled",
+    "groups": [
+      "output/xz",
+      "store/read"
+    ],
+    "job": {
+      "classes": null,
+      "seed": 126
+    },
+    "key": 126,
+    "known": [],
+    "ll0": 0,
+    "n_fields": 10,
+    "notes": [
+      "read outside a frame: line (0, 5): checksum db82d583, the SDRAM held 6a4f29aa when the read began",
+      "frame at 11.67 ms has 240 source lines for 72: not checked"
+    ],
+    "result": "fail",
+    "seconds": 172.1,
+    "seed": 126,
+    "std": "ntsc",
+    "used": {
+      "b_drift": [
+        "B clock +213 ppm"
+      ],
+      "b_swap": [
+        "B field 3 line 9: -32 bytes (-1186 ns; B was +242 ns from A)"
+      ],
+      "dec_reset": [
+        "A: no output from field 4 line 14 for 2.01 ms, then no lock for 1.45 ms"
+      ],
+      "f_wrong": [
+        "B: field 9 line 17",
+        "B: field 8 line 15"
+      ],
+      "field_len": [
+        "active lines [23, 24, 23, 25, 24, 25, 23, 23, 24, 25]"
+      ],
+      "line_drop": [
+        "B: field 2 line 28 removed",
+        "A: field 2 line 16 codes lost",
+        "B: field 8 line 26 removed"
+      ],
+      "line_long": [
+        "A: field 1 line 16 +1 bytes"
+      ],
+      "line_short": [
+        "A: field 5 line 7 -3 bytes",
+        "B: field 4 line 12 -135 bytes"
+      ],
+      "luma_click": [
+        "A: field 4 line 4",
+        "A: field 0 line 8",
+        "B: field 6 line 24",
+        "B: field 0 line 23",
+        "B: field 3 line 23",
+        "B: field 6 line 23",
+        "A: field 5 line 19",
+        "B: field 4 line 6",
+        "A: field 7 line 12",
+        "A: field 9 line 31"
+      ],
+      "mode_switch": [
+        "LOW from reset: 0; switches at 9.14, 15.79 ms"
+      ],
+      "noise_line": [
+        "A: field 4 line 11",
+        "B: field 0 line 21"
+      ],
+      "sav_missing": [
+        "A: field 2 line 7"
+      ],
+      "vbi_short": [
+        "a: field 4 blanking =2"
+      ],
+      "xy_error": [
+        "A: field 3 line 31 sav 1 bit(s) -> d7 corrected",
+        "B: field 7 line 12 sav 2 bit(s) -> 07 bad",
+        "A: field 5 line 23 sav 2 bit(s) -> df bad",
+        "B: field 5 line 10 eav 2 bit(s) -> d9 bad"
+      ]
+    }
+  },
+  "rtl_revision": "e113cf6147913bbfed810e6338ab628c679f4ce2"
+}

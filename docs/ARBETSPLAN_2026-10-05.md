@@ -198,3 +198,13 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 - Inköpsregeln i AGENTS.md mot priser och butikslänkar i Puck och i äldre anteckningar i `research/` (hub #2).
 - Licensstycket i `docs/GATEWARE_PLAN.md`, och upphovsnotisen i `sdram_burst.v` (hub #2).
 - Rev A: övriga schemaändringar (Puck #2–#3).
+
+## Sjätte passet, 2026-10-09
+
+| Uppgift | Gjort och simulerat | Byggt | Återstår / Git |
+|---|---|---|---|
+| C1: klipp med full vsync och upphämtning | 447 pass på fryst `3aed0b7`, inga xfails/skips; 7 formella bevis och 14 negativa kontroller. Separat källkvitto verifierar 172 indata; rå XML-inventeringsavvikelse bevarad. | M4 seed 0 och M6 seed 3, alla fem klockor minst 75 MHz; manifest och HDMI-fuses verifierade. M6 seed 2 misslyckades i klockroutning. | Integrerat/pushat Core `main` `629806f`, Puck `main` `e655d14` med 1 grönt Puck-test. Ingen hårdvara provad. |
+| C3: ny störningskampanj och OVN-F1 | Plan/adapter för 200 nya scaled + 50 b_edge + 10 full. Historiskt frö 126 mot e113cf6 med strikt checker rapporterar läschecksummefel och X/Z; separat pixelprobe pågår. | — | Kampanjen och fyndtriage återstår; Luna förbereder privat körjournal. |
+| C2: TV/VCR-meny | Privat arbetsplan. | — | Implementation, modell/negativa kontroller, fullsvit och M6 seed 2 vid 75 MHz återstår. |
+
+Detaljer: [kvällspassets status](overnight/2026-10-08/STATUS.md).

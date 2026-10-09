@@ -1,0 +1,78 @@
+{
+  "builds": {
+    "M4": {
+      "manifest_verified": true,
+      "passed": true,
+      "seed": 0
+    },
+    "M6": {
+      "diagnostics": "OpenVRX-Core/gateware/build/.m6_puck_proto.HicE1l",
+      "error": "Can't route the clocks.clk_27 net",
+      "evidence": "c1/builds-3aed0b7/summary.json",
+      "passed": false,
+      "seed": 2
+    },
+    "M6_seed3": {
+      "evidence": "c1/builds-3aed0b7-m6-seed3/summary.json",
+      "hdmi_pairs_match_m0": 4,
+      "manifest_verified": true,
+      "required_all_clocks_mhz": 75,
+      "seed": 3,
+      "source_unchanged": true,
+      "state": "PASS"
+    }
+  },
+  "c2_seed2_gate_satisfied": false,
+  "default_m6_seed": 2,
+  "full_suite": {
+    "duration_seconds": 5376.375,
+    "formal": "7 proofs and 14 expected counterexamples passed",
+    "outcomes": {
+      "failed": 0,
+      "not_reported": 0,
+      "passed": 447,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "raw_runner_exit_code": 1,
+    "raw_runner_status": "FAIL_SOURCE_CHANGED",
+    "source_delta": "19 generated cocotb XML additions, no changed/removed inputs"
+  },
+  "hardware_verified": false,
+  "manifest_sha256": {
+    "M4": "08e83fd2ce31e185f3d4409208c7a9a87838baa6abde4f32a56390816857b525",
+    "M6_seed3": "f33dc2a58c2e346cd4f9b80b56dcee4ae6c26e21e611bbe81cded1687eb68891"
+  },
+  "merged_core_main": "629806f3ec349cf8c22b027c2441f0e0585a259d",
+  "postroute_mhz": {
+    "M4_seed0": {
+      "a_clk": 129.53,
+      "b_clk": 133.51,
+      "clk_27": 204.96,
+      "pixel": 111.88,
+      "sd_clk": 91.26
+    },
+    "M6_seed3": {
+      "a_clk": 140.29,
+      "b_clk": 116.36,
+      "clk_27": 118.47,
+      "pixel": 124.52,
+      "sd_clk": 99.54
+    }
+  },
+  "puck_main": "e655d14",
+  "puck_tests": {
+    "passed": 1,
+    "seconds": 1.42
+  },
+  "source_acceptance": {
+    "allowed_generated_xml": 19,
+    "inputs_verified": 172,
+    "negative_controls": 5,
+    "path": "c1/suite-3aed0b7/acceptance.json",
+    "root_reviewed": true,
+    "sha256": "340a3a421cd78c45a05877a65830377d60a077f3212a09e3b6b9d2eeba4630c7"
+  },
+  "verified_source": "3aed0b787180763a6b2ede348d4c59f41dde730b"
+}

@@ -1,6 +1,7 @@
 {
   "acceptance_pending": true,
   "checker_sha256": "9e83244ea94ca88ab1201c42f67cbb4091d9a2704a2013f21c65c9acc4679b39",
+  "completed_result_rows": 0,
   "coordinator_sha256": "9a7d13deb7c7a5a64f49361c21e4aa21020f1631917565888bbd50d187dc280b",
   "expected_seeds": 260,
   "full_coverage_contract": {
@@ -94,9 +95,14 @@
   "jobs": 10,
   "low_lock_groups": [],
   "manifest_sha256": "953486597102a059bb90a89d34456d9646d13145e8310da8ee7e6ad8b34e68b9",
+  "pause_reason": "User gaming on the development host; no intensive work until explicit user resume",
+  "paused_utc": "2026-10-09T20:21:38.016364+00:00",
+  "processes_terminated": 23,
   "raw_evidence": "/home/lenny/openvrx-review/evidence/c3/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+  "raw_evidence_preserved": true,
+  "resume_policy": "Preserve interrupted rawout; review a fresh attempt with identical source and parameters. Do not blindly resume orphan rawout.",
   "revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "runner_sha256": "a225fdae3e252a06894a85ab2768c66fc6231f4a459ca469043a680adae4f526",
   "started_utc": "2026-10-09T20:16:44+00:00",
-  "state": "RUNNING"
+  "state": "PAUSED_BY_USER"
 }

@@ -1,0 +1,102 @@
+{
+  "acceptance_pending": true,
+  "checker_sha256": "9e83244ea94ca88ab1201c42f67cbb4091d9a2704a2013f21c65c9acc4679b39",
+  "coordinator_sha256": "9a7d13deb7c7a5a64f49361c21e4aa21020f1631917565888bbd50d187dc280b",
+  "expected_seeds": 260,
+  "full_coverage_contract": {
+    "accepted_bob_field_values": [
+      0,
+      1
+    ],
+    "active_lines": 720,
+    "pixel_period_ns": 13.4,
+    "require_ll": true,
+    "require_one_complete_frame_after_low_switch": true,
+    "require_video": true
+  },
+  "groups": [
+    {
+      "budget": 36000.0,
+      "density": 1.0,
+      "fields": 10,
+      "first": 1200,
+      "force": [],
+      "geometry": "scaled",
+      "last": 1299,
+      "name": "c3_s1200_1299_d1_f10",
+      "output": "scaled-d1"
+    },
+    {
+      "budget": 36000.0,
+      "density": 2.5,
+      "fields": 10,
+      "first": 1300,
+      "force": [],
+      "geometry": "scaled",
+      "last": 1399,
+      "name": "c3_s1300_1399_d2p5_f10",
+      "output": "scaled-d2p5"
+    },
+    {
+      "budget": 36000.0,
+      "density": 1.0,
+      "fields": 10,
+      "first": 1400,
+      "force": [
+        "b_edge"
+      ],
+      "geometry": "scaled",
+      "last": 1424,
+      "name": "c3_s1400_1424_bedge_d1_f10",
+      "output": "scaled-bedge-d1"
+    },
+    {
+      "budget": 36000.0,
+      "density": 2.5,
+      "fields": 10,
+      "first": 1425,
+      "force": [
+        "b_edge"
+      ],
+      "geometry": "scaled",
+      "last": 1449,
+      "name": "c3_s1425_1449_bedge_d2p5_f10",
+      "output": "scaled-bedge-d2p5"
+    },
+    {
+      "budget": 14400.0,
+      "density": 1.0,
+      "fields": 8,
+      "first": 1500,
+      "force": [
+        "mode_switch"
+      ],
+      "geometry": "full",
+      "last": 1504,
+      "name": "c3_f1500_1504_d1_v8_switch",
+      "output": "full-v8-d1"
+    },
+    {
+      "budget": 14400.0,
+      "density": 2.5,
+      "fields": 8,
+      "first": 1505,
+      "force": [
+        "mode_switch"
+      ],
+      "geometry": "full",
+      "last": 1509,
+      "name": "c3_f1505_1509_d2p5_v8_switch",
+      "output": "full-v8-d2p5"
+    }
+  ],
+  "hardware_verified": false,
+  "jobs": 10,
+  "low_lock_groups": [],
+  "manifest_sha256": "953486597102a059bb90a89d34456d9646d13145e8310da8ee7e6ad8b34e68b9",
+  "raw_evidence": "/home/lenny/openvrx-review/evidence/c3/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+  "revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+  "runner_sha256": "a225fdae3e252a06894a85ab2768c66fc6231f4a459ca469043a680adae4f526",
+  "started_utc": "2026-10-09T20:16:44+00:00",
+  "state": "RUNNING"
+}

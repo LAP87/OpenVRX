@@ -1,0 +1,222 @@
+{
+  "state": "PASS_REVIEWED",
+  "source": "8d7b0e9e4d5df807af96f1acd13d44a6124e8b55",
+  "checker_sha256": "9e83244ea94ca88ab1201c42f67cbb4091d9a2704a2013f21c65c9acc4679b39",
+  "raw_driver_state": "FAIL_EVIDENCE_PATH_AFTER_SIMULATIONS",
+  "raw_receipt_sha256": "e1f18d8c1c19dd75189cdaeec005f6016d4e831ba060621cfac72c1e720fee91",
+  "negative": {
+    "seed": 49,
+    "classes": [
+      "mode_switch"
+    ],
+    "enabled": [
+      "mode_switch"
+    ],
+    "std": "ntsc",
+    "ll0": 0,
+    "geometry": "scaled",
+    "density": 1.0,
+    "n_fields": 6,
+    "result": "fail",
+    "known": [],
+    "groups": [
+      "display/ll_word"
+    ],
+    "first": {
+      "block": "display",
+      "kind": "ll_word",
+      "t": 3271337,
+      "detail": "LOW write 11932: address 6708, data 56745570; mixer expects address 6196, index 52, data 56745570"
+    },
+    "findings": [
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3271337,
+        "detail": "LOW write 11932: address 6708, data 56745570; mixer expects address 6196, index 52, data 56745570"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3334832,
+        "detail": "LOW write 12292: address 7220, data 637f6277; mixer expects address 6708, index 52, data 637f6277"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3398326,
+        "detail": "LOW write 12652: address 7732, data 6e89727f; mixer expects address 7220, index 52, data 6e89727f"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3461820,
+        "detail": "LOW write 13012: address 52, data 7c937e88; mixer expects address 7732, index 52, data 7c937e88"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3525299,
+        "detail": "LOW write 13372: address 564, data 8aa0898c; mixer expects address 52, index 52, data 8aa0898c"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3588793,
+        "detail": "LOW write 13732: address 1076, data 97ab9693; mixer expects address 564, index 52, data 97ab9693"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3652287,
+        "detail": "LOW write 14092: address 1588, data a6b7a19b; mixer expects address 1076, index 52, data a6b7a19b"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3715781,
+        "detail": "LOW write 14452: address 2100, data b23eaaa4; mixer expects address 1588, index 52, data b23eaaa4"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3779276,
+        "detail": "LOW write 14812: address 2612, data be4cbda8; mixer expects address 2100, index 52, data be4cbda8"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3842770,
+        "detail": "LOW write 15172: address 3124, data c65acfac; mixer expects address 2612, index 52, data c65acfac"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3906264,
+        "detail": "LOW write 15532: address 3636, data ce5fe6a4; mixer expects address 3124, index 52, data ce5fe6a4"
+      },
+      {
+        "block": "display",
+        "kind": "ll_word",
+        "t": 3969743,
+        "detail": "LOW write 15892: address 4148, data e56de4bd; mixer expects address 3636, index 52, data e56de4bd"
+      }
+    ],
+    "edges": [],
+    "notes": [],
+    "checked": 144,
+    "seconds": 97.6,
+    "used": {
+      "mode_switch": [
+        "LOW from reset: 0; switches at 3.26 ms"
+      ]
+    }
+  },
+  "seed126": {
+    "seed": 126,
+    "classes": [
+      "b_drift",
+      "b_swap",
+      "dec_reset",
+      "f_wrong",
+      "field_len",
+      "line_drop",
+      "line_long",
+      "line_short",
+      "luma_click",
+      "mode_switch",
+      "noise_line",
+      "sav_missing",
+      "vbi_short",
+      "xy_error"
+    ],
+    "enabled": null,
+    "std": "ntsc",
+    "ll0": 0,
+    "geometry": "scaled",
+    "density": 2.5,
+    "n_fields": 10,
+    "result": "pass",
+    "known": [],
+    "groups": [],
+    "first": null,
+    "findings": [],
+    "edges": [],
+    "notes": [],
+    "checked": 216,
+    "seconds": 161.8,
+    "used": {
+      "b_drift": [
+        "B clock +213 ppm"
+      ],
+      "b_swap": [
+        "B field 3 line 9: -32 bytes (-1186 ns; B was +242 ns from A)"
+      ],
+      "dec_reset": [
+        "A: no output from field 4 line 14 for 2.01 ms, then no lock for 1.45 ms"
+      ],
+      "f_wrong": [
+        "B: field 9 line 17",
+        "B: field 8 line 15"
+      ],
+      "field_len": [
+        "active lines [23, 24, 23, 25, 24, 25, 23, 23, 24, 25]"
+      ],
+      "line_drop": [
+        "B: field 2 line 28 removed",
+        "A: field 2 line 16 codes lost",
+        "B: field 8 line 26 removed"
+      ],
+      "line_long": [
+        "A: field 1 line 16 +1 bytes"
+      ],
+      "line_short": [
+        "A: field 5 line 7 -3 bytes",
+        "B: field 4 line 12 -135 bytes"
+      ],
+      "luma_click": [
+        "A: field 4 line 4",
+        "A: field 0 line 8",
+        "B: field 6 line 24",
+        "B: field 0 line 23",
+        "B: field 3 line 23",
+        "B: field 6 line 23",
+        "A: field 5 line 19",
+        "B: field 4 line 6",
+        "A: field 7 line 12",
+        "A: field 9 line 31"
+      ],
+      "mode_switch": [
+        "LOW from reset: 0; switches at 9.14, 15.79 ms"
+      ],
+      "noise_line": [
+        "A: field 4 line 11",
+        "B: field 0 line 21"
+      ],
+      "sav_missing": [
+        "A: field 2 line 7"
+      ],
+      "vbi_short": [
+        "a: field 4 blanking =2"
+      ],
+      "xy_error": [
+        "A: field 3 line 31 sav 1 bit(s) -> d7 corrected",
+        "B: field 7 line 12 sav 2 bit(s) -> 07 bad",
+        "A: field 5 line 23 sav 2 bit(s) -> df bad",
+        "B: field 5 line 10 eav 2 bit(s) -> d9 bad"
+      ]
+    }
+  },
+  "stimulus_identical": true,
+  "raw_output_identical": true,
+  "file_sha256": {
+    "a.hex": "78560121da613d664d789d3f951e3097c303db0155eba87cade10106c4eedcdb",
+    "b.hex": "beef7ce559cf187e3fbfec2468a19ce8a72755bdab5e876416e10d9846c4a9b5",
+    "ctl.hex": "dc7da4407995e71f9483c8e031c169bca9e7a0df44db39ba65a0269e8a68d339",
+    "mix.txt": "7d508b4ec976ec46e930d97cd1b88a94f2009d9f661bf05ca6560c9198b3fa64",
+    "sd.txt": "d29bc4892901522245bfe73a76f33d1a9083cb32439885ec2ca7cb896e75668f",
+    "pix.txt": "ef7ec5b2f82c2cec0e6212ae1e55316d6d05b06efc1dc2f50a25b49518afdb5d"
+  },
+  "reviewed_utc": "2026-10-09T18:17:46.282414+00:00",
+  "hardware_verified": false
+}

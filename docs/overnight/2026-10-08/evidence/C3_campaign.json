@@ -1,9 +1,17 @@
 {
   "acceptance_pending": true,
   "checker_sha256": "9e83244ea94ca88ab1201c42f67cbb4091d9a2704a2013f21c65c9acc4679b39",
-  "completed_result_rows": 0,
+  "completed_result_rows": 23,
   "coordinator_sha256": "9a7d13deb7c7a5a64f49361c21e4aa21020f1631917565888bbd50d187dc280b",
+  "counts_at_snapshot": {
+    "crash": 0,
+    "edge": 0,
+    "fail": 6,
+    "known": 0,
+    "pass": 17
+  },
   "expected_seeds": 260,
+  "findings_receipt": "C3_initial_findings.json",
   "full_coverage_contract": {
     "accepted_bob_field_values": [
       0,
@@ -92,6 +100,7 @@
     }
   ],
   "hardware_verified": false,
+  "heavy_processes_running": false,
   "interrupted_attempt": {
     "completed_result_rows": 0,
     "preserved": true,
@@ -112,5 +121,7 @@
   "revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "runner_sha256": "a225fdae3e252a06894a85ab2768c66fc6231f4a459ca469043a680adae4f526",
   "started_utc": "2026-10-09T20:16:44+00:00",
-  "state": "RUNNING"
+  "state": "STOPPED_FOR_CHECKER_TRIAGE",
+  "stop_reason": "Fixed-tail terminal truncation and unsupported first-frame blank oracle; raw FAIL preserved, bounded bench/checker fix before rerun",
+  "stopped_utc": "2026-10-09T21:02:08.357724+00:00"
 }

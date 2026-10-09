@@ -14,7 +14,9 @@ Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användare
 
 ## C3 och C2
 
-C3:s privata körplan och adapter är förberedda. Ingen ny kampanj har startat. Seed 126 är omspelat med byte-identiskt stimulus mot `e113cf6` med separat strikt checker: det rapporterar ett SDRAM-läschecksummefel och X/Z på utgången. Den särskilda LOW→BUF-pixelobservationen kör nu; historisk replay och nya frön mot slutlig C1-bas har egna identiteter. C2-koden har inte påbörjats.
+C3:s privata körplan, adapter och sekventiella körjournal är förberedda; den nya 260-frökampanjen har inte startat. Seed 126 är omspelat med byte-identiskt stimulus på Fables `e113cf6`-RTL med separat strikt checker, och separat på fryst C1 `629806f`. **Båda rapporterar ett SDRAM-läschecksummefel och X/Z på utgången**. Terminalens första grupp är inte hela fyndlistan.
+
+Pixelobservationen av det gamla LOW→BUF-fönstret på `e113cf6` visar däremot 72 blanka prov med stängd videogrind, varav 45 före publicering. Rå probe-FAIL använde det äldre gråvärdet; separat källbundet kvitto jämför med faktiska `202020`. Se [LOW_BUF_FINDING.md](../2026-10-07/LOW_BUF_FINDING.md). Luna triagerar de kvarstående läs-/X/Z-fynden från sparade råloggar innan större kampanj. C2-koden har inte påbörjats.
 
 ## Avgränsningar
 

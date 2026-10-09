@@ -204,7 +204,7 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 | Uppgift | Gjort och simulerat | Byggt | Återstår / Git |
 |---|---|---|---|
 | C1: klipp med full vsync och upphämtning | 447 pass på fryst `3aed0b7`, inga xfails/skips; 7 formella bevis och 14 negativa kontroller. Separat källkvitto verifierar 172 indata; rå XML-inventeringsavvikelse bevarad. | M4 seed 0 och M6 seed 3, alla fem klockor minst 75 MHz; manifest och HDMI-fuses verifierade. M6 seed 2 misslyckades i klockroutning. | Integrerat/pushat Core `main` `629806f`, Puck `main` `e655d14` med 1 grönt Puck-test. Ingen hårdvara provad. |
-| C3: ny störningskampanj och OVN-F1 | Gren `fix/c3-scaled-fallback-readstart`, `7e5fe09`, pushad. 12 riktade gröna; seed 126 på samma stimulus har nu korrekt läschecksumma men fortfarande oskriven ringplats 9 och X/Z. Historisk pixelprobe: 72 blanka prov med stängd grind. | — | Grenen väntar på lokal ringrättning, fullsvit och M4/M6. Ny kampanj med 260 frön och C2 återstår. |
-| C2: TV/VCR-meny | Privat arbetsplan. | — | Implementation, modell/negativa kontroller, fullsvit och M6 seed 2 vid 75 MHz återstår. |
+| C3: ny störningskampanj och OVN-F1 | `39c7dc9` på `fix/c3-scaled-fallback-readstart`, pushad. 46 riktade gröna; identiskt seed 126 nu grönt, 216 kontrollerade rader utan fynd/known/edge. Aldrig komplett skrivna ringplatser ger svart; redan lagrade rader och lägesregler bevaras. Historisk pixelprobe: 72 blanka prov med stängd grind. | Köat efter fullsviten: M4 seed 0, M6 seed 3. | Fryst 486-testsvit kör; merge och ny kampanj med 260 frön väntar. |
+| C2: TV/VCR-meny | Privat controllerkontrakt och UI/logg-testpaket; separat T/V-token ger 62-byte logg. | — | Implementation, modell/negativa kontroller, fullsvit och M6 seed 2 vid 75 MHz återstår. |
 
 Detaljer: [kvällspassets status](overnight/2026-10-08/STATUS.md).

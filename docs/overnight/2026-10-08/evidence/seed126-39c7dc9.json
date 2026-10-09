@@ -1,0 +1,130 @@
+{
+  "source": "39c7dc9e1d0812f034da197341380c6c8352032f",
+  "branch": "fix/c3-scaled-fallback-readstart",
+  "checker_sha256": "16bb0a0cae162fa946950cad6c523082cf0a15fbb3e9d4309ba923f3dc35f403",
+  "root_reviewed_utc": "2026-10-09T06:50:55.832853+00:00",
+  "integration": "pending full suite and M4/M6",
+  "stimulus": {
+    "a.hex": {
+      "sha256": "78560121da613d664d789d3f951e3097c303db0155eba87cade10106c4eedcdb",
+      "identical_previous": true
+    },
+    "b.hex": {
+      "sha256": "beef7ce559cf187e3fbfec2468a19ce8a72755bdab5e876416e10d9846c4a9b5",
+      "identical_previous": true
+    },
+    "ctl.hex": {
+      "sha256": "dc7da4407995e71f9483c8e031c169bca9e7a0df44db39ba65a0269e8a68d339",
+      "identical_previous": true
+    }
+  },
+  "virgin_raw_x_masked_black_line28_samples": 2,
+  "raw_result": {
+    "seed": 126,
+    "classes": [
+      "b_drift",
+      "b_swap",
+      "dec_reset",
+      "f_wrong",
+      "field_len",
+      "line_drop",
+      "line_long",
+      "line_short",
+      "luma_click",
+      "mode_switch",
+      "noise_line",
+      "sav_missing",
+      "vbi_short",
+      "xy_error"
+    ],
+    "enabled": null,
+    "std": "ntsc",
+    "ll0": 0,
+    "geometry": "scaled",
+    "density": 2.5,
+    "n_fields": 10,
+    "result": "pass",
+    "known": [],
+    "groups": [],
+    "first": null,
+    "findings": [],
+    "edges": [],
+    "notes": [],
+    "checked": 216,
+    "seconds": 165.8,
+    "used": {
+      "b_drift": [
+        "B clock +213 ppm"
+      ],
+      "b_swap": [
+        "B field 3 line 9: -32 bytes (-1186 ns; B was +242 ns from A)"
+      ],
+      "dec_reset": [
+        "A: no output from field 4 line 14 for 2.01 ms, then no lock for 1.45 ms"
+      ],
+      "f_wrong": [
+        "B: field 9 line 17",
+        "B: field 8 line 15"
+      ],
+      "field_len": [
+        "active lines [23, 24, 23, 25, 24, 25, 23, 23, 24, 25]"
+      ],
+      "line_drop": [
+        "B: field 2 line 28 removed",
+        "A: field 2 line 16 codes lost",
+        "B: field 8 line 26 removed"
+      ],
+      "line_long": [
+        "A: field 1 line 16 +1 bytes"
+      ],
+      "line_short": [
+        "A: field 5 line 7 -3 bytes",
+        "B: field 4 line 12 -135 bytes"
+      ],
+      "luma_click": [
+        "A: field 4 line 4",
+        "A: field 0 line 8",
+        "B: field 6 line 24",
+        "B: field 0 line 23",
+        "B: field 3 line 23",
+        "B: field 6 line 23",
+        "A: field 5 line 19",
+        "B: field 4 line 6",
+        "A: field 7 line 12",
+        "A: field 9 line 31"
+      ],
+      "mode_switch": [
+        "LOW from reset: 0; switches at 9.14, 15.79 ms"
+      ],
+      "noise_line": [
+        "A: field 4 line 11",
+        "B: field 0 line 21"
+      ],
+      "sav_missing": [
+        "A: field 2 line 7"
+      ],
+      "vbi_short": [
+        "a: field 4 blanking =2"
+      ],
+      "xy_error": [
+        "A: field 3 line 31 sav 1 bit(s) -> d7 corrected",
+        "B: field 7 line 12 sav 2 bit(s) -> 07 bad",
+        "A: field 5 line 23 sav 2 bit(s) -> df bad",
+        "B: field 5 line 10 eav 2 bit(s) -> d9 bad"
+      ]
+    },
+    "key": 126,
+    "contract_sha256": "f190f1b883c7a4845fd63b6ab7c3733886348eacf1b32d29fb4a15e6a66062ed",
+    "job": {
+      "seed": 126,
+      "classes": null
+    },
+    "force": []
+  },
+  "focused": {
+    "passed": 46,
+    "deselected_heavy_cases": 15,
+    "native_mutants": 6
+  },
+  "hardware_verified": false
+}

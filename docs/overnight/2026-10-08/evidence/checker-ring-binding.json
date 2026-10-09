@@ -1,0 +1,24 @@
+{
+  "source": "39c7dc9",
+  "raw_suite_sha256": "1aac16b21675fea404eac16b93161edae6da41f431327c0278df70970d804532",
+  "raw_suite_result": "FAIL_PYTEST",
+  "outcomes": {
+    "passed": 323,
+    "failed": 1
+  },
+  "complete_file_set": false,
+  "first_failure": "test_chain_checks_catch_faults[ring]",
+  "counterexample": {
+    "source": "39c7dc9",
+    "case": "LOW inputline0 deliberately written toslot1; displayedline0 BLACK",
+    "checked": 72,
+    "findings": [],
+    "result": "COUNTEREXAMPLE",
+    "meaning": "physicalwrite oracle lacksbinding to independentmixerword sourceaddress; ringRTLnegative may pass silently"
+  },
+  "correction": "8d7b0e9",
+  "focused_tests_passed": 43,
+  "rtl_negative_and_replay": "PENDING",
+  "builds": "NOT_STARTED",
+  "hardware_verified": false
+}

@@ -6,12 +6,14 @@ Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användare
 
 - Gren `fix/genlock-cut-vsync`, Core `3aed0b7`, pushad. En bild som klipps efter tre tidiga triggers behåller nu hela vsync-pulsen. Bara den direkt följande bilden får kortare släcklucka för upphämtning. Båda behåller hela sista släckraden, där displayens skalning och radindex återställs.
 - Modellen och de nya mikrosimuleringarna: 9 gröna på liten och 750-raders vertikal geometri. Gammalt hopp till sista raden fäller pulsregeln; avstängd upphämtning fäller samma tvåbilders fasgräns. Riktade fixturetester fäller för kort upphämtning, en tredje kort bild, för kort `HOLD` och saknad synkpuls.
-- Den frysta fullsviten på `3aed0b7` kör från `private/notes/evening_2026-10-08/c1/core-3aed0b7`, under `/home/lenny/openvrx-review/build.lock`. 447 tester samlas. Körningen har en pytest-process per testfil i högst tio samtidiga processer som en sammanhållen grind; inga andra simulator- eller byggpaket körs samtidigt. Varje processretur, rålogg och källhash före/efter sparas i `private/notes/evening_2026-10-08/c1/suite-3aed0b7`.
-- Återstår: slutlig fullsvit inklusive utökad formalgrind (7 bevis, 14 negativa kontroller), M4 och M6 ett i taget, byggmanifest och HDMI-fuses, båda README, verifierad merge och Puck-gitlänk.
+- Fullsviten på fryst `3aed0b7` är klar: **447 passed**, inga xfail, skips eller processfel, på 1:29:36. Formalgrinden gav 7 bevis och 14 verkliga motexempel för de avsiktliga felvarianterna.
+- Råköraren avslutade med `FAIL_SOURCE_CHANGED` (returstatus 1), eftersom 19 genererade cocotb-XML hamnade i dess källinventering. Inga indata ändrades eller togs bort. Ett separat, granskat kvitto verifierar alla 172 filer mot ursprungsarkivet, samtliga pytest-utfall och exakt de insamlade XML-rapporterna. SDRAM-testet som avsiktligt stoppar simulatorn har sin förväntade felrapport; andra XML-fel avvisas. Fem negativa kontroller av kvittogrinden passerade. Råloggar och råstatus är bevarade i `private/notes/evening_2026-10-08/c1`; inget testundantag lades till i RTL eller modell.
+- Återupptaget 2026-10-09 efter kvotstoppet. **M4 seed 0 är byggt och manifestverifierat**, alla fem klockor klarar 75 MHz. **M6 seed 2 misslyckades i klockroutningen** (`Can't route the clocks.clk_27 net`), innan slutlig timing. Ett enda försök med seed 3 kör nu på samma `3aed0b7` och samma krav. Stift, BUFG, IOB, SDC och standardseedfilen är oförändrade. Diagnostiken från seed 2 bevaras.
+- Återstår: godkänt M6, manifest och HDMI-fuses, båda README, verifierad merge och Puck-gitlänk. C1 stannar på sin pushade uppgiftsgren tills bygggrinden är klar.
 
 ## C3 och C2
 
-Luna läser kampanjens käll- och parameterkontrakt och förbereder en privat körplan för C3. Ingen ny kampanj har startat. OVN-F1 ska spelas om med samma scenario mot `e113cf6`; den körningen och nya frön mot slutlig C1-bas får egna identiteter. C2-koden har inte påbörjats.
+C3:s privata körplan och adapter är förberedda. Ingen ny kampanj har startat. OVN-F1 ska spelas om med samma scenario mot `e113cf6`; den körningen och nya frön mot slutlig C1-bas får egna identiteter. C2-koden har inte påbörjats.
 
 ## Avgränsningar
 

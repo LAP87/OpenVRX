@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "status": "read-only-triage-complete",
+  "runs": {
+    "historical_e113": {
+      "revision": "e113cf6147913bbfed810e6338ab628c679f4ce2",
+      "result": "fail",
+      "checked": 144,
+      "findings": ["store/read", "output/xz"],
+      "contract_sha256": "a6e4d6db4c697a668e993e9308fc7517aabd8bbd697a5426e53317093d4ed94f"
+    },
+    "accepted_c1": {
+      "revision": "629806f3ec349cf8c22b027c2441f0e0585a259d",
+      "result": "fail",
+      "checked": 144,
+      "findings": ["store/read", "output/xz"],
+      "contract_sha256": "06c15cd33fe0c797b8a2a5acff774347845c1b9753f071179aba13e36ad53cb1"
+    },
+    "shared_checker_sha256": "8a9b3fccd8afd5247ea0daf0835f586bc5a904f1091e9efdaaa1d42e2402a320",
+    "only_different_source_snapshot_path": {
+      "path": "gateware/rtl/genlock_timing.v",
+      "e113_sha256": "11649a69b0f750cae5ef4d34e7cac4a7c498a265ad129446adf8d036f5348105",
+      "c1_sha256": "a2f8a103145c5c9ca1fc99b5255cdeb549ac941056d133eb7f32272dab2147a8"
+    },
+    "identical_captured_sha256": {
+      "a.hex": "78560121da613d664d789d3f951e3097c303db0155eba87cade10106c4eedcdb",
+      "b.hex": "beef7ce559cf187e3fbfec2468a19ce8a72755bdab5e876416e10d9846c4a9b5",
+      "ctl.hex": "dc7da4407995e71f9483c8e031c169bca9e7a0df44db39ba65a0269e8a68d339",
+      "mix.txt": "0fc260834e2ca1523c87bcf2fd79903c261b450aaf805f16777cb84d434c400f",
+      "sd.txt": "d80a3488cf577ebf7b563ea4aeb810ec6e39c456915e4bdae2b2f50b6154ac7f",
+      "pix.txt": "621a3bf7f776fe4ad2cd23b4efc288d35de0eeb1c62ef77223099543c983ff70"
+    }
+  },
+  "store_read": {
+    "c1_sd_events": {
+      "fetch": {"line": 40844, "event": "F 10"},
+      "selected_source": {"line": 40849, "event": "S 0 5"},
+      "writes_before_selection": ["2704", "2705", "2706", "2707"],
+      "writes_after_selection": ["2708", "2709", "2710", "2711"],
+      "read_completion": {"line": 40854, "event": "R 0 2 db82d583"}
+    },
+    "observed_mismatch": {
+      "source": "buffer 0 line 5",
+      "actual_return_checksum": "db82d583",
+      "checker_snapshot_at_S": "6a4f29aa"
+    },
+    "inference": "S records source selection before completion of the active eight-word SDRAM write burst; fb_sdram.v waits for !writing before issuing a fetch request. The raw log has no accepted-read-start event, so the intended snapshot point is inferred.",
+    "recommended_fix": "Log the accepted nonblank read request identity and snapshot memory at that event; bind its ordered return to R. Keep all R checksum checks, including pre-frame-decision reads, strict.",
+    "negative_control": "A deliberately incorrect R checksum must still fail, including on a read with no active frame decision."
+  },
+  "low_output_xz": {
+    "low_transition": {"line": 38738, "event": "L 593533 1"},
+    "joined_partial_field": {"first_data_cycle": 724436, "first_completed_line": "E 1 14 724795 0"},
+    "first_usable_trigger": {
+      "new_field_cycle": 757193,
+      "line_end": "E 0 19 757552 1",
+      "trigger": {"cycle": 757553, "low": 0, "ll_lines": 0}
+    },
+    "next_trigger_after_full_field": {"line_end": "E 1 1 811160 1", "trigger": {"cycle": 811161, "ll_lines": 25}},
+    "scaled_geometry": {"v_active": 72, "nominal_fallback_lines": 24, "rtl_zero_count_fallback": 240},
+    "full_geometry": {"v_active": 720, "existing_nominal_fallback_lines": 240},
+    "bad_frame": {"pix_event": "V 871242 240 1 1 0 86", "B": 0, "source_line_y6": 6},
+    "first_unwritten_slot6_word": {"sd_line": 38762, "event": "Q 6 0 22 5dac7047 41812 11852094.1", "time_ns": 11852094.1},
+    "invalid_pixel": {"pix_line": 899, "event": "X 6 xxxxxxxx 11811342.9", "z_pix_event": "Z 882791", "z_time_ns": 11829399},
+    "checker_behavior": "check_display skips source mapping when lines > V_ACTIVE, while the independent output X/Z invariant still reports the invalid sample.",
+    "inference": "A fixed 240-line fallback under scaled V_ACTIVE=72 makes the reader advance one source line per output line and request unwritten ring slot 6. The evidence is specific to scaled geometry; it does not establish a full-geometry PAL zero-count behavior or a hardware defect.",
+    "recommended_fix": "Use a geometry-derived zero-count default such as V_ACTIVE/3, preserving 240 at full V_ACTIVE=720; do not change LOW mode visibility gates or weaken the X/Z invariant.",
+    "directed_followup": "At small V_ACTIVE, verify the first zero-metadata trigger does not read an unwritten ring slot; negative-control the prior fixed-240 fallback. At full V_ACTIVE=720, assert the default remains 240."
+  },
+  "coordinator_bob_correction": {
+    "meaning": "B logs disp.low_r, which is BOB upper/lower field polarity, not LOW mode.",
+    "eligibility": "Require V.video=1 and V.ll=1 during the explicit LOW switch interval; accept B polarity 0 or 1.",
+    "pure_fixtures": ["B=0 accepted", "B=1 accepted", "B=2 rejected", "ll=0 rejected", "video=0 rejected"]
+  },
+  "checks_performed": ["pure BOB eligibility fixtures", "Python AST syntax parse"],
+  "not_performed": ["simulation", "build", "campaign", "source or checker edits"]
+}

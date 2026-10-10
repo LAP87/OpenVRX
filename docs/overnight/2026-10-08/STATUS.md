@@ -70,3 +70,12 @@ C2:s läsbara förberedelse är klar: tvådekoder-trace behövs för pollordning
 Frö **1249** gav `bench/few_lines`: **72 kontrollerade bildrader mot minst 144**. Kampanjen stoppades därför innan fler grupper: **50 färdiga rader, 49 PASS och 1 FAIL**, inga known/edge/crash; tio påbörjade frön bevaras. Den verifierade koordinatorn fick SIGTERM, stoppade sin egen barngrupp innan bygglåset släpptes och avslutade med 143. Inga egna barnprocesser är kvar och låset kunde återtas. Samtliga 628 evidensfiler har sparade hashvärden.
 
 Råfelet och minimitäckningen behålls. En Luna läser stimulus, bildprover och slutkvitto för att avgöra om stimulus/avslut gav för liten visningstäckning eller om någon bildregel bröts. Inget RTL-fel eller hårdvarufel är fastställt. Den accepterade 543-testgrinden för bänkpaketet står kvar, men den nya 260-frökampanjen är **inte accepterad**. [Aktuellt kvitto](evidence/C3_campaign_606659f.json).
+
+
+### Aktiv bild före lägesbyte, 2026-10-10
+
+Frö 1249 hade en komplett triggerstartad LOW-bild vars aktiva yta var färdig före lägesbytet i vertikal blankning. Checkern räknade bort den med sitt gamla helbildsfönster. Den snäva rättningen på `fix/c3-active-display-window`, **`79b1406`**, använder bildens observerade ALT: 1650 klockor per NTSC-rad, 1980 per PAL-rad. Alla tidigare invarianter, X/Z-fönstret efter byte, ringmodellen och miniminivån 144 ligger kvar. Okänd ALT i en komplett videobild blir ett uttryckligt fel. RTL ändras inte.
+
+104 snabba kontroller passerar. Återläsning av samtliga 50 sparade råresultat passerar utan fynd, known/edge eller anteckningar; 1249 räknar 144 rader. En ny native-körning av 1249 avslutade med kod 0 och byte-identiska A/B/CTL-, mixer-, minnes- och bildspår. Avsiktligt fel bildord och fel källrad upptäcks i den nytillagda bilden. Första återkörningens kvittosparare missade processdiagnostiken; försöket är underkänt och bevarat. De 628 filerna från den stoppade kampanjen är oförändrade.
+
+Root har bundit 121 evidensfiler och provat 13 negativa kvittokontroller. Uppgiftsgrenen är pushad, men ännu inte mergad. Hela Core-grinden kör på en ren fryst kopia: **566 tester i 39 filer**, 157 källhashar och samma obligatoriska 19 cocotb-rapportidentiteter som föregående acceptans. Fullsvit, README, main-merge, Puck-kontroll och en ny 260-frökampanj återstår före C2. [Aktuellt kvitto](evidence/C3_active_display_window.json). Ingen FPGA-hårdvara är verifierad.

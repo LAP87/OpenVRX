@@ -1,0 +1,55 @@
+{
+  "base": "606659f24956befe2d25fc9ed676fadd1d302627",
+  "branch": "fix/c3-active-display-window",
+  "branch_pushed": true,
+  "checker_sha256": "8fef689b4751683e634181d973bfed16a20c4e2274f46c713526acb8d57822bd",
+  "gate_negative_controls": 13,
+  "hardware_verified": false,
+  "historical_unchanged_artifacts": 628,
+  "owned_files": [
+    "gateware/sim/test_fuzz_chain.py"
+  ],
+  "pure_tests": {
+    "native_deselected": 21,
+    "passed": 104
+  },
+  "remaining": [
+    "root full-suite acceptance",
+    "README and main merge",
+    "Puck link test",
+    "fresh strictly contracted 260-seed campaign",
+    "C2 implementation and M4seed0/M6seed2 gates"
+  ],
+  "replay": {
+    "actual_trace_negative_controls": [
+      "corrupt LOW word52 -> display/ll_word",
+      "corrupt LOW source line -> display/map"
+    ],
+    "first_native_attempt": "Rejected: process diagnostics were not saved; raw files retained",
+    "historical_seed1249_result": "FAIL72 preserved",
+    "minimum": 144,
+    "native_returncode": 0,
+    "native_stdout": "Same finish, only exact checkout prefix translated",
+    "native_timed_out": false,
+    "native_trace_stimulus_identical": true,
+    "pure_saved_trace_seeds": 50,
+    "seed1249_checked": 144,
+    "strict_passed": 50
+  },
+  "revision": "79b1406a8f2e4eed5ef37913f3406a5de666228d",
+  "root_evidence_files": 121,
+  "root_review_sha256": "46e06525e909353d9c7785cfca8ba9616a640e37213552794544738f637deb69",
+  "rtl_changed": false,
+  "state": "DIRECTED_ACCEPTED_WHOLE_SUITE_RUNNING",
+  "updated_utc": "2026-10-10T11:20:38.349484+00:00",
+  "whole_core_gate": {
+    "contract_sha256": "0d85a382be319ca6dd7e31b868582d629ddf4fa5ec3b81faba3d16014f1215f8",
+    "files": 39,
+    "source_contract_sha256": "ad58ff63f105550e29087a79a64ed0d52934ba6b990186043f0171d523950f5d",
+    "source_inputs": 157,
+    "started_utc": "2026-10-10T11:17:45.357433+00:00",
+    "state": "RUNNING",
+    "tests": 566
+  },
+  "window": "Display active area only: observed ALT0 1650 or ALT1 1980 clocks per line; original invariant/XZ and post-switch windows unchanged"
+}

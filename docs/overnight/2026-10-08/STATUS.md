@@ -44,3 +44,5 @@ Luna avslutade återstartsgranskningen och triagen, men implementeringspaketet a
 ## Återupptaget 2026-10-10
 
 Användaren återupptog arbetet uttryckligen. En Luna fortsätter det sparade tvåfilspaketet på arbetsgrenen; root granskar före native-simuleringar och commit. Ingen kod är accepterad ännu. Den separat versionerade kampanjläsarens 36 snabba kontroller passerar: nio fält i bildposten med live/triggerstatus, fyra i lägesbytesposten med direkt blankprov, full 720-raderstäckning och negativa kontroller för saknade/felaktiga metadata. [Paketstatus](evidence/C3_bench_packet.json). Den avbrutna kampanjens råfynd behålls.
+
+Luna överlämnade tvåfilspaketet med 56 snabba gröna kontroller. Root skärpte avslutskontrollerna och begränsade blankundantaget till det faktiska en-klockasfönstret vid lägesbyte. Åtta riktade native-körningar har startat under bygglåset: frön 1200/1208/1201/126, tre RTL-felvarianter och en accepterad läsning vars data medvetet hålls tillbaka. Alla åtta har kompilerats och kör nu i vvp; utfall, fullsvit och merge är ännu inte godkända.

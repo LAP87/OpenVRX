@@ -8,15 +8,25 @@
     "receipt": "private/notes/evening_2026-10-08/c3/campaign-bench-parser-root-review-2026-10-10.json",
     "seconds": 0.17
   },
-  "native_simulations": "NOT_STARTED",
+  "native_simulations": {
+    "attempt": "c3/bench-directed-2026-10-10-attempt1",
+    "compile": "All eight reached vvp; no native acceptance yet",
+    "jobs": 8,
+    "state": "RUNNING"
+  },
   "owned_code_files": [
     "gateware/sim/tb_chain.v",
     "gateware/sim/test_fuzz_chain.py"
   ],
-  "owner": "luna_c3_fix; root reviews before native tests and commits",
+  "owner": "root; Luna finished scoped implementation and is reviewing read-only",
   "prior_interrupted_attempt": "23 completed rows, 17 pass and 6 fail; old source, no result relabelled",
+  "pure_checker_tests": {
+    "native_deselected": 19,
+    "passed": 56,
+    "seconds": 0.96
+  },
   "rtl_changed": false,
-  "state": "IMPLEMENTATION_IN_PROGRESS_NOT_ACCEPTED",
-  "updated_utc": "2026-10-10T08:03:28.904215+00:00",
+  "state": "DIRECTED_NATIVE_RUNNING_NOT_ACCEPTED",
+  "updated_utc": "2026-10-10T08:14:10.082535+00:00",
   "whole_core_gate": "NOT_STARTED"
 }

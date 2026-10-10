@@ -95,3 +95,12 @@ Den nya 260-frökampanjen kör nu under bygglåset från en ren fryst kopia av `
 Root har släppt den accepterade C3-main-källan `db0035f` för separat C2-kodarbete på **`feat/tvvcr-menu`**. Kampanjen fortsätter på sin oföränderliga kopia; native-simuleringar, fullgrind, byggen och merge är inte släppta. En Luna på max äger controller/UI, deras bänkar/tester, M6-kopplingen, nya indata bundna till noll i M3/M4 samt snowlog/parsertester. README-resultat och main-integration ägs av root.
 
 Den privata I2C-pinavkodaren har 10 gröna syntetiska fixture-tester, granskade av root. Två upptäckta informationsförluster är rättade: spåret måste börja på känd vilande buss och en START på den andra SDA-linjen under överföring avvisas. Ingen verklig HDL-pintrace eller C2-beteendeverifiering har ännu körts. C2 måste visa rätt ordning på båda dekodrarna, stale-ACK/NACK-fairness och TV/VCR-värden innan acceptans.
+
+
+### Tungt arbete pausat för spel
+
+Användaren vill spela Baldur’s Gate 3. Inga egna simulerings- eller byggprocesser kör och det gemensamma bygglåset är verifierat ledigt. Inga nya tunga jobb startas före användarens återupptagning.
+
+C3-kampanjen avslutade 200 frön: **199 PASS och 1 FAIL**, inga known/edge/crash. Frö 1345 gav `bench/few_lines`, 72 kontrollerade bildrader mot minst 144; koordinatorn avslutade med kod 2 innan de sista 60 fröna. Råfilerna behålls och orsaken är ännu inte triagerad. Detta är ingen kampanjacceptans och inget fastställt RTL-/hårdvarufel.
+
+Luna har överlämnat C2-utkastet på `feat/tvvcr-menu`, med rapporterade 14 rena parser-/pin-fixture-pass och 2 subtester. Root-granskning, native-controller/UI-simuleringar och M4/M6-byggen återstår. Utkastet är inte incheckat, pushat eller mergat.

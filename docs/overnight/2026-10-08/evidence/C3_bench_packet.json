@@ -9,16 +9,29 @@
     "seconds": 0.17
   },
   "native_simulations": {
-    "attempt": "c3/bench-directed-2026-10-10-attempt1",
-    "compile": "All eight reached vvp; no native acceptance yet",
-    "jobs": 8,
-    "state": "RUNNING"
+    "positive_replays": {
+      "1200": 576,
+      "1201": 288,
+      "1208": 576,
+      "126_density2p5": 288
+    },
+    "prior_campaign_stimulus_identical": [
+      1200,
+      1208,
+      1201
+    ],
+    "review_sha256": "5b9cccce8d9e5fdc7523856f6ae76a2fae91bdc9ac57afa419ebe895ae941614",
+    "source_unchanged": true,
+    "stalled_read": "Actual fail_2 deadline at 4096 clocks, but malformed failure receipt: 17 tokens and orphan y field",
+    "state": "FIRST_ATTEMPT_NOT_ACCEPTED",
+    "switch_clear_mutant": "REJECTED_DISPLAY_SWITCH_VIDEO",
+    "trigger_alive_mutants": "NO_REQUIRED_WITNESS; only few-lines findings, not accepted negatives"
   },
   "owned_code_files": [
     "gateware/sim/tb_chain.v",
     "gateware/sim/test_fuzz_chain.py"
   ],
-  "owner": "root; Luna finished scoped implementation and is reviewing read-only",
+  "owner": "Luna scoped follow-up; root reviews and reruns native",
   "prior_interrupted_attempt": "23 completed rows, 17 pass and 6 fail; old source, no result relabelled",
   "pure_checker_tests": {
     "native_deselected": 19,
@@ -26,7 +39,7 @@
     "seconds": 0.96
   },
   "rtl_changed": false,
-  "state": "DIRECTED_NATIVE_RUNNING_NOT_ACCEPTED",
-  "updated_utc": "2026-10-10T08:14:10.082535+00:00",
+  "state": "NATIVE_FOLLOWUP_REQUIRED_NOT_ACCEPTED",
+  "updated_utc": "2026-10-10T08:21:25.714345+00:00",
   "whole_core_gate": "NOT_STARTED"
 }

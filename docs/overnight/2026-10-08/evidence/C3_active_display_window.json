@@ -11,10 +11,24 @@
     "manifest_sha256": "c35cc92321260a7460407fb8eb5d10b8fca8f716ffc0930b4d423325ead9ffc1",
     "max_workers": 10,
     "output": "/home/lenny/openvrx-review/evidence/c3/active-display-accepted-2026-10-10/db0035fddabc2ca1c45767c552ca2fbee2af925e",
+    "progress": {
+      "checked_min": 216,
+      "completed": 30,
+      "counts": {
+        "crash": 0,
+        "edge": 0,
+        "fail": 0,
+        "known": 0,
+        "pass": 30
+      },
+      "expected": 260,
+      "state": "PROGRESS_NOT_ACCEPTANCE",
+      "updated_utc": "2026-10-10T13:44:52.209563+00:00"
+    },
     "revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
     "session": 48698,
     "source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-db0035f",
-    "started_utc": null,
+    "started_utc": "2026-10-10T13:28:25+00:00",
     "state": "RUNNING_NOT_ACCEPTED"
   },
   "full_root_review_sha256": "0ffd503b933279852db47f69e6d159e9159fa4e5f8aef40ff08033ee247039fa",
@@ -69,7 +83,7 @@
   "root_review_sha256": "46e06525e909353d9c7785cfca8ba9616a640e37213552794544738f637deb69",
   "rtl_changed": false,
   "state": "ACCEPTED_MERGED_PUSHED_FRESH_CAMPAIGN_RUNNING",
-  "updated_utc": "2026-10-10T13:29:23.199174+00:00",
+  "updated_utc": "2026-10-10T13:44:52.209563+00:00",
   "whole_core_gate": {
     "acceptance_sha256": "a1944cc5b161fe12535cee25acb743a91455c3617d1260ff0bde3ce2e0746847",
     "actual_cocotb_reports": 19,

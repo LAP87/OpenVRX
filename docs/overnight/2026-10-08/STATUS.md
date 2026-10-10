@@ -88,3 +88,10 @@ Den frysta sviten avslutades med **566 pass i 39 filer** på **4893,875 s**; all
 Uppgiftsgrenen är mergad och pushad: Core **`db0035f`**, README **`26d05b5`**. Alla testade indata matchar även den mergade källan. Pucks Core-länk är mergad/pushad som **`5ff06be`**, med 1 pass på 1,55 s och negativa kontroller för RESETB, fel stift och saknad validator. M4 seed 0/M6 seed 3 återanvänds; ingen ny routning hävdas.
 
 Den nya 260-frökampanjen kör nu under bygglåset från en ren fryst kopia av `db0035f`, med högst tio arbetare i en grupp åt gången. Tidigare 49 PASS/1 FAIL och partiella råfiler bevaras separat. Kampanjen är **inte accepterad** och C2:s implementation, fullsvit och M4 seed 0/M6 seed 2 återstår. [Källbundet kvitto](evidence/C3_active_display_window.json). Ingen FPGA-kedja är verifierad på hårdvara.
+
+
+### C2:s uppgiftsgren förberedd
+
+Root har släppt den accepterade C3-main-källan `db0035f` för separat C2-kodarbete på **`feat/tvvcr-menu`**. Kampanjen fortsätter på sin oföränderliga kopia; native-simuleringar, fullgrind, byggen och merge är inte släppta. En Luna på max äger controller/UI, deras bänkar/tester, M6-kopplingen, nya indata bundna till noll i M3/M4 samt snowlog/parsertester. README-resultat och main-integration ägs av root.
+
+Den privata I2C-pinavkodaren har 10 gröna syntetiska fixture-tester, granskade av root. Två upptäckta informationsförluster är rättade: spåret måste börja på känd vilande buss och en START på den andra SDA-linjen under överföring avvisas. Ingen verklig HDL-pintrace eller C2-beteendeverifiering har ännu körts. C2 måste visa rätt ordning på båda dekodrarna, stale-ACK/NACK-fairness och TV/VCR-värden innan acceptans.

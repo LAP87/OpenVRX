@@ -1,6 +1,17 @@
 # Kvällspass 2026-10-08
 
-Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; en Luna på max hjälper med avgränsade filer. Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
+Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
+
+## Aktuellt läge 2026-10-10 efter användarens återupptagning
+
+Detta avsnitt gäller före de daterade körjournalerna nedan. Användaren har lämnat datorn: spelpausen är hävd. Ett tungt jobb åt gången hålls under `/home/lenny/openvrx-review/build.lock`. Nya avgränsade agentuppdrag använder Luna på high; inga nya max-rundor startas.
+
+- Core main **`db0035f`** är accepterad och pushad: **566 pass i 39 filer**, utan andra testutfall. Puck main **`5ff06be`** pekar dit och dess kontraktstest passerar. [Acceptans](evidence/C3_active_display_window.json). M4 seed 0/M6 seed 3 återanvänds via identiska indata och artefakter; ingen ny routning hävdas.
+- Den efterföljande kampanjen är stoppad och **inte accepterad**: 200 av 260 frön kördes, **199 PASS/1 FAIL**, 60 ej körda. Seed **1345** gav 72 kontrollerade rader mot minst 144. Orsaken måste triageras före en ny kampanj; tröskeln ligger kvar. Seed 1249:s äldre råfel är bevarat och dess checker-rättning redan accepterad.
+- C2 är **utkast överlämnat, root-granskning väntar**, på `feat/tvvcr-menu`. Dess elva ändrade filer är inte incheckade/pushade/mergade. Native-controller/UI, fullsvit och M4 seed 0/**M6 seed 2** vid 75 MHz återstår. Tidigare formuleringar om att C2-kod inte påbörjats gäller äldre steg.
+- Core #17/#18:s befintliga regressioner är strikta och gröna under Fables beslut. Det nya council-fyndet om ett helt utelämnat dåligt fält är ett separat statiskt motexempel; en riktig BT.656-reproduktion förbereds på `fix/visible-field-boundary` före RTL-ändring. OVN-F1:s seed-126-fas och senare C3-rättningar är verifierade i sina angivna körningar, inte för alla bytesfaser.
+
+Ingen FPGA-kedja är verifierad på hårdvara. Den tidigare AIO-kamera/VTX → Moneagle-bilden vid 4,2 V är en separat bänkobservation. Äldre kvittons spelpaus och pågående-status beskriver tidpunkten då de sparades.
 
 ## C1 — integrerat 2026-10-09
 

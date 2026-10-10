@@ -64,3 +64,9 @@ Den frysta grinden på `0dcff5d` passerade **543 tester i 39 filer**, inga andra
 Båda README är uppdaterade i `a3d44e0`; verifierat arbete är mergat med `--no-ff` och pushat till Core main **`606659f`**. Puck main **`f8d9de1`** pekar dit efter **1 pass på 1,53 s**, inklusive reset-, stift- och validatorfel som negativa kontroller. Den nya störningskampanjen startade 10:08:59 UTC på en ren, fryst kopia av slutlig main vars 157 indata matchar den testade källan. Den omfattar 260 frön i sex grupper, med nya råkvitton och oförändrade äldre resultat. [Kampanjstatus](evidence/C3_campaign_606659f.json). Kampanjen är pågående och ännu inte accepterad.
 
 C2:s läsbara förberedelse är klar: tvådekoder-trace behövs för pollordningen, och UART-formatet är fastlagt till 62 byte inklusive CRLF. C2-kod och dess nya M6 seed-2-grind återstår. Ingen FPGA-hårdvara är verifierad.
+
+### Kampanj stoppad för täckningsanalys, 2026-10-10
+
+Frö **1249** gav `bench/few_lines`: **72 kontrollerade bildrader mot minst 144**. Kampanjen stoppades därför innan fler grupper: **50 färdiga rader, 49 PASS och 1 FAIL**, inga known/edge/crash; tio påbörjade frön bevaras. Den verifierade koordinatorn fick SIGTERM, stoppade sin egen barngrupp innan bygglåset släpptes och avslutade med 143. Inga egna barnprocesser är kvar och låset kunde återtas. Samtliga 628 evidensfiler har sparade hashvärden.
+
+Råfelet och minimitäckningen behålls. En Luna läser stimulus, bildprover och slutkvitto för att avgöra om stimulus/avslut gav för liten visningstäckning eller om någon bildregel bröts. Inget RTL-fel eller hårdvarufel är fastställt. Den accepterade 543-testgrinden för bänkpaketet står kvar, men den nya 260-frökampanjen är **inte accepterad**. [Aktuellt kvitto](evidence/C3_campaign_606659f.json).

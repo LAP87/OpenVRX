@@ -24,6 +24,11 @@
     "receipt": "private/notes/evening_2026-10-08/c3/campaign-bench-parser-root-review-2026-10-10.json",
     "seconds": 0.17
   },
+  "independent_luna_review": {
+    "new_tests_or_builds": false,
+    "sha256": "17a4d6ce0355cf099f8cdfa54ec23bf195ae81659f4889457a24904fa23808d1",
+    "state": "PASS_REVIEWED"
+  },
   "main_revision": "606659f24956befe2d25fc9ed676fadd1d302627",
   "native_simulations": {
     "accepted_read_stall": "fail_2, 4096 cycles, complete19tokens, armed1, acceptedI, nonzero exit",

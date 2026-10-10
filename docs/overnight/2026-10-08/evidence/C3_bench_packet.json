@@ -2,6 +2,20 @@
   "base_revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "branch": "fix/c3-bench-drain-trigger-oracle",
   "branch_pushed": true,
+  "campaign_coordinator": {
+    "helpers": {
+      "run_campaign_bench.py": "d2f3d83f91ae4e5eb4d8e7cf05889ce94bcf5c89f05512bea554eef42147b50f",
+      "run_groups_bench.py": "5add552738d450531b0e180107af02ef57d2ca0a0ee3a001531a8cab2bf5c276"
+    },
+    "notes": "Notes stay visible and require review; immutable raw receipts; orphan/symlink/tamper rejection; cancellation and log-error child cleanup tested with fake subprocesses. No campaign launched.",
+    "receipt_sha256": "ac1663afcd0051c9ebc68d9c2ae06677968e1d78e00a1606cc4e90aef467ba27",
+    "state": "PASS_PRIVATE_HELPER_CONTROLS_NOT_CAMPAIGN_ACCEPTANCE",
+    "tests": {
+      "failed": 0,
+      "passed": 59,
+      "seconds": 3.85
+    }
+  },
   "code_revision": "0dcff5d7ac0992736d2dc7fbabf7941d04ad49ab",
   "credit_policy": "One explicit user-authorized resumption; no automatic retries or credit purchases",
   "helper_controls": {
@@ -50,7 +64,7 @@
   },
   "rtl_changed": false,
   "state": "DIRECTED_PASS_WHOLE_SUITE_RUNNING_NOT_MERGED",
-  "updated_utc": "2026-10-10T08:39:45.650560+00:00",
+  "updated_utc": "2026-10-10T09:16:29.282596+00:00",
   "whole_core_gate": {
     "contract_sha256": "bd916b24b9358b4bc660934d99aa934f9d20033e97dafcfd36c447c3904b132a",
     "files": 39,

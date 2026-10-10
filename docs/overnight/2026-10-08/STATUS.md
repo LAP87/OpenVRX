@@ -79,3 +79,12 @@ Frö 1249 hade en komplett triggerstartad LOW-bild vars aktiva yta var färdig f
 104 snabba kontroller passerar. Återläsning av samtliga 50 sparade råresultat passerar utan fynd, known/edge eller anteckningar; 1249 räknar 144 rader. En ny native-körning av 1249 avslutade med kod 0 och byte-identiska A/B/CTL-, mixer-, minnes- och bildspår. Avsiktligt fel bildord och fel källrad upptäcks i den nytillagda bilden. Första återkörningens kvittosparare missade processdiagnostiken; försöket är underkänt och bevarat. De 628 filerna från den stoppade kampanjen är oförändrade.
 
 Root har bundit 121 evidensfiler och provat 13 negativa kvittokontroller. Uppgiftsgrenen är pushad, men ännu inte mergad. Hela Core-grinden kör på en ren fryst kopia: **566 tester i 39 filer**, 157 källhashar och samma obligatoriska 19 cocotb-rapportidentiteter som föregående acceptans. Fullsvit, README, main-merge, Puck-kontroll och en ny 260-frökampanj återstår före C2. [Aktuellt kvitto](evidence/C3_active_display_window.json). Ingen FPGA-hårdvara är verifierad.
+
+
+### Displaypaket accepterat och ny kampanj startad, 2026-10-10
+
+Den frysta sviten avslutades med **566 pass i 39 filer** på **4893,875 s**; alla 157 källhashar är oförändrade. Root verifierade samtliga 19 cocotb-rapportidentiteter, 7 positiva formella bevis, 14 motexempel från reset och alla 24 arkiverade byggartefakter. Den ursprungliga efterkontrollen gav exit 1 efter gröna tester: ett rent Python-parameternamn med `/` behandlades som ett cocotb-filnamn. Separat eftervalidering tar bort endast kandidater utan cocotb-modul och behåller kontrollerna för verkliga XML-filer. Tre negativa kontroller passerar. Testerna kördes inte om och råfelet bevaras.
+
+Uppgiftsgrenen är mergad och pushad: Core **`db0035f`**, README **`26d05b5`**. Alla testade indata matchar även den mergade källan. Pucks Core-länk är mergad/pushad som **`5ff06be`**, med 1 pass på 1,55 s och negativa kontroller för RESETB, fel stift och saknad validator. M4 seed 0/M6 seed 3 återanvänds; ingen ny routning hävdas.
+
+Den nya 260-frökampanjen kör nu under bygglåset från en ren fryst kopia av `db0035f`, med högst tio arbetare i en grupp åt gången. Tidigare 49 PASS/1 FAIL och partiella råfiler bevaras separat. Kampanjen är **inte accepterad** och C2:s implementation, fullsvit och M4 seed 0/M6 seed 2 återstår. [Källbundet kvitto](evidence/C3_active_display_window.json). Ingen FPGA-kedja är verifierad på hårdvara.

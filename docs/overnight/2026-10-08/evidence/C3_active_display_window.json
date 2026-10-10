@@ -3,20 +3,48 @@
   "branch": "fix/c3-active-display-window",
   "branch_pushed": true,
   "checker_sha256": "8fef689b4751683e634181d973bfed16a20c4e2274f46c713526acb8d57822bd",
+  "fresh_campaign": {
+    "adapter_sha256": "d2f3d83f91ae4e5eb4d8e7cf05889ce94bcf5c89f05512bea554eef42147b50f",
+    "coordinator_sha256": "5add552738d450531b0e180107af02ef57d2ca0a0ee3a001531a8cab2bf5c276",
+    "expected_seeds": 260,
+    "lock": "/home/lenny/openvrx-review/build.lock",
+    "manifest_sha256": "c35cc92321260a7460407fb8eb5d10b8fca8f716ffc0930b4d423325ead9ffc1",
+    "max_workers": 10,
+    "output": "/home/lenny/openvrx-review/evidence/c3/active-display-accepted-2026-10-10/db0035fddabc2ca1c45767c552ca2fbee2af925e",
+    "revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
+    "session": 48698,
+    "source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-db0035f",
+    "started_utc": null,
+    "state": "RUNNING_NOT_ACCEPTED"
+  },
+  "full_root_review_sha256": "0ffd503b933279852db47f69e6d159e9159fa4e5f8aef40ff08033ee247039fa",
   "gate_negative_controls": 13,
   "hardware_verified": false,
   "historical_unchanged_artifacts": 628,
+  "main_revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
   "owned_files": [
     "gateware/sim/test_fuzz_chain.py"
   ],
+  "puck": {
+    "branch": "chore/core-active-display-window",
+    "core_revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
+    "negative_controls": [
+      "unconnected RESETB",
+      "wrong TVPA_SCLK pin",
+      "missing board validator"
+    ],
+    "revision": "5ff06beeebe0b1b7c126ca5903f95fd7468ae5a5",
+    "seconds": 1.55,
+    "state": "PASS_MERGED_PUSHED",
+    "test_log_sha256": "d712501db6a5dd648dfe7d9ad8c2bf2d7c16acd6d77e574e1749d0cd9084e473",
+    "tests": 1
+  },
   "pure_tests": {
     "native_deselected": 21,
     "passed": 104
   },
+  "readme_revision": "26d05b5",
   "remaining": [
-    "root full-suite acceptance",
-    "README and main merge",
-    "Puck link test",
     "fresh strictly contracted 260-seed campaign",
     "C2 implementation and M4seed0/M6seed2 gates"
   ],
@@ -40,16 +68,39 @@
   "root_evidence_files": 121,
   "root_review_sha256": "46e06525e909353d9c7785cfca8ba9616a640e37213552794544738f637deb69",
   "rtl_changed": false,
-  "state": "DIRECTED_ACCEPTED_WHOLE_SUITE_RUNNING",
-  "updated_utc": "2026-10-10T11:20:38.349484+00:00",
+  "state": "ACCEPTED_MERGED_PUSHED_FRESH_CAMPAIGN_RUNNING",
+  "updated_utc": "2026-10-10T13:29:23.199174+00:00",
   "whole_core_gate": {
+    "acceptance_sha256": "a1944cc5b161fe12535cee25acb743a91455c3617d1260ff0bde3ce2e0746847",
+    "actual_cocotb_reports": 19,
     "contract_sha256": "0d85a382be319ca6dd7e31b868582d629ddf4fa5ec3b81faba3d16014f1215f8",
+    "duration_seconds": 4893.875,
+    "ended_utc": "2026-10-10T12:39:19+00:00",
     "files": 39,
+    "formal_proofs": 7,
+    "negative_counterexamples": 14,
+    "original_helper_exit": 1,
+    "outcomes": {
+      "failed": 0,
+      "not_reported": 0,
+      "passed": 566,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "postprocess_correction": "Pure Python param slash incorrectly considered XML; exclude only empty-module candidates, all19 real bindings unchanged",
+    "postvalidation_negative_controls": [
+      "old_guard_reproduces_pure_param_ID_failure",
+      "unsafe_actual_cocotb_basename",
+      "wrong_pure_node_file"
+    ],
+    "source_changed": false,
     "source_contract_sha256": "ad58ff63f105550e29087a79a64ed0d52934ba6b990186043f0171d523950f5d",
     "source_inputs": 157,
     "started_utc": "2026-10-10T11:17:45.357433+00:00",
-    "state": "RUNNING",
-    "tests": 566
+    "state": "PASS_ROOT_REVIEWED",
+    "tests": 566,
+    "tests_rerun": false
   },
   "window": "Display active area only: observed ALT0 1650 or ALT1 1980 clocks per line; original invariant/XZ and post-switch windows unchanged"
 }

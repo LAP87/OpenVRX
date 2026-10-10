@@ -40,3 +40,7 @@ Triagen visar att frön 1200/1208 slutar efter 264/352 av 360 läsord, när test
 ## Kreditstopp i Luna
 
 Luna avslutade återstartsgranskningen och triagen, men implementeringspaketet avbröts med `Your workspace is out of credits`. En ofärdig ändring i `tb_chain.v` finns endast på arbetsgrenen `fix/c3-bench-drain-trigger-oracle`; checkern är ännu inte uppdaterad och inga nya native-simuleringar eller byggen har körts. De 31 gröna kontrollerna gäller den privata kampanjläsaren, inte acceptans av den ofärdiga testbänksrättningen. Root tar över de sparade filerna utan automatiska Luna-omförsök, kreditköp eller providerbyte. C3:s nya kampanj och C2 är inte klara. Inga tunga processer kör vid denna checkpoint.
+
+## Återupptaget 2026-10-10
+
+Användaren återupptog arbetet uttryckligen. En Luna fortsätter det sparade tvåfilspaketet på arbetsgrenen; root granskar före native-simuleringar och commit. Ingen kod är accepterad ännu. Den separat versionerade kampanjläsarens 36 snabba kontroller passerar: nio fält i bildposten med live/triggerstatus, fyra i lägesbytesposten med direkt blankprov, full 720-raderstäckning och negativa kontroller för saknade/felaktiga metadata. [Paketstatus](evidence/C3_bench_packet.json). Den avbrutna kampanjens råfynd behålls.

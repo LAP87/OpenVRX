@@ -1,0 +1,22 @@
+{
+  "base_revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+  "branch": "fix/c3-bench-drain-trigger-oracle",
+  "credit_policy": "One explicit user-authorized resumption; no automatic retries or credit purchases",
+  "helper_controls": {
+    "helper_sha256": "c745c9c03e73c53df0c91a47338f46b2f29af78321b05cf89d9d1836e4d1b207",
+    "passed": 36,
+    "receipt": "private/notes/evening_2026-10-08/c3/campaign-bench-parser-root-review-2026-10-10.json",
+    "seconds": 0.17
+  },
+  "native_simulations": "NOT_STARTED",
+  "owned_code_files": [
+    "gateware/sim/tb_chain.v",
+    "gateware/sim/test_fuzz_chain.py"
+  ],
+  "owner": "luna_c3_fix; root reviews before native tests and commits",
+  "prior_interrupted_attempt": "23 completed rows, 17 pass and 6 fail; old source, no result relabelled",
+  "rtl_changed": false,
+  "state": "IMPLEMENTATION_IN_PROGRESS_NOT_ACCEPTED",
+  "updated_utc": "2026-10-10T08:03:28.904215+00:00",
+  "whole_core_gate": "NOT_STARTED"
+}

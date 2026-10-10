@@ -1,6 +1,8 @@
 {
   "base_revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "branch": "fix/c3-bench-drain-trigger-oracle",
+  "branch_pushed": true,
+  "code_revision": "0dcff5d7ac0992736d2dc7fbabf7941d04ad49ab",
   "credit_policy": "One explicit user-authorized resumption; no automatic retries or credit purchases",
   "helper_controls": {
     "helper_sha256": "c745c9c03e73c53df0c91a47338f46b2f29af78321b05cf89d9d1836e4d1b207",
@@ -9,6 +11,8 @@
     "seconds": 0.17
   },
   "native_simulations": {
+    "accepted_read_stall": "fail_2, 4096 cycles, complete19tokens, armed1, acceptedI, nonzero exit",
+    "gate_mutants": "Both rejected as display/trigger_gate at the same exact V sample where matching unmodified RTL is blank",
     "positive_replays": {
       "1200": 576,
       "1201": 288,
@@ -20,26 +24,38 @@
       1208,
       1201
     ],
-    "review_sha256": "5b9cccce8d9e5fdc7523856f6ae76a2fae91bdc9ac57afa419ebe895ae941614",
+    "probe_baselines": {
+      "alive": 216,
+      "trigger": 216
+    },
+    "review_sha256": "84488790a572702e7b9a013bf34dccd9d84dd6c652cf8a0053d50cbcde0d21ba",
     "source_unchanged": true,
-    "stalled_read": "Actual fail_2 deadline at 4096 clocks, but malformed failure receipt: 17 tokens and orphan y field",
-    "state": "FIRST_ATTEMPT_NOT_ACCEPTED",
-    "switch_clear_mutant": "REJECTED_DISPLAY_SWITCH_VIDEO",
-    "trigger_alive_mutants": "NO_REQUIRED_WITNESS; only few-lines findings, not accepted negatives"
+    "state": "TEN_DIRECTED_PASS_REVIEWED",
+    "switch_clear_mutant": "Rejected as display/switch_video"
   },
   "owned_code_files": [
     "gateware/sim/tb_chain.v",
     "gateware/sim/test_fuzz_chain.py"
   ],
-  "owner": "Luna scoped follow-up; root reviews and reruns native",
+  "owner": "root; scoped Luna implementation and read-only review complete",
   "prior_interrupted_attempt": "23 completed rows, 17 pass and 6 fail; old source, no result relabelled",
   "pure_checker_tests": {
-    "native_deselected": 19,
-    "passed": 56,
-    "seconds": 0.96
+    "native_deselected": 21,
+    "passed": 81
+  },
+  "routed_inputs": {
+    "M4": "46 identical inputs, 7 archived artifacts verified; existing seed0 build",
+    "M6": "47 identical inputs, 7 archived artifacts verified; existing seed3 build",
+    "new_build_claimed": false
   },
   "rtl_changed": false,
-  "state": "NATIVE_FOLLOWUP_REQUIRED_NOT_ACCEPTED",
-  "updated_utc": "2026-10-10T08:21:25.714345+00:00",
-  "whole_core_gate": "NOT_STARTED"
+  "state": "DIRECTED_PASS_WHOLE_SUITE_RUNNING_NOT_MERGED",
+  "updated_utc": "2026-10-10T08:39:45.650560+00:00",
+  "whole_core_gate": {
+    "contract_sha256": "bd916b24b9358b4bc660934d99aa934f9d20033e97dafcfd36c447c3904b132a",
+    "files": 39,
+    "source_contract_sha256": "0bf502217f0e663378c8fbdc251cd262b51aa03e5b2c4d7f1a7fc649a6ecb507",
+    "state": "RUNNING",
+    "tests": 543
+  }
 }

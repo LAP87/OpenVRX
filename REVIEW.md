@@ -39,9 +39,10 @@ Ordered from "most likely broken" to "probably fine".
    ran two disturbed streams through the whole chain in simulation and fixed
    what it broke: run-on lines, field phase measured from reset, a mixer
    rule that froze the output when a receiver returned, and pairs decided on
-   a channel with no line in the output field. Two faults it found are still
-   open: Core #17 and Core #18. Still unmeasured: the phase between two real
-   decoders. (`mix_chan.v`, `line_mixer.v`)
+   a channel with no line in the output field. Core #17/#18 were fixed on
+   2026-10-08. A separate static candidate from 2026-10-10 concerns a field
+   omitted entirely between two visible fields; native reproduction is
+   pending. Still unmeasured: the phase between two real decoders. (`mix_chan.v`, `line_mixer.v`)
 3. **TVP5150AM1 bring-up.** Register values (00h, 04h, 0Dh, 28h, 02h, 03h)
    and status reads (88h/89h) come from the datasheet only. A poll round now
    counts only as a whole, and a slave holding SCL low times out after 10 ms;
@@ -66,8 +67,10 @@ Ordered from "most likely broken" to "probably fine".
    frames alternate 750/751 lines (NTSC) and the first line waits for the
    input. Will real sinks (TVs, XR glasses, capture cards) accept a varying
    vertical total? The minimum frame duration is now bounded and proven.
-   Still open is Core #17: frames with video are shown before the output has
-   locked after a BUF -> LOW switch, reading unwritten ring slots.
+   Core #17 now requires live genlock and a trigger before LOW video. Slots
+   never completely initialized since reset show black; initialized slots
+   retain older data. Real sink acceptance and all switch phases remain
+   unmeasured.
    (`genlock_timing.v`, `fb_backend.v`, `fb_display.v`)
 7. **Open-toolchain pitfalls.** Apicula has miscompiled signed comparisons in
    other projects (we removed all `signed` arithmetic), and newer Apicula packs
@@ -99,31 +102,29 @@ Ordered from "most likely broken" to "probably fine".
   rounds and the SCL-stretch timeout are tested against slave models.
   Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
   (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
-- Core #17 is open: in low-latency mode, frames with video are shown before
-  the output has locked after a BUF -> LOW switch or after reset in LOW,
-  reading ring slots not written since the switch. Fixing it needs a rule for
-  when LOW may show video; `test_fb.py::test_low_after_switch_shows_whole_fields`
-  is xfail until then.
-- Core #18 is open: when the mixer starts a new output field out of step
-  (the current receiver goes quiet, the other takes over), the word stream
-  does not mark the start if the F bit is unchanged and the line number does
-  not go down; the field store then merges two output fields into one. The
-  fix needs a decision on what the mixer's F bit means;
-  `test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
-  xfail on Core main since `0e0bf49`; the overnight review restricts it
-  to the exact unmarked boundary after RTL/model agreement.
-- OVN-F1: a LOW -> BUF switch between the last blanking line's gate
-  sample and the next active frame can show RGB before a BUF field is
-  published. A read-only replay of seed 126 has 72 nonblank RGB samples,
-  45 before publication. The earlier claim of a blank frame is disproved;
-  strict read checksums are retained. The switch-frame contract and a
-  bounded fix packet are in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
-- The 2026-10-07 test count (396) is verified: the frozen baseline suite run
-  of `7cc4eda` (night 2026-10-07/08) finished with 395 passed, 1 xfailed
-  (the #17 test) in 1:25:56. Fresh M4/M6 verification after the mixer fixes
-  is recorded in `docs/overnight/2026-10-07/STATUS.md` with build manifests.
+- Current Core main `db0035f` has an accepted frozen suite of 566 passes
+  across 39 test files, without xfails; Puck `5ff06be` pins it. This is
+  simulation and source-bound build evidence, not hardware acceptance.
+- Core #17/#18's existing regressions pass under the owner's 2026-10-08
+  trigger and output-F decisions. A separate 2026-10-10 static candidate
+  concerns an entirely omitted single-bad-line field consuming an F toggle
+  without emitted words. A native counterexample is being prepared before
+  any change to RTL or the reference model.
+- OVN-F1's visible seed-126 phase gap did not recur on Fable's `e113cf6`.
+  Accepted C3 fixed the remaining scaled fallback/read-start and virgin
+  ring-read findings; its strict replay passes with 216 checked lines.
+  This does not verify all LOW -> BUF phases. Historical FAIL reports stay
+  in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
+- The latest 260-seed campaign stopped after 200 seeds: 199 PASS, 1 FAIL,
+  and 60 not run. Seed 1345 has 72 checked lines against 144 required;
+  its cause is pending triage. This campaign is not accepted and no RTL
+  or hardware failure is established by that coverage count alone.
+- C2 TV/VCR changes remain a separate uncommitted draft awaiting root
+  review and native/full/build gates, including M6 seed 2 at 75 MHz.
+  Current receipts, preserved older failures and build provenance are in
+  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 
-## Local corrections, 2026-10-05
+## Historical local corrections, 2026-10-05
 
 Core's 78-test suite includes line loss, long VBI, lagging/forced channels,
 return after missing fields, constant F and negative controls. RESETB/SPI
@@ -131,7 +132,7 @@ roles on LED3/4/5 are explicit and checked by Puck before export. These checks
 address reproduced mixer and handoff defects; real decoder phase, integrated
 backend behaviour and RF mixing benefit remain open.
 
-## Local corrections, 2026-10-07
+## Historical local corrections, 2026-10-07
 
 Merged into Core `main` `7cc4eda` by the night worker. The frozen baseline
 suite run of that revision passed: 395 passed, 1 xfailed (the #17 test) in

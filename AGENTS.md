@@ -55,7 +55,9 @@ gateware/build.sh m6_puck_proto
   ahead. Compared with `gateware/model/fb_ref.py` in `sim/test_fb.py`.
   A missing line with no line above it and no stored fallback line is
   written black (Y 16, Cb/Cr 128) without reading the SDRAM in BUF mode
-  (review 2026-10-06, F3). The LOW ring's startup gate remains open as #17.
+  (review 2026-10-06, F3). Core #17 is fixed: LOW video requires a live
+  genlock and a LOW trigger after joining the writer. Never initialized
+  ring slots show black; initialized slots retain their older data.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
   oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=30h
   (TV mode; the owner wants both modes compared on the bench before the
@@ -147,26 +149,36 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Core #17: in low-latency mode, frames with video are shown before the
-  output has locked after a BUF -> LOW switch (and after reset in LOW),
-  reading ring slots not written since the switch. Fixing it needs a rule
-  for when LOW may show video; `sim/test_fb.py::test_low_after_switch_shows_whole_fields`
-  is xfail until then.
-- Core #18: when the mixer starts a new output field out of step (the
-  current receiver goes quiet, the other takes over), nothing in the word
-  stream marks the start if the F bit is unchanged and the line number does
-  not go down; the field store then merges two output fields into one. The
-  fix needs a decision on what the mixer's F bit means;
-  `sim/test_mixer.py::test_new_output_field_is_seen_downstream` is a strict
-  xfail on Core main since `0e0bf49`. The overnight review narrows the
-  expected exception to the exact unmarked boundary after RTL/model agreement.
-- OVN-F1: LOW -> BUF between the last blanking line's gate sample and
-  the next active frame can retain video before a BUF field is published.
-  Seed 126's read-only replay disproves the earlier blank-frame assumption.
-  Keep strict read checksums and display-coverage thresholds; the bounded
-  follow-up is in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
-- Fresh M4/M6 verification, selected campaign changes and remaining branch
-  research are recorded in `docs/overnight/2026-10-07/STATUS.md`. Branch
+- Accepted Core main is `db0035f`: its frozen suite has 566 passes in 39
+  files, with no xfails. Puck main `5ff06be` pins that Core revision.
+  Current receipts and historical runs are separated in
+  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+- Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
+  mixer output F bit toggles at each admitted output field; it is not the
+  decoder's F bit. The existing takeover regression and LOW startup tests
+  are strict passing tests, not pending xfails.
+- A separate 2026-10-10 review candidate concerns an entirely omitted
+  single-bad-line field between visible fields. It may consume an F toggle
+  without emitting words, hiding the next boundary downstream. A real
+  BT.656 reproduction is pending; do not change the F-bit policy on static
+  review alone or treat this as a failure of the accepted takeover test.
+- OVN-F1's historical seed-126 window is fixed in the tested replay.
+  Accepted C3 also fixes the scaled fallback/read-start oracle and rejects
+  reads from never initialized LOW ring slots. Strict read checksums and
+  display-coverage thresholds remain. All LOW -> BUF phases and hardware
+  behaviour are still unverified; see the dated evidence in
+  [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
+- The new 260-seed campaign stopped after 200: 199 PASS, 1 FAIL (seed 1345,
+  72 checked lines against 144 required); 60 seeds did not run. Diagnose
+  that coverage finding before restarting; do not lower the threshold.
+  Seed 1249's old failure is preserved history, with a separately accepted
+  checker correction and byte-identical replay.
+- C2 TV/VCR controller/UI/log changes are a separate uncommitted draft on
+  `feat/tvvcr-menu`. Root review, native simulations, full suite and M4
+  seed 0/M6 seed 2 builds remain. Existing C3 M6 seed 3 evidence does not
+  satisfy C2's seed-2 requirement.
+- Build verification, campaign changes and remaining branch research are
+  recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest
   against the sources and artifacts before flashing.
 - I/O registers in the I/O cells (Core branch `exp/ioreg-in-iob`): built

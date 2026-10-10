@@ -56,3 +56,11 @@ Tvåfilspaketet är pushat på `fix/c3-bench-drain-trigger-oracle` som **`0dcff5
 Luna rättade tre luckor i den privata C3-köraren: checker-anteckningar kunde döljas bakom PASS, råfiler saknade verifierade kvitton vid återupptagning, och ett signalavbrott kunde lämna barnjobb efter att låset släppts. Root hittade dessutom ett fel i avbrottstestets väntan och en städningslucka vid loggfel. Den första testkörningens 36 PASS/1 FAIL är bevarad; efter rättning passerade 59 rena fil-/processkontroller på 3,85 s. Integrationstestet kör den verkliga adapterkoden mot en fejkad simulator och verifierar två frökvitton före resultatraderna. SIGINT/SIGTERM/SIGHUP, eskalering, låsordning och loggfel är provade med korta barnprocesser och ett tillfälligt lås.
 
 Detta verifierar köraren, inte störningskampanjen. Äldre kampanjer och hjälpfiler är oförändrade. 543-testgrinden på fryst `0dcff5d` pågår fortfarande; ny kampanj startas först efter accepterad Core-merge och Puck-kontroll.
+
+### Bänkpaket accepterat och ny kampanj, 2026-10-10
+
+Den frysta grinden på `0dcff5d` passerade **543 tester i 39 filer**, inga andra utfall, på **4 993,121 s (1:23:13)**. Alla 157 källhashar är oförändrade; 19 cocotb-rapporter är bundna till sina test och formalgrinden gav 7 bevis/14 verkliga motexempel. Kvittots SHA-256 är `81eb8e3813a5f0099e06e450257e274df77edd2fdd87a4f880b9a830e8493d7b`. M4:s 46 och M6:s 47 byggindata matchar de tidigare accepterade byggena; samtliga 24 arkiverade artefakter är oförändrade. Ingen ny routning påstås.
+
+Båda README är uppdaterade i `a3d44e0`; verifierat arbete är mergat med `--no-ff` och pushat till Core main **`606659f`**. Puck main **`f8d9de1`** pekar dit efter **1 pass på 1,53 s**, inklusive reset-, stift- och validatorfel som negativa kontroller. Den nya störningskampanjen startade 10:08:59 UTC på en ren, fryst kopia av slutlig main vars 157 indata matchar den testade källan. Den omfattar 260 frön i sex grupper, med nya råkvitton och oförändrade äldre resultat. [Kampanjstatus](evidence/C3_campaign_606659f.json). Kampanjen är pågående och ännu inte accepterad.
+
+C2:s läsbara förberedelse är klar: tvådekoder-trace behövs för pollordningen, och UART-formatet är fastlagt till 62 byte inklusive CRLF. C2-kod och dess nya M6 seed-2-grind återstår. Ingen FPGA-hårdvara är verifierad.

@@ -1,0 +1,20 @@
+{
+  "checker_sha256": "b4973845c06e685e1d5f124e582caa62b73a9cb8748ea7dcc7f5e135bb3a10be",
+  "expected_seeds": 260,
+  "groups": 6,
+  "hardware_verified": false,
+  "helper_controls": {
+    "passed": 59,
+    "scope": "Private receipt/cancellation controls; notcampaign acceptance"
+  },
+  "jobs": 10,
+  "manifest_sha256": "ec3462aa783baddaebdcddfb3671a97b3d2fbdca330cf0b7a7eed5ec798316ff",
+  "output": "/home/lenny/openvrx-review/evidence/c3/bench-accepted-2026-10-10/606659f24956befe2d25fc9ed676fadd1d302627",
+  "prior_attempt": "23rows17PASS6FAIL onedb85d0 preserved unchanged",
+  "revision": "606659f24956befe2d25fc9ed676fadd1d302627",
+  "session_id": 33561,
+  "source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-606659f",
+  "started_utc": "2026-10-10T10:08:59+00:00",
+  "state": "RUNNING_NOT_ACCEPTED",
+  "updated_utc": "2026-10-10T10:10:26.974885+00:00"
+}

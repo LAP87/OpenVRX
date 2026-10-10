@@ -40,9 +40,10 @@ Ordered from "most likely broken" to "probably fine".
    what it broke: run-on lines, field phase measured from reset, a mixer
    rule that froze the output when a receiver returned, and pairs decided on
    a channel with no line in the output field. Core #17/#18 were fixed on
-   2026-10-08. A separate static candidate from 2026-10-10 concerns a field
-   omitted entirely between two visible fields; native reproduction is
-   pending. Still unmeasured: the phase between two real decoders. (`mix_chan.v`, `line_mixer.v`)
+   2026-10-08. A separate regression from 2026-10-10 reproduces a field
+   omitted entirely between two visible fields with real blanking. Candidate
+   `6c12099` passes 167 focused tests; its full suite and fresh builds remain.
+   Still unmeasured: the phase between two real decoders. (`mix_chan.v`, `line_mixer.v`)
 3. **TVP5150AM1 bring-up.** Register values (00h, 04h, 0Dh, 28h, 02h, 03h)
    and status reads (88h/89h) come from the datasheet only. A poll round now
    counts only as a whole, and a slave holding SCL low times out after 10 ms;
@@ -103,13 +104,13 @@ Ordered from "most likely broken" to "probably fine".
   Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
   (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
 - Current Core main `db0035f` has an accepted frozen suite of 566 passes
-  across 39 test files, without xfails; Puck `5ff06be` pins it. This is
+  across 39 test files, without xfails; Puck `50a6515` pins it. This is
   simulation and source-bound build evidence, not hardware acceptance.
 - Core #17/#18's existing regressions pass under the owner's 2026-10-08
-  trigger and output-F decisions. A separate 2026-10-10 static candidate
+  trigger and output-F decisions. A separate 2026-10-10 reproduced case
   concerns an entirely omitted single-bad-line field consuming an F toggle
-  without emitted words. A native counterexample is being prepared before
-  any change to RTL or the reference model.
+  without emitted words. Candidate `6c12099` retains the pending visible
+  boundary; full-suite and build acceptance remain before integration.
 - OVN-F1's visible seed-126 phase gap did not recur on Fable's `e113cf6`.
   Accepted C3 fixed the remaining scaled fallback/read-start and virgin
   ring-read findings; its strict replay passes with 216 checked lines.
@@ -117,7 +118,8 @@ Ordered from "most likely broken" to "probably fine".
   in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
 - The latest 260-seed campaign stopped after 200 seeds: 199 PASS, 1 FAIL,
   and 60 not run. Seed 1345 has 72 checked lines against 144 required;
-  its cause is pending triage. This campaign is not accepted and no RTL
+  triage found only one complete eligible frame before source input ended.
+  A longer stimulus would be a new contract. This campaign is not accepted and no RTL
   or hardware failure is established by that coverage count alone.
 - C2 TV/VCR changes remain a separate uncommitted draft awaiting root
   review and native/full/build gates, including M6 seed 2 at 75 MHz.

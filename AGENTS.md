@@ -150,18 +150,20 @@ like AI output.
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
 - Accepted Core main is `db0035f`: its frozen suite has 566 passes in 39
-  files, with no xfails. Puck main `5ff06be` pins that Core revision.
+  files, with no xfails. Puck main `50a6515` pins that Core revision and
+  includes the M3/M4/M6 pin guard and corrected wiring prerequisites.
   Current receipts and historical runs are separated in
   [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 - Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
   mixer output F bit toggles at each admitted output field; it is not the
   decoder's F bit. The existing takeover regression and LOW startup tests
   are strict passing tests, not pending xfails.
-- A separate 2026-10-10 review candidate concerns an entirely omitted
-  single-bad-line field between visible fields. It may consume an F toggle
-  without emitting words, hiding the next boundary downstream. A real
-  BT.656 reproduction is pending; do not change the F-bit policy on static
-  review alone or treat this as a failure of the accepted takeover test.
+- A separate 2026-10-10 regression reproduces an entirely omitted
+  single-bad-line field between visible fields, with real BT.656 blanking.
+  The accepted RTL/model agree but consume the boundary without emitted
+  words. Candidate `6c12099` keeps it pending until a line is emitted;
+  167 focused tests pass, including an actual old-RTL negative control.
+  Its frozen full suite and fresh M4/M6 builds remain; it is not main.
 - OVN-F1's historical seed-126 window is fixed in the tested replay.
   Accepted C3 also fixes the scaled fallback/read-start oracle and rejects
   reads from never initialized LOW ring slots. Strict read checksums and
@@ -169,8 +171,10 @@ like AI output.
   behaviour are still unverified; see the dated evidence in
   [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
 - The new 260-seed campaign stopped after 200: 199 PASS, 1 FAIL (seed 1345,
-  72 checked lines against 144 required); 60 seeds did not run. Diagnose
-  that coverage finding before restarting; do not lower the threshold.
+  72 checked lines against 144 required); 60 seeds did not run. Triage
+  found only one complete eligible output frame before the last source
+  byte. Any longer stimulus needs a new source contract and evidence
+  directory; keep the failed campaign and the 144-line threshold.
   Seed 1249's old failure is preserved history, with a separately accepted
   checker correction and byte-identical replay.
 - C2 TV/VCR controller/UI/log changes are a separate uncommitted draft on

@@ -1,0 +1,107 @@
+{
+  "reviewed_utc": "2026-10-11T22:46:55.935092+00:00",
+  "owner": "root",
+  "state": "PASS_ROOT_REVIEWED",
+  "revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
+  "suite_acceptance_sha256": "c783407e79a31e9a09f3bc82f76debff1160aebee80091c25368d261d1c09bfc",
+  "build_gate_sha256": "e58d75b2bf520f22438e0775ed230bdb1e94b2e00c98498033c4c12176aabef5",
+  "build_summary_sha256": "5b8f7d299009459502fda6d0a3d23fb6afc9d00efef462ee5298fa169f19b7bc",
+  "archived_files_verified": 24,
+  "source_inputs": 157,
+  "raw_timing_reparsed": true,
+  "builds": {
+    "m0_testpattern": {
+      "seed": "0",
+      "manifest_sha256": "23063bf9ae841a126293ed9123a5edfff95a4632fc3e0edf7a89fd64a6d73e78",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 149.37,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 359.84,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "input_count": 45
+    },
+    "m4_dual_mix": {
+      "seed": "0",
+      "manifest_sha256": "f839035d920ab3fb8089c72d3b3514492f123ce374e7f2838754cf01831db7b9",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 115.75,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 215.7,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 149.54,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 161.55,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 101.69,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "input_count": 46
+    },
+    "m6_puck_proto": {
+      "seed": "2",
+      "manifest_sha256": "d2b55005f80878b99555abe1220d51a76d10b46f66945f08f77433d1a24b667e",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 120.88,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 128.3,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 150.22,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 131.08,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 104.85,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "input_count": 47
+    }
+  },
+  "tmds_tiles": 4,
+  "tmds_same_comparisons": 8,
+  "step_log_hashes": {
+    "m0_testpattern.build.log": "defb9ec57448905244ae2c1fe4645189bd6fcc73a606b860e1ac85007bba54f9",
+    "m0_testpattern.verify.log": "03198121b3a14f9df8d7307ae893fcb5792b6242187a0948ff4bd764f7df734b",
+    "m4_dual_mix.build.log": "d624bbcb68b6d81e6cf312d3f9c9f991645a324a2d9c2636225181eaa06b2993",
+    "m4_dual_mix.verify.log": "ad459ce90e407cbed71ffe881255d7f7480c71df2a6d1b1faf24a853450be980",
+    "m6_puck_proto.build.log": "1c0536737174e4ea331027ce953328ac1946b50773e3dda379aa67753f222d75",
+    "m6_puck_proto.verify.log": "f6ad92993729875f3595c865772ac88ad74876fb1e05cbf10337aad271d649f7",
+    "tmds-fuses.log": "fe467a248cbbcd482bb03b2827830787ca5ae13647ff70fe181c9ad397ec5f9b"
+  },
+  "hardware_verified": false
+}

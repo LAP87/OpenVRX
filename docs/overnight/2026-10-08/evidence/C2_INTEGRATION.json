@@ -1,0 +1,35 @@
+{
+  "state": "PASS_ROOT_REVIEWED_MERGED_PUSHED",
+  "reviewed_utc": "2026-10-11T22:48:57.266076+00:00",
+  "core": {
+    "reviewed_utc": "2026-10-11T22:48:18.015706+00:00",
+    "owner": "root",
+    "state": "PASS_DOCS_ONLY_AFTER_NATIVE_ACCEPTANCE",
+    "verified_source_revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
+    "suite_root_review_sha256": "6d69bd389ef79902a4dacc05449a7845f43c462ae4dfabd064778bf028cc6ca2",
+    "build_root_review_sha256": "095839414b98730eaf064027655dcfaae1f878c736e11559c71d892ccfd7beae",
+    "docs": {
+      "README.md": "13dfcf3d5d2f8c77fddce6d9a436e65ba7942994647ca8196052165f44111438",
+      "gateware/README.md": "d0897de20edd1c00c8ec8ae16143b8d59529ab04185898c157f6099f81b2575c"
+    },
+    "source_inputs_after_docs_unchanged": 157,
+    "hardware_verified": false,
+    "branch_tip": "509fc95f5ec3fc76c8a60590d8b28fd6e9d2a7bd",
+    "core_main": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+    "core_pushed": true
+  },
+  "puck_main": "f2e7d53fdab42172152550820053f78aa9d24dfe",
+  "puck_branch_tip": "38af2da76d5603152049d20362435a083ec45671",
+  "puck_core_link": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "tests": {
+    "passed": 2,
+    "seconds": 2.08,
+    "xml_case_names": [
+      "test_schema_gateware_contract_and_negative_controls",
+      "test_all_supported_tops_check_decoder_and_board_pin_maps"
+    ],
+    "log_sha256": "4e0446adbed367a0a2f33409059a375752e95704317f07bba9ff6deada783cf4",
+    "xml_sha256": "c5cb19718d0318321c80b8626d883244ae632b6325ac0ff3fda6f376b94b6727"
+  },
+  "hardware_verified": false
+}

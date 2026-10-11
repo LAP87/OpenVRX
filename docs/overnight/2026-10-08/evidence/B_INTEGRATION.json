@@ -1,0 +1,12 @@
+{
+  "core_branch_tip": "97c57f3",
+  "core_main": "2f8f01182475eb3a4243ca359f5665a1a15e3894",
+  "hardware_verified": false,
+  "puck_branch_tip": "57517b0",
+  "puck_main": "bb6371bef393cfc593164eb84d5655ab02470240",
+  "puck_test_log_sha256": "62abdf0d57d6f0ab2c46d9343d7a93fb2c04b4f4e7172710c218150663775672",
+  "puck_test_passed": 2,
+  "puck_test_seconds": 2.06,
+  "recorded_utc": "2026-10-11T14:10:13.897747+00:00",
+  "state": "PASS_MERGED_PUSHED"
+}

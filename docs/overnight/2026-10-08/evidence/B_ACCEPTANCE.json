@@ -1,0 +1,90 @@
+{
+  "archived_files_verified": 24,
+  "build_driver_sha256": "09860ea75b47821e95f07698e79eba2ced77b1325806450e609a3a07d3521d52",
+  "build_summary_sha256": "71b9530a09f51e0d38a81597e515e1e608f57c79fde472477ca222f7ea1e8fa0",
+  "builds": {
+    "m0_testpattern": {
+      "manifest_sha256": "fa3b54c95cc3fe9448f0387d7cd734074a0bdbf1a04a57b8abf98f9a83c48ca1",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 147.56,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 325.63,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    },
+    "m4_dual_mix": {
+      "manifest_sha256": "fe33bddd07834312f871900e7d0c6c5ed0b4bc09b47e1940a63a6f22aa145b95",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 103.84,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 224.57,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 134.44,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 150.4,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 113.08,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    },
+    "m6_puck_proto": {
+      "manifest_sha256": "7a2317922e96c3039d3ca51d1c6b1856b6dea184b20215ae4b6554358967eea0",
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 124.66,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 125.47,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 154.32,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 113.78,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 106.1,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      }
+    }
+  },
+  "hardware_verified": false,
+  "reviewed_utc": "2026-10-11T14:06:23.083011+00:00",
+  "revision": "6c12099245d5fc848cb724cedb531616f4f42177",
+  "source_contract_sha256": "4053070b0af65ca278599d2b2ccb2245debe78e26edf4b1595f0e5238bc2cbd4",
+  "source_inputs": 157,
+  "state": "PASS_ROOT_REVIEWED_BEFORE_INTEGRATION",
+  "suite_receipt_sha256": "abe0f7de09f0500f3edecdc70a3ad2571e76463bf531a67c3390a788bf890692",
+  "tmds_four_tiles_eight_comparisons": "same"
+}

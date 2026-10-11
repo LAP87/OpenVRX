@@ -149,21 +149,22 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Accepted Core main is `db0035f`: its frozen suite has 566 passes in 39
-  files, with no xfails. Puck main `50a6515` pins that Core revision and
-  includes the M3/M4/M6 pin guard and corrected wiring prerequisites.
-  Current receipts and historical runs are separated in
-  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+- Accepted Core main is `2f8f011` (B branch `97c57f3`, verified source
+  `6c12099`): its frozen suite has 570 passes in 39 files, with 157 source
+  hashes unchanged. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 builds pass the
+  75 MHz requirement; all four TMDS pairs match. Puck main `bb6371b` points
+  to Core `2f8f011`; its two pin-contract tests pass. These are simulation
+  and source-bound build results, not hardware acceptance. Receipts and
+  historical runs are separated in [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 - Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
-  mixer output F bit toggles at each admitted output field; it is not the
-  decoder's F bit. The existing takeover regression and LOW startup tests
+  mixer output F bit changes when the next visible output field consumes
+  a pending boundary; it is not the decoder's F bit. The existing takeover
+  regression and LOW startup tests
   are strict passing tests, not pending xfails.
-- A separate 2026-10-10 regression reproduces an entirely omitted
-  single-bad-line field between visible fields, with real BT.656 blanking.
-  The accepted RTL/model agree but consume the boundary without emitted
-  words. Candidate `6c12099` keeps it pending until a line is emitted;
-  167 focused tests pass, including an actual old-RTL negative control.
-  Its frozen full suite and fresh M4/M6 builds remain; it is not main.
+- The accepted visible-field boundary fix keeps the output-F transition
+  pending across a field that emits no line and applies it at the next
+  visible output field. An empty or omitted field does not consume its own
+  toggle. The decoder's F bit remains separate; this is not hardware evidence.
 - OVN-F1's historical seed-126 window is fixed in the tested replay.
   Accepted C3 also fixes the scaled fallback/read-start oracle and rejects
   reads from never initialized LOW ring slots. Strict read checksums and
@@ -177,10 +178,12 @@ like AI output.
   directory; keep the failed campaign and the 144-line threshold.
   Seed 1249's old failure is preserved history, with a separately accepted
   checker correction and byte-identical replay.
-- C2 TV/VCR controller/UI/log changes are a separate uncommitted draft on
-  `feat/tvvcr-menu`. Root review, native simulations, full suite and M4
-  seed 0/M6 seed 2 builds remain. Existing C3 M6 seed 3 evidence does not
-  satisfy C2's seed-2 requirement.
+- C2 TV/VCR changes now start from accepted Core `2f8f011`; its original
+  eleven-file draft was preserved before exactly three reviewed overlays.
+  Its first focused native run finished with 53 passes and three failures
+  in NACK-retry stimulus and the poll-preemption negative's completion.
+  Source hashes are unchanged. Repair and recheck the stimulus before
+  full-suite/build gates; C2 has no native acceptance yet.
 - Build verification, campaign changes and remaining branch research are
   recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest

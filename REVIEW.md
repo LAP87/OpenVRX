@@ -40,9 +40,9 @@ Ordered from "most likely broken" to "probably fine".
    what it broke: run-on lines, field phase measured from reset, a mixer
    rule that froze the output when a receiver returned, and pairs decided on
    a channel with no line in the output field. Core #17/#18 were fixed on
-   2026-10-08. A separate regression from 2026-10-10 reproduces a field
-   omitted entirely between two visible fields with real blanking. Candidate
-   `6c12099` passes 167 focused tests; its full suite and fresh builds remain.
+   2026-10-08. The accepted visible-boundary fix keeps the output-F
+   transition pending across a field that emits no line, then applies it at
+   the next visible output field; omitted fields do not each consume a toggle.
    Still unmeasured: the phase between two real decoders. (`mix_chan.v`, `line_mixer.v`)
 3. **TVP5150AM1 bring-up.** Register values (00h, 04h, 0Dh, 28h, 02h, 03h)
    and status reads (88h/89h) come from the datasheet only. A poll round now
@@ -103,14 +103,18 @@ Ordered from "most likely broken" to "probably fine".
   rounds and the SCL-stretch timeout are tested against slave models.
   Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
   (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
-- Current Core main `db0035f` has an accepted frozen suite of 566 passes
-  across 39 test files, without xfails; Puck `50a6515` pins it. This is
-  simulation and source-bound build evidence, not hardware acceptance.
+- Current Core main `2f8f011` (branch `97c57f3`, verified source `6c12099`)
+  has an accepted frozen suite of 570 passes across 39 test files and 157
+  unchanged source hashes. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 builds
+  pass 75 MHz on every clock; all four TMDS pairs match. Puck main `bb6371b`
+  pins it, with two pin-contract tests passed. This is simulation and
+  source-bound build evidence, not hardware acceptance; the older 566-pass
+  result on `db0035f` is historical.
 - Core #17/#18's existing regressions pass under the owner's 2026-10-08
-  trigger and output-F decisions. A separate 2026-10-10 reproduced case
-  concerns an entirely omitted single-bad-line field consuming an F toggle
-  without emitted words. Candidate `6c12099` retains the pending visible
-  boundary; full-suite and build acceptance remain before integration.
+  trigger and output-F decisions. The accepted F-boundary behavior retains
+  one pending output-F transition through fields with no emitted line and
+  applies it at the next visible output field; it does not toggle once for
+  every admitted or omitted field. The decoder F-bit remains distinct.
 - OVN-F1's visible seed-126 phase gap did not recur on Fable's `e113cf6`.
   Accepted C3 fixed the remaining scaled fallback/read-start and virgin
   ring-read findings; its strict replay passes with 216 checked lines.
@@ -121,8 +125,10 @@ Ordered from "most likely broken" to "probably fine".
   triage found only one complete eligible frame before source input ended.
   A longer stimulus would be a new contract. This campaign is not accepted and no RTL
   or hardware failure is established by that coverage count alone.
-- C2 TV/VCR changes remain a separate uncommitted draft awaiting root
-  review and native/full/build gates, including M6 seed 2 at 75 MHz.
+- C2 TV/VCR work is based on accepted Core `2f8f011`. Its original eleven
+  draft files were preserved before three reviewed overlays; root's focused
+  native run finished with 53 passes and three test-stimulus failures;
+  source hashes are unchanged. C2 has no native acceptance yet.
   Current receipts, preserved older failures and build provenance are in
   [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 

@@ -1,0 +1,51 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NEW_SCENARIO_ONLY",
+  "reviewed_utc": "2026-10-11T23:27:57.119949+00:00",
+  "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "contract_sha256": "52c4f0f2b5bb95844d8ee16a3879032d34648e1b7add84a775c82bb71eeaa9a7",
+  "result_sha256": "a8c47b4adc44f2bc9a0952004437c065d2557e27f0a053bb3543073863cb7d1d",
+  "review_helper_sha256": "c9afcbcaa517333589d5192dffb353140d7c7f9f80bf47d5c98be123fe3e12c5",
+  "baseline_review_sha256": "fa894502bedf7ddacf46be13707ddd5bcb580aead644717bbd8616cf840a8274",
+  "source_inputs_checked": 157,
+  "raw_files_checked": 12,
+  "checked_lines": 360,
+  "minimum": 144,
+  "old_end_same_trace_checked_lines": 72,
+  "suffix_fields": 4,
+  "actual_input_streams_match_contract": true,
+  "controls_and_switch_windows_unchanged": true,
+  "actual_frame_negatives": [
+    {
+      "fault": "displayed_word",
+      "frame_pc": 1364592,
+      "groups": [
+        "display/word"
+      ],
+      "checked": 288,
+      "first": {
+        "block": "display",
+        "kind": "word",
+        "t": 18285533,
+        "detail": "output line 0: shows 3215244933, line read had 3215244932"
+      }
+    },
+    {
+      "fault": "source_mapping",
+      "frame_pc": 1364592,
+      "groups": [
+        "display/map",
+        "display/not_read"
+      ],
+      "checked": 288,
+      "first": {
+        "block": "display",
+        "kind": "map",
+        "t": 18285533,
+        "detail": "output line 0: source line 999, model 0 (23 lines, low 0)"
+      }
+    }
+  ],
+  "seconds": 220.521,
+  "old_campaign_acceptance": false,
+  "hardware_verified": false
+}

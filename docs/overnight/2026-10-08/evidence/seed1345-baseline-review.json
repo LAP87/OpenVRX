@@ -1,0 +1,122 @@
+{
+  "state": "BASELINE_COVERAGE_FAIL_REPRODUCED_ROOT_REVIEWED",
+  "reviewed_utc": "2026-10-11T23:07:56.252551+00:00",
+  "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "adapter_exit_code": 0,
+  "adapter_exit_meaning": "All requested seeds finished; exit0 does not mean checker acceptance",
+  "simulator_exit_code": 0,
+  "seed_result": "fail",
+  "groups": [
+    "bench/few_lines"
+  ],
+  "checked": 72,
+  "minimum": 144,
+  "old_vs_new_raw_hashes_equal": {
+    "a.hex": true,
+    "b.hex": true,
+    "ctl.hex": true,
+    "mix.txt": true,
+    "pix.txt": true,
+    "sd.txt": true,
+    "sim.vvp": false,
+    "sim_process.json": true,
+    "sim_stderr.txt": true,
+    "sim_stdout.txt": false
+  },
+  "raw_receipt_sha256": "d6415b2c894436c4432694cc5b8da1ad624854aea557951a44b5d90bb6463baf",
+  "source_end_pixel_clock": 1286411.9402985075,
+  "switch_windows": [
+    [
+      354855,
+      735942
+    ],
+    [
+      836232,
+      1221042
+    ]
+  ],
+  "complete_frame_ledger": [
+    {
+      "pc": 42,
+      "video": 0,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": false
+    },
+    {
+      "pc": 143592,
+      "video": 0,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": false
+    },
+    {
+      "pc": 287142,
+      "video": 0,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": false
+    },
+    {
+      "pc": 430692,
+      "video": 1,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": true
+    },
+    {
+      "pc": 580842,
+      "video": 1,
+      "ll": 1,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": true
+    },
+    {
+      "pc": 735942,
+      "video": 0,
+      "ll": 1,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": false
+    },
+    {
+      "pc": 933942,
+      "video": 1,
+      "ll": 1,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": true
+    },
+    {
+      "pc": 1077492,
+      "video": 0,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": true
+    },
+    {
+      "pc": 1221042,
+      "video": 1,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": false,
+      "switch_excluded": false
+    },
+    {
+      "pc": 1364592,
+      "video": 1,
+      "ll": 0,
+      "alt": 0,
+      "starts_after_source_end": true,
+      "switch_excluded": false
+    }
+  ],
+  "source_inputs_unchanged": 157,
+  "hardware_verified": false
+}

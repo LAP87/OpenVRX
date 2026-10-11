@@ -124,6 +124,11 @@ Ordered from "most likely broken" to "probably fine".
   triage found only one complete eligible frame before source input ended.
   A longer stimulus would be a new contract. This campaign is not accepted and no RTL
   or hardware failure is established by that coverage count alone.
+- A separate seed1345 probe appends four clean fields to the byte-identical
+  original stimulus. It passes 360 lines; using the old source end on that same
+  trace counts 72. Wrong data/source mappings in the first added frame fail.
+  This is one new scenario, not acceptance of the failed campaign or a
+  general suffix for PAL/full geometry/all classes. See current STATUS evidence.
 - C2's menu and two-decoder reconciliation are integrated after the full
   suite and fresh builds. In-flight values and SDA selection are frozen;
   NACK retries retain paired-poll fairness. The 62-byte UART row records

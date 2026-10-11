@@ -1,0 +1,45 @@
+{
+  "state": "PASS_PURE_FIXTURES_AND_ROOT_STATIC_REVIEW_NATIVE_PENDING",
+  "reviewed_utc": "2026-10-11T23:11:58.210320+00:00",
+  "helpers_sha256": {
+    "suffix_fixture.py": "a3a5675a3fce97631056b11739121e0cba0a0c8c8a4317a41238ffaf2d41386b",
+    "run_extended.py": "46f5d24332fb586962db0dc6678fe0a821f20ec14f79ccf6983897ed1ea56278"
+  },
+  "fixture_sha256": "384a039059e20735f0f69527dc9fab28b7fcb018287f39901a6531efca63d6ab",
+  "contract_sha256": "52c4f0f2b5bb95844d8ee16a3879032d34648e1b7add84a775c82bb71eeaa9a7",
+  "cases": [
+    "original A/B bytes retained",
+    "original CTL bytes retained",
+    "both suffixes decode as four clean 24-line fields",
+    "after-source frame excluded",
+    "before-source frame eligible",
+    "corrupt displayed word rejected",
+    "corrupt write index rejected",
+    "active-area switch remains excluded"
+  ],
+  "suffix": {
+    "padding_bytes": {
+      "0": 1716,
+      "1": 1792
+    },
+    "suffix_start_ns": {
+      "0": 17300912.0,
+      "1": 17300924.64116053
+    },
+    "suffix_fields": 4,
+    "vbi": 6,
+    "active_lines": 24,
+    "source_end_ns": 24922480.64116053
+  },
+  "first_additional_fixture_failure": "Kept SUFFIX_FIXTURE_FINAL.log: Receiver.field is constant decoder F=1, not ordinal camera-field counter. Corrected fixture assertion; production F rules unchanged.",
+  "root_checks": [
+    "Exact original A/B/CTL bytes and input timings retained",
+    "Suffix alignment within74ns,both model receivers see96valid active lines and4VBI line restarts",
+    "Every native source/model/checker input retains accepted hash",
+    "Pipeline copies existing run_seed check ordering without modifying any oracle",
+    "Minimum144 and strict no findings/known/edge/notes for acceptance",
+    "Complete compiler and vvp diagnostics captured transparently, exit failure preserved",
+    "Private suffix is a new scenario, not resumption or acceptance of old campaign"
+  ],
+  "hardware_verified": false
+}

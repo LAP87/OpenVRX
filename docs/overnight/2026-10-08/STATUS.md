@@ -128,3 +128,19 @@ Ett nytt separat scenario behåller alla tio ursprungliga störda kamerafält oc
 Det nya provet passerade med **360 kontrollerade rader på 220,521 s**, utan fynd, known, edge eller notes. Root återläste råspåren och kontrollerade 157 källhashar, 12 råfiler och helperhashar. Samma nya råspår men den gamla källsluttiden ger 72 rader. Ett fel bildord respektive fel källrad i den första nytillkomna bilden vid pixelklocka 1364592 avvisas av `display/word` respektive `display/map`; vardera sänker den godkända täckningen till 288. Åtta rena förkontroller verifierar också suffixens BT.656-geometri och att en bild efter källslut fortfarande räknas bort. [Rootacceptans](evidence/seed1345-extended-acceptance.json) · [Förkontroller och granskning](evidence/seed1345-suffix-review.json).
 
 Detta accepterar bara det nya seed1345-scenariot. Den gamla kampanjen står kvar på 199 PASS / 1 FAIL / 60 ej körda. Fyra rena slutfält är ännu inte ett generellt kontrakt för PAL, full geometri eller alla störningsklasser; ingen 260-frökampanj har startats och ingen hårdvara är mätt.
+
+
+### Fler genererade fält ändrar originalkontraktet, 2026-10-12
+
+En modellkontroll jämförde ursprungligt fältantal med fyra extra genererade fält för en representant från var och en av kampanjens sex parametergrupper. Minst ett ursprungligt byteprefix ändrades i samtliga sex fall. Styrbytenas tider ändrades i fyra fall; byteklockor och starttider behölls i alla sex. Baslinje 1345 matchar de tidigare sparade native-indata. Körningen tog 18,96 s och alla 157 källhashar var oförändrade. [Rootgranskat mätkvitto](evidence/field-growth-audit.json).
+
+| Grupp | Frö | A-prefix kvar | B-prefix kvar | CTL-bytes/tider kvar |
+|---|---:|---|---|---|
+| scaled-d1 | 1200 | Ja | Nej | Ja |
+| scaled-d2p5 | 1345 | Nej | Nej | Nej |
+| scaled-bedge-d1 | 1400 | Ja | Nej | Ja |
+| scaled-bedge-d2p5 | 1425 | Nej | Nej | Nej |
+| full-d1 | 1500 | Nej | Nej | Nej |
+| full-d2p5 | 1505 | Nej | Nej | Nej |
+
+Att bara höja `n_fields` är därför inte ett prefixbevarande kontrakt för dessa prov. Nästa generella tillägg ska behålla redan genererade kamerabytes och styrtider och bygga en separat fortsättning. Detta var sex modellfall, ingen native-simulering eller acceptans av hela 260-frökampanjen.

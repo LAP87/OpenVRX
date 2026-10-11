@@ -1,0 +1,12 @@
+{
+  "state": "FAIL_THREE_NATIVE_TESTS_SOURCE_UNCHANGED",
+  "source_hashes_unchanged": true,
+  "source_inputs": 157,
+  "contract_sha256": "debeac249b61c6de9f7dfed3106bdfd199a248e177406c875684347e36c3afa0",
+  "original_runner_state_preserved": true,
+  "runner_defect": "Compared captured_at timestamps instead of source contract only",
+  "native_passed": 53,
+  "native_failed": 3,
+  "raw_summary_sha256": "e226bd01160e865ca73edd02b9d80b3d66c9e6cdeb5e423a2d34f45eed09f7f4",
+  "hardware_verified": false
+}

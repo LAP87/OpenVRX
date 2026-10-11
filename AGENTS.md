@@ -180,10 +180,11 @@ like AI output.
   checker correction and byte-identical replay.
 - C2 TV/VCR changes now start from accepted Core `2f8f011`; its original
   eleven-file draft was preserved before exactly three reviewed overlays.
-  Its first focused native run finished with 53 passes and three failures
-  in NACK-retry stimulus and the poll-preemption negative's completion.
-  Source hashes are unchanged. Repair and recheck the stimulus before
-  full-suite/build gates; C2 has no native acceptance yet.
+  The repaired focused native gate passes 56 tests and two subtests, with
+  source hashes unchanged. Nine isolated old-guard cases fail for the
+  expected semantic reasons. Local C2 source `c3fda21` is frozen for 604
+  tests in 39 files, including all 570 prior nodes. Its full suite and
+  fresh M4 seed 0/M6 seed 2 builds have not started; it is not main.
 - Build verification, campaign changes and remaining branch research are
   recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest

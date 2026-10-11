@@ -1,0 +1,40 @@
+{
+  "state": "PASS_ROOT_REVIEWED_FOCUSED_ONLY",
+  "passed": 56,
+  "subtests_passed": 2,
+  "seconds": 254.88,
+  "source_contract_sha256": "d4ae767700b2584e1f4d2764721aa72841bfc9bd49bcfcdc1f91ceb81bfb5722",
+  "source_hashes_unchanged": true,
+  "focused_summary_sha256": "f6abd9be95467c48394dcbd013373172027461bf529ce6e744f64e2fec937518",
+  "focused_xml_sha256": "e746dabbeae848aac80e76cd4dcdf4702c25f3888b3c7f27f738a8559b0ce2a0",
+  "negative_summary_sha256": "93f9c64889b6b1b6b3cc12335b9808e18c838ccf31fb1b1bdcf8033cd597e248",
+  "actual_old_guards_rejected": [
+    {
+      "name": "old-bus-filter",
+      "cases": 8,
+      "diagnostic": "malformed BUS text reached physical pin decoder"
+    },
+    {
+      "name": "old-parser-gap",
+      "cases": 1,
+      "diagnostic": "assert all(snowlog.parse(row) is None for row in damaged)"
+    }
+  ],
+  "reviewed_files": {
+    "gateware/rtl/puck_ui.v": "4e4ae1b8b89044da7661b6d8e63b666e5367916fb53247dba978dc83269aa02a",
+    "gateware/rtl/tvp_ctrl.v": "f06981991965c7f859291ec9a55900fc654dd21b0a05fe26bb1e8f69fd854491",
+    "gateware/sim/tb_puck_ui.v": "4b1a5024c4e6f4de61391013aa952a8386c99d71b1c04b572d30541f0b3edc9f",
+    "gateware/sim/tb_tvp_ctrl.v": "6a8d3037a05060849d3627d0f5633a59d774a766c798e2586f25bcf21f2db259",
+    "gateware/sim/test_puck_ui.py": "c4606f9f3892f6f911c0a6acc8a9373f5f13aef14b5dae3f77317d700a06f8f0",
+    "gateware/sim/test_tvp_ctrl.py": "50103ff70e108ee7c9ec8a8b86571e323d0ad0644d5d9b6b81a583e46f5c9158",
+    "gateware/tools/snowlog.py": "ae32d42bac302f90e285e0ef76737ce4ab11c0c431b469b0ee3dcae86c532243",
+    "gateware/tools/test_snowlog.py": "cc7345ce0d9ea58a88ea218835e6f6045546642c071b35f18e3e0d86cb7587af",
+    "gateware/top/m3_probe.v": "be366d40b77a4a34b31ed0ce956c41a7bac9fd6790b1cca33daa72b99a207863",
+    "gateware/top/m4_dual_mix.v": "03197e9846b2d7391add85c8c487e19bb07ecf8233f0a7c2e37daada4d4cf518",
+    "gateware/top/m6_puck_proto.v": "35d4ef3a5a24dd7da8a3fffedd6971a972765b70c0944fbb55ebbd74293d549d"
+  },
+  "hardware_verified": false,
+  "full_suite_accepted": false,
+  "build_accepted": false,
+  "reviewed_utc": "2026-10-11T19:34:39.318556+00:00"
+}

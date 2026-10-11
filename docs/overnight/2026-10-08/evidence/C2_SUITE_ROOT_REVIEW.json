@@ -1,0 +1,20 @@
+{
+  "reviewed_utc": "2026-10-11T22:26:38.932011+00:00",
+  "owner": "root",
+  "state": "PASS_SUITE_ROOT_REVIEWED_BUILDS_PENDING",
+  "revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
+  "suite_receipt_sha256": "c783407e79a31e9a09f3bc82f76debff1160aebee80091c25368d261d1c09bfc",
+  "raw_summary_sha256": "236867d6755d95ff2da57266fc452e320a110e25d9349725ce68b5c25be6f21d",
+  "raw_runner_exit": 0,
+  "passed": 604,
+  "test_files": 39,
+  "seconds": 5411.439,
+  "source_inputs": 157,
+  "source_inputs_checked_both_candidate_and_frozen": true,
+  "cocotb_xml_reports": 19,
+  "positive_proofs": 7,
+  "actual_negative_counterexamples": 14,
+  "exact_prior570_nodes_retained": true,
+  "strict_receipt_revalidated_equal": true,
+  "hardware_verified": false
+}

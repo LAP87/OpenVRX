@@ -1,0 +1,17 @@
+{
+  "reviewed_utc": "2026-10-11T22:48:18.015706+00:00",
+  "owner": "root",
+  "state": "PASS_DOCS_ONLY_AFTER_NATIVE_ACCEPTANCE",
+  "verified_source_revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
+  "suite_root_review_sha256": "6d69bd389ef79902a4dacc05449a7845f43c462ae4dfabd064778bf028cc6ca2",
+  "build_root_review_sha256": "095839414b98730eaf064027655dcfaae1f878c736e11559c71d892ccfd7beae",
+  "docs": {
+    "README.md": "13dfcf3d5d2f8c77fddce6d9a436e65ba7942994647ca8196052165f44111438",
+    "gateware/README.md": "d0897de20edd1c00c8ec8ae16143b8d59529ab04185898c157f6099f81b2575c"
+  },
+  "source_inputs_after_docs_unchanged": 157,
+  "hardware_verified": false,
+  "branch_tip": "509fc95f5ec3fc76c8a60590d8b28fd6e9d2a7bd",
+  "core_main": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "core_pushed": true
+}

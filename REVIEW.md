@@ -103,13 +103,12 @@ Ordered from "most likely broken" to "probably fine".
   rounds and the SCL-stretch timeout are tested against slave models.
   Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
   (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
-- Current Core main `2f8f011` (branch `97c57f3`, verified source `6c12099`)
-  has an accepted frozen suite of 570 passes across 39 test files and 157
-  unchanged source hashes. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 builds
-  pass 75 MHz on every clock; all four TMDS pairs match. Puck main `bb6371b`
-  pins it, with two pin-contract tests passed. This is simulation and
-  source-bound build evidence, not hardware acceptance; the older 566-pass
-  result on `db0035f` is historical.
+- Current Core main `a1247ab` (C2 branch `509fc95`, verified source `c3fda21`)
+  has an accepted frozen suite of 604 passes in 39 files and 157 unchanged
+  source hashes. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 pass 75 MHz on all
+  clocks; four TMDS pairs match M0. Puck main `f2e7d53` pins it, with two
+  pin-contract tests passed. This is simulation and source-bound build
+  evidence; older B/C3 results remain historical.
 - Core #17/#18's existing regressions pass under the owner's 2026-10-08
   trigger and output-F decisions. The accepted F-boundary behavior retains
   one pending output-F transition through fields with no emitted line and
@@ -125,14 +124,13 @@ Ordered from "most likely broken" to "probably fine".
   triage found only one complete eligible frame before source input ended.
   A longer stimulus would be a new contract. This campaign is not accepted and no RTL
   or hardware failure is established by that coverage count alone.
-- C2 TV/VCR work is based on accepted Core `2f8f011`. Its original eleven
-  draft files were preserved before reviewed guard/stimulus changes. Root
-  accepted 56 focused tests and two subtests, with unchanged source hashes;
-  nine old-guard cases fail for their expected semantic reasons. Local
-  `c3fda21` is frozen for 604 tests across 39 files. Its full-suite and
-  fresh M4 seed 0/M6 seed 2 gates remain; C2 is not main.
-  Current receipts, preserved older failures and build provenance are in
-  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+- C2's menu and two-decoder reconciliation are integrated after the full
+  suite and fresh builds. In-flight values and SDA selection are frozen;
+  NACK retries retain paired-poll fairness. The 62-byte UART row records
+  requested TV/VCR, not a register readback. Real filter quality remains
+  unmeasured. The original draft, first focused failures and nine old-guard
+  negative controls are preserved; see
+  [STATUS.md](docs/overnight/2026-10-08/STATUS.md) for receipts and history.
 
 ## Historical local corrections, 2026-10-05
 

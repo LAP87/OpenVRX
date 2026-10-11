@@ -60,8 +60,8 @@ gateware/build.sh m6_puck_proto
   ring slots show black; initialized slots retain their older data.
 - TVP5150AM1: XTAL1 absolute max 2.3 V (one crystal per decoder or a 1.8 V
   oscillator); init 00h=00, 04h=FCh, 0Dh=47h, 28h=00 (autoswitch), 02h=30h
-  (TV mode; the owner wants both modes compared on the bench before the
-  choice is fixed, possibly as a menu setting), then 03h=0Dh last (03h is read back at every poll and the list
+  (TV default; M6 can request 20h/VCR for both decoders through the menu;
+  compare both on the bench before fixing a choice), then 03h=0Dh last (03h is read back at every poll and the list
   is written again if it is wrong); status 88h/89h, 88h bit 4 (lost lock,
   cleared by the read) in the M6 log; I2C address by YOUT7 strap; both decoders share an address, so
   each has its own SDA. A poll round (88h, 89h, 03h) counts only as a
@@ -77,7 +77,7 @@ gateware/build.sh m6_puck_proto
   noise from picture content needs measurement on a real signal. The mixer
   does not use the noise count. The
   line also ends with a lost-lock flag per decoder. `tools/snowlog.py`
-  reads the current line and the two older formats.
+  reads the 62-byte line with a T/V token and the legacy 60-/57-/43-byte forms.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
@@ -149,13 +149,14 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Accepted Core main is `2f8f011` (B branch `97c57f3`, verified source
-  `6c12099`): its frozen suite has 570 passes in 39 files, with 157 source
-  hashes unchanged. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 builds pass the
-  75 MHz requirement; all four TMDS pairs match. Puck main `bb6371b` points
-  to Core `2f8f011`; its two pin-contract tests pass. These are simulation
-  and source-bound build results, not hardware acceptance. Receipts and
-  historical runs are separated in [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+- Accepted Core main is `a1247ab` (C2 branch `509fc95`, verified source
+  `c3fda21`): its frozen suite has 604 passes in 39 files, 157 source
+  hashes unchanged and all 570 prior nodes retained. Fresh M0 seed 0,
+  M4 seed 0 and M6 seed 2 pass 75 MHz on all reported clocks; four TMDS
+  pairs match M0 in both tops. Puck main `f2e7d53` pins Core `a1247ab`;
+  its two pin-contract tests pass. These are simulation and source-bound
+  build results; receipts and historical runs are separated in
+  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 - Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
   mixer output F bit changes when the next visible output field consumes
   a pending boundary; it is not the decoder's F bit. The existing takeover
@@ -178,13 +179,12 @@ like AI output.
   directory; keep the failed campaign and the 144-line threshold.
   Seed 1249's old failure is preserved history, with a separately accepted
   checker correction and byte-identical replay.
-- C2 TV/VCR changes now start from accepted Core `2f8f011`; its original
-  eleven-file draft was preserved before exactly three reviewed overlays.
-  The repaired focused native gate passes 56 tests and two subtests, with
-  source hashes unchanged. Nine isolated old-guard cases fail for the
-  expected semantic reasons. Local C2 source `c3fda21` is frozen for 604
-  tests in 39 files, including all 570 prior nodes. Its full suite and
-  fresh M4 seed 0/M6 seed 2 builds have not started; it is not main.
+- C2's TV/VCR filter menu is integrated. The two decoders reconcile the
+  requested value after paired polls, retaining an in-flight value/SDA lane
+  and retrying after NACK. The OLED/OSD and 62-byte UART row show the requested
+  mode, not a register readback. Focused verification passed 56 tests and two
+  subtests; nine old BUS/parser guards fail for the expected semantic reasons.
+  TV/VCR picture quality and lock behaviour on a real signal are unmeasured.
 - Build verification, campaign changes and remaining branch research are
   recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest

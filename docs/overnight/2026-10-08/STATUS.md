@@ -144,3 +144,12 @@ En modellkontroll jämförde ursprungligt fältantal med fyra extra genererade f
 | full-d2p5 | 1505 | Nej | Nej | Nej |
 
 Att bara höja `n_fields` är därför inte ett prefixbevarande kontrakt för dessa prov. Nästa generella tillägg ska behålla redan genererade kamerabytes och styrtider och bygga en separat fortsättning. Detta var sex modellfall, ingen native-simulering eller acceptans av hela 260-frökampanjen.
+
+
+### Privat recovery-suffix: byte- och modellgrind, 2026-10-12
+
+Ett generellt privat prototypverktyg lägger fyra rena kamerafält efter det redan genererade störda prefixet. Det behåller A/B-prefix, styrbyten, starttider, byteklockor och klassmetadata; originalobjektet lämnas orört. Fortsättningen synkroniserar kanalernas ankomstfas efter blankning och följer originalets interlaced/progressiva kamerakonvention. Ursprunglig B-offset bärs därför inte vidare in i den nya recovery-fasen, medan dess byteklocka och eventuell drift behålls. Detta är ett nytt stimuluskontrakt.
+
+Nio rena fall passerade på **18,56 s**: representanter för de sex gruppkonfigurationerna samt explicit PAL i skalad/full geometri och progressiv PAL. Båda modellmottagarna avkodar fyra kompletta fortsättningsfält med rätt radlängd, aktiv bytekvantitet, linjenummer och F-bit, utan felaktiga/korrigerade timingkoder eller luma utanför intervallet. Åtta ogiltiga fältantal/geometri/standard/klockvärden avvisas; alla 157 källhashar och helperhashar är verifierade. [Rootgranskning](evidence/generic-suffix-pure-review.json).
+
+För 1345 är det generella verktygets A/B/CTL-bytes exakt samma som det tidigare accepterade native-provet med 360 kontrollerade rader. Övriga fall har bara byte-/modellacceptans; ingen ny native-simulering kördes i detta paket. Prototypen är privat och har inte integrerats i Core. Nästa uppgift är utvalda native-prober med ett nytt komplett käll-/helper-/parameterkontrakt, före en eventuell 260-frökampanj. Produktions-RTL/checker och gamla FAIL-kvitton ändras inte; hårdvara är fortfarande omätt.

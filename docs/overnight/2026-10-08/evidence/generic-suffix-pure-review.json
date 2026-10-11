@@ -1,0 +1,354 @@
+{
+  "state": "PASS_ROOT_REVIEWED_PRIVATE_BYTE_MODEL_PROTOTYPE",
+  "reviewed_utc": "2026-10-11T23:41:13.246594+00:00",
+  "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "contract_sha256": "3a848e1e52455223f7f103c970c97a6952f189508af6edfe0c0f70d7d60ac707",
+  "journal_sha256": "5e4c0789b239ea87d8cbfbded9008322448e3806fca578f2fdc82ea2e772ad7f",
+  "summary_sha256": "85484012aeac3baac6ae4c639459246485c15b080eddb4ca29761a3546f9e0ec",
+  "helpers_sha256": {
+    "suffix.py": "e8dc860335299d05d2b467e4dc061ff98caafd723273bf85a9571dab52db263c",
+    "check_matrix.py": "ed94bc31e9387af68a2b1138850f116804c5fd9bbdb60ab9946d2dfc860210c2"
+  },
+  "source_inputs_checked": 157,
+  "passed_cases": 9,
+  "rejected_invalid_cases": [
+    "0",
+    "-1",
+    "True",
+    "1.5",
+    "geometry",
+    "std",
+    "t_a",
+    "t_b"
+  ],
+  "seconds": 18.56,
+  "cases": [
+    {
+      "case": {
+        "label": "scaled-d1",
+        "seed": 1200,
+        "geometry": "scaled",
+        "density": 1.0,
+        "fields": 10,
+        "force": []
+      },
+      "standard": "ntsc",
+      "interlaced": true,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 96,
+        "1": 96
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 24,
+        "base_vbi": 6,
+        "padding_bytes": {
+          "0": 1716,
+          "1": 1768
+        },
+        "suffix_start_ns": {
+          "0": 18824720.0,
+          "1": 18824779.119588263
+        },
+        "source_end_ns": 26573319.119588263,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "scaled-d2p5",
+        "seed": 1345,
+        "geometry": "scaled",
+        "density": 2.5,
+        "fields": 10,
+        "force": []
+      },
+      "standard": "ntsc",
+      "interlaced": false,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 96,
+        "1": 96
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 24,
+        "base_vbi": 6,
+        "padding_bytes": {
+          "0": 1716,
+          "1": 1792
+        },
+        "suffix_start_ns": {
+          "0": 17300912.0,
+          "1": 17300924.64116053
+        },
+        "source_end_ns": 24922480.64116053,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "scaled-bedge-d1",
+        "seed": 1400,
+        "geometry": "scaled",
+        "density": 1.0,
+        "fields": 10,
+        "force": [
+          "b_edge"
+        ]
+      },
+      "standard": "ntsc",
+      "interlaced": false,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 96,
+        "1": 96
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 24,
+        "base_vbi": 6,
+        "padding_bytes": {
+          "0": 2026,
+          "1": 1718
+        },
+        "suffix_start_ns": {
+          "0": 18391635.0,
+          "1": 18391636.437963177
+        },
+        "source_end_ns": 26013191.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "scaled-bedge-d2p5",
+        "seed": 1425,
+        "geometry": "scaled",
+        "density": 2.5,
+        "fields": 10,
+        "force": [
+          "b_edge"
+        ]
+      },
+      "standard": "pal",
+      "interlaced": false,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 116,
+        "1": 116
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 29,
+        "base_vbi": 7,
+        "padding_bytes": {
+          "0": 2166,
+          "1": 1728
+        },
+        "suffix_start_ns": {
+          "0": 22101218.0,
+          "1": 22101187.04497901
+        },
+        "source_end_ns": 31310518.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "full-d1",
+        "seed": 1500,
+        "geometry": "full",
+        "density": 1.0,
+        "fields": 8,
+        "force": [
+          "mode_switch"
+        ]
+      },
+      "standard": "ntsc",
+      "interlaced": true,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 972,
+        "1": 972
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 8,
+        "active_lines": 243,
+        "base_vbi": 19,
+        "padding_bytes": {
+          "0": 1716,
+          "1": 2084
+        },
+        "suffix_start_ns": {
+          "0": 120348428.0,
+          "1": 120348469.48535767
+        },
+        "source_end_ns": 187017544.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "full-d2p5",
+        "seed": 1505,
+        "geometry": "full",
+        "density": 2.5,
+        "fields": 8,
+        "force": [
+          "mode_switch"
+        ]
+      },
+      "standard": "pal",
+      "interlaced": false,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 1152,
+        "1": 1152
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 8,
+        "active_lines": 288,
+        "base_vbi": 24,
+        "padding_bytes": {
+          "0": 539076,
+          "1": 1728
+        },
+        "suffix_start_ns": {
+          "0": 140364392.0,
+          "1": 140364353.643118
+        },
+        "source_end_ns": 220159036.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "explicit-scaled-pal",
+        "seed": 1600,
+        "geometry": "scaled",
+        "density": 1.0,
+        "fields": 10,
+        "force": [
+          "pal"
+        ]
+      },
+      "standard": "pal",
+      "interlaced": true,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 116,
+        "1": 116
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 29,
+        "base_vbi": 7,
+        "padding_bytes": {
+          "0": 1728,
+          "1": 5566
+        },
+        "suffix_start_ns": {
+          "0": 23044052.0,
+          "1": 23044065.16928166
+        },
+        "source_end_ns": 32381237.16928166,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "explicit-full-pal",
+        "seed": 1601,
+        "geometry": "full",
+        "density": 1.0,
+        "fields": 8,
+        "force": [
+          "pal",
+          "mode_switch"
+        ]
+      },
+      "standard": "pal",
+      "interlaced": true,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 1152,
+        "1": 1152
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 8,
+        "active_lines": 288,
+        "base_vbi": 24,
+        "padding_bytes": {
+          "0": 9026,
+          "1": 1728
+        },
+        "suffix_start_ns": {
+          "0": 142874398.0,
+          "1": 142874388.57574326
+        },
+        "source_end_ns": 222796914.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    },
+    {
+      "case": {
+        "label": "explicit-progressive-pal",
+        "seed": 1602,
+        "geometry": "scaled",
+        "density": 1.0,
+        "fields": 10,
+        "force": [
+          "pal",
+          "progressive"
+        ]
+      },
+      "standard": "pal",
+      "interlaced": false,
+      "prefix_and_controls_preserved": true,
+      "input_unmodified": true,
+      "receiver_records": {
+        "0": 116,
+        "1": 116
+      },
+      "suffix": {
+        "fields": 4,
+        "first_field": 10,
+        "active_lines": 29,
+        "base_vbi": 7,
+        "padding_bytes": {
+          "0": 1752,
+          "1": 1728
+        },
+        "suffix_start_ns": {
+          "0": 22981041.0,
+          "1": 22980986.258926034
+        },
+        "source_end_ns": 32190341.0,
+        "kind": "synchronized clean recovery; original byte clocks retained"
+      }
+    }
+  ],
+  "seed1345_generated_inputs_match_accepted_native_bytes": true,
+  "other_cases_native_accepted": false,
+  "old_campaign_accepted": false,
+  "hardware_verified": false,
+  "scope": "Private synchronized recovery suffix; original prefixes and input clocks retained. Native probes and production integration remain separate tasks."
+}

@@ -177,6 +177,11 @@ like AI output.
   found only one complete eligible output frame before the last source
   byte. Any longer stimulus needs a new source contract and evidence
   directory; keep the failed campaign and the 144-line threshold.
+  A new source-bound seed1345 probe retains all original bytes/control times
+  and adds four clean camera fields: 360 lines pass, while the same raw trace
+  with the old source end counts 72. Wrong new-frame data/source mappings
+  are rejected. This accepts only that new scenario, not the old campaign
+  or a generalized 260-seed suffix contract. See the current STATUS evidence.
   Seed 1249's old failure is preserved history, with a separately accepted
   checker correction and byte-identical replay.
 - C2's TV/VCR filter menu is integrated. The two decoders reconcile the

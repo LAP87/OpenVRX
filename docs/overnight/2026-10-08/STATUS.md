@@ -13,7 +13,7 @@ Detta avsnitt är aktuell brief; de daterade körjournalerna längre ned bevarar
 - Mixerns väntande output-F-gräns över helt utelämnade fält ligger kvar; dekoderns F-bit är separat. B:s tidigare 570-pass- och byggresultat är historik, med sina ursprungliga kvitton.
 - C3:s kampanj slutade vid 200/260 frön: **199 PASS, 1 FAIL**, 60 ej körda. Seed **1345** gav 72 kontrollerade rader mot minst 144; triagen fann bara en komplett kvalificerad aktiv bild före sista källbyten. Längre stimulus kräver nytt käll-/parameterkontrakt och ny evidenskatalog. Råfelet och tröskeln bevaras. Ingen ny kampanj har körts och inget RTL-fel är fastställt.
 
-C2 är accepterat i simulation och byggen. Ingen FPGA-hårdvara eller TV/VCR-bildskillnad är mätt; kamera/VTX → Moneagle vid 4,2 V är en separat bänkobservation. Nästa uppgift är en avgränsad, källbunden seed1345-stimulus-/täckningskontroll före någon ny slutkampanj.
+C2 är accepterat i simulation och byggen. Ingen FPGA-hårdvara eller TV/VCR-bildskillnad är mätt; kamera/VTX → Moneagle vid 4,2 V är en separat bänkobservation. Seed1345-kontrollen är nu slutgranskad: oförändrad baslinje FAIL 72<144, separat prov med fyra tillagda kamerafält PASS 360. Nästa uppgift är ett generellt, prefixbevarande stimuluskontrakt med egna kontroller före någon ny slutkampanj.
 
 ## C1 — integrerat 2026-10-09
 
@@ -117,3 +117,14 @@ Användaren vill spela Baldur’s Gate 3. Inga egna simulerings- eller byggproce
 C3-kampanjen avslutade 200 frön: **199 PASS och 1 FAIL**, inga known/edge/crash. Frö 1345 gav `bench/few_lines`, 72 kontrollerade bildrader mot minst 144; koordinatorn avslutade med kod 2 innan de sista 60 fröna. Råfilerna behålls och orsaken är ännu inte triagerad. Detta är ingen kampanjacceptans och inget fastställt RTL-/hårdvarufel.
 
 Luna har överlämnat C2-utkastet på `feat/tvvcr-menu`, med rapporterade 14 rena parser-/pin-fixture-pass och 2 subtester. Root-granskning, native-controller/UI-simuleringar och M4/M6-byggen återstår. Utkastet är inte incheckat, pushat eller mergat.
+
+
+### Seed 1345 med kontinuerlig källa, 2026-10-12
+
+Återspelning på accepterad Core `a1247ab` gav åter FAIL: 72 kontrollerade rader mot 144. A/B/CTL och mixer-, minnes- och bildspår är byte-identiska med den gamla kampanjen. Simulatorn avslutade utan fel; kampanjadapterns exit 0 betyder att alla begärda jobb blev klara, inte att deras checkerresultat är PASS. [Baslinjegranskning](evidence/seed1345-baseline-review.json).
+
+Ett nytt separat scenario behåller alla tio ursprungliga störda kamerafält och styrbyten. Efter blankning läggs fyra rena progressiva NTSC-fält till, med 6 VBI-rader och 24 aktiva rader per fält i den skalade geometrin; suffixen på de två dekodrarna börjar 12,641 ns från varandra. Samtliga originalbytes, starttider, byteklockor och CTL-bytes är kvar. Produktions-RTL, modeller, checker,144-tröskeln samt switch-/X/Z-fönster ändras inte. [Nytt kontrakt](evidence/seed1345-extended-contract.json).
+
+Det nya provet passerade med **360 kontrollerade rader på 220,521 s**, utan fynd, known, edge eller notes. Root återläste råspåren och kontrollerade 157 källhashar, 12 råfiler och helperhashar. Samma nya råspår men den gamla källsluttiden ger 72 rader. Ett fel bildord respektive fel källrad i den första nytillkomna bilden vid pixelklocka 1364592 avvisas av `display/word` respektive `display/map`; vardera sänker den godkända täckningen till 288. Åtta rena förkontroller verifierar också suffixens BT.656-geometri och att en bild efter källslut fortfarande räknas bort. [Rootacceptans](evidence/seed1345-extended-acceptance.json) · [Förkontroller och granskning](evidence/seed1345-suffix-review.json).
+
+Detta accepterar bara det nya seed1345-scenariot. Den gamla kampanjen står kvar på 199 PASS / 1 FAIL / 60 ej körda. Fyra rena slutfält är ännu inte ett generellt kontrakt för PAL, full geometri eller alla störningsklasser; ingen 260-frökampanj har startats och ingen hårdvara är mätt.

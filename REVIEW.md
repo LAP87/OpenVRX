@@ -126,9 +126,11 @@ Ordered from "most likely broken" to "probably fine".
   A longer stimulus would be a new contract. This campaign is not accepted and no RTL
   or hardware failure is established by that coverage count alone.
 - C2 TV/VCR work is based on accepted Core `2f8f011`. Its original eleven
-  draft files were preserved before three reviewed overlays; root's focused
-  native run finished with 53 passes and three test-stimulus failures;
-  source hashes are unchanged. C2 has no native acceptance yet.
+  draft files were preserved before reviewed guard/stimulus changes. Root
+  accepted 56 focused tests and two subtests, with unchanged source hashes;
+  nine old-guard cases fail for their expected semantic reasons. Local
+  `c3fda21` is frozen for 604 tests across 39 files. Its full-suite and
+  fresh M4 seed 0/M6 seed 2 gates remain; C2 is not main.
   Current receipts, preserved older failures and build provenance are in
   [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 

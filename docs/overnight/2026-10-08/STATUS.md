@@ -325,3 +325,39 @@ Två verkliga fel per frö i en tillkommen bild, fel bildord respektive källrad
 Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1219-1238.json).
 
 Core och Puck är oförändrade. Detta accepterar den avgränsade rundan, ingen fullständig kampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda 1239–1258, 2026-10-12
+
+Tjugo frön kördes seriellt på fryst Core 2dca245 med skalad geometri, densitet 1, tio originalfält och fyra recovery-fält, utan tvingade störningar. Alla passerade kompilering, vvp, drain samt modell-/invariantåterläsning utan fynd, known, edges eller notes. Minimikravet 144 rader och 3000 s timeout behölls. Totalt kontrollerades **16 344 bildrader**.
+
+| Frö | Standard | Kamerakonvention | Kontrollerade rader | Native-tid (s) | Samma spår, originalsluttid |
+|---|---|---|---:|---:|---:|
+| 1239 | NTSC | Interlaced | 864 | 232,7 | 504 |
+| 1240 | NTSC | Interlaced | 864 | 227,4 | 576 |
+| 1241 | NTSC | Interlaced | 864 | 224,1 | 576 |
+| 1242 | NTSC | Interlaced | 864 | 216,1 | 576 |
+| 1243 | PAL | Interlaced | 1080 | 266,4 | 720 |
+| 1244 | NTSC | Interlaced | 864 | 234,9 | 576 |
+| 1245 | NTSC | Interlaced | 792 | 224,9 | 504 |
+| 1246 | PAL | Interlaced | 1080 | 285,6 | 720 |
+| 1247 | NTSC | Progressiv | 864 | 263,1 | 576 |
+| 1248 | PAL | Interlaced | 1080 | 282,1 | 720 |
+| 1249 | NTSC | Interlaced | 432 | 237,4 | 144 |
+| 1250 | NTSC | Interlaced | 576 | 220,5 | 288 |
+| 1251 | NTSC | Interlaced | 864 | 219,8 | 576 |
+| 1252 | PAL | Interlaced | 1008 | 279,4 | 648 |
+| 1253 | NTSC | Interlaced | 864 | 242,2 | 576 |
+| 1254 | NTSC | Progressiv | 576 | 220,0 | 288 |
+| 1255 | NTSC | Interlaced | 648 | 211,0 | 360 |
+| 1256 | NTSC | Interlaced | 864 | 225,7 | 576 |
+| 1257 | NTSC | Interlaced | 432 | 227,2 | 144 |
+| 1258 | NTSC | Interlaced | 864 | 236,2 | 576 |
+
+Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tjugo resultatrader/kvitton och 300 rå-/diagnostikfiler. Alla original-/extended-kameraindata, prefix och CTL matchar genererade förväntningar. Återgenereringen binder faktisk standard, interlacing och kamerafält till samma native-indata; metadata och ursprungliga kamerafält ska behållas i fortsättningen.
+
+Två verkliga fel per frö i en tillkommen bild, fel bildord respektive källrad, avvisas: 40 negativa återläsningar ger de väntade fynden och färre godkända rader. Bildfönstren för 1250 och 1255 använder LOW; övriga använder BUF. Ordfelet kontrolleras med rätt LOW-/BUF-predikat.
+
+Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1239-1258.json).
+
+Core och Puck är oförändrade. Detta accepterar endast rundan, ingen fullständig kampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

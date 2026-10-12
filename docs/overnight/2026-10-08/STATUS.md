@@ -164,3 +164,14 @@ Kompilering, vvp och drain avslutade utan fel. **864 rader passerade på 223,77 
 Fel bildord och fel källrad i första tillkomna bilden vid pixelklocka 1435542 ger `display/word` och `display/map`, vardera med 792 godkända rader kvar. Första efterkontrollen pekade av misstag på den 1345-specifika fixture-loggen och stoppade innan replay; den är bevarad. Den rättade efterkontrollen binder den verkliga generella pure-granskningens hash. Ingen simulering kördes om. [Rootacceptans](evidence/recovery-native-1400.json).
 
 Core a1247ab och Puck f2e7d53 är oförändrade. Funktionen är fortfarande privat. Full geometri och PAL behöver egna native-prober innan någon ny 260-frökampanj eller produktionsintegration; gamla FAIL och 144/720-gränser står kvar. Ingen FPGA-hårdvara är mätt.
+
+
+### Generell fortsättning: full PAL frö 1601, 2026-10-12
+
+Ett separat native-prov använder full geometri, PAL, density 1,0 och åtta originalfält med tvingade `pal`/`mode_switch`, följt av fyra rena recovery-fält. Alla originalbytes, styrtider och byteklockor behålls. Fortsättningen följer originalets interlaced-kamerakonvention och synkroniserar kanalernas ankomstfas efter blankning.
+
+**6 480 rader passerade på 2 000,922 s**, med minst 720 som oförändrat krav. Kompilering, vvp och drain avslutade utan fel; inga findings, known, edges eller notes. Root återläste modeller och invarianter, verifierade 157 källhashar, helperhashar, 12 råfiler, genererade originalindata samt fullgeometrins och alla fyra RT-parametrarnas verkliga kompilatorargument.
+
+Samma råspår med originalets källsluttid räknar 2 880 rader; det är ingen separat native-baslinjekörning. Fel bildord och källrad i den första tillkomna kontrollerbara bilden vid pixelklocka 11137542 ger `display/word` respektive `display/map`/`display/not_read`; vardera lämnar 5 760 godkända rader. Den bilden kör BUF, vilket styr ordkontrollens förväntade feltyp. [Rootacceptans](evidence/recovery-native-1601.json).
+
+Detta accepterar endast det nya full-PAL-scenariot. Core a1247ab och Puck f2e7d53 är oförändrade; prototypverktyget är fortfarande privat. Gamla kampanjen med 199 PASS/1 FAIL/60 ej körda är fortsatt inte accepterad. Ingen FPGA-hårdvara är verifierad.

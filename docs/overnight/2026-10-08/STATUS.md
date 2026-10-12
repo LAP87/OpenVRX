@@ -510,3 +510,20 @@ Den interna genlock-spärren är nu observerad direkt: hold=32 vid det tidigare 
 Oförändrad modell-/invariantåterläsning ger 216 kontrollerade rader utan fynd, known, edges eller notes. Ett faktiskt fel hold-värde respektive en felaktig triggerfas i ägda kopior av GT-spåret avvisas av samma telemetrifacit; originalet passerar före och efter. Samtliga 160 originalkällinputs, runtime, privat bänk/driver och originalråhashar är bundna och oförändrade. [Direkt telemetrikvitto](evidence/seed1309-telemetry-probe.json).
 
 Acceptansen gäller enbart orsaksproben. Rundan 1305–1314 förblir ej accepterad och gamla kampanjens FAIL bevaras. Längre återhämtningsstimulus kräver ett nytt uttryckligt käll-/parameterkontrakt och en separat output med originalprefix och styrtider kvar; befintliga bildgränser och HOLD=32 ska inte sänkas. Ingen ny helsvit, routning eller hårdvarumätning är gjord.
+
+
+### Frö 1309: ren prefix- och tidsbudgetkontroll, 2026-10-12
+
+En modellkontroll prövade 4, 40 och 44 recovery-fält med samma frö 1309, skalad geometri, densitet 2,5 och tio originalfält. Alla behåller originalets A/B-bytes, byteklockor, starttider, kamerafält och styrhändelser. Bytedekodern verifierar samtliga suffixfält: 24 rena aktiva rader per fält och kanal, korrekt NTSC/interlaced-F, radlängd 1716, 1440 aktiva bytes och inga XY-/lumanivåfel. Ingen HDL kördes.
+
+Den konservativa planeringsbudgeten använder hela HOLD=32, tre tidiga trigger och två kontrollerbara bilder, vardera högst (V_TOTAL+MAX_WAIT)*H_TOTAL*T_P. Den kräver 77,71665 ms extra källtid; det är en stimulusbudget, inte bevis på faktisk återlåsning.
+
+| Recovery-fält | Extra källtid (ms) | Klarar budgetvakten |
+|---|---:|---|
+| 4 | 7,812092 | Nej |
+| 40 | 77,526308 | Nej |
+| 44 | 85,272332 | Ja |
+
+44 är en deklarerad kandidat för ett separat framtida nativeprov med oförändrade 144-raderskrav, 3000 s timeout, HOLD och lägesregler. De första fyra recovery-fältens payload är identisk; deras tidigare 68-byte terminala blankningstrailer ersätts av nästa fält. Därför är hela gamla fyrfältsindatan inte ett prefix av 44-fältsindatan, medan originalets bytes och hela fyrfälts-payloaden förblir prefix. Nytt recovery-antal binds i ett nytt schema-2-kontrakt; gamla rådata återupptas inte med nytt antal.
+
+Tre verkliga scenarioförvanskningar vägras: ändrat originalprefix, ändrad styrtid och otillräcklig källtidsbudget. Giltig kandidat passerar före/efter; gamla 160 källinputs, runtime och alla baseline-råhashar är oförändrade. [Ren prefix-/budgetacceptans](evidence/seed1309-recovery-window-pure.json). Den gamla rundan 1305–1314 är fortfarande ej accepterad. Ingen ny native-, helsvit-, routing- eller hårdvaruacceptans påstås.

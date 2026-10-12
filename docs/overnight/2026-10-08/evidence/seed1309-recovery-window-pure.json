@@ -1,0 +1,289 @@
+{
+  "state": "PASS_ROOT_REVIEWED_PURE_PREFIX_AND_DURATION_ONLY",
+  "root": {
+    "state": "PASS_PURE_DATA_AND_DURATION_BOUND_NOT_NATIVE_ACCEPTANCE",
+    "completed_utc": "2026-10-12T14:37:00.603330+00:00",
+    "contract_sha256": "0e65c0df07eacf3d39aa20086d35c266ca50b9a824aa8cd13e4197760b4ea495",
+    "driver_sha256": "28ddea45cf683cde9d870fc394c7ca9bf29e803e18196d6bcf74e06e71e048d4",
+    "source_inputs": 160,
+    "source_runtime_unchanged": true,
+    "rows": [
+      {
+        "recovery_fields": 4,
+        "original_prefix_and_controls_preserved": true,
+        "standard": "ntsc",
+        "interlaced": true,
+        "receiver_records": {
+          "0": 96,
+          "1": 96
+        },
+        "source_end_ns": 26064214.0,
+        "extra_duration_ns": 7812092.000280365,
+        "budget_fits": false,
+        "input_sha256": {
+          "a": "b2c0dff8949c195ca5db70a9be25982dac173072e7d79a2b647fff026ac02e90",
+          "b": "93c64f7f334a9872c7063724e4d43171c5e72db092488453c3566cb96a0d31ea"
+        },
+        "campaign_contract": {
+          "schema": 2,
+          "geometry": "scaled",
+          "density": 2.5,
+          "recovery_fields": 4,
+          "recovery_kind": "synchronized-clean-fields",
+          "fields": 10,
+          "class_sets": [
+            null
+          ],
+          "force": [],
+          "source": {
+            "revision": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+            "files": {
+              "gateware/rtl/bt656_rx.v": "5118486625892f424a01b3c994dd799521da819c54b90397523e9b5181f9df35",
+              "gateware/rtl/word_packer.v": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+              "gateware/rtl/async_fifo.v": "bb357b5750356fd0969ffd17d4c03ab6b412edf3dbaf38774f8e51907c8985d0",
+              "gateware/rtl/dual_clock_ram.v": "e7b5974eeff4cd2f782bfbbfea7f4127a95e808cee2b9eb2f5a73f09f79a2478",
+              "gateware/rtl/chan_capture.v": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+              "gateware/rtl/mix_chan.v": "e5e8f588ee1318c66c64ec5542459590ad72c4adac1b234b27b0bd4a41db90fd",
+              "gateware/rtl/line_mixer.v": "dc5e9dff539ae07592ed3fafc2d857ae38757bb9a6120ecc29aeb3bc8db8c966",
+              "gateware/rtl/snow_stats.v": "c7043dcef628fc519d8a7755bc8d60a3195d7f743360e8e4f1c9fc3bc12cfa7d",
+              "gateware/rtl/noise_stats.v": "6ab5ebc913bc72a9de2d30af5ce6df88def74144f2d0d1b0a5d2f682781838a2",
+              "gateware/rtl/mixer2.v": "93ab61143aef518933f5ea965bf7fba75a5a91d72843587aa280406d48fdbbb6",
+              "gateware/rtl/sdram_burst.v": "122c2d89514d9903378e4519d8365d0ff7567e2a949229f2d59aec6849f3aa6c",
+              "gateware/rtl/field_phase.v": "08b563aa5dada0dbd3163b91e7694784e01133ce2c68a64fe3c9d98ec09230e1",
+              "gateware/rtl/fb_sdram.v": "ebabf3c6f60a4c6cef4e3c42929a19dbbebb66ec686cc4d3b6dd5e2ee8f7ac77",
+              "gateware/rtl/genlock_timing.v": "a2f8a103145c5c9ca1fc99b5255cdeb549ac941056d133eb7f32272dab2147a8",
+              "gateware/rtl/ycbcr2rgb.v": "b10d2c6a79bd63150b19e12ac148fc874a6330ec0968946eed77f4cf8b9528f5",
+              "gateware/rtl/cdc_sync.v": "eaaf9f7ab7d9004320ee611c11a0d148a5aa2fe3daad9c2ee320ccdc310a4e92",
+              "gateware/rtl/fb_display.v": "0ea79451d4274ddd9615741c0b5f3542d5bc2711ca0aa53649213882d47e7e81",
+              "gateware/rtl/fb_backend.v": "aa40c43e1e0f7c2d8c16310ce24513e818af080e112a29f9ebbda038bcf30b49",
+              "gateware/rtl/font5x7.vh": "b2ffa85ec66f89017bd6f299f4b855f3c9124d752c027a0a026501ee290fd310",
+              "gateware/rtl/vtx_channels.vh": "8c788b7c47e68504a07e5eaecbff1be3f326a52929a2faf83338235ebe723e3b",
+              "gateware/model/bt656.py": "0b3fb086d1926b57e8eb025fa0ad1ba00e858a5a50adfb53b9e05e0c81bfd0f1",
+              "gateware/model/fb_ref.py": "cce8529b7d1161bb2e3dd6f0b92cf589b98cb4da08f64ef9dc1261b52e42e7c2",
+              "gateware/model/font5x7.py": "b2260e303a79a40767e9addd3fce4df623e9dbefa7900e776567f39549b65f80",
+              "gateware/model/fuzz_recovery.py": "d1efb6c6b048b50cb7231915fbbbfbdc51f721fab8c92437f0d781b297f6ce58",
+              "gateware/model/fuzz_stream.py": "ab3cbaa0b773cf31794c9252c1b3b5f2cdb1ec3d21cb1abad6dfc53eb15f0cd5",
+              "gateware/model/i2c_ref.py": "f7a8b062126580d4cacde4b2728ada33998839115a22db4b263ee1bf358ded1e",
+              "gateware/model/line_mixer_ref.py": "4a559f5b232cf34e6ff373086c713cb96634ddba6d4e47c56423fdad8ef2d17b",
+              "gateware/model/ll_ring_ref.py": "ea87600b74b78576c2a151b934f7c089f5360ac964e44df45b899b7c364716c3",
+              "gateware/model/make_vectors.py": "4495be53a3a8c8e2084bf97a0667e5f0d1e3296a0f802c1d54150cd423efad0e",
+              "gateware/model/test_bt656.py": "edb8111644499d1598479e92fac1ee686dd6ae120fcfdecad37addb765744a06",
+              "gateware/model/test_fb_ref.py": "2f2577dbe62a16fd836c41d13d4eebccdb86de14781c18a7edf213f8744cd1ba",
+              "gateware/model/test_fuzz_recovery.py": "c1dc8c86946cb9c98baacb39485596d83cbc9a75b36a89cc7e82389824be24fc",
+              "gateware/model/test_line_mixer_ref.py": "b9e9a43ab67c9cae501ae51ae5dba7f58f71fb44487a0c0a7da4e87b9fd23622",
+              "gateware/model/test_ll_ring_ref.py": "7ee41b7677b97fb78c5a65d6a61b210cc1c8a309b2e6a7c5f28ebd9e810e6114",
+              "gateware/model/vtx_channels.py": "da835ffbea99af872189a399483688ea94b31727198bcda1d2c51f401a3adcd8",
+              "gateware/sim/fuzz_campaign.py": "b289188ced8b5fc3def90b216ca233cc2a43f7025fa509dee629afd10bc778ed",
+              "gateware/sim/test_fuzz_chain.py": "349b1a1186991140da7268e9670380dc5c97fda9efc35f1eb40f3531dc525331",
+              "gateware/sim/tb_chain.v": "c100e2cbc89777d434628de771b207c5816b3ae2089449d9ff5b0d9acff2a218",
+              "gateware/sim/sdram_model.v": "6a227885c3b0f0c4daa785761d34a95a1a11933a22488a2d5bcdcc094d9dfe19"
+            },
+            "simulator": {
+              "iverilog": "340ff90a5bf9e86c5af5a1a1ff60ee2c253fa3adbc3925f81458765c19d71ed0",
+              "vvp": "54ec54b6ea8ad4fbc67d56341f09b8205f9c7c34666ab5df98f807812562f0c0"
+            },
+            "python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]"
+          }
+        }
+      },
+      {
+        "recovery_fields": 40,
+        "original_prefix_and_controls_preserved": true,
+        "standard": "ntsc",
+        "interlaced": true,
+        "receiver_records": {
+          "0": 960,
+          "1": 960
+        },
+        "source_end_ns": 95778430.0,
+        "extra_duration_ns": 77526308.00028037,
+        "budget_fits": false,
+        "input_sha256": {
+          "a": "c70a8b5c09cc81db3b91ce4c44d7409925be93ed533187ed4b3b5830a3f2d1c1",
+          "b": "ada81b5b30bf6b308a04a3ba7e8ad0ffa7e8d77a1148cebc818f6637273fb84c"
+        },
+        "campaign_contract": {
+          "schema": 2,
+          "geometry": "scaled",
+          "density": 2.5,
+          "recovery_fields": 40,
+          "recovery_kind": "synchronized-clean-fields",
+          "fields": 10,
+          "class_sets": [
+            null
+          ],
+          "force": [],
+          "source": {
+            "revision": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+            "files": {
+              "gateware/rtl/bt656_rx.v": "5118486625892f424a01b3c994dd799521da819c54b90397523e9b5181f9df35",
+              "gateware/rtl/word_packer.v": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+              "gateware/rtl/async_fifo.v": "bb357b5750356fd0969ffd17d4c03ab6b412edf3dbaf38774f8e51907c8985d0",
+              "gateware/rtl/dual_clock_ram.v": "e7b5974eeff4cd2f782bfbbfea7f4127a95e808cee2b9eb2f5a73f09f79a2478",
+              "gateware/rtl/chan_capture.v": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+              "gateware/rtl/mix_chan.v": "e5e8f588ee1318c66c64ec5542459590ad72c4adac1b234b27b0bd4a41db90fd",
+              "gateware/rtl/line_mixer.v": "dc5e9dff539ae07592ed3fafc2d857ae38757bb9a6120ecc29aeb3bc8db8c966",
+              "gateware/rtl/snow_stats.v": "c7043dcef628fc519d8a7755bc8d60a3195d7f743360e8e4f1c9fc3bc12cfa7d",
+              "gateware/rtl/noise_stats.v": "6ab5ebc913bc72a9de2d30af5ce6df88def74144f2d0d1b0a5d2f682781838a2",
+              "gateware/rtl/mixer2.v": "93ab61143aef518933f5ea965bf7fba75a5a91d72843587aa280406d48fdbbb6",
+              "gateware/rtl/sdram_burst.v": "122c2d89514d9903378e4519d8365d0ff7567e2a949229f2d59aec6849f3aa6c",
+              "gateware/rtl/field_phase.v": "08b563aa5dada0dbd3163b91e7694784e01133ce2c68a64fe3c9d98ec09230e1",
+              "gateware/rtl/fb_sdram.v": "ebabf3c6f60a4c6cef4e3c42929a19dbbebb66ec686cc4d3b6dd5e2ee8f7ac77",
+              "gateware/rtl/genlock_timing.v": "a2f8a103145c5c9ca1fc99b5255cdeb549ac941056d133eb7f32272dab2147a8",
+              "gateware/rtl/ycbcr2rgb.v": "b10d2c6a79bd63150b19e12ac148fc874a6330ec0968946eed77f4cf8b9528f5",
+              "gateware/rtl/cdc_sync.v": "eaaf9f7ab7d9004320ee611c11a0d148a5aa2fe3daad9c2ee320ccdc310a4e92",
+              "gateware/rtl/fb_display.v": "0ea79451d4274ddd9615741c0b5f3542d5bc2711ca0aa53649213882d47e7e81",
+              "gateware/rtl/fb_backend.v": "aa40c43e1e0f7c2d8c16310ce24513e818af080e112a29f9ebbda038bcf30b49",
+              "gateware/rtl/font5x7.vh": "b2ffa85ec66f89017bd6f299f4b855f3c9124d752c027a0a026501ee290fd310",
+              "gateware/rtl/vtx_channels.vh": "8c788b7c47e68504a07e5eaecbff1be3f326a52929a2faf83338235ebe723e3b",
+              "gateware/model/bt656.py": "0b3fb086d1926b57e8eb025fa0ad1ba00e858a5a50adfb53b9e05e0c81bfd0f1",
+              "gateware/model/fb_ref.py": "cce8529b7d1161bb2e3dd6f0b92cf589b98cb4da08f64ef9dc1261b52e42e7c2",
+              "gateware/model/font5x7.py": "b2260e303a79a40767e9addd3fce4df623e9dbefa7900e776567f39549b65f80",
+              "gateware/model/fuzz_recovery.py": "d1efb6c6b048b50cb7231915fbbbfbdc51f721fab8c92437f0d781b297f6ce58",
+              "gateware/model/fuzz_stream.py": "ab3cbaa0b773cf31794c9252c1b3b5f2cdb1ec3d21cb1abad6dfc53eb15f0cd5",
+              "gateware/model/i2c_ref.py": "f7a8b062126580d4cacde4b2728ada33998839115a22db4b263ee1bf358ded1e",
+              "gateware/model/line_mixer_ref.py": "4a559f5b232cf34e6ff373086c713cb96634ddba6d4e47c56423fdad8ef2d17b",
+              "gateware/model/ll_ring_ref.py": "ea87600b74b78576c2a151b934f7c089f5360ac964e44df45b899b7c364716c3",
+              "gateware/model/make_vectors.py": "4495be53a3a8c8e2084bf97a0667e5f0d1e3296a0f802c1d54150cd423efad0e",
+              "gateware/model/test_bt656.py": "edb8111644499d1598479e92fac1ee686dd6ae120fcfdecad37addb765744a06",
+              "gateware/model/test_fb_ref.py": "2f2577dbe62a16fd836c41d13d4eebccdb86de14781c18a7edf213f8744cd1ba",
+              "gateware/model/test_fuzz_recovery.py": "c1dc8c86946cb9c98baacb39485596d83cbc9a75b36a89cc7e82389824be24fc",
+              "gateware/model/test_line_mixer_ref.py": "b9e9a43ab67c9cae501ae51ae5dba7f58f71fb44487a0c0a7da4e87b9fd23622",
+              "gateware/model/test_ll_ring_ref.py": "7ee41b7677b97fb78c5a65d6a61b210cc1c8a309b2e6a7c5f28ebd9e810e6114",
+              "gateware/model/vtx_channels.py": "da835ffbea99af872189a399483688ea94b31727198bcda1d2c51f401a3adcd8",
+              "gateware/sim/fuzz_campaign.py": "b289188ced8b5fc3def90b216ca233cc2a43f7025fa509dee629afd10bc778ed",
+              "gateware/sim/test_fuzz_chain.py": "349b1a1186991140da7268e9670380dc5c97fda9efc35f1eb40f3531dc525331",
+              "gateware/sim/tb_chain.v": "c100e2cbc89777d434628de771b207c5816b3ae2089449d9ff5b0d9acff2a218",
+              "gateware/sim/sdram_model.v": "6a227885c3b0f0c4daa785761d34a95a1a11933a22488a2d5bcdcc094d9dfe19"
+            },
+            "simulator": {
+              "iverilog": "340ff90a5bf9e86c5af5a1a1ff60ee2c253fa3adbc3925f81458765c19d71ed0",
+              "vvp": "54ec54b6ea8ad4fbc67d56341f09b8205f9c7c34666ab5df98f807812562f0c0"
+            },
+            "python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]"
+          }
+        }
+      },
+      {
+        "recovery_fields": 44,
+        "original_prefix_and_controls_preserved": true,
+        "standard": "ntsc",
+        "interlaced": true,
+        "receiver_records": {
+          "0": 1056,
+          "1": 1056
+        },
+        "source_end_ns": 103524454.0,
+        "extra_duration_ns": 85272332.00028037,
+        "budget_fits": true,
+        "input_sha256": {
+          "a": "5dd44d3975ec7e6523b9e8c3f8650cf5bca47d6ef50244375063129fefaac3d4",
+          "b": "24b83ac813ad97234bc45aab986e94f1eb64ec820b1c99f6977bff00e9fcaaa7"
+        },
+        "campaign_contract": {
+          "schema": 2,
+          "geometry": "scaled",
+          "density": 2.5,
+          "recovery_fields": 44,
+          "recovery_kind": "synchronized-clean-fields",
+          "fields": 10,
+          "class_sets": [
+            null
+          ],
+          "force": [],
+          "source": {
+            "revision": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+            "files": {
+              "gateware/rtl/bt656_rx.v": "5118486625892f424a01b3c994dd799521da819c54b90397523e9b5181f9df35",
+              "gateware/rtl/word_packer.v": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+              "gateware/rtl/async_fifo.v": "bb357b5750356fd0969ffd17d4c03ab6b412edf3dbaf38774f8e51907c8985d0",
+              "gateware/rtl/dual_clock_ram.v": "e7b5974eeff4cd2f782bfbbfea7f4127a95e808cee2b9eb2f5a73f09f79a2478",
+              "gateware/rtl/chan_capture.v": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+              "gateware/rtl/mix_chan.v": "e5e8f588ee1318c66c64ec5542459590ad72c4adac1b234b27b0bd4a41db90fd",
+              "gateware/rtl/line_mixer.v": "dc5e9dff539ae07592ed3fafc2d857ae38757bb9a6120ecc29aeb3bc8db8c966",
+              "gateware/rtl/snow_stats.v": "c7043dcef628fc519d8a7755bc8d60a3195d7f743360e8e4f1c9fc3bc12cfa7d",
+              "gateware/rtl/noise_stats.v": "6ab5ebc913bc72a9de2d30af5ce6df88def74144f2d0d1b0a5d2f682781838a2",
+              "gateware/rtl/mixer2.v": "93ab61143aef518933f5ea965bf7fba75a5a91d72843587aa280406d48fdbbb6",
+              "gateware/rtl/sdram_burst.v": "122c2d89514d9903378e4519d8365d0ff7567e2a949229f2d59aec6849f3aa6c",
+              "gateware/rtl/field_phase.v": "08b563aa5dada0dbd3163b91e7694784e01133ce2c68a64fe3c9d98ec09230e1",
+              "gateware/rtl/fb_sdram.v": "ebabf3c6f60a4c6cef4e3c42929a19dbbebb66ec686cc4d3b6dd5e2ee8f7ac77",
+              "gateware/rtl/genlock_timing.v": "a2f8a103145c5c9ca1fc99b5255cdeb549ac941056d133eb7f32272dab2147a8",
+              "gateware/rtl/ycbcr2rgb.v": "b10d2c6a79bd63150b19e12ac148fc874a6330ec0968946eed77f4cf8b9528f5",
+              "gateware/rtl/cdc_sync.v": "eaaf9f7ab7d9004320ee611c11a0d148a5aa2fe3daad9c2ee320ccdc310a4e92",
+              "gateware/rtl/fb_display.v": "0ea79451d4274ddd9615741c0b5f3542d5bc2711ca0aa53649213882d47e7e81",
+              "gateware/rtl/fb_backend.v": "aa40c43e1e0f7c2d8c16310ce24513e818af080e112a29f9ebbda038bcf30b49",
+              "gateware/rtl/font5x7.vh": "b2ffa85ec66f89017bd6f299f4b855f3c9124d752c027a0a026501ee290fd310",
+              "gateware/rtl/vtx_channels.vh": "8c788b7c47e68504a07e5eaecbff1be3f326a52929a2faf83338235ebe723e3b",
+              "gateware/model/bt656.py": "0b3fb086d1926b57e8eb025fa0ad1ba00e858a5a50adfb53b9e05e0c81bfd0f1",
+              "gateware/model/fb_ref.py": "cce8529b7d1161bb2e3dd6f0b92cf589b98cb4da08f64ef9dc1261b52e42e7c2",
+              "gateware/model/font5x7.py": "b2260e303a79a40767e9addd3fce4df623e9dbefa7900e776567f39549b65f80",
+              "gateware/model/fuzz_recovery.py": "d1efb6c6b048b50cb7231915fbbbfbdc51f721fab8c92437f0d781b297f6ce58",
+              "gateware/model/fuzz_stream.py": "ab3cbaa0b773cf31794c9252c1b3b5f2cdb1ec3d21cb1abad6dfc53eb15f0cd5",
+              "gateware/model/i2c_ref.py": "f7a8b062126580d4cacde4b2728ada33998839115a22db4b263ee1bf358ded1e",
+              "gateware/model/line_mixer_ref.py": "4a559f5b232cf34e6ff373086c713cb96634ddba6d4e47c56423fdad8ef2d17b",
+              "gateware/model/ll_ring_ref.py": "ea87600b74b78576c2a151b934f7c089f5360ac964e44df45b899b7c364716c3",
+              "gateware/model/make_vectors.py": "4495be53a3a8c8e2084bf97a0667e5f0d1e3296a0f802c1d54150cd423efad0e",
+              "gateware/model/test_bt656.py": "edb8111644499d1598479e92fac1ee686dd6ae120fcfdecad37addb765744a06",
+              "gateware/model/test_fb_ref.py": "2f2577dbe62a16fd836c41d13d4eebccdb86de14781c18a7edf213f8744cd1ba",
+              "gateware/model/test_fuzz_recovery.py": "c1dc8c86946cb9c98baacb39485596d83cbc9a75b36a89cc7e82389824be24fc",
+              "gateware/model/test_line_mixer_ref.py": "b9e9a43ab67c9cae501ae51ae5dba7f58f71fb44487a0c0a7da4e87b9fd23622",
+              "gateware/model/test_ll_ring_ref.py": "7ee41b7677b97fb78c5a65d6a61b210cc1c8a309b2e6a7c5f28ebd9e810e6114",
+              "gateware/model/vtx_channels.py": "da835ffbea99af872189a399483688ea94b31727198bcda1d2c51f401a3adcd8",
+              "gateware/sim/fuzz_campaign.py": "b289188ced8b5fc3def90b216ca233cc2a43f7025fa509dee629afd10bc778ed",
+              "gateware/sim/test_fuzz_chain.py": "349b1a1186991140da7268e9670380dc5c97fda9efc35f1eb40f3531dc525331",
+              "gateware/sim/tb_chain.v": "c100e2cbc89777d434628de771b207c5816b3ae2089449d9ff5b0d9acff2a218",
+              "gateware/sim/sdram_model.v": "6a227885c3b0f0c4daa785761d34a95a1a11933a22488a2d5bcdcc094d9dfe19"
+            },
+            "simulator": {
+              "iverilog": "340ff90a5bf9e86c5af5a1a1ff60ee2c253fa3adbc3925f81458765c19d71ed0",
+              "vvp": "54ec54b6ea8ad4fbc67d56341f09b8205f9c7c34666ab5df98f807812562f0c0"
+            },
+            "python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]"
+          }
+        }
+      }
+    ],
+    "conservative_max_frame_ns": 2100450.0,
+    "conservative_required_frames": 37,
+    "required_extra_duration_ns": 77716650.0,
+    "declared_candidate_recovery_fields": 44,
+    "four_field_payload_prefix_preserved": true,
+    "four_field_terminal_trailer_bytes": 68,
+    "whole_four_field_prefix": {
+      "a": false,
+      "b": false
+    },
+    "negative_controls": [
+      {
+        "fault": "prefix",
+        "error": "original prefix changed",
+        "actual_scenario_copy": true
+      },
+      {
+        "fault": "control",
+        "error": "original control changed",
+        "actual_scenario_copy": true
+      },
+      {
+        "fault": "duration",
+        "error": "insufficient declared duration",
+        "actual_scenario_copy": true
+      }
+    ],
+    "native_run": false,
+    "video_reacquisition_verified": false,
+    "old_packet_accepted": false,
+    "hardware_verified": false
+  },
+  "evidence_sha256": {
+    "CONTRACT.json": "0e65c0df07eacf3d39aa20086d35c266ca50b9a824aa8cd13e4197760b4ea495",
+    "audit.py": "28ddea45cf683cde9d870fc394c7ca9bf29e803e18196d6bcf74e06e71e048d4",
+    "RUNNER.log": "2f05e1bb413c24624ea62defd0cf706d549c4163a2752445cb57ee02d886f0c1",
+    "journal.jsonl": "685495769f7dd22499a92da98a5aa05952c7ded0245e2ce0e77bf5f6b51b0e07",
+    "ROOT_ACCEPTANCE.json": "7f6766b83b270c98aab88d39951c7a1528f2123800ddd255f8d1c84604dabcd9"
+  },
+  "all_source_and_baseline_raw_hashes_verified_after": true,
+  "production_source_changed": false,
+  "old_packet_accepted": false,
+  "hardware_verified": false
+}

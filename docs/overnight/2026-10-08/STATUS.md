@@ -235,3 +235,14 @@ Ett pilotfrö, 1200 med skalad NTSC, densitet 1, tio originalfält och fyra reco
 Identisk resume körde noll nya frön och behöll resultatrad, råfiler och kvitto byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart utan evidensändring. Skadad råfil i en ägd kopia avvisades. Första efterkontrollskriptet använde en funktion för platta råkataloger på hela resultatkatalogen och stoppade efter lyckad resume; felet är bevarat. Rättad efterkontroll återanvände den avslutade resume-körningen. Ingen simulering kördes om. [Rootacceptans](evidence/recovery-round-adapter.json).
 
 Core 2dca245 och Puck a2ad438 är oförändrade. Adaptern är privat och har bara en accepterad pilot; större rundor kräver ett separat kontrakt och egen granskning. Gamla 199 PASS/1 FAIL/60 ej körda behålls. Ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda med tre frön, 2026-10-12
+
+Den granskade privata adaptern körde exakt frö 1201–1203 seriellt på fryst Core 2dca245: skalad NTSC, densitet 1, tio originalfält och fyra recovery-fält, ingen tvingad störning. Alla tre passerade med **576 / 864 / 864 rader** på 225,6 / 225,2 / 239,5 s. Minimikravet 144 rader och 3000 s timeout är oförändrade. Kompilering, vvp och drain passerade utan findings, known, edges eller notes.
+
+Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tre resultatrader/kvitton och 45 rå-/diagnostikfiler. Kompletta kameraindata, originalprefix och CTL matchar genererade förväntningar. Modell- och invariantåterläsningen passerar. Fel bildord och källrad i varje tillkommet bildfönster upptäcks: sex negativa kontroller lämnar 504/504, 792/792 och 792/792 godkända rader. Samma spår med originalets sluttid ger 288 / 576 / 576 rader.
+
+Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart. En skadad råfil i en ägd kopia avvisades; verkliga rådata behölls. [Rootacceptans](evidence/recovery-round-1201-1203.json).
+
+Detta accepterar endast den avgränsade trefrörundan. Core och Puck är oförändrade. Gamla kampanjens 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny 260-frökampanj, helsvit, FPGA-routning eller hårdvarumätning är körd.

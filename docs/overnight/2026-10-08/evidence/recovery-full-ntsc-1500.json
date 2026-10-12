@@ -1,0 +1,112 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NATIVE_WORKER_ONLY",
+  "reviewed_utc": "2026-10-12T02:48:08.923889+00:00",
+  "revision": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+  "source_inputs": 160,
+  "native_contract_sha256": "60fcd308b32122f26d0ff1909e65768f1bf039b199fd7737314afc1c24772df8",
+  "native_gate_sha256": "d5ceb071b0f8715bef85cf116499e0fef81f95ddce063d27d1944066a32e6642",
+  "review_helper_sha256": "8d87e8682a9da1bda4686f66748b2bdae780aa6e62646a0431e49914391581c0",
+  "source_hashes_unchanged": true,
+  "cases": [
+    {
+      "case": {
+        "label": "full-d1",
+        "seed": 1500,
+        "geometry": "full",
+        "density": 1.0,
+        "fields": 8,
+        "force": [
+          "mode_switch"
+        ],
+        "recovery_fields": 4,
+        "minimum": 720,
+        "standard": "ntsc",
+        "interlaced": true,
+        "expected_input_hashes": {
+          "a.hex": "4f76d0c130664ec687760572ef6673d575e29146570d55c01c948f55fe6f16ad",
+          "b.hex": "79475aacb13d4f9d23e17dbc12018ac0b1d4fe485829536267a9e4b3fe8c6f6e",
+          "ctl.hex": "8ce4bf328efab737984028df25d32fd80889d98c190660a8d66d79d5e0ad810c"
+        },
+        "original_input_hashes": {
+          "a.hex": "3fb2f3e6eff4ed6bca49b2783084989b2cf6c3e71780bd5d5e249d086e29d8a9",
+          "b.hex": "4655927e6ae910e23a30611db99364d20de71b2f5fd37246f7a88f237eb222c0",
+          "ctl.hex": "8ce4bf328efab737984028df25d32fd80889d98c190660a8d66d79d5e0ad810c"
+        },
+        "expected_suffix": {
+          "fields": 4,
+          "first_field": 8,
+          "active_lines": 243,
+          "base_vbi": 19,
+          "padding_bytes": {
+            "0": 1716,
+            "1": 2084
+          },
+          "suffix_start_ns": {
+            "0": 120348428.0,
+            "1": 120348469.48535767
+          },
+          "source_end_ns": 187017544.0,
+          "kind": "synchronized clean recovery; original byte clocks retained"
+        }
+      },
+      "checked": 5760,
+      "old_end_same_trace_checked": 2880,
+      "negatives": [
+        {
+          "fault": "displayed_word",
+          "frame_pc": 9913242,
+          "mode": "BUF",
+          "checked": 5040,
+          "groups": [
+            "display/word"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "word",
+            "t": 132837443,
+            "detail": "output line 0: shows 2239530165, line read had 2239530164"
+          }
+        },
+        {
+          "fault": "source_mapping",
+          "frame_pc": 9913242,
+          "mode": "BUF",
+          "checked": 5040,
+          "groups": [
+            "display/map",
+            "display/not_read"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "map",
+            "t": 132837443,
+            "detail": "output line 0: source line 999, model 0 (243 lines, low 0)"
+          }
+        }
+      ],
+      "result_sha256": "22c8746559a4bcefae5e91bd6abc6786bee811345253203b41bc6f1f239b2e87",
+      "raw_files": 12,
+      "compile_parameters": {
+        "V_TOTAL": 750,
+        "V_ACTIVE": 720,
+        "V_FP": 5,
+        "V_SYNC": 5,
+        "RT_NTSC": 4,
+        "RT_PAL": 44,
+        "RT_HYST": 16,
+        "RT_SPLIT": 270
+      },
+      "native_seconds": 1659.2,
+      "all_generated_input_files_match_contract": true,
+      "original_streams_and_controls_preserved": true
+    }
+  ],
+  "old_campaign_accepted": false,
+  "new_campaign_run": false,
+  "full_suite_or_build_run": false,
+  "hardware_verified": false,
+  "runtime_input_root_review_sha256": "0281e48aa7eb8a90f98126ed49ee59e3f5e8be0887d7e98829cdb967017edae0",
+  "runtime_and_campaign_source_snapshot_unchanged": true,
+  "actual_python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]",
+  "generated_inputs_only": true
+}

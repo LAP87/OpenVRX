@@ -206,3 +206,21 @@ Root verifierade 160 källhashar, runtime-/kampanjmanifestet, helperhashar och 1
 Första förkontrollen stoppade före kompilering: förberedelsen använde Python 3.14.7, projektets körmiljö 3.12.12. Endast Python-identiteten skilde; felkontrakt och logg bevaras. Ett separat kontrakt och en ny outputkatalog förbereddes med faktisk körmiljö. Alla sex original-/extended-inputfiler är byte-identiska över versionerna; versionskontrollen behölls. En enda faktisk native-körning gjordes, med oförändrade källor, seed, 144-raderskrav och 3000 s timeout.
 
 Core 2dca245 och Puck a2ad438 är oförändrade. Skalad PAL har nu native-acceptans för detta scenario; full NTSC återstår som separat prov i matrisen. Ingen ny 260-frökampanj, helsvit, routning eller FPGA-hårdvarumätning påstås.
+
+
+### Full NTSC-recovery: frö 1500, 2026-10-12
+
+Ett separat native-prov genom accepterad kampanjworker använder full NTSC, densitet 1, åtta interlaced originalfält, tvingad `mode_switch` och fyra rena recovery-fält. **5 760 rader passerade på 1 659,2 s**, med minst 720 som oförändrat krav. Kompilering, vvp och drain avslutade utan fynd, known, edges eller notes. De kompletta A/B/CTL-indata matchar genererade förväntningar; originalprefix, styrtider och byteklockor är kvar. Detta har ingen tidigare native-pixelbaslinje att jämföra mot.
+
+Root verifierade 160 källhashar, runtime-/kampanjmanifestet, helperhashar och 12 råfiler och återläste modeller/invarianter. Fel bildord och källrad i det tillkomna kontrollerbara BUF-bildfönstret vid pixelklocka 9913242 ger `display/word` respektive `display/map`/`display/not_read`, vardera med 5 040 godkända rader kvar. Samma nya råspår med originalets källsluttid räknar 2 880 rader; det är ingen separat native-körning av originalet. Förberedelse och execution använder projektets Python 3.12.12, med oförändrade versionskontroller och 3000 s timeout. [Rootacceptans](evidence/recovery-full-ntsc-1500.json).
+
+De fyra geometri-/standardkombinationerna har nu utvalda accepterade native-prover:
+
+| Geometri | Standard | Frö | Kontrollerade rader | Acceptans |
+|---|---|---:|---:|---|
+| Skalad | NTSC | 1345 | 360 | [Nya API-vägen](evidence/recovery-campaign-acceptance.json) |
+| Skalad | PAL | 1600 | 1 008 | [Separat prov](evidence/recovery-scaled-pal-1600.json) |
+| Full | NTSC | 1500 | 5 760 | [Separat prov](evidence/recovery-full-ntsc-1500.json) |
+| Full | PAL | 1601 | 6 480 | [Nya API-vägen](evidence/recovery-campaign-acceptance.json) |
+
+Varje prov har två faktiska negativa kontroller i ett tillkommet bildfönster. Det är representanter för ett nytt recovery-kontrakt, ingen acceptans av alla kampanjfrön, tätheter eller bildlägeskombinationer. Core 2dca245 och Puck a2ad438 är oförändrade. Ingen ny 260-frökampanj, helsvit, routning eller FPGA-hårdvarumätning är körd. En större runda kräver ett separat kontrakt med strikt råevidens, återupptagning och granskning.

@@ -1,0 +1,280 @@
+{
+  "state": "PASS_ROOT_REVIEWED_READ_ONLY_TRIAGE",
+  "root": {
+    "state": "PASS_SOURCE_BOUND_TRIAGE_NO_NATIVE_OR_RTL_CHANGE",
+    "reviewed_utc": "2026-10-12T14:05:48.464275+00:00",
+    "audit_script_sha256": "de8d5cb56e916179adeaff65883765da9186b72dce40415ee1901c4b373e7072",
+    "input_contract_sha256": "2e5e79a584d8ee154105916e1595d42581a636df51da30e878bad58ba9ed0064",
+    "seed": 1309,
+    "writer_trigger_count": 10,
+    "recovery_writer_triggers": [
+      {
+        "writer_cycle": 1225224,
+        "writer_toggle_time_ns": 18868457.3,
+        "pixel_clock_estimate": 1408093.828358209,
+        "frame_start_pc": 1362942,
+        "phase_line_estimate": 27.3647444595206,
+        "conservative_cdc_phase_lines": [
+          27.359895974672117,
+          27.36959294436909
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1350542,
+        "writer_toggle_time_ns": 20798354.5,
+        "pixel_clock_estimate": 1552116.0074626866,
+        "frame_start_pc": 1518042,
+        "phase_line_estimate": 20.65091361374947,
+        "conservative_cdc_phase_lines": [
+          20.646065128900986,
+          20.655762098597954
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1476290,
+        "writer_toggle_time_ns": 22734873.7,
+        "pixel_clock_estimate": 1696632.3656716417,
+        "frame_start_pc": 1673142,
+        "phase_line_estimate": 14.2365852555404,
+        "conservative_cdc_phase_lines": [
+          14.231736770691915,
+          14.241433740388885
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1602036,
+        "writer_toggle_time_ns": 24671362.1,
+        "pixel_clock_estimate": 1841146.4253731344,
+        "frame_start_pc": 1828242,
+        "phase_line_estimate": 7.8208638625057185,
+        "conservative_cdc_phase_lines": [
+          7.816015377657234,
+          7.825712347354203
+        ],
+        "s_ll_low": 1,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      }
+    ],
+    "all_writer_triggers": [
+      {
+        "writer_cycle": 464036,
+        "writer_toggle_time_ns": 7146162.100000001,
+        "pixel_clock_estimate": 533295.6791044776,
+        "frame_start_pc": 430692,
+        "phase_line_estimate": 62.184047942107654,
+        "conservative_cdc_phase_lines": [
+          62.17919945725917,
+          62.18889642695614
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 0,
+        "early_with_8_clock_margin": true,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 531026,
+        "writer_toggle_time_ns": 8177808.100000001,
+        "pixel_clock_estimate": 610284.1865671643,
+        "frame_start_pc": 585792,
+        "phase_line_estimate": 14.843749434645005,
+        "conservative_cdc_phase_lines": [
+          14.838900949796521,
+          14.848597919493491
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 15,
+        "early_with_8_clock_margin": true,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 654712,
+        "writer_toggle_time_ns": 10082572.5,
+        "pixel_clock_estimate": 752430.7835820896,
+        "frame_start_pc": 740892,
+        "phase_line_estimate": 6.993202170963385,
+        "conservative_cdc_phase_lines": [
+          6.9883536861149,
+          6.99805065581187
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 15,
+        "early_with_8_clock_margin": true,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 902009,
+        "writer_toggle_time_ns": 13890946.3,
+        "pixel_clock_estimate": 1036637.7835820896,
+        "frame_start_pc": 910842,
+        "phase_line_estimate": 76.23986883763006,
+        "conservative_cdc_phase_lines": [
+          76.23502035278156,
+          76.24471732247854
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 15,
+        "early_with_8_clock_margin": false,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 963852,
+        "writer_toggle_time_ns": 14843328.5,
+        "pixel_clock_estimate": 1107711.0820895522,
+        "frame_start_pc": 1052742,
+        "phase_line_estimate": 33.3145952057892,
+        "conservative_cdc_phase_lines": [
+          33.30974672094072,
+          33.31944369063769
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 15,
+        "early_with_8_clock_margin": true,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 1095783,
+        "writer_toggle_time_ns": 16875065.900000002,
+        "pixel_clock_estimate": 1259333.276119403,
+        "frame_start_pc": 1207842,
+        "phase_line_estimate": 31.20683401175944,
+        "conservative_cdc_phase_lines": [
+          31.201985526910956,
+          31.211682496607924
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 23,
+        "early_with_8_clock_margin": true,
+        "after_original_end": false
+      },
+      {
+        "writer_cycle": 1225224,
+        "writer_toggle_time_ns": 18868457.3,
+        "pixel_clock_estimate": 1408093.828358209,
+        "frame_start_pc": 1362942,
+        "phase_line_estimate": 27.3647444595206,
+        "conservative_cdc_phase_lines": [
+          27.359895974672117,
+          27.36959294436909
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1350542,
+        "writer_toggle_time_ns": 20798354.5,
+        "pixel_clock_estimate": 1552116.0074626866,
+        "frame_start_pc": 1518042,
+        "phase_line_estimate": 20.65091361374947,
+        "conservative_cdc_phase_lines": [
+          20.646065128900986,
+          20.655762098597954
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1476290,
+        "writer_toggle_time_ns": 22734873.7,
+        "pixel_clock_estimate": 1696632.3656716417,
+        "frame_start_pc": 1673142,
+        "phase_line_estimate": 14.2365852555404,
+        "conservative_cdc_phase_lines": [
+          14.231736770691915,
+          14.241433740388885
+        ],
+        "s_ll_low": 0,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      },
+      {
+        "writer_cycle": 1602036,
+        "writer_toggle_time_ns": 24671362.1,
+        "pixel_clock_estimate": 1841146.4253731344,
+        "frame_start_pc": 1828242,
+        "phase_line_estimate": 7.8208638625057185,
+        "conservative_cdc_phase_lines": [
+          7.816015377657234,
+          7.825712347354203
+        ],
+        "s_ll_low": 1,
+        "s_ll_lines": 24,
+        "early_with_8_clock_margin": true,
+        "after_original_end": true
+      }
+    ],
+    "short_output_frame": {
+      "start": 740892,
+      "end": 755742,
+      "lines": 9.0
+    },
+    "subsequent_frame_starts": 8,
+    "hold_default": 32,
+    "hold_lower_bound_at_trace_end": 23,
+    "observed_frame_gate_failure": true,
+    "internal_hold_register_observed": false,
+    "conclusion": "Recovery writer triggers are present. They fall in active video, hence are early. The earlier 9-line cut starts a 32-frame cooldown; fewer than 32 subsequent frames fit the trace. Source logic suppresses another early jump while hold>0, so frames time out with triggered=0. This is a source-bound deduction, not a logged hold-register measurement.",
+    "limits": "Exact pixel-domain ll_trig/pend/early_n/hold/vc states are not logged. A separate telemetry probe with unchanged default mode policy can confirm them; four recovery fields cannot guarantee genlock reacquisition after an earlier cut.",
+    "incoming_core": "5314ed1f97ddffed40912570c5f49eda08fd8bb9",
+    "incoming_puck": "ecb9b14ecd7e47360587071f6c6a63678ae7d9b4",
+    "actual_puck_core_pin": "f32407fc6b6d10b046ec63a116cfb7c310ee88fa",
+    "puck_pin_equals_new_core_head": false,
+    "incoming_changed_files": [
+      "README.md",
+      "gateware/README.md",
+      "gateware/sim/test_m2.py",
+      "gateware/sim/test_mixer.py",
+      "gateware/sim/test_sdram.py",
+      "gateware/sim/test_tvp_ctrl.py",
+      "gateware/tools/build_dirs.py",
+      "gateware/tools/run_suite.py",
+      "gateware/tools/suite_trace.py",
+      "gateware/tools/test_build_dirs.py"
+    ],
+    "rtl_models_and_native_driver_unchanged": true,
+    "puck_only_gitlink_changed": true,
+    "external_651_658_fullsuite_claims_not_locally_verified": true,
+    "upstream_diff_sha256": {
+      "CORE_UPSTREAM.diff": "b6cb313258122f9c5bbabcf8d1f1d2e21f9e9c8bc830471e55b54ac26d8a6fe3",
+      "PUCK_UPSTREAM.diff": "ee67b386647f5bc181a9eddf74aa8735dfc45647ed145ded194cf4242e448f07",
+      "CORE_UPSTREAM_LOG.txt": "a6fafcaaa47330ce77a0f104f148ac22f84ea73ab87f41cb42ec83ea160925b1",
+      "PUCK_UPSTREAM_LOG.txt": "1a9fc472d3ab361560ec040ecd012e1961ba064b925b2342933cf3e20ac508d4"
+    },
+    "source_raw_before_after_identical": true,
+    "old_campaign_or_current_packet_accepted": false,
+    "hardware_verified": false
+  },
+  "evidence_sha256": {
+    "INPUT_CONTRACT.json": "2e5e79a584d8ee154105916e1595d42581a636df51da30e878bad58ba9ed0064",
+    "audit.py": "de8d5cb56e916179adeaff65883765da9186b72dce40415ee1901c4b373e7072",
+    "AUDIT.log": "cd49eb37428a747224fadbde6f180aac5676c3e46b5cc508639268d1eae1a5a4",
+    "FIRST_REVIEW_FAILURE.json": "065405edaf616bec794f391c23e37e2dd66c13c51096fb59457155ce94f9272f",
+    "CORE_UPSTREAM.diff": "b6cb313258122f9c5bbabcf8d1f1d2e21f9e9c8bc830471e55b54ac26d8a6fe3",
+    "PUCK_UPSTREAM.diff": "ee67b386647f5bc181a9eddf74aa8735dfc45647ed145ded194cf4242e448f07",
+    "CORE_UPSTREAM_LOG.txt": "a6fafcaaa47330ce77a0f104f148ac22f84ea73ab87f41cb42ec83ea160925b1",
+    "PUCK_UPSTREAM_LOG.txt": "1a9fc472d3ab361560ec040ecd012e1961ba064b925b2342933cf3e20ac508d4",
+    "ROOT_ACCEPTANCE.json": "c5cc5a982883e3b557c58241ffce71841ff6a045c4756fb1436bd59caa87227b"
+  },
+  "campaign_packet_still_not_accepted": true,
+  "production_source_changed": false,
+  "new_native_run": false,
+  "hardware_verified": false
+}

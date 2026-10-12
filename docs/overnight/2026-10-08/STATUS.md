@@ -570,3 +570,7 @@ Root granskade en isolerad Git-snapshot av Core 5314ed1: 185 spårade filer, exa
 Orsak: `unit_ok` kräver rc=0 och inga dåliga utfall men `all([])` godkänner ett tomt utfallsfält. Resume återanvänder cache efter unit-id utan att binda den till en komplett uppsättning begärda node-id/utfall; `finish` jämför inte slutresultatet mot varje begärt node-id. Root ska därför inte behandla exit 0 från den revisionens resume som fullständig testacceptans. [Exakt CLI-reproduktion och oförändrad bas](evidence/upstream-suite-runner-audit.json).
 
 Sju fixturepass och katalogkollisionernas befintliga negativa kontroller står kvar. Den nya luckan är ännu inte rättad; council-grinden med minst 70 procent YES krävs före ett nytt fixpaket. Externa 651/658-svitrapporter är inte lokalt verifierade och inga produktionsfiler ändrades. Primära fuzz-checkouten, fryst 2dca245, de gamla kampanjrådata och tidigare accepterade paket är orörda.
+
+## UP-RUN-01 council, 2026-10-12
+
+Fyra av fyra röster godkänner ett avgränsat fel i Core5314ed1:s resume-grind: sju begärda test kan accepteras med endast sex lagrade utfall. Det skadade resultatarkivet är avsiktligt konstruerat; normal förekomst är inte visad. En separat rättning ska kontrollera testidentiteter och fullständighet före återanvändning och före slutlig acceptans. Ingen kodrättning eller ny helsvit ingår i rådet. [Röster, hashkontrakt och avgränsning](evidence/up-run-01-council.json).

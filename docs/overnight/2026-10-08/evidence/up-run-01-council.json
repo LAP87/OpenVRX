@@ -1,0 +1,53 @@
+{
+  "state": "COUNCIL_ACCEPTED_GAP_NOT_IMPLEMENTATION",
+  "finding": "UP-RUN-01",
+  "votes": [
+    {
+      "voter": "root",
+      "vote": "YES",
+      "confidence": 0.98,
+      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_root.json",
+      "sha256": "9929241800e26c5d2c791f9902e677ecb2fdc1b40a477b99e6a41912e6dd2138"
+    },
+    {
+      "voter": "correctness",
+      "vote": "YES",
+      "confidence": 0.99,
+      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_correctness.json",
+      "sha256": "10c55cc6c651509ec23c7c30f891e76ed97ae190380b1ba563127e23686010cd"
+    },
+    {
+      "voter": "evidence",
+      "vote": "YES",
+      "confidence": 0.96,
+      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_evidence.json",
+      "sha256": "cbf331876407de6ef952bb0f80d8d782b808aabc511ddc6de33aa5354aef3243"
+    },
+    {
+      "voter": "scope",
+      "vote": "YES",
+      "confidence": 0.99,
+      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_scope.json",
+      "sha256": "97bd393e04cfe845e8608ec3c87d955d552bbfb9f59f4458a54672e3b06e46c0"
+    }
+  ],
+  "yes": 4,
+  "total": 4,
+  "yes_percent": 100.0,
+  "threshold_percent": 70,
+  "fix_task_allowed": true,
+  "input_contract_sha256": "9e99f3ebffa7b868ce15aa2eae9869955ce839681313d97d7b442c00629aba51",
+  "all_inputs_unchanged": true,
+  "source_revision": "5314ed1f97ddffed40912570c5f49eda08fd8bb9",
+  "limits": [
+    "Owned negative cache was deliberately altered; natural corruption frequency not established.",
+    "Seven fixture tests only; no new full suite, HDL, route or hardware acceptance."
+  ],
+  "minimal_plan": [
+    "Validate current collected node identities against cached nodes and outcome keys before evidence writes or workers.",
+    "Conservatively refuse incompatible cached selection; exclude unrequested units from totals.",
+    "Final requested outcomes or explicit pending units must reconcile; preserve allowed skips/xfails, source guard and budget exit.",
+    "Focused real CLI regressions: valid exact resume, empty/partial/wrong-node cache, grouped selection expansion, unchanged rejected evidence."
+  ],
+  "completed_utc": "2026-10-12T15:46:44.214856+00:00"
+}

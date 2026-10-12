@@ -226,7 +226,7 @@ Källa: Codex journal `docs/overnight/2026-10-08/STATUS.md` och 44 evidensfiler;
 - **Framåt:** [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md).
 
 
-## Åttonde passet, 2026-10-12 (Opus)
+## Åttonde passet, 2026-10-12–13 (Opus)
 
 Enligt [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md), en uppgift i taget, gren per uppgift, sammanslagning med `--no-ff` efter hel svit (parallellt, `run_suite.py`) och uppgiftens byggen. Allt är simulerat och byggt; inget är kört på hårdvara.
 
@@ -243,8 +243,14 @@ Enligt [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md), en uppgift i taget,
 | 8 | Konsekvenskoll: inaktuella meningar i Core README, BRINGUP, navets AGENTS och REVIEW, listade i commit-meddelandena och rättade | 695 gröna | — | — | Core `main` 0503dac, navet `main` |
 | 8b | Inköpsregeln: Puck-koncepten och navets `research/` rensade på butiker, butikslänkar och lagerstatus; priser kvar bara med datum; lista i commit-meddelandena | — | — | — | Puck `main` 1404485, navet `main` b6f4968 |
 | 9 | `VINTERP` (interpolation i höjdled i `BUF`, standard av): `vblend.v`, andra läsporten, förhämtning en rad längre fram, modell i `fb_ref.py`, `build.sh VINTERP=1` | 713 gröna; negativa kontroller: vikt 0, ingen förhämtning, omkastade vikter | M4 och M6 med och utan, M0; cirka 500 LUT4 och 4 BSRAM | Om bilden blir bättre på en skärm | Core `main` 83476b1 |
+| 10 | HDMI-läge som byggval (`HDMI=1`, filnamn `_hdmi`): `tmds_link.v` med förambel, skyddsband och en dataö med AVI-infoframe efter varje vsync (RGB, fullt omfång, VIC 4, eller VIC 19 när `LOW` med PAL ger 720p50 via `hz50`). DVI är kvar som standard | 724 gröna; avkodare i `test_hdmi.py`; negativa kontroller: fel VIC, fel kontrollsumma, fel paritetspolynom, inget skyddsband | M0, M4, M6 med och utan `HDMI=1`; HDMI-paren som M0 | Ingen riktig skärm har sett HDMI-läget; tabellerna är skrivna ur standarden i både RTL och avkodare | Core `main` 9164d12 |
+| 11 | `WAIT_BEFORE_VSYNC` i `genlock_timing.v` (standard 0): den varierande raden före vsync, så att avståndet vsync–bild är `V_SYNC + V_BP` i varje bild; klipp utan återhämtningsbild. Standard 0, eftersom bildstarten då kommer 25 rader (0,56 ms) senare vid 720p och `LOW`-ringen på 16 rader inte räcker nederst i bilden | 728 gröna; formellt 8 `PROVEN`, 16 `CONTROL OK` (två nya negativa kontroller: överhoppad back-porch-rad, väntan som slutar på andra synkraden); låglatenstesterna i båda lägena, avståndet vsync–bild alltid 10 rader i läge 1 och 10–12 i läge 0 | M4, M6; yosys-ekvivalens visar standardläget lika med `9164d12`, med negativ kontroll | Testbygge F8 i `research/GOGGLES_OCH_XR_2026-10-12.md` kräver en större ring först | Core `main` 46a1e4f |
+| 12 | [research/UTGANG_1080P_2026-10.md](../research/UTGANG_1080P_2026-10.md): extern skalare, extern HDMI-sändare på rev B och GW5A-25, med vad som måste mätas för var och en. Nytt i underlaget: bildvägen når 110–147 MHz pixelklocka efter routning beroende på bygge, och 1080p60 kräver 148,5 | — | — (inget byggs) | Inget val; ägarbeslut 6 gäller | navet `main` e012835, rättat 6f4618e |
 
 Avvikelser och misstag under passet:
 - En synkning till fel WSL-katalog bytte källor under en kampanjrunda; köraren sparade inga resultat för den rundan, och fröna kördes om på rättningen.
 - Ett stoppskript träffade `flock`-processen i stället för köraren; rättat, ingen följd för resultaten.
 - Puck pekar fortfarande på Core `f32407f`; submodulen har inte uppdaterats i passet.
+- Uppgift 12:s text skrevs medan uppgift 11:s svit och byggen körde, men committades först efter att 11 var sammanslagen.
+- Första versionen av uppgift 12 angav 112–122 MHz pixelklocka; bygget ur `4ad5a68` gav M4 147 MHz och HDMI-bygget M6 110 MHz. Rättat i två commits samma kväll.
+- Bygget ur `f78fe82` har 17 (M4) och 91 (M6) LUT4 fler än bygget ur `4ad5a68` med samma logik; ekvivalenskontrollen visar att skillnaden är syntesens mappning.

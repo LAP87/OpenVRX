@@ -559,3 +559,14 @@ Efter frö 1309:s avvikelse återlästes de fem kvarvarande, redan körda fyrfä
 Full modell-/invariantåterläsning ger **3 960 bildrader** utan fynd, known, edges eller notes. Tio verkliga fel i tillkomna bilder, bildord respektive källrad per frö, avvisas med rätt BUF-/LOW-predikat och färre godkända rader. Alla 160 källinputs, runtime, sex adaptermoduler, nya scope-helperhashar och de 75 berörda rå-/diagnostikfilerna är granskade. Hela den gamla rundans raw/row/receipt/manifest-katalog behåller samma hash före och efter läsningen. [Separat rootacceptans för fem befintliga spår](evidence/remaining-1310-1314-replay.json).
 
 Tillsammans med tidigare fyra rootgranskade frön är nio av tio fyrfältsfall nu slutgranskade. **Den gamla rundan 1305–1314 förblir ej accepterad på grund av 1309.** Det separat accepterade 44-fältsfallet ersätter inte detta FAIL. Ingen ny native-, helsvit-, routing- eller hårdvaruacceptans påstås.
+
+
+### Svitköraren på Core 5314ed1: verifierad resume-lucka, 2026-10-12
+
+Root granskade en isolerad Git-snapshot av Core 5314ed1: 185 spårade filer, exakt commit/tree/blob-hashar och oförändrade lokala Core/Puck-checkouter. De sju befintliga byggkatalog-/körar-fixturetesterna passerar direkt och via verklig CLI med `--jobs 1`; CLI-basen ger sju begärda test, sju resultat och returstatus 0. Detta är fixtureverifiering, ingen HDL eller helsvit på 658 test.
+
+**UP-RUN-01:** på en ägd kopia av det giltiga resultatarkivet tömdes ett begärt tests `tests`-fält; källa, fingerprint, övriga sex utfall och alla ursprungliga loggar/tracefiler behölls. Verklig `--resume` accepterar ändå alla sju cacheenheter, startar noll nya enheter och ger returstatus 0. Slutrapporten säger **”7 tests: 6 passed”** och byggkatalogsvakten ser bara sex test. Den saknade begärda testidentiteten avvisas alltså inte.
+
+Orsak: `unit_ok` kräver rc=0 och inga dåliga utfall men `all([])` godkänner ett tomt utfallsfält. Resume återanvänder cache efter unit-id utan att binda den till en komplett uppsättning begärda node-id/utfall; `finish` jämför inte slutresultatet mot varje begärt node-id. Root ska därför inte behandla exit 0 från den revisionens resume som fullständig testacceptans. [Exakt CLI-reproduktion och oförändrad bas](evidence/upstream-suite-runner-audit.json).
+
+Sju fixturepass och katalogkollisionernas befintliga negativa kontroller står kvar. Den nya luckan är ännu inte rättad; council-grinden med minst 70 procent YES krävs före ett nytt fixpaket. Externa 651/658-svitrapporter är inte lokalt verifierade och inga produktionsfiler ändrades. Primära fuzz-checkouten, fryst 2dca245, de gamla kampanjrådata och tidigare accepterade paket är orörda.

@@ -149,14 +149,16 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Core main `2f04863` adds an explicit recovery model API: 68 focused
-  model/resume passes, including 25 new helper tests; the previous 157 inputs
-  and RTL are unchanged. Campaign calls do not use it yet. C2 acceptance
+- Core main `2dca245` adds explicit `--recovery-fields` (default 0)
+  through run/narrow/worker/seed calls. Schema 2 binds its count/type;
+  75 focused passes and two native probes (360/6480 lines) are root reviewed.
+  All 160 inputs match main; RTL/checker predicates and 144/720 thresholds
+  remain unchanged. No new full suite or FPGA route is claimed. C2 acceptance
   remains on `a1247ab` (C2 branch `509fc95`, verified source
   `c3fda21`): its frozen suite has 604 passes in 39 files, 157 source
   hashes unchanged and all 570 prior nodes retained. Fresh M0 seed 0,
   M4 seed 0 and M6 seed 2 pass 75 MHz on all reported clocks; four TMDS
-  pairs match M0 in both tops. Puck main `ba471a0` pins Core `2f04863`;
+  pairs match M0 in both tops. Puck main `a2ad438` pins Core `2dca245`;
   its two pin-contract tests pass. These are simulation and source-bound
   build results; receipts and historical runs are separated in
   [STATUS.md](docs/overnight/2026-10-08/STATUS.md).

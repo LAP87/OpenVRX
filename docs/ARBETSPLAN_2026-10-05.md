@@ -208,3 +208,19 @@ I den här ordningen. Varje rad är något simuleringen inte kan ersätta.
 | C2: TV/VCR-meny | Privat controllerkontrakt, UI/logg-testpaket och läsbart implementationsunderlag granskade; separat T/V-token ger 62 byte inklusive CRLF. | — | Luna har överlämnat utkast på `feat/tvvcr-menu` från `db0035f`, med rapporterade 14 rena tester/2 subtester. Root-granskning och HDL-verifiering återstår. Native-kontroller, fullsvit, M4 seed 0/M6 seed 2 och merge väntar; tungt arbete pausat för spel. |
 
 Detaljer: [kvällspassets status](overnight/2026-10-08/STATUS.md).
+
+## Sjunde passet, 2026-10-10 till 12 (Codex och Luna; granskat av Fable 2026-10-12)
+
+Källa: Codex journal `docs/overnight/2026-10-08/STATUS.md` och 44 evidensfiler; sammandraget här är Fables läsning av commits och journal, och sviten är körd på Fables maskin.
+
+- **Core `main` 2dca245**, 27 commits sedan e113cf6. Hela sviten parallellt: 651 test, alla gröna efter att två parametriserade mixertest fått egna byggkataloger (de krockade i köraren, inte i RTL). README:s statusrad säger 604 test ur c3fda21; den uppdateras i nästa pass.
+- **C1** (Codex 3aed0b7, 9 okt): genlockens klipp behåller en full vsync-puls och bara den följande bilden får förkorta sin bakre släckning; de formella bevisen kräver exakt V_SYNC synkrader per bild. M4 seed 0 och M6 seed 3 byggda; M6 seed 2 föll i klockroutning på den källan men routar igen på C2-källan. Seed-filen står på 2.
+- **C3** (Codex, 9–10 okt): ringplatser som aldrig skrivits sedan reset visas svarta i `LOW` (`fb_backend.v`), displayens reservskalning följer geometrin, bänken tömmer SDRAM-kön och kontrollerar aktiv bild före lägesbyte. Kampanjen stannade vid 200 av 260 frön: 199 gröna, frö 1345 faller på för kort stimulus (ingen RTL-orsak).
+- **Mixerns F-gräns** (6c12099, 10 okt): F växlar först när en rad faktiskt skrivs; ett fält vars första rad utelämnas gav annars ingen gräns i ordströmmen. Rättelse av #18-ändringen från 8 okt.
+- **C2, TV/VCR i menyn** (Luna-utkast, Codex-granskning, c3fda21, 11 okt): fältet FILT, 02h skrivs till båda dekodrarna mellan pollrundor och igen efter dekoderåterstart, loggraden 62 byte med T/V, `snowlog.py` följer med. M0, M4 och M6 (seed 2) byggda, alla klockor över 75 MHz.
+- **Återhämtningskampanj** (Codex, 12 okt): `model/fuzz_recovery.py` lägger rena, synkroniserade fält efter ett stört prefix; `model/ll_ring_ref.py` är en modell av ringen i `LOW`; kampanjköraren har `--recovery-fields` (standard 0). Rundor 1200–1278: de första 20 gav 6 fall som alla var kontrollens egna (bänkens svans stängde loggen före sista läsordet); de sista 40 fröna utan fynd, 17 712 kontrollerade rader i sista rundan. RTL oförändrad.
+- **Puck** (10–12 okt): test av hela dekoderstiftkartan mot M3, M4 och M6; README säger att delad SDA inte stöds; submodulen följer Core.
+- **Bänk** (ägaren, 9 okt, `docs/bench/AIO_MONEAGLE_2026-10-09.md`): AIO-kameran S2-OSD vid 4,2 V ger bild i Moneagle. Bekräftar kamera och sändare, inte något i vår kedja.
+- **Inte gjort:** Mistrals tre dokumentuppgifter (materiallista, mätprotokoll, konsekvenskoll). Luna gjorde C2-utkastet och körarrättningar i stället, med ett kreditstopp på vägen.
+- **Framåt:** [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md).
+

@@ -499,3 +499,14 @@ Inget RTL-, modell-, checker-, seed- eller tröskelbyte gjordes och ingen native
 Fables parallella arbete hade samtidigt uppdaterat fjärr-main: Core 5314ed1 ändrar README, fyra testers byggkataloger och fyra kör-/revisionsverktyg; inga RTL-, modell-, fuzz-chain-, fuzz-campaign- eller tb_chain-filer skiljer mot 2dca245. Puck ecb9b14 ändrar endast gitlänken och pekar på Core f32407f, inte 5314ed1. Lokala Core/Puck-checkouter och fryst kampanjkälla flyttades inte. De externa rapporterna om 651/658 tester är inte lokalt verifierade här och ersätter inte våra tidigare källbundna grindar. Navets nya arbetsplan och ägarbeslutsunderlag har bevarats.
 
 Första diffgranskningen antog felaktigt att Pucks senaste gitlänk redan pekade på Core main; kontrollen avvisade antagandet. Faktisk pin sparas separat i den rättade granskningen; ingen checkout eller gitlänk ändrades för att få likhet.
+
+
+### Frö 1309: genlock-spärren direkt observerad, 2026-10-12
+
+En separat native-probe med samma frysta Core 2dca245, exakt samma A/B/CTL och samtliga kompilatorparametrar lade endast passiv $fwrite-telemetri i en privat testbänkskopia. Ordinarie A/B/CTL/mix/sd/pix är alla sex byte-identiska med originalkörningen. Kompilator- och vvp-diagnostik är bevarade; inga RTL-, parameter-, checker- eller lägesregler ändrades.
+
+Den interna genlock-spärren är nu observerad direkt: hold=32 vid det tidigare klippet. Vid de fyra recovery-triggerna är hold=27/26/25/24 och vertikalräknaren vc=27/20/14/7, före vertikalsynk vid 73. Alla fyra har lock=1 och jump=0; de tillkomna bildstarterna har triggered=0/video=0 trots alive=1. Detta bekräftar read-only-triagens orsak: fyra recovery-fält är kortare än den kvarvarande spärren efter ett tidigare klipp.
+
+Oförändrad modell-/invariantåterläsning ger 216 kontrollerade rader utan fynd, known, edges eller notes. Ett faktiskt fel hold-värde respektive en felaktig triggerfas i ägda kopior av GT-spåret avvisas av samma telemetrifacit; originalet passerar före och efter. Samtliga 160 originalkällinputs, runtime, privat bänk/driver och originalråhashar är bundna och oförändrade. [Direkt telemetrikvitto](evidence/seed1309-telemetry-probe.json).
+
+Acceptansen gäller enbart orsaksproben. Rundan 1305–1314 förblir ej accepterad och gamla kampanjens FAIL bevaras. Längre återhämtningsstimulus kräver ett nytt uttryckligt käll-/parameterkontrakt och en separat output med originalprefix och styrtider kvar; befintliga bildgränser och HOLD=32 ska inte sänkas. Ingen ny helsvit, routning eller hårdvarumätning är gjord.

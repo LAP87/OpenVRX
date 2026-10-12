@@ -1,0 +1,231 @@
+{
+  "state": "PASS_FULL_SUITE_ROOT_REVIEWED_NOT_PUBLISHED",
+  "revision": "ff9bfec086e7327a3f606b1fd869e5d45f843d83",
+  "tree": "818dd13a3118eab14b59e718f24f305a21ed4903",
+  "tests_passed": 683,
+  "files": 43,
+  "processes": 427,
+  "source_inputs": 186,
+  "source_unchanged": true,
+  "runtime_unchanged": true,
+  "xml": {
+    "gateware/sim/test_bt656_rx_matches_model.result.xml": {
+      "sha256": "77b9f33b9777b7bafcb12b68c7af7b5b887f954f71d2e1ba9b33b3f59ed62d10",
+      "testcases": 5,
+      "node": "gateware/sim/test_bt656_rx.py::test_bt656_rx_matches_model"
+    },
+    "gateware/sim/test_m1_input_path.result.xml": {
+      "sha256": "1fec087d5ce436885af1dfe56248d721776c5ef506b012121546c6467dc045c1",
+      "testcases": 2,
+      "node": "gateware/sim/test_m1_input.py::test_m1_input_path"
+    },
+    "gateware/sim/test_m1s_input_path.result.xml": {
+      "sha256": "78a748308b6292b1936472cda058ac5c1a590ed83200e62e73d2529b91c718fd",
+      "testcases": 2,
+      "node": "gateware/sim/test_m1s_input.py::test_m1s_input_path"
+    },
+    "gateware/sim/test_m2_end_to_end.result.xml": {
+      "sha256": "e679b72a2be947e09b9f2cab88ed72d92514ea215978aef9afa3f95abe1daef9",
+      "testcases": 1,
+      "node": "gateware/sim/test_m2.py::test_m2_end_to_end"
+    },
+    "gateware/sim/test_m2_low_latency.result.xml": {
+      "sha256": "e1b7d7f970189684ca6366bacabf316b68e845f104796f79136470527e7bbeed",
+      "testcases": 1,
+      "node": "gateware/sim/test_m2.py::test_m2_low_latency"
+    },
+    "gateware/sim/test_m5c_bt1120.result.xml": {
+      "sha256": "ff9115e54a3f5596239f8afb987f1be48693636465d67ecf99c4c46b3b26477e",
+      "testcases": 1,
+      "node": "gateware/sim/test_m5c.py::test_m5c_bt1120"
+    },
+    "gateware/sim/test_memtest_default_delays.result.xml": {
+      "sha256": "f3088bd0da1b7601bacdd176249fd4e7d40e9ac2635b67e55ecb705a621b138a",
+      "testcases": 1,
+      "node": "gateware/sim/test_memtest.py::test_memtest_default_delays"
+    },
+    "gateware/sim/test_memtest_zero_delays.result.xml": {
+      "sha256": "61cecbfb6d08976ce4f332d1233209351d27d06c4d92e65b44c667d1d9eca766",
+      "testcases": 1,
+      "node": "gateware/sim/test_memtest.py::test_memtest_zero_delays"
+    },
+    "gateware/sim/test_memtest_short_delays.result.xml": {
+      "sha256": "279d7add846fcf4d894a1ed7eec51d96b378c3a31051d50191f477a5f0e9c443",
+      "testcases": 1,
+      "node": "gateware/sim/test_memtest.py::test_memtest_short_delays"
+    },
+    "gateware/sim/test_memtest_long_delays.result.xml": {
+      "sha256": "b5610bec1def37acb5c5c9c0ae3ae0cb1f09b4118c74aa48a54e7542ba5d9558",
+      "testcases": 1,
+      "node": "gateware/sim/test_memtest.py::test_memtest_long_delays"
+    },
+    "gateware/sim/test_memtest_uart_baud.result.xml": {
+      "sha256": "accf1da290ba90fa007408fc100ba254096e51018b137121ae3d09a6e004f74b",
+      "testcases": 1,
+      "node": "gateware/sim/test_memtest.py::test_memtest_uart_baud"
+    },
+    "gateware/sim/test_sdram_burst.result.xml": {
+      "sha256": "cd2986daa8c3d63a0b473066929e66a259d43f2fec5a763d0892e8fcd9bcd68d",
+      "testcases": 1,
+      "node": "gateware/sim/test_sdram.py::test_sdram_burst"
+    },
+    "gateware/sim/test_sdram_sample_point_sweep.result.xml": {
+      "sha256": "183304a87df5d385218079a341bebc4ce2d39b1d0dbeceb2bdac402b80493871",
+      "testcases": 1,
+      "node": "gateware/sim/test_sdram.py::test_sdram_sample_point_sweep"
+    },
+    "gateware/sim/test_sdram_read_window.result.xml": {
+      "sha256": "159f83df12687814bf73614cf617c66a175593d5a73e06c0141f5672ceaad8d5",
+      "testcases": 1,
+      "node": "gateware/sim/test_sdram.py::test_sdram_read_window"
+    },
+    "gateware/sim/test_sdram_command_window.result.xml": {
+      "sha256": "773c2665f6f951afc01679c858d41d9172161b23da5a956335fbf7915500e882",
+      "testcases": 1,
+      "node": "gateware/sim/test_sdram.py::test_sdram_command_window"
+    },
+    "gateware/sim/test_sdram_model_checks.result.xml": {
+      "sha256": "248abf7e56891ab958aae77fae544e1b1b9b018916093e85345002803a2490b7",
+      "testcases": 20,
+      "node": "gateware/sim/test_sdram.py::test_sdram_model_checks"
+    },
+    "gateware/sim/test_sdram_model_strict_stops.result.xml": {
+      "sha256": "ed354f46f81192f0b8fcf670dd181c98ae8b19db8f024bfb2e13a3665c78b30a",
+      "testcases": 1,
+      "node": "gateware/sim/test_sdram.py::test_sdram_model_strict_stops"
+    },
+    "gateware/sim/test_tmds_encoder.result.xml": {
+      "sha256": "c5cf3f0c2cfc1d0b9e78ce6114ac71d88aeb3721f7607edd6bc06dfcd61b9f34",
+      "testcases": 2,
+      "node": "gateware/sim/test_video.py::test_tmds_encoder"
+    },
+    "gateware/sim/test_video_timing.result.xml": {
+      "sha256": "7e376fadf6b37f9b66af74650359c7651f2c5b2756c805dfbbd5e32cb4705e9a",
+      "testcases": 2,
+      "node": "gateware/sim/test_video.py::test_video_timing"
+    }
+  },
+  "formal": {
+    "async_fifo_depth4": {
+      "kind": "prove",
+      "sha256": "41cdfaea88948e8db0da8128cfd4bc39e246f75869fd9250f7d234a29087eff7"
+    },
+    "async_fifo_depth8": {
+      "kind": "prove",
+      "sha256": "f4594184e765729c797c252876e2bede4355194bb9942f17a268df97ebbed676"
+    },
+    "async_fifo_never_full": {
+      "kind": "must_fail",
+      "sha256": "f926cf3677e5a42bf4eac8fa4e0606d6e4fb6f3fd5bbf9ba480882ad3d8aac81"
+    },
+    "async_fifo_never_empty": {
+      "kind": "must_fail",
+      "sha256": "05897d04fab945ea52bb89f4f00f9cf503ee46e84c85141b664fdcd831d21313"
+    },
+    "genlock_timing": {
+      "kind": "prove",
+      "sha256": "fa8a45ca79d13109e6bf1604c1e432b3c80c2c5195037b24cdd0b1adeac8446e"
+    },
+    "genlock_no_wait_limit": {
+      "kind": "must_fail",
+      "sha256": "3f8ad467466c596f5a4a1143f50814ff2840292a31a0145faf8893782b11e6b1"
+    },
+    "genlock_short_frame": {
+      "kind": "must_fail",
+      "sha256": "f1c76ed4f48f346dcfc37a21a0da529f976e47ad5b998adb2f4e56e97c96e597"
+    },
+    "genlock_no_holdoff": {
+      "kind": "must_fail",
+      "sha256": "4f2bc783b28063cf5a04f1f27fcff02f94da227637eed91e8652a1b2b1e5c620"
+    },
+    "genlock_cut_no_sync": {
+      "kind": "must_fail",
+      "sha256": "ca6d985f60b05b89cbfef889589ff525a9e9f2fdd392671e169bb1b5f5d9a7ad"
+    },
+    "genlock_sticky_recovery": {
+      "kind": "must_fail",
+      "sha256": "dad30c22ef6f621b5d0fde82cf9a9807c0da3e586f46de31b827047f8988370f"
+    },
+    "cdc_toggle": {
+      "kind": "prove",
+      "sha256": "69072ea806e198949bcc865f90456ff74b52e5df6a855202239c1b953590404e"
+    },
+    "cdc_level": {
+      "kind": "prove",
+      "sha256": "5f5d5963c771efbb48e8de60718057d429ffee1e3c6c0359f462d391cecd446d"
+    },
+    "cdc_toggle_tx": {
+      "kind": "prove",
+      "sha256": "04a65540b065285933a57dbaf64b55dd0685ab38d020ccb754b00ed95b73663d"
+    },
+    "fb_linebuf_slots": {
+      "kind": "prove",
+      "sha256": "98a3e2104ca75b01f7400adfbc54fddfb0a4038eb18ea3020299a79bb139c403"
+    },
+    "cdc_toggle_no_sync": {
+      "kind": "must_fail",
+      "sha256": "27e71a7158d426775699b83b40aef81e93eced0ff0c05006431de7217c557b67"
+    },
+    "cdc_toggle_too_often": {
+      "kind": "must_fail",
+      "sha256": "5140b4ec1bfd20cec076a1f04979e996b285b2db5c37b2a604246a138fdc98c1"
+    },
+    "cdc_toggle_data_early": {
+      "kind": "must_fail",
+      "sha256": "1fe2c86c30be48df6c463d92ca4fecbea241884312a7603b3e42d73f592c3cfc"
+    },
+    "cdc_toggle_tx_no_gap": {
+      "kind": "must_fail",
+      "sha256": "7fbf4565ee2ccf0a7cd0003da9407e5ede388093e5213f1984633df49184c07a"
+    },
+    "cdc_level_no_sync": {
+      "kind": "must_fail",
+      "sha256": "cca919133a55f58e116ee8bcf9da11296a48048e24ed93bf6eb3bde6b2e10a37"
+    },
+    "cdc_level_two_edges": {
+      "kind": "must_fail",
+      "sha256": "ffaba3228014805b369a44bce18fad63d8de7f503d2574296798f32686135385"
+    },
+    "fb_linebuf_same_slot": {
+      "kind": "must_fail",
+      "sha256": "33294701a62e6515fafba8e0f59beaf6d7c4b6e5aa1f20abd31dd3bb5675417e"
+    }
+  },
+  "negative_controls": [
+    "empty_outcomes",
+    "foreign_outcome",
+    "foreign_unit",
+    "duplicate_unit",
+    "failed_outcome",
+    "nonzero_rc",
+    "missing_unit",
+    "green_negative",
+    "wrong_identity",
+    "extra_error",
+    "wrong_strict_fatal_cause",
+    "actual_xml_failure"
+  ],
+  "result_sha256": "5f6ce7b1a47404861a6c5c267b1896e015aedbd4f0371834f24bc6671a78bf1d",
+  "results_sha256": "7c3defc9aa0a030a389b2552e9692341bcbeb08d4991cd903d6e7f67ba0e5081",
+  "source_contract_sha256": "786f1ce917d451241a227ddd5e12577de1739077cbf5fbd19976d4fadb77a3f1",
+  "launch_contract_sha256": "7f72daf1fbe70920f2fde78bbc63315863677b18880afbfdceb046130ea0bf2f",
+  "helper_sha256": "117a62ee08b72d0d6d87f62feb5923422dc5162507eb0c00e1a0ffe3640206b0",
+  "expected_strict_xml": {
+    "source_case": "test_sdram_model_strict_stops",
+    "actual_fatal_log_sha256": "52f6e86b8a0a8f135a27aaea2882ce7e707ecfe8e0edea6b39e229f170a6a74f",
+    "native_rc": 0,
+    "classification": "deliberate source-bound tRCD negative,18 normal XML clean"
+  },
+  "elapsed_seconds": 6957.731188,
+  "fpga_route": false,
+  "hardware_verified": false,
+  "reviewed_utc": "2026-10-12T20:04:11.978985+00:00",
+  "child_logs_verified": 427,
+  "whole_suite_attempts": 1,
+  "diagnostic_strict_replays": 1,
+  "original_private_oracle_failures_preserved": true,
+  "original_failure": "FIRST_ROOT_FAILURE.json",
+  "classification_addendum": "XML_CONTROL_ADDENDUM_V2.md",
+  "later_main_covered": false,
+  "scope": "Frozen ff9bfec only; later IOB, campaign and bench-assertion changes require separate acceptance."
+}

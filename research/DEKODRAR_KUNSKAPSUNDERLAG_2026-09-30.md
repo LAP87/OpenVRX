@@ -45,18 +45,17 @@ Inget hittat öppet projekt gör riktig bildmixning mellan två mottagare. Det �
 - **Synk-utgångar:** ADV7180 ger bara HS, VS och Field, ingen DE. Liten logik i FPGA/CPLD behövs för att ta fram aktiv bild. HS kan bara flyttas begränsat.
 - **Toradex-tråd:** blå bild + opålitlig I2C; misstänkt orsak var jord/kopplingsstörningar mellan analog och digital del. Råd: korta kablar och seriemotstånd på parallellbussen. Orsaken bekräftades inte slutligt.
 
-## Tillgänglighet hos LCSC (läst 2026-09-30 i webbläsaren)
+## Artikelnummer och priser (LCSC C-nummer, läst 2026-09-30)
 
-Alla träffar låg under **"Other Suppliers"**, inte LCSC:s eget lager. Hur JLCPCB-bestyckning hanterar sådana delar (global sourcing/leveransbeställning) är **inte kontrollerat**.
-- TVP5150AM1PBS (C3824301): 3,74 USD vid 30+ (5–7 dagar) eller 19,32 USD vid 5+ (3–5 dagar).
-- TVP5150AM1PBSR (C10013): 2 477 st, 10,82 USD vid 5+ (3–5 dagar).
-- ADV7180BCPZ (C11164): 65 st, 1,69 USD (3–5 dagar). Övriga ADV7180-varianter 41–43 dagars ledtid.
-- ADV7280BCPZ (C579437): 41–43 dagar, ca 16,7 USD vid 100+.
+- TVP5150AM1PBS (C3824301): 3,74 USD vid 30+ eller 19,32 USD vid 5+.
+- TVP5150AM1PBSR (C10013): 10,82 USD vid 5+.
+- ADV7180BCPZ (C11164): 1,69 USD.
+- ADV7280BCPZ (C579437): ca 16,7 USD vid 100+.
 - TW9912: inga träffar.
 
 ## Vad detta betyder för rev A (min bedömning, inte beslutad)
 
-1. **TVP5150AM1 som förstaval**, ADV7180 som reserv: det finns ett FPV-bevis för kedjan, TI-rekommendationer för ingången, och delar hos LCSC-leverantörer.
+1. **TVP5150AM1 som förstaval**, ADV7180 som reserv: det finns ett FPV-bevis för kedjan, och TI-rekommendationer för ingången.
 2. **Ingångssteg med alternativ:** 75 Ω-terminering eller 2×37,4 Ω dämpare, 0,1 µF, ESD, testpunkt på CVBS. Nollohmsbyglar så vi kan byta utan nytt kort.
 3. **Reset, I2C-pullups och 14,31818 MHz-kristall enligt TI**, med testpunkter. *(Rättat 2026-10-01 efter Astras granskning: tidigare stod 27 MHz. TVP5150AM1 tar 14,31818 MHz som referens och genererar själv 27 MHz-klockan på SCLK.)*
 4. **FPGA-logik måste tåla trasiga rader** (inte anta 720 px/rad) och läsa lås-status per dekoder. Snabbare låsning än rrk1:s 20 s är ett uttalat mål.
@@ -120,7 +119,7 @@ Hämtat: rcgroups-tråden sida 1–6, RPi-forumets ADV7282-M-latenstråd (2 sido
 - **TVP5150AM1: ACTIVE.** TVP5151: ACTIVE. → Påståendet gäller den gamla TVP5150, inte AM1.
 - ADI:s statussidor gick inte att läsa med skript (JS); ADV7180/ADV7182A-status ej verifierad.
 
-**LCSC ADV7182A** (webbläsare 2026-09-30, "Other Suppliers"): ADV7182AWBCPZ-RL (C662245) 6 707 st, 5,61 USD vid 10+, 3–5 dagar; övriga varianter 29–53 dagar.
+**ADV7182A** (2026-09-30): ADV7182AWBCPZ-RL (LCSC C662245), 5,61 USD vid 10+.
 
 **Konsekvens för rev A:** välj uttryckligen **TVP5150AM1** (eller TVP5151), aldrig ursprungliga TVP5150. ADV7182A är ett rimligt ADI-alternativ med nyare status än ADV7180; ingen FPV-förebild hittad för den.
 

@@ -7,7 +7,7 @@ Råfiler: `research/raw/xr/` (Reddit via OpenCLI, XREAL-dokumentation). Använda
 1. **Mata glasögonen med 1080p60.** Tre oberoende rapporter om att 720p inte fungerar: VITURE Pro XR ("rainbow screen" vid 720p), XREAL XBX ("no signal" vid 720p), VITURE i intofpv-tråden (720p saknas i EDID).
 2. **Undvik 50 Hz.** XREAL:s egen tabell listar bara 60/72/90/120 Hz för alla modeller (gäller utvecklarläget; extern 50 Hz-ingång är inte bekräftad åt något håll). Analog kamera i NTSC, eller konverterare som ger 1080p60 oavsett källa.
 3. **Latens med HDMI→USB-C-kedja:** en användare uppger **45–55 ms vid 1080p60** (VITURE Pro XR + Caddx Ascent VRX + samma typ av HDMI-adapter). intofpv-användaren: ca 60 ms (VITURE, digital HD-källa). En kommentar återger "20–50+ ms extra" från en YouTuber. Ingen av dem beskriver mätmetod. → Ligger nära vårt arbetsmål (≈ 50 ms); mät själv.
-4. **Analog fungerar i praktiken:** en användare kör Skyzone M5-monitorns videoutgång → AV→HDMI-konverterare för ca 5 € → XR-glasögon och upplevde ingen märkbar latens. Han behövde Skyzones mix-läge eftersom switch-läget tappade bilden vid start — stöd för att mixning spelar roll även här.
+4. **Analog fungerar i praktiken:** en användare kör Skyzone M5-monitorns videoutgång → AV→HDMI-konverterare för ca 5 € (användarens uppgift, läst 2026-10-01) → XR-glasögon och upplevde ingen märkbar latens. Han behövde Skyzones mix-läge eftersom switch-läget tappade bilden vid start — stöd för att mixning spelar roll även här.
 
 ## XREAL-modeller (tillverkarens tabell)
 
@@ -35,7 +35,7 @@ Glasögonen har inget batteri och matas via USB-C. Adaptern (Guermok i inköpsli
 
 ## Rekommendation för experiment 1
 
-- **XREAL Air 2 Pro begagnad (2 800 kr, Blocket)**: 60 Hz-stöd bekräftat av tillverkaren, lättast, billigast.
+- **XREAL Air 2 Pro begagnad (2 800 kr, 2026-10-01)**: 60 Hz-stöd bekräftat av tillverkaren, lättast, billigast.
 - Ställ konverteraren på **1080p60**. Testa NTSC-läge på kameran först.
 - Uppgradering senare: One Pro (57° FOV) om 46° känns trångt.
 

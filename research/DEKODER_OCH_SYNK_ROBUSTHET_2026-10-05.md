@@ -180,7 +180,7 @@ Core 57cd08d numrerar rader från vertikalsläckningen och parar rader som har s
 
 ## Inte verifierat
 
-- Kretsar och metoder i rapidFIRE, Fusion, SteadyView, ClearView, SpeedyBee och Wildfire. ImmersionRC:s sida låg nere. getfpv:s artikel om ClearView och rcgroups-trådarna ligger bakom botkontroll.
+- Kretsar och metoder i rapidFIRE, Fusion, SteadyView, ClearView, SpeedyBee och Wildfire. ImmersionRC:s sida låg nere. en återförsäljares artikel om ClearView och rcgroups-trådarna ligger bakom botkontroll.
 - TI E2E utom en tråd (botkontroll). Uttalandet om frigående synk, tråden om utgångsjitter och tråden om patchfilen är bara lästa som sökutdrag.
 - ADV7180-databladet är läst i rev. A (2006) via en spegling; aktuell rev. K och UG-637 gick inte att hämta. Att ADV728x har samma CIL/COL-register är inte kontrollerat. Lås- och avbrottsbitarna är bekräftade i ADI:s FAQ.
 - TW9910-databladet är inte läst.

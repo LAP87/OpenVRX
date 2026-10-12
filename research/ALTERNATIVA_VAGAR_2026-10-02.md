@@ -20,9 +20,9 @@ Väg A och B är inte konkurrenter till C — de är **jämförelsepunkter**: sa
 
 | Alternativ | Dokumentation | Pris / tillgång | Kommentar |
 |---|---|---|---|
-| **LT8618SXB** (nuvarande rev A-koncept) | inget datablad hos oss; init härledd ur M5Stack-kod (`research/LT8618SX_INIT.md`) | ≈ 5 USD, LCSC "Other Suppliers" | Billig men gissningar om adress/reset/klockflank. Ingen breakout hittad. |
-| **ADV7513** (ADI) | **fullständig** programmeringsguide + hårdvaruguide; "Recommended for new designs" | LCSC C408901, **i lager**, 26,71 USD (1 st), LQFP-64 (lättlödd) | Samma sändare som Terasic DE10-Nano (MiSTer) — beprövad mot FPGA i tusentals exemplar. Tar YCbCr 4:2:2 med inbäddad synk (ITU-656-stil), 165 MHz. |
-| **IT66121FN** (ITE) | Linux-drivrutin (`ite-it66121.c`) + läckta datablad | ≈ 1–4 USD hos mäklare, QFN64 | Billigast; drivrutinen hanterar bara RGB-ingång → 24 stift. |
+| **LT8618SXB** (nuvarande rev A-koncept) | inget datablad hos oss; init härledd ur M5Stack-kod (`research/LT8618SX_INIT.md`) | ≈ 5 USD | Billig men gissningar om adress/reset/klockflank. Ingen breakout hittad. |
+| **ADV7513** (ADI) | **fullständig** programmeringsguide + hårdvaruguide; "Recommended for new designs" | LCSC C408901, 26,71 USD (1 st), LQFP-64 (lättlödd) | Samma sändare som Terasic DE10-Nano (MiSTer) — beprövad mot FPGA i tusentals exemplar. Tar YCbCr 4:2:2 med inbäddad synk (ITU-656-stil), 165 MHz. |
+| **IT66121FN** (ITE) | Linux-drivrutin (`ite-it66121.c`) + läckta datablad | ≈ 1–4 USD, QFN64 | Billigast; drivrutinen hanterar bara RGB-ingång → 24 stift. |
 | **Ingen sändare: FPGA:n gör TMDS själv** | Gowin DS1103 | — | Kräver FPGA med snabba serialiserare: **GW5A-25: 10:1-serialiserare upp till 2 000 Mbit/s** (DS1103 tabell 3-33) mot 1 485 som 1080p60 kräver. GW2AR-18 (Tang Nano 20K, nuvarande) klarar bara 1 200. |
 
 ### FPGA
@@ -30,7 +30,7 @@ Väg A och B är inte konkurrenter till C — de är **jämförelsepunkter**: sa
 | Alternativ | Minne | 1080p60 direkt | Kapsel | Öppen verktygskedja |
 |---|---|---|---|---|
 | **GW2AR-18** (Tang Nano 20K; nuvarande rev A) | 64 Mbit SDRAM **i kapseln** | nej (1 200 Mbit/s) → extern sändare | QFN-88 | ✔ allt vi byggt i natt |
-| **GW5A-25** (Tang Primer 25K) | inget inbyggt → externt SDR SDRAM, t.ex. Winbond W9825G6KH (LCSC C62246, ≈ 5 USD, TSOP-54) | **ja, inom spec** | LQ100 / LQ144 (0,5 mm, handlödbar; ≈ 30–34 USD hos Mouser), MG121 BGA (Primer 25K-modulen) | ✔ apicula 0.32 har GW5A-25 inkl. LQFP100/144, PLLA, OSER10 + TLVDS, 640×480-videoexempel för Primer 25K. **Provat i natt: bitström för GW5A-25 LQ144 med OSER10 + LVDS byggdes** (kräver `--vopt sspi_as_gpio` + `gowin_pack --sspi_as_gpio`). Inte provad på kort. |
+| **GW5A-25** (Tang Primer 25K) | inget inbyggt → externt SDR SDRAM, t.ex. Winbond W9825G6KH (LCSC C62246, ≈ 5 USD, TSOP-54) | **ja, inom spec** | LQ100 / LQ144 (0,5 mm, handlödbar; ≈ 30–34 USD), MG121 BGA (Primer 25K-modulen) | ✔ apicula 0.32 har GW5A-25 inkl. LQFP100/144, PLLA, OSER10 + TLVDS, 640×480-videoexempel för Primer 25K. **Provat i natt: bitström för GW5A-25 LQ144 med OSER10 + LVDS byggdes** (kräver `--vopt sspi_as_gpio` + `gowin_pack --sspi_as_gpio`). Inte provad på kort. |
 
 GW5A-25 har dessutom en **inbyggd ADC** — kan läsa mottagarnas RSSI direkt (GW2AR har ingen).
 
@@ -49,10 +49,10 @@ Inget av detta är köpt eller beställt. Kostnadsbesluten är dina.
 
 ## Källor
 
-- ADV7513: [LCSC C408901](https://www.lcsc.com/product-detail/C408901.html), [ADI produktsida](https://www.analog.com/en/products/adv7513.html), [Programming Guide](https://www.analog.com/media/en/technical-documentation/user-guides/ADV7513_Programming_Guide.pdf), [Hardware User's Guide](https://www.analog.com/media/en/technical-documentation/user-guides/adv7513_hardware_user_guide.pdf)
-- IT66121: [Linux-drivrutin (LWN)](https://lwn.net/Articles/852360/), [prisuppgifter IC-Components](https://www.ic-components.com/products/IT66121FN.jsp)
-- GW5A: Gowin DS1103-1.1E (sparad i `raw/alt/gw5a_ds1103e.pdf/.txt`, från cdn.gowinsemi.com.cn), [Sipeed Wiki Tang Primer 25K](https://wiki.sipeed.com/hardware/en/tang/tang-primer-25k/primer-25k.html), [CNX Software (pris)](https://www.cnx-software.com/2024/01/03/sipeed-tang-primer-25k-board-23040-logic-cells-fpga-prototyping-development/), [thisiseth/tang-primer-25k-spi-io (1080p DVI)](https://github.com/thisiseth/tang-primer-25k-spi-io), apicula `examples/gw5a/` (GitHub YosysHQ/apicula), [GW5A-LV25LQ144 pris (Kaimte/Mouser-sökning)](https://kaimte.com/product/details/gowin-semiconductor/gw5a-lv25lq144c1-i0.html), [LCSC GW5A-LV25MG121N](https://www.lcsc.com/product-detail/C45617374.html)
-- SDRAM: [LCSC W9825G6KH-6 C62246](https://www.lcsc.com/product-detail/C62246.html)
+- ADV7513: LCSC C408901, [ADI produktsida](https://www.analog.com/en/products/adv7513.html), [Programming Guide](https://www.analog.com/media/en/technical-documentation/user-guides/ADV7513_Programming_Guide.pdf), [Hardware User's Guide](https://www.analog.com/media/en/technical-documentation/user-guides/adv7513_hardware_user_guide.pdf)
+- IT66121: [Linux-drivrutin (LWN)](https://lwn.net/Articles/852360/)
+- GW5A: Gowin DS1103-1.1E (sparad i `raw/alt/gw5a_ds1103e.pdf/.txt`, från cdn.gowinsemi.com.cn), [Sipeed Wiki Tang Primer 25K](https://wiki.sipeed.com/hardware/en/tang/tang-primer-25k/primer-25k.html), [CNX Software (pris)](https://www.cnx-software.com/2024/01/03/sipeed-tang-primer-25k-board-23040-logic-cells-fpga-prototyping-development/), [thisiseth/tang-primer-25k-spi-io (1080p DVI)](https://github.com/thisiseth/tang-primer-25k-spi-io), apicula `examples/gw5a/` (GitHub YosysHQ/apicula), GW5A-LV25MG121N: LCSC C45617374
+- SDRAM: W9825G6KH-6, LCSC C62246
 - Dekodrar: [TP9950-specifikation (TI E2E-bilaga)](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/TP9950Aspec12282018.pdf), [TW2864-datablad](https://www.renesas.com/en/document/dst/tw2864-datasheet), [TW2866 obsolete](https://www.renesas.com/en/products/analog-products/audio-video/video-decodersencoders/tw2866-4-channel-video-decoder-and-audio-codec-plus-video-encoder-security-applications)
-- Mikro-OLED: [ECX335S (Tindie)](https://www.tindie.com/products/oled-modules/sony-ecx335s-micro-071-oled-display-1920x1080/), [HDMI-drivkort 0,71"](https://www.tindie.com/products/oled-modules/hdmi-driver-board-for-071-inch-micro-oled-display/), [CVBS-drivkort 0,39"](https://www.tindie.com/products/oled-modules/cvbsav-controller-board-for-the-039microdisplay/)
-- SteadyView X: [Rotor Village](https://rotorvillage.ca/skyzone-steadyview-x-5-8ghz-goggle-receiver-module/), [Skyzone](https://www.skyzonefpv.com/products/skyzone-steadyview-x-5-8ghz-ips-screen-receiver-module)
+- Mikro-OLED: Sony ECX335S (0,71", 1920×1080), HDMI-drivkort för 0,71", CVBS-drivkort för 0,39" (sökträffar på en marknadsplats, länkarna borttagna)
+- SteadyView X: [Skyzone](https://www.skyzonefpv.com/products/skyzone-steadyview-x-5-8ghz-ips-screen-receiver-module)

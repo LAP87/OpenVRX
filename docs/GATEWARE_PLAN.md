@@ -128,4 +128,4 @@ Kända begränsningar:
 
 ## Licens
 
-**Beslut (projektägaren, 2026-10-01):** privat/personligt bruk — licensen spelar ingen roll. Vi får bygga vidare direkt på pthalin/rrk1 (GPL-3.0) och M5Stacks LT8618SX-kod. Källor anges i filhuvuden ändå, så det går att spåra var koden kommer ifrån.
+**Beslut (projektägaren, 2026-10-12, ersätter beslutet från 2026-10-01):** alla tre repona är CERN-OHL-S-2.0, samma licens som OpenDrone-hw:s hårdvarurepon (OpenRX, OpenAIO, OpenVTX, OpenFC-Lite), så att de kan ta in projektet. Repona är publika, alltså gäller licensen. Kod från andra tas bara in under en förenlig licens (Apache-2.0, MIT, BSD, CERN-OHL) och med källan i filhuvudet, som `rtl/sdram_burst.v` (nand2mario, Apache-2.0). GPL-3.0-kod (pthalin/rrk1) används inte, och inget i repona härstammar därifrån. LT8618SX-sekvensen ur den konfidentiella drivrutinen ligger utanför repona tills ursprunget är utrett.

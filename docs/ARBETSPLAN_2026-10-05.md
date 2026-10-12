@@ -225,3 +225,26 @@ Källa: Codex journal `docs/overnight/2026-10-08/STATUS.md` och 44 evidensfiler;
 - **Inte gjort:** Mistrals tre dokumentuppgifter (materiallista, mätprotokoll, konsekvenskoll). Luna gjorde C2-utkastet och körarrättningar i stället, med ett kreditstopp på vägen.
 - **Framåt:** [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md).
 
+
+## Åttonde passet, 2026-10-12 (Opus)
+
+Enligt [ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md), en uppgift i taget, gren per uppgift, sammanslagning med `--no-ff` efter hel svit (parallellt, `run_suite.py`) och uppgiftens byggen. Allt är simulerat och byggt; inget är kört på hårdvara.
+
+| # | Gjort | Simulerat | Byggt | Återstår | Git |
+|---|---|---|---|---|---|
+| 1 | `gateware/tools/run_suite.py` (en process per simtest, tio åt gången, rapport, returkod, `--resume`, `--budget`) och byggkatalogsrevisionen `suite_trace.py` + `build_dirs.py`. Revisionen fann tre delade kataloger på `main` (`tb_m2`, `tb_sdram`, `tb_tvp_ctrl_100_0`), nu åtskilda | 658 gröna, 0 delade (633 s) | — | — | Core `main` 5314ed1 |
+| 2 | Orsaken till M6:s klockroutningsfel: BUFG-flaggan på dekodrarnas SCLK gav tre BUFG som tävlade om globala ledningar; på C1-källan med seed 2 nådde kortklockans BUFG (X0Y27/BUFG0) ingen mottagare. Flaggan borttagen i M3, M4, M6 (stiften är GCLKT-ingångar) | 658 gröna | M6 seed 0–3, M4, M3, M0; alla klockor över 75 MHz | — | Core `main` 65ecf36 |
+| 2b | I/O-register i I/O-cellerna som standard för M2, M2s, M2a, M4, M6 (`IOREG`, bokfört i manifestet); `exp/ioreg-in-iob` borttagen | 664 gröna på grenen, 689 på `main` efter sammanslagning med Codex resume-kontroll | M2, M2s, M2a, M4, M6, M0; HDMI-paren som M0 | — | Core `main` ae993f8, README 75e5e53 |
+| 3 | De 60 återstående fröna i C3-kampanjen. Fynd: raden fältminnet går in i mitt i efter `LOW` → `BUF` räknades som lagrad (frö 1437, 1445); rättat i `fb_sdram.v` med modell, regressionstest och negativ kontroll. 1345, 1434, 1444 gröna med fyra återhämtningsfält | 260 frön: 257 gröna med originalstimulus, 3 med längre; svit 691 gröna | M0, M2, M2s, M4, M6 | De 200 första fröna är inte omkörda på rättningen | Core `main` 812ed91 |
+| 4 | `sim/margin_checks.vh` i `tb_fb.v` och `tb_chain.v`: `frame_low`/`ll_low` före rad 0 och radbuffertplatsen skriven före läsning, minst en pixelklockas marginal | 695 gröna; minsta marginal 22 µs (`frame_low`), 1,3 µs (`ll_low`), 12,6 µs (radbufferten); negativa kontroller med sen skrivare och sena signaler | — (ingen RTL) | Inte bevisat, bara simulerat | Core `main` 47b66e5 |
+| 5 | Statusrader i båda Core-README, `BRINGUP.md` om `FILT` och 62-byteraden, "Sjunde passet" kompletterat; `run_suite` räknar `BRINGUP.md` som källa | 695 gröna | — | — | Core `main` 3d4ed8f |
+| 6 | [MATERIAL_UPPSTART.md](MATERIAL_UPPSTART.md) | — | — | — | navet `main` |
+| 7 | [MATPROTOKOLL.md](MATPROTOKOLL.md), 16 blad | — | — | Allt mäts på bänken | navet `main` |
+| 8 | Konsekvenskoll: inaktuella meningar i Core README, BRINGUP, navets AGENTS och REVIEW, listade i commit-meddelandena och rättade | 695 gröna | — | — | Core `main` 0503dac, navet `main` |
+| 8b | Inköpsregeln: Puck-koncepten och navets `research/` rensade på butiker, butikslänkar och lagerstatus; priser kvar bara med datum; lista i commit-meddelandena | — | — | — | Puck `main` 1404485, navet `main` b6f4968 |
+| 9 | `VINTERP` (interpolation i höjdled i `BUF`, standard av): `vblend.v`, andra läsporten, förhämtning en rad längre fram, modell i `fb_ref.py`, `build.sh VINTERP=1` | 713 gröna; negativa kontroller: vikt 0, ingen förhämtning, omkastade vikter | M4 och M6 med och utan, M0; cirka 500 LUT4 och 4 BSRAM | Om bilden blir bättre på en skärm | Core `main` 83476b1 |
+
+Avvikelser och misstag under passet:
+- En synkning till fel WSL-katalog bytte källor under en kampanjrunda; köraren sparade inga resultat för den rundan, och fröna kördes om på rättningen.
+- Ett stoppskript träffade `flock`-processen i stället för köraren; rättat, ingen följd för resultaten.
+- Puck pekar fortfarande på Core `f32407f`; submodulen har inte uppdaterats i passet.

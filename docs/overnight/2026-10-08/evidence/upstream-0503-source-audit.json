@@ -1,0 +1,101 @@
+{
+  "state": "PASS_SOURCE_AUDIT_FOCUSED_ROOT_REVIEWED",
+  "revision": "0503dac62b09ca744aef48841dda1975203e8249",
+  "source_inputs": 187,
+  "changed": [
+    "README.md",
+    "gateware/BRINGUP.md",
+    "gateware/README.md",
+    "gateware/build.sh",
+    "gateware/formal/README.md",
+    "gateware/model/fb_ref.py",
+    "gateware/rtl/fb_sdram.v",
+    "gateware/sim/FUZZ_2026-10-07.md",
+    "gateware/sim/fuzz_campaign.py",
+    "gateware/sim/tb_chain.v",
+    "gateware/sim/tb_fb.v",
+    "gateware/sim/test_fb.py",
+    "gateware/sim/test_fuzz_chain.py",
+    "gateware/tools/build_manifest.py",
+    "gateware/tools/run_suite.py",
+    "gateware/tools/test_build_artifacts.py"
+  ],
+  "added": [
+    "gateware/sim/margin_checks.vh"
+  ],
+  "removed": [],
+  "ast_changes": {
+    "gateware/sim/test_fuzz_chain.py": {
+      "changed": [
+        "run_seed",
+        "run_sim"
+      ],
+      "added": [
+        "check_margins"
+      ],
+      "removed": []
+    },
+    "gateware/sim/fuzz_campaign.py": {
+      "changed": [
+        "source_snapshot"
+      ],
+      "added": [],
+      "removed": []
+    },
+    "gateware/tools/run_suite.py": {
+      "changed": [],
+      "added": [],
+      "removed": []
+    }
+  },
+  "retained_tests": 683,
+  "requested_tests": 695,
+  "new_tests": [
+    "gateware/sim/test_fb.py::test_joined_line_check_is_tested",
+    "gateware/sim/test_fb.py::test_joined_line_from_the_middle_is_not_stored",
+    "gateware/sim/test_fb.py::test_margin_checks_catch_late_arrival[late_fetch]",
+    "gateware/sim/test_fb.py::test_margin_checks_catch_late_arrival[late_frame_low]",
+    "gateware/sim/test_fb.py::test_margin_checks_catch_late_arrival[late_ll_low]",
+    "gateware/sim/test_fb.py::test_margin_checks_see_every_kind",
+    "gateware/tools/test_build_artifacts.py::test_invalid_request_keeps_the_previous_result_and_does_not_start_tools[demo-settings6]",
+    "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[demo-settings1--False]",
+    "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[demo-settings3-_ioreg1-True]",
+    "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[m4_dual_mix-settings0--True]",
+    "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[m4_dual_mix-settings2-_ioreg0-False]",
+    "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[m4_dual_mix-settings4--True]"
+  ],
+  "focused_command": [
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-0503-source-audit/source/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "gateware/model/test_fb_ref.py",
+    "gateware/tools/test_build_artifacts.py",
+    "gateware/tools/test_build_dirs.py",
+    "gateware/tools/test_run_suite.py"
+  ],
+  "focused_rc": 0,
+  "focused_log_sha256": "881a686ac44bbc39f75fffb56ad8138fe2b38ba5243ff24c763e8e4a0d382a57",
+  "historical_source_unchanged": true,
+  "pin_top_other_rtl_unchanged": true,
+  "native": false,
+  "full_suite": false,
+  "fresh_routes": false,
+  "external_campaign_acceptance": false,
+  "focused_tests": 104,
+  "focused_seconds": 9.66,
+  "source_contract_sha256": "9dbf90503e89433b822347d817f0e59071210b5e528e632e341c2e0997af3386",
+  "audit_driver_sha256": "21523f1a40c95cc87656d336d2332569e67eeddef9111cdc00c0c4a8fac09a70",
+  "joined_line_source_review": "whole_v/whole_line bind stored marks to idx0 taken in same field; cleared on reset/field joins; model mirrors rule. Native positive/old-rule mutation remain required.",
+  "margin_source_review": "F/W require values stable a pixel clock before line0 and >=T_P margin; R requires requested slot/line complete through word359. Positive fixture requires >=5 checks of every applicable kind, with three late-arrival native negatives. Native evidence remains required.",
+  "no_new_gap_claimed": true,
+  "remaining_gates": [
+    "fresh695 full suite with actual new RTL/model and six affected native regressions",
+    "fresh M0seed0/M4seed0/M6seed2 >=75MHz, bound IOB options and TMDS comparisons",
+    "source-bound campaign evidence audit before overall260 claim",
+    "Puck pin/test on exact accepted Core revision"
+  ],
+  "external_campaign_accepted": false,
+  "external_builds_accepted": false,
+  "root_review_utc": "2026-10-12T20:12:39.459263+00:00"
+}

@@ -20,7 +20,7 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools   # count/provenance: gateware/README.md
+.venv/bin/python gateware/tools/run_suite.py   # whole suite, one process per simulation test, ten at a time (13 min)
 gateware/build.sh m6_puck_proto
 ```
 
@@ -53,6 +53,9 @@ gateware/build.sh m6_puck_proto
 - Field store: the buffer a frame shows is chosen in the SDRAM clock domain;
   a frame can show the field being written when the writer is far enough
   ahead. Compared with `gateware/model/fb_ref.py` in `sim/test_fb.py`.
+  A line counts as stored only when its word 0 was taken in the same field:
+  the line the writer joins in the middle after reset or LOW is not stored
+  (Core 0da655d, C3 campaign seeds 1437/1445).
   A missing line with no line above it and no stored fallback line is
   written black (Y 16, Cb/Cr 128) without reading the SDRAM in BUF mode
   (review 2026-10-06, F3). Core #17 is fixed: LOW video requires a live
@@ -82,6 +85,9 @@ gateware/build.sh m6_puck_proto
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
 - Not published: the LT8618SX 1080p path (init sequence provenance unclear).
+- Decoder SCLK pins 77/80 are dedicated clock inputs (GCLKT) and carry no
+  BUFG flag: with three BUFGs nextpnr left `clocks.clk_27` unroutable in M6
+  for some seeds (Core `gateware/README.md`, "Klockroutningen, 2026-10-12").
 - Tang Nano 20K pins 52-56 are SSPI configuration pins (52/53 are also the
   HDMI DDC lines) and are not used. The RX5808 SPI DATA/SEL therefore leave on
   LED pins 19/20 (J6-17/J6-16). Shared-pin risks: `gateware/BRINGUP.md` section 5.
@@ -105,8 +111,10 @@ gateware/build.sh m6_puck_proto
 
 - Verify, do not assume: every RTL change gets a simulation against a model,
   and models get negative controls (a deliberately broken case must fail).
-- Run one heavy job (simulation suite, place-and-route) at a time; the
-  development machine has frozen under parallel builds.
+- Run one heavy job at a time under the shared build lock: the whole suite
+  (`gateware/tools/run_suite.py`, which runs its own processes ten at a time
+  and fails when two tests share a build directory) or one place-and-route.
+  The development machine has frozen under parallel builds.
 - Keep numbers honest: say "simulated", "built" or "measured on hardware",
   never blur them. Update `gateware/README.md` status and test counts.
 - Comments and code in English; long-form design notes are in Swedish.
@@ -157,19 +165,12 @@ like AI output.
 
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
   that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Core main `2dca245` adds explicit `--recovery-fields` (default 0)
-  through run/narrow/worker/seed calls. Schema 2 binds its count/type;
-  75 focused passes and two native probes (360/6480 lines) are root reviewed.
-  All 160 inputs match main; RTL/checker predicates and 144/720 thresholds
-  remain unchanged. No new full suite or FPGA route is claimed. C2 acceptance
-  remains on `a1247ab` (C2 branch `509fc95`, verified source
-  `c3fda21`): its frozen suite has 604 passes in 39 files, 157 source
-  hashes unchanged and all 570 prior nodes retained. Fresh M0 seed 0,
-  M4 seed 0 and M6 seed 2 pass 75 MHz on all reported clocks; four TMDS
-  pairs match M0 in both tops. Puck main `a2ad438` pins Core `2dca245`;
-  its two pin-contract tests pass. These are simulation and source-bound
-  build results; receipts and historical runs are separated in
-  [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+- Core main on 2026-10-12 (from `47b66e5`): 695 tests pass with
+  `gateware/tools/run_suite.py`, no two tests share a build directory. Which
+  top is built from which commit, and the figures after routing, are in the
+  status of Core `README.md` and `gateware/README.md`. Puck main `ecb9b14`
+  pins Core `f32407f` and has not followed since. Earlier receipts (C1, C2,
+  C3, recovery rounds) are in [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 - Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
   mixer output F bit changes when the next visible output field consumes
   a pending boundary; it is not the decoder's F bit. The existing takeover
@@ -185,18 +186,13 @@ like AI output.
   display-coverage thresholds remain. All LOW -> BUF phases and hardware
   behaviour are still unverified; see the dated evidence in
   [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
-- The new 260-seed campaign stopped after 200: 199 PASS, 1 FAIL (seed 1345,
-  72 checked lines against 144 required); 60 seeds did not run. Triage
-  found only one complete eligible output frame before the last source
-  byte. Any longer stimulus needs a new source contract and evidence
-  directory; keep the failed campaign and the 144-line threshold.
-  A new source-bound seed1345 probe retains all original bytes/control times
-  and adds four clean camera fields: 360 lines pass, while the same raw trace
-  with the old source end counts 72. Wrong new-frame data/source mappings
-  are rejected. This accepts only that new scenario, not the old campaign
-  or a generalized 260-seed suffix contract. See the current STATUS evidence.
-  Seed 1249's old failure is preserved history, with a separately accepted
-  checker correction and byte-identical replay.
+- The C3 260-seed campaign is complete (2026-10-12): 257 seeds pass with
+  their original stimulus (199 on `db0035f`, 58 on `0da655d`), three (1345,
+  1434, 1444) pass once four clean fields follow it (`--recovery-fields 4`),
+  the 144-line threshold unchanged. The remaining 60 found one RTL fault in
+  the field store, fixed in `0da655d`. Log: Core
+  `gateware/sim/FUZZ_2026-10-07.md`. Seed 1249's old failure is preserved
+  history, with a separately accepted checker correction.
 - C2's TV/VCR filter menu is integrated. The two decoders reconcile the
   requested value after paired polls, retaining an in-flight value/SDA lane
   and retrying after NACK. The OLED/OSD and 62-byte UART row show the requested
@@ -207,8 +203,10 @@ like AI output.
   recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest
   against the sources and artifacts before flashing.
-- I/O registers in the I/O cells (Core branch `exp/ioreg-in-iob`): built
-  and compared, decision pending with the owner.
+- I/O registers in the I/O cells: the default for M2, M2s, M2a, M4 and M6
+  since 2026-10-12 (owner's decision; `IOREG=0/1` overrides). All 32 DQ input
+  registers sit in the cells, the DQ outputs and the SDRAM clock do not. The
+  memory test on the board decides phase and read point.
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX
   (ESP32-C5) receiver comparison with the snow meter.

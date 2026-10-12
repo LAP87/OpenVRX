@@ -16,7 +16,7 @@ git clone --recurse-submodules https://github.com/LAP87/OpenVRX-Puck
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH (or built into .tools/iverilog)
-.venv/bin/python -m pytest -q tests/latency mixer gateware/model gateware/sim gateware/tools
+.venv/bin/python gateware/tools/run_suite.py   # whole suite, ten processes at a time (13 min)
 gateware/build.sh m6_puck_proto          # bitstream for a Tang Nano 20K
 ```
 
@@ -53,15 +53,22 @@ Ordered from "most likely broken" to "probably fine".
 4. **SDRAM on the Tang Nano 20K.** The model is timing-aware (datasheet
    times, protocol checks, selectable read sample point) and `m2a_memtest`
    is built, but the DQ sampling phase and the clock phase are still checked
-   against the model only, not the real embedded SDRAM. The memory test on
-   the card decides. (`sdram_burst.v`, `clocks_sdram.v`, `top/m2a_memtest.v`)
+   against the model only, not the real embedded SDRAM. Since 2026-10-12 the
+   SDRAM tops put their 32 DQ input registers in the I/O cells, so the read
+   timing no longer depends on placement; the DQ outputs and the SDRAM clock
+   are still placed freely. The memory test on the card decides.
+   (`sdram_burst.v`, `clocks_sdram.v`, `top/m2a_memtest.v`, `build.sh` IOREG)
 5. **Clock-domain crossings.** The async FIFO and the `fb_backend.v` /
    `fb_display.v` handshakes have k-induction proofs and negative controls
    (`gateware/formal/run.sh`, `gateware/formal/README.md`). Toggle and level
    crossings use two free clocks; the sender uses one clock and the
    line-buffer-slot proof uses the display timing model. Not
    proven: metastability beyond two stages, SDRAM latency for the line
-   buffer, the low-latency ring, reset mid-run. Are the proof's assumptions
+   buffer, the low-latency ring, reset mid-run. Two of the timing
+   assumptions (frame_low/ll_low arrive before line 0; a line-buffer slot is
+   written before it is read) are checked in every field-store and chain
+   simulation since 2026-10-12, with at least one pixel clock of margin and
+   negative controls; that is simulation, not proof. Are the proof's assumptions
    (registers start at reset, free clocks, 27-108 MHz against 74.25 MHz) the
    right ones?
 6. **Low-latency mode.** The 720p output is genlocked to the input fields:
@@ -77,7 +84,9 @@ Ordered from "most likely broken" to "probably fine".
    other projects (we removed all `signed` arithmetic), and newer Apicula packs
    single-ended inputs beside a true-LVDS output as LVDS receivers (we test
    that our version does not: `gateware/tools/test_lvds_bank_inputs.py`).
-   What else bites on GW2AR-18?
+   A BUFG flag on pins that are already clock inputs gave nextpnr three
+   buffers competing for global wires, and M6 failed clock routing for some
+   seeds; the flags are gone since 2026-10-12. What else bites on GW2AR-18?
 8. **Shared pins on the Tang Nano 20K.** Every ordinary header GPIO is used.
    Some also reach other parts of the board (HDMI hot-plug and CEC, the BL616
    SPI bus, the LCD backlight driver, the WS2812). The list and the risks are in
@@ -103,12 +112,11 @@ Ordered from "most likely broken" to "probably fine".
   rounds and the SCL-stretch timeout are tested against slave models.
   Power-loss recovery of a real TVP5150AM1, and whether the lost-lock flag
   (88h bit 4) says anything the H/V lock bits do not, are unmeasured.
-- Current Core main `a1247ab` (C2 branch `509fc95`, verified source `c3fda21`)
-  has an accepted frozen suite of 604 passes in 39 files and 157 unchanged
-  source hashes. Fresh M0 seed 0, M4 seed 0 and M6 seed 2 pass 75 MHz on all
-  clocks; four TMDS pairs match M0. Puck main `f2e7d53` pins it, with two
-  pin-contract tests passed. This is simulation and source-bound build
-  evidence; older B/C3 results remain historical.
+- Core main on 2026-10-12 (from `47b66e5`): 695 tests pass. M0, M2, M2s, M4
+  and M6 built from `0da655d`, M2a and M3 from slightly older sources, all
+  clocks above 75 MHz, HDMI pairs as in M0 (Core README status). Puck main
+  `ecb9b14` pins Core `f32407f`. Simulation and build evidence only; older
+  receipts (C1, C2, C3) are historical.
 - Core #17/#18's existing regressions pass under the owner's 2026-10-08
   trigger and output-F decisions. The accepted F-boundary behavior retains
   one pending output-F transition through fields with no emitted line and
@@ -119,16 +127,12 @@ Ordered from "most likely broken" to "probably fine".
   ring-read findings; its strict replay passes with 216 checked lines.
   This does not verify all LOW -> BUF phases. Historical FAIL reports stay
   in [LOW_BUF_FINDING.md](docs/overnight/2026-10-07/LOW_BUF_FINDING.md).
-- The latest 260-seed campaign stopped after 200 seeds: 199 PASS, 1 FAIL,
-  and 60 not run. Seed 1345 has 72 checked lines against 144 required;
-  triage found only one complete eligible frame before source input ended.
-  A longer stimulus would be a new contract. This campaign is not accepted and no RTL
-  or hardware failure is established by that coverage count alone.
-- A separate seed1345 probe appends four clean fields to the byte-identical
-  original stimulus. It passes 360 lines; using the old source end on that same
-  trace counts 72. Wrong data/source mappings in the first added frame fail.
-  This is one new scenario, not acceptance of the failed campaign or a
-  general suffix for PAL/full geometry/all classes. See current STATUS evidence.
+- The C3 260-seed campaign is complete in simulation: 257 seeds pass with
+  their original stimulus, three (1345, 1434, 1444) once four clean fields
+  follow it. The last 60 found one RTL fault: after LOW -> BUF the field store
+  counted the line it joined in the middle as stored and read its unwritten
+  words (no video in that frame); fixed, with a regression test and negative
+  control (Core `gateware/sim/FUZZ_2026-10-07.md`).
 - C2's menu and two-decoder reconciliation are integrated after the full
   suite and fresh builds. In-flight values and SDA selection are frozen;
   NACK retries retain paired-poll fairness. The 62-byte UART row records

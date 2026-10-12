@@ -284,7 +284,7 @@ Frö 1209–1218 kördes seriellt med den granskade privata adaptern på fryst C
 | 1217 | NTSC | 864 | 239,9 | 576 |
 | 1218 | NTSC | 504 | 221,3 | 216 |
 
-Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tio resultatrader/kvitton och 150 rå-/diagnostikfiler. Alla original-/extended-kameraindata, prefix och CTL matchar genererade förväntningar. Två verkliga fel per frö i en tillkommen BUF-bild, fel bildord respektive källrad, ger de väntade kontrollfynden: 20 negativa återläsningar upptäcker felen och minskar antalet godkända rader. Positiva återläsningar kontrollerar sammanlagt **7 848 rader**.
+Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tio resultatrader/kvitton och 150 rå-/diagnostikfiler. Alla original-/extended-kameraindata, prefix och CTL matchar genererade förväntningar. Två verkliga fel per frö i en tillkommen bild, fel bildord respektive källrad, ger de väntade kontrollfynden: 20 negativa återläsningar upptäcker felen och minskar antalet godkända rader. Bildfönstren för 1214, 1216 och 1218 använder LOW; övriga använder BUF. Kvittodata anger rätt läge; formuleringen som kallade alla dessa fönster BUF rättades vid gruppkontrollen. Positiva återläsningar kontrollerar sammanlagt **7 848 rader**.
 
 Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1209-1218.json).
 
@@ -434,3 +434,23 @@ Två verkliga fel per frö i en tillkommen bild, fel bildord respektive källrad
 Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1279-1299.json).
 
 Core och Puck är oförändrade. Detta accepterar endast rundan. Alla hundra frön har individuella paketkvitton; gruppacceptans kräver en separat kontroll av fullständighet, dubbletter och identiska käll-/parameterkontrakt. Ingen fullständig 260-frökampanj är accepterad. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Hundrafrögruppen 1200–1299 accepterad, 2026-10-12
+
+Gruppkontrollen binder exakt **100 unika frön** till åtta publicerade paket, samma frysta Core 2dca245, runtime, 160 källhashar och sex privata adaptermoduler. Alla använder skalad geometri, densitet 1, tio originalfält och fyra recovery-fält, utan tvingade störningar. De deklarerade rundornas seedset, taggar, output och budget skiljer sig; käll- och videoparametrarna är identiska. Inga frön saknas eller är dubblerade.
+
+**83 448 bildrader** har passerat de tidigare modell-/invariantåterläsningarna. Gruppkontrollen verifierade åter alla 1 500 rå-/diagnostikfiler, kompilator-/vvp-kvitton, publicerade Git-artefakter och deras ancestry samt återgenererade alla original-/extended-kameraindata, prefix och CTL. Den körde ingen ny HDL- eller modellkampanj. Varje frö har två hashbundna verkliga fel i en tillkommen bild: totalt 200 negativa återläsningar. Elva negativa bildfönster använder LOW, 89 BUF.
+
+| Kameradata i gruppen | Antal frön |
+|---|---:|
+| NTSC | 76 |
+| PAL | 24 |
+| Interlaced | 83 |
+| Progressiv | 17 |
+
+Tio semantiska kontroller av gruppvalideringen avvisar bortfall, dubbletter, oväntat frö, fel parameter/källa/helper, FAIL-rad, för få kontrollerade rader och saknad eller felaktig bildnegativ. En elfte kontroll avvisar faktisk bytekorruption i en ägd råkopia; samma kopia passerade före ändringen och originalet passerade efteråt. Alla åtta rundors verifierade resume kör noll nya frön och behåller raw/row/receipt byte-identiskt. [Gruppacceptans och fröledger](evidence/recovery-group-1200-1299.json).
+
+Första auditen stoppade efter de nya fröna: dess filurval läste den gamla kampanjens händelsejournal som fröresultat. Kod, inputkontrakt och fellogg är bevarade. Den rättade auditen binder journalen och de två verkliga resultatfilerna separat, tillsammans med deras manifest; inget record ignoreras för att få rätt totalsumma. Ingen simulering kördes om. Den gamla kampanjen har fortfarande 199 PASS, 1 FAIL (1345, 72 rader), 60 ej körda och oförändrade filhashar.
+
+Acceptansen gäller endast den nya hundrafrögruppen med fyra recovery-fält. Densitet 2,5 och andra kampanjgrupper återstår; ingen fullständig 260-frökampanj är accepterad. Minimikravet 144 och timeout 3000 s är oförändrade. Core/Puck är oförändrade; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

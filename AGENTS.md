@@ -134,7 +134,11 @@ like AI output.
 - Same terms everywhere: a thing keeps one name across files and repos.
 - Read it back as the person receiving it before you post. If it sounds like
   a press release or a chatbot, rewrite it.
-- No sourcing (shops, prices, purchase links) in these repositories.
+- No sourcing in these repositories: no shop names, shop links, prices or
+  stock status in design files, BOMs or plans. Manufacturer part numbers,
+  distributor part numbers used as identifiers (LCSC C-numbers) and links to
+  the manufacturer's product page or datasheet are fine. A research note may
+  quote a price if it says the date (owner's decision 2026-10-12).
 - Licence: everything here is CERN-OHL-S-2.0, the same as the OpenDrone-hw
   repositories (owner's decision 2026-10-12). Take code from elsewhere only
   under a compatible permissive licence (Apache-2.0, MIT, BSD, CERN-OHL),

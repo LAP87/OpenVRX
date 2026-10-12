@@ -574,3 +574,9 @@ Sju fixturepass och katalogkollisionernas befintliga negativa kontroller står k
 ## UP-RUN-01 council, 2026-10-12
 
 Fyra av fyra röster godkänner ett avgränsat fel i Core5314ed1:s resume-grind: sju begärda test kan accepteras med endast sex lagrade utfall. Det skadade resultatarkivet är avsiktligt konstruerat; normal förekomst är inte visad. En separat rättning ska kontrollera testidentiteter och fullständighet före återanvändning och före slutlig acceptans. Ingen kodrättning eller ny helsvit ingår i rådet. [Röster, hashkontrakt och avgränsning](evidence/up-run-01-council.json).
+
+## UP-RUN-01 rättat, 2026-10-12
+
+Core main `ff9bfec` innehåller den granskade resume-rättningen efter rådets 4/4 YES. Cacheposter måste täcka exakt begärda testidentiteter; ändrat urval eller saknade/främmande utfall vägras före workerstart och resultatändring. Slutkontrollen kräver kompletta utfall eller uttryckligt väntande test, och en processfelkod fäller även skip/xfail-fall.
+
+32 riktade test passerar på det slutliga kodträdet (25 nya). Verklig sjutest-CLI passerar och exakt resume startar noll nya workers. Tom och felmärkt cache vägras med alla arkivbytes orörda. Samma regression faller på den gamla köraren eftersom den returnerar 0. Inkommande Core `65ecf36` och navets arbetsplan är bevarade; dess byggpåståenden har inte rootverifierats här. Ingen ny helsvit, HDL, routning eller hårdvarumätning ingår. Puck-länken är ännu inte uppdaterad. [Kontroller, källidentitet och revisionskvitto](evidence/up-run-01-fix.json).

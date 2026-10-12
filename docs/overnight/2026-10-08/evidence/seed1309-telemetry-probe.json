@@ -1,0 +1,259 @@
+{
+  "state": "PASS_TELEMETRY_ROOT_REVIEWED_LOCAL_ACCEPTANCE",
+  "root": {
+    "state": "PASS_TELEMETRY_ROOT_REVIEWED_ORIGINAL_PACKET_NOT_ACCEPTED",
+    "reviewed_utc": "2026-10-12T14:17:19.984001+00:00",
+    "contract_sha256": "5f267468cf74c64741c7a414c0c02d2897c1340ea744508b3cacc5f45ba5702e",
+    "review_helper_sha256": "9028dc5af98dbba64856531cf191a4062593fefba9c7394190e30702b0ab1254",
+    "result_sha256": "a112eefa8d88074739be144a4c5589965502b658fefac61522cf4e8d2ae7e8ed",
+    "source_inputs": 160,
+    "source_runtime_original_raw_unchanged": true,
+    "standard_raw_files_byte_identical": 6,
+    "checked": 216,
+    "minimum": 144,
+    "model_findings": [],
+    "observed_hold_register": true,
+    "observed_timing_inputs": true,
+    "telemetry": {
+      "cut": [
+        {
+          "pc": 752434,
+          "hc": 1644,
+          "vc": 6,
+          "lock": 1,
+          "trig": 0,
+          "hold": 32,
+          "early_n": 0,
+          "pend": 1,
+          "jump": 1,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1643,
+          "y": 6
+        }
+      ],
+      "recovery_trigger_inputs": [
+        {
+          "pc": 1408096,
+          "hc": 606,
+          "vc": 27,
+          "lock": 1,
+          "trig": 1,
+          "hold": 27,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 605,
+          "y": 27
+        },
+        {
+          "pc": 1552118,
+          "hc": 1078,
+          "vc": 20,
+          "lock": 1,
+          "trig": 1,
+          "hold": 26,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1077,
+          "y": 20
+        },
+        {
+          "pc": 1696634,
+          "hc": 394,
+          "vc": 14,
+          "lock": 1,
+          "trig": 1,
+          "hold": 25,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 393,
+          "y": 14
+        },
+        {
+          "pc": 1841148,
+          "hc": 1358,
+          "vc": 7,
+          "lock": 1,
+          "trig": 1,
+          "hold": 24,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1357,
+          "y": 7
+        }
+      ],
+      "added_gated_frames": [
+        {
+          "pc": 1362942,
+          "hc": 2,
+          "vc": 0,
+          "lock": 1,
+          "trig": 0,
+          "hold": 27,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1,
+          "y": 0
+        },
+        {
+          "pc": 1518042,
+          "hc": 2,
+          "vc": 0,
+          "lock": 1,
+          "trig": 0,
+          "hold": 26,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1,
+          "y": 0
+        },
+        {
+          "pc": 1673142,
+          "hc": 2,
+          "vc": 0,
+          "lock": 1,
+          "trig": 0,
+          "hold": 25,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1,
+          "y": 0
+        },
+        {
+          "pc": 1828242,
+          "hc": 2,
+          "vc": 0,
+          "lock": 1,
+          "trig": 0,
+          "hold": 24,
+          "early_n": 2,
+          "pend": 0,
+          "jump": 0,
+          "triggered": 0,
+          "alive": 1,
+          "video": 0,
+          "x": 1,
+          "y": 0
+        }
+      ],
+      "trace_rows": 35
+    },
+    "negatives": [
+      {
+        "fault": "hold",
+        "error": "early recovery must be held",
+        "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_hold.txt",
+        "sha256": "d392b86dc07457ad65a0ecfa01e10f0b89dc2ac68d2cbd74fa8fef6fdf7f0727",
+        "actual_trace_bound": true
+      },
+      {
+        "fault": "phase",
+        "error": "early recovery phase/no-jump",
+        "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_phase.txt",
+        "sha256": "17141395a270b8e99744523f71416df43e6f0f82a5529adbed8e356266c996f2",
+        "actual_trace_bound": true
+      }
+    ],
+    "original_packet_accepted": false,
+    "rtl_or_policy_changed": false,
+    "hardware_verified": false
+  },
+  "evidence_sha256": {
+    "CONTRACT.json": "5f267468cf74c64741c7a414c0c02d2897c1340ea744508b3cacc5f45ba5702e",
+    "LAUNCH_REVIEW.json": "482b4cd0fdff8eedaa916845907976bca8f0b5ab509bb8bd01869425323c2cc9",
+    "ROOT_REVIEW_CONTRACT.json": "3b481344c33254aa1a9158848a5060607b0f3f637f5b2d558a6544cf329d9e9c",
+    "RESULT.json": "a112eefa8d88074739be144a4c5589965502b658fefac61522cf4e8d2ae7e8ed",
+    "run_probe.py": "5dc2e4467adcc1f139f6fd9aad43197bb8055614a3817093185f36ec7c9db5d2",
+    "tb_chain_telemetry.v": "077cba309c1b3a903e2cdd4700607ff6b4d93ecf369fc75ec69b56ad71a1402c",
+    "review_probe.py": "9028dc5af98dbba64856531cf191a4062593fefba9c7394190e30702b0ab1254",
+    "subprocesses.json": "b1c4e5c32e96e21c72abb8e3e6108399b9198270921f142e6a2c0a66ee017bce",
+    "RUNNER.log": "07377d29c0ea848b954157ec7b354ddd896eb6bad56a14d7d70db68bd004c768",
+    "ROOT_REVIEW.log": "318b5664db1dbe83ea2579e327ec3485ca296fe89e142dae03f62b2b26f47d3a",
+    "ROOT_ACCEPTANCE.json": "00cd9abfed52c2379bca1700cd0f65fb0761301a732ba2b744097dc5b2f89e36",
+    "NEGATIVE_hold.txt": "d392b86dc07457ad65a0ecfa01e10f0b89dc2ac68d2cbd74fa8fef6fdf7f0727",
+    "NEGATIVE_phase.txt": "17141395a270b8e99744523f71416df43e6f0f82a5529adbed8e356266c996f2"
+  },
+  "raw_file_manifest": {
+    "a.hex": {
+      "size": 2063907,
+      "sha256": "316be7ca2410fc7cd338dbbf1d768ea34847dd9f476767f898e8a4f1a573a97a"
+    },
+    "b.hex": {
+      "size": 2059929,
+      "sha256": "b0f042ebd411ee2e5094bf8399a26c57f426f116c12cdbf31eeb05c8c4aa28b8"
+    },
+    "compile_stderr.txt": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compile_stdout.txt": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ctl.hex": {
+      "size": 20,
+      "sha256": "a314eb9e1556185ac7d834b523f104718ef6c913badd0cbdbe19c6abcb1709f8"
+    },
+    "genlock_trace.txt": {
+      "size": 1409,
+      "sha256": "b0ece907b243e53eb718658bcfee2b87706a0bf01d679ca8266ed1b9bdb80b52"
+    },
+    "mix.txt": {
+      "size": 2907780,
+      "sha256": "60f706be560e474cfa11f72f5fee00437f130a439b5009b5198ce2d57d4ef1bc"
+    },
+    "pix.txt": {
+      "size": 59695,
+      "sha256": "42178742bd897d940a4a1e57b32dda56402ad8e95ffe72ad54c672d553e43421"
+    },
+    "sd.txt": {
+      "size": 482613,
+      "sha256": "93c48284f4383de95a284a148e4264060ecf1d8d223e9c4ac0267c29b378e07a"
+    },
+    "sim.vvp": {
+      "size": 590093,
+      "sha256": "d060c4fed1ceb59c9a8fb76f7b35002468787b7d3ef1c5cff7352ab6eec8ee28"
+    },
+    "vvp_stderr.txt": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "vvp_stdout.txt": {
+      "size": 177,
+      "sha256": "d2bc90da69ba5c3b5021df743f319e22394815551caaddd49aa8fa48d9b54caf"
+    }
+  },
+  "native_probes": 1,
+  "original_packet_accepted": false,
+  "production_source_changed": false,
+  "hardware_verified": false
+}

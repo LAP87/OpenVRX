@@ -1,0 +1,44 @@
+{
+  "state": "PASS_ROOT_REVIEWED_CORE_PUCK_MERGED_PUSHED",
+  "reviewed_utc": "2026-10-12T00:54:25.553333+00:00",
+  "base_revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "core_checkout": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-bench-drain",
+  "focused_tests": 68,
+  "helper_tests": 25,
+  "existing_tests": 43,
+  "seconds": 23.65,
+  "focused_contract_sha256": "792f9394efef2bfeef291152708f3b3aebfc1f37fd40bc7b0689146f61743f31",
+  "log_sha256": "3d0dc431534f533fa7071f1d63b14f0bf33f10cca1aefa5681002d1e35640b32",
+  "xml_sha256": "6c7cf1df00ddbbf36aeac60a3759022a71988d88bede8999af4373429e7aecfe",
+  "review_helper_sha256": "47d7e89ee47a86db3ac1e2795b1b1a8e3dffac71fb7de38191b25b865c482167",
+  "added_inputs": {
+    "gateware/model/fuzz_recovery.py": "d1efb6c6b048b50cb7231915fbbbfbdc51f721fab8c92437f0d781b297f6ce58",
+    "gateware/model/test_fuzz_recovery.py": "c1dc8c86946cb9c98baacb39485596d83cbc9a75b36a89cc7e82389824be24fc"
+  },
+  "existing_157_inputs_unchanged": true,
+  "helper_body_identical_to_reviewed_private_suffix": true,
+  "golden_native_seeds": [
+    1345,
+    1400,
+    1601
+  ],
+  "actual_stream_negatives": [
+    "prefix",
+    "truncated_field"
+  ],
+  "campaign_real_source_snapshot_contains_helper": true,
+  "actual_old_snapshot_resume_rejected": "resume-probe.jsonl: sources or settings changed; use a new round name",
+  "old_resume_evidence_unchanged": true,
+  "rtl_changes": false,
+  "fresh_builds_or_full_suite_run": false,
+  "campaign_enabled": false,
+  "hardware_verified": false,
+  "core_main": "2f0486318a689255d802476cb91f6c50618ba740",
+  "core_branch_tip": "1d9d93d2caa4c4981bbef58785c946e886d34ea0",
+  "puck_main": "ba471a03d1c0ea8be65db2565b3a0cffa32ef9af",
+  "puck_branch_tip": "4ea6f7d9ee49d6ec68425eec1c2c032a5afca9d7",
+  "puck_test_passes": 2,
+  "puck_test_seconds": 2.08,
+  "puck_xml_sha256": "4dab83c6e2b38f4904883c82449c63d75f8955bedd6958e48500c86e2a4e910d",
+  "puck_log_sha256": "4e0446adbed367a0a2f33409059a375752e95704317f07bba9ff6deada783cf4"
+}

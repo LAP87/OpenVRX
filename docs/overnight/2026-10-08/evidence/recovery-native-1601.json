@@ -1,0 +1,72 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NEW_SCENARIO_ONLY",
+  "reviewed_utc": "2026-10-12T00:48:53.436433+00:00",
+  "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "contract_sha256": "cf297ac1b48e428e213feedad8ec20307510f385a9e6dfdcd255f3a66b06b9e5",
+  "result_sha256": "21ea91249410c3b7abeb3e1882464b406b066cfc3f2b64664833d6b7056ff667",
+  "review_helper_sha256": "2ceae8df96340c149dad4027859a2c3192850d42edeebee56cf7790bbff36a5f",
+  "generated_original_input_hashes": {
+    "a.hex": "78366c4b716772df256c68b305e6a48177c35d0bf7efb4344b8e32a23706d493",
+    "b.hex": "06d25de8b99e4565e4bfd927081f0b23dd0d2ccefcf985dd1dc7dfec5f6b869c",
+    "ctl.hex": "027f1c758349a4f1533516e379226c94545e4181eab55247eb9389cf3bb07c33"
+  },
+  "original_inputs_generated_only": true,
+  "source_inputs_checked": 157,
+  "raw_files_checked": 12,
+  "checked_lines": 6480,
+  "minimum": 720,
+  "old_end_same_trace_checked_lines": 2880,
+  "suffix_fields": 4,
+  "actual_input_streams_match_contract": true,
+  "controls_and_switch_windows_unchanged": true,
+  "actual_frame_negatives": [
+    {
+      "fault": "displayed_word",
+      "frame_pc": 11137542,
+      "groups": [
+        "display/word"
+      ],
+      "checked": 5760,
+      "first": {
+        "block": "display",
+        "kind": "word",
+        "t": 149243063,
+        "detail": "output line 0: shows 2239530165, line read had 2239530164"
+      }
+    },
+    {
+      "fault": "source_mapping",
+      "frame_pc": 11137542,
+      "groups": [
+        "display/map",
+        "display/not_read"
+      ],
+      "checked": 5760,
+      "first": {
+        "block": "display",
+        "kind": "map",
+        "t": 149243063,
+        "detail": "output line 0: source line 999, model 0 (288 lines, low 0)"
+      }
+    }
+  ],
+  "negative_target_mode": "BUF",
+  "full_geometry_compile_parameters_verified": true,
+  "seconds": 2000.922,
+  "old_campaign_acceptance": false,
+  "hardware_verified": false,
+  "compile_root_review_sha256": "5efb107b8ca13e6e3f0a5d37ad665ee188c455972ee782509e9e5c7156badd71",
+  "driver_root_review_sha256": "752958b00529b7920e7701577ac314cf363cb3d60635f9735a2eeb658079dd52",
+  "independent_replay_receipt_sha256": "98fc4c260b43fdf25fd44d843af58fb29d4e4057dd29ec63de3e915ed8f73a06",
+  "compile_geometry_and_RT_parameters": {
+    "V_TOTAL": 750,
+    "V_ACTIVE": 720,
+    "V_FP": 5,
+    "V_SYNC": 5,
+    "RT_NTSC": 4,
+    "RT_PAL": 44,
+    "RT_HYST": 16,
+    "RT_SPLIT": 270
+  },
+  "all_compile_geometry_and_RT_parameters_verified": true
+}

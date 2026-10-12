@@ -6,7 +6,7 @@ Källor: [Mads Tech-recension (YouTube, 2026-10-01, 16 min)](https://www.youtube
 
 | | Värde | Källa |
 |---|---|---|
-| Pris | 39,99 USD för 4 st (≈ 10 USD/filter, ≈ 401 kr för paketet) | Divimath, 2026-10-01, i lager |
+| Pris | 39,99 USD för 4 st (≈ 10 USD/filter, ≈ 401 kr för paketet) | Divimath, 2026-10-01 |
 | Passband | 5–6 GHz | Divimath |
 | Förlust i passbandet | ca 0,5–0,75 dB över 5,3–5,95 GHz; medel 0,65 dB enligt utvecklarna; specens max 1,5–1,7 dB | Divimath; recensionen |
 | Dämpning utanför | 26 dB vid 2,4 GHz, minst 39 dB vid 1,25 GHz | Recensionen (från tillverkarens data, delvis visat på spektrumanalysator) |

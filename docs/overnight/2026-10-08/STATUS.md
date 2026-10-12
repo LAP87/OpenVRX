@@ -224,3 +224,14 @@ De fyra geometri-/standardkombinationerna har nu utvalda accepterade native-prov
 | Full | PAL | 1601 | 6 480 | [Nya API-vägen](evidence/recovery-campaign-acceptance.json) |
 
 Varje prov har två faktiska negativa kontroller i ett tillkommet bildfönster. Det är representanter för ett nytt recovery-kontrakt, ingen acceptans av alla kampanjfrön, tätheter eller bildlägeskombinationer. Core 2dca245 och Puck a2ad438 är oförändrade. Ingen ny 260-frökampanj, helsvit, routning eller FPGA-hårdvarumätning är körd. En större runda kräver ett separat kontrakt med strikt råevidens, återupptagning och granskning.
+
+
+### Strikt recovery-runda: adapter och pilot, 2026-10-12
+
+Den privata kvitto-/resume-adaptern binder nu recovery-antalet i parameterkontraktet, sparar kompilatorns och vvp:s stdout/stderr och kräver en worker åt gången. **73 aktuella fixturetester passerade** (58 befintliga och 15 nya). Oförändrade hjälpare validerar hash, storlek, sökvägar, råkvitton och ägd processgrupp. Den historiska räkningsuppgiften 59 korrigerades mot de verkliga testfilerna; en saknad relativ pixel-fixture återställdes byte-identiskt. Ursprungliga felloggar är kvar.
+
+Ett pilotfrö, 1200 med skalad NTSC, densitet 1, tio originalfält och fyra recovery-fält, kördes på fryst Core 2dca245: **864 rader på 220,1 s**, med oförändrat minimikrav 144 och inga fynd, known, edges eller notes. Root verifierade 160 källhashar, runtime, adapterhashar och 15 rå-/diagnostikfiler samt återläste modeller och invarianter. Fel bildord och källrad i första tillkomna BUF-bilden vid pixelklocka 1435542 avvisas; båda lämnar 792 godkända rader. Samma spår med originalets sluttid räknar 576 rader.
+
+Identisk resume körde noll nya frön och behöll resultatrad, råfiler och kvitto byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart utan evidensändring. Skadad råfil i en ägd kopia avvisades. Första efterkontrollskriptet använde en funktion för platta råkataloger på hela resultatkatalogen och stoppade efter lyckad resume; felet är bevarat. Rättad efterkontroll återanvände den avslutade resume-körningen. Ingen simulering kördes om. [Rootacceptans](evidence/recovery-round-adapter.json).
+
+Core 2dca245 och Puck a2ad438 är oförändrade. Adaptern är privat och har bara en accepterad pilot; större rundor kräver ett separat kontrakt och egen granskning. Gamla 199 PASS/1 FAIL/60 ej körda behålls. Ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

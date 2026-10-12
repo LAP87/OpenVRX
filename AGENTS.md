@@ -135,6 +135,10 @@ like AI output.
 - Read it back as the person receiving it before you post. If it sounds like
   a press release or a chatbot, rewrite it.
 - No sourcing (shops, prices, purchase links) in these repositories.
+- Licence: everything here is CERN-OHL-S-2.0, the same as the OpenDrone-hw
+  repositories (owner's decision 2026-10-12). Take code from elsewhere only
+  under a compatible permissive licence (Apache-2.0, MIT, BSD, CERN-OHL),
+  never GPL, and name the source in the file header (see rtl/sdram_burst.v).
 - Before a part goes into a schematic or BOM, check its lifecycle status
   (Active / NRND / EOL) and named successor at the manufacturer, and recheck
   the whole BOM before ordering boards. Parts go quietly obsolete (example from

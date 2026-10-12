@@ -527,3 +527,18 @@ Den konservativa planeringsbudgeten använder hela HOLD=32, tre tidiga trigger o
 44 är en deklarerad kandidat för ett separat framtida nativeprov med oförändrade 144-raderskrav, 3000 s timeout, HOLD och lägesregler. De första fyra recovery-fältens payload är identisk; deras tidigare 68-byte terminala blankningstrailer ersätts av nästa fält. Därför är hela gamla fyrfältsindatan inte ett prefix av 44-fältsindatan, medan originalets bytes och hela fyrfälts-payloaden förblir prefix. Nytt recovery-antal binds i ett nytt schema-2-kontrakt; gamla rådata återupptas inte med nytt antal.
 
 Tre verkliga scenarioförvanskningar vägras: ändrat originalprefix, ändrad styrtid och otillräcklig källtidsbudget. Giltig kandidat passerar före/efter; gamla 160 källinputs, runtime och alla baseline-råhashar är oförändrade. [Ren prefix-/budgetacceptans](evidence/seed1309-recovery-window-pure.json). Den gamla rundan 1305–1314 är fortfarande ej accepterad. Ingen ny native-, helsvit-, routing- eller hårdvaruacceptans påstås.
+
+
+### Frö 1309: separat 44-fältscenario native-accepterat, 2026-10-12
+
+En ny, uttryckligt kontrakterad probe kördes via samma CLI-adapter på fryst Core 2dca245: frö 1309, skalad geometri, densitet 2,5, tio originalfält och 44 recovery-fält, utan tvingade störningar. Schema 2 binder det nya antalet och ny output/tag/identity; den gamla fyrfältsrundan kördes inte om eller ersattes. Native-tid 821,4 s; timeout 3000 s, geometrin, HOLD=32 och minimikravet 144 rader behölls.
+
+Kompilering, vvp, drain och full modell-/invariantåterläsning passerade utan fynd, known, edges eller notes: **3 024 bildrader**, varav **2 808 nya rader i 39 kompletta LOW-video/triggered-bilder** efter gamla fyrfältsfönstrets sluttid 26,064214 ms. Samma nya råspår med originalsluttid eller fyrfälts-sluttid ger 216 kontrollerade rader; dessa jämförelser är inga separata native-körningar. Första nya berättigade LOW-bilden börjar vid pc2130192, cirka 28,544573 ms.
+
+Den tidigare budgeten var konservativ och ingen garanti att hela spärren alltid måste löpa ut: `genlock_timing` tar en trigger i vertikalsynk/släckning även medan hold är positivt. HOLD spärrar ett nytt tidigt klipp. Proben visar den faktiska återhämtningen med längre, oförändrat prefixstimulus; den sänker inte spärren och ändrar inget bildläge.
+
+Root verifierade 160 källhashar, runtime, sex adaptermoduler och 15 rå-/diagnostikfiler. Genererade A/B-bytes matchar den rena 44-fältskandidatens hash exakt, originalprefix/styrtider/klockor/kamerafält bevaras och faktisk NTSC/interlaced är bunden. Två verkliga fel i den första återhämtade bilden, bildord respektive källrad, avvisas med rätt LOW-predikat och 2 952 kvarvarande godkända rader.
+
+Exakt resume körde noll nya frön och behöll raw/row/receipt byte-identiskt. Ändrat recovery-antal, checkerhash eller revision vägrades före workerstart; faktisk råkorruption i en ägd kopia avvisades. [Rootacceptans för det nya scenariot](evidence/seed1309-recovery44-native.json).
+
+Detta accepterar enbart frö 1309 med 44 recovery-fält. Den gamla fyrfältsrundan 1305–1314 förblir ej accepterad och gamla 199 PASS/1 FAIL/60 ej körda bevaras. Ingen fullständig 260-frökampanj, ny helsvit, FPGA-routning eller hårdvarumätning är accepterad. Core/Puck-kod och gitlänkar ändrades inte i proben.

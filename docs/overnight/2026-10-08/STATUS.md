@@ -195,3 +195,14 @@ De två nya native-proven på fryst `7754112` gick seriellt: skalat frö 1345 (d
 Root verifierade 160 källhashar och 24 råfiler, återläste modeller/invarianter och avvisade fel bildord/källrad i båda tillkomna bildfönstren. De fyra negativa återläsningarna lämnar 288/288 respektive 5 760/5 760 godkända rader. Samma spår med originalsluttid ger 72 respektive 2 880 rader. Elva simulator-/modell-/checkerfunktioner är AST-identiska med a1247ab; kraven på 144/720 rader och 3000 s timeout behålls. Core och Puck är mergade och pushade, och Pucks två tester passerar på 1,91 s. [Integrationsacceptans](evidence/recovery-campaign-acceptance.json).
 
 Detta är acceptans av de två opt-in-proven och parameter-/resume-vägen. Ingen ny 260-frökampanj, helsvit eller FPGA-routning är körd. Gamla 199 PASS/1 FAIL/60 ej körda och C2:s frysta 604-pass-källa/byggen bevaras; ingen FPGA-hårdvara är verifierad.
+
+
+### Skalad PAL-recovery: frö 1600, 2026-10-12
+
+Ett separat native-prov genom accepterad kampanjworker använder skalad PAL, densitet 1, tio interlaced originalfält, tvingad `pal` och fyra rena recovery-fält. **1 008 rader passerade på 280,1 s**, med minst 144 som oförändrat krav. Kompilering, vvp och drain avslutade utan fynd, known, edges eller notes. Genererade A/B/CTL-förväntningar matchar verkliga kompletta indata; originalprefix, styrtider och byteklockor är kvar. Detta har ingen äldre native-baslinje att jämföra pixelspåren mot.
+
+Root verifierade 160 källhashar, runtime-/kampanjmanifestet, helperhashar och 12 råfiler och återläste modeller/invarianter. Fel bildord och källrad i det tillkomna kontrollerbara bildfönstret vid pixelklocka 1722642 ger `display/word` respektive `display/map`/`display/not_read`, vardera med 936 godkända rader kvar. Bilden använder BUF. Samma nya råspår med originalets källsluttid räknar 648 rader; det är ingen separat native-körning av originalet. [Rootacceptans](evidence/recovery-scaled-pal-1600.json).
+
+Första förkontrollen stoppade före kompilering: förberedelsen använde Python 3.14.7, projektets körmiljö 3.12.12. Endast Python-identiteten skilde; felkontrakt och logg bevaras. Ett separat kontrakt och en ny outputkatalog förbereddes med faktisk körmiljö. Alla sex original-/extended-inputfiler är byte-identiska över versionerna; versionskontrollen behölls. En enda faktisk native-körning gjordes, med oförändrade källor, seed, 144-raderskrav och 3000 s timeout.
+
+Core 2dca245 och Puck a2ad438 är oförändrade. Skalad PAL har nu native-acceptans för detta scenario; full NTSC återstår som separat prov i matrisen. Ingen ny 260-frökampanj, helsvit, routning eller FPGA-hårdvarumätning påstås.

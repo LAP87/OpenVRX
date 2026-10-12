@@ -475,3 +475,14 @@ Exakt resume körde noll nya frön och behöll raw/row/receipt byte-identiskt. �
 Första försöket startade trots att en extra CLI-startkontroll hade anropat parsern fel. Root avbröt endast den verifierade egna processgruppen och bevarade diagnostik och partiella rådata. Rättad sys.argv/parse_args-kontroll verifierade kontraktets samtliga körfält före försök två i ny output/tag/identity; returfel stoppar nu startsekvensen. Det avbrutna försöket accepteras inte. Samma fem frön, källor, parametrar och gränser behölls.
 
 Den tidigare hundrafrögruppen med densitet 1 är separat accepterad. Detta paket accepterar fem nya scenarier med densitet 2,5, ingen fullständig grupp eller 260-frökampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras. Core/Puck är oförändrade; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda 1305–1314 stoppad i rootgranskning, 2026-10-12
+
+Alla tio native-körningar avslutade med PASS på fryst Core 2dca245, skalad geometri, densitet 2,5, tio originalfält och fyra recovery-fält. **Paketet är inte accepterat:** rootgranskningen stoppade vid frö 1309 när den skulle välja en tillkommen bild för de två negativa kontrollerna. Frön 1305–1308 har positiva modell-/invariantåterläsningar och åtta verkliga bildnegativer; återstående frön har ännu ingen full rootacceptans.
+
+Frö 1309 ger 216 kontrollerade rader både med extended-sluttiden 26,064214 ms och med originalsluttiden 18,252122 ms på samma råspår. Den tillkomna delen ger alltså inga ytterligare kontrollerade bildrader. Fyra kompletta bildfönster före extended-sluttiden har LOW=1, source-alive=1, triggered=0 och video=0, utanför lägesbytesundantagen. Ingen är berättigad till en verklig bildnegativ. Den genererade mode-switch-händelsen finns vid pc473612; faktisk NTSC/interlaced och original-/recovery-metadata är hashbundna. Orsaken till den uteblivna LOW-triggern är ännu inte fastställd. Detta är ett täckningsfel i paketgrinden, inte ett konstaterat RTL-fel.
+
+Rådata, simulator-/kompilatordiagnostik, första StopIteration-felloggen och ett separat källbundet triagekvitto är bevarade. Ingen seed, tröskel, timeout, källa eller checker ändrades och ingen HDL kördes om. Exakt resume och slutlig paketacceptans kördes inte efter felet. [Första avvikelsen och råspår](evidence/recovery-dense-round-1305-1314-failure.json). Fortsatt kampanj väntar på separat utredning av det faktiska LOW-trigger-/bildfönstret.
+
+Core/Puck och tidigare accepterade paket är oförändrade. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen fullständig 260-frökampanj, ny helsvit, FPGA-routning eller hårdvarumätning är accepterad.

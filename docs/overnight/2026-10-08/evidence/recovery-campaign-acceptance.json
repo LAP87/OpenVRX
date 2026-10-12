@@ -1,0 +1,174 @@
+{
+  "state": "PASS_ROOT_REVIEWED_CORE_PUCK_MERGED_PUSHED",
+  "reviewed_utc": "2026-10-12T01:48:21.042646+00:00",
+  "revision": "77541129ad1d532f9db4ba39287b1adbb1c95f66",
+  "source_inputs": 160,
+  "native_contract_sha256": "b4dcb349e04bf4028e01e805587d70b3e2b313735052b371b23d3239d0603a23",
+  "native_gate_sha256": "e942e59b004a6686c62c5a800d5f6fa5557efd83f0d486fa4f99a4a629a369de",
+  "review_helper_sha256": "5c56884316b8b60722acf8d973821bad5702e73e5217068a9c57fe18b90629e5",
+  "source_hashes_unchanged": true,
+  "cases": [
+    {
+      "case": {
+        "seed": 1345,
+        "geometry": "scaled",
+        "density": 2.5,
+        "fields": 10,
+        "force": [],
+        "recovery_fields": 4,
+        "minimum": 144,
+        "prior_checked": 360,
+        "prior_raw_hashes": {
+          "a.hex": "f43cc70cab8ace213c194219db49d120a42aad46f528cd16943086b367e6289b",
+          "b.hex": "f81cf17c391bfdcfbe712fedf90e9f9c7a890cb20e72dd33d685e0b139004af3",
+          "ctl.hex": "00e17179be153cf049eaf4f8cf43bba1210097895fe20e8e8c315387c84f91a9",
+          "mix.txt": "5322b6a2fb3545e4a5cc881016602d510a98defb77d3d9bfee87e3e6c0d2f115",
+          "sd.txt": "fe407587489d500c941589515392b16e513b63dc3afd2588c88dfbcaaee9fba2",
+          "pix.txt": "0726a035d6efa2d2ac32012ba58e6e7907174e07b18ad35368e8f4d17bc326fb"
+        },
+        "prior_result_sha256": "a8c47b4adc44f2bc9a0952004437c065d2557e27f0a053bb3543073863cb7d1d"
+      },
+      "checked": 360,
+      "old_end_same_trace_checked": 72,
+      "negatives": [
+        {
+          "fault": "displayed_word",
+          "frame_pc": 1364592,
+          "mode": "BUF",
+          "checked": 288,
+          "groups": [
+            "display/word"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "word",
+            "t": 18285533,
+            "detail": "output line 0: shows 3215244933, line read had 3215244932"
+          }
+        },
+        {
+          "fault": "source_mapping",
+          "frame_pc": 1364592,
+          "mode": "BUF",
+          "checked": 288,
+          "groups": [
+            "display/map",
+            "display/not_read"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "map",
+            "t": 18285533,
+            "detail": "output line 0: source line 999, model 0 (23 lines, low 0)"
+          }
+        }
+      ],
+      "result_sha256": "01083be460cbe9b9c728026306f80a285729e9bac565aa6cbf31d4e60fb75414",
+      "raw_files": 12,
+      "compile_parameters": {
+        "V_TOTAL": 87,
+        "V_ACTIVE": 72,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_PAL": 8,
+        "RT_HYST": 2,
+        "RT_SPLIT": 26
+      },
+      "native_seconds": 215.8,
+      "all_six_prior_raw_files_identical": true,
+      "original_streams_and_controls_preserved": true
+    },
+    {
+      "case": {
+        "seed": 1601,
+        "geometry": "full",
+        "density": 1.0,
+        "fields": 8,
+        "force": [
+          "pal",
+          "mode_switch"
+        ],
+        "recovery_fields": 4,
+        "minimum": 720,
+        "prior_checked": 6480,
+        "prior_raw_hashes": {
+          "a.hex": "792c237af3e4f42154ee09131d742d7132c95d813f8d70497723498d8246e36b",
+          "b.hex": "533048a277ec8c422f57cdc6765430135d6bc676454ca1dc223558bb811fca22",
+          "ctl.hex": "027f1c758349a4f1533516e379226c94545e4181eab55247eb9389cf3bb07c33",
+          "mix.txt": "e52537108a5bf40006fc0abeb348706642ce8cc2b6de853a2f7f01add4ea33bf",
+          "sd.txt": "fdb0ae32ab700bda64ce5620f7ebd5225dadae4428f4aaaef43639a25a083c04",
+          "pix.txt": "1ceea0e78c04b834d2f5a06ecfb8d7521cb12df44cdeadb89e695e4d70373fac"
+        },
+        "prior_result_sha256": "21ea91249410c3b7abeb3e1882464b406b066cfc3f2b64664833d6b7056ff667"
+      },
+      "checked": 6480,
+      "old_end_same_trace_checked": 2880,
+      "negatives": [
+        {
+          "fault": "displayed_word",
+          "frame_pc": 11137542,
+          "mode": "BUF",
+          "checked": 5760,
+          "groups": [
+            "display/word"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "word",
+            "t": 149243063,
+            "detail": "output line 0: shows 2239530165, line read had 2239530164"
+          }
+        },
+        {
+          "fault": "source_mapping",
+          "frame_pc": 11137542,
+          "mode": "BUF",
+          "checked": 5760,
+          "groups": [
+            "display/map",
+            "display/not_read"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "map",
+            "t": 149243063,
+            "detail": "output line 0: source line 999, model 0 (288 lines, low 0)"
+          }
+        }
+      ],
+      "result_sha256": "e77fe871a56f188fef019ff07c1346097f438644d8c6a4b62fd85d6d52dee344",
+      "raw_files": 12,
+      "compile_parameters": {
+        "V_TOTAL": 750,
+        "V_ACTIVE": 720,
+        "V_FP": 5,
+        "V_SYNC": 5,
+        "RT_NTSC": 4,
+        "RT_PAL": 44,
+        "RT_HYST": 16,
+        "RT_SPLIT": 270
+      },
+      "native_seconds": 1954.0,
+      "all_six_prior_raw_files_identical": true,
+      "original_streams_and_controls_preserved": true
+    }
+  ],
+  "old_campaign_accepted": false,
+  "new_campaign_run": false,
+  "full_suite_or_build_run": false,
+  "hardware_verified": false,
+  "core_main": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+  "core_branch_tip": "61d9ec3b3c0a414499e01da3e977094317ad7fcd",
+  "puck_main": "a2ad438ba6dd9f6368d528fc6cd9ebd141c467e0",
+  "puck_branch_tip": "41128a8051b14a562c3f26cb2293f8c7372b04fb",
+  "focused_tests": 75,
+  "focused_seconds": 43.43,
+  "focused_acceptance_sha256": "4e51f4048b7abdf3acbde40346fb9cdab230dd9769ba5fd7005945218f1d17f4",
+  "native_root_acceptance_sha256": "2428a93d7750c56a4e3bf2ea810edaa3f3213023639b3f0510bfa8324d3e602e",
+  "puck_tests": 2,
+  "puck_seconds": 1.91,
+  "puck_xml_sha256": "ec628b07279408dd54de5da01142bf729ec4e7afd62725613312366774138a05",
+  "puck_log_sha256": "47d718f2ac450844cc2b2d841ccfce98ef9a9a5c831f99db2d5bd44377e6d45d",
+  "all_160_inputs_match_merged_main": true
+}

@@ -1,0 +1,179 @@
+{
+  "state": "READ_ONLY_SOURCE_AUDIT_COMPLETE_WITH_DECLARED_IDENTITY_CHANGE",
+  "reviewed_utc": "2026-10-12T23:46:01.981011+00:00",
+  "revision": "46a1e4f284605a9521f592faff33068986e92d25",
+  "tree": "66a34f2e192610ad57d53dd4cb5bf17cd13e4262",
+  "source_inputs": 193,
+  "collected_tests": 728,
+  "files": 45,
+  "processes": 466,
+  "exact_old_nodes_retained": 691,
+  "old_node_functions_replaced": 4,
+  "replacement_variants": 8,
+  "exact_695_identity_retention_met": false,
+  "identity_change_preserved_and_explained": true,
+  "production_fix_proposed": false,
+  "pure_tests_passed": 118,
+  "pure_seconds": 11.043793881995953,
+  "native_executions": 0,
+  "actual_builds": 0,
+  "source_runtime_dependency_unchanged": true,
+  "hardware_verified": false,
+  "source_read_review": {
+    "state": "READ_ONLY_SOURCE_AUDIT_REVIEWED_NOT_NATIVE_ACCEPTANCE",
+    "reviewed_utc": "2026-10-12T23:45:04.619132+00:00",
+    "revision": "46a1e4f284605a9521f592faff33068986e92d25",
+    "tree": "66a34f2e192610ad57d53dd4cb5bf17cd13e4262",
+    "source_inputs": 193,
+    "changed_paths": 36,
+    "new_paths": 6,
+    "modified_paths": 30,
+    "git_object_archive_match": true,
+    "reported_and_collected_tests": 728,
+    "files": 45,
+    "processes": 466,
+    "old_exact_retained": 691,
+    "old_exact_retention_requirement_met": false,
+    "old_identities_replaced": 4,
+    "replacement_variants": 8,
+    "added_identities": 37,
+    "net_additional_tests": 33,
+    "replacement_mapping": {
+      "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame": [
+        "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[0]",
+        "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[1]"
+      ],
+      "gateware/sim/test_fb.py::test_low_latency_field_without_its_reference_line": [
+        "gateware/sim/test_fb.py::test_low_latency_field_without_its_reference_line[0]",
+        "gateware/sim/test_fb.py::test_low_latency_field_without_its_reference_line[1]"
+      ],
+      "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long": [
+        "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[0]",
+        "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[1]"
+      ],
+      "gateware/sim/test_fb.py::test_low_latency_source_moves": [
+        "gateware/sim/test_fb.py::test_low_latency_source_moves[0]",
+        "gateware/sim/test_fb.py::test_low_latency_source_moves[1]"
+      ]
+    },
+    "correspondence_is_source_review_not_native_equivalence": true,
+    "old_closed_ast": {
+      "gateware/tools/run_suite.py": {
+        "original_functions_classes_unchanged": 10,
+        "added": []
+      },
+      "gateware/sim/fuzz_campaign.py": {
+        "original_functions_classes_unchanged": 12,
+        "added": []
+      },
+      "gateware/sim/test_fuzz_chain.py": {
+        "original_functions_classes_unchanged": 100,
+        "added": []
+      },
+      "gateware/model/fb_ref.py": {
+        "original_functions_classes_unchanged": 3,
+        "added": [
+          "src_lines",
+          "vblend"
+        ]
+      }
+    },
+    "unchanged_owner_inputs": [
+      "LICENSE",
+      "gateware/boards/m1_moneagle_view.cst",
+      "gateware/boards/m1s_moneagle_view_sync.cst",
+      "gateware/boards/m2_moneagle_color.cst",
+      "gateware/boards/m2a_memtest.cst",
+      "gateware/boards/m2s_moneagle_color_sync.cst",
+      "gateware/boards/m3_probe.cst",
+      "gateware/boards/m4_dual_mix.cst",
+      "gateware/boards/m6_puck_proto.cst",
+      "gateware/boards/m6_puck_proto.seed",
+      "gateware/boards/tangnano20k.cst",
+      "gateware/rtl/fb_sdram.v",
+      "gateware/rtl/field_phase.v",
+      "gateware/rtl/line_mixer.v",
+      "gateware/rtl/mix_chan.v",
+      "gateware/sim/margin_checks.vh"
+    ],
+    "top_port_declarations_unchanged": true,
+    "declared_formal_proofs": [
+      "async_fifo_depth4",
+      "async_fifo_depth8",
+      "genlock_timing",
+      "genlock_timing_wait_before_vsync",
+      "cdc_toggle",
+      "cdc_level",
+      "cdc_toggle_tx",
+      "fb_linebuf_slots"
+    ],
+    "declared_formal_negatives": [
+      "async_fifo_never_full",
+      "async_fifo_never_empty",
+      "genlock_no_wait_limit",
+      "genlock_short_frame",
+      "genlock_no_holdoff",
+      "genlock_cut_no_sync",
+      "genlock_sticky_recovery",
+      "genlock_wait_before_vsync_short_back_porch",
+      "genlock_wait_before_vsync_lost_sync_line",
+      "cdc_toggle_no_sync",
+      "cdc_toggle_too_often",
+      "cdc_toggle_data_early",
+      "cdc_toggle_tx_no_gap",
+      "cdc_level_no_sync",
+      "cdc_level_two_edges",
+      "fb_linebuf_same_slot"
+    ],
+    "proofs_executed_here": 0,
+    "native_executions": 0,
+    "actual_builds": 0,
+    "hardware_verified": false,
+    "owner_defaults": {
+      "VINTERP": 0,
+      "HDMI": 0,
+      "WAIT_BEFORE_VSYNC": 0,
+      "SDRAM_IOREG_default_unchanged": true
+    },
+    "constraints": {
+      "vinterp": "BUF only; at least2x vertical upscale; LOW weights remain0; second slot copy/prefetch needs native validation",
+      "wait_before_vsync": "V_FP>=2; full720p delayed picture cannot be declared safe with unchanged16-line ring; no default or ring change",
+      "hdmi": "VIC4/19 and RGB quantization flags select AVI; packet/TMDS tests and actual build/hardware compatibility remain unverified here"
+    },
+    "remaining_gates": [
+      "fresh exact728 suite and193input source/runtime closure",
+      "actual VINTERP/vblend positive and5 declared mutations",
+      "actual HDMI DVIpositive/AVI VIC-range-checksum-parity-guard-band tests",
+      "actual LL placement both modes/formal8proof16negative cases",
+      "source-bound default and declaredVINTERP/HDMI option builds/manifests/75MHz/TMDS",
+      "separate Puck integration on actually accepted source",
+      "separate mixed-source260 raw/coverage audit"
+    ]
+  },
+  "bindings": {
+    "SOURCE_CONTRACT.json": "81a7ed6318df3a98c504b5e9d0c1ac078cbef004d72749165db6f42793f01596",
+    "COLLECTION_CONTRACT.json": "41ff6498cf3c6625677fea214a8ee242109ed247d978620c63c6ca78220a93a5",
+    "COLLECTION.json": "1d469b188b7e6dc2c30adf937cdd38984d66ee93315710db7bcb49fd8e21da24",
+    "COLLECTION.log": "f04b509f9f8e4438700a9d41ab36293ee121d3316d060a4951b76602299f3e01",
+    "FIRST_IDENTITY_DEVIATION.json": "0014b492fdf9f0196286da3ca949d469943e7de66c212da5c94243f8b56fdb20",
+    "IDENTITY_REVIEW.md": "4e945094e9387462fa5094704834a1ac4a144acfd0cd0f1d8c05779da5aae277",
+    "PURE_SELECTION_TASK.md": "8f84f7b34f7ba4941e724d6729d2d3dc777350e6d1f942bb1b5c71340e7475a2",
+    "PURE_CONTRACT.json": "ebc0607cfcb2e8f759acd411f9c5e1372cb8673ced2a3fbc0c54d0a87f495228",
+    "PURE_RESULT.json": "e3e3f893e00415f32e4f2243475316e7c38334ce4f36c0bdfe501bb46e1d5c51",
+    "pure.log": "e3b9bd4dcb73bb768898d71550333f731165d375d2efa56f2963b1133b25aad9",
+    "pure.xml": "7332225bb8ad9f3b4d217e40f48b6b9b07ea4fcbbea01e567041ec530cc86958",
+    "STATIC_REVIEW.json": "75725470d33325d9a85386a28a773243a3bef98f51889c87f1408f0beefc8dd0",
+    "VENV_PREPARATION_CORRECTION.json": "baf6ed603dfccc2e5478bfeab5d47d94af4b2b880ee6898258deb7ba6824d255",
+    "PREPARED_SOURCE_CONTRACT_ORIGINAL.json": "38288bd5eac9c8ada056deff595bb21c651afa734b1663676ccd40b960d22552"
+  },
+  "remaining_native_and_build_gates": [
+    "fresh exact728 suite and193input source/runtime closure",
+    "actual VINTERP/vblend positive and5 declared mutations",
+    "actual HDMI DVIpositive/AVI VIC-range-checksum-parity-guard-band tests",
+    "actual LL placement both modes/formal8proof16negative cases",
+    "source-bound default and declaredVINTERP/HDMI option builds/manifests/75MHz/TMDS",
+    "separate Puck integration on actually accepted source",
+    "separate mixed-source260 raw/coverage audit"
+  ],
+  "root_receipt_sha256": "7a388d355a41c8875f9178ff93f96babe190f7cbdc4c617514d514fd93f2617a"
+}

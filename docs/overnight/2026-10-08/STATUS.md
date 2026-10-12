@@ -14,6 +14,14 @@ Ett privat skript stannade före diagnossimuleringen eftersom en addendumfil sak
 
 Fjärr-Core har därefter gått till `46a1e4f` med VINTERP, HDMI/AVI och varierande vsync-rad. De ändringarna och externa 728-test-/byggpåståenden omfattas inte av denna acceptans. Puck-fjärrmain `1404485` pinnar fortfarande Core `f32407f`; lokal Puck `a2ad438` är orörd. Separat källgranskning/integration återstår. Den blandade 257+3-kampanjrapporten är inte rootaccepterad som 260 frön. Gamla FAIL och äldre källbundna acceptanser nedan bevaras.
 
+## Källgranskning 2026-10-13: senare Core `46a1e4f`
+
+Read-only granskning av VINTERP, HDMI/AVI och WAIT_BEFORE_VSYNC är färdig: **193 Git-indata, 36 ändrade/nya filer, 118 fokuserade modell-/verktygspass på 11,04 s**. Verktygstesterna använder isolerade verktygsdubblar; inga HDL-, proof- eller riktiga byggjobb kördes i detta paket. [Källgranskning och identiteter](evidence/upstream-46a1-source-audit.json).
+
+Insamlingen gav **728 testidentiteter i 45 filer och 466 processenheter**. 691 gamla identiteter är exakt kvar. Fyra LOW-funktioner är nu parametriserade med `[0]`/`[1]`; deras åtta identiteter ersätter de fyra gamla. Första grinden som krävde alla 695 gamla identiteter exakt kvar är bevarad som en avvikelse. 37 nya identiteter minus fyra ersatta ger netto 33. En ny körning måste binda de faktiska 728 identiteterna; 695-körningens cache kan inte återanvändas. Granskad källmotsvarighet är inte nativeverifierad likvärdighet.
+
+Standard är fortsatt VINTERP av, DVI och väntande rad efter vsync. Stiftdeklarationer, CST, licens, fältlagring och F-regler är oförändrade mot `0503dac`; körarens och gamla fuzz-checkerfunktionernas AST är oförändrade. Källan innehåller åtta proof-fall och sexton formella negativfall, ännu inte körda här. WAIT_BEFORE_VSYNC=1 kräver minst två front-porch-rader; källan varnar att full 720p med placeringen före vsync kräver större LOW-ring. Ingen ring eller standard ändrades. Senare native728- och optionbygggrindar samt Puck-integration återstår; `0503dac` ovan behåller sin separata acceptans.
+
 ## Historisk brief 2026-10-12 efter opt-in recovery
 
 Detta avsnitt bevarar läget efter opt-in recovery; aktuell rootacceptans står ovan. Användaren har lämnat datorn med ”Datorn är din” och begärt fortsatt arbete inom ordinarie kvot, en uppgift åt gången. Ett tungt jobb åt gången hålls under `/home/lenny/openvrx-review/build.lock`.

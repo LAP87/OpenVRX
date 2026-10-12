@@ -1,0 +1,40 @@
+{
+  "state": "PASS_ROOT_REVIEWED_CORE_MERGED_PUSHED",
+  "focused_pass": 32,
+  "new_tests": 25,
+  "seconds": 3.43,
+  "real_cli_seven_pass": 7,
+  "exact_resume_new_workers": 0,
+  "rejected_cache_bytes_preserved": true,
+  "owned": [
+    "gateware/tools/run_suite.py",
+    "gateware/tools/test_build_dirs.py",
+    "gateware/tools/test_run_suite.py",
+    "gateware/README.md"
+  ],
+  "candidate_inputs": 186,
+  "unchanged_unowned_tracked_files": 182,
+  "base": "5314ed1f97ddffed40912570c5f49eda08fd8bb9",
+  "incoming_main_preserved": "65ecf36b98045118972159cecc96f8a2a360b47d",
+  "imported_build_claims_root_verified": false,
+  "rtl_change": false,
+  "full_suite": false,
+  "native": false,
+  "route": false,
+  "hardware_verified": false,
+  "validation_sha256": "3691f875c67700f15fb8c3c9c608c8d58ee76fb178e88709ac455f7a6406e7ad",
+  "reviewed_utc": "2026-10-12T15:55:48.739144+00:00",
+  "controls": [
+    "old runner returns0 on expected refusal regression",
+    "empty/partial/foreign/metadata cache refusal before workers and writes",
+    "real grouped selection expansion refusal/equivalent collected selection reuse",
+    "budget3/pending/full outcome reconciliation",
+    "skip/xfail allowed and nonzero rc rejected",
+    "source guard and existing duplicate build-directory negatives"
+  ],
+  "branch_tip": "6d1d05a501cc3ec673cb094ca09f7c46a8719ef1",
+  "core_main": "ff9bfec086e7327a3f606b1fd869e5d45f843d83",
+  "core_tree": "818dd13a3118eab14b59e718f24f305a21ed4903",
+  "integration_tree_identical_to_tested_candidate": true,
+  "puck_updated": false
+}

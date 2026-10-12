@@ -1,0 +1,115 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NATIVE_WORKER_ONLY",
+  "reviewed_utc": "2026-10-12T02:07:43.554050+00:00",
+  "revision": "2dca24508bd445cb3e1bcba1d16eec37bcd5757c",
+  "source_inputs": 160,
+  "native_contract_sha256": "405b14072a222181e4d406035e28ef6b3b196647fc395cb50e6b6dcf4b808b83",
+  "native_gate_sha256": "25f81f65f86dac2b788e6dfeb213b748f929265a8df19193c422e11f127baa5d",
+  "review_helper_sha256": "ef93c4aa7cee1872228b3185d99b91254240923a6237aa36cf27ff2607febd54",
+  "source_hashes_unchanged": true,
+  "cases": [
+    {
+      "case": {
+        "label": "explicit-scaled-pal",
+        "seed": 1600,
+        "geometry": "scaled",
+        "density": 1.0,
+        "fields": 10,
+        "force": [
+          "pal"
+        ],
+        "recovery_fields": 4,
+        "minimum": 144,
+        "standard": "pal",
+        "interlaced": true,
+        "expected_input_hashes": {
+          "a.hex": "96c3b693fbbba8c78d17c1d677895902b7a662c9189bbd69a468f77af8b5d924",
+          "b.hex": "506eb42636285f6b67ecfffa4c754330454b056224c319735c76cb0b999b7579",
+          "ctl.hex": "24d3cfdadb439ffe4d83e9f4035cb012c08ef03f6ef312cf8a6c1e84daf4bf0d"
+        },
+        "original_input_hashes": {
+          "a.hex": "7ce269133959e90b5bd2f74e4302cbba08887f0bbe2d5425768fbf55c7189047",
+          "b.hex": "8a2b4d139047d6f330a4b9448af719fcbe030f4bcdc26dbec0185e5711d5e12f",
+          "ctl.hex": "24d3cfdadb439ffe4d83e9f4035cb012c08ef03f6ef312cf8a6c1e84daf4bf0d"
+        },
+        "expected_suffix": {
+          "fields": 4,
+          "first_field": 10,
+          "active_lines": 29,
+          "base_vbi": 7,
+          "padding_bytes": {
+            "0": 1728,
+            "1": 5566
+          },
+          "suffix_start_ns": {
+            "0": 23044052.0,
+            "1": 23044065.16928166
+          },
+          "source_end_ns": 32381237.16928166,
+          "kind": "synchronized clean recovery; original byte clocks retained"
+        }
+      },
+      "checked": 1008,
+      "old_end_same_trace_checked": 648,
+      "negatives": [
+        {
+          "fault": "displayed_word",
+          "frame_pc": 1722642,
+          "mode": "BUF",
+          "checked": 936,
+          "groups": [
+            "display/word"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "word",
+            "t": 23083403,
+            "detail": "output line 0: shows 2744164441, line read had 2744164440"
+          }
+        },
+        {
+          "fault": "source_mapping",
+          "frame_pc": 1722642,
+          "mode": "BUF",
+          "checked": 936,
+          "groups": [
+            "display/map",
+            "display/not_read"
+          ],
+          "first": {
+            "block": "display",
+            "kind": "map",
+            "t": 23083403,
+            "detail": "output line 0: source line 999, model 0 (29 lines, low 1)"
+          }
+        }
+      ],
+      "result_sha256": "75cbfc2149af9c05ca6b9369f1bc4dd0a82499c845c8981f884b6c4059c6d7b8",
+      "raw_files": 12,
+      "compile_parameters": {
+        "V_TOTAL": 87,
+        "V_ACTIVE": 72,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_PAL": 8,
+        "RT_HYST": 2,
+        "RT_SPLIT": 26
+      },
+      "native_seconds": 280.1,
+      "all_generated_input_files_match_contract": true,
+      "original_streams_and_controls_preserved": true
+    }
+  ],
+  "old_campaign_accepted": false,
+  "new_campaign_run": false,
+  "full_suite_or_build_run": false,
+  "hardware_verified": false,
+  "runtime_input_root_review_sha256": "3e824f5bb377afc45eb0885757e3e905698b38a02a7ca1f07ecc0537fa878528",
+  "runtime_and_campaign_source_snapshot_unchanged": true,
+  "actual_python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]",
+  "generated_inputs_only": true,
+  "runtime_preflight_failure_sha256": "f64bb36c2194e9d3e29baf57f7c4f8984bfdbe9642b897053a6f3a824add2dcb",
+  "no_compilation_or_native_before_preflight_repair": true,
+  "all_six_generated_input_files_identical_between_preparation_versions": true
+}

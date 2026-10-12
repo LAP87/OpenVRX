@@ -246,3 +246,22 @@ Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tre result
 Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart. En skadad råfil i en ägd kopia avvisades; verkliga rådata behölls. [Rootacceptans](evidence/recovery-round-1201-1203.json).
 
 Detta accepterar endast den avgränsade trefrörundan. Core och Puck är oförändrade. Gamla kampanjens 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny 260-frökampanj, helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda med fem frön, 2026-10-12
+
+Frö 1204–1208 kördes seriellt genom den granskade privata adaptern på fryst Core 2dca245, med skalad geometri, densitet 1, tio originalfält och fyra recovery-fält. Alla passerade kompilering, vvp, drain och modell-/invariantåterläsning utan fynd, known, edges eller notes. Minimikravet 144 rader och 3000 s timeout behölls. Ingen störning eller standard tvingades; generatorn valde PAL för 1204 och NTSC för övriga. Den ursprungliga taskens beteckning skalad NTSC var för snäv och har ett separat rättelsekvitto; körkontrakt och indata är oförändrade.
+
+| Frö | Standard | Kontrollerade rader | Native-tid (s) | Samma spår, originalsluttid |
+|---|---|---:|---:|---:|
+| 1204 | PAL | 1 008 | 271,4 | 648 |
+| 1205 | NTSC | 648 | 237,7 | 360 |
+| 1206 | NTSC | 360 | 217,5 | 216 |
+| 1207 | NTSC | 864 | 227,1 | 576 |
+| 1208 | NTSC | 864 | 224,1 | 576 |
+
+Root verifierade 160 källhashar, runtime, sex privata moduler, exakt fem resultatrader/kvitton och 75 rå-/diagnostikfiler. Kameraindata, originalprefix och CTL matchar genererade förväntningar. Två verkliga fel per frö, bildord och källrad i en tillkommen BUF-bild, ger de väntade kontrollfynden: tio negativa återläsningar lämnar 936/936, 576/576, 288/288, 792/792 respektive 792/792 godkända rader.
+
+Identisk resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1204-1208.json).
+
+Core och Puck är oförändrade. Detta accepterar fem nya scenarier, ingen fullständig kampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

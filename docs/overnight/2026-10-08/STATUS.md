@@ -486,3 +486,16 @@ Frö 1309 ger 216 kontrollerade rader både med extended-sluttiden 26,064214 ms 
 Rådata, simulator-/kompilatordiagnostik, första StopIteration-felloggen och ett separat källbundet triagekvitto är bevarade. Ingen seed, tröskel, timeout, källa eller checker ändrades och ingen HDL kördes om. Exakt resume och slutlig paketacceptans kördes inte efter felet. [Första avvikelsen och råspår](evidence/recovery-dense-round-1305-1314-failure.json). Fortsatt kampanj väntar på separat utredning av det faktiska LOW-trigger-/bildfönstret.
 
 Core/Puck och tidigare accepterade paket är oförändrade. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen fullständig 260-frökampanj, ny helsvit, FPGA-routning eller hårdvarumätning är accepterad.
+
+
+### Frö 1309: tidiga recovery-trigger under klippspärren, 2026-10-12
+
+En separat läsning av samma råspår visar att de fyra recovery-triggerna kommer från LOW-skrivaren. De ligger ungefär 27,37, 20,65, 14,24 respektive 7,82 utrader efter bildstart, klart före vertikalsynk vid rad 73 även med åtta pixelklockors tidsmarginal. De är alltså tidiga trigger, inte uteblivna writer-händelser.
+
+Spåret innehåller dessförinnan en klippt niolinjersbild, pc740892–755742. Den frysta `genlock_timing.v` sätter `hold=32` när ett tidigt klipp begärs och tillåter inget nytt tidigt klipp förrän hold är noll; räknaren minskar vid bildslut. Bara åtta senare bildstarter ryms i spåret. Källkod och händelser förklarar därför att återkommande tidiga trigger under spärren lämnar nya bilder utan `triggered`, trots levande källa. **Detta är en källbunden härledning:** själva pixel-domänens hold/early_n/pend/vc är inte loggade. En separat telemetry-probe med oförändrade standardregler kan bekräfta tillståndet direkt. Fyra recovery-fält garanterar inte att genlock hinner återlåsa efter ett tidigare klipp.
+
+Inget RTL-, modell-, checker-, seed- eller tröskelbyte gjordes och ingen native-körning startades. Alla gamla 160 källinputs och fröets råhashar är identiska före/efter läsningen. Paketet 1305–1314 förblir **inte accepterat**. [Tids-/källanalys och upstream-diffar](evidence/seed1309-low-trigger-triage.json).
+
+Fables parallella arbete hade samtidigt uppdaterat fjärr-main: Core 5314ed1 ändrar README, fyra testers byggkataloger och fyra kör-/revisionsverktyg; inga RTL-, modell-, fuzz-chain-, fuzz-campaign- eller tb_chain-filer skiljer mot 2dca245. Puck ecb9b14 ändrar endast gitlänken och pekar på Core f32407f, inte 5314ed1. Lokala Core/Puck-checkouter och fryst kampanjkälla flyttades inte. De externa rapporterna om 651/658 tester är inte lokalt verifierade här och ersätter inte våra tidigare källbundna grindar. Navets nya arbetsplan och ägarbeslutsunderlag har bevarats.
+
+Första diffgranskningen antog felaktigt att Pucks senaste gitlänk redan pekade på Core main; kontrollen avvisade antagandet. Faktisk pin sparas separat i den rättade granskningen; ingen checkout eller gitlänk ändrades för att få likhet.

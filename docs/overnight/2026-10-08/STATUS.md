@@ -454,3 +454,24 @@ Tio semantiska kontroller av gruppvalideringen avvisar bortfall, dubbletter, ov�
 Första auditen stoppade efter de nya fröna: dess filurval läste den gamla kampanjens händelsejournal som fröresultat. Kod, inputkontrakt och fellogg är bevarade. Den rättade auditen binder journalen och de två verkliga resultatfilerna separat, tillsammans med deras manifest; inget record ignoreras för att få rätt totalsumma. Ingen simulering kördes om. Den gamla kampanjen har fortfarande 199 PASS, 1 FAIL (1345, 72 rader), 60 ej körda och oförändrade filhashar.
 
 Acceptansen gäller endast den nya hundrafrögruppen med fyra recovery-fält. Densitet 2,5 och andra kampanjgrupper återstår; ingen fullständig 260-frökampanj är accepterad. Minimikravet 144 och timeout 3000 s är oförändrade. Core/Puck är oförändrade; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda 1300–1304 med densitet 2,5, 2026-10-12
+
+Fem frön kördes seriellt på fryst Core 2dca245 med skalad geometri, densitet 2,5, tio originalfält och fyra recovery-fält, utan tvingade störningar. Alla passerade kompilering, vvp, drain och modell-/invariantåterläsning utan fynd, known, edges eller notes. Minimikravet 144 rader och 3000 s timeout behölls. Totalt kontrollerades **4 392 bildrader**.
+
+| Frö | Standard | Kamerakonvention | Kontrollerade rader | Native-tid (s) | Samma spår, originalsluttid |
+|---|---|---|---:|---:|---:|
+| 1300 | PAL | Progressiv | 1008 | 273,7 | 648 |
+| 1301 | NTSC | Progressiv | 720 | 226,9 | 432 |
+| 1302 | NTSC | Interlaced | 648 | 218,5 | 288 |
+| 1303 | PAL | Progressiv | 1008 | 263,5 | 648 |
+| 1304 | PAL | Interlaced | 1008 | 260,9 | 720 |
+
+Root verifierade 160 källhashar, runtime, sex privata moduler, fem unika resultatrader/kvitton och 75 rå-/diagnostikfiler. Återgenererade original-/extended-kameraindata, prefix, CTL och faktisk standard/interlacing/kamerafält matchar råspåren. Tio verkliga fel i tillkomna bilder, fel bildord respektive källrad per frö, avvisas med väntade fynd och färre godkända rader; alla fem negativa bildfönster använder BUF.
+
+Exakt resume körde noll nya frön och behöll raw/row/receipt byte-identiskt. Ändrat recovery-antal, checkerhash och revision vägrades före workerstart; faktisk råkorruption i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-dense-round-1300-1304.json).
+
+Första försöket startade trots att en extra CLI-startkontroll hade anropat parsern fel. Root avbröt endast den verifierade egna processgruppen och bevarade diagnostik och partiella rådata. Rättad sys.argv/parse_args-kontroll verifierade kontraktets samtliga körfält före försök två i ny output/tag/identity; returfel stoppar nu startsekvensen. Det avbrutna försöket accepteras inte. Samma fem frön, källor, parametrar och gränser behölls.
+
+Den tidigare hundrafrögruppen med densitet 1 är separat accepterad. Detta paket accepterar fem nya scenarier med densitet 2,5, ingen fullständig grupp eller 260-frökampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras. Core/Puck är oförändrade; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

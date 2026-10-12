@@ -2,9 +2,21 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
-## Aktuellt läge 2026-10-12 efter opt-in recovery
+## Aktuell rootacceptans 2026-10-13: Core `0503dac`
 
-Detta avsnitt är aktuell brief; de daterade körjournalerna längre ned bevarar statusen vid respektive tidpunkt. Användaren har lämnat datorn med ”Datorn är din” och begärt fortsatt arbete inom ordinarie kvot, en uppgift åt gången. Ett tungt jobb åt gången hålls under `/home/lenny/openvrx-review/build.lock`.
+Fryst Core `0503dac` är rootgranskad i simulation och färska byggen: **695 pass / 43 filer / 439 processer / 187 Git-indata**, 19 cocotb-rapporter, sju formella bevis och fjorton verkliga negativa motexempel. Helsviten kördes en gång på **7328,015 s**. Den avsiktliga STRICT-negativen gav rätt tRCD-stopp och en SimFailure; de övriga 18 XML-filerna är rena. Alla käll-/runtimebytes och barnloggar är bundna. [Acceptans och artefakter](evidence/core-0503-gate.json).
+
+Den nya fältlagringsregeln avvisar den anslutna delraden 4 som börjar vid ord 101; den gamla regeln markerar och läser den. BUF-marginalerna innehåller 10 F- och 325 R-kontroller, LOW 11 W-kontroller. Alla giltiga marginaler överstiger en pixelklocka; de tre riktiga sena F/W/R-felvarianterna avvisas. Root prövade 25 resultat-/XML-/byggmetadata-negativer och 24 skadade ägda artefaktkopior. Alla 24 byggartefakter inklusive manifest har hash och storlek.
+
+Färska **M0 seed 0 / M4 seed 0 / M6 seed 2**, IOREG **0/1/1**, klarar 75 MHz på samtliga berörda klockor. M4:s lägsta maxfrekvens är **107,70 MHz**, M6:s **108,18 MHz**. Fyra TMDS-par i vardera M4/M6 är identiska med det färska M0-bygget. SDRAM:s stifttiming, fas på kortet och HDMI-kompatibilitet är fortfarande omätta.
+
+Ett privat skript stannade före diagnossimuleringen eftersom en addendumfil saknades. Första felresultatet, skriptet och loggen är bevarade. Ett nytt fortsättningskontrakt band 507 befintliga artefakter och körde endast de ännu inte startade diagnos-/byggstegen; helsviten kördes inte om. Inga RTL-, modell-, checker-, seed- eller tröskeländringar gjordes för detta paket.
+
+Fjärr-Core har därefter gått till `46a1e4f` med VINTERP, HDMI/AVI och varierande vsync-rad. De ändringarna och externa 728-test-/byggpåståenden omfattas inte av denna acceptans. Puck-fjärrmain `1404485` pinnar fortfarande Core `f32407f`; lokal Puck `a2ad438` är orörd. Separat källgranskning/integration återstår. Den blandade 257+3-kampanjrapporten är inte rootaccepterad som 260 frön. Gamla FAIL och äldre källbundna acceptanser nedan bevaras.
+
+## Historisk brief 2026-10-12 efter opt-in recovery
+
+Detta avsnitt bevarar läget efter opt-in recovery; aktuell rootacceptans står ovan. Användaren har lämnat datorn med ”Datorn är din” och begärt fortsatt arbete inom ordinarie kvot, en uppgift åt gången. Ett tungt jobb åt gången hålls under `/home/lenny/openvrx-review/build.lock`.
 
 - Core main **`2dca245`** har explicit `--recovery-fields` (standard 0) i kampanjköraren. Schema 2 binder fortsättningen i manifestet; 75 fokuserade tester och två native-prover med 360/6 480 rader är rootgranskade. RTL, checkerpredikat och trösklar är oförändrade; alla 160 aktuella indata matchar mergad main. [Acceptans](evidence/recovery-campaign-acceptance.json). C2:s tidigare main **`a1247ab`** innehåller C2-grenen **`509fc95`**, verifierad från källan **`c3fda21`**. Den frysta sviten gav **604 pass i 39 filer** på **5411,439 s**, 157 oförändrade källhashar, alla 570 tidigare testnoder, 19 cocotb-rapportidentiteter samt 7 formella bevis och 14 verkliga negativa motexempel. Root återvaliderade råresultat och både fryst källa och slutlig main. [Svitacceptans](evidence/C2_SUITE_ACCEPTANCE.json) · [Slutgranskning](evidence/C2_SUITE_ROOT_REVIEW.json).
 - Färska M0 seed 0, M4 seed 0 och M6 seed 2-byggen passerar 75 MHz på samtliga rapporterade klockor. M4:s lägsta maxfrekvens är 101,69 MHz, M6:s 104,85 MHz; alla fem M4/M6-domäner kontrollerades. Alla fyra TMDS-par matchar M0 i båda topparna. Root granskade manifest, råtiming och samtliga 24 arkiverade artefakter. [Bygggrind](evidence/C2_BUILD_GATE.json) · [Bygggranskning](evidence/C2_BUILD_ROOT_REVIEW.json).

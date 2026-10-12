@@ -1,0 +1,353 @@
+{
+  "state": "PASS_SOURCE_BOUND_SIMULATION_BUILD_ROOT_REVIEWED",
+  "reviewed_utc": "2026-10-12T23:22:55.440884+00:00",
+  "revision": "0503dac62b09ca744aef48841dda1975203e8249",
+  "tree": "c59cd0d92ed47215cce73110ad1d787456a8c41c",
+  "scope": {
+    "tests_passed": 695,
+    "files": 43,
+    "processes": 439,
+    "source_inputs": 187,
+    "cocotb_xml": 19,
+    "ordinary_xml_clean": 18,
+    "deliberate_strict_negative_xml": 1,
+    "formal_proofs": 7,
+    "formal_negative_counterexamples": 14,
+    "root_data_negative_controls": 25,
+    "actual_artifact_copy_negative_controls": 24,
+    "build_artifacts_including_manifests": 24
+  },
+  "git_archive_matches_actual_git_object": true,
+  "source_runtime_unchanged": true,
+  "one_full_suite_attempt": true,
+  "suite_seconds": 7328.015,
+  "stages": [
+    {
+      "phase": "suite",
+      "rc": 0,
+      "seconds": 7328.015
+    },
+    {
+      "phase": "strict_replay_v2",
+      "rc": 0,
+      "seconds": 2.002
+    },
+    {
+      "phase": "m0_testpattern",
+      "rc": 0,
+      "seconds": 46.019
+    },
+    {
+      "phase": "m4_dual_mix",
+      "rc": 0,
+      "seconds": 434.366
+    },
+    {
+      "phase": "m6_puck_proto",
+      "rc": 0,
+      "seconds": 822.469
+    },
+    {
+      "phase": "tmds",
+      "rc": 0,
+      "seconds": 4.003
+    }
+  ],
+  "strict_negative": {
+    "test": "model_strict_violation",
+    "native_rc": 0,
+    "fatal": "tRCD: READ/WRITE too soon after ACTIVATE",
+    "stop_ps": 200739456,
+    "STRICT_stop": true,
+    "XML": "one SimFailure, source-defined negative",
+    "original_seed_time_file_line_match": true,
+    "original_artifacts_unchanged": true
+  },
+  "private_path_failure": {
+    "preserved": true,
+    "cause": "missing XML_CONTROL_ADDENDUM.md before diagnostic subprocess.run",
+    "original_diagnostic_native_started": false,
+    "suite_restarted": false,
+    "correction": "new private paths/contracts; original failed RESULT and helpers preserved"
+  },
+  "builds": {
+    "m0_testpattern": {
+      "git": {
+        "commit": null,
+        "dirty": null
+      },
+      "options": {
+        "freq_mhz": "75",
+        "ioreg": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 145.99,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 335.8,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "artifacts": 8
+    },
+    "m4_dual_mix": {
+      "git": {
+        "commit": null,
+        "dirty": null
+      },
+      "options": {
+        "freq_mhz": "75",
+        "ioreg": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 109.59,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 230.04,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 221.09,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 222.72,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 107.7,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "artifacts": 8
+    },
+    "m6_puck_proto": {
+      "git": {
+        "commit": null,
+        "dirty": null
+      },
+      "options": {
+        "freq_mhz": "75",
+        "ioreg": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 116.99,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 132.38,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 247.83,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 306.94,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 108.18,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "artifacts": 8
+    }
+  },
+  "artifacts": {
+    "m0_testpattern.build.json": {
+      "sha256": "b71199a88ef95f7f8992ef567f039fed85e501e4612572acd462c3733a7ec3a2",
+      "size": 5966
+    },
+    "m0_testpattern.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "size": 1527
+    },
+    "m0_testpattern.fs": {
+      "sha256": "568fbd7322daacb22b1e2d020703229aca8555bb465613de1b62893496169e28",
+      "size": 843494
+    },
+    "m0_testpattern.pnr.json": {
+      "sha256": "832de73c324fbd4ed805218e4b42b28dfd6b3a4ebf0942e251ce6d523be3c7ae",
+      "size": 1855762
+    },
+    "m0_testpattern.pnr.log": {
+      "sha256": "6214eb0bb50f7ef20490d549020564721070aea18fe4bf34ca0f23b9af308ab9",
+      "size": 15421
+    },
+    "m0_testpattern.stat.txt": {
+      "sha256": "c03c9cee05d9b76958134d4a083200df2bdf47f294a815c0d9760d832ccb5f4b",
+      "size": 631
+    },
+    "m0_testpattern.synth.json": {
+      "sha256": "bbb67574b84eaba4763778f8c9f9510113f11ddf5705ec013a086fdba9293f72",
+      "size": 2077526
+    },
+    "m0_testpattern.yosys.log": {
+      "sha256": "92c5f6205495e6e44292a0d2ed937266cb297771c9d31360ea25f9c8d45366b8",
+      "size": 279716
+    },
+    "m4_dual_mix.build.json": {
+      "sha256": "8f772de6fe7bbcc3690e62fb8c3ce2ac17fb3f713787b7686a1997daa4f62f47",
+      "size": 6340
+    },
+    "m4_dual_mix.cst": {
+      "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
+      "size": 10237
+    },
+    "m4_dual_mix.fs": {
+      "sha256": "9fb09e9cfcccca37cd9bd1e0a857ba90cae7b12de40ee38b4e7308b26411e538",
+      "size": 7261470
+    },
+    "m4_dual_mix.pnr.json": {
+      "sha256": "7fbde2aa242e3e3ac03edfa7a99dda7a75d9cd674186e49116507a68536157bb",
+      "size": 18980926
+    },
+    "m4_dual_mix.pnr.log": {
+      "sha256": "01783c1e31161b5c10e17a10ab693f96b0dbeded244ac0a515a8454eba2bb890",
+      "size": 96896
+    },
+    "m4_dual_mix.stat.txt": {
+      "sha256": "af91451aad2f6bfadbf74cd6c821863bb4178cc3209197b57a21b43952d68e00",
+      "size": 805
+    },
+    "m4_dual_mix.synth.json": {
+      "sha256": "5febda96c3c47b4637216f7a7d6033a5d1961c161e1872b0eb568b2a1bd0da65",
+      "size": 11972445
+    },
+    "m4_dual_mix.yosys.log": {
+      "sha256": "1e050fdbd414e3a0cb5af6971559e022bf43ea5140576fd659670aa0361b755d",
+      "size": 1677446
+    },
+    "m6_puck_proto.build.json": {
+      "sha256": "ec1e0f423e66f31465b9f4e62d432e704d7e68e50c063be2c4eb2c2886c32ecc",
+      "size": 6473
+    },
+    "m6_puck_proto.cst": {
+      "sha256": "cafb83fc08e9cfdccbf08ac68d835c78fb2286b9a184d7cd608b740c01026219",
+      "size": 10869
+    },
+    "m6_puck_proto.fs": {
+      "sha256": "61edea32a182e9aadc3d9db86339491f7ea89a88fbe02d683ddab404ca02cec3",
+      "size": 7261470
+    },
+    "m6_puck_proto.pnr.json": {
+      "sha256": "d9ccedc0ea8dbdbce50f5c50172d83b1d290a56fd6ee8c4ea6985fbe637e47f3",
+      "size": 29669767
+    },
+    "m6_puck_proto.pnr.log": {
+      "sha256": "d3c659ffd6b670b0fe842afcdf96f2b904a71d456ef06049d96ec410073e0a64",
+      "size": 80019
+    },
+    "m6_puck_proto.stat.txt": {
+      "sha256": "23febfded8165c74ed7b9c5b7c4ac66158572d54eb6404b20fe58674c8456641",
+      "size": 829
+    },
+    "m6_puck_proto.synth.json": {
+      "sha256": "4810c3c19ab9d0075fd966610a5d53fa6f5da303b29e9069a0dd618f43c6b9cb",
+      "size": 18807500
+    },
+    "m6_puck_proto.yosys.log": {
+      "sha256": "d38a3a6a49b30a2f678ae13430b461169b8cefcba672f60ce2e00bd16cddfe79",
+      "size": 2966501
+    }
+  },
+  "joined_line": {
+    "line": 4,
+    "first_word_index": 101,
+    "buffer": 0,
+    "valid_stored": false,
+    "valid_read": false,
+    "old_rule_stored": true,
+    "old_rule_read": true
+  },
+  "margin_evidence": {
+    "tb_fb_margin_buf": {
+      "sha256": "c05b3c62820b622b43f4ac39505ed0610ef55ee0ea0386b5bd17254b5a9dd796",
+      "rows": 335,
+      "bad": 0,
+      "expected_positive": true
+    },
+    "tb_fb_margin_ll": {
+      "sha256": "cbab7cb98f64f49d2dd5739b5f449809b54074aaa86bb85136b0f3fe9fc7eeeb",
+      "rows": 11,
+      "bad": 0,
+      "expected_positive": true
+    },
+    "tb_fb_margin_late_fetch": {
+      "sha256": "249e4f94a69333bc5d203867c9cc44110f5fe058de852b9d25789b8e5006f4cd",
+      "rows": 335,
+      "bad": 109,
+      "expected_positive": false
+    },
+    "tb_fb_margin_late_fl": {
+      "sha256": "e2a28b9ee081fc0a8b18bf3642209913a859f1f62124f096da52f5b8d029464c",
+      "rows": 335,
+      "bad": 5,
+      "expected_positive": false
+    },
+    "tb_fb_margin_late_lw": {
+      "sha256": "b9743512deb08ef54b07974a231539b425753821dcf77141f9c5714397d73058",
+      "rows": 11,
+      "bad": 1,
+      "expected_positive": false
+    }
+  },
+  "tmds": {
+    "pairs_per_top": 4,
+    "tops": [
+      "m4_dual_mix",
+      "m6_puck_proto"
+    ],
+    "reference": "fresh m0_testpattern",
+    "comparisons_identical": 8
+  },
+  "receipt_bindings": {
+    "ROOT_ACCEPTANCE_V2.json": "7a13ca07ba655e9ba1ba0b41b626528916ee4e190c851d219c7d1a8ec834ffc2",
+    "ARTIFACT_REVIEW.json": "5bb7f9331b733b5217e01dccd234f1cb22fba7ebd3c52104eb1f4bffaf753dd5",
+    "SOURCE_CONTRACT.json": "51b153c1ed17ea36949f06e46f22892fadd906b3b336e5f80684a2939e685555",
+    "LAUNCH_CONTRACT.json": "3a17cde906bccda3ba3929cf33570d5cd00e5bae4ef44b326dd4e9e067eb98bf",
+    "CONTINUATION_CONTRACT.json": "d2def1ccfa295be5036a3fa1be68a57f937eda4a8ada99aa90506c969a837d31",
+    "CONTINUATION_RESULT.json": "67f7b1723bfbf6c816c35c22be77f273ddd6c294f2706b1478eb66831c25a01c",
+    "RESULT.json": "b2fc3687e8c5088202e21f0c2f61d10e61abeadc906ba82b1e1e7141d10719e6",
+    "FIRST_PHASE_FAILURE.json": "8784ca269b74c95f6a51f2fe789e5544e6d7d84858fed3160bb8d03281a4adce",
+    "ROOT_REVIEW_CONTRACT_V2.json": "e058569a2a37fd2e8725a3dc682e46fbf56430e283ac83d169bfa2ae30488186",
+    "EXTRA_REVIEW_CONTRACT.json": "78275cab03bb6c5249b703b8e0b219a20f4dd1f74963ab762a974f6257887d88",
+    "ROOT_REVIEW_V2.log": "7aadbe50fd1acc5c57f1d3fc78df9acd82fafb9bbaed74f5586c363bceaa8d5b",
+    "EXTRA_ROOT_REVIEW.log": "07ed314448047620807d8be6b975dcc558e37905b4f5d0a2f799b23a9385c386"
+  },
+  "excluded": [
+    "later Core main",
+    "mixed-source 260 campaign",
+    "SDRAM pin timing or hardware phase",
+    "HDMI screen compatibility",
+    "FPGA hardware bring-up"
+  ],
+  "hardware_verified": false
+}

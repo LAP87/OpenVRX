@@ -542,3 +542,20 @@ Root verifierade 160 källhashar, runtime, sex adaptermoduler och 15 rå-/diagno
 Exakt resume körde noll nya frön och behöll raw/row/receipt byte-identiskt. Ändrat recovery-antal, checkerhash eller revision vägrades före workerstart; faktisk råkorruption i en ägd kopia avvisades. [Rootacceptans för det nya scenariot](evidence/seed1309-recovery44-native.json).
 
 Detta accepterar enbart frö 1309 med 44 recovery-fält. Den gamla fyrfältsrundan 1305–1314 förblir ej accepterad och gamla 199 PASS/1 FAIL/60 ej körda bevaras. Ingen fullständig 260-frökampanj, ny helsvit, FPGA-routning eller hårdvarumätning är accepterad. Core/Puck-kod och gitlänkar ändrades inte i proben.
+
+
+### Befintliga frön 1310–1314 slutgranskade separat, 2026-10-12
+
+Efter frö 1309:s avvikelse återlästes de fem kvarvarande, redan körda fyrfältsråspåren i ett separat kontrakterat rootpaket. Inga nya simuleringar eller resume gjordes och inga resultat skrevs i den gamla native-katalogen. Alias till det ursprungliga native-kontraktet och dess returstatus är byte-identiska; ett separat scope binder exakt frön 1310–1314.
+
+| Frö | Standard | Kamerakonvention | Kontrollerade rader | Negativt bildfönster |
+|---|---|---|---:|---|
+| 1310 | PAL | Interlaced | 1008 | BUF |
+| 1311 | NTSC | Interlaced | 504 | BUF |
+| 1312 | NTSC | Progressiv | 576 | LOW |
+| 1313 | PAL | Progressiv | 1008 | BUF |
+| 1314 | NTSC | Interlaced | 864 | BUF |
+
+Full modell-/invariantåterläsning ger **3 960 bildrader** utan fynd, known, edges eller notes. Tio verkliga fel i tillkomna bilder, bildord respektive källrad per frö, avvisas med rätt BUF-/LOW-predikat och färre godkända rader. Alla 160 källinputs, runtime, sex adaptermoduler, nya scope-helperhashar och de 75 berörda rå-/diagnostikfilerna är granskade. Hela den gamla rundans raw/row/receipt/manifest-katalog behåller samma hash före och efter läsningen. [Separat rootacceptans för fem befintliga spår](evidence/remaining-1310-1314-replay.json).
+
+Tillsammans med tidigare fyra rootgranskade frön är nio av tio fyrfältsfall nu slutgranskade. **Den gamla rundan 1305–1314 förblir ej accepterad på grund av 1309.** Det separat accepterade 44-fältsfallet ersätter inte detta FAIL. Ingen ny native-, helsvit-, routing- eller hårdvaruacceptans påstås.

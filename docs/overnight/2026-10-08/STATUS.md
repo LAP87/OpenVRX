@@ -153,3 +153,14 @@ Ett generellt privat prototypverktyg lägger fyra rena kamerafält efter det red
 Nio rena fall passerade på **18,56 s**: representanter för de sex gruppkonfigurationerna samt explicit PAL i skalad/full geometri och progressiv PAL. Båda modellmottagarna avkodar fyra kompletta fortsättningsfält med rätt radlängd, aktiv bytekvantitet, linjenummer och F-bit, utan felaktiga/korrigerade timingkoder eller luma utanför intervallet. Åtta ogiltiga fältantal/geometri/standard/klockvärden avvisas; alla 157 källhashar och helperhashar är verifierade. [Rootgranskning](evidence/generic-suffix-pure-review.json).
 
 För 1345 är det generella verktygets A/B/CTL-bytes exakt samma som det tidigare accepterade native-provet med 360 kontrollerade rader. Övriga fall har bara byte-/modellacceptans; ingen ny native-simulering kördes i detta paket. Prototypen är privat och har inte integrerats i Core. Nästa uppgift är utvalda native-prober med ett nytt komplett käll-/helper-/parameterkontrakt, före en eventuell 260-frökampanj. Produktions-RTL/checker och gamla FAIL-kvitton ändras inte; hårdvara är fortfarande omätt.
+
+
+### Generell fortsättning: native frö 1400, 2026-10-12
+
+Den generella privata tilläggsfunktionen är nu också provad i native-simulering med frö 1400: skalad NTSC, density 1,0, tio originalfält, tvingad `b_edge` och fyra rena recovery-fält. Det är ett eget kontrakt; gamla kampanjens ej körda grupper får inget nytt utfall genom detta prov.
+
+Kompilering, vvp och drain avslutade utan fel. **864 rader passerade på 223,77 s**, utan findings, known, edges eller notes. Root återläste hela modellen/invarianten mot råspåren, verifierade 157 källhashar, helperhashar, 12 råfiler och genererade originalindata. Originalprefix och CTL-bytes är kvar. Samma nya råspår med originalets källsluttid räknar 576 rader; detta är en jämförelse inom det nya provet, ingen separat native-körning av originalet.
+
+Fel bildord och fel källrad i första tillkomna bilden vid pixelklocka 1435542 ger `display/word` och `display/map`, vardera med 792 godkända rader kvar. Första efterkontrollen pekade av misstag på den 1345-specifika fixture-loggen och stoppade innan replay; den är bevarad. Den rättade efterkontrollen binder den verkliga generella pure-granskningens hash. Ingen simulering kördes om. [Rootacceptans](evidence/recovery-native-1400.json).
+
+Core a1247ab och Puck f2e7d53 är oförändrade. Funktionen är fortfarande privat. Full geometri och PAL behöver egna native-prober innan någon ny 260-frökampanj eller produktionsintegration; gamla FAIL och 144/720-gränser står kvar. Ingen FPGA-hårdvara är mätt.

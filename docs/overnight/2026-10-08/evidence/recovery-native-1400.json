@@ -1,0 +1,56 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NEW_SCENARIO_ONLY",
+  "reviewed_utc": "2026-10-12T00:09:04.596342+00:00",
+  "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
+  "contract_sha256": "cc26086cc7e75061f5b63f3abb4176898b1c77de40a45efaa2536e10c4a5f4e9",
+  "result_sha256": "2ae082a7e8976e9a775f4221e5c09a9ad9db09893b3891b56bb12dc2d177cd64",
+  "review_helper_sha256": "bb22ab65f8d3a2cf9eab2724f88ab0498aa395ef57e67e7b7c401a38ea9292cc",
+  "generated_original_input_hashes": {
+    "a.hex": "fe3c2933d3ef16da9260e4afc92892b2db33297784e3aaf6f06857aab01287b7",
+    "b.hex": "90e00b2f1ff52d54c624a0a91cb554abe639c009230f49b1d2a1791c6ad0dcf9",
+    "ctl.hex": "bce76f88e4715ad86a46d57797015f532492006c334dc375485e996daa267ea0"
+  },
+  "original_inputs_generated_only": true,
+  "source_inputs_checked": 157,
+  "raw_files_checked": 12,
+  "checked_lines": 864,
+  "minimum": 144,
+  "old_end_same_trace_checked_lines": 576,
+  "suffix_fields": 4,
+  "actual_input_streams_match_contract": true,
+  "controls_and_switch_windows_unchanged": true,
+  "actual_frame_negatives": [
+    {
+      "fault": "displayed_word",
+      "frame_pc": 1435542,
+      "groups": [
+        "display/word"
+      ],
+      "checked": 792,
+      "first": {
+        "block": "display",
+        "kind": "word",
+        "t": 19236263,
+        "detail": "output line 0: shows 3215244933, line read had 3215244932"
+      }
+    },
+    {
+      "fault": "source_mapping",
+      "frame_pc": 1435542,
+      "groups": [
+        "display/map",
+        "display/not_read"
+      ],
+      "checked": 792,
+      "first": {
+        "block": "display",
+        "kind": "map",
+        "t": 19236263,
+        "detail": "output line 0: source line 999, model 0 (24 lines, low 0)"
+      }
+    }
+  ],
+  "seconds": 223.77,
+  "old_campaign_acceptance": false,
+  "hardware_verified": false
+}

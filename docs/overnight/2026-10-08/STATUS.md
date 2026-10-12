@@ -265,3 +265,27 @@ Root verifierade 160 källhashar, runtime, sex privata moduler, exakt fem result
 Identisk resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1204-1208.json).
 
 Core och Puck är oförändrade. Detta accepterar fem nya scenarier, ingen fullständig kampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.
+
+
+### Recovery-runda med tio frön, 2026-10-12
+
+Frö 1209–1218 kördes seriellt med den granskade privata adaptern på fryst Core 2dca245: skalad geometri, densitet 1, tio originalfält och fyra recovery-fält, utan tvingade störningar. Alla tio passerade kompilering, vvp, drain och modell-/invariantåterläsning utan fynd, known, edges eller notes. Minimikravet 144 rader och 3000 s timeout behölls. Generatorn valde PAL för 1210 och NTSC för övriga; 1213 och 1218 har den genererade progressive-störningen.
+
+| Frö | Standard | Kontrollerade rader | Native-tid (s) | Samma spår, originalsluttid |
+|---|---|---:|---:|---:|
+| 1209 | NTSC | 864 | 226,5 | 576 |
+| 1210 | PAL | 1008 | 266,9 | 648 |
+| 1211 | NTSC | 864 | 228,5 | 576 |
+| 1212 | NTSC | 792 | 234,8 | 504 |
+| 1213 | NTSC | 864 | 225,6 | 576 |
+| 1214 | NTSC | 576 | 228,3 | 288 |
+| 1215 | NTSC | 792 | 228,9 | 504 |
+| 1216 | NTSC | 720 | 220,7 | 432 |
+| 1217 | NTSC | 864 | 239,9 | 576 |
+| 1218 | NTSC | 504 | 221,3 | 216 |
+
+Root verifierade 160 källhashar, runtime, sex privata moduler, exakt tio resultatrader/kvitton och 150 rå-/diagnostikfiler. Alla original-/extended-kameraindata, prefix och CTL matchar genererade förväntningar. Två verkliga fel per frö i en tillkommen BUF-bild, fel bildord respektive källrad, ger de väntade kontrollfynden: 20 negativa återläsningar upptäcker felen och minskar antalet godkända rader. Positiva återläsningar kontrollerar sammanlagt **7 848 rader**.
+
+Exakt resume körde noll nya frön och behöll råfiler, resultatrader och kvitton byte-identiskt. Ändrat recovery-antal, checkerhash och förväntad revision avvisades före workerstart; skadad råfil i en ägd kopia avvisades. [Rootacceptans](evidence/recovery-round-1209-1218.json).
+
+Core och Puck är oförändrade. Detta accepterar endast den avgränsade rundan, ingen fullständig kampanj. Gamla 199 PASS/1 FAIL/60 ej körda bevaras; ingen ny helsvit, FPGA-routning eller hårdvarumätning är körd.

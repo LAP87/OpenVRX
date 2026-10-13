@@ -2,7 +2,17 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
-## Aktuell rootacceptans 2026-10-13: Core `0503dac`
+## Aktuell simuleringsacceptans 2026-10-13: Core `46a1e4f`
+
+**728 test passerar i 45 filer och 466 seriella processer** på fryst Core `46a1e4f`, med 193 oförändrade Git-indata. En helsvit tog **8 088,052 s**. Root granskade samtliga begärda identiteter, runtime, barnloggar, 19 XML-resultat, åtta formella bevis och sexton verkliga negativa motexempel. 18 XML är rena; den avsiktliga SDRAM-negativen har exakt rätt tRCD-/STRICT-stopp och SimFailure, med native rc0. [Slutkvitto och rådatahashar](evidence/core-46a1-full-suite.json).
+
+VINTERP-facitet kontrollerar 324 rader med sju vikter och 311 verkligt olika bildord; av-läget ger 324 rätt rader. vblend ger 6 849 rätt vektorer. HDMI-facitet avkodar 1 600 bildpixlar och fyra AVI-öar med både VIC 4 och 19, plus DVI och begränsat omfång. Faktiska felvarianter för vikter, andra radens läsning, avrundning, VIC, checksumma, paritet och guard band avvisas. LOW-källtestens fyra funktioner har återlästs mot sina oförändrade facit i båda lägena: den fasta vsync-till-bild-distansen är tio rader, och LL_EQ=0 respektive för tidigt hopp ger de väntade felen.
+
+29 resultat-/XML-/bildord-/fas-/metadata-/diagnostikkontroller avvisas. 9 160 rå-/diagnostik-/logg-/XML-filer har hash och storlek. Passiv diagnostik fångade 424 native-anrop och 728 begärda pytest-rapporter. Första privata rågrinden räknade även nio interna CLI-fixturrapporter som svitutfall och föll; helper, kontrakt och fellogg är bevarade. Den korrigerade privata grinden binder dessa nio separat till deras källbestämda 4+1+4-identiteter. Ingen svit, HDL eller diagnostisk native kördes om och ingen produktionsregel ändrades.
+
+691 äldre testidentiteter är exakt kvar; fyra LOW-funktioner ersätts av åtta parameterfall. Ingen gammal cache återanvändes. Detta accepterar endast fryst `46a1e4f` i simulation/formella kontroller. Färska FPGA-byggen för standard- och optionslägen samt Puck-länken återstår. Standard VINTERP=0, HDMI=0 och WAIT_BEFORE_VSYNC=0 gäller fortsatt; full 720p före vsync får ingen ny ringkapacitetsacceptans. SDRAM-stifttiming, HDMI-kompatibilitet och FPGA-hårdvara är omätta. Äldre 0503-byggacceptans och historiska kampanj-FAIL behåller sina egna källor.
+
+## Tidigare simulerings- och byggacceptans 2026-10-13: Core `0503dac`
 
 Fryst Core `0503dac` är rootgranskad i simulation och färska byggen: **695 pass / 43 filer / 439 processer / 187 Git-indata**, 19 cocotb-rapporter, sju formella bevis och fjorton verkliga negativa motexempel. Helsviten kördes en gång på **7328,015 s**. Den avsiktliga STRICT-negativen gav rätt tRCD-stopp och en SimFailure; de övriga 18 XML-filerna är rena. Alla käll-/runtimebytes och barnloggar är bundna. [Acceptans och artefakter](evidence/core-0503-gate.json).
 

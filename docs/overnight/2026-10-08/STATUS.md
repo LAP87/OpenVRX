@@ -22,6 +22,18 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
+## Puck aed469b: ESD-referenser granskade, 2026-10-13
+
+onsemi listar båda exakta delarna ESD9B3.3ST5G/ESD9B5.0ST5G som **Active, bidirektionella, SOD-923**. [ESD9B/D, januari 2023 rev 7](https://www.onsemi.com/pdf/datasheet/esd9b-d.pdf), sidan 2, anger **12,5/15,0 V för 5 V-delen vid 1/2 A med 8/20 µs-puls**. Pucks README kopplar siffrorna till 8 kV ESD; det är fel testvillkor. IEC-ESD redovisas separat i figurerna 1–4.
+
+3,3 V-delen har genombrott 5–7 V vid 1 mA och klampvärden 10,5/11,5 V under samma 8/20 µs-test. **Arbetsspänningen 3,3 V bevisar ingen andra halvering av toppen eller fördelning av pulsenergin.** Datasheetets 15 pF är typiskt vid 0 V/1 MHz. En antagen enkel RC med 18,7 Ω ger 567,397 MHz pol och −0,000486 dB vid 6 MHz; det utelämnar AAF, verklig källa/last, spänningsberoende och layout. Det bevisar inte videokvalitet eller skydd. Produktsidans parameterrubriker avviker från databladets C-/läckströmstabell; granskningen behåller databladets uttryckliga villkor. [Aktuella delidentiteter och livscykel](https://www.onsemi.com/products/discrete-power-modules/esd-protection-diodes/esd9b).
+
+[TI SLES209E](https://www.ti.com/lit/ds/symlink/tvp5150am1.pdf), sidan 74, anger **−0,2 till 2,0 V absoluta analoggränser**, och högst 0,75 Vpp med AC-koppling i rekommenderad drift. Figur 6-1 saknar ESD-delar men not G rekommenderar systemskydd. Figuren visar AAF före delaren; Puck har filterplatserna efter den. Ingen elektrisk effekt av skillnaden eller absorption i dekoderns dioder är verifierad. Spänningen före kopplingskondensatorn är inte ett mått på TVP-stiftets verkliga transient.
+
+En ren referens-/beräkningskörning tog 0,829 s. Sex skador på ägda käll-/referenskopior, klampvärden, µs-enheter, polberäkning och skyddsgaranti avvisas; giltiga original passerar före/efter. Root återläste kontrollerna och gjorde oberoende decimalberäkningar. 207 källinputs, 4 162 runtimefiler, elva referensartefakter och helpers/beroenden är oförändrade. En misslyckad webbscreenshot och PDF-textens felaktiga µs→ms-glyfmappning är sparade; originalpixlarna avgör enheten. PDF-/webbkopior förblir privata.
+
+Detta accepterar referensjämförelsen och de uttryckligen antagna beräkningarna. Schema, komponentval, Core-gitlänk och Puck-dokumentation är orörda; inget råd eller producenttest/native-/bygg-/hårdvarujobb startades. Livscykeltabellens felaktiga D-beteckningar och Pucks RSSI-påstående på Core46a1 kvarstår. **Fysiskt ESD-skydd, ström/energifördelning, footprint och layout är inte accepterade.** [Referensvillkor, fynd och kontrollhashar](evidence/puck-aed469-esd-reference-audit.json).
+
 ## Puck aed469b: käll-/statikgranskning 2026-10-13
 
 Fryst Puck `aed469b`/träd `68e1568` har **tre befintliga tester PASS på 2,44 s**. Dess Core-gitlänk, index och faktiska källa är fortsatt accepterad `46a1e4f`, med 193 Core-filer; 14 Puck-filer är bundna. Mot tidigare Puck `82444fa` ändras sju filer och ett layoutunderlag tillkommer. Endast schemats `build`-funktion har ändrad AST; stift-/gateware-/RSSI-kontrollerna är oförändrade. Befintliga 22 stiftnegativer och sex RSSI-negativer passerar sina avvisningsassertions.

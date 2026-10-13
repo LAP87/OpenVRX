@@ -1,0 +1,251 @@
+{
+  "state": "PASS_REFERENCE_COMPARISON_ESTIMATES_WITH_FINDINGS_ROOT_REVIEWED",
+  "accepted": true,
+  "revision": "aed469b079737feefeaf469dceafc3a29eb7b36e",
+  "tree": "68e15684968c96c6b17175ee044fdca05e3fd54b",
+  "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+  "source_inputs": 207,
+  "runtime_files": 4162,
+  "reference_files": 11,
+  "calculation_seconds": 0.8290397599921562,
+  "calculation_job_rc": 0,
+  "job_launches": 1,
+  "calculations": {
+    "ideal_linear_divider_ratio": 0.5,
+    "hypothetical_no_dynamic_ESD_model_mid_V": [
+      6.25,
+      7.5
+    ],
+    "typical_RC_Rthevenin_ohm": 18.7,
+    "typical_RC_pole_Hz": 567397301.5753845,
+    "typical_single_RC_loss_dB_at_6MHz": -0.00048561042242359055,
+    "same_test_VC_ratios_3v3_over_5v": [
+      0.84,
+      0.7666666666666667
+    ]
+  },
+  "root_independent_decimal_math": true,
+  "original_source_runtime_reference_helper_task_dependencies_unchanged": true,
+  "reference_facts_sha256": "d13730eddce4e1d8f51f362824e568cd5ea8a7a2118764a062cf32f4b36b2759",
+  "findings_sha256": "431cb470649a6515ef00704f956eddea1cd019edf6f1e569630d6da4afa69e4d",
+  "source_contract_sha256": "b8fa3603715dd0f08209a1bf39f5e4a7dd525f1a314936d7a66994c0ccc55f0c",
+  "launch_contract_sha256": "5c2f0b1b7f6052ba896f3d7302dda98cbf3a7d28f39e25930cc4d4f4615b42aa",
+  "root_contract_sha256": "d6ae347fc6b01a742ffb4227a77df62b11f01830585ccf412899130e401bc147",
+  "root_execution_contract_sha256": "3909404ceb4733b90ffb1e298bc52b22ca4b3b6ef5c18dd98fa4f486ddb70750",
+  "root_review_sha256": "b33f3f35cd81122ccc1d38f0a9737ea7f865acdb482b2b026e47aaff762428d9",
+  "final_root_review_sha256": "341c71c375d113c94cfe8876cb546d5554ab3a7e3aca89931d600ef897b8b9a8",
+  "supported_reference_facts": [
+    "Both exactonsemi parts observedActive/SOD923/bidirectional",
+    "SourceK/Apin labels aregeneric symbolic; bidirectionalcurve supportsnoexternalpreferredconductivedirection",
+    "5V and3.3V areVRWM, notclampvoltage",
+    "TIrecommended0..0.75VppACcoupled;absolute-0.2..2.0V stressnotfunctionalguarantee",
+    "TIapplicationfigurehasnoESDsymbol, noteGexplicitly recommendsadditional systemESD"
+  ],
+  "findings": [
+    {
+      "id": "ESD-WAVEFORM",
+      "source": "README19/dekoderkort.py321-331",
+      "actual": "12.5/15V max is8x20us at1/2A, not numeric8kVIECclamp; IECnanosecond30Apeak/table separate"
+    },
+    {
+      "id": "ESD-SECOND-HALF",
+      "source": "README19/dekoderkort.py324-325",
+      "actual": "3.3partVBR5..7V@1mA/VC10.5/11.5V@8x20us1/2A; noautomaticfactorhalf/majorityenergyproof. Same-testVCratio0.84/0.7667 not systemtransfer."
+    },
+    {
+      "id": "ESD-TVP-PROTECTION",
+      "source": "README19/dekoderkort.py325-326",
+      "actual": "Decoder/AAFabsorbingremainingpulse claimnotproven; upstreamACcouplednode cannotbeidentifiedwithactualTVPpinvoltage. No stressguarantee/physicalmeasurement."
+    },
+    {
+      "id": "ESD-CAP-VIDEO",
+      "source": "README19/source327-328",
+      "actual": "15pF isdatasheettypical at0V1MHz; pageCMax15 labeldisagreeswithdatasheetcolumn. HypotheticalRCpole567.397MHz/loss-0.000486dB6MHz omitsAAF/source/load/voltage-dependentC/layout andnot guaranteednoimpact."
+    },
+    {
+      "id": "LIFECYCLE-REFS",
+      "source": "LIFECYCLE11-12",
+      "actual": "NamedpartsActiveobserved; documentDrefsremainwrong5VD1D3/3.3VD2D4 actual. No productionedit."
+    },
+    {
+      "id": "TI-AAF-PLACEMENT",
+      "source": "TIfigure6-1 vs source343-350",
+      "actual": "TIschematicAAFblock precedes37.4/37.4divider; Pucknamed0.47uH/1nF footprintsafterdivider. Recordedtopologydifference, electricaleffectnotmeasured/evaluated."
+    }
+  ],
+  "primary_URLs": [
+    "https://www.onsemi.com/pdf/datasheet/esd9b-d.pdf",
+    "https://www.onsemi.com/products/discrete-power-modules/esd-protection-diodes/esd9b",
+    "https://www.ti.com/lit/ds/symlink/tvp5150am1.pdf"
+  ],
+  "limitations": [
+    "ActualreceiverCVBS/RSSI/sourceimpedance/groundtransientunknown",
+    "No physicalESDcurrent/energy/survivalmeasurement/AAF/transientmodel",
+    "No footprint/PCB/layout/mechanics validation",
+    "OldADS1115andCorepin46a1RSSIimplementationgapsunchanged"
+  ],
+  "private_screenshot_and_unit_diagnoses_preserved": true,
+  "producer_sources_or_savedoutputs_changed": false,
+  "native_build_test_ERC_install": false,
+  "hardware_verified": false,
+  "physical_ESD_protection_verified": false,
+  "council_started": false,
+  "owned_controls": [
+    {
+      "fault": "source_byte",
+      "sha256": "8b83b56b3ffd38bd97611e28c50335e71b6db14f43c84528e057e293a61831c3",
+      "size": 15370
+    },
+    {
+      "fault": "reference_byte",
+      "sha256": "d553659b292e4d1589e16b5db8ebbe93771aad7ac8bb15dae4fd79635460274c",
+      "size": 224359
+    },
+    {
+      "fault": "reference_VC",
+      "sha256": "ba66b5a36879cdeaf61124b3e5aa05015fc7c7c6e21053a3214977688b5efb53",
+      "size": 4390
+    },
+    {
+      "fault": "waveform_unit",
+      "sha256": "73a408ed710a02f48c7edcdb52189f740cb3846baa1e1fc8f625871785904084",
+      "size": 4391
+    },
+    {
+      "fault": "numeric_pole",
+      "sha256": "5c9566f9214f69d455e6f759fac8cc490e0226a2770723e4d61aab8cf909fd06",
+      "size": 4391
+    },
+    {
+      "fault": "claim_guarantee",
+      "sha256": "7de1603e4ece4a5c4e9d490d0cca345c13cb51438644735f273df756a8a6ba33",
+      "size": 4390
+    }
+  ],
+  "references": {
+    "references/onsemi-fetch.log": {
+      "sha256": "5efb5b4cfefa5fc6abfb2e5d4e356efd56a786651e402facb3b20d891220afaf",
+      "size": 469
+    },
+    "references/esd9b-d.pdf": {
+      "sha256": "afe48eb9d8466cb9675378361e4744956b81c5ae6ed0fd4dfe32d18f4717d5a4",
+      "size": 224336
+    },
+    "references/ti-fetch.log": {
+      "sha256": "01fbe5cd185dc344ef4f3a00a730b59afe81f6021061a445f7351152b4cdf4a2",
+      "size": 469
+    },
+    "references/tvp5150am1.pdf": {
+      "sha256": "0d57650c898dc79ce741617060f68c6729be30342cd1ad7055ec1d55d017f192",
+      "size": 954022
+    },
+    "references/esd9b-d.txt": {
+      "sha256": "38c9ae422c975e5663f7401c237e06955441c3d084cee85dfda1465fdc54cc16",
+      "size": 19803
+    },
+    "references/tvp5150am1.txt": {
+      "sha256": "86780d6bd17add979b15623ef43ec97ddf8d4a21d7aa44cd655a66ec53a82eb8",
+      "size": 268380
+    },
+    "references/onsemi-page2.png": {
+      "sha256": "2495b242c9b40620db5e6d4f46684490358bd5f53955968702b5f79a14c07f12",
+      "size": 223234
+    },
+    "references/ti-page74.png": {
+      "sha256": "aa01a1e91d81cfbc71b9d5bd77f213ca50d886a19ce4d4662bc713c09319d4fd",
+      "size": 239364
+    },
+    "references/ti-page80.png": {
+      "sha256": "02841afde808f594e0d1a972e406dc04eeb5df83fee02f7a2a3e178e923dd319",
+      "size": 245584
+    },
+    "references/onsemi-page3.png": {
+      "sha256": "a685a91759916893ce50105502d9b3d5bc4783c2c775fdde6f9fa17057f64d08",
+      "size": 249291
+    },
+    "references/onsemi-product-web.txt": {
+      "sha256": "4c77dcc7d8467e7d7823ac145ee1475aca9fd268d447b24e9fcc6703217b5873",
+      "size": 19611
+    }
+  },
+  "artifact_inventory": {
+    "CALCULATION_RESULT.json": {
+      "sha256": "0d59b31375d1c965da49fdfaff849f0b1856b18c428b204d32ebffdc0a0456e0",
+      "size": 3577
+    },
+    "CALCULATION.log": {
+      "sha256": "996c857910c47c7b07e43ed231e94ae3b54fcfcd752c2cdc994b6ccbaded0b97",
+      "size": 793
+    },
+    "EXECUTION_RECEIPT.json": {
+      "sha256": "6818977de308a37ed97a4a588d2d52c33973b5aae86fbd6d86d83c26375717d1",
+      "size": 448
+    },
+    "FINDINGS.json": {
+      "sha256": "431cb470649a6515ef00704f956eddea1cd019edf6f1e569630d6da4afa69e4d",
+      "size": 2353
+    },
+    "calculation-controls/valid.json": {
+      "sha256": "c9722667390741c81fec7b0a8c394070d53935a12c7dc072bac50fbec0814f37",
+      "size": 4391
+    },
+    "calculation-controls/source_byte.bin": {
+      "sha256": "8b83b56b3ffd38bd97611e28c50335e71b6db14f43c84528e057e293a61831c3",
+      "size": 15370
+    },
+    "calculation-controls/reference_byte.bin": {
+      "sha256": "d553659b292e4d1589e16b5db8ebbe93771aad7ac8bb15dae4fd79635460274c",
+      "size": 224359
+    },
+    "calculation-controls/reference_VC.json": {
+      "sha256": "ba66b5a36879cdeaf61124b3e5aa05015fc7c7c6e21053a3214977688b5efb53",
+      "size": 4390
+    },
+    "calculation-controls/waveform_unit.json": {
+      "sha256": "73a408ed710a02f48c7edcdb52189f740cb3846baa1e1fc8f625871785904084",
+      "size": 4391
+    },
+    "calculation-controls/numeric_pole.json": {
+      "sha256": "5c9566f9214f69d455e6f759fac8cc490e0226a2770723e4d61aab8cf909fd06",
+      "size": 4391
+    },
+    "calculation-controls/claim_guarantee.json": {
+      "sha256": "7de1603e4ece4a5c4e9d490d0cca345c13cb51438644735f273df756a8a6ba33",
+      "size": 4390
+    }
+  },
+  "source_provenance": {
+    "onsemi": "ESD9B/D Jan2023Rev7 pp1-3; genericcaseoutline appendedFeb2024",
+    "TI": "SLES209E Nov2007 revisedOct2011 pp8/10/74/80",
+    "onsemi_page_observed_utc": "2026-10-13T16:21:16.631452+00:00",
+    "actualdirection": "bidirectional",
+    "part_lifecycle_observed": "ESD9B3.3ST5G and ESD9B5.0ST5G Active",
+    "VC_max_8x20us_at_1A_2A": {
+      "ESD9B3.3ST5G": [
+        10.5,
+        11.5
+      ],
+      "ESD9B5.0ST5G": [
+        12.5,
+        15.0
+      ]
+    },
+    "VBR_1mA_25C": {
+      "ESD9B3.3ST5G": [
+        5.0,
+        7.0
+      ],
+      "ESD9B5.0ST5G": [
+        5.8,
+        7.8
+      ]
+    },
+    "C_pF": 15,
+    "C_kind": "typical at0V1MHz perPDF; productpageCMaxlabel notaccepted asdatasheetguarantee",
+    "TIanalog_absolute_V": [
+      -0.2,
+      2.0
+    ],
+    "TIanalog_recommended_max_Vpp": 0.75
+  }
+}

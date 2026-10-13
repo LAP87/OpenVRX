@@ -1,0 +1,597 @@
+{
+  "state": "PASS_ROOT_REVIEWED_BF05_VINTERP_BUILD_EVIDENCE",
+  "utc": "2026-10-13T17:40:02.274045+00:00",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "source_inputs": 207,
+  "runtime_helper_dependency_bindings": 5105,
+  "Git_object_archive_source207_before_after_identical": true,
+  "archive_sha256": "f84d06836a640aac2aeff420526672f0bbc08bb9f03128fdd2d3a8bfb4d16373",
+  "builds": {
+    "m4_dual_mix": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "1"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 111.36,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 204.29,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 203.5,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 235.68,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 119.57,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "minimum_mhz": 111.36,
+      "manifest_sha256": "e5785b82796796bbe873d3792ee35bea4a0ffde386d43fc8967e56a5baf7154e",
+      "input_count": 51,
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      }
+    },
+    "m6_puck_proto": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "1"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 116.27,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 116.02,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 283.69,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 234.85,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 101.81,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "minimum_mhz": 101.81,
+      "manifest_sha256": "afdde2ecbd927b265802879928dd631f8697d9c7aa5af65b19984d62c692e6f3",
+      "input_count": 52,
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      }
+    }
+  },
+  "resources": {
+    "m4_dual_mix": {
+      "VINTERP": {
+        "LUT4": 8705,
+        "DFF": 4545,
+        "BSRAM": 29,
+        "rPLL": 2
+      },
+      "default": {
+        "LUT4": 8245,
+        "DFF": 4523,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "delta": {
+        "LUT4": 460,
+        "DFF": 22,
+        "BSRAM": 4,
+        "rPLL": 0
+      }
+    },
+    "m6_puck_proto": {
+      "VINTERP": {
+        "LUT4": 16036,
+        "DFF": 7395,
+        "BSRAM": 29,
+        "rPLL": 2
+      },
+      "default": {
+        "LUT4": 15505,
+        "DFF": 7373,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "delta": {
+        "LUT4": 531,
+        "DFF": 22,
+        "BSRAM": 4,
+        "rPLL": 0
+      }
+    }
+  },
+  "actual_pack_invocations": {
+    "m4_dual_mix": "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m4_dual_mix_vinterp.fs m4_dual_mix_vinterp.pnr.json",
+    "m6_puck_proto": "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C --mspi_as_gpio -o m6_puck_proto_vinterp.fs m6_puck_proto_vinterp.pnr.json"
+  },
+  "phase_history": [
+    {
+      "phase": "m4_dual_mix",
+      "driver_pid": 4011238,
+      "utc": "2026-10-13T17:05:42.494361+00:00",
+      "quota_sha256": "ead679b39169c4b3291fc8618a5bb0219123a52599f73839345c7f902a978271",
+      "quota_receipt": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/QUOTA_m4_dual_mix.json",
+      "command": [
+        "bash",
+        "-x",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build.sh",
+        "m4_dual_mix"
+      ],
+      "rc": 0,
+      "seconds": 482.32102772200597,
+      "log_sha256": "af927cee393596015c22d1d815c6ecabe4b1fe95a2bd51ada93a11bb55993462",
+      "child_pid": 4011248,
+      "stopped": []
+    },
+    {
+      "phase": "m6_puck_proto",
+      "driver_pid": 4025135,
+      "utc": "2026-10-13T17:17:32.710202+00:00",
+      "quota_sha256": "99065e1559b4e9c709734fbee890aa57079a03f0762f7cfdc504a6f3bad1fc56",
+      "quota_receipt": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/QUOTA_m6_puck_proto.json",
+      "command": [
+        "bash",
+        "-x",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build.sh",
+        "m6_puck_proto"
+      ],
+      "rc": 0,
+      "seconds": 1050.63316595598,
+      "log_sha256": "9383cfdbc1b417514a248f6bb8312bfa54eafc24c3296efe13fa07de9883b2f9",
+      "child_pid": 4025148,
+      "stopped": []
+    },
+    {
+      "phase": "tmds",
+      "driver_pid": 4048786,
+      "utc": "2026-10-13T17:37:29.347381+00:00",
+      "quota_sha256": "c81ed9a22b2745512c039956ae022d3bd119a099efde5624527eec08d33e9001",
+      "quota_receipt": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/QUOTA_tmds.json",
+      "command": [
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/.venv/bin/python",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/tools/tmds_fuses.py",
+        "m0_testpattern",
+        "m4_dual_mix_vinterp",
+        "m6_puck_proto_vinterp"
+      ],
+      "rc": 0,
+      "seconds": 4.007041645993013,
+      "log_sha256": "2a77162b05261ea0c6bdf6490b638e901a9afe3289e10652d9ba087fb846fb5b",
+      "child_pid": 4048794,
+      "stopped": []
+    }
+  ],
+  "new_artifacts": 16,
+  "accepted_readonly_M0_artifacts": 8,
+  "M0_rebuilt": false,
+  "artifact_controls": 16,
+  "metadata_controls": 16,
+  "total_controls": 32,
+  "actual_MSPI_controls": 2,
+  "TMDS_pair_comparisons": 8,
+  "originals_unchanged": true,
+  "retries": 0,
+  "hardware_verified": false,
+  "first_preparation_failure_preserved": true,
+  "root_acceptance_sha256": "148dff452962f816e10e9942c7144051c62f12922086d4a579545b9378ee243c",
+  "final_contract_sha256": "ad76c65a05260efaef4f553a52cf45a898982959fc2ef05287b4bd3aa5be4208",
+  "actual_owned_negative_controls": [
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.cst",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.cst"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.fs",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.fs"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.pnr.json",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.pnr.json"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.pnr.log",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.pnr.log"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.stat.txt",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.stat.txt"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.synth.json",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.synth.json"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "m4_dual_mix_vinterp.yosys.log",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.yosys.log"
+    },
+    {
+      "top": "m4_dual_mix",
+      "artifact_fault": "manifest_hash",
+      "reason": "build artifact does not match its manifest: m4_dual_mix_vinterp.fs"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "seed",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "freq_mhz",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "ioreg",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "vinterp",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "hdmi",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "mspi",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "source",
+      "reason": "current sources do not match the build manifest"
+    },
+    {
+      "top": "m4_dual_mix",
+      "metadata_fault": "timing",
+      "reason": ""
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.cst",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.cst"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.fs",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.fs"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.pnr.json",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.pnr.json"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.pnr.log",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.pnr.log"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.stat.txt",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.stat.txt"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.synth.json",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.synth.json"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "m6_puck_proto_vinterp.yosys.log",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.yosys.log"
+    },
+    {
+      "top": "m6_puck_proto",
+      "artifact_fault": "manifest_hash",
+      "reason": "build artifact does not match its manifest: m6_puck_proto_vinterp.fs"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "seed",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "freq_mhz",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "ioreg",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "vinterp",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "hdmi",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "mspi",
+      "reason": "build option identity"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "source",
+      "reason": "current sources do not match the build manifest"
+    },
+    {
+      "top": "m6_puck_proto",
+      "metadata_fault": "timing",
+      "reason": ""
+    }
+  ],
+  "inventory": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.build.json": {
+      "sha256": "e5785b82796796bbe873d3792ee35bea4a0ffde386d43fc8967e56a5baf7154e",
+      "size": 6956
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.cst": {
+      "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
+      "size": 10237
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.fs": {
+      "sha256": "87d08110cb8c8711a28c3f94b330831b13a459b8b11b72bc817e70e3be546206",
+      "size": 7261470
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.pnr.json": {
+      "sha256": "d78c73037090ce0b05fbbd063560c22ce627dc8366e3366a393079e0edcb78c3",
+      "size": 20127624
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.pnr.log": {
+      "sha256": "f160e64cb7bfe2ad4f618d7431e0c1ac1b98e5610ba28ad83d2b87bc0a86e914",
+      "size": 110566
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.stat.txt": {
+      "sha256": "5eac6659545e822814a0bd73aca9e56c86b491d48709899a6437f5c205166214",
+      "size": 805
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.synth.json": {
+      "sha256": "692ab472918c4a698effb09be3c1b0c284a0b0ff3eef55ac11cef52685cec3f3",
+      "size": 12729088
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m4_dual_mix_vinterp.yosys.log": {
+      "sha256": "137a9c4db53278c17ad081e93688bfe5c64650bb1c298328efa95462599438ab",
+      "size": 1904935
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.build.json": {
+      "sha256": "afdde2ecbd927b265802879928dd631f8697d9c7aa5af65b19984d62c692e6f3",
+      "size": 7089
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.cst": {
+      "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+      "size": 11684
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.fs": {
+      "sha256": "57da5462ec10515a6e9731807f7681fa1ba3c5539dfb0389a7408af0b68b38f1",
+      "size": 7261470
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.pnr.json": {
+      "sha256": "540d059281af4f919af87d3d5e162b03f7a1c3d7e83adba1e75cd57d21c50dc9",
+      "size": 38560778
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.pnr.log": {
+      "sha256": "cd519a7437c75c96173361ec613c9ee3ed19f8ca7f28949311cfc88e50945673",
+      "size": 100900
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.stat.txt": {
+      "sha256": "e540cd7e235f006848b60da09b306c111b8b50bac3ee6e0ddea7a690dcd397b1",
+      "size": 846
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.synth.json": {
+      "sha256": "a0a0eabfccdf6eaaaac9c428c72bbac3c2562980efd26a70b4649cfc81c81f54",
+      "size": 24477519
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m6_puck_proto_vinterp.yosys.log": {
+      "sha256": "3e3606b79d2bc56343ac5afc10ca0eefa2ee434ce29ea31dcbe0ad200c5733bc",
+      "size": 3819465
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.build.json": {
+      "sha256": "0f9443c7e0d4ee9b4872bdafaefe256e103091ddb148761207d1aea69103f04c",
+      "size": 6519
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "size": 1527
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.fs": {
+      "sha256": "13c180ff4b9fff7dd6a6085216fb6e3f8e107615c886521193b784ac7fa7d466",
+      "size": 839054
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.pnr.json": {
+      "sha256": "25e6d4d99d306c4f2eda89221f83245a5521dcc662e1aaaa97573f7584a36af2",
+      "size": 1845467
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.pnr.log": {
+      "sha256": "c684833db6393a7f4285a4f2bf3534fbe3337eead52f96901b57fbdfd6d21a15",
+      "size": 15103
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.stat.txt": {
+      "sha256": "405254187905d2e7d022818047b4471245cc5899a2fe91420bffdc0f7d0b1dd0",
+      "size": 631
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.synth.json": {
+      "sha256": "604406e76ee2135e067be7cf9c3ae37d34ee9e39a0f57cea14c969d938163f9f",
+      "size": 2092634
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-vinterp-builds/source/gateware/build/m0_testpattern.yosys.log": {
+      "sha256": "20898c41f9f8bfe362bc4debf155794a0e6701834c77308019227ce01177c89f",
+      "size": 288521
+    }
+  },
+  "TMDS_pairs": [
+    [
+      [
+        54,
+        23
+      ],
+      [
+        "tmds_clk_n_OBUF_O",
+        "tmds_clk_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix_vinterp": [
+          [],
+          []
+        ],
+        "m6_puck_proto_vinterp": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        29
+      ],
+      [
+        "tmds_d_n_OBUF_O_2",
+        "tmds_d_p_OBUF_O_2"
+      ],
+      18,
+      {
+        "m4_dual_mix_vinterp": [
+          [],
+          []
+        ],
+        "m6_puck_proto_vinterp": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        33
+      ],
+      [
+        "tmds_d_n_OBUF_O_1",
+        "tmds_d_p_OBUF_O_1"
+      ],
+      18,
+      {
+        "m4_dual_mix_vinterp": [
+          [],
+          []
+        ],
+        "m6_puck_proto_vinterp": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        39
+      ],
+      [
+        "tmds_d_n_OBUF_O",
+        "tmds_d_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix_vinterp": [
+          [],
+          []
+        ],
+        "m6_puck_proto_vinterp": [
+          [],
+          []
+        ]
+      }
+    ]
+  ],
+  "phase_driver_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "root_helper_exit_code": 0,
+  "final_helper_exit_code": 0,
+  "launch_reference_bindings_included_in_total": true,
+  "bindings": {
+    "SOURCE_CONTRACT.json": "ec7808db97f77601137f1b6b3497b02a2122a2a37292137b8a8973c6764b1366",
+    "LAUNCH_CONTRACT.json": "bccf689451f0d194ab39b262ddd06665e7a3e9f5c10c9910d21f8b6e84c8ab4e",
+    "LAUNCH_REVIEW.json": "472b65b89afe0d67f3125a53ae8e6e64c8462037cf04b845b05ca4ce3cdaaa50",
+    "ROOT_REVIEW_CONTRACT.json": "c481cfcab97e2014d5600f06ca5dc5400ce412669382def113b87030c70a77e2",
+    "ROOT_ACCEPTANCE.json": "148dff452962f816e10e9942c7144051c62f12922086d4a579545b9378ee243c",
+    "ROOT_REVIEW.log": "da29fef9253ed4f918cfd6b8424914e741fddbbb83aa77d39c6c6f6acaf18688",
+    "FINAL_REVIEW_CONTRACT.json": "ad76c65a05260efaef4f553a52cf45a898982959fc2ef05287b4bd3aa5be4208",
+    "FINAL_ROOT_REVIEW.json": "6f582d98d9eefa1dba1d1020bd3952b1f2a90308a2df7b1e7867ad0c4610f526",
+    "FINAL_ROOT_REVIEW.log": "b54bbf207053b393c7f1e0ed103fba39ca2f673cd22f762cb8a2550e3400b168",
+    "RESULT.json": "8b3ed70ab3bcd81624954bc07282a32c8b3e763deb71bab5d3c3e412436bfb74",
+    "FIRST_PREPARATORY_PATH_FAILURE.json": "c2fda9e6c2237c9f467364b93be19607150727559111a53881d2fe32c545a6e3"
+  },
+  "limits": [
+    "Exact frozenbf05 VINTERP1 HDMI0 M4seed0 M6seed2 FPGA route, timing, TMDS and MSPI build contract only.",
+    "Eight M0 artifacts are read-only copies of acceptedbf05 defaultM0; M0 was not rebuilt here.",
+    "No new native suite, combinedHDMI option functional scenario, Puck integration or hardware.",
+    "No physical flash/USB/ADC/powercut, SDRAM pin timing, HDMI compatibility, electrical protection or campaign acceptance.",
+    "Original prepare.py wrong ancestor failed before archive/source/contracts/job; original helper/diagnosis preserved and unstarted preparation completed by prepare_v2. No build/test/native retry or livehelper/source/options change."
+  ]
+}

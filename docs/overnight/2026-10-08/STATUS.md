@@ -20,7 +20,22 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 24 artefakter/manifest har hash och storlek. 24 skador på ägda artefaktkopior och 24 fel i käll-/options-/seed-/frekvens-/IOREG-/VINTERP-/HDMI-/MSPI-/timingmetadata avvisas; giltiga original passerar före och efter. Alla 207 Git-indata, runtime, helpers och beroenden är oförändrade. Git-objekten matchar arkivets och den faktiska källans bytes. Ingen byggomkörning eller ändring av seed, frekvens, fas, stift, SDC eller facit gjordes. [Standardbyggkvitto och kontrollhashar](evidence/core-bf05-default-builds.json).
 
-Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
+Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Tidigare optionsbyggen längre ned gäller 46a1; det separata bf05-paketet för VINTERP står nedan. Ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
+
+## VINTERP-byggen på fryst bf05, 2026-10-13
+
+Två färska byggen är rootgranskade på samma Core `bf05ac0`/träd `49923a6`: **M4 seed 0 och M6 seed 2, VINTERP=1, HDMI=0, 75 MHz och standard-IOREG=1**. IOREG, PULL och SDRAM_PHASE lämnades osatta; källans WAIT är 0. Alla tio slutliga klockresultat klarar minst 75 MHz. Lägsta rapporterade maxfrekvens är **111,36 MHz för M4 och 101,81 MHz för M6**. M6:s packningsanrop innehåller `--mspi_as_gpio`; M4:s gör det inte.
+
+| bf05 med VINTERP | LUT4 | DFF | BSRAM | Extra mot bf05-standard | Byggtid |
+|---|---:|---:|---:|---|---:|
+| M4 seed 0 | 8 705 | 4 545 | 29/46 | +460 LUT4, +22 DFF, +4 BSRAM | 482,321 s |
+| M6 seed 2 | 16 036 | 7 395 | 29/46 | +531 LUT4, +22 DFF, +4 BSRAM | 1 050,633 s |
+
+Fyra TMDS-par per bygge matchar åtta hashbundna, skrivskyddade artefakter från det accepterade bf05-standardbygget av M0. **M0 byggdes inte om i detta paket.** TMDS-steget tog 4,007 s. 16 nya artefakter/manifest och åtta referensartefakter har hash och storlek. 16 faktiska artefakt-/hashskador och 16 käll-/options-/seed-/frekvens-/IOREG-/VINTERP-/HDMI-/MSPI-/timingfel avvisas av samma facit, med giltiga original före och efter.
+
+207 Git-objekt matchar det färska arkivet och faktiska källbytes före och efter körningen; samtliga 5 105 bundna runtime-/helper-/beroende-/referensinputs är oförändrade. Varje fas startades en gång under bygglåset efter ett eget färskt kvotkvitto. Första privata förberedelsehjälpen använde fel rotkatalog och stoppade vid Git-läsningen före arkiv, källa eller bygge. Original och diagnos är bevarade; en separat helper slutförde den ännu inte utförda förberedelsen. Inget bygge eller test kördes om och inga källor, stift, seed, fas, SDC eller facit ändrades.
+
+Acceptansen gäller bf05:s VINTERP-routning och TMDS-/MSPI-byggkontrakt. Ingen ny helsvit, kombinerad HDMI/VINTERP-funktionskörning, Puck-integration eller fysisk flash-/USB-/ADC-/SDRAM-/HDMI-verifiering ingår. [Byggresultat, kontrollorsaker och hashkvitto](evidence/core-bf05-vinterp-builds.json).
 
 ## Core 072dbde: dokument- och källrevision 2026-10-13
 

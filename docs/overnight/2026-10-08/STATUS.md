@@ -22,6 +22,18 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
+## Puck aed469b: käll-/statikgranskning 2026-10-13
+
+Fryst Puck `aed469b`/träd `68e1568` har **tre befintliga tester PASS på 2,44 s**. Dess Core-gitlänk, index och faktiska källa är fortsatt accepterad `46a1e4f`, med 193 Core-filer; 14 Puck-filer är bundna. Mot tidigare Puck `82444fa` ändras sju filer och ett layoutunderlag tillkommer. Endast schemats `build`-funktion har ändrad AST; stift-/gateware-/RSSI-kontrollerna är oförändrade. Befintliga 22 stiftnegativer och sex RSSI-negativer passerar sina avvisningsassertions.
+
+Sparad netlista, BOM och kopplingsrapport matchar den instansierade källan: **126 delar, 86 sparade nät och 347 rapporterade stift**. Symbolerna D1/D3 är ESD9B5.0 på CVBS A/B och D2/D4 ESD9B3.3 på delarens mittpunkt A/B, alla med andra stiftet till GND. Sex ägda kopior med skadade anslutningar, matning, BOM eller saknad del avvisas; fyra byte-/Corepin-/trädidentitetsfel avvisas också. Giltiga original passerar före och efter. Alla 207 Git-/arkiv-/källinputs, 206 historiska baselineinputs, 4 162 runtimefiler och helpers/beroenden är oförändrade.
+
+**Livscykeltabellen har fel diodbeteckningar:** den anger 5 V D1/D2 och 3,3 V D3/D4. Källan och sparad BOM anger 5 V D1/D3 och 3,3 V D2/D4. Avvikelsen är sparad, utan produktionsrättning. Pucks README säger också att Core läser RSSI i fälttakt och sparar kalibrering; den faktiska Core-pinnen 46a1 saknar RSSI-läsare. Senare bf05-acceptans uppdaterar inte denna gitlänk.
+
+Acceptansen gäller symbolvärden, anslutningar och de rena testerna. Påståenden om ESD-pulsens topp/energi, decoder-/AAF-skydd, kapacitans, livscykel och fysisk layout är inte verifierade här. Det nya layoutunderlaget pekar självt ut okontrollerade mekaniska mått och saknade åtkomliga OLED-/RX5808-SPI-kontakter för en sandwich. Tidigare ADS1115-referensluckor kvarstår. KiCad-biblioteks- och footprintvarningar är bevarade; ingen ERC, KiCad-import, export/regenerering, installation, HDL, FPGA-routning eller hårdvara kördes.
+
+En koordinator körde två seriella rena faser utan testomkörning. Privata förberedelsefel — en extra ren worktree från fel HEAD, fel sökvägsnivå och Git från containerkatalogen — är dokumenterade; den extra egna worktreen togs bort före testerna. Primära och historiska checkouter är bevarade. [Avgränsat slutkvitto och kontrollhashar](evidence/puck-aed469-source-audit.json).
+
 ## Inkommande df512fe: källrevision 2026-10-13
 
 Fryst Core `df512fe`/träd `6dfcf52` ändrar **endast `gateware/sim/FUZZ_2026-10-07.md`** mot accepterad bf05. Alla 207 Git-objekt matchar det nya arkivet; övriga 206 filer är byteidentiska. 73 Python-filer med 927 definitioner har oförändrad AST. RTL, modeller, tester, kampanjverktyg, toppar, stift, SDC och licens är oförändrade. Kampanjkällans 44 inputfiler och de tidigare M0/M4/M6-manifestens 50/51/52 byggindata matchar samma bytes. En statisk Git/AST-körning tog 1,141 s; tre skadade ägda käll-/helper-/kontraktskopior avvisas. Inga projektimporter, tester, modeller, HDL, formella bevis eller byggen kördes.

@@ -1,0 +1,95 @@
+{
+  "state": "PASS_LIMITED_METADATA_INVENTORY_ROOT_REVIEWED",
+  "reviewed_utc": "2026-10-13T07:44:42.595007+00:00",
+  "original_metadata_summary": {
+    "unique_seeds": 200,
+    "pass": 199,
+    "fail": 1,
+    "seed1345_checked": 72
+  },
+  "original_revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
+  "raw_metadata_receipts_verified": 200,
+  "raw_file_references_present_with_matching_size": 2000,
+  "raw_file_contents_hashed_or_replayed": false,
+  "metadata_files_scanned": 132,
+  "searched_roots": [
+    {
+      "root": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos",
+      "exists": true,
+      "files_listed": 104,
+      "stderr": "",
+      "enumeration_complete": true
+    },
+    {
+      "root": "/home/lenny/openvrx-review",
+      "exists": true,
+      "files_listed": 14,
+      "stderr": "",
+      "enumeration_complete": true
+    },
+    {
+      "root": "/home/lenny/.codex/worktrees",
+      "exists": true,
+      "files_listed": 0,
+      "stderr": "",
+      "enumeration_complete": true
+    },
+    {
+      "root": "/tmp",
+      "exists": true,
+      "files_listed": 14,
+      "stderr": "rg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-ananicy-cpp.service-zESauA: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-upower.service-t94ret: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-geoclue.service-9hSGqb: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-power-profiles-daemon.service-zQxEh9: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-polkit.service-wWvzLU: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-NetworkManager.service-1GMBBA: Permission denied (os error 13)\nrg: /tmp/systemd-private-71d5347979824d88b9bc4b2365c28fa7-systemd-logind.service-WH6ZZK: Permission denied (os error 13)\n",
+      "enumeration_complete": false
+    }
+  ],
+  "search_patterns": [
+    "*manifest*.json",
+    "*.contract.json",
+    "*receipt*.json",
+    "results*.json",
+    "results*.jsonl",
+    "p8*.json",
+    "p8*.jsonl"
+  ],
+  "metadata_negative_controls": [
+    {
+      "fault": "seed",
+      "reason": "seed identity"
+    },
+    {
+      "fault": "source",
+      "reason": "source identity"
+    },
+    {
+      "fault": "recovery",
+      "reason": "recovery count identity"
+    }
+  ],
+  "reported_later_groups_not_identified_in_selected_metadata": [
+    "p8b_s1400_1424_bedge_d1_f10",
+    "p8b_s1425_1449_bedge_d2p5_f10",
+    "p8b_f1500_1504_d1_v8_switch",
+    "p8b_f1505_1509_d2p5_v8_switch",
+    "p8b_r4_1345",
+    "p8b_r4_1434_1444_bedge"
+  ],
+  "global_absence_claimed": false,
+  "full260_accepted": false,
+  "remaining_data_required": "Exact worker output roots/manifests/source snapshots/receipts/raw paths for four p8b original groups and two p8b recovery groups.",
+  "limitations": [
+    "Only the declared metadata filename patterns were scanned; numbered receipt filenames outside the two known original groups are not covered.",
+    "Seven /tmp systemd-private paths were inaccessible and explicitly excluded from completeness.",
+    "Original200metadata and existence/size checks do not establish replayed coverage or raw content identity."
+  ],
+  "first_failure_preserved": true,
+  "continuation_scope_changed": "Permission gaps recorded explicitly; metadata validator AST unchanged; no native/model job retried.",
+  "source_metadata_before_after_unchanged": true,
+  "result_sha256": "904945c09da716bbff8ae6f509191689f65060aec05383fd72b0c79e74007d9a",
+  "task_contract_sha256": "49eeab7b3d6a2c8922776f025a9ccd07cdc706be8361990f1260b4f71336df8b",
+  "continuation_contract_sha256": "1b04ab6ada765e6bd18ef3c757257a26e8d8eb5559aefe001c816440619b2348",
+  "original_failure_sha256": "a3257f1e6cc32aa0fffdb152863e35250d20508b915cbef62446c63bf78188ef",
+  "original_log_sha256": "42f8d55bbf15008b6b7e096d19a403f7394747a204770d5c90491962d0b2e867",
+  "continuation_log_sha256": "ecb8da8936fcc15ff05bfb814ff8d9c3220601ec8fe2d7ea3da2792ad5732fa4",
+  "hardware_verified": false,
+  "root_review_sha256": "20ae04edaa97b78ae291832a75a30eacaf97740b08be75b63477983e8e960160"
+}

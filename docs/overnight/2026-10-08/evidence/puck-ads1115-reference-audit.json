@@ -1,0 +1,154 @@
+{
+  "state": "PASS_REFERENCE_COMPARISON_WITH_FINDINGS_ROOT_REVIEWED",
+  "reviewed_utc": "2026-10-13T07:55:28.089728+00:00",
+  "revision": "82444fabd580648c38eb9b2d6c00926b8bd553a3",
+  "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+  "reference_urls": [
+    "https://www.ti.com/lit/gpn/ads1115",
+    "https://www.ti.com/product/ADS1115/part-details/ADS1115IDGSR",
+    "https://www.ti.com/product/ADS1115"
+  ],
+  "reference_document": "SBAS444E/December2024",
+  "reference_pdf_sha256": "eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834",
+  "reference_pdf_private_not_for_commit": true,
+  "lifecycle": {
+    "part": "ADS1115IDGSR",
+    "status": "ACTIVE",
+    "successor_check": "TI lists ADS1115L as an alternate with 1.8V I2C support; no substitution or pin compatibility claim."
+  },
+  "source_pinout_address_unused_connections_supported": true,
+  "table5_typical_column_visually_verified": true,
+  "calculations": {
+    "RC_tau_ms": 1.0,
+    "RC_cutoff_hz": 159.15494309189532,
+    "ripple_attenuation_db": -39.88203669075507,
+    "RC_1percent_settling_ms": 4.605170185988091,
+    "typical_parallel_small_signal_ohm": 2697247.7064220184,
+    "typical_small_signal_series_gain_loss_percent": 0.3693788335761971,
+    "common_mode_only_series_gain_loss_percent": 0.16638935108153077,
+    "two_single_shot_nominal_ms": 4.260526315789473,
+    "two_single_shot_slow_rate_ms": 4.728362573099415,
+    "assumed_bus_time_ms": 1.6199999999999999,
+    "assumed_batch_time_ms": 6.348362573099415,
+    "100k_pulldown_current_at_ideal5V_uA": 50.0,
+    "powered_input_current_at_assumed_abs_boundary_uA": 140.00000000000003,
+    "unpowered_input_current_at_assumed_boundary_uA": 470.0,
+    "guaranteed_gain_bound": false,
+    "same_field_detection_guaranteed": false,
+    "safe5V_measurement_verified": false,
+    "receiver_range_and_source_impedance_known": false,
+    "hardware_verified": false
+  },
+  "calculation_assumptions": {
+    "series_ohm": 10000,
+    "shunt_f": 1e-07,
+    "connector_pulldown_ohm": 100000,
+    "ripple_hz": 15700,
+    "configured_sps": 475,
+    "channels": 2,
+    "bus_hz_assumed": 100000,
+    "bus_bits_per_channel_assumed": 81,
+    "field_hz": [
+      50,
+      60
+    ],
+    "hypothetical_receiver_v": 5.0,
+    "adc_supply_v": 3.3,
+    "clamp_forward_v_assumed": 0.3,
+    "receiver_source_impedance_ohm": null,
+    "receiver_rssi_range_v": null
+  },
+  "findings": [
+    "6MOhm is typical, not >=minimum; differential path must be considered for single-ended loading.",
+    "absolute input/clamp current is not guaranteed functional measurement at a5V source; rail/injection/other-channel/poweroff behavior unresolved.",
+    "same-field detection is not guaranteed by RCtau or two ADC conversions when sampling eachchannelonceperfield.",
+    "PuckREADME says Core reads and savesRSSI, while acceptedCore46a1 RTL/top/parser has no RSSI/ADS1115 implementation; tasks14/15 are future work."
+  ],
+  "first_gap_sha256": "c2756f2c2e25e96f44c43215582f0323b5eb0d90f0ac73c0c5002f17a2606f25",
+  "negative_controls": [
+    {
+      "fault": "source",
+      "reason": "source identity"
+    },
+    {
+      "fault": "reference",
+      "reason": "references identity"
+    },
+    {
+      "fault": "calculation",
+      "reason": "RC_tau_ms calculation"
+    },
+    {
+      "fault": "claim",
+      "reason": "guaranteed_gain_bound qualification"
+    }
+  ],
+  "inventory": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/FIRST_REFERENCE_GAP.json": {
+      "sha256": "c2756f2c2e25e96f44c43215582f0323b5eb0d90f0ac73c0c5002f17a2606f25",
+      "size": 721
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FETCH.json": {
+      "sha256": "a76f1c2272b87ece68c844304531ba4593de087dee58dd3322a17634692b552a",
+      "size": 357
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FACTS.json": {
+      "sha256": "669e1efffcf115601d4b658169508de3dc632e8425c1d4010fad898b40f3ea97",
+      "size": 1243
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CLAIM_REVIEW.json": {
+      "sha256": "a44ef47765eb7403af5d8be5cd33a27ab0afbd820e579ab1aa6dc0bca7bfbc36",
+      "size": 999
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/PARAMETERS.json": {
+      "sha256": "7c8dd814b760bd355f197fd07683ad67ae0ea203aab05496a229989e48b014c8",
+      "size": 413
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_CONTRACT.json": {
+      "sha256": "2bbe32fc29f34556a1fc9be2b61cce4a6ddbf029497251a1ac25793872b29d9f",
+      "size": 3696
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_RESULT.json": {
+      "sha256": "4a46f01d02d40fff3d06a96fe5637832bc5c5d0639ac711bba44900b55262740",
+      "size": 1518
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION.log": {
+      "sha256": "dd21e3fe68bca5de3187f4d280d61b130963bf9b8798afb1b8c7836ef30b9296",
+      "size": 1332
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/ROOT_REVIEW_CONTRACT.json": {
+      "sha256": "aa8275ba9541f1ee5ba73bc9d0e817d52bb69fbf79cd8e02a8e9028d066f9809",
+      "size": 3063
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculate.py": {
+      "sha256": "f683baf3e36ec8eaa480612ae5d21e9a881c95ed7a7be85abd9148277babe831",
+      "size": 4446
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/calculation.json": {
+      "sha256": "bd765c53d10cccbc79769043b317a46ade2fb8926999b2ffce29bfc830039e69",
+      "size": 3735
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/claim.json": {
+      "sha256": "081439553723d77c3039db49f7c97f110e978c011fd8f4797ca4ede0bdd980ca",
+      "size": 3735
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/reference.json": {
+      "sha256": "c56099325d697fa66bf90a9b3f9e41be5d87b1176c9bb51a4259c271984aec4a",
+      "size": 3736
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/source.json": {
+      "sha256": "9df1775730c1cf928c2eb398f66bb4eb00866667505691f923dada00e175520e",
+      "size": 3736
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/valid.json": {
+      "sha256": "f971b28be62cec849095c3ee4053e9baf0340150e057e40c7e17fb9a600da545",
+      "size": 3736
+    }
+  },
+  "source_runtime_reference_before_after_unchanged": true,
+  "design_accepted": false,
+  "hardware_verified": false,
+  "production_changed": false,
+  "root_scope": "Reference comparison and estimates only; no receiver voltage, injection survival, source impedance, ADC sampling implementation, or PCB validation.",
+  "root_review_sha256": "61914db6f95788ffca2e54c2396d6618faa47e115bdc3f85725d86fa61ed4093"
+}

@@ -24,6 +24,14 @@ Pucks efterföljande RSSI-ADC-revision **82444fa** är separat käll- och statis
 
 691 äldre testidentiteter är exakt kvar; fyra LOW-funktioner ersätts av åtta parameterfall. Ingen gammal cache återanvändes. Acceptansen gäller fryst `46a1e4f` i simulation/formella kontroller samt standard-, VINTERP-, HDMI- och kombinationsbyggena ovan. Puck-länken är integrerad ovan. Standard VINTERP=0, HDMI=0 och WAIT_BEFORE_VSYNC=0 gäller fortsatt; full 720p före vsync får ingen ny ringkapacitetsacceptans. SDRAM-stifttiming, HDMI-kompatibilitet och FPGA-hårdvara är omätta. Äldre 0503-byggacceptans och historiska kampanj-FAIL behåller sina egna källor.
 
+## Begränsad inventering av den blandade 260-frörapporten, 2026-10-13
+
+Originalmetadata på `db0035f` innehåller exakt **200 unika frön: 199 PASS och 1 FAIL**, fortfarande frö 1345 med 72 kontrollerade rader mot kravet 144. 200 råkvitton har verifierad metadatahash; deras 2 000 filreferenser finns med rätt registrerad storlek. Filinnehållet har inte hashats eller återlästs mot modellen i detta paket.
+
+En avgränsad sökning läste 132 metadatafiler i fyra deklarerade rotkataloger. De senare `p8b_*`-grupperna identifierades inte i detta urval. Detta visar inte global frånvaro: sju systemd-kataloger i `/tmp` var otillgängliga, och numrerade råkvitton utanför de två kända originalgrupperna omfattas inte av filnamnsurvalet. Första helpern stannade på åtkomstfelet; original och fellogg är bevarade. En separat hashbunden fortsättning redovisar sökbegränsningen och behåller samma seed-/source-/recovery-predikat; tre skadade metadatakopior avvisas.
+
+**Ingen full 260-frökampanj är rootaccepterad.** För vidare granskning behövs de verkliga output-/manifest-/käll-/råsökvägarna för de fyra senare originalgrupperna och två recovery-grupperna. 257+3-rapporttexten ersätter inte dessa data, och ändrad källa eller recovery-längd är inte identisk resume. [Sökgränser och metadataunderlag](evidence/mixed260-evidence-discovery.json).
+
 ## Tidigare simulerings- och byggacceptans 2026-10-13: Core `0503dac`
 
 Fryst Core `0503dac` är rootgranskad i simulation och färska byggen: **695 pass / 43 filer / 439 processer / 187 Git-indata**, 19 cocotb-rapporter, sju formella bevis och fjorton verkliga negativa motexempel. Helsviten kördes en gång på **7328,015 s**. Den avsiktliga STRICT-negativen gav rätt tRCD-stopp och en SimFailure; de övriga 18 XML-filerna är rena. Alla käll-/runtimebytes och barnloggar är bundna. [Acceptans och artefakter](evidence/core-0503-gate.json).

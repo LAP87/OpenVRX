@@ -1,0 +1,331 @@
+{
+  "state": "PASS_ROOT_REVIEWED_DEFAULT_BUILD_EVIDENCE",
+  "utc": "2026-10-13T15:19:30.080296+00:00",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "source_inputs": 207,
+  "bound_runtime_helper_inputs": 5074,
+  "git_object_archive_all207_verified": true,
+  "git_archive_sha256": "f84d06836a640aac2aeff420526672f0bbc08bb9f03128fdd2d3a8bfb4d16373",
+  "coordinator_exit_code": 0,
+  "phase_history": [
+    {
+      "phase": "m0_testpattern",
+      "command": [
+        "bash",
+        "-x",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "m0_testpattern"
+      ],
+      "rc": 0,
+      "seconds": 48.035,
+      "log_sha256": "052c0100d36c76141f0d32025ee6dab39dd3b64a495222c8ce0252dc4a2e2ef5"
+    },
+    {
+      "phase": "m4_dual_mix",
+      "command": [
+        "bash",
+        "-x",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "m4_dual_mix"
+      ],
+      "rc": 0,
+      "seconds": 444.239,
+      "log_sha256": "d2b3cac023f4c53a554a67106131c38d886bd928f1b11568f50d32e122d3601e"
+    },
+    {
+      "phase": "m6_puck_proto",
+      "command": [
+        "bash",
+        "-x",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "m6_puck_proto"
+      ],
+      "rc": 0,
+      "seconds": 1098.628,
+      "log_sha256": "1f1d7847f80a20dd9d5e30b0137f1ce75b7251463e556c7dbe0d4a37d99163b4"
+    },
+    {
+      "phase": "tmds",
+      "command": [
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/.venv/bin/python",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/tools/tmds_fuses.py",
+        "m0_testpattern",
+        "m4_dual_mix",
+        "m6_puck_proto"
+      ],
+      "rc": 0,
+      "seconds": 4.003,
+      "log_sha256": "b537218801128ab3b5a925aef3e4df9f5603e86a8df0a27dcd042d85186893c1"
+    }
+  ],
+  "builds": {
+    "m0_testpattern": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 154.58,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 339.44,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "0f9443c7e0d4ee9b4872bdafaefe256e103091ddb148761207d1aea69103f04c"
+    },
+    "m4_dual_mix": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 142.31,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 216.4,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 238.38,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 295.86,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 98.95,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "17f205849a4eb033d9dd7ec8e27d00b88bb1319af5d778728b81dc0ff899f795"
+    },
+    "m6_puck_proto": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 123.15,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 132.28,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 248.69,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 204.33,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 104.58,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "90d5f76842eed1852014d95a4d8046c90b75e09378281933089df519a4f493ec"
+    }
+  },
+  "resources": {
+    "m0_testpattern": {
+      "LUT4": 789,
+      "DFF": 173,
+      "BSRAM": 0,
+      "rPLL": 1
+    },
+    "m4_dual_mix": {
+      "LUT4": 8245,
+      "DFF": 4523,
+      "BSRAM": 25,
+      "rPLL": 2
+    },
+    "m6_puck_proto": {
+      "LUT4": 15505,
+      "DFF": 7373,
+      "BSRAM": 25,
+      "rPLL": 2
+    }
+  },
+  "actual_pack_invocations": {
+    "m0_testpattern": [
+      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m0_testpattern.fs m0_testpattern.pnr.json"
+    ],
+    "m4_dual_mix": [
+      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m4_dual_mix.fs m4_dual_mix.pnr.json"
+    ],
+    "m6_puck_proto": [
+      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C --mspi_as_gpio -o m6_puck_proto.fs m6_puck_proto.pnr.json"
+    ]
+  },
+  "TMDS_pairs": [
+    [
+      [
+        54,
+        23
+      ],
+      [
+        "tmds_clk_n_OBUF_O",
+        "tmds_clk_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix": [
+          [],
+          []
+        ],
+        "m6_puck_proto": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        29
+      ],
+      [
+        "tmds_d_n_OBUF_O_2",
+        "tmds_d_p_OBUF_O_2"
+      ],
+      18,
+      {
+        "m4_dual_mix": [
+          [],
+          []
+        ],
+        "m6_puck_proto": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        33
+      ],
+      [
+        "tmds_d_n_OBUF_O_1",
+        "tmds_d_p_OBUF_O_1"
+      ],
+      18,
+      {
+        "m4_dual_mix": [
+          [],
+          []
+        ],
+        "m6_puck_proto": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        39
+      ],
+      [
+        "tmds_d_n_OBUF_O",
+        "tmds_d_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix": [
+          [],
+          []
+        ],
+        "m6_puck_proto": [
+          [],
+          []
+        ]
+      }
+    ]
+  ],
+  "TMDS_pair_comparisons": 8,
+  "artifacts": 24,
+  "artifact_controls": 24,
+  "metadata_controls": 24,
+  "total_negative_controls": 48,
+  "actual_mspi_faults_refused": 3,
+  "source_runtime_helpers_dependencies_all_artifacts_unchanged": true,
+  "one_attempt_per_top": true,
+  "build_retries": 0,
+  "no_failed_hidden_dirs": true,
+  "helper_exit_code": 0,
+  "hardware_verified": false,
+  "bindings": {
+    "ROOT_ACCEPTANCE.json": "b0b757eb73cb39dc79fbfc07d7ec955160286ee9644fd6077362ecbbd13234d1",
+    "ROOT_REVIEW.log": "7835b2b7d5a47d47cbb4e188873ab013be87f1a7320dc054474fbcf168b72de2",
+    "ROOT_REVIEW_CONTRACT.json": "d0fb47354d8a146016a2d3f1f7741a8f24ff77d3ef5843c13f248b22cff06a40",
+    "RESULT.json": "5ce91d6a29196741af212ab9550c5f96cdd3d18838e7d72d7f46bac1251fd288",
+    "SOURCE_CONTRACT.json": "b37cfa1d3b2fd21061be66bb8505658798cd5183ec1e9c470a35080f4128386b",
+    "LAUNCH_CONTRACT.json": "b7f90842b74fde6adf5297751c0202faaf95bac0ffcae0d9587a3bc816a402c7",
+    "LAUNCH_REVIEW.json": "c5332bcdf91082530b592db0ee3597e2af8391f5f96136f8e7f65b4476859b2c",
+    "LAUNCH_OBSERVATION.json": "324075a7dea6fa23efac545f2575c9038e8ce56b5bf2e4eec391d5135f97a693",
+    "PREFLIGHT.log": "c5decf0c302ed78da0fc11f73fb3284f24b25afbd989cec87fe17bf7a910e910"
+  },
+  "limits": [
+    "Exact bf05 default FPGA routes/TMDS/source/default/MSPI build contract only",
+    "No physical flash/USB programming/powercut/endurance/ADC electrical/SDRAM pin timing/HDMI interoperability/hardware acceptance",
+    "No VINTERP/HDMI option routes on bf05, Puck link update or mixed260 campaign acceptance"
+  ],
+  "private_final_review_sha256": "3601af5b8e2366825fee91cf4f0796298d303b5ca5b948c8a137669a176d9cff",
+  "root_acceptance_sha256": "b0b757eb73cb39dc79fbfc07d7ec955160286ee9644fd6077362ecbbd13234d1"
+}

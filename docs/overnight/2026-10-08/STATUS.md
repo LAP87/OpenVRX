@@ -10,7 +10,17 @@ De nya fallen för RSSI, tvåbytes-I2C, mixerhälsa, scan och flash har återlä
 
 Den ursprungliga privata koordinatorn skrev över fasvariabeln med ett filnamn. Felet upptäcktes när 28 processer passerat; originalhelper, kontrakt, resultat och den felnamngivna svitloggen är bevarade. Originalkoordinatorn frystes, och en separat hashbunden övervakare följde samma redan körande svit. Efter svitens slut avslutades den frysta koordinatorn med rc137; övervakaren körde endast den ännu inte startade strictdiagnosen och avslutades med rc0. **Sviten startades en gång; inga test eller nativefall kördes om för att rätta helperfelet.** [Slutkvitto, avgränsning och kontrollhashar](evidence/core-bf05-full-suite.json).
 
-Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänken använder en nominell ADC-modell och 8 ms schemaperiod; flashbänken använder accelererad 50 ms debounce. Verklig RSSI-spänning, fälttakt, flash-/USB-programmering och strömavbrott är inte mätta. **FPGA-byggen på bf05, med de nya M6-flashportarna, återstår som separat grind.** Byggena nedan gäller fortsatt 46a1, och ingen Puck-gitlänk eller hårdvara accepterades i detta paket.
+Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänken använder en nominell ADC-modell och 8 ms schemaperiod; flashbänken använder accelererad 50 ms debounce. Verklig RSSI-spänning, fälttakt, flash-/USB-programmering och strömavbrott är inte mätta. **Standardbyggen på samma bf05 är nu rootaccepterade:** M0 seed 0, M4 seed 0 och M6 seed 2, 75 MHz, standard-IOREG 0/1/1, VINTERP=0, HDMI=0 och källans WAIT=0. Alla tolv slutliga klockor klarar kravet. M0:s lägsta maxfrekvens är 154,58 MHz, M4:s 98,95 MHz och M6:s 104,58 MHz; M6:s 27 MHz-domän når 132,28 MHz. Fyra TMDS-par per M4/M6 matchar det färska M0-bygget. M6:s verkliga packningsanrop innehåller `--mspi_as_gpio`; M0/M4 gör det inte. De inkommande flashportarna 57/59–62 är källbundna, utan egna stiftändringar.
+
+| bf05-standardbygge | LUT4 | DFF | BSRAM | Byggtid |
+|---|---:|---:|---:|---:|
+| M0 seed 0 | 789 | 173 | 0/46 | 48,035 s |
+| M4 seed 0 | 8 245 | 4 523 | 25/46 | 444,239 s |
+| M6 seed 2 | 15 505 | 7 373 | 25/46 | 1 098,628 s |
+
+24 artefakter/manifest har hash och storlek. 24 skador på ägda artefaktkopior och 24 fel i käll-/options-/seed-/frekvens-/IOREG-/VINTERP-/HDMI-/MSPI-/timingmetadata avvisas; giltiga original passerar före och efter. Alla 207 Git-indata, runtime, helpers och beroenden är oförändrade. Git-objekten matchar arkivets och den faktiska källans bytes. Ingen byggomkörning eller ändring av seed, frekvens, fas, stift, SDC eller facit gjordes. [Standardbyggkvitto och kontrollhashar](evidence/core-bf05-default-builds.json).
+
+Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
 ## Simulerings- och byggacceptans 2026-10-13: Core `46a1e4f`
 

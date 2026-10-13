@@ -264,3 +264,16 @@ Avvikelser och misstag under passet:
 - Puck pekar på Core `46a1e4f` (uppdaterad av en annan session); RSSI-delen i Core (3bb863b och senare) är inte inpekad i Puck.
 
 Fables kontroll 2026-10-13: hela sviten på Core `main` bf05ac0 körd på egen maskin med en process per simtest, tio åt gången: 757 av 757 gröna, 26 minuter. Puck `main` b8a3348 (andra ESD-klampen, ägarens beslut A) har 3 gröna test och rent ERC. Nästa omgång: [NATTPASS_2026-10-13.md](NATTPASS_2026-10-13.md).
+
+## Nionde passet, 2026-10-14 (Opus)
+
+Enligt [NATTPASS_2026-10-13.md](NATTPASS_2026-10-13.md), uppgift 16–20 i ordning, gren per uppgift, sammanslagning med `--no-ff` efter hel svit (`run_suite.py`) och uppgiftens byggen. Allt är simulerat och byggt; inget är kört på hårdvara.
+
+| # | Gjort | Simulerat | Byggt | Återstår | Git |
+|---|---|---|---|---|---|
+| 16 | Kampanjens skalade frön 0–199 (täthet 1, tio fält) och de 45 fullgeometriska från första natten (f1–f8, fd1) omkörda på `main` bf05ac0 med dagens kontroller. Tolv fullgeometriska frön med lägesbyten gav 0 kontrollerade rader på fyra fält och kördes om med fyra återhämtningsfält, som 1345 i C3. Totalrad för hela kampanjen i `gateware/sim/FUZZ_2026-10-07.md`: 2 032 frön, nio fynd, alla rättade | 245 frön: 233 gröna med originalstimulus, 12 med återhämtningsfält, inget fynd; svit 757 gröna | — (ingen RTL) | De övriga 1 527 fröna från första natten är bara körda med den tidens kontroller | Core `main` df512fe |
+
+Avvikelser och misstag under passet:
+- Fullgeometriska frön med återhämtningsfält tar 830–1 460 s och ryms inte i ett anrop på tio minuter. WSL stänger distributionen när inget anrop är anslutet, så en frikopplad process dog (provat). De tolv fröna kördes därför som ett enda bakgrundsjobb under bygglåset och lästes av med korta anrop. Allt annat gick i förgrunden.
+- Fem fullgeometriska körningar stoppades av anropets tidsgräns när åtta eller sex frön kördes samtidigt; kampanjköraren sparade inget för dem och fröna kördes om, fyra åt gången.
+- `run_suite.py --resume` vägrade efter en omgång med cocotb-test: testen skriver `gateware/sim/*.result.xml`, som köraren räknar som källor. Filerna (git-ignorerad utdata) togs bort före återupptagningen; rättningen i köraren är föreslagen som en egen uppgift.

@@ -1,0 +1,159 @@
+{
+  "state": "PASS_ROOT_REVIEWED_NATIVE_EVIDENCE",
+  "reviewed_utc": "2026-10-13T13:39:31.576740+00:00",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "git_archive_sha256": "f84d06836a640aac2aeff420526672f0bbc08bb9f03128fdd2d3a8bfb4d16373",
+  "git_object_archive_207_blobs_verified": true,
+  "tests_passed": 757,
+  "files": 48,
+  "processes": 495,
+  "source_inputs": 207,
+  "runtime_inputs": 5063,
+  "old_exact_nodes_retained": 728,
+  "new_nodes": 29,
+  "cocotb_xml": 19,
+  "ordinary_xml_clean": 18,
+  "intentional_strict_xml": 1,
+  "formal_proofs": 8,
+  "formal_counterexamples": 16,
+  "child_logs": 495,
+  "one_full_suite_seconds": 8793.2,
+  "coordinator_seconds": 8798.481682,
+  "strict_diagnosis_attempts": 1,
+  "native_suite_attempts": 1,
+  "native_reruns": 0,
+  "original_controller_exit_code": 137,
+  "supervisor_exit_code": 0,
+  "private_driver_failure_preserved": true,
+  "root_data_xml_controls": 12,
+  "feature_native_and_owned_controls": 13,
+  "new_native_owned_controls": 2,
+  "additional_owned_raw_controls": 4,
+  "data_controls_total": 31,
+  "new_native_cases_source_replayed": 31,
+  "new_native_fault_observations": {
+    "RSSI_bus_collision_clocks": 284107,
+    "RSSI_good_activity": [
+      4,
+      1,
+      54
+    ],
+    "flash_no_erase_dirty_err": [
+      1,
+      0,
+      16,
+      0,
+      1,
+      257
+    ],
+    "flash_no_wp_blocked_err": [
+      0,
+      0,
+      0,
+      4,
+      1,
+      3
+    ],
+    "flash_no_wait_programs": 5,
+    "scan_main_firstwindow_highest_ignorelock_channels": [
+      22,
+      10,
+      41,
+      0
+    ]
+  },
+  "raw_files": 9699,
+  "raw_bytes": 187248404,
+  "captured_native_calls": 478,
+  "requested_pytest_capture_reports": 757,
+  "nested_runner_fixture_capture_reports": 9,
+  "nested_reports_count_as_suite_outcomes": false,
+  "LOW_source_test_replays": 8,
+  "LOW_actual_cases": 12,
+  "source_runtime_helpers_dependencies_raw_unchanged": true,
+  "bindings": {
+    "ROOT_ACCEPTANCE.json": "90b84ecdc241a4f485cb058b2323b8865cb30ea0d21f97df448091c2d18b86c3",
+    "RAW_REVIEW_V2.json": "388799945a1ae049001f026b98e0fccac145c3f74b66073d84cdadf5af430dd2",
+    "RESULT.json": "e6e346c177c887709992d82902b86164df51ec491439829f9b186fd557c5a861",
+    "SOURCE_CONTRACT.json": "d88762a0fa6e9861a5fb51edcba993c98d11cafff91b7cb3b18becd8cdfebfb3",
+    "LAUNCH_CONTRACT.json": "904a73901997b9c616721140ee20bf33c35f5c0bea43b243ee23ae792eeaa82e",
+    "ROOT_REVIEW_CONTRACT.json": "fcfe5a54cc81813c1cc4a24a62ca848e7ddffca525f88a0b0b1f2ddbbf5a409c",
+    "RAW_REVIEW_CONTRACT_V2.json": "b0478d6f11505ea18fbc6c38271dc5dccfa7d44e8b237155c0daf714aa14a2a4",
+    "FIRST_DRIVER_PHASE_FAILURE.json": "2dbc39d67d2bbbb6f62e106adbcadef283f58e83d738e4600f7e183adb1e5ba6",
+    "ORIGINAL_DRIVER_RESULT.json": "b6dbd54aca8ed1b0d4303869eee1078d31c2ec352ac02f8b28f18aa8ba77e01b",
+    "CONTINUATION_COMPLETION_REVIEW.json": "3fa5dd744cd769cbe279c20b6a5406c4d0e35a251fff6882e5da4ea28c376047",
+    "CONTINUATION_ROOT_REVIEW_V2.json": "59e4c0c6a00046c48d23d725621d9d20d7b46f8a9a6637cfe778594b0798eeb1",
+    "CONTINUATION_CONTRACT_RUNTIME_V2.json": "021e0eacd6b8da26e1e72cf48eb6ac521cac2d847bc0d314857b7d181a3717ba",
+    "CONTINUATION_LAUNCH_REVIEW_V2.json": "e0fed6b6558abf20df24247248bdc8755bc7ba0f26395c1e7a75391584d8bc68",
+    "CONTINUATION_RESULT_V2.json": "e6e346c177c887709992d82902b86164df51ec491439829f9b186fd557c5a861",
+    "ROOT_REVIEW.log": "aadba1df91c82f3abb185f526d47d7d502f424812eb02dce0582929778a44218",
+    "RAW_REVIEW_V2.log": "3e2bde5fa0f12d85ff2aaa37c8251f017ae3211b88708b62c32eb66372a3724b",
+    "LAUNCH_NOTES.md.log": "eeb2e17d6f4f079f17d4b5efd8403597175a6c1e5746ea9483c9da686f25b267",
+    "strict_replay.log": "e09cd98dcdeaeb352dd53e179219ea2c5d7b9e37865ef987b5d4cd645fe22cb5"
+  },
+  "limits": [
+    "bf05 native simulation/formal evidence only; no new FPGA route",
+    "RSSI bench uses nominal ADC model and 8000us schedule; no electrical or physical field-rate guarantee",
+    "Flash model uses accelerated SAVE_MS50 and simplified timing/WP; no USB, physical flash programming or power-cut guarantee",
+    "No Puck pin update, combined options native scenario, old mixed260 campaign or hardware acceptance"
+  ],
+  "hardware_verified": false,
+  "route_builds": 0,
+  "private_final_review_sha256": "9cd1ddafe5914960f2343770352422e38bec47bb13f32c83c54b499fb4b788f8",
+  "root_acceptance_sha256": "90b84ecdc241a4f485cb058b2323b8865cb30ea0d21f97df448091c2d18b86c3",
+  "raw_review_sha256": "388799945a1ae049001f026b98e0fccac145c3f74b66073d84cdadf5af430dd2",
+  "feature_summary": {
+    "vinterp": {
+      "lines": 324,
+      "weights": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "different_words": 311
+    },
+    "vinterp_off_lines": 324,
+    "vblend_vectors": 6849,
+    "hdmi": {
+      "video_pixels": 1600,
+      "islands": 4,
+      "both_vics": true
+    },
+    "vsync_to_picture_lines": {
+      "0": [
+        10,
+        10,
+        11,
+        12,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "1": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    }
+  },
+  "new_feature_scope": {
+    "RSSI": "28 rounds, calibration/load/absence, 54 conversions and shared TVP/OLED bus; four actual fault variants",
+    "I2C": "one/two-byte reads and first-byte ACK/last-byte NACK, old abort/stretch faults",
+    "weak_mixer": "72 decisions/25920 words per case, warning/no-warning/two actual RTL faults, no omitted lines",
+    "scan": "four worlds including abort and one receiver, second-window/lock/score faults",
+    "flash": "four initial images plus restart and CRC/erase/debounce/WP faults, exact8192byte final images"
+  }
+}

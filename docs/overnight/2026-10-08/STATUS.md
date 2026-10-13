@@ -22,6 +22,14 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
+## Inkommande df512fe: källrevision 2026-10-13
+
+Fryst Core `df512fe`/träd `6dfcf52` ändrar **endast `gateware/sim/FUZZ_2026-10-07.md`** mot accepterad bf05. Alla 207 Git-objekt matchar det nya arkivet; övriga 206 filer är byteidentiska. 73 Python-filer med 927 definitioner har oförändrad AST. RTL, modeller, tester, kampanjverktyg, toppar, stift, SDC och licens är oförändrade. Kampanjkällans 44 inputfiler och de tidigare M0/M4/M6-manifestens 50/51/52 byggindata matchar samma bytes. En statisk Git/AST-körning tog 1,141 s; tre skadade ägda käll-/helper-/kontraktskopior avvisas. Inga projektimporter, tester, modeller, HDL, formella bevis eller byggen kördes.
+
+Den nya rapporten deklarerar 200 skalade och 45 fullgeometriska scenarier: 233 PASS med originalstimulus, tolv fullgeometriska `bench/few_lines`-FAIL och tolv recovery-PASS. Tabellerna innebär 245 frö/geometri-kombinationer med 200 olika numeriska frövärden och 257 slutförda försök; fem avbrutna försök anges separat. Detta är **rapportens uppgifter**, inte rootgranskade råresultat. Original-/recoverykontrakt, parametrar, råfiler och avbrottshistorik behöver granskas separat. Historiska mixed260 blir inte accepterade av denna rapport, och ingen omkörning görs för att ersätta saknad evidens.
+
+Kampanjloggen ligger under `gateware/sim`, som den oförändrade svitköraren tar med i sitt fingerprint. Därför ändras fingerprint från `bbed3d74…` till `35d4e1fa…` trots oförändrad körbar kod. Ingen alias eller återanvändning av gamla svitcacheposter görs för df512. bf05:s native-/byggkvitton står kvar med sin ursprungliga källidentitet. [Revisionskvitto och avgränsning](evidence/upstream-df512-source-audit.json).
+
 ## Simulerings- och byggacceptans 2026-10-13: Core `46a1e4f`
 
 **728 test passerar i 45 filer och 466 seriella processer** på fryst Core `46a1e4f`, med 193 oförändrade Git-indata. En helsvit tog **8 088,052 s**. Root granskade samtliga begärda identiteter, runtime, barnloggar, 19 XML-resultat, åtta formella bevis och sexton verkliga negativa motexempel. 18 XML är rena; den avsiktliga SDRAM-negativen har exakt rätt tRCD-/STRICT-stopp och SimFailure, med native rc0. [Slutkvitto och rådatahashar](evidence/core-46a1-full-suite.json).

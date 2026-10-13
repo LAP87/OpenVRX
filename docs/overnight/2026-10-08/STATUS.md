@@ -20,7 +20,7 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 24 artefakter/manifest har hash och storlek. 24 skador på ägda artefaktkopior och 24 fel i käll-/options-/seed-/frekvens-/IOREG-/VINTERP-/HDMI-/MSPI-/timingmetadata avvisas; giltiga original passerar före och efter. Alla 207 Git-indata, runtime, helpers och beroenden är oförändrade. Git-objekten matchar arkivets och den faktiska källans bytes. Ingen byggomkörning eller ändring av seed, frekvens, fas, stift, SDC eller facit gjordes. [Standardbyggkvitto och kontrollhashar](evidence/core-bf05-default-builds.json).
 
-Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Tidigare optionsbyggen längre ned gäller 46a1; det separata bf05-paketet för VINTERP står nedan. Ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
+Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. De separat accepterade bf05-paketen för VINTERP och HDMI står nedan. Äldre optionsbyggen längre ned gäller 46a1. Ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
 ## VINTERP-byggen på fryst bf05, 2026-10-13
 
@@ -36,6 +36,26 @@ Fyra TMDS-par per bygge matchar åtta hashbundna, skrivskyddade artefakter från
 207 Git-objekt matchar det färska arkivet och faktiska källbytes före och efter körningen; samtliga 5 105 bundna runtime-/helper-/beroende-/referensinputs är oförändrade. Varje fas startades en gång under bygglåset efter ett eget färskt kvotkvitto. Första privata förberedelsehjälpen använde fel rotkatalog och stoppade vid Git-läsningen före arkiv, källa eller bygge. Original och diagnos är bevarade; en separat helper slutförde den ännu inte utförda förberedelsen. Inget bygge eller test kördes om och inga källor, stift, seed, fas, SDC eller facit ändrades.
 
 Acceptansen gäller bf05:s VINTERP-routning och TMDS-/MSPI-byggkontrakt. Ingen ny helsvit, kombinerad HDMI/VINTERP-funktionskörning, Puck-integration eller fysisk flash-/USB-/ADC-/SDRAM-/HDMI-verifiering ingår. [Byggresultat, kontrollorsaker och hashkvitto](evidence/core-bf05-vinterp-builds.json).
+
+## HDMI-byggen på fryst bf05, 2026-10-13
+
+På frysta Core bf05 byggdes M0 seed 0, M4 seed 0 och M6 seed 2 med HDMI=1, VINTERP=0, 75 MHz och källans WAIT=0. IOREG-standarderna var 0/1/1 och MSPI 0/0/1. M0 byggdes färskt i detta paket och användes som referens; alla tolv slutliga klockor passerade 75 MHz. Fyra TMDS-par per M4/M6, åtta jämförelser totalt, matchade M0.
+
+| Bygge | Lägsta rapporterade Fmax | Byggtid (s) | HDMI LUT4/DFF/BSRAM/rPLL | Delta mot accepterat bf05-standardbygge |
+|---|---:|---:|---|---|
+| m0_testpattern seed 0 | 152,09 MHz | 50,033 | 944/397/0/1 | LUT4 +155, DFF +224, BSRAM +0, rPLL +0 |
+| m4_dual_mix seed 0 | 105,22 MHz | 470,290 | 8421/4827/25/2 | LUT4 +176, DFF +304, BSRAM +0, rPLL +0 |
+| m6_puck_proto seed 2 | 106,04 MHz | 1 355,159 | 15694/7678/25/2 | LUT4 +189, DFF +305, BSRAM +0, rPLL +0 |
+
+Root verifierade 207 källindata, 5 096 ursprungliga runtime-/helperbindningar och 50 fortsättningsbindningar. Fortsättningsmängden överlappar den ursprungliga i 13 sökvägar; unionen är 5133 unika sökvägar, så delmängdernas antal ska inte summeras. Källor och runtime/helpers matchade före- och efterhasharna.
+
+De 24 nya artefakterna har hash och storlek. 24 artefaktskador och 24 options-/käll-/timingfel avvisades, totalt 48 kontroller. Den ursprungliga förberedelsemissen `sha(str).open` är bevarad; V2 fortsatte endast med ostartade faser. De två helperluckorna fick sju semantiska och fyra ägarskapskontroller; inga verkliga signaler skickades. Sparade M0/M4-resultat kördes inte om under fortsättningen; den färska M0-referensen byggdes i detta paket och M6 hade ett försök.
+
+Första privata rootgranskningen startades felaktigt med systemets Python och stoppade på saknad Apicula efter att kontrollkopiorna skapats. Originalhelper, kommando, returstatus 1 och logg är bevarade. En separat bunden läsgranskning i den befintliga venv-miljön återläste de 408 sparade kontrollsökvägarna och slutförde rootkvittot. Inga felkopior, byggen, native-prov eller driver-TMDS-körningar gjordes om.
+
+Detta accepterar endast bf05:s HDMI-bygg-, timing-, TMDS- och MSPI-kontrakt. Ingen FPGA-hårdvara, HDMI-skärmkompatibilitet, kombinerad native-svit, fysisk flashning, USB-/ADC-/SDRAM-stifttiming, Puck-integration eller kampanj har verifierats.
+
+[Kontrollhashar och detaljer](evidence/core-bf05-hdmi-builds.json).
 
 ## Core 072dbde: dokument- och källrevision 2026-10-13
 

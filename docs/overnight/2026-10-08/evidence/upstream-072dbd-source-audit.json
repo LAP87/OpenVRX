@@ -1,0 +1,188 @@
+{
+  "state": "PASS_ROOT_SOURCE_AUDIT_REVIEWED",
+  "accepted": true,
+  "revision": "072dbdef3afe53384be19008768661bad20524d6",
+  "tree": "7695d723baa4d5518946bd63600e14994efd2016",
+  "baseline": "df512fe917ae8e1a102c74a49e36cd4b14026e3d",
+  "source_inputs": 207,
+  "changed_paths": [
+    "M\tREADME.md",
+    "M\tgateware/BRINGUP.md",
+    "M\tgateware/README.md"
+  ],
+  "byte_identical_paths": 204,
+  "Python_files": 73,
+  "Python_definitions_unchanged": 927,
+  "all_RTL_models_tests_tools_boards_SDC_pins_formal_build_license_unchanged": true,
+  "difference_from_accepted_bf05": [
+    "README.md",
+    "gateware/BRINGUP.md",
+    "gateware/README.md",
+    "gateware/sim/FUZZ_2026-10-07.md"
+  ],
+  "campaign_source_closure_inputs": 44,
+  "build_source_closure_inputs": [
+    50,
+    51,
+    52
+  ],
+  "fingerprints": {
+    "old": {
+      "sha256": "35d4e1fa9b797dde90b4a5680fea827dcdab76bfc5052877527a2b6d0de22a6e",
+      "files": 202
+    },
+    "new": {
+      "sha256": "c97d5829db39cd60117718fc438f18137e852cb09f1b35c227586709b17e0ec2",
+      "files": 202
+    }
+  },
+  "fingerprint_change_inputs": [
+    "gateware/BRINGUP.md"
+  ],
+  "source_docs_consumer_equality_only": {
+    "state": "READ_ONLY_SOURCE_CLAIMS_REVIEWED_WITH_LIMITS",
+    "same_probe_example": "A sclk 27000064 tog FF hi FF len 1716-1716 ln 14565 fld 060 xe 0000 i2c OK st 000E ri 00",
+    "same_probe_example_bytes": true,
+    "UART_example_bytes_including_CRLF": 85,
+    "SAVE_MS": 3000,
+    "SECTOR0": "0x7fe000",
+    "MIN_SPAN": 400,
+    "flash_load_newest_CRC_and_defaults_source_read": true,
+    "accepted_old_flash_native_worlds_not_newhardware": true,
+    "both_sectors_garbage_unexecuted": true,
+    "physical_flash_USB_retention_powercut_ADC_fieldrate_unknown": true,
+    "newly_quoted_external_revision": "bf2b52916e7b6216ba1cc0b30933827d7735b05d",
+    "external_review_sha256": "68fcc97f57be7e3fa064c13fc9d74f5cb89276fa98dc0821595026a3128d3da8",
+    "reported_other2b67dea757_resume_notrootaccepted": true,
+    "No072native_acceptance": true,
+    "no_exact_resume": true
+  },
+  "static_seconds": 1.3734336330089718,
+  "static_rc": 0,
+  "static_job_launches": 1,
+  "source_archive_Git_blob_identity": true,
+  "launch_bindings": 1137,
+  "runtime_files": 692,
+  "source_runtime_baseline_reference_helpers_dependencies_unchanged": true,
+  "newly_quoted_external_source_review": {
+    "state": "READ_ONLY_PINNED_PRIMARY_SOURCE_COMPARISON",
+    "external_revision": "bf2b52916e7b6216ba1cc0b30933827d7735b05d",
+    "external_files_sha256": {
+      "gowin.cpp": "bc4918dba231310d7ba18e4a75c4e4d64a7ac622b4d919370dc6e6d8ab477421",
+      "spiFlash.cpp": "7d5cfcf1dcf89bcd756cc88219394e3193e952505f327a17c1ed92d09e2a6292"
+    },
+    "primary_URLs": [
+      "https://github.com/trabucayre/openFPGALoader/blob/bf2b52916e7b6216ba1cc0b30933827d7735b05d/src/gowin.cpp",
+      "https://github.com/trabucayre/openFPGALoader/blob/bf2b52916e7b6216ba1cc0b30933827d7735b05d/src/spiFlash.cpp"
+    ],
+    "observed_code": [
+      "GW2A(R)family sets_external_flash=true; nonfsfile usesRawParser; programExtFlash forwardsoffset andlength/8",
+      "single-range erase_and_prog callssectors_erase(base,len), noexplicitbulk erase",
+      "sectors_erase endrounded4KiB ifsubsector_rdy otherwise64KiB, picks4/64KiB commands accordingcapabilityflags"
+    ],
+    "assumed_settings_write_range": {
+      "offset_decimal": 8380416,
+      "offset_hex": "0x7fe000",
+      "size": 8192,
+      "end_hex": "0x800000",
+      "4KiB_region": [
+        "0x7fe000",
+        "0x800000"
+      ],
+      "64KiB_containing_block": [
+        "0x7f0000",
+        "0x800000"
+      ]
+    },
+    "limitations": [
+      "Docsourceversionnotpinned; fetchedcurrentexternalcommit neednotmatchauthorsorinstalledutility",
+      "ActualdeviceJEDEC/capability/flashsize/boardrevision/USB/writingnotobserved",
+      "Parsedflashpayloadbitstreamendnotcomputedhere; do not mapascii.fsbytesizetoactualflashlength",
+      "Multiple-section/full-erase overload/otherflags/options notcoveredbythissingle-rangeclaim",
+      "Physicalretention/protection/powercut/unprogrammedboard notverified"
+    ],
+    "hardware_verified": false,
+    "utility_executed": false,
+    "source_code_integrated": false
+  },
+  "source_contract_sha256": "851af4858a70d7a8b9120f0dfa81d07524a9df0d5fedfc72a73cca08887152a8",
+  "launch_contract_sha256": "4122fe7de7aed51c8718d2c233b943223b7aca01a7ddf92e7c1b4544a0e475a6",
+  "root_contract_sha256": "20af47685e125f40306705c32ef3a741648360ff077e9c73dd5716ac9da3219c",
+  "root_execution_sha256": "4aff097f2716f6cbc03f54047eca21d10b3512a372354b2cdbe41eb4a421999c",
+  "source_claim_review_sha256": "c0edaf310ebc344380957b0357b06bc6629394c7643f63ded6ad9daf70b5dcb5",
+  "campaign_closure_sha256": "1033eb1110be83351bee58d2e88eea3c372f9bfc49e6f1822757c7f3c54a56f9",
+  "build_closure_sha256": "ede16eb1076da17ea4e929c739299eaf40382a56c3fde527ab12ad2a15abf47a",
+  "static_result_sha256": "e2ce05068b6a85c817963ab46dc30e9e7e9f83aaec230588aa8cb461e89b7f78",
+  "root_review_sha256": "850d19cc09d57e600623d9309ef702d5aeb28e73cb1f53dba459f5713be75eb0",
+  "final_root_review_sha256": "7dc22a3dd563a91b5d32254ece394964cfbb756d21a5f296f5c39037e2c3d852",
+  "project_imports": false,
+  "pytest_collection_tests_native_proof_build_model": false,
+  "hardware_verified": false,
+  "candidate072native_or_FPGA_acceptance": false,
+  "old_mixed260_and_n9_campaign_raw_accepted": false,
+  "Puck_gitlink_updated": false,
+  "ESD_ADS1115_reference_gaps_resolved": false,
+  "owned_identity_controls": [
+    {
+      "fault": "source",
+      "sha256": "72b8c70cae620fc2c8f56b432e0016c4dd954c00abc66354477467cef6d192c3",
+      "size": 23046
+    },
+    {
+      "fault": "helper",
+      "sha256": "4ea5df54daf7c190d763a240e2d0b5c92fe59f19d55fb83c01184b9771cb8150",
+      "size": 6350
+    },
+    {
+      "fault": "contract",
+      "sha256": "b988f0fe1941598a4994c05a463d79f633fd897758d22c40f34d373ad763e5a3",
+      "size": 48372
+    }
+  ],
+  "preserved_preparation_errors": [
+    "Wrongguessedrtl/snow_uart.v; actualUARTlogger inrtl/puck_ui.v; originalrgerror/pipeline0saved",
+    "prepare.py falselyexpectedmanifestgit.commit;actualacceptedGitarchive manifests havecommit/dirtynull. Originalhelper/partialcontracts/errorretained, preboundcontinuationonlyfinishedunstarted preparation; no static/test/buildretry."
+  ],
+  "artifact_inventory": {
+    "STATIC_RESULT.json": {
+      "sha256": "e2ce05068b6a85c817963ab46dc30e9e7e9f83aaec230588aa8cb461e89b7f78",
+      "size": 90971
+    },
+    "STATIC_REVIEW.log": {
+      "sha256": "3f0737bcdfb33e138e01498035a4c8d1db056368bfd3145ce0d0fa45d06a33e4",
+      "size": 2235
+    },
+    "ROOT_REVIEW.json": {
+      "sha256": "850d19cc09d57e600623d9309ef702d5aeb28e73cb1f53dba459f5713be75eb0",
+      "size": 7373
+    },
+    "ROOT_REVIEW.log": {
+      "sha256": "e1d6ea24f55ff39a7847bac2b52f30e62c90b6a82c9290e3f6be309eab824d40",
+      "size": 224
+    },
+    "SOURCE_CLAIMS_ROOT_REVIEW.json": {
+      "sha256": "c0edaf310ebc344380957b0357b06bc6629394c7643f63ded6ad9daf70b5dcb5",
+      "size": 848
+    },
+    "CAMPAIGN_SOURCE_CLOSURE.json": {
+      "sha256": "1033eb1110be83351bee58d2e88eea3c372f9bfc49e6f1822757c7f3c54a56f9",
+      "size": 4756
+    },
+    "BUILD_CLOSURE_REVIEW.json": {
+      "sha256": "ede16eb1076da17ea4e929c739299eaf40382a56c3fde527ab12ad2a15abf47a",
+      "size": 17547
+    },
+    "EXTERNAL_REFERENCE_REVIEW.json": {
+      "sha256": "68fcc97f57be7e3fa064c13fc9d74f5cb89276fa98dc0821595026a3128d3da8",
+      "size": 1781
+    },
+    "FIRST_PREPARATORY_MANIFEST_FAILURE.json": {
+      "sha256": "0ad83615748d13d642783dd4dc0bbd01aacc023c63b8c07a595cfe8410c9d1eb",
+      "size": 1471
+    },
+    "PREPARATORY_SEARCH_DIAGNOSTICS.json": {
+      "sha256": "8d0acd4e96560f5a130070f840f12706316752565445edf402f6befdcfa00258",
+      "size": 413
+    }
+  }
+}

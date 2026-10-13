@@ -22,6 +22,20 @@ Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänke
 
 Detta accepterar bf05:s standardroutning och TMDS-/MSPI-byggkontrakt. Fysisk flash-/USB-programmering, strömavbrott, ADC-elektriska egenskaper, SDRAM-stifttiming och HDMI-kompatibilitet är fortfarande omätta. Optionsbyggena längre ned gäller 46a1; ingen Puck-gitlänk eller hårdvara accepterades här. Nyare Core `df512fe` och Puck `aed469b` är observerade på remote, men omfattas inte av bf05-paketet.
 
+## Core 072dbde: dokument- och källrevision 2026-10-13
+
+Fryst Core `072dbde`/träd `7695d72` ändrar **tre Markdown-filer** mot granskad df512: rotens README, `gateware/README.md` och `gateware/BRINGUP.md`. Alla 207 Git-objekt matchar det färska arkivet; 204 filer är byteidentiska. **73 Python-filer med 927 definitioner har oförändrad AST.** RTL, modeller, tester, verktyg, toppar, stift, SDC, formella bevis, byggkod och licens är oförändrade. Mot accepterad bf05 skiljer endast dessa tre dokument och den tidigare kampanjrapporten FUZZ.
+
+Körarens 202 inputfiler ger nu fingerprint **`c97d5829…`**, mot df512:s `35d4e1fa…` och bf05:s `bbed3d74…`. Bara BRINGUP ändras inom körarens urval. Dokumentkonsumenten i `test_probe.py` väljer samma byteidentiska första `A sclk`-exempel; detta är statisk inputjämförelse, ingen ny testkörning. **Ingen fingerprintalias, cacheåteranvändning eller exakt resume gjordes.** Den deklarerade kampanjkällans 44 inputfiler och de accepterade bf05-standardmanifestens 50/51/52 inputfiler matchar 072:s bytes. Det accepterar källidentitet, inte ny native-/FPGA-körning på 072.
+
+Dokumenten skiljer nu bf05:s accepterade standardbyggen från 46a1:s optionsbyggen och övriga rapporterade toppbyggen. De 757 test som uppges för `2b67dea` i tre resume-omgångar är fortsatt rapporterade här; de ersätter inte bf05:s källbundna rootacceptans. Ny SCAN/CAL-/flashtext beskriver framtida bänkprov, inklusive radering/återläsning av inställningssektorerna. Ingen programmerings-, dump- eller raderingsinstruktion kördes.
+
+Den citerade openFPGALoader-koden är läst på exakt revision `bf2b52916e7b6216ba1cc0b30933827d7735b05d`. GW2A(R)-vägen använder extern flash, och enkelområdesfunktionen skickar offset och längd till radering/programmering; slutadressen avrundas enligt sektorkapacitet. Det stöder en villkorad källförklaring. Dokumentet pinnar inte verktygsrevisionen, och installerad version, fysisk JEDEC-identitet, verklig uppladdningslängd samt USB-/strömavbrottsretention är inte verifierade. [Gowin-vägen](https://github.com/trabucayre/openFPGALoader/blob/bf2b52916e7b6216ba1cc0b30933827d7735b05d/src/gowin.cpp), [radering och programmering](https://github.com/trabucayre/openFPGALoader/blob/bf2b52916e7b6216ba1cc0b30933827d7735b05d/src/spiFlash.cpp). Referenskopiorna förblir privata.
+
+En statisk Git/AST-körning tog **1,373 s**. Tre skadade ägda käll-/helper-/kontraktskopior avvisas, med originalbytes identiska före och efter. 692 runtimefiler, baslinjer, referenser och beroenden ingår i 1 137 launchbindningar. Två privata förberedelsediagnoser är bevarade: fel gissat UART-filnamn, samt ett felaktigt antagande att arkivbyggens manifest skulle innehålla Git-commit. Manifestens faktiska `null`-fält behölls; proveniensen kontrollerades via accepterat paket, manifesthash och inputbytes. Ingen statik-, test- eller byggomkörning gjordes.
+
+Inga projektimporter, tester, native-/modell-/bevis-/byggjobb eller installationer ingår. Puck pinnar fortfarande 46a1; kampanjrådata, ESD/ADS1115-luckor och fysisk hårdvara är inte accepterade av denna revision. [Källrevision, fingerprint och kontrollhashar](evidence/upstream-072dbd-source-audit.json).
+
 ## Puck aed469b: ESD-referenser granskade, 2026-10-13
 
 onsemi listar båda exakta delarna ESD9B3.3ST5G/ESD9B5.0ST5G som **Active, bidirektionella, SOD-923**. [ESD9B/D, januari 2023 rev 7](https://www.onsemi.com/pdf/datasheet/esd9b-d.pdf), sidan 2, anger **12,5/15,0 V för 5 V-delen vid 1/2 A med 8/20 µs-puls**. Pucks README kopplar siffrorna till 8 kV ESD; det är fel testvillkor. IEC-ESD redovisas separat i figurerna 1–4.

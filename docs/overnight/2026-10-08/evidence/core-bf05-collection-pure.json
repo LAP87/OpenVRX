@@ -1,0 +1,72 @@
+{
+  "state": "PASS_COLLECTION_AND_SELECTED_PURE",
+  "utc": "2026-10-13T10:40:33.464456+00:00",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "source_inputs": 207,
+  "runtime_inputs": 5005,
+  "collected_unique": 757,
+  "files": 48,
+  "units": 495,
+  "old_exact_retained": 728,
+  "added": 29,
+  "removed": 0,
+  "full_native_pass_claim": false,
+  "pure_passed": 205,
+  "pure_counts": {
+    "gateware/model/test_line_mixer_ref.py": 157,
+    "gateware/sim/test_rssi_adc.py": 1,
+    "gateware/tools/test_build_artifacts.py": 41,
+    "gateware/tools/test_snowlog.py": 6
+  },
+  "original_collection_seconds": 1.3162750549963675,
+  "original_pytest_reported_seconds": 9.98,
+  "original_pure_phase_seconds": 10.367878439021297,
+  "selected_exact_xml_identities": true,
+  "coordinator_rc": 1,
+  "coordinator_error": "Private capture plugin name collided with builtin pytest plugin; no custom reports. Original helper/contracts/logs preserved.",
+  "pure_rc": 0,
+  "saved_output_continuation_rc": 0,
+  "continuation_contract_sha256": "247b247b870f8acacef23de719a543871f723cef7ace87368ffaf1d158d81c04",
+  "negative_controls": [
+    {
+      "fault": "missing_case",
+      "reason": "XML exact identities"
+    },
+    {
+      "fault": "foreign_case",
+      "reason": "XML exact identities"
+    },
+    {
+      "fault": "skipped_case",
+      "reason": "XML non-PASS outcome"
+    },
+    {
+      "fault": "old_missing",
+      "reason": "collection raw identity"
+    },
+    {
+      "fault": "rc",
+      "reason": "execution result"
+    },
+    {
+      "fault": "source",
+      "reason": "source/runtime/helper identity: /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-collection-pure/controls-v2/source.py"
+    }
+  ],
+  "all_original_source_runtime_helpers_raw_fixtures_unchanged": true,
+  "test_reruns": 0,
+  "collection_reruns": 0,
+  "real_native_jobs": 0,
+  "real_fpga_builds": 0,
+  "hardware_verified": false,
+  "production_changed": false,
+  "limits": "Source collection and selected Python/fake-tool fixtures only. V2 binds saved strict JUnit/stdout/rc, not nonexistent custom per-phase captures. New native ADC/scan/flash/mixer/I2C and new MSPI route/pins still require separate fresh gates.",
+  "accepted": true,
+  "acceptance_scope": "Actual757collection and exact205selected pure tests only",
+  "root_review_sha256": "dfc10b77d53475bcd6058c3974bb30f71fa494311e1601e8beae0d5211bcfbe9",
+  "original_failure_sha256": "2540489cbc5729a303e91bbd93c4a18a18564dc443532078fbf93b3bf3b732de",
+  "original_diagnosis_sha256": "d3929b8679e14762106097a28502afbcc769649fef56b086b4ada87466e84bca",
+  "private_package_sha256": "6479b9acf1a4445ef96497f7f800151d82a57773aa4c2960ada2c9050be1338a",
+  "publication_pending": false
+}

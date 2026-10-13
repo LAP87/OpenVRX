@@ -262,3 +262,5 @@ Avvikelser och misstag under passet:
 - Första versionen av flashlagringen kostade 16 992 LUT4 i M6 (en flagga per post); efter rättningen 15 505.
 - Flashens stift och kommandon kommer från Sipeeds schema och openFPGALoaders källkod, inte från XTX:s datablad, som inte gick att läsa.
 - Puck pekar på Core `46a1e4f` (uppdaterad av en annan session); RSSI-delen i Core (3bb863b och senare) är inte inpekad i Puck.
+
+Fables kontroll 2026-10-13: hela sviten på Core `main` bf05ac0 körd på egen maskin med en process per simtest, tio åt gången: 757 av 757 gröna, 26 minuter. Puck `main` b8a3348 (andra ESD-klampen, ägarens beslut A) har 3 gröna test och rent ERC. Nästa omgång: [NATTPASS_2026-10-13.md](NATTPASS_2026-10-13.md).

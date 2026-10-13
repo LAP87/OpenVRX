@@ -80,7 +80,8 @@ gateware/build.sh m6_puck_proto
   noise from picture content needs measurement on a real signal. The mixer
   does not use the noise count. The
   line also ends with a lost-lock flag per decoder. `tools/snowlog.py`
-  reads the 62-byte line with a T/V token and the legacy 60-/57-/43-byte forms.
+  reads the 85-byte line with the RSSI fields (2026-10-13), the 62-byte line with a
+  T/V token and the legacy 60-/57-/43-byte forms.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.

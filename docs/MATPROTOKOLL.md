@@ -2,7 +2,7 @@
 
 Ett blad per mätning i tabellen "Mätningar när kortet finns" i [ARBETSPLAN_2026-10-05.md](ARBETSPLAN_2026-10-05.md), plus de mätpunkter som tillkommit sedan ([ARBETSPLAN_2026-10-12.md](ARBETSPLAN_2026-10-12.md), "Kräver kortet"): TV mot VCR, låsflaggan, genlockens klipp, jämförelse mot en färdig mottagare och glasögon. Material: [MATERIAL_UPPSTART.md](MATERIAL_UPPSTART.md). Koppling och felsökning: Core `gateware/BRINGUP.md`.
 
-Skrivet 2026-10-12 ur Core `main` 3d4ed8f. Inget här är mätt än; bladen fylls i på bänken och resultatet läggs i `docs/bench/` med datum.
+Skrivet 2026-10-12 ur Core `main` 3d4ed8f; blad 17–19 tillagda 2026-10-13 ur Core `main` bf05ac0. Inget här är mätt än; bladen fylls i på bänken och resultatet läggs i `docs/bench/` med datum.
 
 ## Gemensamt för alla blad
 
@@ -15,7 +15,7 @@ gateware/build.sh <topp>
 
 **Anteckna alltid:** datum, Tang-kortets revision (3923 krävs), toppmodul, Core-commit och manifestets SHA-256, seed, kamera och sändare (NTSC/PAL, kanal), skärm (modell, firmware), avstånd och antenner.
 
-**Mätloggen (M6)** läses med `tools/snowlog.py`, en etikett per villkor. CSV-kolumner: `time, label, snow_a, snow_b, noise_a, noise_b, use_a, use_b, use_mix, channel, mhz, mode, filter, dropped, lost_a, lost_b`. `--summary` ger medianen per etikett. Ändra en sak i taget och jämför bara körningar med samma kamerabild: snövärdet beror också på bildinnehållet.
+**Mätloggen (M6)** läses med `tools/snowlog.py`, en etikett per villkor. CSV-kolumner: `time, label, snow_a, snow_b, noise_a, noise_b, use_a, use_b, use_mix, channel, mhz, mode, filter, dropped, lost_a, lost_b, rssi_a, rssi_b, rssi_pct_a, rssi_pct_b, rssi_state_a, rssi_state_b` (RSSI sedan 2026-10-13; äldre CSV-filer får inga nya rader, skriv till en ny fil). `--summary` ger medianen per etikett. Ändra en sak i taget och jämför bara körningar med samma kamerabild: snövärdet beror också på bildinnehållet.
 
 ```bash
 python gateware/tools/snowlog.py /dev/ttyUSB1 --label <villkor> --seconds 30 --out <fil>.csv
@@ -189,8 +189,39 @@ Femstegsplanen i [research/GOGGLES_OCH_XR_2026-10-12.md](../research/GOGGLES_OCH
 |---|---|---|---|
 | 1. EDID | läs EDID med en PC (`/sys/class/drm/card*-*/edid`, `edid-decode -c -n -p`; i Windows CRU eller Monitor Asset Manager) | rådumpen i `docs/bench/edid/<enhet>.txt` med firmwareversion; nativ och föredragen tidtagning; för glasögon om adaptern visar egen EDID | vad enheten annonserar |
 | 2. PC-prov | lägg in proven P1–P7 från PC:n (CRU eller `xrandr --newmode/--addmode`): P1 720p60, P2 sann 59,94, P3 1650×751, P4 1650×757, P5 720p50, P6 1080p60, P7 1080p50 | per prov: bild, OSD-text, skalning, färgfel, tid till bild | enhetens egna gränser, skilda från FPGA:ns |
-| 3. FPGA-matris | proven F1–F6 med dagens bygge: BUF med NTSC och PAL, LOW med NTSC och PAL, LOW utan insignal, LOW med fashopp, byten BUF↔LOW och NTSC↔PAL. F7–F9 kräver testbyggen (F8 är arbetsplanens uppgift 11, F9 uppgift 10) | bild, OSD-text, svarta avbrott per tio minuter, tid till bild efter inkoppling och efter varje byte, lodrätt bildhopp, stabilitet 30 min | vilka av källans tidtagningar enheten tar |
+| 3. FPGA-matris | proven F1–F6 med dagens bygge: BUF med NTSC och PAL, LOW med NTSC och PAL, LOW utan insignal, LOW med fashopp, byten BUF↔LOW och NTSC↔PAL. F7–F9 kräver testbyggen (F8 är arbetsplanens uppgift 11 och kräver en större `LOW`-ring först, se Core README "Den varierande raden"; F9 är uppgift 10) | bild, OSD-text, svarta avbrott per tio minuter, tid till bild efter inkoppling och efter varje byte, lodrätt bildhopp, stabilitet 30 min | vilka av källans tidtagningar enheten tar |
 | 4. Bildprov | M0-testbilden; när den finns, gråramp 0–255 med stegen 0, 4, 8, 16, 235, 245, 255 och ett rutnät med 1 pixels linjer | omfångsfel (krossad svärta, klippt vitt), skalning av 720p på 1080p-paneler, 4:3-fönstrets andel av panelen; PAL i BUF: ryck vid panorering | färgomfånget (avgör uppgift 10, AVI-infoframe) |
 | 5. Latens | som "Gemensamt", först referens (analog skärm direkt), sedan varje enhet i BUF och LOW; glasögon filmas genom okularet; bryggan isoleras med en HDMI-delare och två `--screen`-rutor | median och standardavvikelse per enhet och läge | om LOW:s vinst överlever enhetens egen buffring |
 
 Godkänt per enhet: P1 och F1 ger bild; övrigt är kartläggning. XR-glasögon väntas inte ta 720p (rapportens regel 6); ett nej där är ett resultat, inte ett fel i pucken.
+
+## 17. RSSI: ADS1115 på rev A-kortet, kalibrering och varning
+
+| | |
+|---|---|
+| Uppställning | rev A-kortet med ADS1115 (Puck `design/rev_a`), båda mottagarna med RSSI-stift på kontaktens stift 4, en sändare på fast kanal; först utan, sedan med sändaren |
+| Bitström | `m6_puck_proto` |
+| Före | mät varje mottagares RSSI-spänning med multimeter på testpunkten, sändaren av och sändaren intill: ligger den inom 0–3,3 V? Annars ska ADC:ns mätområde eller kopplingen ändras innan kortet används |
+| Logga | RSSI-sidan och `snowlog.py` (`rssi_a`, `rssi_b`): rå kod mot multimeterns spänning på tre nivåer (kod × 125 µV); kalibrering via `CAL` med sändaren nära och långt bort; sedan en mottagare skärmad eller med antennen av: `rssi_state` ska bli `W` för den och mixern ska visa den andra (`use_a`/`use_b`) |
+| Godkänt | koden följer spänningen inom någon procent; båda mottagarna får `OK` efter kalibrering; varningen kommer innan bilden från den svaga mottagaren blir snöig |
+| Stänger | om RSSI-tröskeln (20 %, 3 avläsningar) och spannet (400 koder) passar riktiga mottagare, och om varningen hjälper mixern (arbetsplanen 2026-10-12, uppgift 13–14) |
+
+## 18. SCAN: kanalskanning utan RSSI
+
+| | |
+|---|---|
+| Uppställning | en sändare på en kanal som inte är F4, en andra sändare på en annan kanal om det finns, mottagarna på bänken |
+| Bitström | `m6_puck_proto` |
+| Logga | starta `SCAN` (huvudsidan, sjunde fältet); tid till klar, vald kanal; upprepa tre gånger; avbryt en skanning halvvägs med OK och kontrollera att startkanalen står kvar |
+| Godkänt | skanningen hittar sändarens kanal, på 5–8 s; med två sändare den med minst brus; utan sändare `NONE` och startkanalen kvar |
+| Stänger | om två brusfönster per kanal räcker, eller om grannkanaler (5 MHz isär hos en del band) lurar den (arbetsplanen 2026-10-12, uppgift 15) |
+
+## 19. Sparade inställningar i kortets flash
+
+| | |
+|---|---|
+| Uppställning | Tang Nano 20K med `m6_puck_proto` i flash |
+| Bitström | `m6_puck_proto` (byggd med `--mspi_as_gpio`, se manifestets `mspi`) |
+| Logga | ändra band, kanal, mixläge, latensläge och filter, vänta 5 s, bryt strömmen, slå på: står allt kvar? Gör om efter en RSSI-kalibrering. Programmera sedan om flashen över USB med samma bitström och kontrollera om inställningarna finns kvar |
+| Godkänt | inställningarna finns kvar efter strömavbrott; USB-programmeringen fungerar som förut (en konstruktion som höll WP# högt hela tiden störde den) |
+| Stänger | om skrivning till flashen fungerar på kortet och om programmering över USB raderar inställningarna (README under M6, "Sparade inställningar") |

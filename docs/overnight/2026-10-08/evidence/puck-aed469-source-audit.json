@@ -1,0 +1,351 @@
+{
+  "state": "PASS_LIMITED_SOURCE_STATIC_ROOT_REVIEWED",
+  "accepted": true,
+  "revision": "aed469b079737feefeaf469dceafc3a29eb7b36e",
+  "tree": "68e15684968c96c6b17175ee044fdca05e3fd54b",
+  "base_revision": "82444fabd580648c38eb9b2d6c00926b8bd553a3",
+  "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+  "core_tree": "66a34f2e192610ad57d53dd4cb5bf17cd13e4262",
+  "puck_inputs": 14,
+  "core_inputs": 193,
+  "source_inputs": 207,
+  "baseline_inputs": 206,
+  "runtime_files": 4162,
+  "tests_passed": 3,
+  "pytest_reported_seconds": 2.44,
+  "requested_tests": [
+    "tests/test_dekoderkort.py::test_schema_gateware_contract_and_negative_controls",
+    "tests/test_dekoderkort.py::test_all_supported_tops_check_decoder_and_board_pin_maps",
+    "tests/test_dekoderkort.py::test_rssi_adc_and_negative_controls"
+  ],
+  "saved_counts": {
+    "parts": 126,
+    "nets": 86,
+    "report_pins": 347
+  },
+  "existing_pin_negative_assertions": 22,
+  "RSSI_negative_assertions": 6,
+  "normalized_saved_output_faults": [
+    {
+      "fault": "RSSI_connection",
+      "reason": "nets differs from instantiated source"
+    },
+    {
+      "fault": "ADC_supply",
+      "reason": "nets differs from instantiated source"
+    },
+    {
+      "fault": "BOM_value",
+      "reason": "bom differs from instantiated source"
+    },
+    {
+      "fault": "missing_component",
+      "reason": "components differs from instantiated source"
+    },
+    {
+      "fault": "ESD_divider_connection",
+      "reason": "nets differs from instantiated source"
+    },
+    {
+      "fault": "ESD_BOM_value",
+      "reason": "bom differs from instantiated source"
+    }
+  ],
+  "ESD_symbol_topology": {
+    "D1": {
+      "part": [
+        "ESD",
+        "ESD9B5.0ST5G",
+        "Diode_SMD:D_SOD-923"
+      ],
+      "pins": {
+        "1": [
+          "K",
+          "CVBS_A"
+        ],
+        "2": [
+          "A",
+          "GND"
+        ]
+      }
+    },
+    "D2": {
+      "part": [
+        "ESD",
+        "ESD9B3.3ST5G",
+        "Diode_SMD:D_SOD-923"
+      ],
+      "pins": {
+        "1": [
+          "K",
+          "CVBS_DIV_A"
+        ],
+        "2": [
+          "A",
+          "GND"
+        ]
+      }
+    },
+    "D3": {
+      "part": [
+        "ESD",
+        "ESD9B5.0ST5G",
+        "Diode_SMD:D_SOD-923"
+      ],
+      "pins": {
+        "1": [
+          "K",
+          "CVBS_B"
+        ],
+        "2": [
+          "A",
+          "GND"
+        ]
+      }
+    },
+    "D4": {
+      "part": [
+        "ESD",
+        "ESD9B3.3ST5G",
+        "Diode_SMD:D_SOD-923"
+      ],
+      "pins": {
+        "1": [
+          "K",
+          "CVBS_DIV_B"
+        ],
+        "2": [
+          "A",
+          "GND"
+        ]
+      }
+    }
+  },
+  "unchanged_schema_functions": [
+    "two_pin",
+    "R",
+    "C",
+    "FB",
+    "tvp5150am1",
+    "ads1115",
+    "ldo_ap7361c_sot223",
+    "ldo_ap2112k",
+    "header_1x20",
+    "conn",
+    "power_net",
+    "check_against_gateware",
+    "rssi_checks",
+    "design_checks",
+    "write_reports",
+    "main"
+  ],
+  "changed_schema_functions": [
+    "build"
+  ],
+  "unchanged_tests": [
+    "test_all_supported_tops_check_decoder_and_board_pin_maps",
+    "test_rssi_adc_and_negative_controls"
+  ],
+  "source_archive_Git_object_identity_before_after": true,
+  "baseline_source_runtime_helpers_originals_unchanged": true,
+  "single_execution_no_retries": true,
+  "native_build_ERC_output_regeneration_installation": false,
+  "documentation_all_claims_accepted": false,
+  "electrical_ESD_protection_verified": false,
+  "lifecycle_verified": false,
+  "KiCad_import_footprint_mechanics_layout_verified": false,
+  "hardware_verified": false,
+  "Core_RSSI_reader_at_Puck_pin": false,
+  "source_contract_sha256": "addf6058e0e1976ec4653dd630a64a508f7adeca5b4bb5bd7d6f90d156937063",
+  "launch_contract_sha256": "fc65c0477a3569fb0db5a7e8065ac09e595c21bed73217706416e0b263910871",
+  "root_contract_sha256": "1c948e08f3aff62dc710e395d004faef3bf050a35162896c5a1930c09c0277ab",
+  "root_acceptance_sha256": "e0e6a1f558843e311079de8814af52d477899a047ce4a55860c479f1f34be177",
+  "final_root_review_sha256": "ba30c67ec53900de16a43935111bc3df7755e10e538ee38aa69d4e1f48561e39",
+  "claims_inventory_sha256": "e3210e9168502aaf52a7d5e5c7aeac54251523b183adbc35b193d0e4106896c0",
+  "identity_faults": [
+    "source_byte",
+    "helper_byte",
+    "core_pin",
+    "metadata_tree"
+  ],
+  "actual_doc_gap": {
+    "file": "design/rev_a/LIFECYCLE.md",
+    "lines": [
+      11,
+      12
+    ],
+    "document": "5V D1/D2 and3.3V D3/D4",
+    "actual_source_and_saved_BOM": "5V D1/D3 and3.3V D2/D4",
+    "fixed": false
+  },
+  "limits": [
+    "ESD pulse/voltage/energy/AAF/protection/capacitance/video claims not manufacturer-reference or hardware verified",
+    "Mechanical/header/stack/impedance/thermal/ground/layout/footprint claims not verified",
+    "Puck Corepin46a1 has noRSSIreader; READMEfieldrate/calibration claims exceed pin",
+    "EarlierADS1115typical6MOhm/load/samefield/5V input gaps remain",
+    "KiCad symbol-library and footprint-table warnings preserved; no ERC/import/export/regeneration/install",
+    "Three private preparation diagnostics preserved: accidental clean wrong-HEAD worktree removed beforetests, wrongworkspaceancestor diagnosedbeforecontracts, nonrepoGitcwd diagnosed"
+  ],
+  "artifact_inventory": {
+    "RESULT.json": {
+      "sha256": "cfecf4bc9d02ce975f6a56efa84d020eca19baac68e3e3af52bbb111c5896357",
+      "size": 1427
+    },
+    "RUNNER.log": {
+      "sha256": "33adb0f24ce6b1191f2e85ded7ddefab87ad2e21f075dcef2840214eaf9b81b0",
+      "size": 1227
+    },
+    "pytest.log": {
+      "sha256": "6a4d2cabb797b86ff157eba0deaf5101ba848fbc1707ba69346af18242f31d19",
+      "size": 98
+    },
+    "saved_outputs.log": {
+      "sha256": "4e8a2c907688167ab5d88071ec5db1579969794b9b8d90c7f753ac0fd6c957f9",
+      "size": 4865
+    },
+    "puck-tests.xml": {
+      "sha256": "fddd8814f80bd8c0392969c26ae909ac295254f02e02bf97387f38789acb43f9",
+      "size": 592
+    },
+    "SAVED_OUTPUT_REVIEW.json": {
+      "sha256": "aec58c0fb58fb82f6601acf0df3556dec127d83e3de0655e9f7bdf08f93d5c6c",
+      "size": 2601
+    },
+    "FIRST_SOURCE_DOCUMENT_GAP.json": {
+      "sha256": "a530d32b897580acde86fd6ef70f38d5a2ab988e1537a7737502b70274c5ad97",
+      "size": 236
+    },
+    "CLAIM_INVENTORY.json": {
+      "sha256": "e3210e9168502aaf52a7d5e5c7aeac54251523b183adbc35b193d0e4106896c0",
+      "size": 1407
+    },
+    "saved-output-controls/valid.json": {
+      "sha256": "ffb84651e1de9a745a529319bfee1e0b48bcef3c088e17927586924793abb9f6",
+      "size": 56151
+    },
+    "saved-output-controls/RSSI_connection.json": {
+      "sha256": "ba55f54915bc37e884fd549306015a079687ea5cbf9cf7d90e62da41be053cbc",
+      "size": 56151
+    },
+    "saved-output-controls/ADC_supply.json": {
+      "sha256": "c73910becf8ad2364ae5378e40123ec5e1f4a6e55703da51918ac3892f08bad9",
+      "size": 56151
+    },
+    "saved-output-controls/BOM_value.json": {
+      "sha256": "185f888c742ef0aecd5c89f2e9f5238bffced099afdc3a59e1c81ebb14cda63d",
+      "size": 56148
+    },
+    "saved-output-controls/missing_component.json": {
+      "sha256": "18f73f5c4197aad4bcaa4230dd26dba077192cf2d8fd2428a51c6395a3d46985",
+      "size": 56052
+    },
+    "saved-output-controls/ESD_divider_connection.json": {
+      "sha256": "babd6e91f78ed137ae647b9a258c93acb903038c911c5671bcecb918bd5a33e2",
+      "size": 56151
+    },
+    "saved-output-controls/ESD_BOM_value.json": {
+      "sha256": "057cffe312b4d980fa7380b260077672cea7e976c43cc1e5bd711cdaafce0f7c",
+      "size": 56148
+    },
+    "saved-output-controls/source_byte.bin": {
+      "sha256": "d6aab6f702b837dd626cb5211fb8d43e49ccb235f51281fb42de0de9fd7015f4",
+      "size": 36734
+    },
+    "saved-output-controls/helper_byte.bin": {
+      "sha256": "298be573afa63a29565aba4e34edd4bbe24349d610c4790d3b3da7cbd3330dfb",
+      "size": 7020
+    },
+    "saved-output-controls/core_pin.json": {
+      "sha256": "e90c5924bc09e81384bb571523ff39b981e061cf707fc2bd8de1943482320e9a",
+      "size": 312
+    },
+    "saved-output-controls/metadata_tree.json": {
+      "sha256": "caa3e447882014e562172d6fc6318249073080b8fca45fdf30fe55213e7ec215",
+      "size": 312
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/boards/tangnano20k.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "size": 1527
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/boards/m3_probe.cst": {
+      "sha256": "a699ee910001fb14189ae7cc31290b1e39172fe02c73f9c6c89e4432535ca6a9",
+      "size": 3811
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/boards/m4_dual_mix.cst": {
+      "sha256": "6f395cb005ee0ce11e211dcf663818f8bed74ccf6035e5324fc8890cd66afc69",
+      "size": 8710
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/boards/m6_puck_proto.cst": {
+      "sha256": "af85b32aa65553f62560af24a9ffb29fb28a70e4aaaa9b73edb2ae9d26519037",
+      "size": 9342
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/top/m3_probe.v": {
+      "sha256": "be366d40b77a4a34b31ed0ce956c41a7bac9fd6790b1cca33daa72b99a207863",
+      "size": 11741
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/top/m4_dual_mix.v": {
+      "sha256": "f5daa79f6495701d78b3827b9c1beca8e9884f93290d4c64213c9529e6c0db5c",
+      "size": 6843
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/top/m6_puck_proto.v": {
+      "sha256": "04926a9cb07e7e4f92042b68a34526b90f840ddb5a088f16cfad7c0b1cbe8a39",
+      "size": 10260
+    },
+    "pytest-fixtures/test_schema_gateware_contract_0/gateware/tools/__pycache__/board_contract.cpython-312.pyc": {
+      "sha256": "40eff0d0df04e57ae77187b2e51a1078a8df9c33c41c4be81390e1537402a965",
+      "size": 4294
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/boards/tangnano20k.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "size": 1527
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/boards/m3_probe.cst": {
+      "sha256": "a699ee910001fb14189ae7cc31290b1e39172fe02c73f9c6c89e4432535ca6a9",
+      "size": 3811
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/boards/m4_dual_mix.cst": {
+      "sha256": "06c77cd37e04647917cdf25dd0387538f8d28dc999e3fcb872e46418f00a3462",
+      "size": 8710
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/boards/m6_puck_proto.cst": {
+      "sha256": "af85b32aa65553f62560af24a9ffb29fb28a70e4aaaa9b73edb2ae9d26519037",
+      "size": 9342
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/top/m3_probe.v": {
+      "sha256": "be366d40b77a4a34b31ed0ce956c41a7bac9fd6790b1cca33daa72b99a207863",
+      "size": 11741
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/top/m4_dual_mix.v": {
+      "sha256": "f5daa79f6495701d78b3827b9c1beca8e9884f93290d4c64213c9529e6c0db5c",
+      "size": 6843
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/top/m6_puck_proto.v": {
+      "sha256": "04926a9cb07e7e4f92042b68a34526b90f840ddb5a088f16cfad7c0b1cbe8a39",
+      "size": 10260
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/tools/board_contract.py": {
+      "sha256": "a1008e82fa209d9475f8123bd76e748c2d2a7195863951378e23d4747921d060",
+      "size": 2885
+    },
+    "pytest-fixtures/test_all_supported_tops_check_0/gateware/tools/__pycache__/board_contract.cpython-312.pyc": {
+      "sha256": "ad883f270725dc41bac6edb04a7e8f3a4230379e70db918980f1abb0eb1eda1d",
+      "size": 4294
+    },
+    "source/__init__.log": {
+      "sha256": "599193ac78dc6ebdc51b09b0e81c5b532bedf1a628487aa1b2b65e831e8372d7",
+      "size": 3068
+    },
+    "source/audit_saved.log": {
+      "sha256": "599193ac78dc6ebdc51b09b0e81c5b532bedf1a628487aa1b2b65e831e8372d7",
+      "size": 3068
+    },
+    "source/__init__.erc": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "source/audit_saved.erc": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    }
+  }
+}

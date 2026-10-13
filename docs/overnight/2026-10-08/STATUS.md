@@ -2,7 +2,7 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
-## Aktuell simuleringsacceptans 2026-10-13: Core `46a1e4f`
+## Aktuell simulerings- och byggacceptans 2026-10-13: Core `46a1e4f`
 
 **728 test passerar i 45 filer och 466 seriella processer** på fryst Core `46a1e4f`, med 193 oförändrade Git-indata. En helsvit tog **8 088,052 s**. Root granskade samtliga begärda identiteter, runtime, barnloggar, 19 XML-resultat, åtta formella bevis och sexton verkliga negativa motexempel. 18 XML är rena; den avsiktliga SDRAM-negativen har exakt rätt tRCD-/STRICT-stopp och SimFailure, med native rc0. [Slutkvitto och rådatahashar](evidence/core-46a1-full-suite.json).
 
@@ -10,7 +10,9 @@ VINTERP-facitet kontrollerar 324 rader med sju vikter och 311 verkligt olika bil
 
 29 resultat-/XML-/bildord-/fas-/metadata-/diagnostikkontroller avvisas. 9 160 rå-/diagnostik-/logg-/XML-filer har hash och storlek. Passiv diagnostik fångade 424 native-anrop och 728 begärda pytest-rapporter. Första privata rågrinden räknade även nio interna CLI-fixturrapporter som svitutfall och föll; helper, kontrakt och fellogg är bevarade. Den korrigerade privata grinden binder dessa nio separat till deras källbestämda 4+1+4-identiteter. Ingen svit, HDL eller diagnostisk native kördes om och ingen produktionsregel ändrades.
 
-691 äldre testidentiteter är exakt kvar; fyra LOW-funktioner ersätts av åtta parameterfall. Ingen gammal cache återanvändes. Detta accepterar endast fryst `46a1e4f` i simulation/formella kontroller. Färska FPGA-byggen för standard- och optionslägen samt Puck-länken återstår. Standard VINTERP=0, HDMI=0 och WAIT_BEFORE_VSYNC=0 gäller fortsatt; full 720p före vsync får ingen ny ringkapacitetsacceptans. SDRAM-stifttiming, HDMI-kompatibilitet och FPGA-hårdvara är omätta. Äldre 0503-byggacceptans och historiska kampanj-FAIL behåller sina egna källor.
+Färska standardbyggen på samma källa är nu rootaccepterade: **M0 seed 0, M4 seed 0 och M6 seed 2**, 75 MHz, IOREG **0/1/1**, VINTERP=0 och HDMI=0. Alla tolv berörda klockor passerar kravet. M4:s lägsta maxfrekvens är **110,10 MHz**, M6:s **104,08 MHz**. Fyra TMDS-par i vardera M4/M6 matchar det färska M0-bygget. 24 byggartefakter/manifest har hash och storlek; 24 verkliga skador på ägda artefaktkopior och 21 fel i källa/options/timingmetadata avvisas av samma facit. Byggena tog 48,125/456,287/790,393 s, följda av TMDS-kontrollen. Inga omkörningar eller käll-/seed-/stift-/SDC-ändringar gjordes. [Byggkvitto](evidence/core-46a1-default-builds.json).
+
+691 äldre testidentiteter är exakt kvar; fyra LOW-funktioner ersätts av åtta parameterfall. Ingen gammal cache återanvändes. Acceptansen gäller fryst `46a1e4f` i simulation/formella kontroller och standardbyggena ovan. Optionsbyggen för VINTERP/HDMI samt Puck-länken återstår. Standard VINTERP=0, HDMI=0 och WAIT_BEFORE_VSYNC=0 gäller fortsatt; full 720p före vsync får ingen ny ringkapacitetsacceptans. SDRAM-stifttiming, HDMI-kompatibilitet och FPGA-hårdvara är omätta. Äldre 0503-byggacceptans och historiska kampanj-FAIL behåller sina egna källor.
 
 ## Tidigare simulerings- och byggacceptans 2026-10-13: Core `0503dac`
 

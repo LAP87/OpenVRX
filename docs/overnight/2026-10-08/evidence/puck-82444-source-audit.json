@@ -1,0 +1,126 @@
+{
+  "state": "PASS_SOURCE_STATIC_ROOT_REVIEWED",
+  "reviewed_utc": "2026-10-13T07:32:54.357400+00:00",
+  "revision": "82444fabd580648c38eb9b2d6c00926b8bd553a3",
+  "tree": "9b0bc6cf5275f6e214201c6d0f32d81bccf4df98",
+  "base_revision": "67280460992d006939eda0b45d1099d875b94d5f",
+  "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+  "puck_inputs": 13,
+  "core_inputs": 193,
+  "runtime_files": 415,
+  "tests_passed": 3,
+  "pytest_reported_seconds": 2.84,
+  "requested_tests": [
+    "tests/test_dekoderkort.py::test_schema_gateware_contract_and_negative_controls",
+    "tests/test_dekoderkort.py::test_all_supported_tops_check_decoder_and_board_pin_maps",
+    "tests/test_dekoderkort.py::test_rssi_adc_and_negative_controls"
+  ],
+  "parts": 124,
+  "nets": 86,
+  "report_pins": 343,
+  "old_pin_negative_assertions_executed": 22,
+  "new_RSSI_negative_assertions_executed": 6,
+  "owned_normalized_output_negatives": [
+    {
+      "fault": "RSSI_connection",
+      "reason": "nets differs from instantiated source"
+    },
+    {
+      "fault": "ADC_supply",
+      "reason": "nets differs from instantiated source"
+    },
+    {
+      "fault": "BOM_value",
+      "reason": "bom differs from instantiated source"
+    },
+    {
+      "fault": "missing_component",
+      "reason": "components differs from instantiated source"
+    }
+  ],
+  "unchanged_old_schema_functions": [
+    "C",
+    "FB",
+    "R",
+    "check_against_gateware",
+    "conn",
+    "header_1x20",
+    "ldo_ap2112k",
+    "ldo_ap7361c_sot223",
+    "main",
+    "power_net",
+    "tvp5150am1",
+    "two_pin",
+    "write_reports"
+  ],
+  "changed_old_schema_functions": [
+    "build",
+    "design_checks"
+  ],
+  "added_functions": [
+    "ads1115",
+    "rssi_checks"
+  ],
+  "saved_outputs_match_instantiated_source": true,
+  "outputs_regenerated": false,
+  "Git_object_archive_bytes_verified": true,
+  "source_runtime_helpers_unchanged": true,
+  "inventory": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/pytest.log": {
+      "sha256": "d3892eaac4dcd21a083b74709ab4ae079461a50c0fe23477938e216f4708e565",
+      "size": 98
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved_outputs.log": {
+      "sha256": "b45c273f511bcf4055383f6e60cab1e883e06956b1ed12bd6f6d8b26ff9e2fe8",
+      "size": 3577
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/puck-tests.xml": {
+      "sha256": "1a84d662873c719ba9998bcc08e6f854aa377f2fe01da5594a96945e5ac7104f",
+      "size": 592
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/RESULT.json": {
+      "sha256": "1743f253384ed9d25ee2b77f5abb6bd723e25b375944b9c0e059efffebc98d8d",
+      "size": 1272
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/SAVED_OUTPUT_REVIEW.json": {
+      "sha256": "f333a22d391d56db4236233588dcbafe8c7c5ea4cb727d43067eb519322c0c41",
+      "size": 629
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/RUNNER.log": {
+      "sha256": "545faa4ce79f41eef462b11476fd65da11c547431e82e79e531c5d743e8d21e6",
+      "size": 1080
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved-output-controls/ADC_supply.json": {
+      "sha256": "42163e5e2d59cee3315b34c7430594db8ae127dc6f57fb67bf0a981c5cab4511",
+      "size": 55461
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved-output-controls/BOM_value.json": {
+      "sha256": "1fd9c81a4be17fe9d4e810175fa08190dda29199191b5c6adf9eafcc99bbaf18",
+      "size": 55458
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved-output-controls/RSSI_connection.json": {
+      "sha256": "d7942b8a2dd90266c124c17be3886794c1db5f6bc1f38dc7e2fae896a489d892",
+      "size": 55461
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved-output-controls/missing_component.json": {
+      "sha256": "de2e82aef3c9d17e3bd06f54c46bab83b8f19f79c68fbc5f4b4ecffa8fb84630",
+      "size": 55362
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-source-audit/saved-output-controls/valid.json": {
+      "sha256": "d5ef5e42b107df30d2aaa6ee17db7c5dd68aea27ec18fdf5f0cb68fc2d379ffa",
+      "size": 55461
+    }
+  },
+  "source_contract_sha256": "6c0599977c8f453ca7d8acf5cff135bb4842608856ce3e5037140ff333127df5",
+  "launch_contract_sha256": "1c096236c7b2176be252827927997d00362efcfcc7d540ae633257a4cc4c17bc",
+  "root_contract_sha256": "6417809d00fede10119daa6204af87e945b48514069bae3530a27df267d644aa",
+  "result_sha256": "1743f253384ed9d25ee2b77f5abb6bd723e25b375944b9c0e059efffebc98d8d",
+  "dependency_sha256": "b7776b9832186a6a4e623d46e9abe9497adb57402ff4f1e1043826d9812f5a2c",
+  "native_or_build_run": false,
+  "electrical_datasheet_claims_verified": false,
+  "lifecycle_verified": false,
+  "hardware_verified": false,
+  "KiCad_import_or_footprint_fit_verified": false,
+  "warnings": "Existing KiCad library/footprint-table absence recorded; comparison checks symbolic values/connectivity only.",
+  "root_acceptance_sha256": "77bfb3cc9b17714a917fdb525446c1095892574c5ce531c783ba56b8b671326e"
+}

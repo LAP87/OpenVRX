@@ -1,0 +1,19 @@
+{
+  "state": "STOPPED_REVIEWER_CREDIT_ERROR_NOT_ACCEPTED",
+  "closed_utc": "2026-10-13T10:17:35.424424+00:00",
+  "task": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/PUCK_RSSI_CLAIM_COUNCIL_TASK.md",
+  "puck_revision": "82444fabd580648c38eb9b2d6c00926b8bd553a3",
+  "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+  "bound_input_count": 214,
+  "accepted": false,
+  "council_threshold_met": false,
+  "received_votes": 0,
+  "expected_votes": 4,
+  "root_review_sha256": "8c7226e9c612ea68943d9e634bd7d6bb9e9267727c4d73e2f960a4d5cd26d363",
+  "failure_sha256": "8e0c567a30b5df56cd88b1fa28d8243261d538eff103b3c1ae7c5eda77c5f679",
+  "production_changed": false,
+  "do_not_automatically_retry": true,
+  "publication_pending": false,
+  "private_package_sha256": "c1402d41f0a1e3dd06a9cc5bc7af365afaab561e5e52f696f6f32f1b66692850",
+  "publication_scope": "Only failure status and original bound-source council attempt; no fix, no vote acceptance, no new Core acceptance."
+}

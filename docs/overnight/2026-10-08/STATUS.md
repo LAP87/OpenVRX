@@ -2,7 +2,17 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
-## Aktuell simulerings- och byggacceptans 2026-10-13: Core `46a1e4f`
+## Aktuell nativeacceptans 2026-10-13: Core `bf05ac0`
+
+**757 test passerar i 48 filer och 495 seriella processer**, på fryst Core `bf05ac0`/träd `49923a6`. En helsvit tog **8 793,2 s**; alla 728 tidigare exakta testidentiteter finns kvar och 29 tillkommer. Root verifierade 207 Git-objekt mot det färska arkivet, 5 063 runtime-inputs, barnloggar och rådata. 18 av 19 cocotb XML är rena; den avsiktliga SDRAM-negativen har rätt SimFailure, tRCD vid 200739456 ps och STRICT-stopp, med samma originalseed, tid, fil och rad. Åtta formella bevis och sexton verkliga motexempel är granskade.
+
+De nya fallen för RSSI, tvåbytes-I2C, mixerhälsa, scan och flash har återlästs mot oförändrade källfacit i **31 verkliga nativefall**, med compilerargument, stimulus och RTL-felkopior bundna. RSSI ger 28 modellriktiga rundor och noll busskollisioner; felkopian som ignorerar de andra mastrarna ger 284 107 kollisionsklockor. Mixern byter före bildskadan utan att utelämna rader; scan väljer kanal 22 och felvarianterna 10/41/0; flashens CRC, sektorbyte, sekvensomslag, debounce och återstart matchar modellen. VINTERP/HDMI/LOW-faciten är också återlästa. **31 data-/XML-/bild-/fas-/metadatakontroller avvisas**. 9 699 rå-/diagnostik-/logg-/XML-filer har hash och storlek; 478 native-anrop och 757 begärda pytest-rapporter är bundna. Nio interna CLI-fixturrapporter räknas separat och ingår aldrig i svitens PASS-tal.
+
+Den ursprungliga privata koordinatorn skrev över fasvariabeln med ett filnamn. Felet upptäcktes när 28 processer passerat; originalhelper, kontrakt, resultat och den felnamngivna svitloggen är bevarade. Originalkoordinatorn frystes, och en separat hashbunden övervakare följde samma redan körande svit. Efter svitens slut avslutades den frysta koordinatorn med rc137; övervakaren körde endast den ännu inte startade strictdiagnosen och avslutades med rc0. **Sviten startades en gång; inga test eller nativefall kördes om för att rätta helperfelet.** [Slutkvitto, avgränsning och kontrollhashar](evidence/core-bf05-full-suite.json).
+
+Detta accepterar bf05:s källbundna simuleringar och formella bevis. RSSI-bänken använder en nominell ADC-modell och 8 ms schemaperiod; flashbänken använder accelererad 50 ms debounce. Verklig RSSI-spänning, fälttakt, flash-/USB-programmering och strömavbrott är inte mätta. **FPGA-byggen på bf05, med de nya M6-flashportarna, återstår som separat grind.** Byggena nedan gäller fortsatt 46a1, och ingen Puck-gitlänk eller hårdvara accepterades i detta paket.
+
+## Simulerings- och byggacceptans 2026-10-13: Core `46a1e4f`
 
 **728 test passerar i 45 filer och 466 seriella processer** på fryst Core `46a1e4f`, med 193 oförändrade Git-indata. En helsvit tog **8 088,052 s**. Root granskade samtliga begärda identiteter, runtime, barnloggar, 19 XML-resultat, åtta formella bevis och sexton verkliga negativa motexempel. 18 XML är rena; den avsiktliga SDRAM-negativen har exakt rätt tRCD-/STRICT-stopp och SimFailure, med native rc0. [Slutkvitto och rådatahashar](evidence/core-46a1-full-suite.json).
 

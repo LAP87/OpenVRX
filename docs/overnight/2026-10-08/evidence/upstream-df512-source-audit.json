@@ -1,0 +1,109 @@
+{
+  "state": "PASS_ROOT_REVIEWED_SOURCE_IDENTITY_AUDIT",
+  "utc": "2026-10-13T15:43:36.199029+00:00",
+  "revision": "df512fe917ae8e1a102c74a49e36cd4b14026e3d",
+  "tree": "6dfcf52e0fa1d298e9509b1e188a638d3914c3b0",
+  "baseline": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "source_inputs": 207,
+  "changed_paths": [
+    "M\tgateware/sim/FUZZ_2026-10-07.md"
+  ],
+  "byte_identical_paths": 206,
+  "Python_files": 73,
+  "Python_definitions_unchanged": 927,
+  "RTL_models_tests_tools_boards_formal_build_license_unchanged": true,
+  "actual_campaign_snapshot_inputs": 44,
+  "all44_campaign_source_bytes_match_bf05": true,
+  "accepted_bf05_build_source_closure_static_identity": {
+    "m0_testpattern": {
+      "input_files": 50,
+      "all_input_bytes_match": true,
+      "manifest_sha256": "0f9443c7e0d4ee9b4872bdafaefe256e103091ddb148761207d1aea69103f04c"
+    },
+    "m4_dual_mix": {
+      "input_files": 51,
+      "all_input_bytes_match": true,
+      "manifest_sha256": "17f205849a4eb033d9dd7ec8e27d00b88bb1319af5d778728b81dc0ff899f795"
+    },
+    "m6_puck_proto": {
+      "input_files": 52,
+      "all_input_bytes_match": true,
+      "manifest_sha256": "90d5f76842eed1852014d95a4d8046c90b75e09378281933089df519a4f493ec"
+    }
+  },
+  "fingerprints": {
+    "old": {
+      "sha256": "bbed3d740d688d70d56283d02b38d8375c7f647b389929a0b594bc26f597123b",
+      "files": 202
+    },
+    "new": {
+      "sha256": "35d4e1fa9b797dde90b4a5680fea827dcdab76bfc5052877527a2b6d0de22a6e",
+      "files": 202
+    }
+  },
+  "fingerprint_difference_cause": "Only FUZZ_2026-10-07.md changes, inside gateware/sim included by unchanged source runner fingerprint. Exact resume on changed fingerprint must not be aliased.",
+  "reported_campaign_only": {
+    "scenarios_by_seed_geometry": 245,
+    "unique_numeric_seed_values": 200,
+    "original_pass_claimed": 233,
+    "original_fail_few_lines_claimed": 12,
+    "recovery_pass_claimed": 12,
+    "completed_attempts_implied_by_tables": 257,
+    "stopped_attempts_claimed": 5,
+    "source_claimed": "bf05ac0",
+    "raw_outputs_or_manifest_reviewed": false,
+    "campaign_accepted": false,
+    "historical_mixed260_accepted": false
+  },
+  "source_and_runtime907_launch_bindings_unchanged": true,
+  "git_blob_archive207_verified": true,
+  "static_job_seconds": 1.1407393400149886,
+  "static_pid": 3899254,
+  "static_session": 66908,
+  "static_exit_code": 0,
+  "owned_identity_controls": [
+    {
+      "fault": "source",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/source.md",
+      "reason": "identity mismatch: /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/source.md",
+      "sha256": "9643430a527e04ce258a8f771cde46eb8cb510ccad08032f9ed3a6d5836f04db",
+      "size": 28362
+    },
+    {
+      "fault": "helper",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/helper.py",
+      "reason": "identity mismatch: /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/helper.py",
+      "sha256": "ba3bdf05bdba7bda5fad3eb6ce99f5239c0ba052aa5d396dd4ff97e2f0a588e8",
+      "size": 6347
+    },
+    {
+      "fault": "contract",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/contract.json",
+      "reason": "identity mismatch: /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-df512-source-audit/controls/contract.json",
+      "sha256": "f6928e6bf8e1963b21937e89037f62b74973eccf5eb0999f1ee7dfebf0a8a2cc",
+      "size": 48127
+    }
+  ],
+  "project_imports": false,
+  "pytest_collection": false,
+  "native_proof_build_model_execution": false,
+  "hardware_verified": false,
+  "prep_search_path_errors_saved": true,
+  "bindings": {
+    "STATIC_RESULT.json": "1dd66f4c20c2a0154b3449e45e43f1ce034cffe74a526cca970ea0bc0d018763",
+    "STATIC.log": "1b099b414be054bd8306a407bf1f751c15f7ef56a2f9c31a1db0b6514897e4b5",
+    "SOURCE_CONTRACT.json": "6b4359f8d40a7c21516fc9becc40bfe683b2f028d7f92f279f37f75fe039739c",
+    "LAUNCH_CONTRACT.json": "719942a95e68ecc3c8d15cdfce8fa5b5762c6b52217008164c68df21f3e20613",
+    "ROOT_REVIEW_CONTRACT.json": "26604ba7a588197dc95095fb6cc433fd1fffc57df6889e3b8d059a3d1ccf4590",
+    "LAUNCH_REVIEW.json": "8b6dd115d0f7eed7cc1cca8cb59b6c542104d9699ee8c52127621902aa512ed6",
+    "TASK_SELECTION.json": "06e14f1b3f127801c3b98b0b0da46b3bcbe6f739afdb145d5b872a164150f348",
+    "PREPARATORY_SEARCH_DIAGNOSTICS.json": "f84521f71c5dda2d9861ffd91482c9259c43b1b368d82ed9ba4f6b671528937d"
+  },
+  "limits": [
+    "Document/source identity audit only; bf05 native/build acceptance remains separately source-bound",
+    "Reported245 campaign requires original/recovery manifests/source/argv/seed/geometry/density/field/recovery/timeout/raw output audit and originals after interrupted attempts",
+    "Do not rerun campaigns to replace missing evidence; old mixed260 source/raw gaps remain",
+    "No production fix or fingerprint/cache alias; no hardware or Puck acceptance"
+  ],
+  "private_root_review_sha256": "20db03585f79b6cc79572adbb89aaf88e6e035de307d5e0b6b5687bed7d174ff"
+}

@@ -1,0 +1,472 @@
+{
+  "state": "PASS_SOURCE_BOUND_HDMI_BUILDS_ROOT_REVIEWED",
+  "revision": "46a1e4f284605a9521f592faff33068986e92d25",
+  "tree": "66a34f2e192610ad57d53dd4cb5bf17cd13e4262",
+  "reviewed_utc": "2026-10-13T06:42:18.716920+00:00",
+  "source_inputs": 193,
+  "git_object_archive_bytes_verified": true,
+  "matrix": [
+    {
+      "top": "m0_testpattern",
+      "prefix": "m0_testpattern_hdmi",
+      "seed": 0,
+      "ioreg": 0
+    },
+    {
+      "top": "m4_dual_mix",
+      "prefix": "m4_dual_mix_hdmi",
+      "seed": 0,
+      "ioreg": 1
+    },
+    {
+      "top": "m6_puck_proto",
+      "prefix": "m6_puck_proto_hdmi",
+      "seed": 2,
+      "ioreg": 1
+    }
+  ],
+  "options": {
+    "freq_mhz": "75",
+    "vinterp": "0",
+    "hdmi": "1",
+    "pull": "",
+    "sdram_phase": ""
+  },
+  "builds": {
+    "m0_testpattern": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 125.82,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 336.25,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "205375f8b884a741209b80ea1ff7ae4249db57dec5b4ba0a6a1d3bab2264042b"
+    },
+    "m4_dual_mix": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 112.21,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 186.85,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 265.39,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 248.82,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 101.53,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "bb208d06dd46202ae7a7aa7b8f641c71b10d63188b148ea3972a9518fc77c56c"
+    },
+    "m6_puck_proto": {
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "0"
+      },
+      "timing": {
+        "clk_pixel": {
+          "max_mhz": 126.66,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 133.73,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 254.0,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.b_clk": {
+          "max_mhz": 306.65,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 117.3,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "manifest_sha256": "4247e55add9238dc11ba55994231a9c200dcc9b065eee5578855306537a463f5"
+    }
+  },
+  "fresh_builds": 3,
+  "fresh_artifacts": 24,
+  "actual_owned_artifact_negatives": 24,
+  "metadata_negatives": 21,
+  "negative_controls": 45,
+  "TMDS_pair_comparisons": 8,
+  "phase_history": [
+    {
+      "phase": "m0_testpattern",
+      "command": [
+        "bash",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "m0_testpattern"
+      ],
+      "rc": 0,
+      "seconds": 52.034,
+      "log_sha256": "6b11319be2bb26512d90f9f23dc2aa37b8168b2dd3739875b43020114180f6ad"
+    },
+    {
+      "phase": "m4_dual_mix",
+      "command": [
+        "bash",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "m4_dual_mix"
+      ],
+      "rc": 0,
+      "seconds": 492.234,
+      "log_sha256": "a73e77b90caba552a7f00454b4c74d0cc0f0e48e6ebec5f3cef8daeb4ae45ea5"
+    },
+    {
+      "phase": "m6_puck_proto",
+      "command": [
+        "bash",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "m6_puck_proto"
+      ],
+      "rc": 0,
+      "seconds": 898.463,
+      "log_sha256": "cbad3d948bd16ff487386eae855a57c6b6a7e5aee080f38afac05384653e1fe7"
+    },
+    {
+      "phase": "tmds",
+      "command": [
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/.venv/bin/python",
+        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/tools/tmds_fuses.py",
+        "m0_testpattern_hdmi",
+        "m4_dual_mix_hdmi",
+        "m6_puck_proto_hdmi"
+      ],
+      "rc": 0,
+      "seconds": 4.003,
+      "log_sha256": "2620dee3758763774f9432b85da4d81a6a455eb0f15dee012a7ddf9cc4293960"
+    }
+  ],
+  "resource_comparison": {
+    "m0_testpattern": {
+      "default": {
+        "LUT4": 788,
+        "DFF": 173,
+        "BSRAM": 0,
+        "rPLL": 1
+      },
+      "HDMI": {
+        "LUT4": 948,
+        "DFF": 397,
+        "BSRAM": 0,
+        "rPLL": 1
+      },
+      "delta": {
+        "LUT4": 160,
+        "DFF": 224,
+        "BSRAM": 0,
+        "rPLL": 0
+      },
+      "default_pnr_sha256": "2a836d569d5872093aca9c7a1345da11fb630e3269674f904b0d3f82b9269422",
+      "hdmi_pnr_sha256": "2a44d912e398d3ac983df1de60e1271e30ebaf576da5fb53950cdcc3c6ebf060"
+    },
+    "m4_dual_mix": {
+      "default": {
+        "LUT4": 8283,
+        "DFF": 4523,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "HDMI": {
+        "LUT4": 8416,
+        "DFF": 4827,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "delta": {
+        "LUT4": 133,
+        "DFF": 304,
+        "BSRAM": 0,
+        "rPLL": 0
+      },
+      "default_pnr_sha256": "6c7e850a77d180236a64eb4c9a24948f43f186f2d1064aebdc6c0074b84d8d41",
+      "hdmi_pnr_sha256": "0e08aa0ec91c3aad6f8ee1666c118ddaff57ccc9e5de0a7d0106f0947c0a0daa"
+    },
+    "m6_puck_proto": {
+      "default": {
+        "LUT4": 12827,
+        "DFF": 6209,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "HDMI": {
+        "LUT4": 12944,
+        "DFF": 6514,
+        "BSRAM": 25,
+        "rPLL": 2
+      },
+      "delta": {
+        "LUT4": 117,
+        "DFF": 305,
+        "BSRAM": 0,
+        "rPLL": 0
+      },
+      "default_pnr_sha256": "8ed654be9b04857fc43dea6b05b6e95e4145362517de6028156d6996aa2d33ee",
+      "hdmi_pnr_sha256": "967eaa765202dee69f0f795ed0950bad097f5de14d88d6e14781007676ed9163"
+    }
+  },
+  "source_runtime_helpers_unchanged": true,
+  "root_acceptance_sha256": "2d96d22c9bc4e194d59cb9e21a3fd49596455631518948f32c5ca3f50221413f",
+  "source_contract_sha256": "cb182445c553dbf132b3f5618031c9c503b92f5249e8295c1c784b7ce71b1ae9",
+  "launch_contract_sha256": "a03c8b78d4525b0b9c3ca12d337facf9699956ff3463a5591819dffa5e7c9837",
+  "root_contract_sha256": "62accff485cd18de9d848dd94b9cafdd1f5d2b124a65170a3b0e5a749f9c82ee",
+  "dependency_sha256": "2f2dc20be5d80686f15bb5f1717af6e257b733c2f69161d8621261fd5264cb1c",
+  "result_sha256": "25afe6f66322441f60f9f4b8a89af12b14f2741d31c097621aeaa01832e610d0",
+  "hardware_verified": false,
+  "combined_vinterp_hdmi_route_accepted": false,
+  "default_changed": false,
+  "native_suite_repeated": false,
+  "final_root_review_sha256": "dbcf65474182ae0380fb5bb89e3df544b24c93864117f7f2d3ecb86bd6df931c",
+  "inventory": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.build.json": {
+      "sha256": "205375f8b884a741209b80ea1ff7ae4249db57dec5b4ba0a6a1d3bab2264042b",
+      "size": 6241
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "size": 1527
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.fs": {
+      "sha256": "e9ad5310bdcae5f2a2cbbf1b3ca82d5484d9513f76b6078666ce41058d745eda",
+      "size": 899758
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.json": {
+      "sha256": "4c5c97e76b1357ddb5d8a60f1835b2042e31e385e685c51ed337c310000d44d1",
+      "size": 2573746
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.log": {
+      "sha256": "2a44d912e398d3ac983df1de60e1271e30ebaf576da5fb53950cdcc3c6ebf060",
+      "size": 17164
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.stat.txt": {
+      "sha256": "4ab8c349fd8d1469e17617467842ee2a24eb390cada88ecaf824ec3dde6ddb8d",
+      "size": 631
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.synth.json": {
+      "sha256": "98ca40130fa327dcaa8c3a9f71e33ee307b38524a96985f8347b9b3dbb5938ff",
+      "size": 2447138
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.yosys.log": {
+      "sha256": "a03d23939d5bfc9980bbfa85c1b6c8d5014aa4acc864d0fb8ba6dac010824898",
+      "size": 385742
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.build.json": {
+      "sha256": "bb208d06dd46202ae7a7aa7b8f641c71b10d63188b148ea3972a9518fc77c56c",
+      "size": 6615
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.cst": {
+      "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
+      "size": 10237
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.fs": {
+      "sha256": "0474becb05fadb3352f703d8173b9ec3c58020362049fbdde368aa4c8d31439c",
+      "size": 7261470
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.json": {
+      "sha256": "15cbf400b48e4228722e96e94b7bac58ba8e55dbc3d0cf5b31bf76a336b8ceba",
+      "size": 19797618
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.log": {
+      "sha256": "0e08aa0ec91c3aad6f8ee1666c118ddaff57ccc9e5de0a7d0106f0947c0a0daa",
+      "size": 107038
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.stat.txt": {
+      "sha256": "c32777bb832a9637408a6afae9d9c51e66c7ba5485bcb2644944923a8fc5d2f5",
+      "size": 805
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.synth.json": {
+      "sha256": "87f7cbfc76794f7f009ff52793e4fcab38c772d45ebf6cd8f3bdb633c89784f9",
+      "size": 12367053
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.yosys.log": {
+      "sha256": "6390e2b58cd1a09cdc8c4973b5c2018a03a314f1b89f5e8432a5d2cd74af5ad0",
+      "size": 1836861
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.build.json": {
+      "sha256": "4247e55add9238dc11ba55994231a9c200dcc9b065eee5578855306537a463f5",
+      "size": 6745
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.cst": {
+      "sha256": "cafb83fc08e9cfdccbf08ac68d835c78fb2286b9a184d7cd608b740c01026219",
+      "size": 10869
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.fs": {
+      "sha256": "2c9baa1b2a0ae7350ff6f842d7e2eb3ea2a9c36f479b44d914c415f00c087550",
+      "size": 7261470
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.json": {
+      "sha256": "0e08c5aac7882b44b99900af49befbdfbeba95f5c536a5d362db24a6bb0853fc",
+      "size": 30653763
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.log": {
+      "sha256": "967eaa765202dee69f0f795ed0950bad097f5de14d88d6e14781007676ed9163",
+      "size": 73172
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.stat.txt": {
+      "sha256": "0f4f77a69efe9ef6f19359c948c755210a9187a0b9c5924ba1bdfa28b62227f3",
+      "size": 829
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.synth.json": {
+      "sha256": "a267ef022201ae219ea9877c16c4f1eb8ab213a3b5cf24fe59362573b8d3b3e5",
+      "size": 19367706
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.yosys.log": {
+      "sha256": "6755dbe292e76d8593d7dcf177063c80613f894151be600cfc2d4c3dd3d06dfc",
+      "size": 3278179
+    }
+  },
+  "TMDS_pairs": [
+    [
+      [
+        54,
+        23
+      ],
+      [
+        "tmds_clk_n_OBUF_O",
+        "tmds_clk_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix_hdmi": [
+          [],
+          []
+        ],
+        "m6_puck_proto_hdmi": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        29
+      ],
+      [
+        "tmds_d_n_OBUF_O_2",
+        "tmds_d_p_OBUF_O_2"
+      ],
+      18,
+      {
+        "m4_dual_mix_hdmi": [
+          [],
+          []
+        ],
+        "m6_puck_proto_hdmi": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        33
+      ],
+      [
+        "tmds_d_n_OBUF_O_1",
+        "tmds_d_p_OBUF_O_1"
+      ],
+      18,
+      {
+        "m4_dual_mix_hdmi": [
+          [],
+          []
+        ],
+        "m6_puck_proto_hdmi": [
+          [],
+          []
+        ]
+      }
+    ],
+    [
+      [
+        54,
+        39
+      ],
+      [
+        "tmds_d_n_OBUF_O",
+        "tmds_d_p_OBUF_O"
+      ],
+      18,
+      {
+        "m4_dual_mix_hdmi": [
+          [],
+          []
+        ],
+        "m6_puck_proto_hdmi": [
+          [],
+          []
+        ]
+      }
+    ]
+  ]
+}

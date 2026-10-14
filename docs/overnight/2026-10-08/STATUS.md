@@ -2,6 +2,16 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## bf05 — kombinerad BUF-bild till HDMI-symboler, 2026-10-14
+
+**Första kombinerade native-fallet passerar på fryst bf05/tree49923: VINTERP=1 från riktig framebuffer till riktig tmds_link med HDMI=1.** Nio kompletta skalade BUF-bildramar ger324 aktiva rader,414720 oberoende modellberäknade RGB-pixlar och exakt414720 avkodade pixlar samt9 AVI-öar/VIC4.11205 olika förväntade RGB-värden och sju interpolationsvikter;311 rader har olika källord. Den observerade DUT-RGB-utgången användes inte som upstream-facit. Originalets Store/src_lines/vblend, YCbCr-kontroller och HDMI/TMDS-avkodare/predikat är bevarade; den privata adaptern beräknar källord, bitexakt RGB och pipelinekoppling.
+
+Ett positivt förstgångsförsök och åtta egna verkliga RTL-negativer kördes separat: vikt0, utebliven andrahämtning, omkastade vikter, fel avrundning, fel VIC, checksumma, paritet och borttagen guardband. Alla felkopior avvisades av rätt originalmodell-/marginal-/HDMI-felorsak.18 compiler-/simulatoranrop avslutades rc0 utan timeout, SIGTERM/KILL eller omförsök;702,554s sammanlagd native-väggtid. Dessa är egna fristående kvitton, inte ytterligare begärda pytestutfall i den historiska757-sviten.
+
+Root och slutgranskningen verifierade207 Gitobjekt-/arkiv-/källinputs,5296 oförändrade käll-/runtime-/helper-/beroendebindningar samt154 root-/167 finalbindningar.133 native-/kontrollfiler,425338019byte, har SHA och storlek. Sju faktiska rå-/metadatafel avvisades med giltiga original före/efter: en RGB-pixel, TMDS-symbol, ramkoppling, node, options och för stora combined-/hardware-påståenden. Slutgranskningen återläste samma kopior; root35,222s/final32,298s. Inga originaljobb/helperomstarter, producerändringar, installationer, nya FPGA-byggen eller licens-/stift-/SDC-/IOREG-/default-/facitändringar.
+
+Acceptansen gäller **skalad BUF,36/40rader,1650pixelklockor/rad,T_P13,4ns/T_S15,4ns,LL0/BOB1/RT_EN0/WAIT0 och F hållen1**. SDRAM-modellens förkortade power-up/5MHz-konfiguration är explicit accelererad. Ingen OSER10/TLVDS-serialisering ingår. LOW/PAL/NTSC-övergångar, bredare BT.656/mixerkedja, M6-kombinationsroutning och fysisk HDMI/ADC/RSSI/ESD/SDRAM/USBflash/powercut/hårdvara accepteras inte här. M6:s tidigare placeringsstopp kvarstår. [Källbundet scenario, samtliga negativa orsaker och slutkvitto](evidence/core-bf05-combined-native-scenario.json).
+
 ## bf05 — native-täckning för VINTERP och HDMI tillsammans, 2026-10-14
 
 **De granskade accepterade fallen binder VINTERP och HDMI separat.** Framebuffer-bänken kör VINTERP=1 utan sändare; HDMI-bänken matar tmds_link direkt med ett RGB-mönster utan framebuffer. Tre befintliga M4/M6-pinbänkar innehåller båda modulerna, men deras verkliga kompilerade parametrar är VINTERP=0/HDMI=0 och deras assertions gäller RESETB/LED/RX SPI, inte avkodad bild.

@@ -1,0 +1,270 @@
+{
+  "state": "FINAL_PUCK_BF05_INTEGRATION_ACCEPTANCE",
+  "utc": "2026-10-14T07:10:19.779402+00:00",
+  "accepted": true,
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "scope": "Puck coregitlink +root README Pinned Core accepted revision/result status only",
+  "puck_main": "f210a10842f1e8caa73baf1bd7b9b2ca08b94c74",
+  "puck_tree": "3c5c1f206fa35acd06ab5715455a8f8dbe067e68",
+  "tested_candidate": "a963e3cb5956748170d834d627e03848a78be6c0",
+  "source_test_facts": {
+    "candidate_commit": "a963e3cb5956748170d834d627e03848a78be6c0",
+    "candidate_tree": "3c5c1f206fa35acd06ab5715455a8f8dbe067e68",
+    "core_pin": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+    "core_tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+    "source_inputs": 221,
+    "requested": [
+      "tests/test_dekoderkort.py::test_schema_gateware_contract_and_negative_controls",
+      "tests/test_dekoderkort.py::test_all_supported_tops_check_decoder_and_board_pin_maps",
+      "tests/test_dekoderkort.py::test_rssi_adc_and_negative_controls"
+    ],
+    "cases": [
+      {
+        "name": "test_schema_gateware_contract_and_negative_controls",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.859
+      },
+      {
+        "name": "test_all_supported_tops_check_decoder_and_board_pin_maps",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.783
+      },
+      {
+        "name": "test_rssi_adc_and_negative_controls",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.728
+      }
+    ],
+    "tests_passed": 3,
+    "pytest_seconds": 3.21,
+    "driver_seconds": 4.271250560006592,
+    "signals_sent": [],
+    "pin_negative_assertions": 22,
+    "RSSI_negative_assertions": 6,
+    "circuit_parts_tested": 126,
+    "actual_Puck_main_pin_updated": false,
+    "root_README_Pinned_Core_status_updated": true,
+    "outside_Pinned_Core_unchanged": true,
+    "council_scoped_files_unchanged": true,
+    "combined_accepted": false,
+    "hardware_verified": false
+  },
+  "controls": [
+    {
+      "fault": "core_pin",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/core_pin.json",
+      "identity": {
+        "sha256": "42b70539ff5ecc92252b2908d5fbd2b582e004c0f6811c5d6c889b611864aa3e",
+        "size": 1425
+      }
+    },
+    {
+      "fault": "candidate_commit",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/candidate_commit.json",
+      "identity": {
+        "sha256": "fb6410a7eca24ff27f760e068e46addf1abac44e24c91f4d0a642d22a85807ad",
+        "size": 1425
+      }
+    },
+    {
+      "fault": "false_pass",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/false_pass.json",
+      "identity": {
+        "sha256": "13a3b1c803422e1f498bea375a08124054aba7f7996dc934c05ea7e9c2dd1e34",
+        "size": 1425
+      }
+    },
+    {
+      "fault": "main_promotion",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/main_promotion.json",
+      "identity": {
+        "sha256": "beb5fe56be9f4c00b01f0832e76778ead346540a06a6eb2ae1c6f29743da69a8",
+        "size": 1424
+      }
+    },
+    {
+      "fault": "README_scope",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/README_scope.json",
+      "identity": {
+        "sha256": "766903e568633612c9b5ba5cc5e9b39d4c53e11f0b44108b9bf245129f62636e",
+        "size": 1426
+      }
+    },
+    {
+      "fault": "combined_claim",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/combined_claim.json",
+      "identity": {
+        "sha256": "36c8d32fa25f1adcabc329c15390604be662fc3f37ecbeb72924211ab2872601",
+        "size": 1424
+      }
+    },
+    {
+      "fault": "hardware_claim",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/hardware_claim.json",
+      "identity": {
+        "sha256": "92c73de419dc9007e88a4d15a397ec79bb337a0112f3b566eb20d7bd771a3174",
+        "size": 1424
+      }
+    },
+    {
+      "fault": "XML_missing",
+      "reason": "JUnit requested identities are missing or foreign",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/XML_missing.xml",
+      "identity": {
+        "sha256": "065e76aca04e55dfe987e658fdc70a9d8e85b5829a1bd2c2d7b30da17b6200d7",
+        "size": 435
+      }
+    },
+    {
+      "fault": "XML_skip",
+      "reason": "JUnit case has skipped/failure/error or foreign content",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/XML_skip.xml",
+      "identity": {
+        "sha256": "d17faaffb5ea14e2e08b08bf109a8cc9b3fc413ebffa2d40b700f4fbaab44932",
+        "size": 574
+      }
+    },
+    {
+      "fault": "source_byte",
+      "reason": "candidate source byte identity differs",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-link-bf05/owned-controls/source_byte.bytes",
+      "identity": {
+        "sha256": "38334c75f266371170028cd508a448495e2af50979f641b0eb5fc07183daf6df",
+        "size": 13710
+      },
+      "original_identity": {
+        "sha256": "8241109dc1dc1fc359ecf32257a98068ce52f6cf88fe23e94435501a67688901",
+        "size": 13710
+      }
+    }
+  ],
+  "source_inputs": 221,
+  "launch_bindings": 4029,
+  "root_bindings": 33,
+  "final_bindings": 48,
+  "source_runtime_helpers_raw_beforeafter_unchanged": true,
+  "only_owned_paths": [
+    "core",
+    "README.md Pinned Core block"
+  ],
+  "outside_Pinned_Core_unchanged": true,
+  "council_scoped_files_unchanged": true,
+  "actual_Puck_main_pin_updated": true,
+  "scope_decision": {
+    "sha256": "41eff401fc67fd9ae234a541a967412d369132ac88a404e7b3cb2aceb25a4ebc",
+    "size": 553
+  },
+  "test_package_preintegration": {
+    "sha256": "be05016e9bfa5693a9d7d75aba0c7cde7bd1d2173dc2aa84f060deb6dc243ce9",
+    "size": 6500
+  },
+  "root": {
+    "sha256": "6eb9f376c3be7d008a52b3b76a8a40ef2f5aaf3e21eaf5cc5502c0dc0fa0d64f",
+    "size": 6101
+  },
+  "final": {
+    "sha256": "df2e66e6f47d57237ae47d6e1664d0b2db0fea36f9574e5d73c5e47bcb1af2e6",
+    "size": 445
+  },
+  "merge_review": {
+    "sha256": "6db8a91d1c516fef9d3f93408d0c951a0fd503353122a5148ba1601b681360f8",
+    "size": 2600
+  },
+  "puck_publication": {
+    "sha256": "bc0b73b12958b6251c9175f0380fb8839c3502666d37645984ab649aae46d0a0",
+    "size": 805
+  },
+  "single_final_source_pytest_attempt": true,
+  "combined_build_accepted": false,
+  "hardware_verified": false,
+  "private_evidence": {
+    "PACKAGE_ACCEPTANCE_PREPUBLICATION.json": {
+      "sha256": "070724d1c8c847746a3c8c87f23f4030ab0511314784a9e478f2382946b5012f",
+      "size": 7560
+    },
+    "SCOPE_DECISION.json": {
+      "sha256": "41eff401fc67fd9ae234a541a967412d369132ac88a404e7b3cb2aceb25a4ebc",
+      "size": 553
+    },
+    "TASK_SELECTION.json": {
+      "sha256": "78ddb731dd26cb3d84a8abbdf90bc0e58bc62e1a4a1055ef8c211694a720a14f",
+      "size": 3128
+    },
+    "LAUNCH_CONTRACT.json": {
+      "sha256": "21fa08de820fd34f651e08e14350c17b6b16500d11939178b4b4a9e161e9c75b",
+      "size": 1016407
+    },
+    "ROOT_CONTRACT.json": {
+      "sha256": "29b4063cb0f5f86ef3f54e8dc4a9745b3d72c1a759e57f43404fedcb5e178c00",
+      "size": 8991
+    },
+    "FINAL_CONTRACT.json": {
+      "sha256": "fc82e723fe0b85bfd901941ef2c18d4f5ecc6d45f7cca038ff2e45d22ccf08cf",
+      "size": 12732
+    },
+    "ROOT_ACCEPTANCE.json": {
+      "sha256": "6eb9f376c3be7d008a52b3b76a8a40ef2f5aaf3e21eaf5cc5502c0dc0fa0d64f",
+      "size": 6101
+    },
+    "FINAL_ROOT_REVIEW.json": {
+      "sha256": "df2e66e6f47d57237ae47d6e1664d0b2db0fea36f9574e5d73c5e47bcb1af2e6",
+      "size": 445
+    },
+    "MERGE_ROOT_REVIEW.json": {
+      "sha256": "6db8a91d1c516fef9d3f93408d0c951a0fd503353122a5148ba1601b681360f8",
+      "size": 2600
+    },
+    "PUCK_PUBLICATION.json": {
+      "sha256": "bc0b73b12958b6251c9175f0380fb8839c3502666d37645984ab649aae46d0a0",
+      "size": 805
+    },
+    "TEST_RESULT.json": {
+      "sha256": "fbff02f78a5cedec98127cac7a07de5dbc90eaa653a3015b7ab30a1053fa8f52",
+      "size": 1146
+    },
+    "puck-tests.xml": {
+      "sha256": "659bc6b9fb8338e1e552b95479505a31f360dc2c6c91d8e3b3e313be835d163e",
+      "size": 592
+    },
+    "pytest.log": {
+      "sha256": "4961a3fdcc03c2bb269a246e569f30b67938bd53b23d9b170d09ea3f94221612",
+      "size": 98
+    },
+    "run.py": {
+      "sha256": "b87cccac2bafaabc78d33f8278e4a60f7b7af60234b5fcd58b104dff312b1648",
+      "size": 3489
+    },
+    "accept.py": {
+      "sha256": "d8e39d5e1dad07acf0fbd1e53f6f3e0e4b3be86155b7692beeb15c2713e66dab",
+      "size": 9422
+    }
+  },
+  "merge_root_review": {
+    "utc": "2026-10-14T07:07:15.492514+00:00",
+    "state": "MERGE_ROOT_REVIEWED_BEFORE_MAIN_PUSH",
+    "merge_head": "f210a10842f1e8caa73baf1bd7b9b2ca08b94c74",
+    "merge_tree": "3c5c1f206fa35acd06ab5715455a8f8dbe067e68",
+    "parents": [
+      "aed469b079737feefeaf469dceafc3a29eb7b36e",
+      "a963e3cb5956748170d834d627e03848a78be6c0"
+    ],
+    "tested_tree_identical": true,
+    "all14Puck_blobids_match_tested_source": true,
+    "actual_core_pin": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+    "all_original_bindings_unchanged": true,
+    "incoming_main_ancestry_preserved": true,
+    "other_fetched_branches_preserved": [
+      "docs/rev-a-layout",
+      "vibe/core-pin-072dbde-suite-fixes"
+    ],
+    "other_branches_not_accepted_or_modified": true
+  }
+}

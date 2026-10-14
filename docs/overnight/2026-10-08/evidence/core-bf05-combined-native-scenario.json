@@ -1,0 +1,411 @@
+{
+  "state": "PASS_ROOT_REVIEWED_SCALED_BUF_COMBINED_NATIVE",
+  "accepted": true,
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "scope": "first-time scaled BUF framebuffer VINTERP1 to actual HDMI1 symbols/VIC4; no serializer primitives",
+  "scenario_node": "bf05_fb_vinterp1_hdmi1_buf",
+  "metrics": {
+    "frames": 9,
+    "active_rows": 324,
+    "expected_pixels": 414720,
+    "decoded_pixels": 414720,
+    "islands": 9,
+    "weights": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "vinterp_rows": 324,
+    "unequal_word_rows": 311,
+    "distinct_expected_RGB": 11205,
+    "scope": "scaled BUF VINTERP1 HDMI1; actual VIC4 only",
+    "start_pc": 196391,
+    "end_pc_exclusive": 790391,
+    "margin_rows": 335,
+    "observed_DUT_RGB_used_as_expected": false
+  },
+  "source_inputs": 207,
+  "launch_bindings_unchanged": 5296,
+  "root_bindings_unchanged": 154,
+  "final_bindings_unchanged": 167,
+  "native_invocations": 18,
+  "positive_first_attempts": 1,
+  "RTL_negative_first_attempts": 8,
+  "owned_raw_metadata_controls": 7,
+  "native_wall_seconds": 702.5542147290253,
+  "root_elapsed_seconds": 35.222337788000004,
+  "final_elapsed_seconds": 32.29827006798587,
+  "phases": [
+    {
+      "phase": "positive",
+      "result": {
+        "sha256": "944543110358fc1f7d036a4d83e5d37c894c140b3f779a9cf584b2f521342a9f",
+        "size_bytes": 7494
+      },
+      "elapsed_seconds": 99.6810425890144,
+      "records": [
+        {
+          "pid": 1076918,
+          "pgid": 1076918,
+          "startticks": "23393883",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.06440857599955052
+        },
+        {
+          "pid": 1076922,
+          "pgid": 1076922,
+          "startticks": "23393890",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 87.42608867399395
+        }
+      ],
+      "semantic_kind": null,
+      "semantic_reason": null
+    },
+    {
+      "phase": "weight0",
+      "result": {
+        "sha256": "e32fd35b8c2202e47ccf5d8c0ad78c64d1f9c13eb3d6ace2b88331dc51fafa1d",
+        "size_bytes": 6847
+      },
+      "elapsed_seconds": 91.399843969004,
+      "records": [
+        {
+          "pid": 1081206,
+          "pgid": 1081206,
+          "startticks": "23408009",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.06441710700164549
+        },
+        {
+          "pid": 1081211,
+          "pgid": 1081211,
+          "startticks": "23408015",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 87.66922317800345
+        }
+      ],
+      "semantic_kind": "framebuffer",
+      "semantic_reason": "output line 1: second line and weight (1, 0), model (1, 2)"
+    },
+    {
+      "phase": "secondfetch",
+      "result": {
+        "sha256": "44b29641fe269ec49f9e9d91791a310f60b58fc15507080c115170b13ce66329",
+        "size_bytes": 6936
+      },
+      "elapsed_seconds": 55.059004873008234,
+      "records": [
+        {
+          "pid": 1089734,
+          "pgid": 1089734,
+          "startticks": "23422927",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.06425212798058055
+        },
+        {
+          "pid": 1089740,
+          "pgid": 1089740,
+          "startticks": "23422934",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 51.600351973000215
+        }
+      ],
+      "semantic_kind": "margin",
+      "semantic_reason": "original margin checker: 283 bad; [['R', '2744340.1', '0', '-1.0'], ['R', '2766450.1', '0', '-1.0']]"
+    },
+    {
+      "phase": "swapped",
+      "result": {
+        "sha256": "fee40af699acddfdd6fe235e854dfbe78fdbeaa65708e5b8603f9d11e248b4c6",
+        "size_bytes": 6882
+      },
+      "elapsed_seconds": 81.62291113700485,
+      "records": [
+        {
+          "pid": 1092950,
+          "pgid": 1092950,
+          "startticks": "23433850",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.03237916500074789
+        },
+        {
+          "pid": 1092954,
+          "pgid": 1092954,
+          "startticks": "23433853",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 78.0455236499838
+        }
+      ],
+      "semantic_kind": "framebuffer",
+      "semantic_reason": "output line 1: YCbCr (1, 51, 16), blend of (0, 51, 16) and (2, 51, 16) by 2/8 is (0, 51, 16)"
+    },
+    {
+      "phase": "rounded",
+      "result": {
+        "sha256": "43b276f6e0b4e32d2755d0f7d004691dae0e0825772760774e6666364ec59432",
+        "size_bytes": 6884
+      },
+      "elapsed_seconds": 81.73693483299576,
+      "records": [
+        {
+          "pid": 1097605,
+          "pgid": 1097605,
+          "startticks": "23444359",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.032186070980969816
+        },
+        {
+          "pid": 1097609,
+          "pgid": 1097609,
+          "startticks": "23444363",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 79.18536280401167
+        }
+      ],
+      "semantic_kind": "framebuffer",
+      "semantic_reason": "output line 1: YCbCr (1, 51, 16), blend of (0, 51, 16) and (2, 51, 16) by 2/8 is (0, 51, 16)"
+    },
+    {
+      "phase": "VIC",
+      "result": {
+        "sha256": "da56aaf54ce1b6b383fee05e1075207f556d2e93a3bbbe823d32370a69751a2a",
+        "size_bytes": 6917
+      },
+      "elapsed_seconds": 89.6515421619988,
+      "records": [
+        {
+          "pid": 1102355,
+          "pgid": 1102355,
+          "startticks": "23454877",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.06451667001238093
+        },
+        {
+          "pid": 1102360,
+          "pgid": 1102360,
+          "startticks": "23454883",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 78.08629815099994
+        }
+      ],
+      "semantic_kind": "hdmi",
+      "semantic_reason": "VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4"
+    },
+    {
+      "phase": "checksum",
+      "result": {
+        "sha256": "6f5fead48cb861d043dab2666d76281a2d3fce1d5ac33fdc3f8a62cea9b38f44",
+        "size_bytes": 6930
+      },
+      "elapsed_seconds": 93.03975319099845,
+      "records": [
+        {
+          "pid": 1108468,
+          "pgid": 1108468,
+          "startticks": "23465299",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.06439726700773463
+        },
+        {
+          "pid": 1108472,
+          "pgid": 1108472,
+          "startticks": "23465306",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 83.17788827102049
+        }
+      ],
+      "semantic_kind": "hdmi",
+      "semantic_reason": "checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1"
+    },
+    {
+      "phase": "parity",
+      "result": {
+        "sha256": "a0d33ce0d534cb6c2d900e1fb7315abc49b155e35ef86e42c8ee089b92cc09fa",
+        "size_bytes": 6910
+      },
+      "elapsed_seconds": 86.32668001201819,
+      "records": [
+        {
+          "pid": 1117866,
+          "pgid": 1117866,
+          "startticks": "23476557",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.03206572600174695
+        },
+        {
+          "pid": 1117870,
+          "pgid": 1117870,
+          "startticks": "23476560",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 76.96334468701389
+        }
+      ],
+      "semantic_kind": "hdmi",
+      "semantic_reason": "header parity; subpacket 0 parity; header parity; subpacket 0 parity; header parity; subpacket 0 parity; header parity; subpacket 0 parity"
+    },
+    {
+      "phase": "guardband",
+      "result": {
+        "sha256": "6a0d93e0f3aff81de6e33b806d1dc7e52a12d9f59fcc5712dda0023d1fcc7d1d",
+        "size_bytes": 7326
+      },
+      "elapsed_seconds": 90.12331833801,
+      "records": [
+        {
+          "pid": 1124074,
+          "pgid": 1124074,
+          "startticks": "23487353",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 0.032082215999253094
+        },
+        {
+          "pid": 1124082,
+          "pgid": 1124082,
+          "startticks": "23487356",
+          "rc": 0,
+          "signals": [],
+          "elapsed_seconds": 79.94942841501324
+        }
+      ],
+      "semantic_kind": "hdmi",
+      "semantic_reason": "no video guard band at 1665: [(852, 852, 852), (852, 852, 852)]; no video guard band at 3315: [(852, 852, 852), (852, 852, 852)]; no video guard band at 4965: [(852, 852, 852), (852, 852, 852)]; no video guard band at 6615: [(852, 852, 852), (852, 852, 852)]; no video guard band at 8265: [(852, 852, 852), (852, 852, 852)]; no video guard band at 9915: [(852, 852, 852), (852, 852, 852)]; no video guard band at 11565: [(852, 852, 852), (852, 852, 852)]; no video guard band at 13215: [(852, 852, 852), (852, 852, 852)]"
+    }
+  ],
+  "root_acceptance": {
+    "sha256": "a24dfa7bda3a7873cd76fe155756b5e4cd4aad4278ce35d872460ed518e4f4cd",
+    "size_bytes": 4458
+  },
+  "final_review": {
+    "sha256": "db9300e15c43c062978416b89ad09b5637ceda0bdae0c3276e6f32e80ff2744a",
+    "size_bytes": 924
+  },
+  "raw_inventory": {
+    "sha256": "771b4532d1562a3d444fc3071d0778d0d0c9720c00b9d0bab39806b3d62942f3",
+    "size_bytes": 36892
+  },
+  "raw_files": 133,
+  "raw_bytes": 425338019,
+  "originals_unchanged": true,
+  "no_retry_or_stop_signals": true,
+  "production_source_changed": false,
+  "combined_all_modes_accepted": false,
+  "M6_combined_route_accepted": false,
+  "hardware_verified": false,
+  "private_immutable_package": {
+    "sha256": "3d28583fa5140f2f387beeeacb774aeda2c298e376bece7d2c9c9850d07e6e87",
+    "size_bytes": 9716
+  },
+  "compiled_tuple": {
+    "VINTERP": 1,
+    "HDMI": 1,
+    "RGB_FULL": 1,
+    "LL": 0,
+    "BOB": 1,
+    "RT_EN": 0,
+    "WAIT_BEFORE_VSYNC": 0,
+    "T_P_ns": 13.4,
+    "T_S_ns": 15.4,
+    "H_TOTAL": 1650,
+    "V_ACTIVE": 36,
+    "V_TOTAL": 40,
+    "source_lines": 12,
+    "source_fields": 9,
+    "source_F": 1,
+    "VIC": 4
+  },
+  "accelerated_model_limits": {
+    "SDRAM_FREQ": 5000000,
+    "T_PWRUP_PS": 15000000,
+    "STRICT": 1,
+    "REF_WINDOW": 8,
+    "no_physical_timing_claim": true
+  },
+  "owned_controls": [
+    {
+      "kind": "pixel",
+      "identity": {
+        "sha256": "41ab1ecc7133c07e1bc3f753a3e6d51a1229beab82c380c301ef7041e3278a4d",
+        "size_bytes": 38422339
+      },
+      "rejected": true,
+      "reason": "independent pixel pc214991 source(444,10) gotRGB005101/YCC006a10 expectedRGB005100/YCC006a10"
+    },
+    {
+      "kind": "symbol",
+      "identity": {
+        "sha256": "54d756f0ab29be75db2cb61456681b78eef46d8d1b3d5a5cf62d5d9ea63dc7a5",
+        "size_bytes": 38422339
+      },
+      "rejected": true,
+      "reason": "video: 414720 pixels decoded, 414720 sent, first difference at 13233"
+    },
+    {
+      "kind": "frame",
+      "identity": {
+        "sha256": "1ecf13f498f52ed127066aae3bc1e0d05bfeb2e3e7b8320b27c6587b2b009392",
+        "size_bytes": 34008
+      },
+      "rejected": true,
+      "reason": "no frame decision at pixel clock 196492"
+    },
+    {
+      "kind": "node",
+      "identity": {
+        "sha256": "de0a54b71456154f1d17a9bac73cad7336d1329053c1b6f8a21e280edf5b2798",
+        "size_bytes": 390
+      },
+      "rejected": true,
+      "reason": "identity/options/scope mismatch"
+    },
+    {
+      "kind": "options",
+      "identity": {
+        "sha256": "b476feb5e0f77a4871ef8714c6aceb7552245dfb111ba53849885e8a5bae4df5",
+        "size_bytes": 403
+      },
+      "rejected": true,
+      "reason": "identity/options/scope mismatch"
+    },
+    {
+      "kind": "combined",
+      "identity": {
+        "sha256": "5272f31272116d0a7b09f50303c76972cd09b6baf68b6765624c49acb6fd7048",
+        "size_bytes": 402
+      },
+      "rejected": true,
+      "reason": "identity/options/scope mismatch"
+    },
+    {
+      "kind": "hardware",
+      "identity": {
+        "sha256": "cdcfcf05cd3dea06e923a91038af039ebae38b3cca23c1824558cc8f2cd4d91d",
+        "size_bytes": 402
+      },
+      "rejected": true,
+      "reason": "identity/options/scope mismatch"
+    }
+  ]
+}

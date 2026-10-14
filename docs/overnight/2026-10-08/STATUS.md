@@ -2,6 +2,16 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## bf05 — native-täckning för VINTERP och HDMI tillsammans, 2026-10-14
+
+**De granskade accepterade fallen binder VINTERP och HDMI separat.** Framebuffer-bänken kör VINTERP=1 utan sändare; HDMI-bänken matar tmds_link direkt med ett RGB-mönster utan framebuffer. Tre befintliga M4/M6-pinbänkar innehåller båda modulerna, men deras verkliga kompilerade parametrar är VINTERP=0/HDMI=0 och deras assertions gäller RESETB/LED/RX SPI, inte avkodad bild.
+
+En ny stdlib-only förgranskning läste fryst bf05/tree49923: alla207 Gitblob-/arkiv-/källinputs,757 begärda call-rapporter (nio interna CLI-rapporter separat),478 faktiska native-anropskvitton/239 compilerkommandon och206 fortfarande läsbara, tidigare hashbundna kompilat.33 ursprungliga utdatasökvägar finns inte tillgängliga och återskapades inte. Ingen kombinerad VINTERP=1/HDMI=1 framebuffer–sändarkedja hittades i de206 kompilaten. Det är avgränsad täckningsanalys, inte global frånvaro eller ny native-acceptans.
+
+2954 käll-/runtime-/helper-/beroende-/råbindningar är oförändrade. Jobbet avslutades rc0 på5,443s; root22/slut29bindningar och samma åtta verkliga ägda option-/node-/konfiguration-/revision-/falseacceptance-/hardware-/coverage-/sourcebytekontroller är granskade med giltiga original före/efter. Inget test, modell, HDL, FPGA-bygge, TMDS-prov eller historiskt jobb kördes om. Förberedande läs-/verktygsfel och originalutkast bevarades; sluttexten anger att IL_SRC håller F=1 med interlacerade blankningsgap och att311 VINTERP-rader har olika källord, utan påstående om unika ordpar.
+
+Ett separat framtida funktionstest är föreslaget: BUF36/40rader,1650pixelklockor/rad,13,4ns pixel-/15,4ns SDRAM-period,explicitVINTERP1/HDMI1, original framebuffer-modell, oberoende RGB-facit och original HDMI/TMDS-avkodare samt åtta verkliga RTL-negativer. Ingen ny bänk skapades eller kördes i denna uppgift. Kombinerad native-funktion, M6-kombinationsplacering och fysisk HDMI/ADC/ESD/SDRAM/USB/flash/hårdvara är fortsatt ej accepterade. [Täckningstabell, parametrar och slutkvitto](evidence/core-bf05-combined-native-preflight.json).
+
 ## Puck pinnar accepterad bf05, 2026-10-14
 
 **Puck-main `f210a10` pinnar nu exakt Core `bf05ac0feed58c3295949a6f3b4ee55c886cd1e2`/tree`49923a6`.** Uppgiftsgren `a963e3c` byggdes från Puck `aed469b`; en verifierad no-ff-merge bevarar hela inkommande historiken. Gren och main är pushade och fjärrverifierade, inklusive faktisk gitlink. Övriga upptäckta remotegrenar är bevarade och deras resultat har inte accepterats här.

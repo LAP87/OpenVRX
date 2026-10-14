@@ -1,0 +1,310 @@
+{
+  "state": "PASS_ROOT_REVIEWED_LIMITED_PREFLIGHT",
+  "accepted": true,
+  "acceptance_scope": "selected frozen source and existing accepted native configuration coverage only",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "scope": {
+    "source_inputs": 207,
+    "launch_bindings_unchanged": 2954,
+    "requested_call_reports": 757,
+    "nested_CLI_reports_separate": 9,
+    "native_receipts": 478,
+    "compile_commands": 239,
+    "readable_compiled_outputs": 206,
+    "unavailable_original_output_paths": 33,
+    "owned_faults_rejected": 8,
+    "root_bindings": 22,
+    "final_bindings": 29
+  },
+  "combined_native_accepted": false,
+  "hardware_verified": false,
+  "new_native_jobs": 0,
+  "new_build_jobs": 0,
+  "no_global_absence_claim": true,
+  "audit": {
+    "sha256": "7e72f033cf7c1388cb7a4fe80a99f7c310c19a663421d0c790ef3865e2aed256",
+    "size_bytes": 350397
+  },
+  "result": {
+    "sha256": "63802cb12f0c9d47c5645102033aee2ec841b69cddcd1d37cbfc9f31beafb776",
+    "size_bytes": 759
+  },
+  "root": {
+    "sha256": "1534f529ead402954b441b036748592c4e377a338d262adf356f9298aa5de4d3",
+    "size_bytes": 1066
+  },
+  "final": {
+    "sha256": "016c8304241fc3134d3b9967144c97e6ea89f9a138bbf54d02b1188ca005f49a",
+    "size_bytes": 1066
+  },
+  "final_text_review": {
+    "sha256": "9d8c38657b78f2cbe88f5cba2781068a66a40d21c6db760e0931b5977fe3286d",
+    "size_bytes": 540
+  },
+  "future_proposal": {
+    "sha256": "53caa76a57fc2711273d7e733e32066a0dc26cd7a1c8df266e8a0cca41436229",
+    "size_bytes": 6289
+  },
+  "private_immutable_package": {
+    "sha256": "4735fb9bc4c0fff20820bba7f9b3942e0e7c1a8e841dd9047745e3cd625bb89e",
+    "size_bytes": 1609
+  },
+  "configuration_table": [
+    {
+      "case": "tb_fb_vinterp",
+      "compiled_parameters": {
+        "VINTERP": [
+          1
+        ],
+        "HDMI": []
+      },
+      "requested_nodes": [
+        "gateware/sim/test_fb.py::test_vinterp_blends_two_source_lines"
+      ],
+      "framebuffer_and_link": false
+    },
+    {
+      "case": "tb_fb_vinterp_off",
+      "compiled_parameters": {
+        "VINTERP": [
+          0
+        ],
+        "HDMI": []
+      },
+      "requested_nodes": [
+        "gateware/sim/test_fb.py::test_vinterp_off_puts_out_the_first_line"
+      ],
+      "framebuffer_and_link": false
+    },
+    {
+      "case": "tb_hdmi",
+      "compiled_parameters": {
+        "VINTERP": [],
+        "HDMI": [
+          1
+        ]
+      },
+      "requested_nodes": [
+        "gateware/sim/test_hdmi.py::test_hdmi_stream_decodes"
+      ],
+      "framebuffer_and_link": false
+    },
+    {
+      "case": "tb_hdmi_limited",
+      "compiled_parameters": {
+        "VINTERP": [],
+        "HDMI": [
+          1
+        ]
+      },
+      "requested_nodes": [
+        "gateware/sim/test_hdmi.py::test_hdmi_limited_range_flag"
+      ],
+      "framebuffer_and_link": false
+    },
+    {
+      "case": "tb_hdmi_dvi",
+      "compiled_parameters": {
+        "VINTERP": [],
+        "HDMI": [
+          0
+        ]
+      },
+      "requested_nodes": [
+        "gateware/sim/test_hdmi.py::test_dvi_is_unchanged"
+      ],
+      "framebuffer_and_link": false
+    },
+    {
+      "case": "tb_vblend",
+      "compiled_parameters": {
+        "VINTERP": [],
+        "HDMI": []
+      },
+      "requested_nodes": [
+        "gateware/sim/test_vblend.py::test_vblend_matches_the_model"
+      ],
+      "framebuffer_and_link": false
+    }
+  ],
+  "both_module_pin_cases": [
+    {
+      "case": "tb_top_pins_4_1",
+      "parameters": {
+        "VINTERP": [
+          0
+        ],
+        "HDMI": [
+          0
+        ]
+      },
+      "decoded_video_assertions": false
+    },
+    {
+      "case": "tb_top_pins_6_1",
+      "parameters": {
+        "VINTERP": [
+          0
+        ],
+        "HDMI": [
+          0
+        ]
+      },
+      "decoded_video_assertions": false
+    },
+    {
+      "case": "tb_top_pins_4_0",
+      "parameters": {
+        "VINTERP": [
+          0
+        ],
+        "HDMI": [
+          0
+        ]
+      },
+      "decoded_video_assertions": false
+    }
+  ],
+  "existing_separate_feature_summary": {
+    "vinterp": {
+      "lines": 324,
+      "weights": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "different_words": 311
+    },
+    "vinterp_off_lines": 324,
+    "vblend_vectors": 6849,
+    "hdmi": {
+      "video_pixels": 1600,
+      "islands": 4,
+      "both_vics": true
+    },
+    "vsync_to_picture_lines": {
+      "0": [
+        10,
+        10,
+        11,
+        12,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "1": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    }
+  },
+  "elapsed_static_seconds": 5.442995165998582,
+  "elapsed_root_seconds": 2.7356547609961126,
+  "elapsed_final_seconds": 2.4036964360275306,
+  "controls": [
+    {
+      "name": "option",
+      "identity": {
+        "sha256": "1499ccb60e0b2ed6ef11a8f72eb7a061b22fe349b13fc30371981cb642b0d39a",
+        "size_bytes": 350397
+      },
+      "rejected": true
+    },
+    {
+      "name": "node",
+      "identity": {
+        "sha256": "46da2fa2f381af3f656aafeff5766ec84991a8ffe6a3950faf80c3acffaa1fbb",
+        "size_bytes": 350447
+      },
+      "rejected": true
+    },
+    {
+      "name": "config",
+      "identity": {
+        "sha256": "60e23488b5cd080208fd471c7c40f73d049a2cfcb088a01140e592613d51c37b",
+        "size_bytes": 350395
+      },
+      "rejected": true
+    },
+    {
+      "name": "revision",
+      "identity": {
+        "sha256": "d32b0b8dae1fd6ea5456dfe8febb93e7c75376afee2d74629fdc6154df94f516",
+        "size_bytes": 350397
+      },
+      "rejected": true
+    },
+    {
+      "name": "combined",
+      "identity": {
+        "sha256": "80e8615d45585178c2e3b2b3d54c821fd733fd9beed7ecb02cb3969ea123ed43",
+        "size_bytes": 350396
+      },
+      "rejected": true
+    },
+    {
+      "name": "hardware",
+      "identity": {
+        "sha256": "1615c2a592ac34253ad299f08f3ea95c9180780627560107234ee6dfe2271f5a",
+        "size_bytes": 350396
+      },
+      "rejected": true
+    },
+    {
+      "name": "compiled_coverage",
+      "identity": {
+        "sha256": "7e38149564e706be90eedffa4fffa5ebf19a43735087a17861c5fa3c83822b0d",
+        "size_bytes": 350397
+      },
+      "rejected": true
+    },
+    {
+      "name": "sourcebyte",
+      "identity": {
+        "sha256": "c531e433e4338e9d9ec14ece50fc380ac4e8d33bc2a9dc6b633f82c35b38106d",
+        "size_bytes": 11543
+      },
+      "rejected": true
+    }
+  ],
+  "future_scenario": {
+    "created": false,
+    "executed": false,
+    "mode": "BUF",
+    "VINTERP": 1,
+    "HDMI": 1,
+    "RGB_FULL": 1,
+    "F": 1,
+    "source_lines": 12,
+    "source_fields": 9,
+    "V_ACTIVE": 36,
+    "V_TOTAL": 40,
+    "H_TOTAL": 1650,
+    "T_P_ns": 13.4,
+    "T_S_ns": 15.4,
+    "RTL_negatives_proposed": 8,
+    "positive_timeout_seconds": 300,
+    "combined_placement_retried": false,
+    "independent_expectations": "original framebuffer/store/src_lines/vblend model plus bit-exact conversion and original HDMI/TMDS decoder; DUT RGB is not the upstream oracle"
+  },
+  "preserved_preparatory_gaps": [
+    "Original compiler-output probe assumed an unavailable temp sim.vvp path; bounded 206 readable versus33 unavailable paths instead.",
+    "Guessed historical root helper filename not present; no historical helper executed.",
+    "Tool btoa unavailable before quota write/job; first actual static job used fresh API and hex receipt.",
+    "First proposal said alternating F; original IL_SRC holds F1. Preserved original and corrected proposal before final publication."
+  ]
+}

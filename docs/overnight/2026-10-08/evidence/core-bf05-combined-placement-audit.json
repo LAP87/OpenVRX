@@ -1,0 +1,1465 @@
+{
+  "state": "FINAL_ROOT_REVIEWED_STATIC_AUDIT_LIMITED",
+  "scope": "existing bf05 M6 synthesis/constraints/placement failure comparison; static evidence only",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "source_inputs": 207,
+  "launch_bound_count": 5475,
+  "continuation_bindings": 10,
+  "root_continuation_bindings": 38,
+  "final_bindings": 43,
+  "same_M6_source52": true,
+  "same_M6_CST": true,
+  "same_M6_port_shape": true,
+  "WAIT_source_default": 0,
+  "cases": {
+    "default": {
+      "top": "m6_puck_proto",
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "0"
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "synth_cells": 20079,
+      "synth_netnames": 17257,
+      "synth_port_signals": 35,
+      "synth_port_bits": 100,
+      "cell_types": {
+        "$scopeinfo": 62,
+        "ALU": 3532,
+        "CLKDIV": 1,
+        "DFF": 793,
+        "DFFE": 1514,
+        "DFFP": 12,
+        "DFFR": 634,
+        "DFFRE": 2386,
+        "DFFS": 116,
+        "DFFSE": 301,
+        "DPB": 16,
+        "DPX9B": 9,
+        "GND": 1,
+        "IBUF": 22,
+        "IOBUF": 35,
+        "LUT1": 616,
+        "LUT2": 1829,
+        "LUT3": 2491,
+        "LUT4": 4121,
+        "MULT18X18": 5,
+        "MULT9X9": 3,
+        "MUX2_LUT5": 1096,
+        "MUX2_LUT6": 93,
+        "MUX2_LUT7": 39,
+        "MUX2_LUT8": 17,
+        "OBUF": 42,
+        "OSER10": 3,
+        "RAM16SDP4": 282,
+        "TBUF": 1,
+        "TLVDS_OBUF": 4,
+        "VCC": 1,
+        "rPLL": 2
+      },
+      "preplacement_utilization": {
+        "VCC": {
+          "used": 1,
+          "capacity": 1
+        },
+        "IOB": {
+          "used": 64,
+          "capacity": 384
+        },
+        "LUT4": {
+          "used": 15505,
+          "capacity": 20736
+        },
+        "IOLOGICI": {
+          "used": 52,
+          "capacity": 384
+        },
+        "IOLOGICO": {
+          "used": 26,
+          "capacity": 384
+        },
+        "MUX2_LUT5": {
+          "used": 1096,
+          "capacity": 10368
+        },
+        "MUX2_LUT6": {
+          "used": 93,
+          "capacity": 5184
+        },
+        "MUX2_LUT7": {
+          "used": 39,
+          "capacity": 2592
+        },
+        "MUX2_LUT8": {
+          "used": 17,
+          "capacity": 2592
+        },
+        "ALU": {
+          "used": 4192,
+          "capacity": 15552
+        },
+        "GND": {
+          "used": 1,
+          "capacity": 1
+        },
+        "DFF": {
+          "used": 7373,
+          "capacity": 15552
+        },
+        "RAM16SDP4": {
+          "used": 282,
+          "capacity": 648
+        },
+        "BSRAM": {
+          "used": 25,
+          "capacity": 46
+        },
+        "ALU54D": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTADDALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU36X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULT36X36": {
+          "used": 0,
+          "capacity": 12
+        },
+        "MULT18X18": {
+          "used": 5,
+          "capacity": 48
+        },
+        "MULT9X9": {
+          "used": 3,
+          "capacity": 96
+        },
+        "PADD18": {
+          "used": 0,
+          "capacity": 48
+        },
+        "PADD9": {
+          "used": 0,
+          "capacity": 96
+        },
+        "GSR": {
+          "used": 1,
+          "capacity": 1
+        },
+        "OSC": {
+          "used": 0,
+          "capacity": 1
+        },
+        "rPLL": {
+          "used": 2,
+          "capacity": 2
+        },
+        "BUFG": {
+          "used": 1,
+          "capacity": 24
+        },
+        "DQCE": {
+          "used": 0,
+          "capacity": 24
+        },
+        "DCS": {
+          "used": 0,
+          "capacity": 8
+        },
+        "DHCEN": {
+          "used": 0,
+          "capacity": 24
+        },
+        "CLKDIV": {
+          "used": 1,
+          "capacity": 8
+        },
+        "CLKDIV2": {
+          "used": 0,
+          "capacity": 16
+        }
+      },
+      "placement_completed": true,
+      "final_timing": {
+        "mix.b_clk": {
+          "max_mhz": 204.33,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 248.69,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 132.28,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 104.58,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clk_pixel": {
+          "max_mhz": 123.15,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "errors": [],
+      "artifacts": {
+        "m6_puck_proto.synth.json": {
+          "sha256": "2e5567fc11d0e9a4eec47e531d3d61feb995b310b450f16a90e916461f65685d",
+          "size": 23505928
+        },
+        "m6_puck_proto.stat.txt": {
+          "sha256": "6d99304ad3e9fceccc713d20852ef100a0bd17daaf5fa3106b95c746fa5728ce",
+          "size": 846
+        },
+        "m6_puck_proto.cst": {
+          "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+          "size": 11684
+        },
+        "m6_puck_proto.pnr.log": {
+          "sha256": "9f681dc2e4759c190ef631c220fb3440a328baa879c4731e9c33363a1bd46597",
+          "size": 91707
+        }
+      },
+      "actual_pack_calls": 1,
+      "MSPI_requested": "1",
+      "MSPI_pack_completed": true,
+      "max_placement_attempts_per_cell": 103975410,
+      "last_analytical_iteration": [
+        "15",
+        "ALL"
+      ]
+    },
+    "vinterp": {
+      "top": "m6_puck_proto",
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "1"
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "synth_cells": 20630,
+      "synth_netnames": 18060,
+      "synth_port_signals": 35,
+      "synth_port_bits": 100,
+      "cell_types": {
+        "$scopeinfo": 63,
+        "ALU": 3822,
+        "CLKDIV": 1,
+        "DFF": 811,
+        "DFFE": 1514,
+        "DFFP": 12,
+        "DFFR": 630,
+        "DFFRE": 2396,
+        "DFFS": 114,
+        "DFFSE": 301,
+        "DPB": 16,
+        "DPX9B": 13,
+        "GND": 1,
+        "IBUF": 22,
+        "IOBUF": 35,
+        "LUT1": 617,
+        "LUT2": 1866,
+        "LUT3": 2571,
+        "LUT4": 4172,
+        "MULT18X18": 5,
+        "MULT9X9": 9,
+        "MUX2_LUT5": 1140,
+        "MUX2_LUT6": 108,
+        "MUX2_LUT7": 40,
+        "MUX2_LUT8": 16,
+        "OBUF": 42,
+        "OSER10": 3,
+        "RAM16SDP4": 282,
+        "TBUF": 1,
+        "TLVDS_OBUF": 4,
+        "VCC": 1,
+        "rPLL": 2
+      },
+      "preplacement_utilization": {
+        "VCC": {
+          "used": 1,
+          "capacity": 1
+        },
+        "IOB": {
+          "used": 64,
+          "capacity": 384
+        },
+        "LUT4": {
+          "used": 16036,
+          "capacity": 20736
+        },
+        "IOLOGICI": {
+          "used": 52,
+          "capacity": 384
+        },
+        "IOLOGICO": {
+          "used": 26,
+          "capacity": 384
+        },
+        "MUX2_LUT5": {
+          "used": 1140,
+          "capacity": 10368
+        },
+        "MUX2_LUT6": {
+          "used": 108,
+          "capacity": 5184
+        },
+        "MUX2_LUT7": {
+          "used": 40,
+          "capacity": 2592
+        },
+        "MUX2_LUT8": {
+          "used": 16,
+          "capacity": 2592
+        },
+        "ALU": {
+          "used": 4554,
+          "capacity": 15552
+        },
+        "GND": {
+          "used": 1,
+          "capacity": 1
+        },
+        "DFF": {
+          "used": 7395,
+          "capacity": 15552
+        },
+        "RAM16SDP4": {
+          "used": 282,
+          "capacity": 648
+        },
+        "BSRAM": {
+          "used": 29,
+          "capacity": 46
+        },
+        "ALU54D": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTADDALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU36X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULT36X36": {
+          "used": 0,
+          "capacity": 12
+        },
+        "MULT18X18": {
+          "used": 5,
+          "capacity": 48
+        },
+        "MULT9X9": {
+          "used": 9,
+          "capacity": 96
+        },
+        "PADD18": {
+          "used": 0,
+          "capacity": 48
+        },
+        "PADD9": {
+          "used": 0,
+          "capacity": 96
+        },
+        "GSR": {
+          "used": 1,
+          "capacity": 1
+        },
+        "OSC": {
+          "used": 0,
+          "capacity": 1
+        },
+        "rPLL": {
+          "used": 2,
+          "capacity": 2
+        },
+        "BUFG": {
+          "used": 1,
+          "capacity": 24
+        },
+        "DQCE": {
+          "used": 0,
+          "capacity": 24
+        },
+        "DCS": {
+          "used": 0,
+          "capacity": 8
+        },
+        "DHCEN": {
+          "used": 0,
+          "capacity": 24
+        },
+        "CLKDIV": {
+          "used": 1,
+          "capacity": 8
+        },
+        "CLKDIV2": {
+          "used": 0,
+          "capacity": 16
+        }
+      },
+      "placement_completed": true,
+      "final_timing": {
+        "mix.b_clk": {
+          "max_mhz": 234.85,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 283.69,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 116.02,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 101.81,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clk_pixel": {
+          "max_mhz": 116.27,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "errors": [],
+      "artifacts": {
+        "m6_puck_proto_vinterp.synth.json": {
+          "sha256": "a0a0eabfccdf6eaaaac9c428c72bbac3c2562980efd26a70b4649cfc81c81f54",
+          "size": 24477519
+        },
+        "m6_puck_proto_vinterp.stat.txt": {
+          "sha256": "e540cd7e235f006848b60da09b306c111b8b50bac3ee6e0ddea7a690dcd397b1",
+          "size": 846
+        },
+        "m6_puck_proto_vinterp.cst": {
+          "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+          "size": 11684
+        },
+        "m6_puck_proto_vinterp.pnr.log": {
+          "sha256": "cd519a7437c75c96173361ec613c9ee3ed19f8ca7f28949311cfc88e50945673",
+          "size": 100900
+        }
+      },
+      "actual_pack_calls": 1,
+      "MSPI_requested": "1",
+      "MSPI_pack_completed": true,
+      "max_placement_attempts_per_cell": 111236070,
+      "last_analytical_iteration": [
+        "23",
+        "ALL"
+      ]
+    },
+    "hdmi": {
+      "top": "m6_puck_proto",
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "0"
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "synth_cells": 20573,
+      "synth_netnames": 17474,
+      "synth_port_signals": 35,
+      "synth_port_bits": 100,
+      "cell_types": {
+        "$scopeinfo": 62,
+        "ALU": 3564,
+        "CLKDIV": 1,
+        "DFF": 1033,
+        "DFFE": 1514,
+        "DFFP": 12,
+        "DFFR": 681,
+        "DFFRE": 2393,
+        "DFFS": 127,
+        "DFFSE": 301,
+        "DPB": 16,
+        "DPX9B": 9,
+        "GND": 1,
+        "IBUF": 22,
+        "IOBUF": 35,
+        "LUT1": 606,
+        "LUT2": 1840,
+        "LUT3": 2611,
+        "LUT4": 4143,
+        "MULT18X18": 5,
+        "MULT9X9": 3,
+        "MUX2_LUT5": 1122,
+        "MUX2_LUT6": 86,
+        "MUX2_LUT7": 35,
+        "MUX2_LUT8": 16,
+        "OBUF": 42,
+        "OSER10": 3,
+        "RAM16SDP4": 282,
+        "TBUF": 1,
+        "TLVDS_OBUF": 4,
+        "VCC": 1,
+        "rPLL": 2
+      },
+      "preplacement_utilization": {
+        "VCC": {
+          "used": 1,
+          "capacity": 1
+        },
+        "IOB": {
+          "used": 64,
+          "capacity": 384
+        },
+        "LUT4": {
+          "used": 15694,
+          "capacity": 20736
+        },
+        "IOLOGICI": {
+          "used": 52,
+          "capacity": 384
+        },
+        "IOLOGICO": {
+          "used": 26,
+          "capacity": 384
+        },
+        "MUX2_LUT5": {
+          "used": 1122,
+          "capacity": 10368
+        },
+        "MUX2_LUT6": {
+          "used": 86,
+          "capacity": 5184
+        },
+        "MUX2_LUT7": {
+          "used": 35,
+          "capacity": 2592
+        },
+        "MUX2_LUT8": {
+          "used": 16,
+          "capacity": 2592
+        },
+        "ALU": {
+          "used": 4238,
+          "capacity": 15552
+        },
+        "GND": {
+          "used": 1,
+          "capacity": 1
+        },
+        "DFF": {
+          "used": 7678,
+          "capacity": 15552
+        },
+        "RAM16SDP4": {
+          "used": 282,
+          "capacity": 648
+        },
+        "BSRAM": {
+          "used": 25,
+          "capacity": 46
+        },
+        "ALU54D": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTADDALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU36X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULT36X36": {
+          "used": 0,
+          "capacity": 12
+        },
+        "MULT18X18": {
+          "used": 5,
+          "capacity": 48
+        },
+        "MULT9X9": {
+          "used": 3,
+          "capacity": 96
+        },
+        "PADD18": {
+          "used": 0,
+          "capacity": 48
+        },
+        "PADD9": {
+          "used": 0,
+          "capacity": 96
+        },
+        "GSR": {
+          "used": 1,
+          "capacity": 1
+        },
+        "OSC": {
+          "used": 0,
+          "capacity": 1
+        },
+        "rPLL": {
+          "used": 2,
+          "capacity": 2
+        },
+        "BUFG": {
+          "used": 1,
+          "capacity": 24
+        },
+        "DQCE": {
+          "used": 0,
+          "capacity": 24
+        },
+        "DCS": {
+          "used": 0,
+          "capacity": 8
+        },
+        "DHCEN": {
+          "used": 0,
+          "capacity": 24
+        },
+        "CLKDIV": {
+          "used": 1,
+          "capacity": 8
+        },
+        "CLKDIV2": {
+          "used": 0,
+          "capacity": 16
+        }
+      },
+      "placement_completed": true,
+      "final_timing": {
+        "mix.b_clk": {
+          "max_mhz": 255.62,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 289.27,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 123.85,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 106.04,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clk_pixel": {
+          "max_mhz": 144.89,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "errors": [],
+      "artifacts": {
+        "m6_puck_proto_hdmi.synth.json": {
+          "sha256": "a589ad37b87af8e35381da5ad484e15ea1a30698a6f78ae133cd05d909231f1b",
+          "size": 23801573
+        },
+        "m6_puck_proto_hdmi.stat.txt": {
+          "sha256": "99942667a2605cde020e02139680ae34482d419963900886a630777e51d2d045",
+          "size": 846
+        },
+        "m6_puck_proto_hdmi.cst": {
+          "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+          "size": 11684
+        },
+        "m6_puck_proto_hdmi.pnr.log": {
+          "sha256": "9c8ced9df6d5f78f295acb0c5969ba8058d9198be5572d204ee66ff32ac9f377",
+          "size": 73059
+        }
+      },
+      "actual_pack_calls": 1,
+      "MSPI_requested": "1",
+      "MSPI_pack_completed": true,
+      "max_placement_attempts_per_cell": 108008253,
+      "last_analytical_iteration": [
+        "21",
+        "ALL"
+      ]
+    },
+    "combined_failed": {
+      "top": "m6_puck_proto",
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "1",
+        "mspi": "1",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "2",
+        "vinterp": "1"
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "synth_cells": 21137,
+      "synth_netnames": 18289,
+      "synth_port_signals": 35,
+      "synth_port_bits": 100,
+      "cell_types": {
+        "$scopeinfo": 63,
+        "ALU": 3856,
+        "CLKDIV": 1,
+        "DFF": 1051,
+        "DFFE": 1514,
+        "DFFP": 12,
+        "DFFR": 677,
+        "DFFRE": 2403,
+        "DFFS": 125,
+        "DFFSE": 301,
+        "DPB": 16,
+        "DPX9B": 13,
+        "GND": 1,
+        "IBUF": 22,
+        "IOBUF": 35,
+        "LUT1": 619,
+        "LUT2": 1906,
+        "LUT3": 2624,
+        "LUT4": 4211,
+        "MULT18X18": 5,
+        "MULT9X9": 9,
+        "MUX2_LUT5": 1170,
+        "MUX2_LUT6": 111,
+        "MUX2_LUT7": 43,
+        "MUX2_LUT8": 14,
+        "OBUF": 42,
+        "OSER10": 3,
+        "RAM16SDP4": 282,
+        "TBUF": 1,
+        "TLVDS_OBUF": 4,
+        "VCC": 1,
+        "rPLL": 2
+      },
+      "preplacement_utilization": {
+        "VCC": {
+          "used": 1,
+          "capacity": 1
+        },
+        "IOB": {
+          "used": 64,
+          "capacity": 384
+        },
+        "LUT4": {
+          "used": 16220,
+          "capacity": 20736
+        },
+        "IOLOGICI": {
+          "used": 52,
+          "capacity": 384
+        },
+        "IOLOGICO": {
+          "used": 26,
+          "capacity": 384
+        },
+        "MUX2_LUT5": {
+          "used": 1170,
+          "capacity": 10368
+        },
+        "MUX2_LUT6": {
+          "used": 111,
+          "capacity": 5184
+        },
+        "MUX2_LUT7": {
+          "used": 43,
+          "capacity": 2592
+        },
+        "MUX2_LUT8": {
+          "used": 14,
+          "capacity": 2592
+        },
+        "ALU": {
+          "used": 4604,
+          "capacity": 15552
+        },
+        "GND": {
+          "used": 1,
+          "capacity": 1
+        },
+        "DFF": {
+          "used": 7700,
+          "capacity": 15552
+        },
+        "RAM16SDP4": {
+          "used": 282,
+          "capacity": 648
+        },
+        "BSRAM": {
+          "used": 29,
+          "capacity": 46
+        },
+        "ALU54D": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTADDALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU36X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULT36X36": {
+          "used": 0,
+          "capacity": 12
+        },
+        "MULT18X18": {
+          "used": 5,
+          "capacity": 48
+        },
+        "MULT9X9": {
+          "used": 9,
+          "capacity": 96
+        },
+        "PADD18": {
+          "used": 0,
+          "capacity": 48
+        },
+        "PADD9": {
+          "used": 0,
+          "capacity": 96
+        },
+        "GSR": {
+          "used": 1,
+          "capacity": 1
+        },
+        "OSC": {
+          "used": 0,
+          "capacity": 1
+        },
+        "rPLL": {
+          "used": 2,
+          "capacity": 2
+        },
+        "BUFG": {
+          "used": 1,
+          "capacity": 24
+        },
+        "DQCE": {
+          "used": 0,
+          "capacity": 24
+        },
+        "DCS": {
+          "used": 0,
+          "capacity": 8
+        },
+        "DHCEN": {
+          "used": 0,
+          "capacity": 24
+        },
+        "CLKDIV": {
+          "used": 1,
+          "capacity": 8
+        },
+        "CLKDIV2": {
+          "used": 0,
+          "capacity": 16
+        }
+      },
+      "placement_completed": false,
+      "final_timing": null,
+      "errors": [
+        "ERROR: Unable to find legal placement for all cells, design is probably at utilisation limit."
+      ],
+      "artifacts": {
+        "m6_puck_proto_vinterp_hdmi.synth.json": {
+          "sha256": "650ac6240c2a7c59fa52c94657b91b3a59fe5b90d4a9611447b9ad798b54cab7",
+          "size": 25178017
+        },
+        "m6_puck_proto_vinterp_hdmi.stat.txt": {
+          "sha256": "949b10e82e55731a84a2383a62d34ddffed9e7bf4d4bc4049fb82726ea7a63b8",
+          "size": 846
+        },
+        "m6_puck_proto_vinterp_hdmi.cst": {
+          "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+          "size": 11684
+        },
+        "m6_puck_proto_vinterp_hdmi.pnr.log": {
+          "sha256": "f77eb098109121cb3e8d5b52011fd62a62e98dc5ed93371399282641b7ed6038",
+          "size": 4820
+        }
+      },
+      "actual_pack_calls": 0,
+      "MSPI_requested": "1",
+      "MSPI_pack_completed": false,
+      "max_placement_attempts_per_cell": 115550402,
+      "last_analytical_iteration": [
+        "14",
+        "ALL"
+      ]
+    },
+    "combinedM4": {
+      "top": "m4_dual_mix",
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "1",
+        "ioreg": "1",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "1"
+      },
+      "tool_versions": {
+        "apycula": "0.32",
+        "yowasp-nextpnr-himbaechel-gowin": "0.11.1.0.post826",
+        "yowasp-yosys": "0.69.0.0.post1233"
+      },
+      "synth_cells": 10670,
+      "synth_netnames": 9686,
+      "synth_port_signals": 28,
+      "synth_port_bits": 93,
+      "cell_types": {
+        "$scopeinfo": 53,
+        "ALU": 2155,
+        "CLKDIV": 1,
+        "DFF": 824,
+        "DFFE": 917,
+        "DFFP": 12,
+        "DFFR": 424,
+        "DFFRE": 1000,
+        "DFFS": 63,
+        "DFFSE": 82,
+        "DPB": 16,
+        "DPX9B": 13,
+        "GND": 1,
+        "IBUF": 20,
+        "IOBUF": 35,
+        "LUT1": 183,
+        "LUT2": 820,
+        "LUT3": 1322,
+        "LUT4": 1845,
+        "MULT18X18": 3,
+        "MULT9X9": 9,
+        "MUX2_LUT5": 540,
+        "MUX2_LUT6": 14,
+        "MUX2_LUT7": 4,
+        "OBUF": 38,
+        "OSER10": 3,
+        "RAM16SDP4": 266,
+        "TLVDS_OBUF": 4,
+        "VCC": 1,
+        "rPLL": 2
+      },
+      "preplacement_utilization": {
+        "VCC": {
+          "used": 1,
+          "capacity": 1
+        },
+        "IOB": {
+          "used": 58,
+          "capacity": 384
+        },
+        "LUT4": {
+          "used": 8900,
+          "capacity": 20736
+        },
+        "IOLOGICI": {
+          "used": 49,
+          "capacity": 384
+        },
+        "IOLOGICO": {
+          "used": 23,
+          "capacity": 384
+        },
+        "MUX2_LUT5": {
+          "used": 540,
+          "capacity": 10368
+        },
+        "MUX2_LUT6": {
+          "used": 14,
+          "capacity": 5184
+        },
+        "MUX2_LUT7": {
+          "used": 4,
+          "capacity": 2592
+        },
+        "MUX2_LUT8": {
+          "used": 0,
+          "capacity": 2592
+        },
+        "ALU": {
+          "used": 2602,
+          "capacity": 15552
+        },
+        "GND": {
+          "used": 1,
+          "capacity": 1
+        },
+        "DFF": {
+          "used": 4849,
+          "capacity": 15552
+        },
+        "RAM16SDP4": {
+          "used": 266,
+          "capacity": 648
+        },
+        "BSRAM": {
+          "used": 29,
+          "capacity": 46
+        },
+        "ALU54D": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTADDALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU18X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULTALU36X18": {
+          "used": 0,
+          "capacity": 24
+        },
+        "MULT36X36": {
+          "used": 0,
+          "capacity": 12
+        },
+        "MULT18X18": {
+          "used": 3,
+          "capacity": 48
+        },
+        "MULT9X9": {
+          "used": 9,
+          "capacity": 96
+        },
+        "PADD18": {
+          "used": 0,
+          "capacity": 48
+        },
+        "PADD9": {
+          "used": 0,
+          "capacity": 96
+        },
+        "GSR": {
+          "used": 1,
+          "capacity": 1
+        },
+        "OSC": {
+          "used": 0,
+          "capacity": 1
+        },
+        "rPLL": {
+          "used": 2,
+          "capacity": 2
+        },
+        "BUFG": {
+          "used": 1,
+          "capacity": 24
+        },
+        "DQCE": {
+          "used": 0,
+          "capacity": 24
+        },
+        "DCS": {
+          "used": 0,
+          "capacity": 8
+        },
+        "DHCEN": {
+          "used": 0,
+          "capacity": 24
+        },
+        "CLKDIV": {
+          "used": 1,
+          "capacity": 8
+        },
+        "CLKDIV2": {
+          "used": 0,
+          "capacity": 16
+        }
+      },
+      "placement_completed": true,
+      "final_timing": {
+        "mix.b_clk": {
+          "max_mhz": 228.83,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "mix.a_clk": {
+          "max_mhz": 286.12,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clocks.clk_27": {
+          "max_mhz": 187.93,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "sd_clk": {
+          "max_mhz": 96.75,
+          "passed": true,
+          "required_mhz": 75.0
+        },
+        "clk_pixel": {
+          "max_mhz": 120.77,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "errors": [],
+      "artifacts": {
+        "m4_dual_mix_vinterp_hdmi.synth.json": {
+          "sha256": "32badff8284c13b84c6c81a0a7de0b610d0b0df892088a554fd1107963d3aaa3",
+          "size": 13309013
+        },
+        "m4_dual_mix_vinterp_hdmi.stat.txt": {
+          "sha256": "0f534a8b3dea1cce630066aa3d0966fcf68ea9323c209e674465b979b11faf79",
+          "size": 805
+        },
+        "m4_dual_mix_vinterp_hdmi.cst": {
+          "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
+          "size": 10237
+        },
+        "m4_dual_mix_vinterp_hdmi.pnr.log": {
+          "sha256": "95f4aa1adb66e7d9bfcc5e56a2b3eec61a61d48f1d917e3ea0e8d9ff38bcdd78",
+          "size": 101875
+        }
+      },
+      "actual_pack_calls": 1,
+      "MSPI_requested": "0",
+      "MSPI_pack_completed": true,
+      "max_placement_attempts_per_cell": 37897218,
+      "last_analytical_iteration": [
+        "20",
+        "ALL"
+      ]
+    }
+  },
+  "root_preplacement_resource_deltas": {
+    "default": {
+      "LUT4": 715,
+      "DFF": 327,
+      "BSRAM": 4,
+      "ALU": 412,
+      "MUX2_LUT5": 74,
+      "MUX2_LUT6": 18,
+      "MUX2_LUT7": 4,
+      "MUX2_LUT8": -3
+    },
+    "vinterp": {
+      "LUT4": 184,
+      "DFF": 305,
+      "BSRAM": 0,
+      "ALU": 50,
+      "MUX2_LUT5": 30,
+      "MUX2_LUT6": 3,
+      "MUX2_LUT7": 3,
+      "MUX2_LUT8": -2
+    },
+    "hdmi": {
+      "LUT4": 526,
+      "DFF": 22,
+      "BSRAM": 4,
+      "ALU": 366,
+      "MUX2_LUT5": 48,
+      "MUX2_LUT6": 25,
+      "MUX2_LUT7": 8,
+      "MUX2_LUT8": -2
+    }
+  },
+  "combined_LUT_delta_vs_individual_sum": -5,
+  "negative_controls": [
+    {
+      "fault": "revision",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/revision.json",
+      "identity": {
+        "sha256": "411ce725e716a5355137d265fc5a6fad5c2ede4c214a72a321a638b4a93542d4",
+        "size": 104636
+      }
+    },
+    {
+      "fault": "seed",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/seed.json",
+      "identity": {
+        "sha256": "b44d4509656cf962ca054854117bcff9caaa9642bc842a4df7c514befc51e606",
+        "size": 104672
+      }
+    },
+    {
+      "fault": "option",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/option.json",
+      "identity": {
+        "sha256": "047a7d9356f28cce3c14fe56ed3d6de0426317d19262ffff522ea651ab24527d",
+        "size": 104672
+      }
+    },
+    {
+      "fault": "artifact_identity",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_identity.json",
+      "identity": {
+        "sha256": "547a07a0379a0cc51abc5504fffb7fe501fd89638889449ce78a9ee77bb910f9",
+        "size": 104672
+      }
+    },
+    {
+      "fault": "final_timing",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/final_timing.json",
+      "identity": {
+        "sha256": "665a5caa734ed113f27aa2b20906929dd5092bb2df909a59ff967a1d0e544032",
+        "size": 104754
+      }
+    },
+    {
+      "fault": "accepted",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/accepted.json",
+      "identity": {
+        "sha256": "5616d81989d518951c60880a1ced63d91f4d97f807442004fda4a99822b37aac",
+        "size": 104671
+      }
+    },
+    {
+      "fault": "root_cause",
+      "reason": "claim differs from original source/raw facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/root_cause.json",
+      "identity": {
+        "sha256": "af8dba2c696056a56ba8279759af321f85b45695bfc99f621a3c8c9420637233",
+        "size": 104671
+      }
+    },
+    {
+      "fault": "source_byte",
+      "reason": "bound byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/source_byte.bytes",
+      "identity": {
+        "sha256": "b88fa633006afdd340df3fd93f33bf5c61d91172de23d1e7cef73fc1a451c7d9",
+        "size": 16784
+      },
+      "original_identity": {
+        "sha256": "282688511fef06df64b54afa287aaaae9e45e16b3766f2b726ec6abe6ece706a",
+        "size": 16784
+      }
+    },
+    {
+      "fault": "artifact_byte",
+      "reason": "bound byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_byte.bytes",
+      "identity": {
+        "sha256": "1f474869044c73dd712bab0360c44ee91fd89f27843b9ac6aff5062ee13af814",
+        "size": 11684
+      },
+      "original_identity": {
+        "sha256": "1a2e074bfe44989e54701cc7f13596e357cbf43c534b6f6a8bfd6566d4eb03d8",
+        "size": 11684
+      }
+    },
+    {
+      "fault": "helper_byte",
+      "reason": "bound byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/helper_byte.bytes",
+      "identity": {
+        "sha256": "1f19302e5432b66ca946a5ba4acb9cf721ccb4dd0c5210470320682bb5410d55",
+        "size": 12555
+      },
+      "original_identity": {
+        "sha256": "1de97d899332b34ae130d4f235c698d0ae4d8213a620ff8994ec5c37f0e7d7a7",
+        "size": 12555
+      }
+    },
+    {
+      "fault": "contract_byte",
+      "reason": "bound byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/contract_byte.bytes",
+      "identity": {
+        "sha256": "57b20f8fceaa59a3d6bb8cfb0dca11c6d3b825b623e15875dac818622f74e275",
+        "size": 1423195
+      },
+      "original_identity": {
+        "sha256": "60e0fd24835a5e8e853de71ba80ed5baf9950a1c494a97f509cf5da9c0e6e4b6",
+        "size": 1423195
+      }
+    }
+  ],
+  "original_job_rc": 1,
+  "static_continuation_rc": 0,
+  "original_root_rc": 1,
+  "root_continuation_rc": 0,
+  "final_rc": 0,
+  "original_first_failure_preserved": true,
+  "original_root_reader_failure_preserved": true,
+  "source_runtime_helpers_dependencies_raw_unchanged": true,
+  "root_cause_established": false,
+  "combined_package_accepted": false,
+  "hardware_verified": false,
+  "limitations": [
+    "Per-resource totals do not prove local legal packing, placement, routing, or timing. Resource categories may share physical resources; totals are not additive budgets.",
+    "CST symbolic locations are preserved as strings without external physical-pad resolution; identical CST bytes and port shapes do not prove board electrical correctness.",
+    "Static structure/resource comparisons do not establish causal cell, capacity interaction, placer algorithm issue, or a fix.",
+    "Failed M6 has no final timing/PNR JSON/bitstream/manifest/pack. MSPI requested only; no M6 completed pack.",
+    "No new build/native/model/TMDS/FPGA hardware or combined functional acceptance."
+  ],
+  "private_evidence": {
+    "PACKAGE_AUDIT_PREPUBLICATION.json": {
+      "sha256": "af1cbd187686923e838744d5cbf3bd822222d0c6a7102daddffb36b116bab2a8",
+      "size": 114411
+    },
+    "CONTRACT.json": {
+      "sha256": "60e0fd24835a5e8e853de71ba80ed5baf9950a1c494a97f509cf5da9c0e6e4b6",
+      "size": 1423195
+    },
+    "CONTINUATION_CONTRACT_V2.json": {
+      "sha256": "c82a76bb47be0771b9667496cd28f69996ac012e423325adb2c98a7c0f5090db",
+      "size": 2922
+    },
+    "ROOT_CONTRACT.json": {
+      "sha256": "f726ffda23d5291f1f7d5238f324e663d3d1899f46cc091f2eaec0ab53cc90d3",
+      "size": 8786
+    },
+    "ROOT_CONTINUATION_CONTRACT_V2.json": {
+      "sha256": "4ddd572e047ae71c072fb60c37b5b1a6fc379a4fb06fa1ef6c4b4f71bbe1c38b",
+      "size": 10437
+    },
+    "FINAL_CONTRACT.json": {
+      "sha256": "0a635986099569b41b9b6d3ca48bd947904c5d35b32308f566e409bb659e70dd",
+      "size": 11786
+    },
+    "RESULT.json": {
+      "sha256": "eb053ae2fe61a04e3ed32ff2692a10ce686971d7f4047204e182e2eeba036dd7",
+      "size": 118455
+    },
+    "ROOT_REVIEW.json": {
+      "sha256": "3f26ed2efacd4eaa9ffc548c352e3b74b48aa1fd7747b25b77be786c1fe2a7a5",
+      "size": 2294
+    },
+    "FINAL_ROOT_REVIEW.json": {
+      "sha256": "dac30af179bed7f4c7cfe1cc90c3d7885d87804998b55aa36f087a282e8cc5d9",
+      "size": 594
+    },
+    "audit.py": {
+      "sha256": "73ea3addcb921d63cc9114ecd98a258e80e9ef1ab369ab94257b55a835dca18d",
+      "size": 12375
+    },
+    "audit_remaining_v2.py": {
+      "sha256": "1de97d899332b34ae130d4f235c698d0ae4d8213a620ff8994ec5c37f0e7d7a7",
+      "size": 12555
+    },
+    "root_review.py": {
+      "sha256": "f15e27d033221d185d650f770190dfe8f7badb063d8f5524a27c67ec021532ff",
+      "size": 9646
+    },
+    "root_review_remaining_v2.py": {
+      "sha256": "290396000c1feebc789f2f35f3d32d6fd996f8a6cf0b7420fe065999ec06d4cd",
+      "size": 9833
+    },
+    "STATIC.log": {
+      "sha256": "a8eb797681c6caf172a37bb8348315051058bb474cefaa66b2af6583d52a1e04",
+      "size": 1416
+    },
+    "CONTINUATION_V2.log": {
+      "sha256": "c96beec536dec03c3645ebdd83da5d42bec3646e098cc9d41e90d2692fedddc2",
+      "size": 119
+    },
+    "ROOT_REVIEW.log": {
+      "sha256": "288a876d98e792f612eb61ff823419abed63558dec3952f29a8b0c18988d363b",
+      "size": 1154
+    },
+    "ROOT_CONTINUATION_V2.log": {
+      "sha256": "d2259e039877cc764e7156f634f15e40b050be36c3c3f28d808bff5924de99ab",
+      "size": 81
+    },
+    "FIRST_FAILURE.json": {
+      "sha256": "76abec551a23c93f8293adb21d33eb578a27cc3f35633b1f1a8e746f92dbbdc2",
+      "size": 1445
+    },
+    "FIRST_STATIC_REVIEW_DIAGNOSIS.json": {
+      "sha256": "a3c02fcd0d6915340e5326a30527a019ea47a959b4b877c70ace380c1f25387b",
+      "size": 1077
+    },
+    "FIRST_ROOT_REVIEW_FAILURE.json": {
+      "sha256": "daf3670d34725fe269cc6790cab5012e4cf61e7fcf4cccc497f435f21a2ae399",
+      "size": 1018
+    }
+  },
+  "publication_preparation_failure_preserved": {
+    "diagnosis": {
+      "sha256": "a215431b93bf1b8fca4afa7815ad8e8cde6e7897f9a3f62cc51a1ad09baadb1c",
+      "size": 779
+    },
+    "original_helper": {
+      "sha256": "cb6754064c0e95108a0fc25bab1ddee6e6382e8698aa1bb174bb307eb991422e",
+      "size": 5976
+    },
+    "continuation_helper": {
+      "sha256": "ac1b006f33306fb1a0beb4ef75041948b13f0bd2621ea6fa9167c324d4956e6d",
+      "size": 6044
+    },
+    "continuation_contract": {
+      "sha256": "aaaa517f1363ffcbd19eef07f75bb5a29165f5dc52c04e874611be0b7aeb8f21",
+      "size": 2822
+    },
+    "remaining_public_writes_only": true
+  }
+}

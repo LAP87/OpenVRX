@@ -2,6 +2,21 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## Fryst bf05 — statisk placeringsgranskning, 2026-10-14
+
+Root har jämfört det bevarade misslyckade M6-kombinationsförsöket med de accepterade bf05-byggena för standard, VINTERP och HDMI samt det färdiga M4-kombinationsbygget. **Alla fyra M6-varianter har samma 52 källfiler, byteidentiska CST-filer, 35 toppsignaler/100 bitar och samma flashstift 57/59–62.** Seed 2, freq75 och standard IOREG=1 matchar de faktiska placeringsanropen; WAIT är fortsatt källans 0. MSPI=1 är begärt för M6, men det misslyckade bygget nådde aldrig packningen.
+
+| M6 på bf05 | Synth-celler | LUT4 före placering | DFF före placering | BSRAM före placering |
+|---|---:|---:|---:|---:|
+| Standard | 20 079 | 15 505 | 7 373 | 25/46 |
+| VINTERP | 20 630 | 16 036 | 7 395 | 29/46 |
+| HDMI | 20 573 | 15 694 | 7 678 | 25/46 |
+| VINTERP + HDMI, misslyckad placering | 21 137 | 16 220 | 7 700 | 29/46 |
+
+Ingen redovisad resursrad överskrider sin angivna totalkapacitet. LUT4-raden är 16 220/20 736, RAM16SDP4 282/648 och rPLL 2/2. Kombinationens LUT4-ökning mot standard är +715, fem färre än +531 och +189 summerade; DFF är +327 och BSRAM +4. Synth-celler innehåller även scope-information och är inte placeringsbara LUT-enheter. Resurskategorier kan dela fysiska resurser; deras separata totalsiffror är ingen additiv placeringsbudget. **Grundorsaken är inte fastställd:** loggens ”probably at utilisation limit” och totalsiffrorna bevisar inte lokal kapacitet, legal packning eller ett fel i placeraren. M6 saknar fortsatt slutlig timing, PNR-JSON, bitström och manifest; kombinationspaketet är inte accepterat.
+
+En första privat läsare antog att alla CST-stift var heltal och stoppade på det symboliska SDRAM-namnet `IOR11B`. En separat bunden fortsättning behöll originalen och avslutade de ännu inte färdiga jämförelse-/kontrollstegen på 3,95 s. Roots första läsare krävde att felraden var loggens sista rad, trots den verkliga efterföljande sammanfattningen `0 warnings, 1 error`; även det originalfelet är bevarat, och en bunden fortsättning läste samma underlag och samma befintliga kontrollkopior. **Elva verkliga ägda byte-/metadata-/acceptans-/grundorsaksskador avvisas av oförändrade facit, med giltiga fakta före och efter.** 207 Git-/arkiv-/källinputs, 5 475 launchbindningar och originalens råbytes är oförändrade. Publiceringsförberedelsens första helper valde fel föräldrakatalog före första offentliga skrivningen; originalet och det redan sparade oföränderliga paketet bevarades, och en separat bunden fortsättning skrev endast de återstående dokumentfilerna. Ingen HDL, modell, byggomkörning, TMDS, parameterändring eller produktion-/stift-/SDC-ändring utfördes. [Begränsat statiskt granskningskvitto](evidence/core-bf05-combined-placement-audit.json).
+
 ## Fryst bf05 — kombinationsbygge stoppat, 2026-10-14
 
 Två förstgångsförsök på `bf05ac0`/tree`49923a6`, med HDMI=1/VINTERP=1/freq75, standard IOREG=1 och seed 0/2 för M4/M6. M4 byggdes på 473,23 s och alla fem slutliga klockor klarar minst 75 MHz; lägsta 96,75 MHz. M6 avslutades med rc1 efter 3443,62 s: nextpnr rapporterade `Unable to find legal placement for all cells, design is probably at utilisation limit.` Det skedde före ursprunglig timeout på 3600 s; inga stoppsignaler skickades. Loggen stannade vid analytisk placeringsiteration 14 före felet. Ingen grundorsak är fastställd av root.

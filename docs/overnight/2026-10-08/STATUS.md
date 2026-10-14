@@ -2,6 +2,18 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## Puck/bf05 — integrationsförgranskning, 2026-10-14
+
+**Puck-main är fortfarande `aed469b` och pinnar Core `46a1e4f`.** Remote Core-main är `072dbde`; den föreslagna nya gitlänken gäller uttryckligen accepterad fryst `bf05ac0`/tree`49923a6`. Ingen faktisk gitlink eller Puck-produktionsfil har ändrats i denna granskning.
+
+Ett privat konkret förslag ändrar endast `core` och `README.md`. Det beskriver bf05:s separata native757/default/VINTERP/HDMI-acceptans och behåller M6-kombinationens placeringsfel som ej accepterat. RSSI-läsarens standardperiod är 16 683 µs utan M6-override; det är ingen verifierad fältsynkronisering eller elektrisk garanti. Förslaget ersätter därför README:s fälttaktsformulering med nominell period och mätgräns. Andra gamla ADS1115-/ESD-/ERC-/lifecycle-/footprint-/hårdvarupåståenden får ingen acceptans av detta förprov; eventuell produktionsfix behåller council-grinden och det tidigare kreditstoppade rådet räknas inte som godkännande.
+
+Puck-testernas åtta Core-indata ändras på tre vägar: M4-toppen, M6-toppen och M6-CST. Alla gamla numeriska pinnummer och dokumenterade decoder-/I2C-/RESETB-/RX-SPI-signalroller är kvar; M6 tillför flashportarna 57/59–62. Den gemensamma `board_contract.py` är byte-/funktions-AST-identisk. Detta är text-/AST-jämförelse, ingen exekverad checker eller Puck-testacceptans på bf05.
+
+Ett stdlib-only Git-/källprov avslutades med rc0 på 1,17 s. 14 Puck-, 193 nuvarande Core- och 207 kandidat-Core-filer matchar faktiska Gitobjekt och arkiv. 1 115 käll-/runtime-/helper-/beroendebindningar är oförändrade. Åtta faktiska metadata-/pin-/påståendeskador och två bytefel avvisas med giltiga fakta före/efter; root återläste samma befintliga tio kopior och deras orsaker. Ingen projektimport, pytest, HDL, modell, byggomkörning, schemaexport, ERC, installation eller hårdvaruåtgärd utfördes. [Förgranskningskvitto och konkret diff-/testförslag](evidence/puck-bf05-integration-preflight.json).
+
+Nästa möjliga separata grind är ett nytt privat Puck-kandidatprov på exakt bf05 med tre oförändrade tester och deras 22 befintliga pinfel-/sex RSSI-felassertions. Dessa tester har ännu inte körts på kandidatens gitlink. Kandidatgrinden och dess slutgranskning ska avslutas innan något integrations-/README-/mergepaket väljs.
+
 ## Fryst bf05 — statisk placeringsgranskning, 2026-10-14
 
 Root har jämfört det bevarade misslyckade M6-kombinationsförsöket med de accepterade bf05-byggena för standard, VINTERP och HDMI samt det färdiga M4-kombinationsbygget. **Alla fyra M6-varianter har samma 52 källfiler, byteidentiska CST-filer, 35 toppsignaler/100 bitar och samma flashstift 57/59–62.** Seed 2, freq75 och standard IOREG=1 matchar de faktiska placeringsanropen; WAIT är fortsatt källans 0. MSPI=1 är begärt för M6, men det misslyckade bygget nådde aldrig packningen.

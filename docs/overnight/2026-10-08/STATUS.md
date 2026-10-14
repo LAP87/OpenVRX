@@ -2,6 +2,20 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## Puck pinnar accepterad bf05, 2026-10-14
+
+**Puck-main `f210a10` pinnar nu exakt Core `bf05ac0feed58c3295949a6f3b4ee55c886cd1e2`/tree`49923a6`.** Uppgiftsgren `a963e3c` byggdes från Puck `aed469b`; en verifierad no-ff-merge bevarar hela inkommande historiken. Gren och main är pushade och fjärrverifierade, inklusive faktisk gitlink. Övriga upptäckta remotegrenar är bevarade och deras resultat har inte accepterats här.
+
+Endast `core` och rot-README:s `Pinned Core`-avsnitt ändrades. README anger nu bf05:s accepterade 757 test/åtta formella bevis, separata standard-/VINTERP-/HDMI-byggen och M6:s faktiska MSPI-packflagga samt det ej accepterade kombinationsbyggets M6-placeringsfel. Rot-README utanför revisionsavsnittet, design-README, schema/kommentarer, BOM, netlist, tester, licens och Core-källfiler är orörda.
+
+Roots tidigare stopp tolkade dokumentrådets scope för brett. Det sparade RSSI-rådspaketet gäller uttryckligen `design/rev_a/README.md` och en förklarande kommentar i `dekoderkort.py`, med Core-länken undantagen. Användaren återupptog arbetet med ”Fortsätt”. Denna integrationsuppgift följer arbetsplanens rootägda README-/gitlink-statusarbete; det kreditstoppade rådet är fortfarande ej godkänt och dess ADC-/ESD-/elektriska dokumentfix utfördes inte.
+
+Tre oförändrade Puck-tester passerade på den slutliga integrationskällan i ett förstgångsförsök: **3 PASS på 3,21 s**, driver 4,272 s, noll skip/fel och inga stoppsignaler.126 instansierade delar, 22 befintliga pinfelassertions och sex RSSI-felassertions; faktiskt Python3.12.12/SKiDL2.3.0/pytest9.1.1. Tidigare privat kandidat3664a33 och dess prov återstartades inte. Tio nya ägda corepin-/commit-/falsepass-/README-scope-/promotion-/combined-/hardware-/missingXML-/skipXML-/sourcebytefel avvisades med giltiga original före/efter; slutgranskningen återläste samma kontrollkopior.
+
+221 Gitobjekt-/arkiv-/källinputs och 4 029 käll-/runtime-/helper-/beroendebindningar är oförändrade.33 root- och48 finalbindningar täcker helper/råfiler/kontroller; merge-trädets14Puckblob-ID är samma som den testade källan, Core-checkout/index/gitlink är samma bf05. Primära Pucka2ad438/Coreedb85d och historiska acceptanskällor bevaras. Ingen native-/FPGA-/TMDS-omkörning, schemaexport/ERC/KiCad/installation eller stift-/SDC-/default-/facitändring utfördes. [Slutkvitto, scopebeslut och fjärrverifiering](evidence/puck-link-bf05.json).
+
+Integrationen ger ingen ny kombinerad native-funktion, M6-kombinationsroutning, fysisk RSSI-/ADC-/ESD-/flashUSB-/SDRAM-/HDMI- eller hårdvaruacceptans. Tidigare separata bf05-acceptanser behåller sin avgränsning.
+
 ## Puck/bf05 — privat kandidatprov, 2026-10-14
 
 **Tre oförändrade Puck-tester passerar på 2,63 s** med kandidatens faktiska Core-gitlink, index och checkout exakt `bf05ac0`/tree`49923a6`. Kandidaten är en ny privat commit `3664a33` från Puck `aed469b`; endast `core` ändrades. De 14 Puck-källfilerna, inklusive README, schema, tester och sparade tillverkningsutdata, behåller sina ursprungliga bytes. **Puck-main är fortsatt `aed469b` och pinnar `46a1e4f`; kandidaten är inte integrerad eller pushad till Puck.**

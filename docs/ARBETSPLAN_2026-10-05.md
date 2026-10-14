@@ -285,3 +285,11 @@ Avvikelser och misstag under passet:
 - Källorna till uppgift 17 (TI SLEA081, SLES209E, SLEU044, Sipeeds wiki) lästes medan uppgift 16:s simuleringar körde; dokumentet skrevs och committades efter att 16 var sammanslagen.
 - Uppgift 17 ändrade bara Puck; Core-sviten kördes inte om för den (Core oförändrad sedan 757 gröna). Uppgift 20 ändrade bara README-filer, som sviten inte läser; i stället för en ny körning jämfördes svitens fingeravtryck (lika).
 - Raderna 20,32 mm isär i LAYOUT.md kommer från ett KiCad-fotavtryck från en tredje part, inte från Sipeed; det står i dokumentet.
+
+## Tionde passet, 2026-10-15 (Opus)
+
+Enligt [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 21–28 i ordning, gren per uppgift, sammanslagning med `--no-ff` efter hel svit (`run_suite.py`) och uppgiftens byggen. Allt är simulerat och byggt; inget är kört på hårdvara.
+
+| # | Gjort | Simulerat | Byggt | Återstår | Git |
+|---|---|---|---|---|---|
+| 21 | Orsaken är LUT-platserna, inte en enskild celltyp: ALU, RAM16SDP4 (8 platser var) och vippor utan egen LUT (genomgångs-LUT efter placeringen) delar dem. Ur syntesen 87,9 % i M6 med standardval och 92,7 % med båda valen; felet återskapat på `072dbde` (2 382 s). 224 av 282 RAM16SDP4 var mixerns två ingångs-FIFO:er. `async_fifo.v` fick `RD_REG` (registrerad läsning av nästa ord, samma `rd_data` vid varje klocka), och FIFO:erna ligger nu i block-RAM. Tabell över vilka val som byggts tillsammans i Core `gateware/README.md` | 761 gröna; FIFO:n formellt bevisad i båda lägena med en ny negativ kontroll; `test_async_fifo.py` med stötvis läsning och negativ kontroll (mixertesterna ser inte ett sent register, eftersom mixern läser varje ord direkt) | M6 med `HDMI=1 VINTERP=1` 13 719 LUT4, 33 BSRAM, lägst 99,00 MHz (730 s); M6 13 113 LUT4 (förut 15 505); M4 5 831 (förut 8 245); M4 med båda; M0; HDMI-paren som M0 | `VINTERP=1` och `HDMI=1` var för sig inte ombyggda efter ändringen | Core `main` c822606 |

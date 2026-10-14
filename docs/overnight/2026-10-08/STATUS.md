@@ -2,6 +2,16 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## Fryst bf05 — kombinationsbygge stoppat, 2026-10-14
+
+Två förstgångsförsök på `bf05ac0`/tree`49923a6`, med HDMI=1/VINTERP=1/freq75, standard IOREG=1 och seed 0/2 för M4/M6. M4 byggdes på 473,23 s och alla fem slutliga klockor klarar minst 75 MHz; lägsta 96,75 MHz. M6 avslutades med rc1 efter 3443,62 s: nextpnr rapporterade `Unable to find legal placement for all cells, design is probably at utilisation limit.` Det skedde före ursprunglig timeout på 3600 s; inga stoppsignaler skickades. Loggen stannade vid analytisk placeringsiteration 14 före felet. Ingen grundorsak är fastställd av root.
+
+**Kombinationspaketet är inte accepterat.** M6 har ingen färdig bitström, byggmanifest eller slutlig timing. TMDS och de planerade 32 felkontrollerna kördes inte. Det misslyckade arbetets gömda katalog, originalkällsnapshot med 52 filer, synth/loggar, START och kvotkvitton är bevarade.207 Gitobjekt-/arkiv-/källfiler och 5128 runtime-/helper-/beroendebindningar samt åtta skrivskyddade accepterade HDMI-M0-referensartefakter är oförändrade. Inga byggomförsök, parameter-, stift-, SDC- eller produktionsändringar.
+
+Luna-förberedelsen stoppades med workspace out of credits före något sparat utkast; root fortsatte med separat tillåten ordinarie kvot. Roots första timeoutbeskrivning rättades mot originalrc/logg. Ett privat stoppgranskningsskript krävde fel ord, `Failed` i stället för verkliga `Unable`; originalhelper/fel/logg bevarades och en separat bunden läsfortsättning avslutade granskningen av samma råfiler. Inget native-/bygg-/TMDS-omförsök gjordes. [Stoppkvitto](evidence/core-bf05-combined-builds-stop.json).
+
+Tidigare accepterade bf05-standard-, VINTERP- och HDMI-paket behåller sin avgränsning. Kombinerad native-funktion och FPGA-hårdvara är fortsatt overifierade.
+
 ## Aktuell nativeacceptans 2026-10-13: Core `bf05ac0`
 
 **757 test passerar i 48 filer och 495 seriella processer**, på fryst Core `bf05ac0`/träd `49923a6`. En helsvit tog **8 793,2 s**; alla 728 tidigare exakta testidentiteter finns kvar och 29 tillkommer. Root verifierade 207 Git-objekt mot det färska arkivet, 5 063 runtime-inputs, barnloggar och rådata. 18 av 19 cocotb XML är rena; den avsiktliga SDRAM-negativen har rätt SimFailure, tRCD vid 200739456 ps och STRICT-stopp, med samma originalseed, tid, fil och rad. Åtta formella bevis och sexton verkliga motexempel är granskade.

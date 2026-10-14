@@ -2,6 +2,16 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## Puck/bf05 — privat kandidatprov, 2026-10-14
+
+**Tre oförändrade Puck-tester passerar på 2,63 s** med kandidatens faktiska Core-gitlink, index och checkout exakt `bf05ac0`/tree`49923a6`. Kandidaten är en ny privat commit `3664a33` från Puck `aed469b`; endast `core` ändrades. De 14 Puck-källfilerna, inklusive README, schema, tester och sparade tillverkningsutdata, behåller sina ursprungliga bytes. **Puck-main är fortsatt `aed469b` och pinnar `46a1e4f`; kandidaten är inte integrerad eller pushad till Puck.**
+
+Testerna omfattar 126 instansierade delar, de 22 befintliga RESETB-/decoder-/I2C-/M3M6-D0D1-/missing-/duplicate-pin-felassertionerna och sex RSSI-felassertions. XML visar exakt de tre begärda identiteterna, noll fel och noll skip; stdout och rc0 matchar. Ett enda pytestförsök, driver 3,346 s, inga stoppsignaler. Runtime är faktisk Python 3.12.12/SKiDL 2.3.0/pytest 9.1.1 utan installation eller versionsbyte. Befintliga KiCad library-/footprinttable-varningar är bevarade i loggerfilen; den automatiskt skapade ERC-loggerfilen är tom och inget ERC-anrop påstås.
+
+221 Gitobjekt-/arkiv-/källinputs och 4 027 käll-/runtime-/helper-/beroendebindningar är oförändrade. Root granskar originalets XML/logg/Gitlink/checkout/facit och nio faktiska ägda corepin-/commit-/falsepass-/promotion-/combined-/hardware-/missingXML-/skipXML-/sourcebyte-fel. Alla avvisas av samma rena facit med giltiga original före/efter; slutgranskningen läser samma kontrollkopior utan återskapande. [Begränsat kandidatprovskvitto](evidence/puck-bf05-candidate-gate.json).
+
+Detta accepterar den privata kandidatens tre pure Puck-tester och pin-/RSSI-kontroller. Ingen ny Core-native-/FPGA-bygg-/kombinations-/ADC-elektrisk-/ESD-/flashUSB-/SDRAM-/HDMI-/hårdvaruacceptans ingår. Inget schema/BOM/netlist/test/facit/Core/stift/SDC/default/licensvärde ändrades eller export regenererades. README-förslaget är fortfarande separat. Ett senare integrations-/dokumentpaket behöver lösa dokumentägarskap och tillämplig council-grind; det gamla kreditstoppade rådet ger inget godkännande och körs inte automatiskt om.
+
 ## Puck/bf05 — integrationsförgranskning, 2026-10-14
 
 **Puck-main är fortfarande `aed469b` och pinnar Core `46a1e4f`.** Remote Core-main är `072dbde`; den föreslagna nya gitlänken gäller uttryckligen accepterad fryst `bf05ac0`/tree`49923a6`. Ingen faktisk gitlink eller Puck-produktionsfil har ändrats i denna granskning.

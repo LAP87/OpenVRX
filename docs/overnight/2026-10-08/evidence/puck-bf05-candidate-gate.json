@@ -1,0 +1,206 @@
+{
+  "state": "FINAL_PRIVATE_CANDIDATE_TEST_ACCEPTANCE",
+  "scope": "private Puck candidate three pure tests and existing pin/RSSI negative assertions only",
+  "facts": {
+    "candidate_commit": "3664a335410bae91016a4b0f6f9c49341504d454",
+    "candidate_tree": "1aa74bf098266d3fcc252172f05b7037a74bd96b",
+    "core_pin": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+    "core_tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+    "source_inputs": 221,
+    "requested": [
+      "tests/test_dekoderkort.py::test_schema_gateware_contract_and_negative_controls",
+      "tests/test_dekoderkort.py::test_all_supported_tops_check_decoder_and_board_pin_maps",
+      "tests/test_dekoderkort.py::test_rssi_adc_and_negative_controls"
+    ],
+    "cases": [
+      {
+        "name": "test_schema_gateware_contract_and_negative_controls",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.668
+      },
+      {
+        "name": "test_all_supported_tops_check_decoder_and_board_pin_maps",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.633
+      },
+      {
+        "name": "test_rssi_adc_and_negative_controls",
+        "class": "tests.test_dekoderkort",
+        "seconds": 0.656
+      }
+    ],
+    "tests_passed": 3,
+    "pytest_seconds": 2.627,
+    "driver_seconds": 3.3456880710145924,
+    "signals_sent": [],
+    "pin_negative_assertions": 22,
+    "RSSI_negative_assertions": 6,
+    "circuit_parts_tested": 126,
+    "actual_Puck_main_pin_updated": false,
+    "README_proposal_applied": false,
+    "combined_accepted": false,
+    "hardware_verified": false
+  },
+  "controls": [
+    {
+      "fault": "core_pin",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/core_pin.json",
+      "identity": {
+        "sha256": "e40c2a0cda57bcaeb7bae5a789099971d04a830a96d7091364f740fe53f7ac2a",
+        "size": 1330
+      }
+    },
+    {
+      "fault": "candidate_commit",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/candidate_commit.json",
+      "identity": {
+        "sha256": "d94470dd113931c2d6c266c4ce1335dfdbbee363d6eb8b1e4db1fad7c91a24b3",
+        "size": 1330
+      }
+    },
+    {
+      "fault": "false_pass",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/false_pass.json",
+      "identity": {
+        "sha256": "b6796a3ff877b09e73c573926742dff62bdc4341e970d1dd600dc8894c357323",
+        "size": 1330
+      }
+    },
+    {
+      "fault": "main_promotion",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/main_promotion.json",
+      "identity": {
+        "sha256": "5fb5d95f84bc907c1391addc325d5e8996477e474acc92f4afa8de564d14dd32",
+        "size": 1329
+      }
+    },
+    {
+      "fault": "combined_claim",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/combined_claim.json",
+      "identity": {
+        "sha256": "606cfd718f52d998fd009ad8f65e57974f5eeb3d97a99d5c06acba69e62c7b75",
+        "size": 1329
+      }
+    },
+    {
+      "fault": "hardware_claim",
+      "reason": "candidate claim differs from original source/pytest/Git facts",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/hardware_claim.json",
+      "identity": {
+        "sha256": "88738e417549c739cba71ce2a146cc35c86bf466367e1824bdacfe2c1797445c",
+        "size": 1329
+      }
+    },
+    {
+      "fault": "XML_missing",
+      "reason": "JUnit requested identities are missing or foreign",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_missing.xml",
+      "identity": {
+        "sha256": "9e4c5ed863cb743835d0b08aa95208336a56ae21886acbbe7b49fce037cf11aa",
+        "size": 435
+      }
+    },
+    {
+      "fault": "XML_skip",
+      "reason": "JUnit case has skipped/failure/error or foreign content",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_skip.xml",
+      "identity": {
+        "sha256": "84c9ddfac3d446cfa608181edccd7b955be27193fe0c816dde96f9b0463d24c0",
+        "size": 574
+      }
+    },
+    {
+      "fault": "source_byte",
+      "reason": "candidate source byte identity differs",
+      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/source_byte.bytes",
+      "identity": {
+        "sha256": "38334c75f266371170028cd508a448495e2af50979f641b0eb5fc07183daf6df",
+        "size": 13710
+      },
+      "original_identity": {
+        "sha256": "8241109dc1dc1fc359ecf32257a98068ce52f6cf88fe23e94435501a67688901",
+        "size": 13710
+      }
+    }
+  ],
+  "source_inputs": 221,
+  "launch_bindings": 4027,
+  "root_bindings": 31,
+  "final_bindings": 45,
+  "single_pytest_attempt": true,
+  "all_source_runtime_helper_original_raw_unchanged": true,
+  "actual_Puck_main_pin_updated": false,
+  "README_proposal_applied": false,
+  "hardware_verified": false,
+  "KiCad_warnings_preserved": true,
+  "empty_ERC_logger_size": 0,
+  "no_ERC_execution_claim": true,
+  "saved_design_outputs_retained_by_original_Puck14_byte_identity": true,
+  "private_evidence": {
+    "PACKAGE_ACCEPTANCE_PREPUBLICATION.json": {
+      "sha256": "a5d5d688139cba7301b08156de0d008694107900c59b5cf26065011bd5a33132",
+      "size": 6062
+    },
+    "WORKTREE_PREPARATION.json": {
+      "sha256": "d5ead70a46b31cb77f286029ae03e59d8980ddb43e471fe5a7930d849965b367",
+      "size": 5349
+    },
+    "LAUNCH_CONTRACT.json": {
+      "sha256": "c67ba959522320bff1d71fe5376f5f4c72d472ebb313083b7f9d029a53b80e6b",
+      "size": 1018731
+    },
+    "ROOT_CONTRACT.json": {
+      "sha256": "1c45d6e6ad3f4e031fea12c0789a0fbf887168abfa01c627277764964d058ac3",
+      "size": 8814
+    },
+    "FINAL_CONTRACT.json": {
+      "sha256": "9b3e9af8fd15bc548bf7c347af125bb1f855a7fc930fc1ca3e34ddf0609c437a",
+      "size": 12439
+    },
+    "ROOT_ACCEPTANCE.json": {
+      "sha256": "10b9c33f8a875486366994642abc328eedd0e88de61c0960fd4ade3d9ff31575",
+      "size": 5677
+    },
+    "FINAL_ROOT_REVIEW.json": {
+      "sha256": "073ff5281381d53e33ddd8bc8e56a3afdc1af9745b9a5aa3ea3d10214ac04a89",
+      "size": 444
+    },
+    "TEST_RESULT.json": {
+      "sha256": "994d0f422ad7d0be44511e3f0bc459f2bf451ed3de619ebfd2cdacbc95bbfc83",
+      "size": 1167
+    },
+    "run.py": {
+      "sha256": "b87cccac2bafaabc78d33f8278e4a60f7b7af60234b5fcd58b104dff312b1648",
+      "size": 3489
+    },
+    "accept.py": {
+      "sha256": "831d038f1ca999c1067c1706be3a4b3d5406f03c0c436fbd1caa4e4e9561eddf",
+      "size": 8674
+    },
+    "puck-tests.xml": {
+      "sha256": "9b56660b0c860d59977ca8e08dfa1409a274061fbde7b909ae0f388f8deb4318",
+      "size": 592
+    },
+    "pytest.log": {
+      "sha256": "ed00aca99f985e448950c17aec8c3fda67ef560e6fdb6b2e658fd729b35cb2fd",
+      "size": 98
+    },
+    "DRIVER.log": {
+      "sha256": "be067e86395b0c10bf801ed091d8afafa8ab934b347b242a52d45a419d7eb9c2",
+      "size": 55
+    },
+    "ROOT_REVIEW.log": {
+      "sha256": "129a4c729d663ce36aa4fddb1442d173040f691a48d2e0bda3b27495bc52ceb7",
+      "size": 75
+    },
+    "FINAL_REVIEW.log": {
+      "sha256": "a2d905764a8e2ad0f4d3d0f8fbc700b2acc0289e3adff59c9bcd31fcc027873f",
+      "size": 76
+    }
+  }
+}

@@ -1,0 +1,893 @@
+{
+  "state": "FINAL_ROOT_REVIEWED_READONLY_PROPOSAL",
+  "scope": "readonly preflight and concrete proposal; no candidate test or Puck integration",
+  "facts": {
+    "puck_revision": "aed469b079737feefeaf469dceafc3a29eb7b36e",
+    "old_pin": "46a1e4f284605a9521f592faff33068986e92d25",
+    "proposed_pin": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+    "candidate_tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+    "source_inputs": {
+      "puck": 14,
+      "old_core": 193,
+      "candidate_core": 207
+    },
+    "consumer_inputs": 8,
+    "consumer_paths_changed": [
+      "gateware/top/m4_dual_mix.v",
+      "gateware/boards/m6_puck_proto.cst",
+      "gateware/top/m6_puck_proto.v"
+    ],
+    "board_contract_bytes_and_function_AST_identical": true,
+    "supported_tops": [
+      "m3_probe",
+      "m4_dual_mix",
+      "m6_puck_proto"
+    ],
+    "mapping_cases": {
+      "m3_probe": {
+        "numeric_pin_map_old": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ],
+          "uart_txd": [
+            69
+          ]
+        },
+        "numeric_pin_map_candidate": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ],
+          "uart_txd": [
+            69
+          ]
+        },
+        "all_old_numeric_mappings_retained": true,
+        "decoder_and_shared_roles_static_retained": true,
+        "CST_same_bytes": true,
+        "top_same_bytes": true
+      },
+      "m4_dual_mix": {
+        "numeric_pin_map_old": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ]
+        },
+        "numeric_pin_map_candidate": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ]
+        },
+        "all_old_numeric_mappings_retained": true,
+        "decoder_and_shared_roles_static_retained": true,
+        "CST_same_bytes": true,
+        "top_same_bytes": false
+      },
+      "m6_puck_proto": {
+        "numeric_pin_map_old": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ],
+          "key_i": [
+            87
+          ],
+          "uart_txd": [
+            69
+          ]
+        },
+        "numeric_pin_map_candidate": {
+          "tvpa_sclk": [
+            77
+          ],
+          "tvpa_d[0]": [
+            27
+          ],
+          "tvpa_d[1]": [
+            28
+          ],
+          "tvpa_d[2]": [
+            26
+          ],
+          "tvpa_d[3]": [
+            29
+          ],
+          "tvpa_d[4]": [
+            30
+          ],
+          "tvpa_d[5]": [
+            31
+          ],
+          "tvpa_d[6]": [
+            73
+          ],
+          "tvpa_d[7]": [
+            74
+          ],
+          "tvpb_sclk": [
+            80
+          ],
+          "tvpb_d[0]": [
+            76
+          ],
+          "tvpb_d[1]": [
+            42
+          ],
+          "tvpb_d[2]": [
+            41
+          ],
+          "tvpb_d[3]": [
+            48
+          ],
+          "tvpb_d[4]": [
+            49
+          ],
+          "tvpb_d[5]": [
+            86
+          ],
+          "tvpb_d[6]": [
+            79
+          ],
+          "tvpb_d[7]": [
+            72
+          ],
+          "i2c_scl": [
+            75
+          ],
+          "i2c_sda_a": [
+            85
+          ],
+          "i2c_sda_b": [
+            51
+          ],
+          "tvp_resetb": [
+            18
+          ],
+          "rx_spi_clk": [
+            71
+          ],
+          "rx_spi_data": [
+            19
+          ],
+          "rx_spi_sel_n": [
+            20
+          ],
+          "key_i": [
+            87
+          ],
+          "uart_txd": [
+            69
+          ],
+          "flash_cs_n": [
+            60
+          ],
+          "flash_clk": [
+            59
+          ],
+          "flash_mosi": [
+            61
+          ],
+          "flash_miso": [
+            62
+          ],
+          "flash_wp_n": [
+            57
+          ]
+        },
+        "all_old_numeric_mappings_retained": true,
+        "decoder_and_shared_roles_static_retained": true,
+        "CST_same_bytes": false,
+        "top_same_bytes": false
+      }
+    },
+    "M6_new_flash_pins": {
+      "flash_cs_n": [
+        60
+      ],
+      "flash_clk": [
+        59
+      ],
+      "flash_mosi": [
+        61
+      ],
+      "flash_miso": [
+        62
+      ],
+      "flash_wp_n": [
+        57
+      ]
+    },
+    "RSSI_static": {
+      "period_us": 16683,
+      "device_address": "48",
+      "default_period_not_overridden_in_M6": true,
+      "video_field_alignment_verified": false,
+      "old_pin_has_reader": false,
+      "candidate_has_reader": true
+    },
+    "prior_accepted_packets": {
+      "core-bf05-full-suite": {
+        "accepted": true,
+        "tests_passed": 757,
+        "proofs": 8
+      },
+      "core-bf05-default-builds": {
+        "accepted": true,
+        "tops": {
+          "m0_testpattern": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "0",
+              "ioreg": "0",
+              "mspi": "0",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "0",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 154.58
+          },
+          "m4_dual_mix": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "0",
+              "ioreg": "1",
+              "mspi": "0",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "0",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 98.95
+          },
+          "m6_puck_proto": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "0",
+              "ioreg": "1",
+              "mspi": "1",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "2",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 104.58
+          }
+        }
+      },
+      "core-bf05-vinterp-builds": {
+        "accepted": true,
+        "tops": {
+          "m4_dual_mix": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "0",
+              "ioreg": "1",
+              "mspi": "0",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "0",
+              "vinterp": "1"
+            },
+            "min_max_mhz": 111.36
+          },
+          "m6_puck_proto": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "0",
+              "ioreg": "1",
+              "mspi": "1",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "2",
+              "vinterp": "1"
+            },
+            "min_max_mhz": 101.81
+          }
+        }
+      },
+      "core-bf05-hdmi-builds": {
+        "accepted": true,
+        "tops": {
+          "m0_testpattern": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "1",
+              "ioreg": "0",
+              "mspi": "0",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "0",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 152.09
+          },
+          "m4_dual_mix": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "1",
+              "ioreg": "1",
+              "mspi": "0",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "0",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 105.22
+          },
+          "m6_puck_proto": {
+            "options": {
+              "freq_mhz": "75",
+              "hdmi": "1",
+              "ioreg": "1",
+              "mspi": "1",
+              "pull": "",
+              "sdram_phase": "",
+              "seed": "2",
+              "vinterp": "0"
+            },
+            "min_max_mhz": 106.04
+          }
+        }
+      }
+    },
+    "proposal_README": {
+      "sha256": "fa937568685bfa8dfb3d28a50c27df354b24b2977a2b8dbf344fba9834db6903",
+      "size": 4507
+    },
+    "proposal_patch": {
+      "sha256": "578207eff09387d5609c3802fa7ff79f746fee8ae647ec3cb6bc570e77ef1cf6",
+      "size": 2861
+    },
+    "actual_pin_updated": false,
+    "candidate_Puck_tests_executed": false,
+    "candidate_Puck_tests_passed": null,
+    "combined_accepted": false,
+    "hardware_verified": false,
+    "limits": [
+      "Static mappings and unchanged checker code do not execute the schema/validator or establish the candidate Puck tests pass.",
+      "Fixed ADC period is not video-field synchronization or physical ADC/electrical validation.",
+      "M6 combined placement failed; new pin must not claim combined build or combined native acceptance.",
+      "ESD/lifecycle/receiver-voltage/ADC-loading/footprint/KiCad/hardware gaps remain outside pin integration.",
+      "README draft is a proposal. Existing claim corrections needing council retain the failed council gate; no automatic reviewer retry."
+    ]
+  },
+  "source_inputs": 414,
+  "launch_bindings": 1115,
+  "root_bindings": 25,
+  "final_bindings": 30,
+  "controls": [
+    {
+      "fault": "candidate_identity",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_identity.json",
+      "identity": {
+        "sha256": "f7cff378e1296d74d29244b0987df9ef493c6a90adb5535337d4f39be3ba79e4",
+        "size": 13479
+      }
+    },
+    {
+      "fault": "old_pin",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/old_pin.json",
+      "identity": {
+        "sha256": "be609c85110678a87fd3a31922231b9e9fe27596494fc86341ffdda8d8441b16",
+        "size": 13512
+      }
+    },
+    {
+      "fault": "pin_mapping",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/pin_mapping.json",
+      "identity": {
+        "sha256": "2d8949bc623a006905a91adab892809ec3c349a19e22e73617aa8ee35b797ed7",
+        "size": 13512
+      }
+    },
+    {
+      "fault": "RSSI_field_alignment",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/RSSI_field_alignment.json",
+      "identity": {
+        "sha256": "0bdc4c584f225b22af45dedaaa0f808446f7914dd0cc187befbb7133149b976e",
+        "size": 13511
+      }
+    },
+    {
+      "fault": "candidate_Puck_pass",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_Puck_pass.json",
+      "identity": {
+        "sha256": "13deeeade715acfb8c0b7a87a6e56d93af180d05ba354d75982652165b4c01fd",
+        "size": 13508
+      }
+    },
+    {
+      "fault": "combined_acceptance",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/combined_acceptance.json",
+      "identity": {
+        "sha256": "c738771ca6dad12ee32d0ad252efa7331612afbc4b8d12e688ee0e83f9cea143",
+        "size": 13511
+      }
+    },
+    {
+      "fault": "hardware_acceptance",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/hardware_acceptance.json",
+      "identity": {
+        "sha256": "9ecc24869ce1038144ee8a7b24515d6580f27cf5b7027a1562c855cde0aef453",
+        "size": 13511
+      }
+    },
+    {
+      "fault": "proposal_published",
+      "reason": "claim differs from original Git/source/accepted packet facts",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_published.json",
+      "identity": {
+        "sha256": "8ac0f93d75eb208cdc832492651c53e874c5deec2db2c003a3a7965ac763851e",
+        "size": 13511
+      }
+    },
+    {
+      "fault": "source_byte",
+      "reason": "source/proposal/helper byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/source_byte.bytes",
+      "identity": {
+        "sha256": "38334c75f266371170028cd508a448495e2af50979f641b0eb5fc07183daf6df",
+        "size": 13710
+      },
+      "original_identity": {
+        "sha256": "8241109dc1dc1fc359ecf32257a98068ce52f6cf88fe23e94435501a67688901",
+        "size": 13710
+      }
+    },
+    {
+      "fault": "proposal_byte",
+      "reason": "source/proposal/helper byte identity differs",
+      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_byte.bytes",
+      "identity": {
+        "sha256": "5b950b2b977f8fe430bf0b69fccd36a0155d4d039ed61b61b8ae1f4da7666811",
+        "size": 2861
+      },
+      "original_identity": {
+        "sha256": "578207eff09387d5609c3802fa7ff79f746fee8ae647ec3cb6bc570e77ef1cf6",
+        "size": 2861
+      }
+    }
+  ],
+  "static_rc": 0,
+  "root_rc": 0,
+  "final_rc": 0,
+  "static_seconds": 1.170909759006463,
+  "all_source_runtime_helper_raw_unchanged": true,
+  "actual_pin_updated": false,
+  "candidate_Puck_tests_executed": false,
+  "hardware_verified": false,
+  "proposed_integration_patch": "--- a/README.md\n+++ b/README.md\n@@ -32,7 +32,7 @@\n | Decoders | 2x TVP5150AM1 (rev A board) |\n | FPGA | Tang Nano 20K (GW2AR-18) for the prototype |\n | Output | HDMI 720p (buffered, or genlocked low-latency) |\n-| RSSI | both receivers to an ADS1115 I2C ADC on the rev A board, read once per field |\n+| RSSI | both receivers to an ADS1115 I2C ADC on the rev A board; nominal 16,683 us read period in Core, physical timing unmeasured |\n | UI | 2 buttons, 0.91\" 128x32 OLED, on-screen menu, USB-UART measurement log |\n | Power | 2S 21700 Li-ion; USB-C PD in/out via IP2368 (planned) |\n | Enclosure | thin tough resin, internal shield can grounded to circuit ground |\n@@ -55,15 +55,23 @@\n \n ## Pinned Core\n \n-The `core/` submodule pins `46a1e4f284605a9521f592faff33068986e92d25`.\n-Its 728 simulation tests and eight formal proofs passed in source-bound review.\n-Fresh M0/M4/M6 default builds, separate M4/M6 VINTERP builds and separate\n+The `core/` submodule pins `bf05ac0feed58c3295949a6f3b4ee55c886cd1e2`.\n+Its 757 simulation tests and eight formal proofs passed in source-bound review.\n+Fresh default M0/M4/M6 builds, separate M4/M6 VINTERP builds and separate\n M0/M4/M6 HDMI builds passed the 75 MHz timing and TMDS fuse checks, with seeds\n-0/0/2 and the unchanged I/O-register defaults. [Review receipts](https://github.com/LAP87/OpenVRX/blob/cb65b9afd377c0af9956797c1a864b63dcf55e0f/docs/overnight/2026-10-08/STATUS.md).\n+0/0/2 and unchanged I/O-register defaults. M6's completed pack calls include\n+`--mspi_as_gpio` for the onboard flash ports. [Review receipts](https://github.com/LAP87/OpenVRX/blob/e2416f24b085665bec6bccc305aa6b89cc2b6e0f/docs/overnight/2026-10-08/STATUS.md).\n+\n+RSSI reading, calibration, weak-receiver pair choice, scanning, the 85-byte UART\n+row and saved settings are implemented and source-bound simulated on this Core.\n+The ADC reader uses a nominal 16,683 us period; physical sampling alignment to\n+video fields has not been measured. Receiver RSSI voltage and impedance, ADC\n+loading, flash/USB programming and power-cut behaviour remain unverified.\n \n Vertical interpolation remains off, the transmitter defaults to DVI, and the\n-varying LOW line stays after vsync. VINTERP=1 with HDMI=1 has not been built in\n-this review. SDRAM pin timing and HDMI compatibility remain unmeasured on hardware.\n+varying LOW line stays after vsync. With VINTERP=1 and HDMI=1, M4 routed at the\n+unchanged requirement, but M6 failed placement; the combined build package is\n+not accepted. SDRAM pin timing and HDMI compatibility remain unmeasured on hardware.\n \n ```sh\n git clone --recurse-submodules https://github.com/LAP87/OpenVRX-Puck\ndiff --git a/core b/core\nindex 46a1e4f..bf05ac0 160000\n--- a/core\n+++ b/core\n@@ -1 +1 @@\n-Subproject commit 46a1e4f284605a9521f592faff33068986e92d25\n+Subproject commit bf05ac0feed58c3295949a6f3b4ee55c886cd1e2\n",
+  "integration_proposal": "# F\u00f6reslagen senare integration av Puck och accepterad bf05\n\nUnderlaget \u00e4r ett skrivskyddat statiskt f\u00f6rprov, inte en integration eller ett testpass p\u00e5 den f\u00f6reslagna gitl\u00e4nken. Nuvarande observerade Puck-main \u00e4r aed469b079737feefeaf469dceafc3a29eb7b36e och dess faktiska gitlink/index/Core-checkout \u00e4r 46a1e4f284605a9521f592faff33068986e92d25. Core-main \u00e4r 072dbdef3afe53384be19008768661bad20524d6; kandidaten \u00e4r uttryckligen fryst bf05ac0feed58c3295949a6f3b4ee55c886cd1e2, tree49923a6dda3c8f3466eff76ddaa7d835f1785c1d.\n\n`PROPOSED_INTEGRATION.patch` och `PROPOSED_README.md` visar den konkreta f\u00f6reslagna skillnaden. Endast `core` och `README.md` \u00e4r f\u00f6reslaget integrations\u00e4garskap f\u00f6r root. Ingen riktig Puck-fil eller gitlink/index har \u00e4ndrats. Schema, BOM, netlist, kopplingslista, tester, licens och Core-k\u00e4llfiler omfattas inte av diffen. Gamla Puck-checkouter och den accepterade 46a1-integrationen f\u00f6rblir historik.\n\nDen gemensamma `board_contract.py` \u00e4r byte-/funktions-AST-identisk mellan 46a1 och bf05. Puck-testernas \u00e5tta kopierade Core-indata \u00e4ndras p\u00e5 tre v\u00e4gar: M4-toppen, M6-toppen och M6-CST. Alla gamla numeriska IO_LOC \u00e4r kvar, inklusive decoderdata/clock/I2C och RESETB/RX-SPI; M6 tillf\u00f6r flash 57/59\u201362. Detta \u00e4r text-/AST-j\u00e4mf\u00f6relse. Den importerar eller exekverar inte Pucks checker, SKiDL eller Verilog och bevisar inte att tester p\u00e5 kandidatens gitlink passerar.\n\nbf05 har slutliga separata native757/default/VINTERP/HDMI-paket. Kombinationen HDMI=1/VINTERP=1 \u00e4r inte accepterad: M4 byggdes, M6 misslyckades med placering. Ingen tillverkning, KiCad-import, ADC-elektrisk egenskap, RSSI-sp\u00e4nning/impedans, HDMI-kompatibilitet, SDRAM-stifttiming, USB-/flash-/str\u00f6mavbrotts- eller h\u00e5rdvaruegenskap \u00e4r verifierad av gitlinkf\u00f6rslaget. Nativepaketets RSSI-modellperiod och accelererade flashdebounce ger inga nya fysiska garantier.\n\nRSSI-kandidatens DEV \u00e4r 48h p\u00e5 decoder A:s SDA. L\u00e4saren anv\u00e4nder k\u00e4llans PERIOD_US=16683, utan M6-override eller video-f\u00e4ltstyrd periodparameter. README-f\u00f6rslaget skiljer d\u00e4rf\u00f6r den nominella perioden fr\u00e5n faktisk f\u00e4ltsynkronisering och elektrisk verifiering. Detta undanr\u00f6jer inte andra tidigare ADS1115-/ESD-/lifecycle-/footprint-/ERC-p\u00e5st\u00e5endeluckor. Om dokumentkorrigeringar behandlas som produktionsfix kr\u00e4vs befintlig council-grind med minst 70 procent verkliga YES; det tidigare kreditstoppade r\u00e5det \u00e4r inte godk\u00e4nt och f\u00e5r inte automatiskt k\u00f6ras om. F\u00f6rslaget ger inget councilgodk\u00e4nnande.\n\nN\u00e4sta m\u00f6jliga avgr\u00e4nsade paket \u00e4r ett privat kandidatprov, f\u00f6re integration:\n\n1. Kontrollera nya faktiska Puck/Core remote-huvuden, clean status, source-/paketbytes och ordinary API. Om huvuden \u00e4ndrats bevara inkommande commits och omv\u00e4rdera basen innan nya filer eller tester. Ingen reset/stash/clean/force-push.\n2. Skapa en ny privat isolerad Puck-kandidat fr\u00e5n den granskade Puck-basen med Core-index och faktisk checkout exakt bf05/tree49923. \u00c4ndra endast kandidatens gitlink; README-f\u00f6rslaget kan h\u00e5llas som separat privat granskningsartefakt. Varken Puck-main eller prim\u00e4rhistoriska checkouter \u00e4ndras.\n3. Bind alla 14 Puck- och 207 Core-Gitinputs, faktiskt Gitobjekt-/arkiv-/source-samband, runtime (SKiDL 2.3.0, pytest 9.1.1 och riktig venv), helper/task/deps/argv/params och tre beg\u00e4rda testidentiteter f\u00f6re ett f\u00f6rstg\u00e5ngsprov. Ingen installation eller versions\u00e4ndring. K\u00f6r exakt de tre of\u00f6r\u00e4ndrade `tests/test_dekoderkort.py`-testen en g\u00e5ng under gemensamt l\u00e5s, med nya egna XML/logg/tempkataloger. De inneh\u00e5ller 22 befintliga pinfel-assertions och sex RSSI-felassertions; dessa \u00e4r inte k\u00f6rda p\u00e5 bf05-Puck i detta f\u00f6rprov.\n4. Root l\u00e4ser verkliga XML/node-id/rc/loggar och kontrollerar samma kandidat-Gitlink/index/actualCore-tree och AST-/byteidentiska Puck-test-/schemafacit efter provet. Beh\u00e5ll befintliga KiCad library-/footprinttable-varningar; generera inte ERC/KiCad/schemaexports eller BOM p\u00e5 nytt. K\u00e4ll-/runtime-/raw-/parameteridentiteter ska vara lika f\u00f6re/efter. Vid fel bevara originalet; inga automatiska test/native/build-omf\u00f6rs\u00f6k eller facit\u00e4ndringar.\n5. Slutgranska och publicera det avgr\u00e4nsade kandidatprovet innan n\u00e5got separat integrationspaket v\u00e4ljs. Ett framtida merge-/README-paket m\u00e5ste l\u00f6sa dokument\u00e4garskap och eventuell council-grind samt bevara aktuell inkommande Puck-main via no-ff. Bara de tv\u00e5 granskade v\u00e4garna f\u00e5r d\u00e5 integreras; f\u00e4rska Puck-tester p\u00e5 exakt slutgitlink och fj\u00e4rrverifierad pin kr\u00e4vs. Detta f\u00f6rprov ger ingen r\u00e4tt att kalla kandidat, faktisk main eller h\u00e5rdvara accepterad.\n",
+  "private_evidence": {
+    "PACKAGE_PREFLIGHT_PREPUBLICATION.json": {
+      "sha256": "49247b02ef0b44e0f7125e2c9e97ad96feaa43c2af4855c4f2db87606414d1ff",
+      "size": 20529
+    },
+    "LAUNCH_CONTRACT.json": {
+      "sha256": "3db79f6bee330ad92703cd3efa13fae2f31859d0eac1fcbdf3f0758d08ca5d01",
+      "size": 285999
+    },
+    "ROOT_CONTRACT.json": {
+      "sha256": "117d943405307bde3c77eb866b844e41fdcd7f1150bd1b323d74c8dce5c7e253",
+      "size": 6825
+    },
+    "FINAL_CONTRACT.json": {
+      "sha256": "ccdf662aef812513743589f482a1d964c2561c4eb38c64a98ea6603d0747feca",
+      "size": 8104
+    },
+    "CHECKOUT_REMOTE_OBSERVATION.json": {
+      "sha256": "75e9a26a06a6ff209584413af0ea536271dcfffe12a97db42c970344f2a4d01a",
+      "size": 2090
+    },
+    "RESULT.json": {
+      "sha256": "71a24ff7b5a665ce26fb92af3ebeb84c1e406c302ef518a9485e38bdfba8b2b2",
+      "size": 19926
+    },
+    "ROOT_REVIEW.json": {
+      "sha256": "a97dd2bf85389c0cd7accb88737ae3bca7e5d7cf7a26cc2da832ab2fc8d3e10b",
+      "size": 749
+    },
+    "FINAL_ROOT_REVIEW.json": {
+      "sha256": "224cf9ec2def7727490bec329c41d08d0fadba4544070b2bc7b4a3b36064b97a",
+      "size": 495
+    },
+    "preflight.py": {
+      "sha256": "d9caa0a813b5c0b8e3c2a6dc78ad502d7127af23114d91422a0fe63563991dbc",
+      "size": 11287
+    },
+    "root_finalize.py": {
+      "sha256": "5401d29019658009be288060c5562a940e4e0abb4288b50625076babcd19fa92",
+      "size": 5318
+    },
+    "STATIC.log": {
+      "sha256": "2b6c6378e70e96ebad7ec3d1ce702dca6d2e952028af3737e09559a7257d2752",
+      "size": 223
+    },
+    "ROOT_REVIEW.log": {
+      "sha256": "610ff636347b987d5510815688433db6f58acab03278f9dffb40b503e289164a",
+      "size": 86
+    },
+    "FINAL_REVIEW.log": {
+      "sha256": "c00ca916cb1c2d7987fc65c99c6bb2b5e676bb95e9fe0d59582f3d7936517ecf",
+      "size": 86
+    },
+    "PROPOSED_README.md": {
+      "sha256": "fa937568685bfa8dfb3d28a50c27df354b24b2977a2b8dbf344fba9834db6903",
+      "size": 4507
+    },
+    "PROPOSED_INTEGRATION.patch": {
+      "sha256": "578207eff09387d5609c3802fa7ff79f746fee8ae647ec3cb6bc570e77ef1cf6",
+      "size": 2861
+    },
+    "INTEGRATION_PROPOSAL.md": {
+      "sha256": "967ffffa61391cbcfe9813d7c2cc95234fa8a8269c57978a5fa135f950405780",
+      "size": 4592
+    }
+  }
+}

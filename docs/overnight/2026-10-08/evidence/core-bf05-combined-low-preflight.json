@@ -1,0 +1,670 @@
+{
+  "state": "PASS_ROOT_REVIEWED_LIMITED_LOW_PREFLIGHT",
+  "accepted": true,
+  "acceptance_scope": "selected frozen source/raw/configuration only, no new LOW native acceptance",
+  "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+  "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+  "source_inputs": 207,
+  "launch_bindings_unchanged": 1671,
+  "root_bindings": 17,
+  "final_bindings": 23,
+  "scope": {
+    "requested_nodes": 757,
+    "native_receipts": 478,
+    "compile_commands": 239,
+    "compiled_outputs_read": 206,
+    "selected_LOW_or_switch_commands": 22,
+    "LOW_case_count": 12,
+    "standalone_LOW_function_replays": 8
+  },
+  "unavailable_original_output_path_count": 33,
+  "PAL_threshold_source_lines_gt": 270,
+  "steady_LOW_weight_contract": 0,
+  "combined_LOW_native_accepted": false,
+  "hardware_verified": false,
+  "native_jobs_launched": 0,
+  "owned_faults": 7,
+  "job": {
+    "sha256": "952aed7f05969769913df1eb8bcba8fb50cbdc9d0d3770b854890e7618744044",
+    "size_bytes": 589
+  },
+  "root": {
+    "sha256": "9570574fad4efe100478080fe2ac1806e893a4f86d92a38769d0253e7bc428f4",
+    "size_bytes": 588
+  },
+  "final": {
+    "sha256": "834ad451c3efe15610a83dda112736f95ae5e2cc2c93cb3557d781926f64595a",
+    "size_bytes": 588
+  },
+  "independent_root_source_review": {
+    "sha256": "b9637e6ea8844053cbd69f16137cc95b3eb7dc10de8d3a80adae9f242774e42d",
+    "size_bytes": 313
+  },
+  "future_proposal": {
+    "sha256": "d60fa203b26e50f57ee77b9f876d0005520f85a2cc79cba6d2bd8c745b564865",
+    "size_bytes": 5626
+  },
+  "private_immutable_package": {
+    "sha256": "784c1b9008e517b6a171d43060419256da5e21478e59d3de0ce0ba9e3697af8a",
+    "size_bytes": 1564
+  },
+  "coverage_table": [
+    {
+      "case": "tb_fb_ll",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        55,
+        77,
+        47,
+        47,
+        48,
+        49,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 11,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[0]"
+    },
+    {
+      "case": "tb_fb_ll0",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "LL_EQ": 0
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        55,
+        77,
+        46,
+        48,
+        47,
+        50,
+        47,
+        49,
+        47,
+        49,
+        47,
+        49,
+        55
+      ],
+      "margin_rows": 11,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[0]"
+    },
+    {
+      "case": "tb_fb_ll_noref",
+      "parameters": {
+        "N_LINES": 125,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1
+      },
+      "source_words": 125,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        55,
+        77,
+        47,
+        47,
+        48,
+        52,
+        47,
+        47,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 11,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_field_without_its_reference_line[0]"
+    },
+    {
+      "case": "tb_fb_ll_false",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        55,
+        77,
+        47,
+        47,
+        48,
+        49,
+        47,
+        50,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 11,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[0]"
+    },
+    {
+      "case": "tb_fb_ll_false1",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "JUMP_AFTER": 1,
+        "HOLD": 0
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        91,
+        47,
+        47,
+        48,
+        48,
+        48,
+        97,
+        49,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 14,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[0]"
+    },
+    {
+      "case": "tb_fb_ll_move",
+      "parameters": {
+        "N_LINES": 144,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 1,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1
+      },
+      "source_words": 144,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        55,
+        77,
+        47,
+        47,
+        48,
+        55,
+        55,
+        54,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 11,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_source_moves[0]"
+    },
+    {
+      "case": "tb_fb_ll_vb",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        48,
+        49,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 13,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[1]"
+    },
+    {
+      "case": "tb_fb_ll0_vb",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "LL_EQ": 0,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        47,
+        50,
+        47,
+        49,
+        47,
+        49,
+        47,
+        49,
+        55
+      ],
+      "margin_rows": 13,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_frames_are_equally_long[1]"
+    },
+    {
+      "case": "tb_fb_ll_noref_vb",
+      "parameters": {
+        "N_LINES": 125,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 125,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        48,
+        52,
+        47,
+        47,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 13,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_field_without_its_reference_line[1]"
+    },
+    {
+      "case": "tb_fb_ll_false_vb",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        48,
+        49,
+        47,
+        50,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 13,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[1]"
+    },
+    {
+      "case": "tb_fb_ll_false1_vb",
+      "parameters": {
+        "N_LINES": 126,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "JUMP_AFTER": 1,
+        "HOLD": 0,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 126,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        48,
+        95,
+        51,
+        47,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 14,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_false_field_start_does_not_cut_the_frame[1]"
+    },
+    {
+      "case": "tb_fb_ll_move_vb",
+      "parameters": {
+        "N_LINES": 144,
+        "V_TOTAL": 48,
+        "V_ACTIVE": 36,
+        "V_FP": 2,
+        "V_SYNC": 1,
+        "RT_NTSC": 4,
+        "RT_HYST": 2,
+        "LL": 1,
+        "WAIT_BEFORE_VSYNC": 1
+      },
+      "source_words": 144,
+      "F_values": [
+        0,
+        1
+      ],
+      "max_source_line": 8,
+      "frame_lengths": [
+        55,
+        47,
+        47,
+        47,
+        47,
+        48,
+        48,
+        55,
+        55,
+        54,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        55
+      ],
+      "margin_rows": 13,
+      "has_tmds_link": false,
+      "native_node": "gateware/sim/test_fb.py::test_low_latency_source_moves[1]"
+    }
+  ],
+  "accepted_BUF_combined": {
+    "LL": 0,
+    "VINTERP": 1,
+    "HDMI": 1,
+    "frames": 9,
+    "VIC": 4,
+    "scope": "first-time scaled BUF framebuffer VINTERP1 to actual HDMI1 symbols/VIC4; no serializer primitives"
+  },
+  "source_contract_literals": [
+    {
+      "source": "gateware/rtl/fb_backend.v",
+      "line": 280,
+      "literal": "wire ll_pal   = ll_lines > 10'd270;"
+    },
+    {
+      "source": "gateware/rtl/fb_backend.v",
+      "line": 281,
+      "literal": "assign hz50 = ll_p && ll_pal;"
+    },
+    {
+      "source": "gateware/rtl/fb_backend.v",
+      "line": 289,
+      "literal": ".h_alt(ll_p && ll_pal)"
+    },
+    {
+      "source": "gateware/rtl/fb_backend.v",
+      "line": 238,
+      "literal": ".we(lb_we && !ll_s)"
+    },
+    {
+      "source": "gateware/rtl/fb_backend.v",
+      "line": 151,
+      "literal": "wire       ll_delay = LL_EQ != 0 && ll_ref && ph_early;"
+    },
+    {
+      "source": "gateware/rtl/fb_display.v",
+      "line": 171,
+      "literal": "w_cur   <= (VINTERP != 0 && !ll && base >= V4) ? eighths(base - V4) : 4'd0;"
+    },
+    {
+      "source": "gateware/rtl/fb_display.v",
+      "line": 178,
+      "literal": "if (VINTERP != 0 && !ll)"
+    },
+    {
+      "source": "gateware/rtl/fb_display.v",
+      "line": 190,
+      "literal": "if (VINTERP != 0 && !ll && started)"
+    },
+    {
+      "source": "gateware/rtl/fb_display.v",
+      "line": 193,
+      "literal": "if (VINTERP != 0 && !ll && src_hi + 1 < lines"
+    },
+    {
+      "source": "gateware/rtl/fb_display.v",
+      "line": 123,
+      "literal": "have_video <= ll ? (ll_alive && ll_triggered) : have_pub;"
+    },
+    {
+      "source": "gateware/rtl/tmds_link.v",
+      "line": 108,
+      "literal": "if (vs_rise) begin icnt <= 6'd1; hz50_l <= hz50; end"
+    },
+    {
+      "source": "gateware/rtl/tmds_link.v",
+      "line": 121,
+      "literal": "wire [7:0] pb4 = hz50_l ? 8'd19 : 8'd4;"
+    }
+  ],
+  "controls": [
+    {
+      "name": "option",
+      "identity": {
+        "sha256": "85bcaf7568119413e31a7673c8d937d418975eed74f78a1c09e233c866fe89c7",
+        "size_bytes": 26656
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "node",
+      "identity": {
+        "sha256": "5939203fbc2fc9dca6c6d6689ca86f2d1e48a4ba1a435ccb4957e63e90ba6da2",
+        "size_bytes": 26656
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "mode",
+      "identity": {
+        "sha256": "49b0f1823f8687f332c246fdec2085c80b8bfdab913e124bb19638bbd8639bd2",
+        "size_bytes": 26656
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "false_LOW",
+      "identity": {
+        "sha256": "01558b150246ad48c1cb8e5d9848ecd86d068ac820f3fefb6b3a23b21e11ad9f",
+        "size_bytes": 26655
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "hardware",
+      "identity": {
+        "sha256": "258daa9634f9730693c10d58b6caee797e35732c9ffcab650754f44fd9567bfe",
+        "size_bytes": 26655
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "threshold",
+      "identity": {
+        "sha256": "8483c2cb9380781ed4e817cd7d65e56a48f923a724742365df24867a287088eb",
+        "size_bytes": 26654
+      },
+      "reason": "source/options/node/mode/acceptance scope differs"
+    },
+    {
+      "name": "sourcebyte",
+      "identity": {
+        "sha256": "39f9ed1810267b3f479b388034d3b0c655e5c09986b2bd66e00631d188bc202b",
+        "size_bytes": 16801
+      },
+      "reason": "bound bytes /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-low-preflight/controls/sourcebyte.v"
+    }
+  ],
+  "elapsed_seconds": {
+    "JOB": 2.3123600740218535,
+    "ROOT": 1.6895972930069547,
+    "FINAL": 2.0770448510011192
+  },
+  "future_scenario": {
+    "created": false,
+    "executed": false,
+    "first_scope": "small LOW9source-lines,HDMI1,VINTERP1 but expected weight0;VIC4only",
+    "PAL_separate_scope": "288source-lines,realthreshold>270,720active/750nominaloutputrows,H_TOTAL1650or1980",
+    "PAL_native_budget_measured": false,
+    "no_global_absence_claim": true
+  }
+}

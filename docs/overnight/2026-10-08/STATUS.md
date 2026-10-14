@@ -2,6 +2,16 @@
 
 Uppdraget är [NATTPASS_2026-10-08.md](../../NATTPASS_2026-10-08.md). Användaren valde uttryckligen uppgiftsgrenar och merge till `main` efter verifiering. C1 → C3 → C2 är ordningen. Codex/root granskar, kör grindarna och integrerar; Luna hjälper med avgränsade filer (nu high, äldre max-körningar är historik). Den befintliga Vibe-sessionen äger M1–M3 och startas eller styrs inte av Codex.
 
+## bf05 — LOW/HDMI-förgranskning, 2026-10-14
+
+**Kombinerad LOW/HDMI-native är fortfarande inte accepterad.** Tolv sparade LOW-råfall från full757 använder nio källrader per fält (högsta radindex8),VINTERP0 och ingen tmds_link. Åtta originalfunktionsåterläsningar täcker trigger/FieldPhase/LL_EQ, missing-reference/early/shifted input och ringbild i WAIT0/1.22 LOW-/lägesväxlingskommandon är återlästa. StandaloneHDMI:s counterstyrdaVIC19 och nya accepterade LL0/BUF-kombinationen är andra konfigurationer.
+
+Frozenbf05-källan kräver faktiskt ll_lines>270 för PAL/hz50. LOW:s vikt hålls0 genom !ll-grindar och extraBUF-RAM skrivs bara utanförLOW; ingen interpolationsviktuppsättning frånBUF kan krävas som LOW-facit. Timingens h_alt tas vid ramstart, medan AVI:s hz50 låses vid vsync-rise. Detta är källkontrakt, inte exekverad LOW/PAL-övergångsacceptans.
+
+En ny stdlib-only läsgrind och root/final verifierade207Gitobjekt-/arkiv-/källinputs samt1671 oförändrade source/runtime/helper/dependency/rawbindningar,17root-/23finalbindningar.239 gamla compilerkvitton/206 läsbara kompilat/33 otillgängliga ursprungliga utdatasökvägar behåller explicit scope; inga råfiler återskapades. Sju verkliga ägda option/node/mode/falseLOW/hardware/threshold/sourcebytefel avvisades med giltiga original före/efter, slutgranskningen samma kopior. Inga tester, native-/modell-/HDL-/FPGA-/TMDS-jobb, projektimports, producer-/pin-/SDC-/IOREG-/default-/facit-/licensändringar eller historiska helperomstarter.
+
+Förslag: ett separat första litet LOW9rader/HDMI1/VINTERP1-fall med förväntad vikt0 och VIC4, original oberoende ring/pixel/TMDS-facit och riktig live+triggered-grind. PAL/VIC19 kräver en senare separat288raders källgeometri, rätt h_alt/VIC-koppling och egen finite runtimebudget; den kostnaden är inte mätt. Ingen ny bänk har skapats. M6-kombinationsplacering och fysisk hårdvara är fortsatt ej accepterade. [Avgränsad täckningstabell, källkontrakt och slutkvitto](evidence/core-bf05-combined-low-preflight.json).
+
 ## bf05 — kombinerad BUF-bild till HDMI-symboler, 2026-10-14
 
 **Första kombinerade native-fallet passerar på fryst bf05/tree49923: VINTERP=1 från riktig framebuffer till riktig tmds_link med HDMI=1.** Nio kompletta skalade BUF-bildramar ger324 aktiva rader,414720 oberoende modellberäknade RGB-pixlar och exakt414720 avkodade pixlar samt9 AVI-öar/VIC4.11205 olika förväntade RGB-värden och sju interpolationsvikter;311 rader har olika källord. Den observerade DUT-RGB-utgången användes inte som upstream-facit. Originalets Store/src_lines/vblend, YCbCr-kontroller och HDMI/TMDS-avkodare/predikat är bevarade; den privata adaptern beräknar källord, bitexakt RGB och pipelinekoppling.

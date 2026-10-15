@@ -891,3 +891,12 @@ Core `b4a5db7` / tree `c91b7f6`: fyra nya FIFO-fall och en ändrad runner-CLI-fi
 CLI-fixturens genererade cocotb-XML tillät resume. En efterföljande modelländring vägrades med rc2 och alla sparade outputbytes behölls. Interna fixturegrupper 4+1+4 innehåller egna skip/xfail och räknas separat från de fem begärda utfallen. 209 Git-/arkiv-/källfiler och 5 300 bindningar matchade före/efter; nio skadade rå-/metadata-/acceptanskvitton avvisades och samma kopior återlästes i slutgranskningen.
 
 Detta är liten FIFO-geometri och CLI-verifiering. Full761, de nya formella bevisen, W53/AW7 i mixerkedjan och nya FPGA-byggen är inte accepterade här. Inga hårdvarupåståenden ändras. [Källbundet kvitto](evidence/core-b4a5-targeted-gate.json).
+
+
+## Registrerad FIFO, utvalda formella bevis, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: de två nya originalbevisen för RD_REG1, W2/AW2 och W2/AW3, slöt induktionen vid längd 1 med ursprungliga maxsteps20/30. Originalets sena läsregistermutation gav ett verkligt basfallsmotexempel vid Yosys sökindex6. Tre faktiska verktygsanrop gav rc0 på sammanlagt 1,227476 s, inga signaler, timeouter eller omkörningar. Åtta gamla bevis och helsviten kördes inte.
+
+209 Git-/arkiv-/källfiler och 5 323 käll-/runtime-/helper-/beroendebindningar matchade före/efter. Nio ägda proof-/parameter-/källbytes-/node-/motexempel-/acceptansskador avvisades; slutgranskningen läste samma kopior. 33 raw/control-filer, 507 991 byte, är bundna med SHA256 och storlek.
+
+Harnessen har fria klockor/enables/data och reset konstant0. Originalets `-set-init-zero` behåller clk2fflogic-hjälpregisternas explicita initvärden; klockkantdetektorerna startar i1, FIFO:s samplade data/tillstånd i0. Motexemplets ursprungslogg sparar SAT-modell/initialtabell, utan full återspelbar tidsserie eller exakt felcykel-/assertionsattribution. Detta är två valda bevis och ett motexempel, inte fullformal10/17, full761, W53/AW7-mixerkedja, FPGA-byggning, fysisk metastabilitet/reset mitt i drift eller hårdvara. [Källbundet kvitto](evidence/core-b4a5-registered-fifo-formal.json).

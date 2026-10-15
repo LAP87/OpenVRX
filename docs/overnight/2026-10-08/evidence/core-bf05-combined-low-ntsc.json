@@ -1,0 +1,225 @@
+{
+  "scope": "Final root-reviewed first small LOW/VIC4 combined symbol scenario; snapshot taken before publication",
+  "private_package": "core-bf05-combined-low-ntsc/PACKAGE_ACCEPTANCE_PREPUBLICATION.json",
+  "private_package_sha256": "8472421451327e575bedfc8cddd49cfce1bb10c166a9c22a9dff17fbced97ef7",
+  "package": {
+    "state": "FINAL_ROOT_REVIEWED_SMALL_LOW_HDMI_VIC4",
+    "utc": "2026-10-15T21:35:37.768764+00:00",
+    "accepted": true,
+    "claim": {
+      "revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+      "tree": "49923a6dda3c8f3466eff76ddaa7d835f1785c1d",
+      "node": "bf05_low_vinterp1_hdmi1_vic4",
+      "options": {
+        "VINTERP": 1,
+        "HDMI": 1,
+        "RGB_FULL": 1,
+        "LL": 1,
+        "LL_EQ": 1,
+        "WAIT": 0
+      },
+      "scenario_accepted": true,
+      "PAL_accepted": false,
+      "combined_all_modes_accepted": false,
+      "M6_combined_route_accepted": false,
+      "hardware_verified": false
+    },
+    "metrics": {
+      "frames": 10,
+      "active_rows": 360,
+      "expected_pixels": 460800,
+      "decoded_pixels": 460800,
+      "islands": 10,
+      "distinct_expected_RGB": 7004,
+      "accepted_words": 45360,
+      "independent_ring_pixel_reads": 345600,
+      "phase_values": [
+        0,
+        1
+      ],
+      "frame_lengths": [
+        47,
+        47,
+        48,
+        49,
+        48,
+        48,
+        48,
+        48,
+        48
+      ],
+      "vsync_to_picture": [
+        10,
+        10,
+        11,
+        12,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "weights": [
+        0
+      ],
+      "source_lines": 126,
+      "trigger_count": 13,
+      "admission_frames": 17,
+      "untriggered_frames": 6,
+      "margin_rows": 11,
+      "start_pc": 306941,
+      "end_pc_exclusive": 1097291,
+      "observed_DUT_RGB_used_as_expected": false,
+      "scope": "small LOW VINTERP1 HDMI1 VIC4 symbols only"
+    },
+    "source_inputs": 207,
+    "launch_bindings": 5300,
+    "root_bindings": 162,
+    "final_bindings": 176,
+    "native_invocations": 18,
+    "first_positive": 1,
+    "actual_RTL_negatives": [
+      {
+        "phase": "weight",
+        "kind": "weight",
+        "reason": "LOW nonzero blend corrupts actual YCbCr [(308893, 0, 8, -1, -1, -1), (310543, 1, 8, -1, -1, -1)]",
+        "result": {
+          "sha256": "a1de69ce97074f6c0502b54a259da905dc8d4312deae241e356580e5adf85aab",
+          "size_bytes": 7437
+        }
+      },
+      {
+        "phase": "gate",
+        "kind": "gate",
+        "reason": "LOW admission pc42: video1,alive0,triggered0",
+        "result": {
+          "sha256": "6381f2480a2b7be2b5c373cbeac0eb52f6a512edb20391fabacdf4cc6d11ca80",
+          "size_bytes": 7358
+        }
+      },
+      {
+        "phase": "ring",
+        "kind": "ring",
+        "reason": "accepted ring write 0: (0, 0, 0, 1, 524288, 0) expected (0, 0, 0, 0, 524288, 0)",
+        "result": {
+          "sha256": "9ee12cd0fb516b38eb4d6332de03198817aa1da9d29de771c5c757acd5d05abe",
+          "size_bytes": 7393
+        }
+      },
+      {
+        "phase": "phase",
+        "kind": "phase",
+        "reason": "original LL_EQ triggers [(127449, False), (193878, False), (265416, True), (331844, False), (403382, True), (469811, False), (541349, True)] model [(127449, False), (196433, False), (265416, True), (334399, False), (403382, True), (472366, False), (541349, True)]",
+        "result": {
+          "sha256": "24587ac10e86f32426162e4c0701e02ed9433c25ef376d9fcb1d8ecd985355f4",
+          "size_bytes": 7590
+        }
+      },
+      {
+        "phase": "VIC",
+        "kind": "hdmi",
+        "reason": "VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4; VIC 5, timing wants 4",
+        "result": {
+          "sha256": "c6f9a76f72d7d812895be90e1836c3d299a88dbab0c1b4c59da0f61a2427862a",
+          "size_bytes": 7479
+        }
+      },
+      {
+        "phase": "checksum",
+        "kind": "hdmi",
+        "reason": "checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1; checksum: sum 1",
+        "result": {
+          "sha256": "0c4bbdf39a878fa3e84c5af3ca5bd5af301b68d308a3ccab2df70d35a1cf34b0",
+          "size_bytes": 7503
+        }
+      },
+      {
+        "phase": "parity",
+        "kind": "hdmi",
+        "reason": "header parity; subpacket 0 parity; header parity; subpacket 0 parity; header parity; subpacket 0 parity; header parity; subpacket 0 parity",
+        "result": {
+          "sha256": "429ec278f2fbfeee980aea975bb6f1d3bb8b9d63c593956fc414174e6a952e83",
+          "size_bytes": 7479
+        }
+      },
+      {
+        "phase": "guardband",
+        "kind": "hdmi",
+        "reason": "no video guard band at 1665: [(852, 852, 852), (852, 852, 852)]; no video guard band at 3315: [(852, 852, 852), (852, 852, 852)]; no video guard band at 4965: [(852, 852, 852), (852, 852, 852)]; no video guard band at 6615: [(852, 852, 852), (852, 852, 852)]; no video guard band at 8265: [(852, 852, 852), (852, 852, 852)]; no video guard band at 9915: [(852, 852, 852), (852, 852, 852)]; no video guard band at 11565: [(852, 852, 852), (852, 852, 852)]; no video guard band at 13215: [(852, 852, 852), (852, 852, 852)]",
+        "result": {
+          "sha256": "a38e3b566aceedf677e18f6ae45c3884cee58d765c44f440091fc00732d3cf39",
+          "size_bytes": 7903
+        }
+      }
+    ],
+    "owned_raw_claim_damages": 8,
+    "native_wall_seconds": 698.3391059439746,
+    "raw_file_count": 151,
+    "raw_bytes": 709434023,
+    "no_native_retry": true,
+    "no_source_or_oracle_change": true,
+    "no_control_recreation": true,
+    "publication_pending": true,
+    "primary_checkouts_unchanged": true,
+    "evidence": {
+      "LAUNCH.json": {
+        "sha256": "687ea0c38de8f517152721f6419d86023860e0cf0e1dcfd5d276e7374e937854",
+        "size_bytes": 1400958
+      },
+      "ROOT_CONTRACT.json": {
+        "sha256": "b13e53d45b31f1ef7970d517324446f74edac48083724247d33c8d3f00500128",
+        "size_bytes": 43464
+      },
+      "ROOT_ACCEPTANCE.json": {
+        "sha256": "243b63ee464cc0ffed36451d772a66974d253ec9f1c7a08cc3490f9ca7fcbf80",
+        "size_bytes": 4880
+      },
+      "ROOT.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "FINAL_CONTRACT.json": {
+        "sha256": "9c026142e144e8248a104a0f2124f4452281aa4dcb13d2343667a6cbe72da8c7",
+        "size_bytes": 47123
+      },
+      "FINAL_REVIEW.json": {
+        "sha256": "26f0f5893a79cf102fa989b251404e9d36f67301e3e12a32da358e625e4ebcfc",
+        "size_bytes": 1282
+      },
+      "FINAL.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "RAW_INVENTORY.json": {
+        "sha256": "b4952b0e81819e101b190ff951a7b866723be1d0b130c1765751c8eca6e8eab3",
+        "size_bytes": 40603
+      },
+      "OWNED_CONTROLS.json": {
+        "sha256": "0b7f1d44f94af9436f3d3653ff2c5626adb543ba9a97bfa139cfd806bf1b75cc",
+        "size_bytes": 3701
+      },
+      "TOOL_RECORDS.json": {
+        "sha256": "1dd853f150260bf050c04cf0e5418e1a7056c5d82d2127ea73342d36f1c6e2f5",
+        "size_bytes": 37805
+      },
+      "PRELAUNCH_REVIEW.md": {
+        "sha256": "77ecdb71e6b276d780f89e414a3643fa1f661228326c92cbdf8ce726c323f824",
+        "size_bytes": 3656
+      },
+      "ROOT_STATIC_REVIEW.md": {
+        "sha256": "e563cd297968528420f3589613e4d4129c83c5376629211198a91c537852cc6a",
+        "size_bytes": 2550
+      },
+      "PUBLICATION_STRATEGY.json": {
+        "sha256": "4e47430c4d016dce136496657a55eec70872a33fb5b33a6d2a637378733e5a6c",
+        "size_bytes": 849
+      }
+    }
+  },
+  "incoming_heads_observed_only": {
+    "Core": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+    "Puck": "b589ab3b4eb6c03acc24f923b851b29ee69c6025"
+  },
+  "incoming_build_or_hardware_claims_not_accepted_by_this_packet": true,
+  "original_sources_and_oracles_unchanged_means": "Production RTL and original models/checkers unchanged; a new private bench and independent adapter were introduced."
+}

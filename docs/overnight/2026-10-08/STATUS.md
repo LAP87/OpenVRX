@@ -904,7 +904,7 @@ Harnessen har fria klockor/enables/data och reset konstant0. Originalets `-set-i
 
 ## Mixer-FIFO-grind stoppad, 2026-10-16
 
-Core `b4a5db7` / tree `c91b7f6`: original `test_in_step` och `test_unlocked_current_channel_out_of_step[23-8]` passerade vid första körningen, 65,900 s. Faktiska input-FIFO:er W53/AW7/RD_REG1 och output-FIFO W52/AW5/RD_REG0 verifierades i kompilerad VVP. Oberoende återläsning matchade 72 beslut/25 920 ord respektive 144 beslut/31 320 ord och alla ursprungliga scenarioassertioner.
+Core `b4a5db7` / tree `c91b7f6`: original `test_in_step` och `test_unlocked_current_channel_out_of_step[23-8]` passerade vid första körningen, 65,904 s. Faktiska input-FIFO:er W53/AW7/RD_REG1 och output-FIFO W52/AW5/RD_REG0 verifierades i kompilerad VVP. Oberoende återläsning matchade 72 beslut/25 920 ord respektive 144 beslut/31 320 ord och alla ursprungliga scenarioassertioner.
 
 **Paketet är inte accepterat.** Den privata sena läsregistermutationen, med identiskt stimulus, effektiva parametrar och originalmodell som första positiva fallet, gav fortfarande samma 72 beslut/25 920 ord och klarade modell-/scenarioassertionerna. Adaptern föll därför med `late registered-input mutant was not caught by the original model/scenario` efter 32,550 s. Alla sex faktiska compiler/vvp-anrop gav rc0, utan signaler/timeouter/omkörningar. Ingen ny mutation eller orakelförsvagning gjordes. Detta visar kontrollens begränsning i det valda scenariot; orsaken och ett produktionsfel är inte fastställda.
 

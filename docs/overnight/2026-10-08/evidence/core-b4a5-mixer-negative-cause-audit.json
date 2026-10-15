@@ -1,0 +1,306 @@
+{
+  "packet": "core-b4a5-mixer-negative-cause-audit",
+  "accepted_limited_audit": true,
+  "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+  "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+  "source_inputs": 209,
+  "source_evidence": {
+    "unconditional_input_pop": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "identity": {
+        "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
+        "size_bytes": 9364
+      },
+      "line": 75,
+      "text": "    assign in_pop = !in_empty;"
+    },
+    "full_gates_ring_write_not_pop": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "identity": {
+        "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
+        "size_bytes": 9364
+      },
+      "line": 81,
+      "text": "        .wclk(clk), .we(in_pop && !is_marker && !full), .waddr({wslot, in_data[40:32]}), .wdata(in_data[31:0]),"
+    },
+    "data_consumed_with_pop": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "identity": {
+        "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
+        "size_bytes": 9364
+      },
+      "line": 97,
+      "text": "        if (in_pop && !is_marker) begin"
+    },
+    "input_a_read_clock": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "identity": {
+        "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
+        "size_bytes": 8610
+      },
+      "line": 68,
+      "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(fa_pop), .rd_data(fa_data), .empty(fa_empty), .rd_level(fa_rl));"
+    },
+    "input_a_consumer": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "identity": {
+        "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
+        "size_bytes": 8610
+      },
+      "line": 85,
+      "text": "        .clk(sys_clk), .rst(srst), .ext_bad(ext_bad_a), .ext_weak(ext_weak_a), .in_empty(fa_empty), .in_data(fa_data), .in_pop(fa_pop),"
+    },
+    "input_b_read_clock": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "identity": {
+        "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
+        "size_bytes": 8610
+      },
+      "line": 71,
+      "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(fb_pop), .rd_data(fb_data), .empty(fb_empty), .rd_level(fb_rl));"
+    },
+    "output_pop_gate": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "identity": {
+        "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
+        "size_bytes": 4151
+      },
+      "line": 62,
+      "text": "    wire        out_pop = !out_empty && pc == 0;"
+    },
+    "output_pop_clock_counter": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "identity": {
+        "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
+        "size_bytes": 4151
+      },
+      "line": 56,
+      "text": "    always @(posedge sys_clk) pc <= (pc >= POP_DIV - 1) ? 0 : pc + 1;"
+    },
+    "output_fifo_read_port": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "identity": {
+        "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
+        "size_bytes": 8610
+      },
+      "line": 130,
+      "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(out_pop), .rd_data(out_data), .empty(out_empty), .rd_level(o_rl));"
+    },
+    "original_rd_next": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "identity": {
+        "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
+        "size_bytes": 5442
+      },
+      "line": 67,
+      "text": "    wire [AW-1:0] rd_next = rrst ? {AW{1'b0}} : rbin_n[AW-1:0];   // rbin after this clock"
+    },
+    "original_rd_q": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "identity": {
+        "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
+        "size_bytes": 5442
+      },
+      "line": 70,
+      "text": "        always @(posedge rclk) rd_q <= mem[rd_next];"
+    },
+    "rbin_update": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "identity": {
+        "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
+        "size_bytes": 5442
+      },
+      "line": 64,
+      "text": "        else begin rbin <= rbin_n; rgray <= rgray_n; end"
+    },
+    "word_packing": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/word_packer.v",
+      "identity": {
+        "sha256": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+        "size_bytes": 1245
+      },
+      "line": 26,
+      "text": "                2'd3: begin"
+    },
+    "marker_collision_comment": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
+      "identity": {
+        "sha256": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+        "size_bytes": 2820
+      },
+      "line": 40,
+      "text": "    // Words come at most every 4th cycle; a marker that collides with a word"
+    },
+    "marker_pending": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
+      "identity": {
+        "sha256": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+        "size_bytes": 2820
+      },
+      "line": 49,
+      "text": "        end else if (pend) begin"
+    },
+    "unit_stall_comment": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_async_fifo.v",
+      "identity": {
+        "sha256": "3e41d88145b322a773c76f164073066e6cecff2a8d7f875f0b14f44105519136",
+        "size_bytes": 3558
+      },
+      "line": 2,
+      "text": "// The reader stalls for random stretches and then pops back to back, so that several words are"
+    },
+    "observed_decision_log_fields": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "identity": {
+        "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
+        "size_bytes": 4151
+      },
+      "line": 75,
+      "text": "        if (dec_valid) $fwrite(fd, \"%0d %0d %0d %0d %0d %0d\\n\", dec_use, dec_pop, dec_field, dec_line, cur, $realtime);"
+    },
+    "observed_word_log_fields": {
+      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "identity": {
+        "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
+        "size_bytes": 4151
+      },
+      "line": 73,
+      "text": "        if (out_pop) $fwrite(fo, \"%0d %0d %0d %08x\\n\", out_data[51], out_data[50:41], out_data[40:32], out_data[31:0]);"
+    }
+  },
+  "causal_table": [
+    {
+      "mechanism": "Input is drained on every nonempty read edge; ring full gates storage, not in_pop.",
+      "evidence": [
+        "unconditional_input_pop",
+        "full_gates_ring_write_not_pop",
+        "input_a_consumer"
+      ],
+      "conditional_explanation": "Output POP_DIV cannot create an input consumer stall through this direct assignment.",
+      "uncertainty": "No selected dynamic input read/empty/occupancy trace."
+    },
+    {
+      "mechanism": "Late rd_q samples the just-popped address.",
+      "evidence": [
+        "original_rd_next",
+        "original_rd_q",
+        "rbin_update"
+      ],
+      "conditional_explanation": "Consecutive accepted pops can expose the stale word. A subsequent empty read edge can sample the advanced pointer before the next accepted pop, if its word is already written.",
+      "uncertainty": "No per-edge trace establishes which empty gaps occurred in this run."
+    },
+    {
+      "mechanism": "Words pack four valid bytes; a colliding marker can follow one capture clock later.",
+      "evidence": [
+        "word_packing",
+        "marker_collision_comment",
+        "marker_pending"
+      ],
+      "conditional_explanation": "Declared 37/37.002ns capture clocks versus15.4ns reader are consistent with catch-up gaps, including a one-capture-cycle adjacent marker.",
+      "uncertainty": "Conditional source/timing explanation, not a universal no-backlog/no-consecutive-pop proof."
+    },
+    {
+      "mechanism": "Selected output artifacts are exactly equal, including decision timestamps.",
+      "evidence": [
+        "observed_decision_log_fields",
+        "observed_word_log_fields"
+      ],
+      "conditional_explanation": "The original selected scenario does not distinguish this mutation at its recorded outputs.",
+      "uncertainty": "No individual input FIFO state can be reconstructed uniquely from those outputs."
+    }
+  ],
+  "observed_raw": {
+    "a.hex": {
+      "baseline": {
+        "sha256": "fdfa7c54be5894bb120664510abdfaecae698fd061e1e04b15e830e9e3756759",
+        "size_bytes": 710628
+      },
+      "late": {
+        "sha256": "fdfa7c54be5894bb120664510abdfaecae698fd061e1e04b15e830e9e3756759",
+        "size_bytes": 710628
+      },
+      "byte_identical": true
+    },
+    "b.hex": {
+      "baseline": {
+        "sha256": "ef38690e49a5123ad7c938143239f8230169d56c3c2d6c99ff5fd579320d5879",
+        "size_bytes": 710628
+      },
+      "late": {
+        "sha256": "ef38690e49a5123ad7c938143239f8230169d56c3c2d6c99ff5fd579320d5879",
+        "size_bytes": 710628
+      },
+      "byte_identical": true
+    },
+    "out.txt": {
+      "baseline": {
+        "sha256": "748f562896b2c7c04632462755937793433d917c145b9e7085d6def0da543106",
+        "size_bytes": 447840
+      },
+      "late": {
+        "sha256": "748f562896b2c7c04632462755937793433d917c145b9e7085d6def0da543106",
+        "size_bytes": 447840
+      },
+      "byte_identical": true
+    },
+    "dec.txt": {
+      "baseline": {
+        "sha256": "019166eca8145fe8ed0e32f6f1da75e96f5e224866125f676d97d06667a91a42",
+        "size_bytes": 1346
+      },
+      "late": {
+        "sha256": "019166eca8145fe8ed0e32f6f1da75e96f5e224866125f676d97d06667a91a42",
+        "size_bytes": 1346
+      },
+      "byte_identical": true
+    }
+  },
+  "timing": {
+    "source_clock_a_ns": "37.0",
+    "source_clock_b_ns": "37.002",
+    "reader_clock_ns": "15.4",
+    "ordinary_word_spacing_a_ns": "148.0",
+    "possible_adjacent_entry_spacing_a_ns": "37.0",
+    "two_reader_periods_ns": "30.8",
+    "entry_clock_a_greater_than_two_reader_periods": true,
+    "entry_clock_b_greater_than_two_reader_periods": true,
+    "interpretation": "Declared ideal bench periods only; not an observed FIFO pop/occupancy history or physical clock constraint."
+  },
+  "decision_timestamps_compared": 72,
+  "decision_timestamp_differences": 0,
+  "output_words_identical": 25920,
+  "model_snapshot_equal_except_node": true,
+  "input_edge_trace_observed": false,
+  "dynamic_masking_cause_established": false,
+  "all_modes_or_hardware_masked": false,
+  "negative_caught": false,
+  "gate_accepted": false,
+  "actual_new_native_model_pytest_jobs": 0,
+  "launch_bindings_unchanged": 5373,
+  "root_bindings": 5384,
+  "final_bindings": 5400,
+  "owned_controls_refused": 8,
+  "same_controls_read_in_final": true,
+  "recommendation": "PAUSE_SAVE_QUOTA_NO_JUSTIFIED_DISTINCT_NEXT_EXPERIMENT",
+  "why_pause": "General stalled/back-to-back FIFO behavior is already covered by accepted small FIFO negatives and the selected formal counterexample. Repeating mixer positives or inventing another error merely to relabel the stopped gate green adds no identified behavior requirement. A new run only to observe this historical masking would add diagnostic detail but no established new functional requirement. Keep the gate STOP and pause until a concrete changed source, uncovered requirement or hardware observation justifies another packet.",
+  "no_future_bench_stimulus_or_control_created": true,
+  "immutable_private_package": {
+    "sha256": "cfe4577aac181c1e1c75dd1af1d821430cee274c917d2fed228d14ad71bf4a2c",
+    "size_bytes": 3587
+  },
+  "root_receipt": {
+    "sha256": "7dcf1152aa2868ce4e95c25b00cf88dc597dfe20b37fc851df58f2eadbcbc59e",
+    "size_bytes": 296
+  },
+  "final_receipt": {
+    "sha256": "89e795cc101892c55a6c71749d7adb6005368856387a0844d7acc50fd0993442",
+    "size_bytes": 296
+  },
+  "prelaunch_inline_constant_check_diagnosis": {
+    "sha256": "81b5978feccc34b6e6cb62d697d2560f745605d287f89b5cc20c0676f00539a4",
+    "size_bytes": 667
+  },
+  "full761_accepted": false,
+  "new_build_accepted": false,
+  "hardware_accepted": false
+}

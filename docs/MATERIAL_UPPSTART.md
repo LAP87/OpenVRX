@@ -82,5 +82,5 @@ Uppgifterna från ägaren 2026-10-15. Antal och vad varje sak täcker i tabeller
 | Rotationsenkoder med tryck | 1 | — | Inget stöd i gatewaren (menyn stegas med OK/NEXT); idé för pucken |
 | Kopplingsdäck 170 punkter | 1 | Kopplingstråd och stiftlister, delvis | — |
 
-Saknas ännu för M3 och framåt: TVP5150-modulerna (2, helst 3), de två RX5808 med SPI-moden gjord, pull-up-motstånd om modulerna saknar egna, kopplingstråd och stiftlister för dekoderdata, nivåomvandlare om modulerna är 1,8 V, och de mätinstrument som inte finns hemma. USB-C-kabel med data, HDMI-skärm och kabel, multimeter och lödutrustning antas finnas; stryk eller rätta här.
+Saknas ännu för M3 och framåt: TVP5150-modulerna (2, helst 3), de två RX5808 med SPI-moden gjord, smådelarna i [PLOCKLISTA_SMADELAR.md](PLOCKLISTA_SMADELAR.md) (pull-ups, serieterminering, avkoppling, filter till DC-DC-modulen, tråd och stiftlister; kan lånas), nivåomvandlare om modulerna är 1,8 V, och de mätinstrument som inte finns hemma. USB-C-kabel med data, HDMI-skärm och kabel, multimeter och lödutrustning antas finnas; stryk eller rätta här.
 

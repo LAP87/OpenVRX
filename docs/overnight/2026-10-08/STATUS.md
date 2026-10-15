@@ -900,3 +900,12 @@ Core `b4a5db7` / tree `c91b7f6`: de två nya originalbevisen för RD_REG1, W2/AW
 209 Git-/arkiv-/källfiler och 5 323 käll-/runtime-/helper-/beroendebindningar matchade före/efter. Nio ägda proof-/parameter-/källbytes-/node-/motexempel-/acceptansskador avvisades; slutgranskningen läste samma kopior. 33 raw/control-filer, 507 991 byte, är bundna med SHA256 och storlek.
 
 Harnessen har fria klockor/enables/data och reset konstant0. Originalets `-set-init-zero` behåller clk2fflogic-hjälpregisternas explicita initvärden; klockkantdetektorerna startar i1, FIFO:s samplade data/tillstånd i0. Motexemplets ursprungslogg sparar SAT-modell/initialtabell, utan full återspelbar tidsserie eller exakt felcykel-/assertionsattribution. Detta är två valda bevis och ett motexempel, inte fullformal10/17, full761, W53/AW7-mixerkedja, FPGA-byggning, fysisk metastabilitet/reset mitt i drift eller hårdvara. [Källbundet kvitto](evidence/core-b4a5-registered-fifo-formal.json).
+
+
+## Mixer-FIFO-grind stoppad, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: original `test_in_step` och `test_unlocked_current_channel_out_of_step[23-8]` passerade vid första körningen, 65,900 s. Faktiska input-FIFO:er W53/AW7/RD_REG1 och output-FIFO W52/AW5/RD_REG0 verifierades i kompilerad VVP. Oberoende återläsning matchade 72 beslut/25 920 ord respektive 144 beslut/31 320 ord och alla ursprungliga scenarioassertioner.
+
+**Paketet är inte accepterat.** Den privata sena läsregistermutationen, med identiskt stimulus, effektiva parametrar och originalmodell som första positiva fallet, gav fortfarande samma 72 beslut/25 920 ord och klarade modell-/scenarioassertionerna. Adaptern föll därför med `late registered-input mutant was not caught by the original model/scenario` efter 32,550 s. Alla sex faktiska compiler/vvp-anrop gav rc0, utan signaler/timeouter/omkörningar. Ingen ny mutation eller orakelförsvagning gjordes. Detta visar kontrollens begränsning i det valda scenariot; orsaken och ett produktionsfel är inte fastställda.
+
+Stopproot/final återläste befintliga rådata och originalfacit. 209 Git-/arkiv-/källfiler och 5 294 launchbindningar matchade före/efter. Elva skadade ord-/besluts-/parameter-/käll-/node-/acceptanskvitton avvisades; samma kopior lästes i final. 58 raw/control-filer, 9 301 119 byte, är hash-/storleksbundna. De två positiva utfallen behåller begränsat scope, men den planerade negativa grinden förblir false. Ingen full761, ny fullformell/kedje-/FPGA-/Puck-/hårdvaruacceptans. [Stoppkvitto och begränsningar](evidence/core-b4a5-mixer-fifo-stop.json).

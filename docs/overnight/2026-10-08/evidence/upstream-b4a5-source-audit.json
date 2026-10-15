@@ -1,0 +1,667 @@
+{
+  "scope": "Limited static source/AST/Git review, no new tests/proof/build/hardware acceptance",
+  "immutable_prepublication_sha256": "9f1368ce9c43a091e9694f9d27da41bcac60fc0f8dcfa7b31914566beef5c9a1",
+  "package": {
+    "state": "FINAL_ROOT_REVIEWED_LIMITED_SOURCE_AUDIT",
+    "accepted": true,
+    "utc": "2026-10-15T22:09:30.438527+00:00",
+    "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+    "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+    "source_inputs": 209,
+    "baseline_inputs": 207,
+    "bindings_unchanged": 1203,
+    "root_bindings": 29,
+    "final_bindings": 38,
+    "source_only": true,
+    "new_native_accepted": false,
+    "new_build_accepted": false,
+    "hardware_verified": false,
+    "result": {
+      "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+      "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+      "source_files": 209,
+      "baseline_files": 207,
+      "unchanged_baseline_files": 195,
+      "changes": {
+        "README.md": "modified",
+        "gateware/BRINGUP.md": "modified",
+        "gateware/README.md": "modified",
+        "gateware/formal/README.md": "modified",
+        "gateware/formal/fifo_props.v": "modified",
+        "gateware/formal/run.sh": "modified",
+        "gateware/rtl/async_fifo.v": "modified",
+        "gateware/rtl/mixer2.v": "modified",
+        "gateware/sim/FUZZ_2026-10-07.md": "modified",
+        "gateware/sim/tb_async_fifo.v": "added",
+        "gateware/sim/test_async_fifo.py": "added",
+        "gateware/tools/run_suite.py": "modified",
+        "gateware/tools/test_formal.py": "modified",
+        "gateware/tools/test_run_suite.py": "modified"
+      },
+      "changes_from072": [
+        "M\tREADME.md",
+        "M\tgateware/README.md",
+        "M\tgateware/formal/README.md",
+        "M\tgateware/formal/fifo_props.v",
+        "M\tgateware/formal/run.sh",
+        "M\tgateware/rtl/async_fifo.v",
+        "M\tgateware/rtl/mixer2.v",
+        "A\tgateware/sim/tb_async_fifo.v",
+        "A\tgateware/sim/test_async_fifo.py",
+        "M\tgateware/tools/run_suite.py",
+        "M\tgateware/tools/test_formal.py",
+        "M\tgateware/tools/test_run_suite.py"
+      ],
+      "removed": [],
+      "Python_AST": {
+        "gateware/sim/test_async_fifo.py": {
+          "added": [
+            "faults",
+            "run",
+            "test_async_fifo_both_read_modes_are_a_queue",
+            "test_async_fifo_check_is_tested"
+          ],
+          "removed": [],
+          "modified": []
+        },
+        "gateware/tools/run_suite.py": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            "fingerprint"
+          ]
+        },
+        "gateware/tools/test_formal.py": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            "test_formal_proofs"
+          ]
+        },
+        "gateware/tools/test_run_suite.py": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            "test_real_cli_selection_resume_budget_and_source_guard"
+          ]
+        }
+      },
+      "Python_counts": {
+        "old": {
+          "files": 73,
+          "definitions": 927
+        },
+        "new": {
+          "files": 74,
+          "definitions": 931
+        }
+      },
+      "protected_bytes_unchanged": [
+        "gateware/rtl/line_mixer.v",
+        "gateware/rtl/mix_chan.v",
+        "gateware/rtl/fb_backend.v",
+        "gateware/rtl/fb_display.v",
+        "gateware/rtl/field_phase.v",
+        "gateware/rtl/genlock_timing.v",
+        "gateware/rtl/tmds_link.v",
+        "gateware/rtl/vblend.v",
+        "gateware/model/line_mixer_ref.py",
+        "gateware/model/fb_ref.py",
+        "gateware/model/ll_ring_ref.py",
+        "gateware/build.sh"
+      ],
+      "boards_tops_build_license_unchanged": true,
+      "FIFO_consumers": [
+        {
+          "file": "gateware/rtl/m2_core.v",
+          "instance": "fifo",
+          "parameters": ".W(52), .AW(7)",
+          "RD_REG": 0
+        },
+        {
+          "file": "gateware/rtl/mixer2.v",
+          "instance": "fifo_a",
+          "parameters": ".W(53), .AW(7), .RD_REG(1)",
+          "RD_REG": 1
+        },
+        {
+          "file": "gateware/rtl/mixer2.v",
+          "instance": "fifo_b",
+          "parameters": ".W(53), .AW(7), .RD_REG(1)",
+          "RD_REG": 1
+        },
+        {
+          "file": "gateware/rtl/mixer2.v",
+          "instance": "out_fifo",
+          "parameters": ".W(52), .AW(5)",
+          "RD_REG": 0
+        }
+      ],
+      "source_defined_new_nodes": [
+        "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[fast_reader]",
+        "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[slow_reader]",
+        "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[near_equal]",
+        "gateware/sim/test_async_fifo.py::test_async_fifo_check_is_tested"
+      ],
+      "actual_collection_executed": false,
+      "expected_old757_plus4_not_actual_collection": 761,
+      "formal_declared": {
+        "proven": 10,
+        "controls": 17,
+        "actual_proof_run": false
+      },
+      "fingerprints": {
+        "old": {
+          "files": 202,
+          "sha256": "bbed3d740d688d70d56283d02b38d8375c7f647b389929a0b594bc26f597123b",
+          "scope": "clean Gitarchive inputs only, not project execution",
+          "excluded_tracked_result_xml": []
+        },
+        "new": {
+          "files": 204,
+          "sha256": "885d58e646fff69c971e0433ee72443e56ac31a66db59340b5bdffa81eae8a40",
+          "scope": "clean Gitarchive inputs only, not project execution",
+          "excluded_tracked_result_xml": []
+        }
+      },
+      "selected_build_manifests": [
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/m0_testpattern.build.json",
+          "identity": {
+            "sha256": "6a0d545ea4d50fcf6403ac0166476733e7bc645149f1b42ed9a79e2bd9ee01b8",
+            "size_bytes": 5787
+          },
+          "top": "m0_testpattern",
+          "git": {
+            "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0"
+          },
+          "inputs": 43,
+          "changed_candidate_inputs": [
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/bt656_rx.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/field_phase.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m0_testpattern.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/m2a_memtest_phase12.build.json",
+          "identity": {
+            "sha256": "15ab740e68603af76af0530f4f922dd46bea5a61d3301b64fadc0c6c784deef3",
+            "size_bytes": 5822
+          },
+          "top": "m2a_memtest",
+          "git": {
+            "commit": "6a61a17647fe47d483c7bac53a6437e869ed589d",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "12",
+            "seed": "0"
+          },
+          "inputs": 44,
+          "changed_candidate_inputs": [
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/bt656_rx.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/field_phase.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/m4_dual_mix.build.json",
+          "identity": {
+            "sha256": "135aedd90adfb6bd2ef021fd80fbaf701f73b73c650e20336abc2b7c4b049c53",
+            "size_bytes": 6361
+          },
+          "top": "m4_dual_mix",
+          "git": {
+            "commit": "8d7b0e9e4d5df807af96f1acd13d44a6124e8b55",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0"
+          },
+          "inputs": 46,
+          "changed_candidate_inputs": [
+            "gateware/boards/m4_dual_mix.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m4_dual_mix.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/m6_puck_proto.build.json",
+          "identity": {
+            "sha256": "fc7f2e880052f012de6e0105479f16c9f734be52a2ee24740380c5bc6669b42a",
+            "size_bytes": 6493
+          },
+          "top": "m6_puck_proto",
+          "git": {
+            "commit": "8d7b0e9e4d5df807af96f1acd13d44a6124e8b55",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "3"
+          },
+          "inputs": 47,
+          "changed_candidate_inputs": [
+            "gateware/boards/m6_puck_proto.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m6_puck_proto.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/previous/m4_dual_mix.2OhOOw/m4_dual_mix.build.json",
+          "identity": {
+            "sha256": "7b496f026f9a5f781a0b1dbd1b8aa5500f1ee11dc8c8713a71286533b173cc5c",
+            "size_bytes": 6360
+          },
+          "top": "m4_dual_mix",
+          "git": {
+            "commit": "7cc4eda2022334ed6f2f618548d59d72a5f6b7c2",
+            "dirty": true
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0"
+          },
+          "inputs": 46,
+          "changed_candidate_inputs": [
+            "gateware/boards/m4_dual_mix.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m4_dual_mix.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/previous/m4_dual_mix.yS3AaI/m4_dual_mix.build.json",
+          "identity": {
+            "sha256": "08e83fd2ce31e185f3d4409208c7a9a87838baa6abde4f32a56390816857b525",
+            "size_bytes": 6361
+          },
+          "top": "m4_dual_mix",
+          "git": {
+            "commit": "3aed0b787180763a6b2ede348d4c59f41dde730b",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0"
+          },
+          "inputs": 46,
+          "changed_candidate_inputs": [
+            "gateware/boards/m4_dual_mix.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m4_dual_mix.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/previous/m6_puck_proto.ONjtQh/m6_puck_proto.build.json",
+          "identity": {
+            "sha256": "8b721eb036bd33e871a17f75ada7886a994a5a6c2c7427569d0b03643aed14e2",
+            "size_bytes": 6696
+          },
+          "top": "m6_puck_proto",
+          "git": {
+            "commit": "7cc4eda2022334ed6f2f618548d59d72a5f6b7c2",
+            "dirty": true
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "2"
+          },
+          "inputs": 48,
+          "changed_candidate_inputs": [
+            "gateware/boards/m6_puck_proto.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m6_puck_proto.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/build/previous/m6_puck_proto.qDUZ8x/m6_puck_proto.build.json",
+          "identity": {
+            "sha256": "f33dc2a58c2e346cd4f9b80b56dcee4ae6c26e21e611bbe81cded1687eb68891",
+            "size_bytes": 6493
+          },
+          "top": "m6_puck_proto",
+          "git": {
+            "commit": "3aed0b787180763a6b2ede348d4c59f41dde730b",
+            "dirty": false
+          },
+          "options": {
+            "freq_mhz": "75",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "3"
+          },
+          "inputs": 47,
+          "changed_candidate_inputs": [
+            "gateware/boards/m6_puck_proto.cst",
+            "gateware/build.sh",
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/dvi_tx_gowin.v",
+            "gateware/rtl/fb_backend.v",
+            "gateware/rtl/fb_display.v",
+            "gateware/rtl/fb_sdram.v",
+            "gateware/rtl/genlock_timing.v",
+            "gateware/rtl/i2c_master.v",
+            "gateware/rtl/line_mixer.v",
+            "gateware/rtl/m2_core.v",
+            "gateware/rtl/mix_chan.v",
+            "gateware/rtl/mixer2.v",
+            "gateware/rtl/puck_ui.v",
+            "gateware/rtl/ssd1306_text.v",
+            "gateware/rtl/tvp_ctrl.v",
+            "gateware/tools/build_manifest.py",
+            "gateware/top/m6_puck_proto.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build/m0_testpattern.build.json",
+          "identity": {
+            "sha256": "0f9443c7e0d4ee9b4872bdafaefe256e103091ddb148761207d1aea69103f04c",
+            "size_bytes": 6519
+          },
+          "top": "m0_testpattern",
+          "git": {
+            "commit": null,
+            "dirty": null
+          },
+          "options": {
+            "freq_mhz": "75",
+            "hdmi": "0",
+            "ioreg": "0",
+            "mspi": "0",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0",
+            "vinterp": "0"
+          },
+          "inputs": 50,
+          "changed_candidate_inputs": [
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/mixer2.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build/m4_dual_mix.build.json",
+          "identity": {
+            "sha256": "17f205849a4eb033d9dd7ec8e27d00b88bb1319af5d778728b81dc0ff899f795",
+            "size_bytes": 6891
+          },
+          "top": "m4_dual_mix",
+          "git": {
+            "commit": null,
+            "dirty": null
+          },
+          "options": {
+            "freq_mhz": "75",
+            "hdmi": "0",
+            "ioreg": "1",
+            "mspi": "0",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "0",
+            "vinterp": "0"
+          },
+          "inputs": 51,
+          "changed_candidate_inputs": [
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/mixer2.v"
+          ],
+          "candidate_revision_recorded": false
+        },
+        {
+          "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build/m6_puck_proto.build.json",
+          "identity": {
+            "sha256": "90d5f76842eed1852014d95a4d8046c90b75e09378281933089df519a4f493ec",
+            "size_bytes": 7025
+          },
+          "top": "m6_puck_proto",
+          "git": {
+            "commit": null,
+            "dirty": null
+          },
+          "options": {
+            "freq_mhz": "75",
+            "hdmi": "0",
+            "ioreg": "1",
+            "mspi": "1",
+            "pull": "",
+            "sdram_phase": "",
+            "seed": "2",
+            "vinterp": "0"
+          },
+          "inputs": 52,
+          "changed_candidate_inputs": [
+            "gateware/rtl/async_fifo.v",
+            "gateware/rtl/mixer2.v"
+          ],
+          "candidate_revision_recorded": false
+        }
+      ],
+      "selected_scope_candidate_manifests": 0,
+      "accepted_LOW_compile_closure": {
+        "source_inputs": 14,
+        "changed": [
+          "gateware/rtl/async_fifo.v"
+        ],
+        "default_RD_REG0_static_only": true,
+        "new_native_acceptance": false
+      },
+      "Puck_remote_pin": "160000 commit bf05ac0feed58c3295949a6f3b4ee55c886cd1e2\tcore",
+      "Puck_primary_index": "160000 2dca24508bd445cb3e1bcba1d16eec37bcd5757c 0\tcore",
+      "raw_scope": "selected primary build manifests plus accepted default manifests only; no global absence or remote host inspection",
+      "new_native_accepted": false,
+      "new_build_accepted": false,
+      "hardware_verified": false
+    },
+    "owned_controls": 8,
+    "controls_existing_reread": true,
+    "original_table_gap_preserved": true,
+    "corrected_consumers": 4,
+    "no_static_job_retry": true,
+    "no_project_import": true,
+    "job_seconds": 1.2732335779583082,
+    "root_seconds": 1.3168794489465654,
+    "final_seconds": 1.3837703159661032,
+    "publication_pending": true,
+    "evidence": {
+      "LAUNCH.json": {
+        "sha256": "d841935ed99032abf936d1bc482c231094dec5677afc20eb9b43c2a33b9abec4",
+        "size_bytes": 252622
+      },
+      "AUDIT.json": {
+        "sha256": "0c1e3258f34c1125bfd720f8b9f636976b79f0c6ae2c4ee7d109a4a1af532493",
+        "size_bytes": 22933
+      },
+      "JOB_START.json": {
+        "sha256": "7e22fb173cf5efdce70a023c91e04abc8638563f71bb495f647fb87b5d8effc8",
+        "size_bytes": 466
+      },
+      "JOB_RESULT.json": {
+        "sha256": "47e3e8bbcdd8c06ff299e04c0aae3d47374f03889cbf175c94afe846fb4c8f9a",
+        "size_bytes": 514
+      },
+      "JOB.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "CONTROLS.json": {
+        "sha256": "aed656cd592ed2a7dcd38975c264d46788e34ad3cc84ee1832d8fcb58a682f0d",
+        "size_bytes": 820293
+      },
+      "FIRST_STATIC_TABLE_GAP.json": {
+        "sha256": "94063ed858f73c5fef22d97aefe6fab5667a6e3405cb4b6ef8dcfd31e7f8deed",
+        "size_bytes": 732
+      },
+      "CONSUMER_TABLE_CORRECTED.json": {
+        "sha256": "7d4be6f695c9510af6eff4416f44f6369d2856f51b510c7c97695617b6ca4bef",
+        "size_bytes": 980
+      },
+      "ROOT_CONTRACT.json": {
+        "sha256": "f89b9eca90f5f32a5c3a75027830f63cd8b8b0fa43c9e60b9b5578104f4617d9",
+        "size_bytes": 7601
+      },
+      "ROOT_REVIEW.json": {
+        "sha256": "bf474605d74d04d7851f7ba9e66121e6126981e092a02401470d1d2b63c4654d",
+        "size_bytes": 416
+      },
+      "ROOT_START.json": {
+        "sha256": "a98f641d99f454374d229294859493dc27e8b92a7ce95fbd84baed43bc759068",
+        "size_bytes": 473
+      },
+      "ROOT_RESULT.json": {
+        "sha256": "795c942ed4af3b478fa307e862d2aa8996e76de171ba791376b2a658092dae4b",
+        "size_bytes": 523
+      },
+      "FINAL_CONTRACT.json": {
+        "sha256": "49f72fc6e34e0d9e4d3417d00b5d3723fb0af5dcf03a0a740086a0292d50fbd2",
+        "size_bytes": 9893
+      },
+      "FINAL_REVIEW.json": {
+        "sha256": "87647c55c2d66e57a345d766b78d20de53fec17b5df983242cf34694788e75b5",
+        "size_bytes": 416
+      },
+      "FINAL_RESULT.json": {
+        "sha256": "a13405430098d26e09a4b55e98ed65861145e7c216bbc3c4f8cbbd129dedcb2e",
+        "size_bytes": 525
+      },
+      "FINDINGS.md": {
+        "sha256": "a59d0174135b8abe0aa3c546c606b26311012c15c4d031f1cb25f48666eeb8e6",
+        "size_bytes": 6929
+      }
+    }
+  }
+}

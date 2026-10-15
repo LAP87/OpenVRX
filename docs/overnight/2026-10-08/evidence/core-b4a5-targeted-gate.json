@@ -1,0 +1,301 @@
+{
+  "packet": "core-b4a5-targeted-gate",
+  "accepted": true,
+  "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+  "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+  "requested_passes": {
+    "FIFO": 4,
+    "CLI": 1
+  },
+  "nodes": {
+    "fifo": [
+      "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[fast_reader]",
+      "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[slow_reader]",
+      "gateware/sim/test_async_fifo.py::test_async_fifo_both_read_modes_are_a_queue[near_equal]",
+      "gateware/sim/test_async_fifo.py::test_async_fifo_check_is_tested"
+    ],
+    "cli": [
+      "gateware/tools/test_run_suite.py::test_real_cli_selection_resume_budget_and_source_guard"
+    ]
+  },
+  "source_inputs": 209,
+  "launch_bindings_unchanged": 5300,
+  "native_calls": 8,
+  "native_rcs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "fifo_queue_results": {
+    "fast_reader": {
+      "segments": [
+        {
+          "W": 452,
+          "P0": 451,
+          "P1": 451
+        },
+        {
+          "W": 499,
+          "P0": 497,
+          "P1": 497
+        }
+      ],
+      "counts": {
+        "D": 0,
+        "E": 0,
+        "B": 474,
+        "F": 96
+      },
+      "faults": [],
+      "params": {
+        "W": 16,
+        "AW": 3,
+        "N": 6000,
+        "SEED": 1,
+        "TW": 37.0,
+        "TR": 13.0,
+        "TRST": 222.0
+      },
+      "raw": {
+        "sha256": "67d53b20ccc81a78efb95749e421b49abf1bbaee5f41b9f52705b88e349f4440",
+        "size_bytes": 24286
+      },
+      "compiled": {
+        "sha256": "477248b0c4a3c97ba8e075ea7fa54c9214e385c2428540ada872175101489dc4",
+        "size_bytes": 31710
+      }
+    },
+    "slow_reader": {
+      "segments": [
+        {
+          "W": 1630,
+          "P0": 1622,
+          "P1": 1622
+        },
+        {
+          "W": 1446,
+          "P0": 1441,
+          "P1": 1441
+        }
+      ],
+      "counts": {
+        "D": 0,
+        "E": 0,
+        "B": 2850,
+        "F": 13277
+      },
+      "faults": [],
+      "params": {
+        "W": 16,
+        "AW": 3,
+        "N": 6000,
+        "SEED": 2,
+        "TW": 11.0,
+        "TR": 41.0,
+        "TRST": 246.0
+      },
+      "raw": {
+        "sha256": "c8ac3aeadc9dbec3344734a73803dc1b36ed2dd8b88b34ee9cdf85ee4fdef402",
+        "size_bytes": 78188
+      },
+      "compiled": {
+        "sha256": "bd83073145447acd509bee93a89a725c6ce233c3cb8ccc0f7a02e105d1b7c117",
+        "size_bytes": 31712
+      }
+    },
+    "near_equal": {
+      "segments": [
+        {
+          "W": 980,
+          "P0": 977,
+          "P1": 977
+        },
+        {
+          "W": 959,
+          "P0": 952,
+          "P1": 952
+        }
+      ],
+      "counts": {
+        "D": 0,
+        "E": 0,
+        "B": 1600,
+        "F": 1082
+      },
+      "faults": [],
+      "params": {
+        "W": 16,
+        "AW": 3,
+        "N": 6000,
+        "SEED": 3,
+        "TW": 29.0,
+        "TR": 27.0,
+        "TRST": 174.0
+      },
+      "raw": {
+        "sha256": "3dda2e404ed1ac973a0d734410672a84fb6f485780b14c141d522ef89642de4e",
+        "size_bytes": 49325
+      },
+      "compiled": {
+        "sha256": "0f4b36f4f46e856f82e1c9c7ff7407ae875f7607f16597f950007153e2eab04e",
+        "size_bytes": 31710
+      }
+    },
+    "late": {
+      "segments": [
+        {
+          "W": 1630,
+          "P0": 1622,
+          "P1": 1622
+        },
+        {
+          "W": 1446,
+          "P0": 1441,
+          "P1": 1441
+        }
+      ],
+      "counts": {
+        "D": 3016,
+        "E": 0,
+        "B": 2850,
+        "F": 13277
+      },
+      "faults": [
+        "segment 0: RD_REG = 1 pops are not the writes in order",
+        "segment 0: the two read modes pop different words",
+        "segment 1: RD_REG = 1 pops are not the writes in order",
+        "segment 1: the two read modes pop different words",
+        "3016 read clocks with different rd_data while not empty"
+      ],
+      "params": {
+        "W": 16,
+        "AW": 3,
+        "N": 6000,
+        "SEED": 2,
+        "TW": 11.0,
+        "TR": 41.0,
+        "TRST": 246.0
+      },
+      "raw": {
+        "sha256": "11c946a8de4d95830cd4a34b8b73d6c135045d2299bf75266f90f7a7b2a7f8a7",
+        "size_bytes": 78204
+      },
+      "compiled": {
+        "sha256": "3cc4e7299dad05f0bcdb84a0387f20ad17790d81311783e37663e7d26f2bd17f",
+        "size_bytes": 31727
+      }
+    }
+  },
+  "cli_actual_return_codes": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    2
+  ],
+  "xml_resume_accepted": true,
+  "model_change_resume_refused_rc": 2,
+  "refusal_preserved_all_output_bytes": true,
+  "nested_fixture_outcomes": {
+    "baseline": {
+      "nodes": [
+        "gateware/model/test_sample.py::test_a",
+        "gateware/model/test_sample.py::test_b",
+        "gateware/model/test_sample.py::test_skip",
+        "gateware/model/test_sample.py::test_xfail"
+      ],
+      "outcomes": [
+        "passed",
+        "passed",
+        "skipped",
+        "xfailed"
+      ]
+    },
+    "subset": {
+      "nodes": [
+        "gateware/model/test_sample.py::test_a"
+      ],
+      "outcomes": [
+        "passed"
+      ]
+    },
+    "budget": {
+      "nodes": [
+        "gateware/model/test_sample.py::test_a",
+        "gateware/model/test_sample.py::test_b",
+        "gateware/model/test_sample.py::test_skip",
+        "gateware/model/test_sample.py::test_xfail"
+      ],
+      "outcomes": [
+        "passed",
+        "passed",
+        "skipped",
+        "xfailed"
+      ]
+    }
+  },
+  "nested_fixture_outcomes_are_requested_passes": false,
+  "independent_zero_worker_count_claimed": false,
+  "junit_seconds": {
+    "FIFO": 0.468,
+    "CLI": 3.514
+  },
+  "driver_seconds": {
+    "fifo": 2.802460686012637,
+    "cli": 5.611024429963436
+  },
+  "signals": [],
+  "retries": 0,
+  "owned_controls_refused": 9,
+  "final_reads_same_controls": true,
+  "root_seconds": 1.0318672129651532,
+  "final_seconds": 1.0699407550273463,
+  "raw_files": 80,
+  "raw_bytes": 534438,
+  "private_receipts": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/PACKAGE_ACCEPTANCE_PREPUBLICATION.json": {
+      "sha256": "e3c48a0e7ef32eea7cc4dd82fd7ac1b027dc9b616c55dd0be47bcea56d545a16",
+      "size_bytes": 10386
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/ROOT_REVIEW.json": {
+      "sha256": "bd18b52402f076ff1d9d748e3f4d3ba8553e9a3466bd98a2553fe068c56fa01a",
+      "size_bytes": 7358
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FINAL_REVIEW.json": {
+      "sha256": "f3732315d11762ef2fc4dff197aa49ad3a05dbe3c6b85c635b321b9b7f597f9b",
+      "size_bytes": 7358
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/RAW_FINAL_INVENTORY.json": {
+      "sha256": "ff7a09379b26e89d3668547287a8c75d6a4d52e8e1d334c58c8422539bcc0a25",
+      "size_bytes": 22228
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FIRST_PUBLICATION_PREPARATION_GAP.json": {
+      "sha256": "cde2b9eacdf24dbf7255f85c781693f00f47e3d31c2d9ec2275b5965692e154e",
+      "size_bytes": 741
+    }
+  },
+  "publication_preparation": "One own clean worktree used historical HEAD because the explicit base was omitted. Diagnosed before any public write; removed own clean checkout and created a new task branch at explicit origin/main. Original branch retained; no test or review rerun.",
+  "limits": [
+    "Small FIFO W16/AW3 only; actual production mixer inputs W53/AW7 not validated by this packet.",
+    "No full761/full-suite/formal10-17/new FPGA build or place-and-route/TMDS/Puck/hardware acceptance.",
+    "Original bf05 M6 combined placement STOP remains source-specific history; incoming new-source build claim separate.",
+    "Nested fake fixture groups 4+1+4 include own skips/xfail and are not requested outcomes.",
+    "XML resume reports zero pending work and preserves original raw; this packet does not claim an independently traced zero-worker count."
+  ],
+  "full761_accepted": false,
+  "formal10_17_accepted": false,
+  "new_m6_combined_build_accepted": false,
+  "larger_mixer_fifo_chain_accepted": false,
+  "hardware_accepted": false
+}

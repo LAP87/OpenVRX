@@ -882,3 +882,12 @@ Elva utvalda byggmanifest återlästes: primärbyggen inklusive previous och tre
 En faktisk statisk koordinator avslutades rc0 på 1,273 s. Rotgranskningen fann en privat parserpost som felaktigt räknade moduldeklarationen som instans; originalhelper/-resultat bevaras. En separat första rotläsare avvisar den posten och ger exakt fyra konsumentinstanser, utan omkörning av koordinator eller återskapade kontroller. Åtta ägda metadata-/source-/helper-/contract-skador avvisades med giltigt före/efter och återlästes oförändrade i slutgranskningen. Alla 1203 startbindningar, 209 nya och 207 gamla källinputs är oförändrade; rot-/slutgranskningens 29/38 bindningar matchar.
 
 Nästa avgränsade verifiering är de fyra nya FIFO-fallen och den ändrade verkliga CLI-fixturen, med separat fryst kandidat och första körningar. Ingen helsvit, formell körning, FPGA-routning, KiCad eller hårdvara kördes i detta paket. [Käll- och kontraktsunderlag](evidence/upstream-b4a5-source-audit.json). Det fulla läsunderlaget, den bevarade parserdiagnosen och den korrigerade tabellen finns i privatarkivet `upstream-b4a5-source-audit/FINDINGS.md`.
+
+
+## Riktad b4a5-grind, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: fyra nya FIFO-fall och en ändrad runner-CLI-fixtur passerade vid första försöket. FIFO W16/AW3 jämför RD_REG0/1 med en kö vid tre klockpar och två samordnade resetsegment. De positiva fallen gav D/E=0; den verkliga sena läsregistermutationen gav fel köordning och 3 016 läsklockor med olika data. Åtta faktiska compiler/vvp-anrop gav rc0. Pytest: 4 PASS på 0,468 s, sedan 1 PASS på 3,514 s, inga omkörningar eller signaler.
+
+CLI-fixturens genererade cocotb-XML tillät resume. En efterföljande modelländring vägrades med rc2 och alla sparade outputbytes behölls. Interna fixturegrupper 4+1+4 innehåller egna skip/xfail och räknas separat från de fem begärda utfallen. 209 Git-/arkiv-/källfiler och 5 300 bindningar matchade före/efter; nio skadade rå-/metadata-/acceptanskvitton avvisades och samma kopior återlästes i slutgranskningen.
+
+Detta är liten FIFO-geometri och CLI-verifiering. Full761, de nya formella bevisen, W53/AW7 i mixerkedjan och nya FPGA-byggen är inte accepterade här. Inga hårdvarupåståenden ändras. [Källbundet kvitto](evidence/core-b4a5-targeted-gate.json).

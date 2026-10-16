@@ -19,6 +19,12 @@ Det som behövs utöver modulerna i `MATERIAL_UPPSTART.md` när M3–M6 kopplas 
 | Krympslang eller eltejp | — | — | Pigtailarnas lödställe på RX5808 och resettråden | M3 | `MATERIAL_UPPSTART.md` "Finns hemma" |
 | Tenn, flussmedel, pincett, lupp | — | — | Resettråd på TVP-modulen (stift 8 är 0,8 mm delning), SPI-moden på RX5808 | M3 | BRINGUP 0 "Reset" |
 
+**Prioritet, om lådan är tunn (2026-10-16).** Motstånden brukar finnas; kondensatorer och spolar kan saknas, och det stoppar inte starten:
+1. *Måste för M3:* bara 4,7 kΩ-pull-upparna, och bara om modulerna saknar egna. Allt annat kan vänta.
+2. *Bör för M3/M4:* 33 Ω-serietermineringen om proben eller bilden visar störningar, och 10 µF intill varje mottagare om kanalbyte ger en dipp (syns som omstart av dekodern, `ri` stiger i proben). TVP-modulerna, RX5808 och OLED:en har egen avkoppling på kortet, och DC-DC-modulerna har utgångskondensatorer; 100 nF extra är en förbättring, inte ett krav.
+3. *Först när snö och brus mäts (M4/M6):* LC-filtret efter DC-DC-modulen. Tills dess: mata mottagarna från ett USB-batteri eller labbaggregat, så finns inget switchbrus att filtrera.
+Kondensatorer utan komponentlåda: en gammal nätdel, ett trasigt moderkort eller en LED-drivare ger 100 nF keramiska och 10–220 µF elektrolyter (kontrollera spänningsmärkningen, minst 10 V, och att de inte är bulliga på toppen). Spolen i filtret kan ersättas med en ferritpärla eller tio varv tråd på en ferritring ur samma skrot; funktionen är att dämpa switchfrekvensen, 50–500 kHz, och det tål stor spridning.
+
 Inte med på listan, med skäl: 75 Ω-terminering på video (TVP-modulen har sitt eget ingångsnät), motstånd i serie med RX5808:s SPI-ledare (FPGA:n och modulen är båda 3,3 V), pull-down på RESETB (borttagen i rev A, se Puck #1), ESD-dioder (bara på kortet).
 
 ## 2. Känna igen motstånd

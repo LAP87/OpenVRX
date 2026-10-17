@@ -63,7 +63,7 @@ Nya uppgifter läggs i en tabell här med nummer från 30, varför, klart när o
 
 | # | Uppgift | Varför | Klart när | Status |
 |---|---|---|---|---|
-| 30 | Research: kretsmärkningen i de dyra mottagarna | Bardwell (klipp 2026-10-17) säger att bra VRX har "en annan, känsligare krets" än RX5808 men minns inte namnet; RF-underlaget säger RTC6715 överallt, på forumuppgifter. Avgör om rev B behöver en annan mottagare eller bara bättre omgivning | `research/MOTTAGARKRETSAR_2026-10.md`: för TBS Fusion (även 2025 års mottagarkort), ImmersionRC rapidFIRE, Skyzone SteadyView X, Fat Shark Scout/Attitude-modulen och HDZero/Divimaths analoga del: RF-krets belagd med FCC-interiörfoton (FCC ID, foto, läsbar märkning), teardown eller källkod, inte forum; per enhet även extern LNA/filter före kretsen, MF-filter och tillverkarens känslighet med mätvillkor; RichWaves nuvarande 5,8 GHz-mottagare från tillverkarens sida; slutsats i tabell: samma krets eller inte, och vad som ger skillnaden. Inga butiker eller priser; tillverkar- och FCC-länkar ok; det obelagda skrivs som obelagt | öppen, 2026-10-17; kan köras av en billigare agent |
+| 30 | Research: kretsmärkningen i de dyra mottagarna | Bardwell (klipp 2026-10-17) säger att bra VRX har "en annan, känsligare krets" än RX5808 men minns inte namnet; RF-underlaget säger RTC6715 överallt, på forumuppgifter. Avgör om rev B behöver en annan mottagare eller bara bättre omgivning | `research/MOTTAGARKRETSAR_2026-10.md`: för TBS Fusion (även 2025 års mottagarkort), ImmersionRC rapidFIRE, Skyzone SteadyView X, Fat Shark Scout/Attitude-modulen och HDZero/Divimaths analoga del: RF-krets belagd med FCC-interiörfoton (FCC ID, foto, läsbar märkning), teardown eller källkod, inte forum; per enhet även extern LNA/filter före kretsen, MF-filter och tillverkarens känslighet med mätvillkor; RichWaves nuvarande 5,8 GHz-mottagare från tillverkarens sida; slutsats i tabell: samma krets eller inte, och vad som ger skillnaden. Inga butiker eller priser; tillverkar- och FCC-länkar ok; det obelagda skrivs som obelagt | klar, navet 0f6c1dc, 2026-10-17: [MOTTAGARKRETSAR_2026-10.md](../research/MOTTAGARKRETSAR_2026-10.md). Ingen av de fem har FCC-ID; HDZero har RTC6715 enligt källkoden, SteadyView styrs med RTC6715:s gränssnitt, kretsen i rapidFIRE, Fusion och Scout är obelagd; RichWave har ingen annan mottagare för 5,8 GHz; tillverkarnas känslighetsskillnader sitter i kortrevisionerna |
 
 ## Kräver kortet
 
@@ -93,3 +93,9 @@ Det som bara bänken avgör:
 | [GATEWARE_PLAN.md](GATEWARE_PLAN.md) | Utkastet till gatewaren från 2026-10-01 |
 
 Passloggen till och med elfte passet står i ARBETSPLAN_2026-10-05.md; nästa pass skriver sin logg här, under en rubrik "Pass".
+
+## Pass
+
+### 2026-10-17 kväll (Opus)
+
+- Uppgift 30 på grenen `task30/receiver-chips`: [MOTTAGARKRETSAR_2026-10.md](../research/MOTTAGARKRETSAR_2026-10.md) och raden i `research/README.md`. Allt är läst, inget mätt. Scout-manualen gick inte att läsa ut, och interiörfotona till Divimaths sändare DVM3130 är inte granskade.

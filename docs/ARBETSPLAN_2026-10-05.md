@@ -1,5 +1,7 @@
 # Arbetsplan efter granskningen 2026-10-05
 
+> **Historik från 2026-10-17.** Den levande planen är [ARBETSPLAN.md](ARBETSPLAN.md).
+
 Underlag: [reviews/2026-10-05/ADVERSARIAL_REVIEW.md](reviews/2026-10-05/ADVERSARIAL_REVIEW.md). Fynden ligger som issues; index i LAP87/OpenVRX#3. Första passet är gjort samma dag. Det här dokumentet säger vad som är gjort, var det avviker från planen, vad som återstår och i vilken ordning.
 
 **Inget är mätt på hårdvara.** "Simulerat" betyder mot modell i testsviten, "byggt" betyder syntes och place-and-route med öppen verktygskedja.

@@ -174,14 +174,17 @@ like AI output.
 
 ## Open work (see REVIEW.md for the risks)
 
+- The plan: [docs/ARBETSPLAN.md](docs/ARBETSPLAN.md) is the only living one
+  (state, rules, the owner's decisions with dates, open tasks, what needs the
+  board). The dated plans and night passes in `docs/` are history.
+- The baseline before hardware is the tag `v0.1-prehw` in all three
+  repositories (Core `ff2efce`, Puck `c80ed57` pinning it):
+  [docs/RELEASE_v0.1-prehw.md](docs/RELEASE_v0.1-prehw.md).
 - Hardware bring-up on a Tang Nano 20K, in the order above. The measurements
-  that simulation cannot replace are listed in `docs/ARBETSPLAN_2026-10-05.md`.
-- Core main on 2026-10-12 (from `47b66e5`): 695 tests pass with
-  `gateware/tools/run_suite.py`, no two tests share a build directory. Which
-  top is built from which commit, and the figures after routing, are in the
-  status of Core `README.md` and `gateware/README.md`. Puck main `ecb9b14`
-  pins Core `f32407f` and has not followed since. Earlier receipts (C1, C2,
-  C3, recovery rounds) are in [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
+  that simulation cannot replace are the sheets of `docs/MATPROTOKOLL.md`.
+- Which top is built from which commit, and the figures after routing, are in
+  the status of Core `README.md` and `gateware/README.md`. Earlier receipts
+  (C1, C2, C3, recovery rounds) are in [STATUS.md](docs/overnight/2026-10-08/STATUS.md).
 - Core #17/#18 were fixed under the owner's 2026-10-08 decisions. The
   mixer output F bit changes when the next visible output field consumes
   a pending boundary; it is not the decoder's F bit. The existing takeover

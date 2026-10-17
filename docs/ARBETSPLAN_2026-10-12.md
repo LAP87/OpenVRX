@@ -1,5 +1,7 @@
 # Arbetsplan från 2026-10-12: det som återstår före kortet
 
+> **Historik från 2026-10-17.** Den levande planen är [ARBETSPLAN.md](ARBETSPLAN.md).
+
 Utgångspunkt: Core `main` 2dca245 plus testrättningen från 2026-10-12, 651 test gröna (parallellt, en process per simtest). Puck `main` pekar på Core. Vad som gjordes fram till nu står i [ARBETSPLAN_2026-10-05.md](ARBETSPLAN_2026-10-05.md); det här dokumentet är listan framåt, i den ordning den ska göras. Ingenting här kräver hårdvara. Det som kräver kortet står sist, och det som är ägarens beslut står i ett eget avsnitt i den gamla planen ("Beslut som är ägarens") med en förklaring från 2026-10-12 i navets commit-logg.
 
 Regler för den som arbetar: `AGENTS.md`, plus de tre reglerna som inte rörs utan att commit-meddelandena till Core e873f4b, e113cf6 och 6c12099 lästs (LOW-videogrinden, mixerns F-gräns, släppta fält). En uppgift i taget, egen gren från `main`, sammanslagning med `--no-ff` bara med hela sviten grön (parallellt är fint, men varje test i egen byggkatalog) och uppgiftens byggen gjorda. Pusha efter varje commit. Efter varje uppgift: en rad under "Sjunde passet" i den gamla planen eller en ny rubrik här, och bocka av i tabellen nedan.

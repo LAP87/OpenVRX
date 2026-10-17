@@ -296,3 +296,15 @@ Enligt [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 21–28 i o
 | 22 | `vibe/run-suite-resume-cocotb-xml` sammanslagen: fingeravtrycket hoppar över cocotb:s `*.result.xml`, så `--resume` fungerar efter en omgång med cocotb-test. Grenens nya kontroll faller utan rättningen (returkod 2) och går igenom med den. `vibe/formal-open-points-sim` borttagen från origin (topp 3df8d33): samma två kontroller som uppgift 4, men med fast marginal på tre klockor i stället för uppmätt marginal; inget utöver `main`. Puck `vibe/core-pin-072dbde-suite-fixes` borttagen (topp c812e2e): pinnen till 072dbde ersattes av f210a10 och flyttas till taggen i uppgift 25 | 761 gröna, i tre omgångar utan att resultatfilerna togs bort emellan | — | — | Core `main` b4a5db7 |
 
 Fable 2026-10-14: uppgift 26 (18) gjord på ägarens direkta ja: KiCad 9.0.9 installerat i WSL (Ubuntu), `design/rev_a/kicad/` i Puck med kortfil ur netlistan (126 delar, 86 nät, kontur, hål, J2/J3 på plats, övriga delar i block utanför konturen, nätklasser och gränser enligt LAYOUT.md), DRC 0 fel, test mot netlistan med negativ kontroll; Puck `main` b589ab3. Ingen routning. Opus-sessionen avstod från installationen eftersom dess eget ja saknades, vilket var rätt.
+
+## Tionde passet, 2026-10-14 till 17 (Opus, sammanslaget och verifierat av Fable)
+
+Enligt [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md). Opus-sessionen gjorde 21, 22, nästan hela 23 och första delen av 24, men försvann 14 oktober kl 19:46 utan att slå ihop 23 och 24. Fable körde hela sviten och byggena på 23-grenen den 17 oktober och slog ihop.
+
+- **21** (Core c822606): M6 med `HDMI=1` och `VINTERP=1` placerades inte på grund av LUT-platser; mixerns FIFO:er flyttades till block-RAM (`async_fifo.v` `RD_REG`), M6 bygger med båda. Codex har sedan verifierat FIFO-ändringen riktat och formellt.
+- **22** (Core b4a5db7): `vibe/run-suite-resume-cocotb-xml` sammanslagen (cocotb:s resultatfiler räknas inte som källor), `vibe/formal-open-points-sim` borttagen (dubblett av uppgift 4).
+- **23** (navet 4ded81a, Core 8a71a0a): andra adversariella granskningen, sex fynd. Rättade: RS-1 (en svag mottagare kunde aldrig ta över från en trasig när de gick ur takt; mixern har ett hälsomått utan svaghetsflaggan för det fallet) och FL-1 (avbruten radering kunde ladda en aldrig skriven post; varje post bär antalet nollbitar). Issues med strikta xfail-test: #21 RSSI-marginal, #22 lika rena kanaler avgörs på tabellordning, #23 AVI-infoframe och skärmens QS, #24 beviset täcker inte VINTERP. Sviten på grenen 767 gröna + 3 xfail; M4 och M6 byggda, alla klockor över 75 MHz.
+- **24 del 1** (Core e3a76f3): `run_suite.py --quick` och `--pick-quick`; listan, README och AGENTS återstår.
+- **26** (Puck b589ab3, Fable): KiCad 9 i WSL och KiCad-projektet för rev A.
+- Core `main` b1a6e65 (README-status). Kvar i planen: 24 del 2, 25, 27, 28 och nya 29 (grenstädning).
+

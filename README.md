@@ -57,7 +57,10 @@ hardware yet.**
 [REVIEW.md](REVIEW.md) lists what we are least sure about. Please try to
 break it.
 
-Detailed notes in `research/` and `docs/` are in Swedish for now.
+Detailed notes in `research/` and `docs/` are in Swedish for now. The work
+plan is [docs/ARBETSPLAN.md](docs/ARBETSPLAN.md), the baseline before hardware
+is the tag `v0.1-prehw` ([docs/RELEASE_v0.1-prehw.md](docs/RELEASE_v0.1-prehw.md)),
+and [research/README.md](research/README.md) says which research notes are current.
 
 The [component and research register](research/komponentregister/README.md)
 tracks parts, alternatives, project references and their source evidence.

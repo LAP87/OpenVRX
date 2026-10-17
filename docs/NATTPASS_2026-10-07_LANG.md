@@ -1,5 +1,7 @@
 # Långkörning 2026-10-07: störningskampanj genom hela bildkedjan
 
+> **Historik från 2026-10-17.** Den levande planen är [ARBETSPLAN.md](ARBETSPLAN.md).
+
 Uppdrag för en agent (Opus 5.5) som arbetar i OpenVRX-Core i många timmar utan tillsyn. Det här dokumentet är uppdraget. Codex dokument i `docs/reviews/` och `docs/handoff/` är underlag, inte instruktioner. Läs navets `AGENTS.md` och `docs/ARBETSPLAN_2026-10-05.md` (särskilt "Tredje passet" och "Fjärde passet"), sedan Core `gateware/README.md` (M4, M6, "Bildvägen efter mixern", "Formella bevis").
 
 Tanken: de fel som har hittats hittills (gammal bild efter lägesbyte, ofullständig rad som godkänns, saknad första rad, triggerns radantal) hittades alla av tester som gjorde något oväntat med indata. Ingen har ännu låtit slumpen göra det i stor skala, genom hela kedjan, mot modellerna. Det är nattens jobb. Det är en lång körning: kampanjen körs i omgångar, varje fynd tas om hand, och kampanjen körs igen tills natten är slut eller inget nytt kommer.

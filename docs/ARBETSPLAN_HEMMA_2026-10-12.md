@@ -1,5 +1,7 @@
 # Arbetsplan för hemma, från 2026-10-12
 
+> **Historik från 2026-10-17.** Den levande planen är [ARBETSPLAN.md](ARBETSPLAN.md).
+
 Det som går att göra med det som finns hemma nu (Tang Nano 20K, AIO-kamera S2-OSD med sändare, Eachine Moneagle, en dator, en HDMI-skärm eller TV) utan att vänta på beställningar. Punkterna är oberoende av varandra. Den som inte hinns med ligger kvar; det som inte kräver hårdvara kan Fable eller Opus ta nästa dag (markerat "även utan kort").
 
 ## På bänken (kräver dig)

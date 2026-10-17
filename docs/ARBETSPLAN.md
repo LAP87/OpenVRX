@@ -61,6 +61,10 @@ Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist
 
 Nya uppgifter läggs i en tabell här med nummer från 30, varför, klart när och status (commit och datum).
 
+| # | Uppgift | Varför | Klart när | Status |
+|---|---|---|---|---|
+| 30 | Research: kretsmärkningen i de dyra mottagarna | Bardwell (klipp 2026-10-17) säger att bra VRX har "en annan, känsligare krets" än RX5808 men minns inte namnet; RF-underlaget säger RTC6715 överallt, på forumuppgifter. Avgör om rev B behöver en annan mottagare eller bara bättre omgivning | `research/MOTTAGARKRETSAR_2026-10.md`: för TBS Fusion (även 2025 års mottagarkort), ImmersionRC rapidFIRE, Skyzone SteadyView X, Fat Shark Scout/Attitude-modulen och HDZero/Divimaths analoga del: RF-krets belagd med FCC-interiörfoton (FCC ID, foto, läsbar märkning), teardown eller källkod, inte forum; per enhet även extern LNA/filter före kretsen, MF-filter och tillverkarens känslighet med mätvillkor; RichWaves nuvarande 5,8 GHz-mottagare från tillverkarens sida; slutsats i tabell: samma krets eller inte, och vad som ger skillnaden. Inga butiker eller priser; tillverkar- och FCC-länkar ok; det obelagda skrivs som obelagt | öppen, 2026-10-17; kan köras av en billigare agent |
+
 ## Kräver kortet
 
 Uppstartsordningen och vad varje steg ska visa: Core `gateware/BRINGUP.md`. Mätbladen: [MATPROTOKOLL.md](MATPROTOKOLL.md), blad 1–19. Material: [MATERIAL_UPPSTART.md](MATERIAL_UPPSTART.md) och [PLOCKLISTA_SMADELAR.md](PLOCKLISTA_SMADELAR.md). Bänkresultat skrivs i `docs/bench/` med taggen eller commiten de gäller.

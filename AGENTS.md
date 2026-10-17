@@ -20,7 +20,8 @@ git clone https://github.com/LAP87/OpenVRX
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH, or built into core/.tools/iverilog/
-.venv/bin/python gateware/tools/run_suite.py   # whole suite, one process per simulation test, ten at a time (13 min)
+.venv/bin/python gateware/tools/run_suite.py --quick   # before every commit: the stored list of fast tests (about 4 min)
+.venv/bin/python gateware/tools/run_suite.py           # before every merge: whole suite, one process per simulation test, ten at a time (about 20 min)
 gateware/build.sh m6_puck_proto
 ```
 
@@ -112,9 +113,18 @@ gateware/build.sh m6_puck_proto
 
 - Verify, do not assume: every RTL change gets a simulation against a model,
   and models get negative controls (a deliberately broken case must fail).
-- Run one heavy job at a time under the shared build lock: the whole suite
-  (`gateware/tools/run_suite.py`, which runs its own processes ten at a time
-  and fails when two tests share a build directory) or one place-and-route.
+- Before every commit in Core run the quick suite
+  (`gateware/tools/run_suite.py --quick`: the tests named in
+  `gateware/tools/quick_tests.txt`, chosen by measured time, about four
+  minutes). Before every merge to `main` run the full suite (`run_suite.py`
+  without `--quick`) on the commit being merged, and the builds the change
+  touches. When `--quick` refuses because the list names a test that is no
+  longer collected, write a new list from the last full run with
+  `run_suite.py --pick-quick 300`.
+- Run one heavy job at a time under the shared build lock: one suite run,
+  quick or full (`gateware/tools/run_suite.py`, which runs its own processes
+  ten at a time and fails when two tests share a build directory), or one
+  place-and-route.
   The development machine has frozen under parallel builds.
 - Keep numbers honest: say "simulated", "built" or "measured on hardware",
   never blur them. Update `gateware/README.md` status and test counts.

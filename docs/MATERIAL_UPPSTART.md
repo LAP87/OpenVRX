@@ -2,7 +2,7 @@
 
 Vad som behövs för stegen M0, M3, M2a, M4 och M6 i Core `gateware/BRINGUP.md`, utöver en dator med verktygskedjan. En rad per sak: hur många, vilket steg som behöver den först, vad som händer utan den och varifrån uppgiften kommer. Inga butiker, priser eller länkar. Skrivet 2026-10-12 ur Core `main` 3d4ed8f; inget av det här är provat på kortet än.
 
-Stegen i ordning: M0 testbild, M2a minnestest, M3 kopplingsprob, M4 två dekodrar och mixer, M6 meny och mätlogg. M2a kan köras direkt efter M0 (BRINGUP 2.1).
+Stegen i ordning: M0 testbild, M2a minnestest, M3 kopplingsprob, M4 två dekodrar och mixer, M6 meny och mätlogg. M2a kan köras direkt efter M0 (BRINGUP 2.1). Vad som redan finns hemma står sist, under "Finns hemma".
 
 ## FPGA-kortet och anslutningar
 
@@ -61,3 +61,26 @@ Stegen i ordning: M0 testbild, M2a minnestest, M3 kopplingsprob, M4 två dekodra
 | M3 | allt under "FPGA-kortet", "Dekodrar och mottagare", "Signalkälla", plus multimeter och lödutrustning |
 | M4 | samma som M3 |
 | M6 | samma som M4, plus OLED |
+
+## Finns hemma (avprickning, 2026-10-15)
+
+Uppgifterna från ägaren 2026-10-15. Antal och vad varje sak täcker i tabellerna ovan; inga butiker eller priser.
+
+| Sak | Antal | Täcker | Anmärkning |
+|---|---:|---|---|
+| Tang Nano 20K | 1 | FPGA-kortet | Revisionen läses på undersidan; stiftplanen kräver rev 3923 |
+| Analog AIO-kamera S2-OSD med 5,8 GHz-sändare | 1 | Signalkälla | Gav bild i Moneagle vid 4,2 V 2026-10-09 (`docs/bench/`); videostandard och kanal inte antecknade än |
+| Eachine Moneagle med två 5,8 GHz-antenner (RP-SMA) | 1 | Referensmottagare i mätprotokollet; antennerna går till våra två mottagare | Antennerna är RP-SMA hane. Mot pigtailens SMA-hona behövs adaptern SMA hane–RP-SMA hona, se nedan |
+| OLED SSD1306 128×32, I2C | 1 | M6, OLED | Panelen drivaren är skriven för (adress 3Ch, 3,3 V) |
+| OLED SSD1306 0,96 tum 128×64, gul/blå | 1 | — | Reserv. Drivaren initierar för 32 rader (A8h 1Fh); 64 rader kräver en parameter i `ssd1306_text.v` |
+| Pigtail SMA-hona till IPX, 100 mm | 3 | Antennanslutning till RX5808 | Inga lösa IPX-kontakter köpta: IPX-änden klipps och koaxen löds direkt på modulens antennpad, skärmen på jordpadden intill och mittledaren högst 1–2 mm bar. Kabeln (1,13 mm-koax, märkt 2,4 GHz) duger vid 5,8 GHz: cirka 0,5–1 dB på 10 cm |
+| Adapter SMA hane–RP-SMA hona | 2 | Mellan pigtail och Moneagle-antenn | Den som används |
+| Adapter SMA hona–RP-SMA hane | 2 | — | Reserv, för antenner med RP-SMA hona |
+| DC-DC-modul 5 V | 1 | Separat 5 V till mottagarna | Switchad: LC-filter efter modulen, eller labbaggregat, när snö och brus mäts; pucken får linjär matning (RF-underlaget) |
+| DC-DC-modul 3,3 V | 2 | Matning till TVP-modulerna om de är märkta 3,3 V | — |
+| Tryckknappar med hatt | 20 | M6, egna knappar | S1/S2 sitter på MODE-stiften och nås inte i sandwichen; egna knappar kräver en ändring i stiftfilen |
+| Rotationsenkoder med tryck | 1 | — | Inget stöd i gatewaren (menyn stegas med OK/NEXT); idé för pucken |
+| Kopplingsdäck 170 punkter | 1 | Kopplingstråd och stiftlister, delvis | — |
+
+Saknas ännu för M3 och framåt: TVP5150-modulerna (2, helst 3), de två RX5808 med SPI-moden gjord, smådelarna i [PLOCKLISTA_SMADELAR.md](PLOCKLISTA_SMADELAR.md) (pull-ups, serieterminering, avkoppling, filter till DC-DC-modulen, tråd och stiftlister; kan lånas), nivåomvandlare om modulerna är 1,8 V, och de mätinstrument som inte finns hemma. USB-C-kabel med data, HDMI-skärm och kabel, multimeter och lödutrustning antas finnas; stryk eller rätta här.
+

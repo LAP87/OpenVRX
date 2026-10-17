@@ -16,7 +16,7 @@ git clone --recurse-submodules https://github.com/LAP87/OpenVRX-Puck
 cd OpenVRX-Puck/core
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 # Icarus Verilog 12 on PATH (or built into .tools/iverilog)
-.venv/bin/python gateware/tools/run_suite.py   # whole suite, ten processes at a time (13 min)
+.venv/bin/python gateware/tools/run_suite.py   # whole suite, ten processes at a time (about 20 min)
 gateware/build.sh m6_puck_proto          # bitstream for a Tang Nano 20K
 ```
 

@@ -1,0 +1,107 @@
+{
+  "state": "ROOT_FINAL_ACCEPTED_SELECTED_FORMAL",
+  "accepted": true,
+  "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+  "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+  "source_inputs": 209,
+  "scope": "two selected original RD_REG1 formal induction proofs W2 AW2/3, one actual original late-register base-case counterexample",
+  "selected_positive_proofs": 2,
+  "actual_base_case_counterexamples": 1,
+  "jobs": {
+    "depth4": {
+      "status": "INDUCTION_PROVEN",
+      "induction_length": 1,
+      "log": {
+        "sha256": "0092f592aad153f875cf6f4875a5a7dcbd4bcc9d77864ffb210db8c2abd421db",
+        "size_bytes": 67167
+      },
+      "params": {
+        "W": 2,
+        "AW": 2,
+        "RD_REG": 1
+      }
+    },
+    "depth8": {
+      "status": "INDUCTION_PROVEN",
+      "induction_length": 1,
+      "log": {
+        "sha256": "5ae76f1bd993eeda33218f5c35f30aa57ddfe1d304341ef33ecf5999f8777781",
+        "size_bytes": 72449
+      },
+      "params": {
+        "W": 2,
+        "AW": 3,
+        "RD_REG": 1
+      }
+    },
+    "late": {
+      "status": "ACTUAL_BASE_CASE_COUNTEREXAMPLE",
+      "last_base_case_index": 6,
+      "model_table_rows": 48,
+      "fifo_sampled_initial_zero": true,
+      "clock_edge_auxiliary_initial_one": true,
+      "exact_failing_assertion_or_cycle_dumped": false,
+      "log": {
+        "sha256": "4ec270d84e707596201842bf2ccc7f1e7e1c5b0ec2132099fa735b60a2ffeb65",
+        "size_bytes": 137238
+      },
+      "params": {
+        "W": 2,
+        "AW": 2,
+        "RD_REG": 1
+      }
+    }
+  },
+  "native_wall_seconds": 1.227475977037102,
+  "launch_bindings": 5323,
+  "root_bindings": 5355,
+  "final_bindings": 5374,
+  "root_seconds": 1.454040464013815,
+  "final_seconds": 1.4238321210141294,
+  "controls": 9,
+  "raw_files": 33,
+  "raw_bytes": 507991,
+  "raw_inventory": {
+    "sha256": "499f12fb94f5b08a13a3bc2fac194f58dbbc3843e1c86be0b442d6fc8d13f69a",
+    "size_bytes": 8653
+  },
+  "initialization_limit": "Original sat -set-init-zero plus explicit clk2fflogic sampled-edge init1. FIFO sampled data/state init0. wrst/rrst tied0, no mid-run reset or physical CDC proof.",
+  "counterexample_limit": "Original SAT log contains real base-case model and initial table, without an independently replayable full timed signal dump; no exact assertion/cycle attribution claimed.",
+  "physical_metastability_or_midrun_reset_proven": false,
+  "W53_AW7_mixer_chain_accepted": false,
+  "full_formal10_17_accepted": false,
+  "full761_accepted": false,
+  "new_build_accepted": false,
+  "hardware_accepted": false,
+  "packet": "core-b4a5-registered-fifo-formal",
+  "private_immutable_package": {
+    "sha256": "c3a75794123cb1c39209a43f4b8a0620335d4a6ec06c2e24a13d158f9290f504",
+    "size_bytes": 6121
+  },
+  "first_preparatory_failure": {
+    "sha256": "f65edf4c09ad7703ff6ffb1abd0957a579b7624ab2168285df6004829f3cec42",
+    "size_bytes": 676
+  },
+  "preparation_continuation": {
+    "sha256": "41c43a2fcd106329e2234b0119c2c00d646d6cc077fb45f9bd38f0ac13328a4b",
+    "size_bytes": 1506
+  },
+  "preparation_failure_note": "Original mixed str/Path metadata assumption failed before actual tool/version/proof; immutable original retained. Separately bound continuation completed unstarted preparation only, no tool/proof retry.",
+  "actual_native_rcs": [
+    0,
+    0,
+    0
+  ],
+  "signals": [],
+  "retries": 0,
+  "root_final_receipts": {
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/ROOT_REVIEW.json": {
+      "sha256": "199e8af9e0ee5b65656b27f312a23a5f28f95f2ed6d3b594a50245d0991e1da8",
+      "size_bytes": 3259
+    },
+    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/FINAL_REVIEW.json": {
+      "sha256": "da8b458928fde974a859741a920e0bfcac11ccff85c9a38dc000ef5a8c052a13",
+      "size_bytes": 3260
+    }
+  }
+}

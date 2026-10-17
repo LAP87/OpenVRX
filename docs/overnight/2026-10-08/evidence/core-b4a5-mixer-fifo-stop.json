@@ -1,0 +1,273 @@
+{
+  "packet": "core-b4a5-mixer-fifo-gate",
+  "state": "FINAL_ROOT_STOP_REVIEWED",
+  "accepted": false,
+  "negative_caught": false,
+  "revision": "b4a5db7292936b4db356af6ced40bb34acecbe95",
+  "tree": "c91b7f6e1092b6b621a05db8f401806ce179faeb",
+  "source_inputs": 209,
+  "requested_outcomes": {
+    "positive_pass": 2,
+    "private_expected_negative_failed": 1
+  },
+  "cases": {
+    "in_step": {
+      "node": "gateware/sim/test_mixer.py::test_in_step",
+      "decisions": 72,
+      "words": 25920,
+      "model_decisions": 72,
+      "model_words": 25920,
+      "model_events": 143,
+      "use_counts": {
+        "1": 27,
+        "2": 33,
+        "3": 12
+      },
+      "end": [
+        0,
+        1
+      ],
+      "compiled_params": {
+        "tb_mixer": {
+          "EXTA_OFF": -1.0,
+          "EXTA_ON": -1.0,
+          "EXTB_OFF": -1.0,
+          "EXTB_ON": -1.0,
+          "N_A": 236876,
+          "N_B": 236876,
+          "N_DEAD": 40,
+          "N_STEP": 8,
+          "POP_DIV": 1,
+          "START_A": 2000.0,
+          "START_B": 5300.0,
+          "TAIL": 300000.0,
+          "T_A": 37.0,
+          "T_B": 37.002,
+          "T_PAIR": 1024,
+          "T_S": 15.4,
+          "WEAKA_OFF": -1.0,
+          "WEAKA_ON": -1.0,
+          "WEAKB_OFF": -1.0,
+          "WEAKB_ON": -1.0
+        },
+        "fifo_a": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "fifo_b": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "out_fifo": {
+          "AW": 5,
+          "RD_REG": 0,
+          "W": 52
+        }
+      },
+      "a_hex": {
+        "sha256": "fdfa7c54be5894bb120664510abdfaecae698fd061e1e04b15e830e9e3756759",
+        "size_bytes": 710628
+      },
+      "b_hex": {
+        "sha256": "ef38690e49a5123ad7c938143239f8230169d56c3c2d6c99ff5fd579320d5879",
+        "size_bytes": 710628
+      },
+      "explicit_params": {},
+      "semantic_error": null,
+      "model": {
+        "sha256": "e90d13d155ad759bd4419936589e137bd2adf97732204c8d2994cd06e0d6d129",
+        "size_bytes": 652493
+      }
+    },
+    "backpressure": {
+      "node": "gateware/sim/test_mixer.py::test_unlocked_current_channel_out_of_step[23-8]",
+      "decisions": 144,
+      "words": 31320,
+      "model_decisions": 144,
+      "model_words": 31320,
+      "model_events": 144,
+      "use_counts": {
+        "0": 57,
+        "1": 22,
+        "2": 65
+      },
+      "end": [
+        0,
+        1
+      ],
+      "compiled_params": {
+        "tb_mixer": {
+          "EXTA_OFF": -1.0,
+          "EXTA_ON": 0.0,
+          "EXTB_OFF": -1.0,
+          "EXTB_ON": -1.0,
+          "N_A": 238524,
+          "N_B": 236876,
+          "N_DEAD": 40,
+          "N_STEP": 8,
+          "POP_DIV": 8,
+          "START_A": 23164.0,
+          "START_B": 5300.0,
+          "TAIL": 300000.0,
+          "T_A": 37.0,
+          "T_B": 37.002,
+          "T_PAIR": 1024,
+          "T_S": 15.4,
+          "WEAKA_OFF": -1.0,
+          "WEAKA_ON": -1.0,
+          "WEAKB_OFF": -1.0,
+          "WEAKB_ON": -1.0
+        },
+        "fifo_a": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "fifo_b": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "out_fifo": {
+          "AW": 5,
+          "RD_REG": 0,
+          "W": 52
+        }
+      },
+      "a_hex": {
+        "sha256": "ebb4a3620740a7a1bdce1ca62e849c50fb3fd87fe406f07c2df61e26f018d92f",
+        "size_bytes": 715572
+      },
+      "b_hex": {
+        "sha256": "57d514b0c4f60a295aebb69aed08ff26dea571cec3efb104c113e30df3818d6d",
+        "size_bytes": 710628
+      },
+      "explicit_params": {
+        "EXTA_ON": 0,
+        "POP_DIV": 8,
+        "START_A": 23164.0
+      },
+      "semantic_error": null,
+      "model": {
+        "sha256": "1f33a434a528ce5dd9eebac734a4de93f90f88c93421ec027a29f23747bccae9",
+        "size_bytes": 791441
+      }
+    },
+    "late": {
+      "node": "_private_gate/test_owned_mixer_late.py::test_registered_input_late_mutant_is_caught",
+      "decisions": 72,
+      "words": 25920,
+      "model_decisions": 72,
+      "model_words": 25920,
+      "model_events": 143,
+      "use_counts": {
+        "1": 27,
+        "2": 33,
+        "3": 12
+      },
+      "end": [
+        0,
+        1
+      ],
+      "compiled_params": {
+        "tb_mixer": {
+          "EXTA_OFF": -1.0,
+          "EXTA_ON": -1.0,
+          "EXTB_OFF": -1.0,
+          "EXTB_ON": -1.0,
+          "N_A": 236876,
+          "N_B": 236876,
+          "N_DEAD": 40,
+          "N_STEP": 8,
+          "POP_DIV": 1,
+          "START_A": 2000.0,
+          "START_B": 5300.0,
+          "TAIL": 300000.0,
+          "T_A": 37.0,
+          "T_B": 37.002,
+          "T_PAIR": 1024,
+          "T_S": 15.4,
+          "WEAKA_OFF": -1.0,
+          "WEAKA_ON": -1.0,
+          "WEAKB_OFF": -1.0,
+          "WEAKB_ON": -1.0
+        },
+        "fifo_a": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "fifo_b": {
+          "AW": 7,
+          "RD_REG": 1,
+          "W": 53
+        },
+        "out_fifo": {
+          "AW": 5,
+          "RD_REG": 0,
+          "W": 52
+        }
+      },
+      "a_hex": {
+        "sha256": "fdfa7c54be5894bb120664510abdfaecae698fd061e1e04b15e830e9e3756759",
+        "size_bytes": 710628
+      },
+      "b_hex": {
+        "sha256": "ef38690e49a5123ad7c938143239f8230169d56c3c2d6c99ff5fd579320d5879",
+        "size_bytes": 710628
+      },
+      "explicit_params": {},
+      "semantic_error": null,
+      "model": {
+        "sha256": "008c805377a10f4f6e82d44631970c935f54a07cdcf978e3ba1cd5453b9983c1",
+        "size_bytes": 652536
+      }
+    }
+  },
+  "actual_native_calls": 6,
+  "native_actual_rcs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "positive_pytest_seconds": 65.904,
+  "private_negative_pytest_seconds": 32.55,
+  "native_or_pytest_retries": 0,
+  "signals": [],
+  "classification": "two positive PASS; intended late-register negative survived original model and scenario, private expected-negative node FAILED as required by task stop rule",
+  "launch_bindings_unchanged": 5294,
+  "root_bindings": 5354,
+  "final_bindings": 5376,
+  "owned_controls_refused": 11,
+  "same_controls_read_in_final": true,
+  "raw_files": 58,
+  "raw_bytes": 9301119,
+  "root_cause_established": false,
+  "production_fault_claimed": false,
+  "private_immutable_package": {
+    "sha256": "6d5a1afffa2119ec42281d037370bbc8fc68b3ea579c06f9d2b1bd0a58f7196f",
+    "size_bytes": 10628
+  },
+  "root_stop_receipt": {
+    "sha256": "2b0e493717372e32ce39f691b7ba3aa83edd3dac5cd94b9a27749014a51830a2",
+    "size_bytes": 7601
+  },
+  "final_stop_receipt": {
+    "sha256": "09fdba961c444d28971ae522f2ee3eec71076d7ebb0027961b6c77e9607eefd0",
+    "size_bytes": 7603
+  },
+  "first_failure": {
+    "sha256": "9114e02eabb95210c5c6bbbffb5d3bb1d4b90b5dbdfa6e856ac2f86c395a50d7",
+    "size_bytes": 1675
+  },
+  "reader_history_note": "Original unused normal acceptance reader and stop-reader drafts/contracts preserved. Before first root execution, separate final stop reader bound actual xUnit2 attributes; no source/model/native/pytest/root retry or alternative mutation.",
+  "full761_accepted": false,
+  "full_formal_accepted": false,
+  "new_build_accepted": false,
+  "hardware_accepted": false
+}

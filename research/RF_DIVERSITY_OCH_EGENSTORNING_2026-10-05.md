@@ -259,3 +259,12 @@ Rapporter om HDMI-störning mot just analoga 5,8 GHz-mottagare hittades inte.
 [ssc]: https://en.wikipedia.org/wiki/Spread_spectrum
 [tworay]: https://en.wikipedia.org/wiki/Two-ray_ground-reflection_model
 [body]: https://eprints.whiterose.ac.uk/101075/19/07456328.pdf
+
+## Tillägg 2026-10-17: Bardwells klipp om RX5808 och ESP32-C5
+
+Joshua Bardwell, livestreamklipp "ESP32-C5 As An Analog Video Receiver!" (5 min 43 s, transkript läst 2026-10-17). Vad han säger, och vad det är värt:
+
+- "Den 5808-modul som sitter i billiga VRX; de riktigt bra VRX-modulerna har inte en 5808, den är inte särskilt känslig; de bra har en annan krets med mer känslighet, jag minns inte namnet." Åsikt utan kretsnamn. Vår genomgång i avsnitt 1 (rapidFIRE MM238R med RTC6715 enligt forum, Fusion enligt forum RTC6715, SteadyView skriver RTC6715:s register, HDZero en RTC6715) talar för att det är samma krets med bättre omgivning (LNA, filter, matning, fusion). Kretsmärkningen i Fusion och rapidFIRE är fortfarande inte verifierad av oss.
+- RX5808-modulen har gått från omkring 8 till omkring 40 USD (hans siffror, 2026) på grund av brist på RichWaves kretsar; det gör analog utrustning dyrare och är ett skäl till Divimaths analoga VTX utan RichWave-krets. För oss: köp modulerna nu, och livscykelrisken för RX5808/RTC6715 står i Pucks `LIFECYCLE.md`.
+- ESP32-C5 som analog mottagare (C5VRX) och CapnBrys `widscan58` (spektrumsvep över 5,8 GHz med samma radio): känslighet och jämförelse mot rapidFIRE, Fusion och SpeedyBee är okända, också för honom. Användningen som lap-timer (en C5 tar åtta kanaler) är det som driver projektet. Vår bedömning från avsnitt 1 står: ett billigt experiment, ingen ersättare för en FM-mottagare förrän någon mätt räckvidden.
+

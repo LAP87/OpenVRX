@@ -1,0 +1,88 @@
+Core: 072dbde (copy without .git), 2026-10-14
+
+=== review2_mixer_weak.py
+E1  B weak, out of step: decisions 144, pairs 0; B lines 72, shown 0; A lines 72 (all bad), shown 69, left out 3; current B from decision None; final current A
+E1c B not weak, out of step: decisions 144, pairs 0; B lines 72, shown 65; A lines 72 (all bad), shown 11, left out 1; current B from decision 19; final current B
+E1p B weak, in step: decisions 72, pairs 72; B lines 0, shown 0; A lines 0 (all bad), shown 0, left out 0; current B from decision 0; final current B
+RTL equals the model in all three runs (decisions, current channel, every word).
+RS-1 reproduced
+exit 0
+
+=== review2_rssi_margin.py
+A pct | B pct +- noise | A warned | B warned
+   19 |    21 +- 0      |  100.0%  |    0.0%
+   10 |    21 +- 0      |  100.0%  |    0.0%
+   15 |    20 +- 2      |   87.7%  |    0.0%
+   15 |    21 +- 2      |   98.3%  |    0.0%
+   12 |    22 +- 4      |   98.3%  |    0.0%
+    5 |    25 +- 8      |   99.3%  |    0.0%
+   18 |    19 +- 0      |    0.0%  |    0.0%
+RS-2 reproduced
+exit 0
+
+=== review2_flash_interrupted.py
+Interrupted erase of sector 0 (sector 1 holds the newest record, seq 512):
+    p  | wrong load | band 6 or 7 | example of a wrong seq
+  0.02 |     2.45% |      0.10% | 1198
+  0.05 |    14.27% |      0.47% | 4216
+  0.10 |    23.62% |      1.98% | 32952
+  0.20 |    22.68% |      3.43% | 3231
+  0.30 |    13.45% |      2.85% | 21166
+  0.50 |     3.25% |      1.57% | 18685
+  0.70 |     0.22% |      0.07% | 17911
+  0.90 |     0.00% |      0.00% | None
+  (3340 images confirmed with ref.scan())
+  The next save after a wrong load (ref.scan: next slot, erase first):
+    erase sector 1 (the one with the newest real record): 3198
+    program into the half-erased sector 0 without erasing it: 0
+    other: 0
+Interrupted program of seq 357 into slot 356 (newest complete record: seq 356):
+    q  | wrong load
+  0.02 |    0.000%
+  0.10 |    0.150%
+  0.30 |    0.000%
+  0.50 |    0.025%
+  0.70 |    0.000%
+  0.90 |    0.000%
+RTL on the first wrong image (p = 0.02): loads [('b5400f5f1df708b22fff', 1198)]; model loads b5400f5f1df708b22fff seq 1198 (band 5)
+FL-1 reproduced on the RTL
+exit 0
+
+=== review2_scan_ties.py
+1 own F4 clean, other on A1 clean: keeps A1 (found True); the channel one would want: F4
+2 own F4 clean, other on A1 slightly noisy: keeps F4 (found True); the channel one would want: F4
+3 F4 locked and noisy, nothing else: keeps F4 (found True); the channel one would want: F4
+4 F4 noisy, R8 clean: keeps R8 (found True); the channel one would want: R8
+SC-1 reproduced: a tie of clean channels goes to the earlier one in the table
+exit 0
+
+=== review2_hdmi_independent.py
+review2_hdmi_full: 6080 clocks
+  active lines with lead-in: 40, wrong preamble/guard band: 0
+  data islands: 4, faults: none
+  AVI: {'header': '82020d', 'checksum_ok': True, 'Y': 0, 'A0': 1, 'M': 2, 'R': 8, 'Q': 2, 'VIC': 4, 'PB5': 0, 'hz50': 0}; (hz50, VIC) seen: [(0, 4), (1, 19)]
+review2_hdmi_limited: 6080 clocks
+  active lines with lead-in: 40, wrong preamble/guard band: 0
+  data islands: 4, faults: none
+  AVI: {'header': '82020d', 'checksum_ok': True, 'Y': 0, 'A0': 1, 'M': 2, 'R': 8, 'Q': 1, 'VIC': 4, 'PB5': 0, 'hz50': 0}; (hz50, VIC) seen: [(0, 4), (1, 19)]
+review2_dvi: 6080 clocks
+  blanking clocks with anything but control codes: 0, video guard bands: 0
+Q (PB3 bits 3:2) is printed above per mode; RGB_FULL changes nothing but PB3 in tmds_link.v (read from the source), and ycbcr2rgb.v puts out full range either way.
+packets, guard bands and preambles as above
+exit 0
+
+=== review2_vinterp_full.py
+lines 240 upper: output lines 0-2 [(0, 0, 0), (0, 1, 2), (0, 1, 5)], 717-719 [(238, 239, 7), (239, 239, 0), (239, 239, 0)]; 0 of 720 differ from the mapping
+lines 240 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 1)], 717-719 [(238, 239, 3), (238, 239, 6), (239, 239, 0)]; 0 of 720 differ from the mapping
+lines 242 upper: output lines 0-2 [(0, 0, 0), (0, 1, 2), (0, 1, 5)], 717-719 [(240, 241, 7), (241, 241, 0), (241, 241, 0)]; 0 of 720 differ from the mapping
+lines 242 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 1)], 717-719 [(240, 241, 3), (240, 241, 6), (241, 241, 0)]; 0 of 720 differ from the mapping
+lines 243 upper: output lines 0-2 [(0, 0, 0), (0, 1, 2), (0, 1, 5)], 717-719 [(241, 242, 7), (242, 242, 0), (242, 242, 0)]; 0 of 720 differ from the mapping
+lines 243 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 1)], 717-719 [(241, 242, 3), (241, 242, 6), (242, 242, 0)]; 0 of 720 differ from the mapping
+lines 244 upper: output lines 0-2 [(0, 0, 0), (0, 1, 2), (0, 1, 5)], 717-719 [(242, 243, 7), (243, 243, 0), (243, 243, 0)]; 0 of 720 differ from the mapping
+lines 244 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 1)], 717-719 [(242, 243, 3), (242, 243, 6), (243, 243, 0)]; 0 of 720 differ from the mapping
+lines 287 upper: output lines 0-2 [(0, 0, 0), (0, 1, 3), (0, 1, 6)], 717-719 [(285, 286, 6), (286, 286, 0), (286, 286, 0)]; 0 of 720 differ from the mapping
+lines 287 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 2)], 717-719 [(285, 286, 2), (285, 286, 5), (286, 286, 0)]; 0 of 720 differ from the mapping
+lines 288 upper: output lines 0-2 [(0, 0, 0), (0, 1, 3), (0, 1, 6)], 717-719 [(286, 287, 6), (287, 287, 0), (287, 287, 0)]; 0 of 720 differ from the mapping
+lines 288 lower: output lines 0-2 [(0, 0, 0), (0, 0, 0), (0, 1, 2)], 717-719 [(286, 287, 2), (286, 287, 5), (287, 287, 0)]; 0 of 720 differ from the mapping
+VINTERP weights as the mapping says, first and last lines included
+exit 0

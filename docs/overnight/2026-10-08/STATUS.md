@@ -856,3 +856,65 @@ Root granskade fryst Core0503dac: 187 spårade inputs, 16 ändrade filer och en 
 Ny RTL/modellregel kräver att ord0 tagits i samma fält innan en rad markeras lagrad; fältraden som BUF-skrivaren ansluter mitt i blir inte lagrad. Bänkarna kontrollerar nu F/W/R-marginaler, med egna icke-vakuösa positiva och tre förseningsnegativer. Kampanjens källmanifest binder den nya include-filen; svitens fingerprint binder även BRINGUP som probtestet läser. Övriga tidigare fuzz-checkerfunktioner och samtliga körarfunktions-AST är oförändrade. Inga stift, SDC, toppar eller övrig RTL har ändrats mot ff9bfec.
 
 Detta är källrevision och fokuserad fixtureverifiering. Den nya RTL-regeln behöver färska native-/hel-/bygggrindar; Fables 695-/kampanj-/byggrapporter är ännu inte rootaccepterade här. Nästa separat avgränsade grind är fryst0503dac, hela695 och färska M0/M4/M6 med IOB-val/TMDS/källmanifest. Puck-länken och historiska kampanjer är kvar. [Revision, nya identiteter och kvarvarande grindar](evidence/upstream-0503-source-audit.json).
+
+
+## 2026-10-15: LOW med VINTERP och HDMI, litet VIC 4-fall
+
+Ett nytt privat prov på fryst Core `bf05ac0feed58c3295949a6f3b4ee55c886cd1e2`, träd `49923a6dda3c8f3466eff76ddaa7d835f1785c1d`, kopplar LOW-bildminnet till verklig `tmds_link`: VINTERP=1, HDMI=1, fullt RGB, LL_EQ=1 och WAIT=0. Källan har fjorton fält med nio rader och växlande F. Tio kompletta bilder, 360 aktiva rader och 460800 pixlar stämde mot oberoende bildfacit och HDMI-avkodning. Tio AVI-paket hade VIC 4; båda fältfaserna kontrollerades. Alla 45360 källord bands till accepterade skrivningar och rätt ringadress. DUT:s RGB användes inte som förväntad bild.
+
+Åtta första RTL-felprov avvisades på rätt orsak: icke-noll LOW-vikt, förbikopplad bildgrind, fel ringadress, avstängd fasutjämning, fel VIC, checksumma, paritet och skyddsband. Alla arton kompilerings-/simulatoranrop avslutades rc0 utan timeout, signal eller omkörning. Åtta skadade rådata-/metadatafall avvisades; slutgranskningen läste samma kopior. De 207 Gitblob-/arkiv-/källfilerna och 5300 startbindningarna var oförändrade. De 151 rå-/kontrollfilerna omfattar 709434023 byte, bundna med SHA256 och storlek. Native-körtid: 698,339 s.
+
+Detta accepterar det skalade LOW/VIC4-symbolfallet. Full PAL/VIC19, formatövergångar, hela mixerkedjan och fysisk HDMI/SDRAM eller annan hårdvara omfattas inte. M6:s gamla placeringsfel på bf05 består som historiskt resultat. Nyare fjärrkälla rapporterar en separat FIFO-/placeringsändring; den är inte native-/byggaccepterad här. Produktionskälla, ursprungliga modeller och kontrollfunktioner, standardval, pinnar, SDC och licens är oförändrade. Nya privata bänk- och adapterfiler tillkom. Den ursprungliga 757-sviten kördes inte om och får inga nya pytestutfall av detta prov.
+
+[Maskinläsbart underlag](evidence/core-bf05-combined-low-ntsc.json). START/loggar, råfiler, bänk, orakel och ROOT/FINAL finns i privatarkivet `core-bf05-combined-low-ntsc`. Publiceringen bevarar inkommande navändringar fram till `34380b9`; den primära navarbetskopians äldre, hashbundna planfil lämnas orörd.
+
+
+## 2026-10-16: källgranskning av Core b4a5db7
+
+Fryst `b4a5db7292936b4db356af6ced40bb34acecbe95`, träd `c91b7f6e1092b6b621a05db8f401806ce179faeb`: 209 Git-/arkiv-/källinputs mot accepterade bf05:s 207. Tolv gamla filer ändras, två tillkommer och ingen tas bort; 195 gamla filer är byteidentiska. Endast två RTL-filer ändras: `async_fifo.v` får `RD_REG` med standard 0 och läsning från nästa pekare till ett register; `mixer2.v` sätter 1 i sina två ingångs-FIFO:er. M2:s FIFO och mixerns utgångs-FIFO behåller 0. Mixerns besluts-/F-regler, samtliga modeller, LOW/ring/genlock/HDMI/vblend, toppar, boards/pinnar, byggskript, IOREG-standard och licens är byteidentiska.
+
+Fyra nya FIFO-identiteter är källdefinierade: tre klockpar/frön mot en kö och en negativ kontroll med försenat läsregister. Bänken har W16/AW3 och gemensam reset; formella källan lägger till två bevis och ett motexempel, med förväntat 10 PROVEN/17 CONTROL OK. Inget av detta kördes här. Förväntat 757+4=761 är en källhärledning, inte ny insamling eller svitacceptans.
+
+Svitkörarens enda ändrade funktions-AST är `fingerprint`: filnamn som matchar `*.result.xml` utesluts. Den befintliga verkliga CLI-fixturen får en resume-kontroll efter genererad XML. Inga spårade inputs matchar filtret i dessa snapshots. Fingeravtrycket på rena Gitarkiv ändras från 202 inputs/`bbed3d74…` till 204 inputs/`885d58e646fff69c971e0433ee72443e56ac31a66db59340b5bdffa81eae8a40`; gamla resultat blir inte ny mainacceptans genom resume eller alias.
+
+Elva utvalda byggmanifest återlästes: primärbyggen inklusive previous och tre accepterade bf05-standardmanifest. Inget gäller de nya rapporterade 2c64672-/b4a5-byggena. Detta är begränsat till de lästa paths, inte ett påstående om andra datorer eller kataloger. Den gamla bf05-kombinationens naturliga M6-placeringsfel består som historiskt resultat. Ny M6-placering och rapporterad 761-svit är inte rootaccepterade av denna granskning. Puck main b589ab3 pinnar faktiskt fortfarande bf05; ingen gitlink flyttades.
+
+En faktisk statisk koordinator avslutades rc0 på 1,273 s. Rotgranskningen fann en privat parserpost som felaktigt räknade moduldeklarationen som instans; originalhelper/-resultat bevaras. En separat första rotläsare avvisar den posten och ger exakt fyra konsumentinstanser, utan omkörning av koordinator eller återskapade kontroller. Åtta ägda metadata-/source-/helper-/contract-skador avvisades med giltigt före/efter och återlästes oförändrade i slutgranskningen. Alla 1203 startbindningar, 209 nya och 207 gamla källinputs är oförändrade; rot-/slutgranskningens 29/38 bindningar matchar.
+
+Nästa avgränsade verifiering är de fyra nya FIFO-fallen och den ändrade verkliga CLI-fixturen, med separat fryst kandidat och första körningar. Ingen helsvit, formell körning, FPGA-routning, KiCad eller hårdvara kördes i detta paket. [Käll- och kontraktsunderlag](evidence/upstream-b4a5-source-audit.json). Det fulla läsunderlaget, den bevarade parserdiagnosen och den korrigerade tabellen finns i privatarkivet `upstream-b4a5-source-audit/FINDINGS.md`.
+
+
+## Riktad b4a5-grind, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: fyra nya FIFO-fall och en ändrad runner-CLI-fixtur passerade vid första försöket. FIFO W16/AW3 jämför RD_REG0/1 med en kö vid tre klockpar och två samordnade resetsegment. De positiva fallen gav D/E=0; den verkliga sena läsregistermutationen gav fel köordning och 3 016 läsklockor med olika data. Åtta faktiska compiler/vvp-anrop gav rc0. Pytest: 4 PASS på 0,468 s, sedan 1 PASS på 3,514 s, inga omkörningar eller signaler.
+
+CLI-fixturens genererade cocotb-XML tillät resume. En efterföljande modelländring vägrades med rc2 och alla sparade outputbytes behölls. Interna fixturegrupper 4+1+4 innehåller egna skip/xfail och räknas separat från de fem begärda utfallen. 209 Git-/arkiv-/källfiler och 5 300 bindningar matchade före/efter; nio skadade rå-/metadata-/acceptanskvitton avvisades och samma kopior återlästes i slutgranskningen.
+
+Detta är liten FIFO-geometri och CLI-verifiering. Full761, de nya formella bevisen, W53/AW7 i mixerkedjan och nya FPGA-byggen är inte accepterade här. Inga hårdvarupåståenden ändras. [Källbundet kvitto](evidence/core-b4a5-targeted-gate.json).
+
+
+## Registrerad FIFO, utvalda formella bevis, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: de två nya originalbevisen för RD_REG1, W2/AW2 och W2/AW3, slöt induktionen vid längd 1 med ursprungliga maxsteps20/30. Originalets sena läsregistermutation gav ett verkligt basfallsmotexempel vid Yosys sökindex6. Tre faktiska verktygsanrop gav rc0 på sammanlagt 1,227476 s, inga signaler, timeouter eller omkörningar. Åtta gamla bevis och helsviten kördes inte.
+
+209 Git-/arkiv-/källfiler och 5 323 käll-/runtime-/helper-/beroendebindningar matchade före/efter. Nio ägda proof-/parameter-/källbytes-/node-/motexempel-/acceptansskador avvisades; slutgranskningen läste samma kopior. 33 raw/control-filer, 507 991 byte, är bundna med SHA256 och storlek.
+
+Harnessen har fria klockor/enables/data och reset konstant0. Originalets `-set-init-zero` behåller clk2fflogic-hjälpregisternas explicita initvärden; klockkantdetektorerna startar i1, FIFO:s samplade data/tillstånd i0. Motexemplets ursprungslogg sparar SAT-modell/initialtabell, utan full återspelbar tidsserie eller exakt felcykel-/assertionsattribution. Detta är två valda bevis och ett motexempel, inte fullformal10/17, full761, W53/AW7-mixerkedja, FPGA-byggning, fysisk metastabilitet/reset mitt i drift eller hårdvara. [Källbundet kvitto](evidence/core-b4a5-registered-fifo-formal.json).
+
+
+## Mixer-FIFO-grind stoppad, 2026-10-16
+
+Core `b4a5db7` / tree `c91b7f6`: original `test_in_step` och `test_unlocked_current_channel_out_of_step[23-8]` passerade vid första körningen, 65,904 s. Faktiska input-FIFO:er W53/AW7/RD_REG1 och output-FIFO W52/AW5/RD_REG0 verifierades i kompilerad VVP. Oberoende återläsning matchade 72 beslut/25 920 ord respektive 144 beslut/31 320 ord och alla ursprungliga scenarioassertioner.
+
+**Paketet är inte accepterat.** Den privata sena läsregistermutationen, med identiskt stimulus, effektiva parametrar och originalmodell som första positiva fallet, gav fortfarande samma 72 beslut/25 920 ord och klarade modell-/scenarioassertionerna. Adaptern föll därför med `late registered-input mutant was not caught by the original model/scenario` efter 32,550 s. Alla sex faktiska compiler/vvp-anrop gav rc0, utan signaler/timeouter/omkörningar. Ingen ny mutation eller orakelförsvagning gjordes. Detta visar kontrollens begränsning i det valda scenariot; orsaken och ett produktionsfel är inte fastställda.
+
+Stopproot/final återläste befintliga rådata och originalfacit. 209 Git-/arkiv-/källfiler och 5 294 launchbindningar matchade före/efter. Elva skadade ord-/besluts-/parameter-/käll-/node-/acceptanskvitton avvisades; samma kopior lästes i final. 58 raw/control-filer, 9 301 119 byte, är hash-/storleksbundna. De två positiva utfallen behåller begränsat scope, men den planerade negativa grinden förblir false. Ingen full761, ny fullformell/kedje-/FPGA-/Puck-/hårdvaruacceptans. [Stoppkvitto och begränsningar](evidence/core-b4a5-mixer-fifo-stop.json).
+
+
+## Mixernegativens begränsning och paus, 2026-10-16
+
+Käll-/rådatagranskning på fryst `b4a5db7` / tree `c91b7f6`, utan projektimport, modellåterspelning, test, native, ny bänk eller mutation. `mix_chan` har `in_pop = !in_empty`; fullt ringminne styr lagring, inte denna läsbegäran. `POP_DIV` bromsar utgångs-FIFO:n. Sena registret kan därför hinna ikapp under en tom läscykel; deklarerade captureperioder på 37/37,002 ns mot en läsperiod på 15,4 ns är förenliga med sådana luckor.
+
+Original och mutant har byteidentiska a.hex/b.hex/out.txt/dec.txt, inklusive alla 72 beslutstider och 25 920 utord. Den valda bänken loggar dock ingen input-empty/pop/rd_data-tidsserie vid varje kant. Förklaringen är därför källstödd och villkorlig; dynamisk maskeringsorsak, universell ekvivalens och produktionsfel är inte fastställda. Det gamla mixerstoppet och `negative_caught=false` står kvar.
+
+18 källhänvisningar, tre selektiva Python-AST-läsningar, fyra råfilspar och 5 373 bindningar är kontrollerade. Åtta ägda käll-/helper-/observerat-vs-villkorligt-/falsk-acceptansskador avvisades och samma kopior lästes i final. Inga nya funktionskrav motiverar här ytterligare felvarianter eller upprepade mixerprover för att göra paketet grönt. Rekommendationen är att pausa automatiken och spara kvota tills en konkret ändrad källa, ett otestat beteendekrav eller en hårdvaruobservation motiverar ett nytt paket. Detta avslutar denna fortsättningsväg, utan påstående att alla möjliga mjukvarufrågor är lösta. [Källor, observationer och begränsningar](evidence/core-b4a5-mixer-negative-cause-audit.json).

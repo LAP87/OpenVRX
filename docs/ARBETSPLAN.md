@@ -8,11 +8,11 @@ Den enda levande planen för OpenVRX, från 2026-10-17. De daterade planerna och
 
 | Repo | `main` | Läge |
 |---|---|---|
-| OpenVRX-Core | `ff2efce` (taggen) | 772 test: 769 gröna och 3 strikta xfail (Core #21–#23); snabbsviten 702 test på 235 s; M0, M3, M2a, M4 och M6 byggda ur `ff2efce`, alla klockor över 75 MHz |
+| OpenVRX-Core | `78fbb41` (uppgift 36; taggen är `ff2efce`) | 774 test: 771 gröna och 3 strikta xfail (Core #21–#23); snabbsviten 702 test på 235 s; M0, M3, M2a, M4 och M6 byggda ur `ff2efce`, syntetiserad RTL oförändrad sedan dess, alla klockor över 75 MHz |
 | OpenVRX-Puck | `c80ed57` (taggen) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `ff2efce`; 6 test gröna |
 | OpenVRX (navet) | efter uppgift 29 | planer, beslut, mätprotokoll, material- och plocklistor, underlag i `research/` med [register](../research/README.md) |
 
-Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt.
+Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25 och 36) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt.
 
 ## Vad som gäller
 
@@ -51,7 +51,7 @@ Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist
 | Vad | Var | Vems |
 |---|---|---|
 | SCAN avgör lika rena kanaler på tabellordning | Core #22, strikt xfail i `sim/test_review_2026_10_14.py` | arbete |
-| Radbuffertbeviset täcker inte `VINTERP = 1` | Core #24 | arbete |
+| `VINTERP` med fler än `V_ACTIVE / 2` källrader: utrad 0 kan läsa rad 1 innan den är begärd (övre fältet från 450 rader i 720p); TVP5150AM1 ger 240–288, men radantalet begränsas inte i RTL | Core `gateware/formal/README.md` punkt 7 (uppgift 36) | arbete, om det ska rättas |
 | Rootacceptans av Core efter `bf05ac0` (uppgift 21–25, byggena ur `ff2efce`) | Codex grindar, [kommentaren på navets `main`](https://github.com/LAP87/OpenVRX/commit/17d91821547feed81be3e8ec77c550e31b5a916c#commitcomment-204744668) | Codex |
 | Rev A, nästa schemavarv: kontakter för OLED och RX5808-SPI i sandwichen, anteckningarna i Puck #3 (temperaturklass, PLL-filter med flera) | Puck `design/rev_a/LAYOUT.md` avsnitt 7, Puck #3 | ägaren väljer när |
 | Rev A: routning | Puck `design/rev_a/kicad/` | ägaren |
@@ -69,7 +69,7 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 | 33 | Core #21: RSSI-varningens marginal | Granskning 2: en eller två räknesteg avgör varje par nära golvet; strikt xfail i dag | Parameter för hysteres (räknesteg) och en minsta skillnad mellan mottagarna innan varningen slår, standardvärde satt så att dagens scenarier passerar och xfail-testet blir ett vanligt test; modell, negativ kontroll; värdet bokförs som "sätts på bänken, blad 17" | öppen; väntar inte på kortet |
 | 34 | Core #22: SCAN vid lika brus | Strikt xfail: lika rena kanaler avgörs på tabellordning | Vid lika brus behålls startkanalen; när RSSI finns avgör högre RSSI; modell, scenario, negativ kontroll | öppen; liten |
 | 35 | Core #23: HDMI-omfånget | AVI-infoframen säger fullt omfång utan att veta om skärmen tar det; `RGB_FULL = 0` ändrar bara flaggan | Menyval HDMI FULL/LTD som både sätter flaggan och skalar pixlarna till 16–235 i LTD; test mot en avkodare av paketet och pixelvärdena; standard FULL; valet avgörs på bänken (blad 16). Ingen DDC finns, så EDID kan inte läsas av kortet | öppen; efter 33 |
-| 36 | Core #24: beviset med `VINTERP = 1` | Radbuffertbeviset täcker inte interpolationen (två rader per utrad) | Egenskaperna i `formal/` körda med `VINTERP = 1`, eller ett dokumenterat skäl till att det inte går, plus simuleringsmarginal som i uppgift 4 | pågår i en egen session 2026-10-17 ("Core #24: formal line-buffer proof with VINTERP=1"); samordna, dubbelarbeta inte |
+| 36 | Core #24: beviset med `VINTERP = 1` | Radbuffertbeviset täcker inte interpolationen (två rader per utrad) | Egenskaperna i `formal/` körda med `VINTERP = 1`, eller ett dokumenterat skäl till att det inte går, plus simuleringsmarginal som i uppgift 4 | klar, Core `78fbb41`, 2026-10-18: `fb_linebuf_slots_vinterp` bevisar båda läsportarna (12 aktiva rader, bilder med högst `V_ACTIVE / 2` källrader), två negativa kontroller från reset; `margin_checks.vh` post `B` för port B, 310 kontroller gröna, minsta marginal 12,6 µs, två negativa kontroller; 11 `PROVEN` och 19 `CONTROL OK`; hela sviten 774 test, 771 gröna och 3 xfail, på det sammanslagna trädet; Core #24 stängd. Fynd utanför området: Core `formal/README.md` punkt 7. Core `74f8751`, `78fbb41` och `README.md` säger "task 31" i stället för 36 |
 | 37 | Rev A, schemavarv 2 | Sandwichen gör OLED och RX5808-SPI oåtkomliga (LAYOUT.md avsnitt 7); Puck #3 har kvar temperaturklass-kontroll av köpbarhet, PLL-filter är gjort, firmware-patchen väntar på TI | Kontakter för OLED (3,3 V, GND, SCL, SDA_A) och för RX5808-styrning (CLK, DATA, SEL) på dekoderkortet, rotationsenkoder som option om pinnar finns, egna knappar OK/NEXT; netlista, BOM, KiCad-projektet omgenererat; Puck-testen gröna. Routning därefter är ägarens (eller ett pass med ägaren i loopen) | öppen; före beställning av kortet |
 | 38 | Rev B-koncept, efter bänken | Mottagarvalet och behovet av LNA/filter avgörs av M4 på moduler; 1080p (beslut 6) av glasögonen | `design/REV_B_KONCEPT.md` i Puck: mottagarval ur `research/MOTTAGARE_3G3_5G8_2026-10-18.md`, LNA och bandpass före mottagaren som option, linjär 5 V per mottagare, snabb ADC för RSSI i radtakt, 1080p-väg enligt `research/UTGANG_1080P_2026-10.md`, kapsling. Inget byggs | öppen; efter 31 och M4 |
 | 39 | Rootacceptans hos Codex | Codex grindar gäller `bf05ac0`; allt efter (uppgift 21–25, taggen) saknar rootacceptans | Codex kör sina grindar på `ff2efce`; vi gör inget annat än att hålla `main` stilla medan de körs och svara på frågor | Codex |
@@ -110,3 +110,4 @@ Passloggen till och med elfte passet står i ARBETSPLAN_2026-10-05.md; nästa pa
 ### 2026-10-17 kväll (Opus)
 
 - Uppgift 30 på grenen `task30/receiver-chips`: [MOTTAGARKRETSAR_2026-10.md](../research/MOTTAGARKRETSAR_2026-10.md) och raden i `research/README.md`. Allt är läst, inget mätt. Scout-manualen gick inte att läsa ut, och interiörfotona till Divimaths sändare DVM3130 är inte granskade.
+- Uppgift 36 (Core #24) på Core-grenen `formal/vinterp-slots`, sammanslagen som `78fbb41`: radbuffertbeviset och marginalkontrollen för `VINTERP = 1`. Bevisat och simulerat, inget mätt. Sammanslagningen flyttade Core `main` från `ff2efce` efter att uppgift 39 sagt att `main` ska stå still medan Codex kör; taggen `v0.1-prehw` står kvar på `ff2efce`. Uppgiften kallas 31 i Core `74f8751`, `78fbb41` och `README.md` (31 var ledigt när den skrevs in där); rättningen av `README.md` ligger ohopslagen på grenen `docs/task36-number`.

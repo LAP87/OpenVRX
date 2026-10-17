@@ -308,3 +308,10 @@ Enligt [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md). Opus-sessionen gjor
 - **26** (Puck b589ab3, Fable): KiCad 9 i WSL och KiCad-projektet för rev A.
 - Core `main` b1a6e65 (README-status). Kvar i planen: 24 del 2, 25, 27, 28 och nya 29 (grenstädning).
 
+## Elfte passet, 2026-10-17 (Opus)
+
+Enligt [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 24 (del 2), 25, 27, 28 och 29 i ordning, gren per uppgift, sammanslagning med `--no-ff` efter hel svit (`run_suite.py`) och uppgiftens byggen. Allt är simulerat och byggt; inget är kört på hårdvara.
+
+| # | Gjort | Simulerat | Byggt | Återstår | Git |
+|---|---|---|---|---|---|
+| 24 | `gateware/tools/quick_tests.txt` ur hela körningen på `main` b1a6e65 med `--pick-quick 300`: 702 av 771 test ur 49 av 50 filer, väntat 296 s med tio åt gången; utanför de formella bevisen och 68 simuleringar på 40–226 s. `--quick` skriver nu till `gateware/sim/build/quick/` (förut raderade den hela körningens loggar och resultat), listan skrivs längst först och en snabbkörning utan egna tider startar i listans ordning (annars hade `test_puck_ui`, 268 s, startat sist). README, `gateware/README.md`, navets AGENTS och REVIEW: snabbsviten före varje commit, hela före varje sammanslagning | Hela sviten på `d3d9753` (samma källor som sammanslagningen): 772 test, 769 gröna och 3 xfail, 907 s, ingen delad byggkatalog. Snabbsviten där i en färsk kopia: 699 gröna och 3 xfail på 235 s. Negativa kontroller: med köraren före respektive ändring fälls de nya kontrollerna (egen utkatalog; startordning och längst först) | — (ingen RTL) | Testet för listans ordning kom efter körningen och är med först när listan väljs om | Core `main` ff2efce |

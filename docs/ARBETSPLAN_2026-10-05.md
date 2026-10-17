@@ -328,6 +328,8 @@ Avvikelser och misstag under passet:
 - Första byggomgången för 25 skrev byggloggarna i arbetskopian, så manifesten sade `dirty: true`. Byggt om ur en ny utcheckning med loggarna utanför: rent, och samma fem bitströmmar.
 - WSL når inte GitHub (tidsgräns); utcheckningen för byggena klonades ur ett git-paket av ff2efce.
 - Ett skript i uppgift 28 avbröts på planraden i ARBETSPLAN_2026-10-05, och committen ff31eaa gick ändå med resten; raden kom i e2ba8e7.
-- Texterna till 25 och 27 lästes in och skrevs medan 24:s svit och 25:s byggen körde; de committades efter att föregående uppgift var sammanslagen.
+- Underlaget till 25 lästes och utkastet till 27 kontrollerades medan 24:s svit och 25:s byggen körde; inget av det committades förrän föregående uppgift var sammanslagen.
 - En Fable-session committade under passet direkt på navets `main` (5a55b60, RF-anteckningen) och Pucks `main` (91b9f87, livscykeln för RX5808); varje gren utgick från senaste `main`, och sammanslagningarna gjordes i egna worktrees (`OpenVRX-hub-elfte`, `OpenVRX-Puck-elfte`) med lösgjord HEAD, så att huvudutcheckningarna inte rördes.
 - Hela sviten gick i en omgång (961 och 907 s) som bakgrundsjobb under bygglåset, utan `--budget` och `--resume`.
+
+Efter passet: Core `main` ff2efce och Puck `main` c80ed57 bär taggen `v0.1-prehw`, liksom navets sammanslagning fc25a74. Uppgift 1–29 är gjorda; det som är öppet står i den levande planen, [ARBETSPLAN.md](ARBETSPLAN.md).

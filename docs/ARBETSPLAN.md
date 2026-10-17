@@ -10,7 +10,7 @@ Den enda levande planen för OpenVRX, från 2026-10-17. De daterade planerna och
 |---|---|---|
 | OpenVRX-Core | `ff2efce` (taggen) | 772 test: 769 gröna och 3 strikta xfail (Core #21–#23); snabbsviten 702 test på 235 s; M0, M3, M2a, M4 och M6 byggda ur `ff2efce`, alla klockor över 75 MHz |
 | OpenVRX-Puck | `c80ed57` (taggen) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `ff2efce`; 6 test gröna |
-| OpenVRX (navet) | efter uppgift 28 | planer, beslut, mätprotokoll, material- och plocklistor, underlag i `research/` med [register](../research/README.md) |
+| OpenVRX (navet) | efter uppgift 29 | planer, beslut, mätprotokoll, material- och plocklistor, underlag i `research/` med [register](../research/README.md) |
 
 Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt.
 
@@ -46,7 +46,7 @@ Avgjort utan eget nummer: TV mot VCR avgörs på bänken (båda finns i menyn); 
 
 ## Öppna uppgifter
 
-Uppgift 1–28 är gjorda; 29 (grenstädningen) görs i elfte passet. Status per uppgift står i de daterade planerna, sist [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md). Det som är öppet och inte kräver kortet:
+Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md). Det som är öppet och inte kräver kortet:
 
 | Vad | Var | Vems |
 |---|---|---|
@@ -57,6 +57,7 @@ Uppgift 1–28 är gjorda; 29 (grenstädningen) görs i elfte passet. Status per
 | Rev A: routning | Puck `design/rev_a/kicad/` | ägaren |
 | Snabblistan väljs om när test har tillkommit (testet för listans ordning saknas i den) | Core `gateware/tools/quick_tests.txt` | arbete, vid nästa hela körning |
 | Navet #2 (inköpsregeln och licensen) är besvarat och genomfört, #3 är granskningens index | navet #2, #3 | ägaren stänger |
+| Fem grenar på origin med egna commits: navet `vibe/formal-open-points-sim-plan` och `vibe/post-ninth-pass-records` (öppen PR #4), Core `codex/handoff-2026-10-06` och `codex/inherited-claude-2026-10-05`, Puck `codex/inherited-claude-2026-10-05` | [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 29 | ägaren |
 
 Nya uppgifter läggs i en tabell här med nummer från 30, varför, klart när och status (commit och datum).
 

@@ -8,7 +8,7 @@ Den enda levande planen för OpenVRX, från 2026-10-17. De daterade planerna och
 
 | Repo | `main` | Läge |
 |---|---|---|
-| OpenVRX-Core | `c852cb9` (uppgift 35; taggen är `ff2efce`) | 797 test, alla gröna; snabbsviten 702 test på 230–270 s (väljs om vid nästa hela körning; de 21 testen från uppgift 35 är inte med); M0, M4 och M6 byggda ur `52c2ffe` med och utan `HDMI=1` (M6 13 190 LUT4, med `HDMI=1` 13 544; 29 BSRAM), M3 och M2a ur `ff2efce`, alla klockor över 75 MHz |
+| OpenVRX-Core | `8dff8d1` (snabblistan omvald; uppgift 35 är `c852cb9`; taggen är `ff2efce`) | 797 test, alla gröna (senast på `04f509d`, 2026-10-18); snabbsviten 720 test på 204–210 s (listan från 2026-10-18 ur hela körningen på `52c2ffe`: 15 av de 21 testen från uppgift 35 är med, `test_puck_ui` på 314 s ryms inte inom 300 s och körs bara i hela sviten); M0, M4 och M6 byggda ur `52c2ffe` med och utan `HDMI=1` (M6 13 190 LUT4, med `HDMI=1` 13 544; 29 BSRAM), M3 och M2a ur `ff2efce`, alla klockor över 75 MHz |
 | OpenVRX-Puck | `c80ed57` (taggen) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `ff2efce`; 6 test gröna |
 | OpenVRX (navet) | efter uppgift 29 | planer, beslut, mätprotokoll, material- och plocklistor, underlag i `research/` med [register](../research/README.md) |
 
@@ -55,7 +55,7 @@ Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist
 | Rootacceptans av Core efter `bf05ac0` (uppgift 21–25, byggena ur `ff2efce`) | Codex grindar, [kommentaren på navets `main`](https://github.com/LAP87/OpenVRX/commit/17d91821547feed81be3e8ec77c550e31b5a916c#commitcomment-204744668) | Codex |
 | Rev A, nästa schemavarv: kontakter för OLED och RX5808-SPI i sandwichen, anteckningarna i Puck #3 (temperaturklass, PLL-filter med flera) | Puck `design/rev_a/LAYOUT.md` avsnitt 7, Puck #3 | ägaren väljer när |
 | Rev A: routning | Puck `design/rev_a/kicad/` | ägaren |
-| Snabblistan väljs om när test har tillkommit (testet för listans ordning saknas i den) | Core `gateware/tools/quick_tests.txt` | arbete, vid nästa hela körning |
+| Snabblistan väljs om när test har tillkommit. Senast vald 2026-10-18 ur hela körningen på `52c2ffe` (Core `8dff8d1`), med testet för listans ordning och 15 av de 21 testen från uppgift 35; vilka som saknas och varför står i Core `gateware/README.md` | Core `gateware/tools/quick_tests.txt` | arbete, vid nästa hela körning efter nya test |
 | Navet #2 (inköpsregeln och licensen) är besvarat och genomfört, #3 är granskningens index | navet #2, #3 | ägaren stänger |
 | Fem grenar på origin med egna commits: navet `vibe/formal-open-points-sim-plan` och `vibe/post-ninth-pass-records` (öppen PR #4), Core `codex/handoff-2026-10-06` och `codex/inherited-claude-2026-10-05`, Puck `codex/inherited-claude-2026-10-05` | [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 29 | ägaren |
 

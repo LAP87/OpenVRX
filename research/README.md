@@ -1,6 +1,6 @@
 # Underlag i `research/`
 
-En rad per fil: datum, ämne, om den gäller, och vilket beslut eller vilken uppgift den matar. Anteckningarna själva ändras inte; när något i dem har ersatts står det här. Besluten finns i [`docs/BESLUT_2026-10-12.md`](../docs/BESLUT_2026-10-12.md) (numrerade), uppgifterna i arbetsplanerna under `docs/`. Registret gäller 2026-10-17.
+En rad per fil: datum, ämne, om den gäller, och vilket beslut eller vilken uppgift den matar. Anteckningarna själva ändras inte; när något i dem har ersatts står det här. Besluten finns i [`docs/BESLUT_2026-10-12.md`](../docs/BESLUT_2026-10-12.md) (numrerade), uppgifterna i arbetsplanerna under `docs/`. Registret gäller 2026-10-19.
 
 "Rensad 2026-10-12" betyder att butiker, butikslänkar och odaterade priser togs bort enligt inköpsregeln (uppgift 8b), inget annat. Status: **gällande**, **delvis ersatt** (vad), **ersatt av** (vad), **historisk** (sparad som underlag, inget att göra).
 
@@ -23,6 +23,7 @@ En rad per fil: datum, ämne, om den gäller, och vilket beslut eller vilken upp
 | [RX5808_PRO_DIVERSITY_2026-10-13.md](RX5808_PRO_DIVERSITY_2026-10-13.md) | 2026-10-13 | rx5808-pro-diversity och FENIX: RSSI-kalibrering, skanning, byte i radtakt | gällande | beslut 7; uppgift 13–15 |
 | [UTGANG_1080P_2026-10.md](UTGANG_1080P_2026-10.md) | 2026-10-13 | Tre vägar till 1080p60 och vad som måste mätas för var och en | gällande | beslut 6; uppgift 12 |
 | [MOTTAGARKRETSAR_2026-10.md](MOTTAGARKRETSAR_2026-10.md) | 2026-10-17 | Mottagarkretsen i HDZero, SteadyView, rapidFIRE, Fusion och Fat Shark Scout, belagd med FCC, tillverkarens dokument, källkod och foton; RichWaves mottagarlista | gällande | uppgift 30; valet av mottagare för rev B |
+| [SDR_5G8_MOTTAGNING_2026-10-19.md](SDR_5G8_MOTTAGNING_2026-10-19.md) | 2026-10-19 | SDR-kort med AD9361/AD9364 för ett prov av 5,8 GHz analog video på datorn: plattformar, bandbredd, programvara; priser daterade | gällande | ägarens fråga 2026-10-19 om AD-kretsar; rådets P5 (väntar) |
 
 ## Komponentregistret och råunderlag
 

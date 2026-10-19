@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-19",
+  "user_priority": [
+    "analog_image_reception_flying",
+    "open_hdmi_goggles_groundstation"
+  ],
+  "tools_as_product": false,
+  "participants": 4,
+  "ballots": {
+    "roadmap": {
+      "agent": "/root/design_20261019_roadmap",
+      "votes": {
+        "P1": "NO",
+        "P2": "YES",
+        "P3": "YES",
+        "P4": "YES",
+        "P5": "DEFER",
+        "P6": "NO"
+      },
+      "evidence": "reviews/roadmap.md",
+      "type": "advisory_only"
+    },
+    "product_ux": {
+      "agent": "/root/design_20261019_productux",
+      "votes": {
+        "P1": "NO",
+        "P2": "YES",
+        "P3": "YES",
+        "P4": "YES",
+        "P5": "DEFER",
+        "P6": "NO"
+      },
+      "evidence": "reviews/product_ux.md",
+      "type": "advisory_only"
+    },
+    "rf": {
+      "agent": "/root/design_20261019_rf",
+      "votes": {
+        "P1": "NO",
+        "P2": "YES",
+        "P3": "YES",
+        "P4": "YES",
+        "P5": "DEFER",
+        "P6": "NO"
+      },
+      "evidence": "reviews/rf.md",
+      "type": "advisory_only"
+    },
+    "root": {
+      "agent": "/root",
+      "votes": {
+        "P1": "NO",
+        "P2": "YES",
+        "P3": "YES",
+        "P4": "YES",
+        "P5": "DEFER",
+        "P6": "NO"
+      },
+      "evidence": "REPORT.md",
+      "type": "advisory_only"
+    }
+  },
+  "yes_counts": {
+    "P1": 0,
+    "P2": 4,
+    "P3": 4,
+    "P4": 4,
+    "P5": 0,
+    "P6": 0
+  },
+  "production_changes_authorized_by_this_record": false,
+  "hardware_accepted": false,
+  "new_native_or_build_results": false,
+  "old_councils_retried": false,
+  "automation_resumed": false,
+  "source_refs": {
+    "hub": "5f7a7c54d67fabd47e7c11986c5d5b5bf33f3b00",
+    "core": "8dff8d1b4d5f1987a23c3f332f730119fccbd909",
+    "puck": "84a79d61c4ebb46981329be39fafcd7447c32150"
+  },
+  "private_root_review_sha256": "a678770766f907264416d24263528d71ac4afb928ed7ec6787ba1b33a82cfaa4",
+  "report_sha256": "b197aaea27af4acefcdba469772f3dbc87788c1c0c93662316d7b3f3f934466b"
+}

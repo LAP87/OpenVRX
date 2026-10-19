@@ -2,19 +2,21 @@
 
 Den enda levande planen för OpenVRX, från 2026-10-17. De daterade planerna och nattpassen under `docs/` är historik (listan sist). Nya uppgifter, beslut och läget skrivs här.
 
-## Läge 2026-10-19
+## Läge 2026-10-20
 
 **Inget är kört på hårdvara.** Baslinjen före kortet är taggen `v0.1-prehw` i alla tre repona: [RELEASE_v0.1-prehw.md](RELEASE_v0.1-prehw.md) säger vad som är simulerat, byggt och inte provat.
 
 | Repo | `main` | Läge |
 |---|---|---|
-| OpenVRX-Core | `8dff8d1` (snabblistan omvald; uppgift 35 är `c852cb9`; taggen är `ff2efce`) | 797 test, alla gröna (senast på `04f509d`, 2026-10-18); snabbsviten 720 test på 204–210 s (listan från 2026-10-18 ur hela körningen på `52c2ffe`: 15 av de 21 testen från uppgift 35 är med, `test_puck_ui` på 314 s ryms inte inom 300 s och körs bara i hela sviten); M0, M4 och M6 byggda ur `52c2ffe` med och utan `HDMI=1` (M6 13 190 LUT4, med `HDMI=1` 13 544; 29 BSRAM), M3 och M2a ur `ff2efce`, alla klockor över 75 MHz |
-| OpenVRX-Puck | `84a79d6` (taggen är `c80ed57`) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `8dff8d1`; 6 test gröna |
-| OpenVRX (navet) | efter uppgift 41 | planer, beslut, mätprotokoll, material- och plocklistor, två granskningar, underlag i `research/` med [register](../research/README.md) |
+| OpenVRX-Core | `8dff8d1` (snabblistan omvald; uppgift 35 är `c852cb9`; taggen är `ff2efce`); grenen `ui/flight-view` (`d163503`, uppgift 42) väntar på ägarens ja | 797 test, alla gröna (senast på `04f509d`, 2026-10-18); snabbsviten 720 test på 204–210 s (listan från 2026-10-18 ur hela körningen på `52c2ffe`: 15 av de 21 testen från uppgift 35 är med, `test_puck_ui` på 314 s ryms inte inom 300 s och körs bara i hela sviten); M0, M4 och M6 byggda ur `52c2ffe` med och utan `HDMI=1` (M6 13 190 LUT4, med `HDMI=1` 13 544; 29 BSRAM), M3 och M2a ur `ff2efce`, alla klockor över 75 MHz |
+| OpenVRX-Puck | `06e7f0e` (taggen är `c80ed57`) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `8dff8d1`; 6 test gröna |
+| OpenVRX (navet) | efter uppgift 44 | planer, beslut, mätprotokoll, material- och plocklistor, två granskningar, Codex rådsrapport 2026-10-19, underlag i `research/` med [register](../research/README.md) |
 
 Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25, 33–36) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt. Fable har kört hela sviten på `8dff8d1` på egen maskin 2026-10-19: 797 gröna.
 
-**Vad som är kvar utan kortet: inget.** Uppgift 1–36 och 41 är gjorda, Core #1–#24 är stängda. Nästa framsteg kommer från bänken (31, 32, 40) och därefter rev A schemavarv 2 (37) och rev B-konceptet (38).
+**Utan kortet återstår** ägarens besked om flygvyn (uppgift 42, bilderna i [UI_FLYGVY_2026-10-19.md](UI_FLYGVY_2026-10-19.md)) och, om ägaren vill, OSD:n i samma stil (45). Uppgift 1–36, 41, 43 och 44 är gjorda, Core #1–#24 är stängda. Nästa framsteg kommer från bänken (31, 32, 40) och därefter rev A schemavarv 2 (37) och rev B-konceptet (38).
+
+Codex rådsrapport 2026-10-19 ([COUNCIL.md](design/2026-10-19/COUNCIL.md), fyra rådgivande röster) är underlag, inte instruktioner: P2 (flyggränssnitt) blev uppgift 42, P3 (mottagargränsen) 43, P5 (SDR-väg utan RichWave, väntar) fick underlaget i 44; P4 (jämför RX5808 före byte) är bänken (31, 32, MATPROTOKOLL); P1 och P6 avfördes.
 
 ## Vad som gäller
 
@@ -61,7 +63,7 @@ Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist
 | Navet #2 (inköpsregeln och licensen) är besvarat och genomfört, #3 är granskningens index | navet #2, #3 | ägaren stänger |
 | Sju grenar på origin med egna commits (2026-10-19): navet `vibe/formal-open-points-sim-plan` och `vibe/post-ninth-pass-records` (öppen PR #4), Core `codex/handoff-2026-10-06`, `codex/inherited-claude-2026-10-05`, `docs/task36-number` (Opus, README-sifferrättning 18 okt, troligen inarbetad) och `vibe/review2-fixes-13b6d2` (Luna, okänt innehåll), Puck `codex/inherited-claude-2026-10-05` | [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 29 | ägaren; de två nya kan granskas och tas bort av nästa pass |
 
-Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när och status (commit och datum). Ordning från 2026-10-19: 31 och 32 är ägarens och går först (allt software som inte kräver kortet är gjort); 37 före beställning av rev A; 38 och 40 efter bänken; 39 är Codex. Nya software-uppgifter uppstår ur bänkresultaten och skrivs in här med nummer från 42.
+Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när och status (commit och datum). Ordning från 2026-10-20: ägaren tittar på bilderna i uppgift 42 och säger ja, nej eller vad som ska ändras (sammanslagning eller ändring följer); 31 och 32 är ägarens och går först på bänken; 37 före beställning av rev A; 38 och 40 efter bänken; 39 är Codex; 45 bara på ägarens ja. Nya software-uppgifter uppstår ur bänkresultaten och skrivs in här med nummer från 46.
 
 | # | Uppgift | Varför | Klart när | Status |
 |---|---|---|---|---|
@@ -77,6 +79,10 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 | 39 | Rootacceptans hos Codex | Codex grindar gäller `bf05ac0`; allt efter (uppgift 21–25, taggen) saknar rootacceptans | Codex kör sina grindar på `ff2efce`; vi gör inget annat än att hålla `main` stilla medan de körs och svara på frågor | Codex |
 | 40 | Testset för glasögon och goggles (ägaren) | Rapporten `research/GOGGLES_OCH_XR_2026-10-12.md` föreslår ett smalt set; inget köpt | Beslut om smalt eller fullt set; när de finns: blad 14 och 16 | öppen; ägaren |
 | 41 | Research: mottagarkretsar och basmoduler för 3,3 och 5,8 GHz, rankade efter värde för oss | Ägaren bad om det 2026-10-18; grund för uppgift 38 | `research/MOTTAGARE_3G3_5G8_2026-10-18.md`: kretsar, moduler, gränssnitt, känslighet med villkor, status, legalitet i Sverige/EU för 3,3 GHz, värdetabell | klar, navet `main` 9a65d67, 2026-10-18 (Sonnet-research, granskad av Fable). 3,3 GHz är inte licensfritt i Sverige; se dokumentets avsnitt 3 |
+| 42 | Flygvy och meny med en post per skärm, dubbelhög text, sparkvitto och kanalspärr `HOLD` | Ägaren fann rådets 4×21-skiss oläslig (2026-10-19; tecknen är 0,9 × 1,2 mm på 0,91-tumsskärmen); rådets P2; kvittot "sparat" fanns inte (`ready` betyder bara att startavläsningen är klar) | Core-grenen `ui/flight-view`: `ssd1306_text.v` med dubbelhögt radpar, `puck_ui.v` med sidorna flygvy / mätare / RSSI / meny, `flash_store.v` `dirty` och `stored`, M6-toppen med `HDMI_BUILD`; modellen `oled_ref.py` (sidbyten, avkodning, PNG); `test_puck_ui.py` och `test_flash_store.py` med negativa kontroller; hela sviten och M6 (DVI och `HDMI=1`) byggda; renderade bilder och vad som är öppet i [UI_FLYGVY_2026-10-19.md](UI_FLYGVY_2026-10-19.md) | gren pushad 2026-10-20 (`d163503`); hela sviten 808 test gröna på `24a104a` (2 141 s); M6 byggt ur `24a104a` utan och med `HDMI=1` (13 957 / 14 336 LUT4, 29 BSRAM, lägsta maxfrekvens 101,45 / 95,53 MHz); **slås ihop efter ägarens ja på utseendet** (Core `gateware/README.md` M6 och `BRINGUP.md` är skrivna för den nya menyn på grenen) |
+| 43 | Mottagargränsen beskriven | Rådets P3: RF-delen ska kunna bytas utan att videokärnan görs om; en SDR-väg behöver veta vad kärnan kräver | Puck `design/MOTTAGARGRANS.md`: gräns A (CVBS vid `VIDEO_IN_x`: stift, nivåer, RSSI, matning, kanalstyrning) och gräns B (BT.656 mot J6/J5), okända värden markerade, inga nya kontakter eller nivåer på gissning | klar, Puck `main` `06e7f0e`, 2026-10-20 |
+| 44 | Research: SDR-kort för ett prov av 5,8 GHz analog video på datorn | Ägarens fråga 2026-10-19 om AD-kretsarna (finns de att experimentera med?); rådets P5 väntar på ett konkret behov | `research/SDR_5G8_MOTTAGNING_2026-10-19.md`: plattformar (AD9361/AD9364, HackRF; vad som inte når 5,8 GHz), bandbredd, färdig programvara för videodelen, priser daterade; inget köp | klar, navet `main` `5530d51`, 2026-10-20 |
+| 45 | OSD med dubbelhög rad | OSD:n visar flygvyns dubbelhöga rad i enkel storlek; på en 720p-skärm är den läsbar ändå | Bara om ägaren vill efter 42: `osd_overlay.v` med skala per rad, pixelexakt test som i dag | öppen, ägaren avgör efter 42 |
 
 ## Kräver kortet
 

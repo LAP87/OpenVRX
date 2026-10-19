@@ -336,3 +336,5 @@ Efter passet: Core `main` ff2efce och Puck `main` c80ed57 bär taggen `v0.1-preh
 
 Fables kontroll 2026-10-19: hela sviten på Core `main` 8dff8d1 (uppgift 35, snabblistan omvald) körd på egen maskin, en process per simtest: 797 av 797 gröna, 29 minuter. Puck `main` pekar dit. Uppgift 33 och 34 (Fable) och 35 (Opus) stängde Core #21, #22 och #23; inga xfail återstår.
 
+
+Natten 2026-10-19/20 (Fable, efter att Codex kvot tog slut): uppgift 42 på Core-grenen `ui/flight-view` (`d163503`): flygvy med dubbelhög rad, meny med en post per skärm, sparkvitto ur `flash_store.v` (`dirty`/`stored`), kanalspärr `HOLD`, `HDMI N/A` i DVI-bygget; hela sviten 808 test gröna på `24a104a` (2 141 s); M6 byggt ur `24a104a` utan och med `HDMI=1` (13 957 / 14 336 LUT4, 29 BSRAM, lägsta maxfrekvens 101,45 / 95,53 MHz); inte sammanslagen, ägaren avgör utseendet ([UI_FLYGVY_2026-10-19.md](UI_FLYGVY_2026-10-19.md)). Uppgift 43 Puck `design/MOTTAGARGRANS.md` (`06e7f0e`), uppgift 44 `research/SDR_5G8_MOTTAGNING_2026-10-19.md` (`5530d51`). Codex rådsrapport 2026-10-19 ligger i navet under `docs/design/2026-10-19/`.

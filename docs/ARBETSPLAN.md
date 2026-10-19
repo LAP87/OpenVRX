@@ -2,17 +2,19 @@
 
 Den enda levande planen för OpenVRX, från 2026-10-17. De daterade planerna och nattpassen under `docs/` är historik (listan sist). Nya uppgifter, beslut och läget skrivs här.
 
-## Läge 2026-10-17
+## Läge 2026-10-19
 
 **Inget är kört på hårdvara.** Baslinjen före kortet är taggen `v0.1-prehw` i alla tre repona: [RELEASE_v0.1-prehw.md](RELEASE_v0.1-prehw.md) säger vad som är simulerat, byggt och inte provat.
 
 | Repo | `main` | Läge |
 |---|---|---|
 | OpenVRX-Core | `8dff8d1` (snabblistan omvald; uppgift 35 är `c852cb9`; taggen är `ff2efce`) | 797 test, alla gröna (senast på `04f509d`, 2026-10-18); snabbsviten 720 test på 204–210 s (listan från 2026-10-18 ur hela körningen på `52c2ffe`: 15 av de 21 testen från uppgift 35 är med, `test_puck_ui` på 314 s ryms inte inom 300 s och körs bara i hela sviten); M0, M4 och M6 byggda ur `52c2ffe` med och utan `HDMI=1` (M6 13 190 LUT4, med `HDMI=1` 13 544; 29 BSRAM), M3 och M2a ur `ff2efce`, alla klockor över 75 MHz |
-| OpenVRX-Puck | `c80ed57` (taggen) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `ff2efce`; 6 test gröna |
-| OpenVRX (navet) | efter uppgift 29 | planer, beslut, mätprotokoll, material- och plocklistor, underlag i `research/` med [register](../research/README.md) |
+| OpenVRX-Puck | `84a79d6` (taggen är `c80ed57`) | rev A-schemat i SKiDL (126 delar, ERC utan fel), KiCad 9-projekt med netlistan, inte routat; `core/` på `8dff8d1`; 6 test gröna |
+| OpenVRX (navet) | efter uppgift 41 | planer, beslut, mätprotokoll, material- och plocklistor, två granskningar, underlag i `research/` med [register](../research/README.md) |
 
-Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25 och 36) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt.
+Codex rootacceptans gäller Core `bf05ac0` (sviten och M0/M4/M6 med standardval, 2026-10-13; [STATUS.md](overnight/2026-10-08/STATUS.md)). Ändringarna efter det (uppgift 21–25, 33–36) har ingen rootacceptans; FIFO-ändringen i uppgift 21 har Codex verifierat riktat och formellt. Fable har kört hela sviten på `8dff8d1` på egen maskin 2026-10-19: 797 gröna.
+
+**Vad som är kvar utan kortet: inget.** Uppgift 1–36 och 41 är gjorda, Core #1–#24 är stängda. Nästa framsteg kommer från bänken (31, 32, 40) och därefter rev A schemavarv 2 (37) och rev B-konceptet (38).
 
 ## Vad som gäller
 
@@ -57,9 +59,9 @@ Uppgift 1–29 är gjorda; status per uppgift står i de daterade planerna, sist
 | Rev A: routning | Puck `design/rev_a/kicad/` | ägaren |
 | Snabblistan väljs om när test har tillkommit. Senast vald 2026-10-18 ur hela körningen på `52c2ffe` (Core `8dff8d1`), med testet för listans ordning och 15 av de 21 testen från uppgift 35; vilka som saknas och varför står i Core `gateware/README.md` | Core `gateware/tools/quick_tests.txt` | arbete, vid nästa hela körning efter nya test |
 | Navet #2 (inköpsregeln och licensen) är besvarat och genomfört, #3 är granskningens index | navet #2, #3 | ägaren stänger |
-| Fem grenar på origin med egna commits: navet `vibe/formal-open-points-sim-plan` och `vibe/post-ninth-pass-records` (öppen PR #4), Core `codex/handoff-2026-10-06` och `codex/inherited-claude-2026-10-05`, Puck `codex/inherited-claude-2026-10-05` | [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 29 | ägaren |
+| Sju grenar på origin med egna commits (2026-10-19): navet `vibe/formal-open-points-sim-plan` och `vibe/post-ninth-pass-records` (öppen PR #4), Core `codex/handoff-2026-10-06`, `codex/inherited-claude-2026-10-05`, `docs/task36-number` (Opus, README-sifferrättning 18 okt, troligen inarbetad) och `vibe/review2-fixes-13b6d2` (Luna, okänt innehåll), Puck `codex/inherited-claude-2026-10-05` | [ARBETSPLAN_2026-10-14.md](ARBETSPLAN_2026-10-14.md), uppgift 29 | ägaren; de två nya kan granskas och tas bort av nästa pass |
 
-Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när och status (commit och datum). Ordning från 2026-10-18: 31 och 32 är ägarens och går först; 33, 34, 35 är software utan kort och tas i den ordningen; 36 pågår i egen session; 37 före beställning av rev A; 38 och 40 efter bänken; 39 är Codex; 41 pågår.
+Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när och status (commit och datum). Ordning från 2026-10-19: 31 och 32 är ägarens och går först (allt software som inte kräver kortet är gjort); 37 före beställning av rev A; 38 och 40 efter bänken; 39 är Codex. Nya software-uppgifter uppstår ur bänkresultaten och skrivs in här med nummer från 42.
 
 | # | Uppgift | Varför | Klart när | Status |
 |---|---|---|---|---|

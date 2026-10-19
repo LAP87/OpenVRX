@@ -333,3 +333,6 @@ Avvikelser och misstag under passet:
 - Hela sviten gick i en omgång (961 och 907 s) som bakgrundsjobb under bygglåset, utan `--budget` och `--resume`.
 
 Efter passet: Core `main` ff2efce och Puck `main` c80ed57 bär taggen `v0.1-prehw`, liksom navets sammanslagning fc25a74. Uppgift 1–29 är gjorda; det som är öppet står i den levande planen, [ARBETSPLAN.md](ARBETSPLAN.md).
+
+Fables kontroll 2026-10-19: hela sviten på Core `main` 8dff8d1 (uppgift 35, snabblistan omvald) körd på egen maskin, en process per simtest: 797 av 797 gröna, 29 minuter. Puck `main` pekar dit. Uppgift 33 och 34 (Fable) och 35 (Opus) stängde Core #21, #22 och #23; inga xfail återstår.
+

@@ -4,7 +4,11 @@
 
 An analog 5.8 GHz FPV video receiver family: two receivers, two TVP5150AM1
 decoders, an FPGA that pairs and mixes the two pictures line by line, HDMI
-out. Stage: planned / early design. **Nothing has run on hardware.**
+out. Stage: early bring-up. **M0 test-pattern output and a corrected bounce have
+run on a Tang Nano 20K (2026-10-20), including a user-confirmed flash power cycle.**
+The flashed image is a private bench patch, not a Core-main revision. SDRAM is
+not accepted: M2a produced unreadable UART data. TVP/RF and the full receiver
+remain unverified. Start with [the bench handoff](docs/bench/HANDOFF_CLAUDE_2026-10-20.md).
 
 | Repo | Role |
 |---|---|

@@ -1,0 +1,5 @@
+{
+  "rc": 0,
+  "flash_written": false,
+  "purpose": "restore previously verified M0 picture in SRAM after two clock UART observations"
+}

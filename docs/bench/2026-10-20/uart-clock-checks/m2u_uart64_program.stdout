@@ -1,0 +1,10 @@
+empty
+write to ram
+Jtag frequency : requested 6.00MHz    -> real 6.00MHz   
+Parse file Parse /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/bench_home_2026-10-20/uart-checks/bitstreams/m2u_uart64.fs: 
+Done
+DONE
+Erase SRAM Load SRAM Load SRAM: [==================================================] 100.00%
+
+Done
+DONE

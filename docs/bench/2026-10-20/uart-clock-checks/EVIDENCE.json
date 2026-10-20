@@ -1,0 +1,77 @@
+{
+  "source_revision": "e53c7aa89ce2d7d7cf3460e9bf6b353987ff283d",
+  "bitstreams_revision": "5a43c830a579b0e092c22ae29638380a62191132",
+  "expected_line_ascii": "M rs=5 pass=0012 err=00000000 bits=0123456789ABCDEF0123456789ABCDEF pos=UUUUUUUU\r\n",
+  "baud": 115200,
+  "format": "8N1",
+  "capture_seconds_each": 10,
+  "results": {
+    "m2u_uart27": {
+      "image_sha256": "6d68159b106feea4a16a77841f4440f614baa9064e4419168925a3ae76689f28",
+      "source_inputs_verified": 52,
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "program_result": {
+        "rc": 0,
+        "utc": "2026-10-20T20:59:53.990633+00:00"
+      },
+      "capture_result": {
+        "utc": "2026-10-20T21:00:03.992685+00:00",
+        "bytes": 3198,
+        "sha256": "8a2afca1a35c90212a17becd8a8fcf30153a5d7c3f7e1cec6eb04f56291af213",
+        "valid_exact_lines": 39,
+        "complete_lines": 39,
+        "unmatched_complete_lines": [],
+        "trailing_partial_hex": "",
+        "first_164_bytes_hex": "4d2072733d3520706173733d30303132206572723d303030303030303020626974733d303132333435363738394142434445463031323334353637383941424344454620706f733d55555555555555550d0a4d2072733d3520706173733d30303132206572723d303030303030303020626974733d303132333435363738394142434445463031323334353637383941424344454620706f733d55555555555555550d0a",
+        "first_164_bytes_repr": "b'M rs=5 pass=0012 err=00000000 bits=0123456789ABCDEF0123456789ABCDEF pos=UUUUUUUU\\r\\nM rs=5 pass=0012 err=00000000 bits=0123456789ABCDEF0123456789ABCDEF pos=UUUUUUUU\\r\\n'",
+        "sdram_test": false
+      }
+    },
+    "m2u_uart64": {
+      "image_sha256": "7cba51f0c41e9c996e14e4f585f564ea9f1fead6f9d264438bf55c0d90e048cf",
+      "source_inputs_verified": 52,
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "program_result": {
+        "rc": 0,
+        "utc": "2026-10-20T21:00:25.974347+00:00"
+      },
+      "capture_result": {
+        "utc": "2026-10-20T21:00:35.974912+00:00",
+        "bytes": 3198,
+        "sha256": "8a2afca1a35c90212a17becd8a8fcf30153a5d7c3f7e1cec6eb04f56291af213",
+        "valid_exact_lines": 39,
+        "complete_lines": 39,
+        "unmatched_complete_lines": [],
+        "trailing_partial_hex": "",
+        "first_164_bytes_hex": "4d2072733d3520706173733d30303132206572723d303030303030303020626974733d303132333435363738394142434445463031323334353637383941424344454620706f733d55555555555555550d0a4d2072733d3520706173733d30303132206572723d303030303030303020626974733d303132333435363738394142434445463031323334353637383941424344454620706f733d55555555555555550d0a",
+        "first_164_bytes_repr": "b'M rs=5 pass=0012 err=00000000 bits=0123456789ABCDEF0123456789ABCDEF pos=UUUUUUUU\\r\\nM rs=5 pass=0012 err=00000000 bits=0123456789ABCDEF0123456789ABCDEF pos=UUUUUUUU\\r\\n'",
+        "sdram_test": false
+      }
+    }
+  },
+  "sdram_accepted": false,
+  "actual_sdram_access_in_these_images": false,
+  "fixed_err_zero_is_test_text": true,
+  "flash_written": false,
+  "restored_m0_image_sha256": "dea73706130d512345e01d3ddc7b6d41d3e80b34144d3c568b33c26bcfc25fd3",
+  "manifest_verification_limit": "FS hashes and all manifest input bytes checked against fetched Git objects; six other declared artifacts per image unavailable, no independent route/pack acceptance",
+  "no_build_simulation_or_retries_here": true
+}

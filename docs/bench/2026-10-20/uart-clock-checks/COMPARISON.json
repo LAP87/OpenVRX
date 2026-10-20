@@ -1,0 +1,23 @@
+{
+  "actual_results": {
+    "m2u_uart27": {
+      "bytes": 3198,
+      "exact_lines": 39,
+      "bad_lines": 0,
+      "sha256": "8a2afca1a35c90212a17becd8a8fcf30153a5d7c3f7e1cec6eb04f56291af213",
+      "manifest_ioreg": "0"
+    },
+    "m2u_uart64": {
+      "bytes": 3198,
+      "exact_lines": 39,
+      "bad_lines": 0,
+      "sha256": "8a2afca1a35c90212a17becd8a8fcf30153a5d7c3f7e1cec6eb04f56291af213",
+      "manifest_ioreg": "0"
+    }
+  },
+  "both_exact_match": true,
+  "same_capture_sha256": true,
+  "original_m2a_ioreg": "1",
+  "inference": "Both fixed-line designs readable at host 1152008N1. No SDRAM execution or acceptance. Does not isolate original M2a report logic versus IOREG or design-specific implementation. No measured clock-frequency claim.",
+  "restored_persistent_flash_image": "M0 private bounded-motion image remains unchanged in flash; restore to SRAM next"
+}

@@ -1,0 +1,296 @@
+{
+  "source_revision": "e53c7aa89ce2d7d7cf3460e9bf6b353987ff283d",
+  "bitstreams_revision": "5a43c830a579b0e092c22ae29638380a62191132",
+  "source_bindings": {
+    "gateware/boards/m2u_uart27.cst": {
+      "sha256": "b871320df1fe1b00351bdff7239449becce34246fb151997362fdf29de248334",
+      "bytes": 231
+    },
+    "gateware/boards/tangnano20k.cst": {
+      "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
+      "bytes": 1527
+    },
+    "gateware/build.sh": {
+      "sha256": "9f6928d5a4ad9700f07435ab48089c1d98abb70f909f1a17e7b06101be204858",
+      "bytes": 7965
+    },
+    "gateware/rtl/async_fifo.v": {
+      "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
+      "bytes": 5442
+    },
+    "gateware/rtl/bin2bcd.v": {
+      "sha256": "cbb8af29f77726b0ab8d5cf2d1361de411722e53dc7025572fcb1d6b8c6ccefc",
+      "bytes": 1261
+    },
+    "gateware/rtl/bt1120_tx.v": {
+      "sha256": "250a17749ae1518544ba9b134b3075fa608694ab518438b4c90519a8e4c27628",
+      "bytes": 2662
+    },
+    "gateware/rtl/bt656_probe.v": {
+      "sha256": "0f82e30f16eea583390b5475fabe1a19cfd572fe180c30b21dc5aef34d2100c9",
+      "bytes": 3589
+    },
+    "gateware/rtl/bt656_rx.v": {
+      "sha256": "5118486625892f424a01b3c994dd799521da819c54b90397523e9b5181f9df35",
+      "bytes": 10020
+    },
+    "gateware/rtl/cdc_sync.v": {
+      "sha256": "eaaf9f7ab7d9004320ee611c11a0d148a5aa2fe3daad9c2ee320ccdc310a4e92",
+      "bytes": 3494
+    },
+    "gateware/rtl/chan_capture.v": {
+      "sha256": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
+      "bytes": 2820
+    },
+    "gateware/rtl/chan_scan.v": {
+      "sha256": "c2db611fc25acf02d3a019ef2f1310c0ef9206bcef6bb627c78371ebecafe469",
+      "bytes": 5085
+    },
+    "gateware/rtl/clocks_1080p.v": {
+      "sha256": "8b458c7020b933ab6a3b7a65a382261a74fd4984c9ed1b070407a11b4881c22a",
+      "bytes": 1345
+    },
+    "gateware/rtl/clocks_720p.v": {
+      "sha256": "99fe1ccb8a74acd6e624a6a2888b48bb13627c1e6ed33cad330afeb91d5cb489",
+      "bytes": 1545
+    },
+    "gateware/rtl/clocks_sdram.v": {
+      "sha256": "42303ca80439b16bbedb79ddc752cca05f7c7c1c04451c7661087fae7d6a3953",
+      "bytes": 2948
+    },
+    "gateware/rtl/dual_clock_ram.v": {
+      "sha256": "e7b5974eeff4cd2f782bfbbfea7f4127a95e808cee2b9eb2f5a73f09f79a2478",
+      "bytes": 663
+    },
+    "gateware/rtl/dvi_tx_gowin.v": {
+      "sha256": "e0c25cf9a70cbd31b2392a87b7f88e4344ae31d3f2326104b91e2b6da87790ad",
+      "bytes": 1868
+    },
+    "gateware/rtl/fb_backend.v": {
+      "sha256": "282688511fef06df64b54afa287aaaae9e45e16b3766f2b726ec6abe6ece706a",
+      "bytes": 16784
+    },
+    "gateware/rtl/fb_display.v": {
+      "sha256": "82679cfa22c66acc77653366cc8a549a8b03064d2d41852433dfb9e7e5afb74f",
+      "bytes": 19226
+    },
+    "gateware/rtl/fb_sdram.v": {
+      "sha256": "9b61181b332274b85df88eb8f14f9ff41549ad0166c8c8498adb2fed292a3d44",
+      "bytes": 16731
+    },
+    "gateware/rtl/field_phase.v": {
+      "sha256": "08b563aa5dada0dbd3163b91e7694784e01133ce2c68a64fe3c9d98ec09230e1",
+      "bytes": 3357
+    },
+    "gateware/rtl/flash_store.v": {
+      "sha256": "9ef7ea88a30b59c68affc309d37647723c9390211a4b2e56d47de5276352fd48",
+      "bytes": 13389
+    },
+    "gateware/rtl/font5x7.vh": {
+      "sha256": "b2ffa85ec66f89017bd6f299f4b855f3c9124d752c027a0a026501ee290fd310",
+      "bytes": 8071
+    },
+    "gateware/rtl/genlock_timing.v": {
+      "sha256": "c45f1ea19c527d59bf944db0d066d1fd891900d0c293c41d2f6544c869bb9db9",
+      "bytes": 13562
+    },
+    "gateware/rtl/i2c_master.v": {
+      "sha256": "d25604da76fcf40c8eb26e86e37252d69e806ad2229c26f8e2df852e0e63b6cb",
+      "bytes": 8725
+    },
+    "gateware/rtl/line_mixer.v": {
+      "sha256": "04f803e726c4633d08456e4360a5d305fe3b1973a8095c48474e81db33143aec",
+      "bytes": 14662
+    },
+    "gateware/rtl/luma_writer.v": {
+      "sha256": "34997337986ad198f0fedccb80564fd5a520e2cb434e1dbf0d206aeda02cade2",
+      "bytes": 1074
+    },
+    "gateware/rtl/m2_core.v": {
+      "sha256": "19f07c6a2d3da76646a38ccb83f047084a279ac5976f1872c7a5cb2beab67481",
+      "bytes": 5979
+    },
+    "gateware/rtl/memtest_core.v": {
+      "sha256": "b3fb79ce1c0d788847cca51a0e6e0edc0a6c5f0739419e75f6f094d0473ed601",
+      "bytes": 9865
+    },
+    "gateware/rtl/mix_chan.v": {
+      "sha256": "4279a7e8e6707798c1c229d708389aff786b988a892c771d40f56a720fbc7993",
+      "bytes": 10578
+    },
+    "gateware/rtl/mixer2.v": {
+      "sha256": "a2183f1641ad65446aa5c7faac73aaa6ca166d1f50ba25d3096b4b074a22b5c9",
+      "bytes": 8944
+    },
+    "gateware/rtl/noise_stats.v": {
+      "sha256": "6ab5ebc913bc72a9de2d30af5ce6df88def74144f2d0d1b0a5d2f682781838a2",
+      "bytes": 3295
+    },
+    "gateware/rtl/osd_overlay.v": {
+      "sha256": "aa26f4c73e787ac9adbba1eb718a41a39f8e87eb770c6abd2efde4cd705b9728",
+      "bytes": 4346
+    },
+    "gateware/rtl/puck_ui.v": {
+      "sha256": "e2e42e980ea6cb66f98ca188a1498d9cfd0d5109149bbcc5d321d75ac2354451",
+      "bytes": 26983
+    },
+    "gateware/rtl/rssi_adc.v": {
+      "sha256": "bbfb60caaed3e6822b22af358748facfe40e091f677084b99fd850f3604ecb60",
+      "bytes": 10636
+    },
+    "gateware/rtl/rx5808_spi.v": {
+      "sha256": "aed1f5222c5d56d84535ffce745c4f5caf43767e730d3f5806d0eb0f82516a26",
+      "bytes": 2825
+    },
+    "gateware/rtl/rx5808_tune.v": {
+      "sha256": "4fce0aa47ea52862012cc67295f0647e4e78d03c9ca14d678522e6c4192b8a70",
+      "bytes": 2872
+    },
+    "gateware/rtl/sdram_burst.v": {
+      "sha256": "122c2d89514d9903378e4519d8365d0ff7567e2a949229f2d59aec6849f3aa6c",
+      "bytes": 9613
+    },
+    "gateware/rtl/snow_stats.v": {
+      "sha256": "c7043dcef628fc519d8a7755bc8d60a3195d7f743360e8e4f1c9fc3bc12cfa7d",
+      "bytes": 2666
+    },
+    "gateware/rtl/ssd1306_text.v": {
+      "sha256": "b3b04e507ee2ca95cff01d178aaadd4730e76d7dd8aae6079fdc1192dfe76ff9",
+      "bytes": 6703
+    },
+    "gateware/rtl/tmds_encoder.v": {
+      "sha256": "0f39a10cceff8f6b6879ac8fb83c5a05b8854f2dc54bf1536e0c73a8464af127",
+      "bytes": 2563
+    },
+    "gateware/rtl/tmds_link.v": {
+      "sha256": "aaa05cb9a6daa939c0a8fd1aad2208a8052bb687983b9938adecfe28eb045119",
+      "bytes": 10647
+    },
+    "gateware/rtl/tvp_ctrl.v": {
+      "sha256": "f06981991965c7f859291ec9a55900fc654dd21b0a05fe26bb1e8f69fd854491",
+      "bytes": 13362
+    },
+    "gateware/rtl/tvp_sync_rx.v": {
+      "sha256": "ee7a04fdc2d25681b851709b01dc2ecded370d6f38ae422740e2fac4c745e4eb",
+      "bytes": 5731
+    },
+    "gateware/rtl/uart_line_check.v": {
+      "sha256": "f3efe17acf868d52ec8a6cc7d2581bd0b8075a1652e5ba1b26ef41ad92441933",
+      "bytes": 1734
+    },
+    "gateware/rtl/uart_tx.v": {
+      "sha256": "797457775e813bc6fd2e4571ea4e4457a3ccce07ef43bce959b705738d92d69c",
+      "bytes": 880
+    },
+    "gateware/rtl/vblend.v": {
+      "sha256": "cdfb6a2b18fe7f0b9147d1a8b344fbe547849b71b699a5dc9cb1bce6b64329ef",
+      "bytes": 766
+    },
+    "gateware/rtl/video_timing.v": {
+      "sha256": "b4f611a6778150de587ffdee9a526e3fdc8d19c21a168d88a9dc7f565ac9bb49",
+      "bytes": 1539
+    },
+    "gateware/rtl/vtx_channels.vh": {
+      "sha256": "8c788b7c47e68504a07e5eaecbff1be3f326a52929a2faf83338235ebe723e3b",
+      "bytes": 3780
+    },
+    "gateware/rtl/word_packer.v": {
+      "sha256": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
+      "bytes": 1245
+    },
+    "gateware/rtl/ycbcr2rgb.v": {
+      "sha256": "b10d2c6a79bd63150b19e12ac148fc874a6330ec0968946eed77f4cf8b9528f5",
+      "bytes": 1639
+    },
+    "gateware/tools/build_manifest.py": {
+      "sha256": "555ff338834cffad5cfd8079ee48bf7e3131add254ec7c8226d35c0152acdab4",
+      "bytes": 6616
+    },
+    "gateware/top/m2u_uart27.v": {
+      "sha256": "ec6d634624c22dbf028d65acb502e21539b7fb83f3d8635b0443dd8559610ca0",
+      "bytes": 1119
+    },
+    "gateware/boards/m2u_uart64.cst": {
+      "sha256": "1f097eeba1f8c289a5eadf3fc1e7f3e41e1babce45ca92025f48a690828050ef",
+      "bytes": 234
+    },
+    "gateware/top/m2u_uart64.v": {
+      "sha256": "d8d4728295b9c0479a328809a19ea80f13565c9da3e4bdd7671eea8b9b841b32",
+      "bytes": 1107
+    }
+  },
+  "tops": {
+    "m2u_uart27": {
+      "bitstream_sha256": "6d68159b106feea4a16a77841f4440f614baa9064e4419168925a3ae76689f28",
+      "bytes": 731566,
+      "manifest_sha256": "437b4bb05db964a6fb18baf3408657260c7528fc40d4554537e6ed2e1c7a8dad",
+      "source_inputs_verified": 52,
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "reported_timing": {
+        "chk.clk": {
+          "max_mhz": 232.5,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "manifest_artifacts_not_supplied": [
+        "m2u_uart27.cst",
+        "m2u_uart27.pnr.json",
+        "m2u_uart27.pnr.log",
+        "m2u_uart27.stat.txt",
+        "m2u_uart27.synth.json",
+        "m2u_uart27.yosys.log"
+      ]
+    },
+    "m2u_uart64": {
+      "bitstream_sha256": "7cba51f0c41e9c996e14e4f585f564ea9f1fead6f9d264438bf55c0d90e048cf",
+      "bytes": 738086,
+      "manifest_sha256": "2a436f7f87c7bce53b953c2026231e16fe980a15c0e2c5d41cb5275db1d8b829",
+      "source_inputs_verified": 52,
+      "options": {
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "vinterp": "0"
+      },
+      "reported_timing": {
+        "sd_clk": {
+          "max_mhz": 237.76,
+          "passed": true,
+          "required_mhz": 75.0
+        }
+      },
+      "manifest_artifacts_not_supplied": [
+        "m2u_uart64.cst",
+        "m2u_uart64.pnr.json",
+        "m2u_uart64.pnr.log",
+        "m2u_uart64.stat.txt",
+        "m2u_uart64.synth.json",
+        "m2u_uart64.yosys.log"
+      ]
+    }
+  },
+  "expected_line_hex": "4d2072733d3520706173733d30303132206572723d303030303030303020626974733d303132333435363738394142434445463031323334353637383941424344454620706f733d55555555555555550d0a",
+  "port": "/dev/serial/by-id/usb-SIPEED_USB_Debugger_2025030317-if01-port0",
+  "board": "tangnano20k",
+  "debugger_serial": "2025030317",
+  "baud": 115200,
+  "format": "8N1",
+  "capture_seconds": 10,
+  "mode": "two separately started SRAM-only observations, no auto-next-phase; flash unchanged",
+  "verification_limit": "FS hashes and all manifest input bytes checked against fetched Git objects; six other declared artifacts per image unavailable, no independent route/pack acceptance",
+  "restore_image_sha256": "dea73706130d512345e01d3ddc7b6d41d3e80b34144d3c568b33c26bcfc25fd3"
+}

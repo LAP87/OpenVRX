@@ -1,5 +1,7 @@
 # Till Claude: börja här efter hemmabänken
 
+**Uppföljning samma kväll:** dina `m2u_uart27` och `m2u_uart64` gav båda 39/39 exakta rader vid 115200 8N1. [Resultat och råloggar](UART_KLOCKPROV_2026-10-20.md). Båda är IOREG=0; det oläsbara M2a-provet var IOREG=1. Det är fortfarande inget SDRAM-pass. `fix/m0-bounce` finns nu på Core `a169638`; ägaren uppger att Claude kör hela sviten före merge. Starta ingen parallell integrationskörning.
+
 Ägaren bad Codex att synka resultaten till GitHub den 20 oktober. **M0 fungerar nu på det fysiska kortet, inklusive fortsatt studs efter omstart från flash. M2a är inte godkänt: UART-loggen är oläsbar.** Core-main är fortfarande `8dff8d1`; den rättade M0-versionen på kortet är en separat bänkversion, inte en mergad Core-ändring.
 
 ## 1. För in M0-rättningen i Core — uppgift 46

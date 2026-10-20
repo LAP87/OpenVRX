@@ -1,0 +1,162 @@
+{
+  "kind": "selected first home bench evidence; no API, credentials or full bitstreams",
+  "m0": {
+    "base_revision": "bf05ac0feed58c3295949a6f3b4ee55c886cd1e2",
+    "patch_sha256": "0f37bb90f9066afceb66d54d37f9b95f59329d14b8f56c96376d10581866a18d",
+    "bitstream_sha256": "dea73706130d512345e01d3ddc7b6d41d3e80b34144d3c568b33c26bcfc25fd3",
+    "bitstream_bytes": 842822,
+    "original": {
+      "frames": 5000,
+      "holds": 5000,
+      "first_out_of_bounds": [
+        777,
+        2046,
+        344,
+        1,
+        1
+      ],
+      "model_match": false,
+      "edge_hits": {
+        "(1, 0)": 0,
+        "(1, 1216)": 1,
+        "(2, 0)": 7,
+        "(2, 656)": 8
+      }
+    },
+    "candidate": {
+      "frames": 5000,
+      "holds": 5000,
+      "first_out_of_bounds": null,
+      "model_match": true,
+      "edge_hits": {
+        "(1, 0)": 6,
+        "(1, 1216)": 6,
+        "(2, 0)": 7,
+        "(2, 656)": 8
+      }
+    },
+    "candidate_compile_rc": 0,
+    "candidate_run_rc": 0,
+    "original_native_rc_separately_recorded": false,
+    "initial_reader_failure": "Exact end-of-stdout assumption did not allow Icarus $finish footer; existing original trace read in bound continuation, no original native retry.",
+    "build_result": {
+      "rc": 0,
+      "seconds": 46.500016389996745,
+      "signals": [],
+      "utc": "2026-10-20T20:29:29.318016+00:00"
+    },
+    "sram_result": {
+      "rc": 0,
+      "seconds": 0.35828181396937,
+      "utc": "2026-10-20T20:29:53.720355+00:00"
+    },
+    "flash_result": {
+      "rc": 0,
+      "seconds": 1.6161510420497507,
+      "utc": "2026-10-20T20:30:22.219056+00:00"
+    },
+    "hardware_motion": {
+      "utc": "2026-10-20T20:30:19.734564+00:00",
+      "user_confirmation": "Ja, den studsar tillbaka och fortsätter",
+      "question_required_observation": "at least 30 seconds; return from left edge and continued traversal",
+      "user_confirmed_corrected_motion": true,
+      "program_mode_at_observation": "SRAM",
+      "bitstream_sha256": "dea73706130d512345e01d3ddc7b6d41d3e80b34144d3c568b33c26bcfc25fd3",
+      "physical_scope": "User observed M0 pattern motion only; no SDRAM/TVP/RF/full receiver acceptance"
+    },
+    "cold_boot_motion": {
+      "utc": "2026-10-20T20:31:45.979710+00:00",
+      "user_confirmation": "Ja, den startar och fortsätter studsa",
+      "user_confirmed_power_cycle_and_motion": true,
+      "bitstream_sha256": "dea73706130d512345e01d3ddc7b6d41d3e80b34144d3c568b33c26bcfc25fd3",
+      "flash_write_and_loader_verify_rc": 0
+    },
+    "core_production_merge": false,
+    "trace_frame_index_is_zero_based": true,
+    "patch_applies_check_to_core_main": "8dff8d1b4d5f1987a23c3f332f730119fccbd909",
+    "exported_checker_function_ast_matches_accepted_reader": true
+  },
+  "m2a": {
+    "source": "8dff8d1b4d5f1987a23c3f332f730119fccbd909",
+    "bitstream_sha256": "0a58ea6c343733af65df18a32135bac38916215a297763140ae110efa86819b6",
+    "build_result": {
+      "rc": 0,
+      "seconds": 73.01060805097222,
+      "signals": [],
+      "utc": "2026-10-20T20:16:51.003935+00:00"
+    },
+    "sram_result": {
+      "rc": 0,
+      "seconds": 0.528445243020542,
+      "utc": "2026-10-20T20:17:46.565778+00:00"
+    },
+    "sdram_accepted": false,
+    "s2_injection_executed": false,
+    "cause_established": false,
+    "captures": [
+      {
+        "file": "uart/baseline.raw",
+        "requested_baud": 115200,
+        "bytes": 6232,
+        "sha256": "ea0779a94f49e7ee4eec9cddd647ffccab53831345543c977b801ebb94f139ba",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_100000.raw",
+        "requested_baud": 100000,
+        "bytes": 1886,
+        "sha256": "6d239b736e01676ad6b4df54f90f7fb90fcdb8edb129886650590bb83b67e224",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_102400.raw",
+        "requested_baud": 102400,
+        "bytes": 9568,
+        "sha256": "2f0d3d099658e67659d81460b8fe120c336868b59dac28dabfa1858c4207888a",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_108000.raw",
+        "requested_baud": 108000,
+        "bytes": 1886,
+        "sha256": "47e6d96133c7dec1784a0a3099c5eaf0920a9552643a34cf74b78c040fcfe51b",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_120000.raw",
+        "requested_baud": 120000,
+        "bytes": 1886,
+        "sha256": "da83362de9563e284734339eb11403defdab42cff0145627be1b2f53e989002a",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_128000.raw",
+        "requested_baud": 128000,
+        "bytes": 1886,
+        "sha256": "61b6f5dbe04c005b4758b1c7b3fa71322323a9386ff6f77ed2f11fc8d88e85ee",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_28800.raw",
+        "requested_baud": 28800,
+        "bytes": 8234,
+        "sha256": "4e885208cf344e26ab76d2f22efd0be5d010a240d07f7aac3f10047ed6c5bd68",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_460800.raw",
+        "requested_baud": 460800,
+        "bytes": 3970,
+        "sha256": "ee04c27abd6d219d2fe36e7a35e6773b589dca8e4d252370645f87d524233939",
+        "valid_rows": 0
+      },
+      {
+        "file": "uart/baud_96000.raw",
+        "requested_baud": 96000,
+        "bytes": 1886,
+        "sha256": "69b6781e788959b560c9221b1b8a6c1e7481d7847d80d4e92a37f916e0f05e77",
+        "valid_rows": 0
+      }
+    ]
+  }
+}

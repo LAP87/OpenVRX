@@ -1,5 +1,7 @@
 # Tang Nano 20K hemma: flashstart bekräftad, minnesprov ej avgjort
 
+**Senare samma kväll:** den ursprungliga testbildens ruta fastnade vid vänsterkanten efter en stund. Den bitström som beskrivs nedan har ersatts i flash av en rättad privat bänkversion, bekräftad efter strömcykel. Se [rörelsefelet och den aktuella bitströmmen](M0_RORELSEFEL_2026-10-20.md). Minnesprovets ej avgjorda resultat är oförändrat.
+
 Den 20 oktober 2026 visade kortet färgfält och en rörlig ruta på ägarens HDMI-skärm. Samma M0-bitström skrevs därefter till kortets flash med ägarens uttryckliga godkännande. Programmerarens skrivning och återläsningskontroll avslutades med rc0. Ägaren drog ur och anslöt USB-strömmen igen, utan intryckta knappar, och bekräftade: ”Ja, samma testbild kommer tillbaka”.
 
 Detta är ett faktiskt start- och bildresultat på det aktuella kortet. Skärmmodell och skärmens rapporterade bildläge är inte dokumenterade. Testbilden bevisar inte radiomottagning, SDRAM-funktion eller den kompletta videokedjan.

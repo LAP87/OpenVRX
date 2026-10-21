@@ -46,7 +46,17 @@ python gateware/tools/snowlog.py --summary <fil>.csv
 | Logga | UART-raderna per läspunkt (`rs=0..7`, `err=`), varv för varv, minst en minut per fas; `err=00000001` medan S2 hålls intryckt (kontrollen att felräkningen fungerar) |
 | Godkänt | en fas där `rs=5` är ren och läspunkten ett steg (0,96 ns) åt vardera hållet också är ren |
 | Underkänt | ingen fas ger en ren `rs=5`: välj den fas och läspunkt som är renast och notera det; resultatet gäller då bara det bygget |
-| Stänger | SDRAM-fas och läspunkt (arbetsplanen, M2a). Vald fas förs in som `PSDA_SEL` i `rtl/clocks_sdram.v`. Med I/O-register i I/O-cellerna (standard sedan 2026-10-12) ska resultatet gälla även bildbyggena; kontrollera det i blad 5 |
+| Stänger | SDRAM-fas och läspunkt (arbetsplanen, M2a). Vald fas förs in som `PSDA_SEL` i `rtl/clocks_sdram.v`. Med I/O-register i I/O-cellerna (standard 2026-10-12 till 2026-10-21) skulle resultatet gälla även bildbyggena; det valet är avstängt sedan 2026-10-21 (nedan), så blad 5 gäller på egna meriter |
+
+**Resultat 2026-10-21** (Fable; Tang Nano 20K rev 3923 på jobbets laptop via usbipd/WSL; ingen kamera eller skärm behövs; Core `main` `8dff8d1` med `IOREG=0`, seed 0):
+
+| Fas | Bitström (SHA-256, första 16) | Läst | `rs=4` | `rs=5` | `rs=6` |
+|---|---|---|---|---|---|
+| 10 = 225° (standard) | `m2a_memtest_ioreg0.fs` `994158ea6d03a66c` | 12 s, 47 rader | `err=00400000`, alla ord | `err=00000000` varje varv | `err=00380000 pos=FFFFFFF0` (ord 7 rätt) |
+| 9 = 202,5° | `m2a_memtest_phase9_ioreg0.fs` `61f9cbd0615211ed` | 12 s, 46 rader | `err=00400000`, alla ord | `err=00000000` varje varv | `err=00380000 pos=FFFFFFF0` (ord 7 rätt) |
+| 11 = 247,5° | `m2a_memtest_phase11_ioreg0.fs` `9dcfab13724e5585` | 12 s + 25 s + 40 s, 133 + 70 + 213 rader | `err=00400000`, alla ord | `err=00000000` varje varv | `err=00380000 pos=FFFFFFF0` (ord 7 rätt) |
+
+`rs=4` läser ordet före, `rs=6` ordet efter, `rs=5` rätt: README:s tabell för en läsning som fungerar. Standardfasen 225° och läspunkten 5 står med minst ett steg (0,96 ns) marginal åt vardera hållet; ingen ändring av `PSDA_SEL`. Kortare än bladets minut per fas; förläng vid nästa tillfälle. Byggt med `IOREG=1` (standarden fram till 2026-10-21) är loggen oläsbar på kortet och inget resultat: register med CE/SET/RESET i I/O-cellerna beter sig inte som i simuleringen (`docs/bench/IOREG_ANALYS_2026-10-21.md`, Core `gateware/README.md` "I/O-register i I/O-cellerna"). S2-kontrollen (`err=00000001`) är inte gjord än: två inspelningar utan tryck visade bara rena rader. Godkänt för fas och läspunkt; S2 återstår.
 
 ## 3. M3: proben med båda dekodrarna
 

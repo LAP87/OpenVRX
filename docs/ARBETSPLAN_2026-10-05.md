@@ -338,3 +338,8 @@ Fables kontroll 2026-10-19: hela sviten på Core `main` 8dff8d1 (uppgift 35, sna
 
 
 Natten 2026-10-19/20 (Fable, efter att Codex kvot tog slut): uppgift 42 på Core-grenen `ui/flight-view` (`d163503`): flygvy med dubbelhög rad, meny med en post per skärm, sparkvitto ur `flash_store.v` (`dirty`/`stored`), kanalspärr `HOLD`, `HDMI N/A` i DVI-bygget; hela sviten 808 test gröna på `24a104a` (2 141 s); M6 byggt ur `24a104a` utan och med `HDMI=1` (13 957 / 14 336 LUT4, 29 BSRAM, lägsta maxfrekvens 101,45 / 95,53 MHz); inte sammanslagen, ägaren avgör utseendet ([UI_FLYGVY_2026-10-19.md](UI_FLYGVY_2026-10-19.md)). Uppgift 43 Puck `design/MOTTAGARGRANS.md` (`06e7f0e`), uppgift 44 `research/SDR_5G8_MOTTAGNING_2026-10-19.md` (`5530d51`). Codex rådsrapport 2026-10-19 ligger i navet under `docs/design/2026-10-19/`.
+
+## Natten 2026-10-21/22
+
+Nattpasset enligt [NATTPASS_2026-10-21.md](NATTPASS_2026-10-21.md), uppgift 49–52 i Core.
+- **49** klar: Core `main` `5d1ee55`. DQ-infångningen är en ren vippa; `IOREG=1` packar bara ingångsvippor (`ireg_in_iob` + `ioreg_in_iob`, eftersom DQ-stiften är dubbelriktade) och bygget faller på `iob_regs.py --strict`; M6 behövde dessutom en ren vippa för flashens MISO. SDRAM-självtest i `fb_backend` (M4 lysdiod 1/2, M6 loggradens sista tecken). Byggt ur `669b2ed`: M2a 33, M4 49, M6 52 rena vippor i cellerna; hela sviten 828 gröna. Avvikelse: första byggomgången ur `82f9c1d` (bara `ireg_in_iob`) gav en vippa i cellerna i M2a och avbröts. Ombasering på `fcad832` (flygvyn) och sammanslagning av `50273d3` (LOW=1) under passet. Inte kört på kortet.

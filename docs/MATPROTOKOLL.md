@@ -185,7 +185,7 @@ python gateware/tools/snowlog.py --summary <fil>.csv
 
 | | |
 |---|---|
-| Uppställning | samma kamera och sändare; den färdiga mottagaren (en RC832HD är på väg) och pucken på samma kanal, var sin skärm av samma modell, eller samma skärm i tur och ordning |
+| Uppställning | samma kamera och sändare; den färdiga mottagaren (en RC832HD nämndes 2026-10-12 men är inte beställd, ägaren 2026-10-21; Moneagle duger som referens på skärmen men har ingen videoutgång) och pucken på samma kanal, var sin skärm av samma modell, eller samma skärm i tur och ordning |
 | Bitström | `m6_puck_proto`, `BUF` och `LOW` |
 | Logga | latens enligt "Gemensamt", båda skärmarna i samma klipp (två `--screen`-rutor); bild i brus sida vid sida på samma avstånd (filma båda skärmarna), samma villkor som blad 11 |
 | Godkänt | ingen förväntan; jämförelsen är målet |

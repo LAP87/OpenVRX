@@ -83,7 +83,7 @@ Kandidaten är bättre om den har lägre `snow`/`noise` och färre `lost` än RX
 ## Ej verifierat
 
 - Om ägarens XIAO faktiskt dör eller bara tystnar på USB; vilken C5VRX-version som är flashad.
-- Om RC832HD:n i blad 15 har kommit.
+- RC832HD: inte beställd (ägaren 2026-10-21); väg 6 kräver alltså en beställning.
 - FlySight Black Pearls separata RX1/RX2-utgångar och RC832-HD:s videonivå (bara återförsäljares specifikation).
 - Var videostiften sitter på ett färdigt RX5808-diversitykort och om de går att tappa före switchen.
 - RTC6715:s livscykel hos RichWave (tabellen saknar statusmärken för alla rader), AD9361/AD9364:s status i dag.

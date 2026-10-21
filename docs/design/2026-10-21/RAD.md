@@ -17,6 +17,6 @@ M0-bild, M2a godkänd (läspunkt 5 ren med marginal när I/O-cellregistren är a
 
 ## Frågor till ägaren
 
-- Ja eller nej till att I/O-cellregistren förblir av tills uppgift 49 är gjord (efterskriften till beslut 2).
-- Om Moneagle får öppnas för en CVBS-tapp som reserv (MOTTAGARE_ALTERNATIV, väg 2); den är din enda referensskärm.
+- I/O-cellregistren: ägaren tar ingen ställning (2026-10-21); de förblir av tills uppgift 49 är gjord.
+- Moneagle får öppnas för en CVBS-tapp som reserv (ägaren 2026-10-21).
 - Vem tar uppgift 49–52: nattpasset för Opus finns i [NATTPASS_2026-10-21.md](../../NATTPASS_2026-10-21.md); Fable tar 53 och bänken.

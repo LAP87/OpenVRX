@@ -89,6 +89,8 @@ python gateware/tools/snowlog.py --summary <fil>.csv
 | Godkänt | stillastående, hel bild utan felaktiga rader vid god signal |
 | Stänger | fältminnet på riktig SDRAM (arbetsplanen, M2). Bygget ska ha samma `SDRAM_PHASE` som blad 2 gav |
 
+**Resultat 2026-10-22** (ägaren och Fable; rev 3923 via usbipd/WSL; källa XIAO ESP32-C5 med C5VRX 5.0.363 och 6-bitars motstånds-DAC in på CP803A-modulens RCA; kamera S2-OSD med sändare på A1 flera meter bort; HDMI-skärm på jobbet): `m4_dual_mix_tvp5d.fs` (Core `50273d3`, BUF, standardfas) ger kamerabilden på HDMI, den första genom hela kedjan. Bilden är mycket grynig och färgen på ett rött föremål vandrar lila–grön–grå; nattens M4 (`cd90e6e`, DQ-infångning som ren vippa) ger samma gryn, så SDRAM-läsningen är inte orsaken; M6 `cd90e6e` svarar `2` i självtestet i varje loggrad (läspunkt 5 fungerar i det bygget). M3-proben visade `st ..0E` i perioder och `len 1716-1716` hela tiden; C5VRX:s logg visar synkavbrott på 5–11 s och C/N 5–20 dB: gryn och färgton följer källan. I LOW (`m4_dual_mix_low_tvp5d.fs`) svart under avbrotten, bild emellan. Bladets kriterium (hel bild vid god signal) går inte att pröva med denna källa: **blad 5 provat, inte bedömt**; görs om med RX5808. Detaljer i [BANK_2026-10-22.md](BANK_2026-10-22.md).
+
 ## 6. M4: antenn av, en mottagare i taget
 
 | | |

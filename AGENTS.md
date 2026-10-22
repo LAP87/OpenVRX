@@ -7,8 +7,10 @@ decoders, an FPGA that pairs and mixes the two pictures line by line, HDMI
 out. Stage: early bring-up. **M0 test-pattern output and a corrected bounce have
 run on a Tang Nano 20K (2026-10-20), including a user-confirmed flash power cycle.**
 The flashed image was a private bench patch; the same fix is in Core main `b440ece` (task 46). SDRAM read point 5 is clean on the board
-(2026-10-21) once the I/O-cell register option is off; that option is off by default in Core main `4aa41f2`. TVP/RF and the full receiver
-remain unverified. Start with [the bench handoff](docs/bench/HANDOFF_CLAUDE_2026-10-20.md).
+(2026-10-21) once the I/O-cell register option is off; that option is off by default in Core main `4aa41f2`. **The first camera picture reached HDMI on 2026-10-22**
+through a XIAO ESP32-C5 running C5VRX, a resistor DAC and one TVP5150 module into M4 (Core main `e71a268`;
+`docs/BANK_2026-10-22.md`): grainy and with a wandering hue, both from that source; the SDRAM self-test in the
+M6 build passes (read point 5). The RX5808 side and the two-decoder mixer remain unverified on hardware. Start with [the bench handoff](docs/bench/HANDOFF_CLAUDE_2026-10-20.md).
 
 | Repo | Role |
 |---|---|

@@ -84,3 +84,13 @@ Uppgifterna från ägaren 2026-10-15. Antal och vad varje sak täcker i tabeller
 
 Saknas ännu för M3 och framåt: TVP5150-modulerna (2, helst 3), de två RX5808 med SPI-moden gjord, smådelarna i [PLOCKLISTA_SMADELAR.md](PLOCKLISTA_SMADELAR.md) (pull-ups, serieterminering, avkoppling, filter till DC-DC-modulen, tråd och stiftlister; kan lånas), nivåomvandlare om modulerna är 1,8 V, och de mätinstrument som inte finns hemma. USB-C-kabel med data, HDMI-skärm och kabel, multimeter och lödutrustning antas finnas; stryk eller rätta här.
 
+## Beställt 2026-10-22 (ägaren)
+
+| Sak | Antal | Täcker | Anmärkning |
+|---|---:|---|---|
+| RX5808 | flera | mottagarna till M3/M4 och rev A | en tidigare beställning (2026-10-15) har inte skickats; SPI-läget görs med modden om modulerna inte har den |
+| TVP5150-modul (röd, CP803A-typ) | 1 | dekoder B | den första svarar på I2C-adress 5D; om den nya gör samma gäller `TVP_ADDR=5D` för båda med separata SDA |
+| Seeed XIAO ESP32-C5 | 1 | andra C5VRX-mottagaren | med två kort kan C5VRX-vägen ge två oberoende strömmar till mixern (rådet 2026-10-21, MOTTAGARE_ALTERNATIV avsnitt 3) |
+
+Finns på jobbet sedan 2026-10-21: Tang Nano 20K rev 3923, en TVP5150-modul CP803A (fungerar), XIAO ESP32-C5 med C5VRX flashad, kopplingsplatta och trådar; DAC-motstånden kommer 2026-10-22.
+

@@ -52,6 +52,19 @@ Stegen i ordning: M0 testbild, M2a minnestest, M3 kopplingsprob, M4 två dekodra
 | Lödutrustning | 1 | M3 | Resettråden och RX5808:s SPI-mod kan inte göras | BRINGUP 0 "Reset"; Core README M6 |
 | Telefon eller kamera med höghastighetsfilm | 1 | M6 | Ingen glas-till-glas-latens; mätningen "BUF mot HDMI-skärm, upplevd latens" blir en känsla | Core `tests/latency/`; ARBETSPLAN_2026-10-05 "Mätningar när kortet finns" |
 
+## Bänkrigg
+
+Det som gör att bänken kan köras från datorn utan händer, utom vid kabelbyten (navets `docs/BENCH.md`). Saknades veckan 2026-10-20–23; uppgift 62 i `ARBETSPLAN.md`. Allmänna beteckningar, inga butiker eller priser; inköpen är ägarens (nattpasset 2026-10-23, B3).
+
+| Sak | Antal | Första steg | Löser | Källa |
+|---|---:|---|---|---|
+| HDMI-till-USB-grabber som UVC-enhet (inga drivrutiner), tar emot 720p60 och 1080p60 | 1 | M0 (kalibrering med testbilden), sedan M4/M6 | En agent kan se bilden och mäta färg, gryn, svarta bilder och upprepade rader i siffror (`tools/bench/quality.py`) i stället för ägarens ord; 1080p60 för den väg som beslut 6 väntar på | `docs/BENCH.md` "Bildvägen"; uppgift 57 |
+| USB-hubb med individuell strömstyrning per port, styrd över USB | 1 | genast | Strömbrytning från datorn: Tang-kortets UART-brygga som tystnade 2026-10-23 och XIAO:n i ROM:ens nedladdningsläge behövde båda att någon drog ur kabeln. Kontrollera före köp att hubben verkligen bryter matningen per port, inte bara datalinjerna | `docs/BENCH.md` "När loggen tystnar"; `docs/BANK_2026-10-23.md` |
+| I2C-ADC-modul med ADS1115 (16 bit, adress 48h, 3,3 V) | 1 | M6 med RX5808 | RSSI på bänken innan rev A-kortet finns: M6 läser redan ADS1115 på 48h (`rssi_adc.v`), AIN0 och AIN1 till mottagarnas RSSI-stift; utan den står RSSI som `-----` i loggen och kalibreringen (blad 17) kan inte göras | Core `gateware/README.md` M6 "RSSI" |
+| USB-C-kabel med dataledare, märkt för bänken | 3 | M0 | En till Tang, en till XIAO:n, en reserv; veckan gick tid åt till kablar utan dataledare och till att veta vilken som var vilken | `docs/BANK_2026-10-21.md` |
+| Kort HDMI-kabel (cirka 0,5 m) | 1 | M0 | Grabbern bredvid kortet på bänken utan lös skärm | — |
+| CVBS-testbildsgivare (färgstaplar, NTSC och PAL), valfri | 1 | M3/M4 | En känd källa: färgvägen (Cb/Cr-ordningen i fältdumpen) och TV mot VCR kan prövas utan kamera och radio, och skillnad mot C5VRX-källan syns (uppgift 60, körschema b) | `docs/BENCH.md` "Mätningar" |
+
 ## Vad som räcker för vilket steg
 
 | Steg | Behöver |

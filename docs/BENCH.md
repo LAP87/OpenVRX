@@ -2,6 +2,26 @@
 
 Hur utvecklingsslingan körs från en Windows-dator med WSL: flasha, läsa loggen, styra M6, läsa C5VRX-konsolen, fånga bilden och mäta den. En människa eller en agent gör allt härifrån; händer behövs bara vid kabelbyten och strömbrytning. Verktygen ligger i navets `tools/bench.ps1` (Windows) och `tools/bench/` (WSL). Det som är mätt på hårdvara står med datum; resten är skrivet och testat utan kort.
 
+## Från delarna till första bilden
+
+För den som bygger efter. Allmänna beteckningar; tillverkarnas artikelnummer där det spelar roll.
+
+1. **Delar.** [MATERIAL_UPPSTART.md](MATERIAL_UPPSTART.md): FPGA-kortet Tang Nano 20K i revision 3923 (revisionen står på undersidan; 3921 fungerar inte med stiftplanen), en eller två TVP5150AM1-moduler, en videokälla och kablar. Videokällan är en RX5808-mottagare med SPI-moden gjord, eller en XIAO ESP32-C5 med firmwaren C5VRX och en motstånds-DAC (kopplingen i [BANK_2026-10-22.md](BANK_2026-10-22.md)). Avsnittet "Bänkrigg" där har det som gör bänken styrbar från datorn.
+2. **Koppling.** Core `gateware/BRINGUP.md` avsnitt 0 (kortrevision, knapparna vid start, mät modulens IO_DVDD) och avsnitt 1 (stiftplanen på J5 och J6, I2C med egen SDA per dekoder, RESETB).
+3. **Datorn.** Avsnittet nedan: WSL, verktygskedjan, usbipd, `tools\bench.ps1 up`.
+4. **Bitströmmen.** Bygg själv i Core (`gateware/build.sh <topp>`, manifest med käll- och artefakthashar) eller ta en från bitströmsgrenen (`bench/bitstreams-2026-10-20`, katalog per commit, med manifest). `bench.py flash` vägrar en fil som inte stämmer med sitt manifest.
+5. **Ordningen** (BRINGUP 2), med riggen:
+
+| Steg | Bitström | Klart när | Läses med |
+|---|---|---|---|
+| M0 | `m0_testpattern` | testbilden syns | ögat, eller grabbern: `quality.py calibrate` |
+| M2a | `m2a_memtest` | `rs=5 err=00000000` varv efter varv | serieloggen (BRINGUP 2.1) |
+| M3 | `m3_probe` | `sclk` cirka 27 000 000, `i2c 5C`/`5D`, `len 1716-1716`, med video `st ..0E` | `bench.py log m3`, `bench.py status` |
+| M4 | `m4_dual_mix` | kamerabilden på HDMI, lysdiod 1 | ögat, grabbern |
+| M6 | `m6_puck_proto`, på bänken med `DEVCMD=1` | loggraden med självtest `2`, kommandona syns i raden | `bench.py log m6`, `m6ctl.py`, `fielddump.py` |
+
+Första bilden här kom 2026-10-22 med C5VRX-källan i M4 (BANK_2026-10-22.md). Den med två RX5808 och mixern är inte gjord.
+
 ## Från nystartad dator till "M6 kör och loggen rullar"
 
 En gång per dator (ägaren, med administratör där det står):

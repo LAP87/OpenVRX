@@ -7,6 +7,9 @@
     bench.py log m6 --seconds 20 --out run.jsonl
     bench.py log m3 --seconds 20 --out probe.jsonl
     bench.py status --json
+    bench.py cmd L                      # M6 with DEVCMD=1: a command, prints the log line that shows it (m6ctl.py)
+    bench.py cmd '?'                    # the status line: decoder addresses, 88h/89h, 03h
+    bench.py dump D                     # field dump of decoder A to PNG under bench-logs (fielddump.py)
 
 Runs with the Core venv's python (stdlib only). Windows side: tools/bench.ps1 keeps WSL awake, attaches the
 boards with usbipd and calls this script. docs/BENCH.md in the hub has the whole sequence.
@@ -382,6 +385,28 @@ def status_cmd(args):
     return 0 if good else 2
 
 
+def core_tool(name, args, state):
+    """Run a Core tool (gateware/tools/<name>) with the Tang UART and the rate of what was flashed."""
+    port = tang_uart()
+    if not port:
+        print('no Tang UART in WSL: attach the board (tools/bench.ps1 attach)', file=sys.stderr)
+        return 1
+    if not (state.get('options') or {}).get('devcmd') in ('1', 1):
+        print('note: state.json does not name a DEVCMD=1 bitstream; the board may ignore commands', file=sys.stderr)
+    cmd = [sys.executable, str(core_dir() / 'gateware' / 'tools' / name), *args, '--port', port,
+           '--baud', str(state.get('uart_baud') or 115200)]
+    return subprocess.run(cmd).returncode
+
+
+def cmd_cmd(args):
+    return core_tool('m6ctl.py', args.keys, load_state())
+
+
+def dump_cmd(args):
+    out = args.out or str(logs_dir() / f"dump{args.which}-{serialport.now_iso().replace(':', '')}")
+    return core_tool('fielddump.py', [args.which, '--out', out], load_state())
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='cmd', required=True)
@@ -409,8 +434,14 @@ def main(argv=None):
         p.add_argument('--json', action='store_true')
         if name == 'log':
             p.add_argument('--out')
+    c = sub.add_parser('cmd', help='M6 development commands (DEVCMD=1), each waits for its receipt (m6ctl.py)')
+    c.add_argument('keys', nargs='+')
+    d = sub.add_parser('dump', help='field dump to PNG (DEVCMD=1, fielddump.py): D decoder A, F field store input')
+    d.add_argument('which', choices=['D', 'F'])
+    d.add_argument('--out', help='path prefix (default bench-logs/dump<which>-<time>)')
     a = ap.parse_args(argv)
-    return {'devices': devices, 'flash': flash, 'log': log_cmd, 'status': status_cmd}[a.cmd](a)
+    return {'devices': devices, 'flash': flash, 'log': log_cmd, 'status': status_cmd, 'cmd': cmd_cmd,
+            'dump': dump_cmd}[a.cmd](a)
 
 
 if __name__ == '__main__':

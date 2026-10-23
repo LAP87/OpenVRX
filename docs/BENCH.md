@@ -58,6 +58,45 @@ tools\bench.ps1 status --json
 
 **Test utan kort:** `python -m unittest discover -s tools/bench -p 'test_*.py'` i WSL (Core-venv:ens python). M3-tolken har en negativ kontroll: varje förlorad byte och varje ändrad byte i en probrad ger `null`.
 
+## C5VRX-konsolen
+
+`tools/bench/c5.py` (WSL, bara standardbiblioteket) håller XIAO ESP32-C5:ans serieport öppen som en demon, loggar allt och tar kommandon på en Unix-socket. Förutsättning (B7, ägaren): XIAO:n bunden till usbipd en gång som administratör (`usbipd bind --busid <id>`) och strömmen bruten efter fredagens försök. Sedan:
+
+```powershell
+tools\bench.ps1 attach -Xiao
+```
+
+```bash
+python tools/bench/c5.py daemon &          # i WSL; loggar i ../bench-logs/c5vrx/
+python tools/bench/c5.py status            # skickar T, skriver tolkad status som JSON
+python tools/bench/c5.py channel A2        # b och c tills CONTROL säger A2
+python tools/bench/c5.py level 1.5         # g tills OUTPUT säger 1.5x
+python tools/bench/c5.py calibrate         # frågar om sändaren är av, skickar F, väntar på startup=0 busy=0
+```
+
+| Del | Gör |
+|---|---|
+| `daemon` | öppnar porten en gång (`/dev/serial/by-id/usb-Espressif*`), rör inte DTR/RTS efter öppningen, återöppnar när enheten kommer tillbaka; `full.log` får allt, `short.log` allt utom `FIELD_TRACE`/`FIELD_DIAG` (`FIELD_DIAG_EVENT` är kvar), båda med ankomsttid |
+| `status` | `T` genom demonen; svaret räknas som klart efter 0,8 s utan ny svarsrad (flödesraderna och hjärtslaget räknas inte); JSON med `fw`, `channel`, `freq`, `afc_locked`, `detected`, `cn_db`, `carrier_dbm`, `stage`, `startup`, `busy`, `output_level`, filtret, de senaste `FILTER_CAL`-raderna och senaste `FIELD_DIAG_EVENT` |
+| `parse <logg>` | samma tolkning av en sparad logg (webbterminalens `.log`-filer) |
+| `send`, `tail` | råa tangenter genom demonen, de senaste korta raderna |
+| `reboot --i-know`, `download --i-know` | sätter DTR/RTS med avsikt (demonen stoppad), efter en varning |
+
+Tolken läser varje känd rad strikt (`CONTROL`, `RX_LEVEL`, `HB`, `OUTPUT`, `FIRMWARE`, `FILTER`, `FILTER_CAL`, `FIELD_DIAG_EVENT`): ett fält som saknas eller har fel form ger fel i stället för ett gissat värde. Testat mot de tre sparade loggarna i `tools/bench/fixtures/` med negativ kontroll (sju förvanskade rader, var och en ger fel), och demonen mot en låtsas-C5VRX på en pty (`status`, `channel`, `level`, korta och långa loggen). Inte provat mot kortet.
+
+**DTR/RTS på ESP32-C5:ans USB-serial-JTAG-port.**
+
+| | Vad |
+|---|---|
+| Observerat (BANK_2026-10-23) | Chromes webbterminal på Windows fungerar varje gång; sidan gör bara `port.open({ baudRate })`, skickar `hT` och sedan `T` med jämna mellanrum |
+| Observerat | .NET-klassen `System.IO.Ports` växlar linjerna en i taget vid öppning och stängning; efter en sådan öppning tystnade kretsen tills strömmen bröts |
+| Observerat | `tools/c5port.ps1` (Win32, båda linjerna i ett anrop) gav rader en gång, direkt efter att Chrome kopplat ner, men inte vid andra öppningar, oavsett läge på linjerna. USB-enhetens ankomsttid ändrades inte, men porten överlever en kretsreset, så det säger inget |
+| Antaget | Porten tolkar linjerna som den klassiska auto-reset-kretsen: RTS ensam håller kretsen i reset, DTR ensam drar boot-strappen, lika linjer gör inget (Espressifs beskrivning av USB-serial-JTAG; för just C5 inte kontrollerat) |
+| Antaget | Linux `cdc_acm` sätter DTR och RTS i samma begäran när porten öppnas och släpper båda i samma begäran när den stängs (HUPCL); inte mätt med protokollanalysator |
+| Okänt | Vad Chrome på Windows gör med linjerna vid öppning, och varför kretsen svarade Chromes handtag men inte skriptets; troligast stod kretsen redan i nedladdningsläget efter `System.IO.Ports` |
+
+`reboot` och `download` använder sekvenserna ur den antagna tolkningen (reset-puls med strappen släppt; strapp, reset, släpp). De är inte provade och ska bara köras med någon vid bänken som kan dra ur kortet.
+
 ## När loggen tystnar
 
 Över usbipd har loggen kommit i skurar (BANK_2026-10-21). Kvällen 2026-10-23 stannade den helt:

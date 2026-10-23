@@ -5,6 +5,11 @@
 #   tools\bench.ps1 attach [-Xiao]      attach the Tang (and, only with -Xiao, the XIAO ESP32-C5)
 #   tools\bench.ps1 guard               start the WSL guard if it is not running
 #   tools\bench.ps1 state               what usbipd sees (bound, attached), from `usbipd state`
+#   tools\bench.ps1 cameras             the video capture devices ffmpeg sees (DirectShow names)
+#   tools\bench.ps1 capture -Device "<name>" [-Frames 10] [-Interval 1] [-Out dir]
+#                                       still pictures from a UVC grabber on the HDMI output to PNG (ffmpeg)
+#   tools\bench.ps1 quality -Device "<name>" [-Frames 10] [-Interval 1]
+#                                       capture, then tools/bench/quality.py in WSL: report.json and sheet.png
 #   tools\bench.ps1 <anything else>     passed to bench.py in WSL, e.g.:
 #   tools\bench.ps1 flash m6_puck_proto --build-dir /root/openvrx-wt/n58/gateware/build
 #   tools\bench.ps1 log m6 --seconds 20 --out /mnt/c/.../bench-logs/m6.jsonl
@@ -19,10 +24,18 @@
 # WSL stops its VM a while after the last process ends and the attached boards go with it. The guard is a hidden
 # `wsl.exe -d Ubuntu -- sleep 36000` (10 h); "up" starts one when none is running.
 # Commands go to WSL with `wsl.exe -e` (no shell in between), so `$` in arguments survives.
+# Pictures: ffmpeg.exe on PATH is the owner's choice (hub docs/NATTPASS_2026-10-23.md, B2; the work laptop has
+# ffmpeg 9.0.1 from Chocolatey, found 2026-10-23); this script only calls it: 1280x720 from DirectShow, one PNG
+# every -Interval seconds (0: consecutive frames), into ../bench-logs/capture-<time>/ unless -Out says otherwise.
+# Not run on pictures yet: there is no grabber (B3).
 param(
     [Parameter(Position = 0)][string]$Command = 'up',
     [switch]$Xiao,
     [string]$Distro = 'Ubuntu',
+    [string]$Device = '',
+    [int]$Frames = 10,
+    [double]$Interval = 1,
+    [string]$Out = '',
     [Parameter(ValueFromRemainingArguments = $true)][string[]]$Rest
 )
 $ErrorActionPreference = 'Stop'
@@ -88,6 +101,40 @@ function Start-AutoAttach([string]$kind) {
     Write-Host "$kind auto-attach started; attached: $($dev.Attached) (bus $($dev.BusId))"
 }
 
+function Get-Ffmpeg {
+    $f = Get-Command ffmpeg.exe -ErrorAction SilentlyContinue
+    if (-not $f) { throw 'ffmpeg.exe is not on PATH: installing it is the owner''s call (night pass 2026-10-23, B2)' }
+    return $f.Source
+}
+
+function Show-Cameras {
+    # ffmpeg lists DirectShow devices on stderr and exits with an error by design
+    $ff = Get-Ffmpeg
+    $old = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
+    & $ff -hide_banner -list_devices true -f dshow -i dummy 2>&1 | ForEach-Object { "$_" } |
+        Where-Object { $_ -match '\(video\)' } | Out-Host
+    $ErrorActionPreference = $old
+}
+
+function Invoke-Capture {
+    if (-not $Device) { throw 'give -Device "<name>" (tools\bench.ps1 cameras lists them)' }
+    $ff = Get-Ffmpeg
+    $dir = $Out
+    if (-not $dir) {
+        $logs = Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) 'bench-logs'
+        $dir = Join-Path $logs ('capture-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+    }
+    New-Item -ItemType Directory -Force $dir | Out-Null
+    $vf = @()
+    if ($Interval -gt 0) { $vf = @('-vf', ('fps=1/' + $Interval.ToString([Globalization.CultureInfo]::InvariantCulture))) }
+    & $ff -hide_banner -loglevel error -f dshow -video_size 1280x720 -i "video=$Device" @vf -frames:v $Frames `
+        (Join-Path $dir 'frame_%03d.png') | Out-Host
+    if ($LASTEXITCODE -ne 0) { throw "ffmpeg failed ($LASTEXITCODE)" }
+    $n = @(Get-ChildItem $dir -Filter 'frame_*.png').Count
+    Write-Host "$n pictures in $dir"
+    return $dir
+}
+
 function Invoke-Bench([string[]]$argv) {
     $hub = Get-WslPath (Split-Path -Parent $PSScriptRoot)
     & wsl.exe -d $Distro --cd $hub -e $Python tools/bench/bench.py @argv | Out-Host
@@ -99,6 +146,17 @@ $prevEnc = [Console]::OutputEncoding
 try {
 switch ($Command) {
     'guard'  { Start-Guard }
+    'cameras' { Show-Cameras }
+    'capture' { Invoke-Capture | Out-Null }
+    'quality' {
+        $dir = Invoke-Capture
+        Start-Guard
+        $w = Get-WslPath $dir
+        $hub = Get-WslPath (Split-Path -Parent $PSScriptRoot)
+        & wsl.exe -d $Distro --cd $hub -e $Python tools/bench/quality.py measure $w --out "$w/report.json" `
+            --sheet "$w/sheet.png" | Out-Host
+        exit $LASTEXITCODE
+    }
     'state'  { Show-State }
     'attach' {
         Start-Guard

@@ -97,6 +97,31 @@ Tolken läser varje känd rad strikt (`CONTROL`, `RX_LEVEL`, `HB`, `OUTPUT`, `FI
 
 `reboot` och `download` använder sekvenserna ur den antagna tolkningen (reset-puls med strappen släppt; strapp, reset, släpp). De är inte provade och ska bara köras med någon vid bänken som kan dra ur kortet.
 
+## Bildvägen: grabber och kvalitetsmått
+
+En UVC-grabber på HDMI-utgången (B3) gör bilden till PNG på Windows, `quality.py` räknar i WSL:
+
+```powershell
+tools\bench.ps1 cameras                                   # DirectShow-namnen
+tools\bench.ps1 capture -Device "<namn>" -Frames 10 -Interval 1
+tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Interval 0.5   # fånga, sedan report.json och sheet.png
+```
+
+`capture` kallar `ffmpeg.exe` (1280×720 ur DirectShow, en bild per `-Interval` sekund, 0 = bild för bild) och lägger bilderna i `bench-logs\capture-<tid>\`. Jobbdatorn har ffmpeg 9.0.1 via Chocolatey (funnet 2026-10-23); valet av verktyg är ägarens (B2). `cameras` är provat; `capture` är provat fram till att ffmpeg söker enheten, mer går inte utan grabber.
+
+`tools/bench/quality.py measure <bilder eller katalog> [--color-window x,y,w,h] --out report.json --sheet sheet.png` mäter i 4:3-fönstret där M4 och M6 lägger bilden (x 160–1119):
+
+| Mått | Definition |
+|---|---|
+| `y_mean`, `y_std` | luma, BT.601 studionivå 16–235, ur RGB med fullt omfång (DVI-utgången) |
+| `snow` | medel över källrader av summan \|Y[n] − Y[n−1]\| över 720 lumasampel: mixerns HF-energi per rad (Core `model/bt656.py`, som `line_mixer_ref.py` beslutar på; testet jämför med modellen). Fönstret läses tillbaka till 720 sampel, och rader som är lika räknas som en källrad. Samma definition som loggens snövärde, men inte samma tal: grabberns komprimering och färgomvandlingen ligger emellan |
+| `black` | `y_mean` < 20 och `y_std` < 3 |
+| `repeated_lines` | källrader som visas två gånger i rad (en följd lika rader minst dubbelt så lång som den vanliga): fältminnets ersättningsrad i BUF; 0 med `VINTERP=1` |
+| `cb`, `cr`, `hue`, `sat` | medelkroma i färgfönstret; nyans i grader |
+| serien | andel svarta bilder, snö (medel, spridning), nyansens spridning (cirkulär) och Cb/Cr-spridning över bilderna som inte är svarta, upprepade rader totalt |
+
+Kontaktarket har bilderna i kvarts storlek, fyra per rad, så att en agent kan se dem. `quality.py calibrate <png>` jämför M0:s åtta färgstaplar (Core `top/m0_testpattern.v`: 0 eller C0h per kanal) med en tolerans (standard 12): det är kalibreringen av vägen genom grabbern. Testat på syntetiska bilder (`tools/bench/test_quality.py`: brusnivåer, färgdrift, svart bild, upprepad rad, M0-staplar, alla fem PNG-filter) med negativa kontroller (mörk bild med textur är inte svart, konstant nyans ger ingen spridning, ren bild har ingen upprepad rad, staplar 20 steg fel fäller kalibreringen, trasig PNG vägras). Ren Python: ungefär en sekund per bild.
+
 ## När loggen tystnar
 
 Över usbipd har loggen kommit i skurar (BANK_2026-10-21). Kvällen 2026-10-23 stannade den helt:

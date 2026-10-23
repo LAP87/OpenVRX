@@ -67,6 +67,8 @@ tools\bench.ps1 status --json
 | `bench.py flash <topp eller fil> [--build-dir D] [--flash] [--root]` | WSL | manifestkontroll, sedan `openFPGALoader -b tangnano20k` (SRAM; `--flash` skriver SPI-flashen); skriver `bench-logs/state.json` |
 | `bench.py log m3\|m6 [--seconds N] [--out fil] [--json]` | WSL | raderna med tidsstämpel och tolkning till JSONL, sammanfattning på slutet |
 | `bench.py status [--json]` | WSL | sista tolkade raden, självtest, adresser, låsflaggor, vilken bitström som laddades |
+| `bench.py cmd <tecken>` | WSL | M6 med `DEVCMD=1`: kommandon genom Core `m6ctl.py`, var och en väntar på loggraden som visar den; `cmd '?'` ger statusraden |
+| `bench.py dump D\|F` | WSL | fältdumpen genom Core `fielddump.py` till PNG och JSON under `bench-logs` (`D` dekoder A, `F` mixerns utström) |
 
 **Manifestkontrollen.** Bitströmmens SHA-256 jämförs alltid med `<prefix>.build.json` bredvid den. Ligger alla byggets artefakter bredvid (byggkatalogen) körs också Core `build_manifest.py verify`; en bitström från bitströmsgrenen har bara `.fs` och manifest, och då står det `verified: bitstream`. `--root` jämför dessutom manifestets källhashar med Core-checkouten (`OPENVRX_CORE`). Utan manifest vägras filen (`--no-verify` finns för undantag).
 

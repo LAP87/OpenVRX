@@ -1,0 +1,69 @@
+C5VRX-5 keys: T status, D range/health report, M gain map (for a preset), R per-second FIELD_DIAG lines on/off,
+  K kp ladder OFF -> AUTO kp -> AUTO kp+LP (brief restarts), k/j kp calmer/faster, P U85Q/U85Q-LP
+    (k/j/P save AUTO OFF; fresh settings default to AUTO kp+LP),
+  g OUTPUT 0.5x..5.0x in 0.5x steps (saved after application; restored at boot),
+  G RX gain AUTO (KEEL-1) -> MAX -> fixed G78..G24 (until the next boot; every boot starts AUTO),
+  A live VTX profile switch on/off (continuous matching every 30 s; off = report only),
+  U sync flywheel ON/OFF (saved; menu FLYWHEEL; default ON),
+  I IQ snapshot, o menu open/close, n/x menu next/select, c next channel, b next band, s scan,
+  v video standard AUTO/NTSC/PAL, e close menu (web menu direct controls),
+  F calibrate (startup steps again; video stops), L bench IQ lane comparison (video stops ~3 s),
+  H bench: LUT writes while running (readback; another kp level for ~1 ms),
+  N bench: noise floor with the video output on vs off (VTX off; video stops ~0.3 s x4),
+  O LP policy: RESCUE by C/N benefit (default) <-> GAIN (G70/G65, earlier rule) (saved),
+  Z DAC self-test (bench: test pattern, then one flat level per pin for a multimeter),
+  ` reboot to USB download (flashing)
+FIRMWARE id=5.0.402+7abe30945460 version=5.0.402 commit=7abe309454607ee4a9616ac3e7d8f8f08e9efcf3 elf_sha256=f012418cc built="Oct 22 2026 21:30:38" idf=v6.0.2
+C5VRX5 version=5.0.402 demod=U85Q_1a09f5c092e8 lane=ultrafine gain_owner=keel1 uptime_s=10 heap_internal=4988 heap_largest=2816 heap_dma=3208 heap_dma_largest=2816 heap_lp=1780 fw=5.0.402+7abe30945460
+AFC_EVIDENCE latest_valid=0 context_current=0 qualified_gain_current=0 sticky_lock=0 target_khz=-1000 last_qualified_raw_porch_khz=0 last_qualified_residual_khz=0 qualified_age_ms=-1 sample_age_ms=-1 n=0 timestamped=0 stable=0 median_residual_khz=0 mad_khz=0 oldest_age_ms=-1 newest_age_ms=-1 cn_x10=-990 window=scan held=scan reference=porch_not_rf_truth
+CONTROL channel=E2 freq=5685 offset_khz=0 cfo_khz=0 afc_locked=0 afc_corrections=0 afc_weak_skips=11 afc_sign=+1(unverified) standard=AUTO detected=NTSC signal=39 menu=1 deviation_x100=0 mode=DEFAULT 12MHZ KP0.85 kp_auto=2 kp_steps=0 lp_switches=0 busy=1
+LADDER windows=43 unusable_settle=10 unusable_gain_write=0 unusable_context=0 copy_fail=0 stuck_iq=0 guard_confirms=0 guard_resets=0 level=0 lp=0 lp_release_hold_ms=2000 cn_smoothed_x10=0 kp_restarts_skipped=1 lp_policy=cn_rescue
+VIDEO_Q known=1 snr_x10=111 lines_x100=140 lines=28 windows=20 periods=2 (end-to-end: sync/porch spread of the demodulated video, last second)
+RX_LEVEL carrier_dbm=-69.9 input_dbm=-69.9 noise_dbm=-96.7 noise_learned=0 cn_db=26.8 above_noise=1 exact=1 gains=61-61 probes=2935 clipped_pm=0 (at the chip pin; calibrated against the Wi-Fi PHY RSSI: +-1 dB at G54-G83, a few dB below G54; free space for 25 mW, 2 dBi each side, 10 m at 5.8 GHz is ~-50 dBm)
+GAIN_SAT one_sided=0 two_sided=0 to_dc_servo=0 (saturated observer windows: one rail per axis = DC-pushed, both = large signal; one-sided ones go to the DC servo, not the gain)
+GAIN_WRITES attack=0 release=2 refused=0 rebinds=1 overloads=0 overloads_after_write=0 heat_events=0 sentinel_forwarded=0 sentinel_dropped=0 (why the gain moved; rebinds keep the core's memory on the same receiver; sentinel = 64-sample fast path, gross saturation only)
+CN_AUTO estimate_x10=-990 control_x10=-990 power_x10=-990 m2m4_x10=108 confidence=0 source=0 flags=0x00 noise_cells2=0.000 rows_with_noise=0 learned=0 absent_rejects=1 estimates=98 nbw_khz=0 (self-calibrating C/N, cn_auto.h)
+GAIN_TABLE measured_rows=0 g83_g72_db=10.14 (top rows from the receiver-noise map; the rest the model, joined)
+GAIN_TABLE_HW checked=84 match=84 first_bad=-1 (reconstructed RF/BB/fine tuples against the PHY's AGC memory at boot; checked=0: not checked)
+GAIN_REFUSED generation=0 busy=0 control=0 inactive=0 actuator_lock=0 rf_set_gain=0 (writes the core wanted but the PHY did not take, by reason)
+DC_FEED rejected_folded=0 (observer windows reaching both rails of an axis: a folding carrier, kept out of the DC servo)
+CN_OBSERVER windows=108 period_us=20000 max_age_us=40000
+GAIN owner=paused mode=AUTO gain=83 state=1 p50=13 p95=23 coherence=74 env_x100=1148 stuck=0 cn_x10=-990 origin_pm=23 clip_pm=0 anchor=0 anchor_valid=0 anchor_returns=0 climbs=0 writes=2 holds=6392 overloads=0 bursts=0 fade_holds=0 damp=0 map_learned=0 learn_refused=2 map_imports=0 preset_imports=0 obs_windows=6398 obs_us_max=1379
+PROFILE active=DEFAULT 12MHZ KP0.85 reason=boot_default measured_this_session_x100=-1 pending=none stored_x100=0 (provisional) measuring=off windows=0 batches=0 rejected_batches=0 observed=0 gated=0 gated_cn=0
+PROFILE_GATES no_pairs=0 observed_unlocked=0 amplitude=0 clip=0 gain_not_held=0 cn_missing=0 cn_below=0 last_cn_x10=-990 cn_checked=0 last_span_khz=0 last_freq_mhz=0 min_cn_x10=80
+FILTER never active bw=BW40 code=0 skirt=8 | normal width_khz=0 nbw_khz=0 | narrow valid=0 width_khz=0 nbw_khz=0 | wide valid=0 width_khz=0 nbw_khz=0 | calibrated_nbw_khz=0
+FILTER_HW mismatch=0 hw=0000191b191b191b want=0000191b191b191b
+DCO held=0 gains_valid=0 floor_rows=0 missing_rows=30 floor=0 searches=0 carrier_searches=0 hook_holds=0 aborts=0 drift_avg_mcells=0/0 nudges=0 temp_c=-100.0
+DCO_BANKS bank1=293/218 bank2=279/250 gain=83 row_codes=0/0 row_valid=0 banned=0
+DC_SERVO dc_mcells=0/0 slope_mcells_per_code=0/0 offset=0/0 own_row=0 steps=0 writes=0 estimates=0 learned=0 relearned=0 sign_rejects=0 turns=0 forgotten=0 urgent_wakes=0 skip=0/0/0/0/0 fault=0 table_reloads=1 reload_why=1 volatile=1
+DC_HEALTH flags=0 writes=0 watch=table:0/0 filter:0/0 drift:0/0 (latched/bad)
+DCO tables freq=5865 template_rows=0 seeded_from=0 seeds=0 stored_channels=0/6:
+DCO_REPAIR bad_dropped=0 repairs=0 repair_fails=0 borrowed_holds=0 (unconverged rows dropped, searched from a converged neighbour; a missing row holds the nearest converged one's codes)
+DCO_BAN unbans=0 (a railing hold is released for 2-32 s, then held again)
+DCO_ADOPT rows=0 (template rows taken as own codes after the servo held them on receiver noise)
+DCO_CONTEXT table_freq=5865 table_bw20=0 table_code=-1 table_skirt=0 active_freq=5685 active_bw20=0 active_code=0 active_skirt=8 filter_same=0
+SPHASE state=settled excess_mc2=108 limit=300 white_pm=330 dc_mcell=-47/-159 scans=0 best=-1 worst=-1 contrast=0 rx_div=6 carrier_qualified=0 live_limit=150 carrier_checks=0 carrier_scans=0 moved=0 false_alarms=0 strikes=0
+TRANSPORT_STAGES_US quiesce=0 bs_enable=0 program_load=0 instruction_verify=0 lut_verify=0 bs_reset=0 bs_start=0 rx_enable=0 tx_enable=0 rx_start=0 tx_start=0 (last restart)
+VIDEO_OUTPUT source=MENU standard=NTSC
+OUTPUT level=1.0x boot_restore=saved default=1.0x clipped_lut_entries=0 recovery_errors=0 rollbacks=0 rollback_fail=0 fault_latched=0 live=0
+TRANSPORT rx_descriptors=9 tx_empty=0 rx_overflow=0 dma_faults=0 bs_overload=0 kp_level=0 kp_target=0 kp_writes=1024 kp_verify_fail=0 program=U85Q flag_format=0 prog_switches=0 switch_wait_ms=0 kp_switches=0 kp_restart_fail=0 kp_restart_us=0 prog_verify_fail=0 prog_restart_fail=0 prog_restart_us=0
+CONTROL_COPY calls=43 not_ready=0 source_invalid=0 pointer_invalid=0 lapped=0 timed_out=0 max_us=29 max_advance=1
+SYNC_LIVE requested=1 active=0 fault=0 starts=0 stops=0 failures=0 boot_default=ON
+SYNC_FLYWHEEL requested=1 active=0 repaired=0 suppressed=0 batches=0 late_ticks=0 missed=0 miss_kind=0 queue_low=0 fault=0 irq_delay_ticks=0 callback_ticks=0 budget_yields=0 miss_phase=0 miss_other=0 miss_observer=0 miss_snapshot=0 miss_update=0 miss_restart=0 miss_reserved=0 guard_yield=0 yielded=0 h_jumps=0 v_jumps=0 trims=0 pll_updates=0 pll_rejected=0 pll_ppb=0 acquired=0 camera_present=0 camera_lines=0 camera_yields=0 h_trusted=0 v_trusted=0 std_switches=0 monitor_lock_proven=0
+SYNC_FLYWHEEL_WITNESS observer_fresh=0 sample_age_ticks=0 observer_yields=0 source_yields=0 observer_gaps=0 stale_native=0
+SYNC_FLYWHEEL_LOAD active=0 interval_ms=0 isr_calls=0 max_isr_us=0 isr_permille=0 wait_permille=0 suppressed_wait_permille=0 hold_permille=0 measured_not_estimated=1
+FILTER_CAL bw=BW40 code=0 skirt=8 width_khz=16875 nbw_khz=17529 env_x100=108 limit=125 clip_pm=25
+FILTER_CAL bw=BW40 code=0 skirt=16 width_khz=14375 nbw_khz=15867 env_x100=107 limit=119 clip_pm=12
+FILTER_CAL bw=BW40 code=0 skirt=24 width_khz=13125 nbw_khz=14740 env_x100=108 limit=118 clip_pm=8
+FILTER_CAL bw=BW40 code=0 skirt=32 width_khz=13125 nbw_khz=13640 env_x100=107 limit=118 clip_pm=8
+FILTER_CAL bw=BW40 code=8 skirt=0 width_khz=18750 nbw_khz=18273 env_x100=110 limit=121 clip_pm=17
+FILTER_CAL bw=BW40 code=8 skirt=8 width_khz=16250 nbw_khz=17069 env_x100=109 limit=120 clip_pm=13
+FILTER_CAL bw=BW40 code=8 skirt=16 width_khz=15000 nbw_khz=15545 env_x100=107 limit=117 clip_pm=6
+HB t_s=15 stage=ready gain=83 menu=1 startup=1 busy=1
+FILTER_CAL bw=BW40 code=8 skirt=24 width_khz=13750 nbw_khz=14376 env_x100=104 limit=116 clip_pm=3
+FILTER_CAL bw=BW40 code=8 skirt=32 width_khz=13125 nbw_khz=13730 env_x100=102 limit=116 clip_pm=4
+FILTER_CAL bw=BW40 code=16 skirt=0 width_khz=18750 nbw_khz=18593 env_x100=107 limit=118 clip_pm=9
+FILTER_CAL bw=BW40 code=16 skirt=8 width_khz=16875 nbw_khz=17573 env_x100=110 limit=119 clip_pm=10
+FILTER_CAL bw=BW40 code=16 skirt=16 width_khz=15000 nbw_khz=15713 env_x100=105 limit=117 clip_pm=7
+FILTER_CAL bw=BW40 code=16 skirt=24 width_khz=13750 nbw_khz=14227 env_x100=106 limit=117 clip_pm=7
+FILTER_CAL bw=BW40 code=16 skirt=32 width_khz=12500 nbw_khz=13521 env_x100=107 limit=116 clip_pm=4

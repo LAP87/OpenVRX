@@ -122,6 +122,31 @@ tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Interval 0.5   # fånga, se
 
 Kontaktarket har bilderna i kvarts storlek, fyra per rad, så att en agent kan se dem. `quality.py calibrate <png>` jämför M0:s åtta färgstaplar (Core `top/m0_testpattern.v`: 0 eller C0h per kanal) med en tolerans (standard 12): det är kalibreringen av vägen genom grabbern. Testat på syntetiska bilder (`tools/bench/test_quality.py`: brusnivåer, färgdrift, svart bild, upprepad rad, M0-staplar, alla fem PNG-filter) med negativa kontroller (mörk bild med textur är inte svart, konstant nyans ger ingen spridning, ren bild har ingen upprepad rad, staplar 20 steg fel fäller kalibreringen, trasig PNG vägras). Ren Python: ungefär en sekund per bild.
 
+## Mätningar (uppgift 60, från 2026-10-26)
+
+Körscheman för veckans mätningar med verktygen ovan. Bitströmmen är M6 med `DEVCMD=1` (kommandon, statusrad, fältdump); `m6ctl.py`, `fielddump.py` och `snowlog.py` ligger i Core `gateware/tools/`. Ändra en sak i taget, och jämför bara körningar med samma kamerabild: snövärdet beror också på bildinnehållet. Varje körning får en etikett och sparas under `bench-logs/` med datum; sammanfattningen och små utdrag committas under `docs/bench/`. Inget av detta är kört.
+
+**(a) TV mot VCR i TVP:n.** Samma kamera, kanal och avstånd. Växla filter med kommandon i stället för menyn, tre gånger åt varje håll, så att drift i källan inte tas för filtrets verkan:
+
+```bash
+for f in T V T V T V; do
+  python gateware/tools/m6ctl.py $f
+  python gateware/tools/snowlog.py /dev/ttyUSB1 --label filt_$f --seconds 60 --out filt.csv
+  python gateware/tools/m6ctl.py '?'        # 88h: färglås (bit 3), låsförlust (bit 4)
+done
+python gateware/tools/snowlog.py --summary filt.csv
+```
+
+Med grabbern per läge `tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Interval 0.5`, och `quality.py measure --color-window` över ett färgat föremål. Mått: nyansens spridning (`hue_std`), andelen loggrader med `L` per dekoder, färglåsbiten i statusraden. Avgör blad 12.
+
+**(b) Färgvägen.** Först M0 genom grabbern: `quality.py calibrate` ska ge alla åtta staplar inom toleransen; det kalibrerar grabbern och färgomvandlingen. Sedan en känd CVBS-källa (testbildsgivaren i `MATERIAL_UPPSTART.md`, "Bänkrigg") genom TVP:n till M6 och HDMI: `fielddump.py D` ger dekoderns Cb och Cr per sampel; i en blå stapel ska Cb vara högt och Cr lågt, i en röd tvärtom. Samma stapel i `fielddump.py F` (efter mixern) och i grabberbilden ska ha samma ordning. Byter Cb och Cr plats någonstans syns det som fel nyans i just den bilden.
+
+**(c) Avbrott.** Källan tappar: sändaren av i 5 s med kameran stilla, en gång i LOW och en gång i BUF (`m6ctl.py L`, `m6ctl.py B`). Logga under tiden (`bench.py log m6 --seconds 40`) och fånga bild för bild (`-Interval 0`). Tider ur loggen räknas i rader (cirka 15 per sekund med video, en per sekund utan), inte ur ankomsttiderna, som kommer i skurar över usbipd. Väntat enligt simuleringen: LOW svart medan genlocken saknas, BUF fryser sista fältet; mät hur länge det tar tillbaka. Frågan till ägaren (B6), om LOW ska hålla sista fältet i stället för svart, avgörs med bilderna från den här körningen.
+
+**(d) Mixertrösklarna** (blanda när \|d\|·256 < 38·max, byt när > 64·max; AGENTS.md) mot uppmätt snö, när två mottagare finns: båda RX5808 på samma kanal, den ena antennen nära, den andra längre bort eller avskärmd i steg. Per steg 60 s logg (`snow_a`, `snow_b`, `use_a`, `use_b`, `use_mix`); kvoten \|snö A − snö B\| / max mot andelen blandade beslut, och grabberns snövärde för samma steg, visar om 38 och 64 ligger där bilden faktiskt blir bättre. `m6ctl.py a` och `b` ger varje mottagare för sig som referens.
+
+**(e) Parningsfönstret 15,8 µs mot C5VRX:s fördröjning.** C5VRX bygger om radtakten med sitt synkhjul, så en RX5808 och en XIAO som tar emot samma sändare kan lämna samma radnummer mer än en rad isär; då parar mixern aldrig deras rader. Kroken finns inte än: fältdumpen har inga tidsstämplar, och loggen räknar inte parade rader. Förslag till designunderlag: mixern räknar per mätfönster rader som parades, rader som kom utan partner inom fönstret och avståndet i klockor mellan A:s och B:s rad med samma nummer (medel och största), och skriver det i statusraden. Med det mäts (e) direkt: RX5808 på dekoder A, XIAO på dekoder B, samma sändare. Ingen RTL-ändring är gjord för det i natt.
+
 ## När loggen tystnar
 
 Över usbipd har loggen kommit i skurar (BANK_2026-10-21). Kvällen 2026-10-23 stannade den helt:

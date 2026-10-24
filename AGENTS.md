@@ -8,9 +8,12 @@ out. Stage: early bring-up. **M0 test-pattern output and a corrected bounce have
 run on a Tang Nano 20K (2026-10-20), including a user-confirmed flash power cycle.**
 The flashed image was a private bench patch; the same fix is in Core main `b440ece` (task 46). SDRAM read point 5 is clean on the board
 (2026-10-21) once the I/O-cell register option is off; that option is off by default in Core main `4aa41f2`. **The first camera picture reached HDMI on 2026-10-22**
-through a XIAO ESP32-C5 running C5VRX, a resistor DAC and one TVP5150 module into M4 (Core main `e71a268`;
+through a XIAO ESP32-C5 running C5VRX, a resistor DAC and one TVP5150 module into M4 (Core `50273d3` and `cd90e6e`;
 `docs/BANK_2026-10-22.md`): grainy and with a wandering hue, both from that source; the SDRAM self-test in the
-M6 build passes (read point 5). The RX5808 side and the two-decoder mixer remain unverified on hardware. Start with [the bench handoff](docs/bench/HANDOFF_CLAUDE_2026-10-20.md).
+M6 build passes (read point 5). The RX5808 side and the two-decoder mixer remain unverified on hardware. Core main is
+`8a92575` (2026-10-23): M6 also builds with `DEVCMD=1` (commands from the PC and a field dump over the UART), built
+and simulated, not tried on the board. Start with [the bench from the computer](docs/BENCH.md); the first handoff is
+[docs/bench/HANDOFF_CLAUDE_2026-10-20.md](docs/bench/HANDOFF_CLAUDE_2026-10-20.md).
 
 | Repo | Role |
 |---|---|
@@ -36,7 +39,9 @@ gateware/build.sh m6_puck_proto
 - Milestone tops in Core: `m0` test pattern, `m1`/`m2` single decoder (M2 via
   SDRAM), `m2a_memtest` (SDRAM memory test), `m3_probe` (wiring check),
   `m4_dual_mix` (two decoders + mixer), `m6_puck_proto` (M4 + RX5808 SPI +
-  OLED menu + OSD + UART log). Status table: `gateware/README.md`.
+  OLED menu + OSD + UART log; with the build option `DEVCMD=1` also single-byte
+  commands from the PC on pin 70, a status line and the field dump). Status
+  table: `gateware/README.md`.
 - Video path: `chan_capture` -> async FIFO -> `mix_chan` -> `line_mixer` ->
   `fb_backend` (`fb_sdram` field store with four buffers, or low-latency
   ring + `genlock_timing`).
@@ -73,7 +78,8 @@ gateware/build.sh m6_puck_proto
   (TV default; M6 can request 20h/VCR for both decoders through the menu;
   compare both on the bench before fixing a choice), then 03h=0Dh last (03h is read back at every poll and the list
   is written again if it is wrong); status 88h/89h, 88h bit 4 (lost lock,
-  cleared by the read) in the M6 log; I2C address by YOUT7 strap; both decoders share an address, so
+  cleared by the read) in the M6 log; I2C address 5C or 5D by YOUT7 strap, and `tvp_ctrl` tries
+  both and keeps the one that answers, per decoder (task 50); both decoders may share an address, so
   each has its own SDA. A poll round (88h, 89h, 03h) counts only as a
   whole: one NACK invalidates the decoder's status until the next whole
   round (review 2026-10-06, F2).
@@ -86,9 +92,15 @@ gateware/build.sh m6_puck_proto
   16-235 over the last 1024 lines). Whether that count separates receiver
   noise from picture content needs measurement on a real signal. The mixer
   does not use the noise count. The
-  line also ends with a lost-lock flag per decoder. `tools/snowlog.py`
-  reads the 85-byte line with the RSSI fields (2026-10-13), the 62-byte line with a
-  T/V token and the legacy 60-/57-/43-byte forms.
+  line also carries a lost-lock flag per decoder, RSSI fields and, last, the
+  SDRAM self-test. Core `gateware/tools/snowlog.py` reads the 89-byte line
+  (101 bytes with `DEVCMD=1`) and the older 87-, 85-, 62-, 60-, 57- and
+  43-byte forms.
+- Bench from the computer: hub `tools/bench.ps1` (Windows: WSL guard, usbipd
+  auto-attach, picture capture) and `tools/bench/` (WSL: flash with a manifest
+  check, timestamped and parsed logs, the C5VRX console, picture measures);
+  `docs/BENCH.md`. The Tang's BL616 USB-UART bridge went silent on 2026-10-23
+  until the board's power is cut; JTAG kept working.
 - RX5808 SPI: 25 bits LSB first, address 1, write bit, 20-bit synth register.
 - Apicula 0.32: no `signed` arithmetic anywhere (miscompile risk);
   `gateware/tools/test_lvds_bank_inputs.py` must pass after any Apicula upgrade.
@@ -215,7 +227,7 @@ like AI output.
   history, with a separately accepted checker correction.
 - C2's TV/VCR filter menu is integrated. The two decoders reconcile the
   requested value after paired polls, retaining an in-flight value/SDA lane
-  and retrying after NACK. The OLED/OSD and 62-byte UART row show the requested
+  and retrying after NACK. The OLED/OSD and the UART row (`T`/`V`) show the requested
   mode, not a register readback. Focused verification passed 56 tests and two
   subtests; nine old BUS/parser guards fail for the expected semantic reasons.
   TV/VCR picture quality and lock behaviour on a real signal are unmeasured.
@@ -223,10 +235,12 @@ like AI output.
   recorded in `docs/overnight/2026-10-08/STATUS.md`. Branch
   results do not establish acceptance of main. Verify the build manifest
   against the sources and artifacts before flashing.
-- I/O registers in the I/O cells: the default for M2, M2s, M2a, M4 and M6
-  since 2026-10-12 (owner's decision; `IOREG=0/1` overrides). All 32 DQ input
-  registers sit in the cells, the DQ outputs and the SDRAM clock do not. The
-  memory test on the board decides phase and read point.
+- I/O registers in the I/O cells: off by default since 2026-10-21 (Core
+  `4aa41f2`). The owner's decision of 2026-10-12 made them the default, but on
+  the board flops with CE / SET / RESET packed into I/O cells misbehaved
+  (`docs/bench/IOREG_ANALYS_2026-10-21.md`). `IOREG=1` remains an option and
+  is refused unless `tools/iob_regs.py --strict` finds only plain flops in the
+  cells. M2a reads clean at read point 5 without them.
 - Rev A schematic redrawn by hand in KiCad, then layout.
 - RSSI (external I2C ADC or GW5A-25 internal ADC); GW5A-25 port; C5VRX
   (ESP32-C5) receiver comparison with the snow meter.

@@ -4,8 +4,12 @@ OpenVRX is an open-source analog 5.8 GHz FPV **video receiver** family built
 around an FPGA. Two receivers listen to the same channel, two video decoders
 digitise both pictures, and the FPGA picks or blends the better signal **line
 by line** before sending 720p DVI/HDMI to a display. The gateware is simulated
-and builds, but **no hardware prototype has been tested**. A 1080p output
-for XR glasses is a separate planned step.
+and builds. On a Tang Nano 20K with one TVP5150 module it has shown the test
+pattern, passed the SDRAM memory test and, on 2026-10-22, put the first camera
+picture on HDMI, received by an ESP32-C5 running C5VRX
+([docs/BANK_2026-10-22.md](docs/BANK_2026-10-22.md)). **Two receivers and the
+line mixer have not run on hardware yet.** A 1080p output for XR glasses is a
+separate planned step.
 
 This repository is the family hub. Boards and gateware live in their own
 repositories.
@@ -14,7 +18,7 @@ repositories.
 
 | Repository | What | State |
 |---|---|---|
-| [OpenVRX-Core](https://github.com/LAP87/OpenVRX-Core) | FPGA gateware shared by every variant: BT.656 capture, line mixer, SDRAM or low-latency video path, HDMI/DVI out, UI, receiver control, models and tests | Simulated; bitstreams build; **not yet run on hardware** |
+| [OpenVRX-Core](https://github.com/LAP87/OpenVRX-Core) | FPGA gateware shared by every variant: BT.656 capture, line mixer, SDRAM or low-latency video path, HDMI/DVI out, UI, receiver control, models and tests | Simulated; bitstreams build; M0, M2a, M3, M4 and M6 loaded on a Tang Nano 20K with one decoder, first camera picture 2026-10-22; **the two-decoder mixer not yet tried** |
 | [OpenVRX-Puck](https://github.com/LAP87/OpenVRX-Puck) | Ground "puck": two receivers, battery, two buttons and an OLED, HDMI out, antenna connectors. Sits on the ground or hangs from a lanyard. | Rev A decoder-board schematic (script, ERC clean); no layout |
 | OpenVRX-Goggles | Same core inside goggles | Idea only, no repository yet |
 
@@ -52,8 +56,9 @@ script and the research notes) was done with AI assistance, directed and
 reviewed by the project owner. Reference models and negative controls cover
 individual modules and selected video cases; they do not validate the entire
 M4/M6 receiver. SDRAM timing and buffer ownership, genlock's minimum frame
-period and decoder recovery still need work. **No part has run on real
-hardware yet.**
+period and decoder recovery still need work. **On hardware so far: one
+decoder and one receiver, not two; the bench notes are in `docs/BANK_*.md`.**
+Running the bench from a computer: [docs/BENCH.md](docs/BENCH.md).
 [REVIEW.md](REVIEW.md) lists what we are least sure about. Please try to
 break it.
 

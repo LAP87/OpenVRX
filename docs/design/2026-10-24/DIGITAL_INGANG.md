@@ -59,3 +59,10 @@ En rad i `prepare_tx()`: `.clk_out_gpio_num = 2` bakom en kompileringsflagga (`C
 | C2 | Dekoder B:s stift till digitalingången i prototypen | ja; RX5808 får A tills vidare |
 | C3 | Firmwarebygget privat, utanför repona, tills licensfrågan tas | ja; byggbeskrivning och patch som text i den här noten, inte kod i repona |
 | C4 | Tråd på MTMS-paden på XIAO:n | ägaren löder (tunn tråd, baksidan) |
+
+## Status 2026-10-24
+
+- **Firmware (63):** byggd med ESP-IDF 6.0.2 ur `388d2d1` plus klockraden; filer och flashanvisning i `bench-logs/c5vrx-clkout-2026-10-24/`. Inte flashad.
+- **FPGA-sidan (64), steg 1:** `cvbs_capture.v` på Core-grenen `digin/cvbs-capture` (`6b845e8`), bit för bit mot modellen i tre fall (ren bildruta, brus med saknad synk och kort rad, utan kamfilter som negativ kontroll). M4 med `DIGIN=1` byggt: 6 822 LUT4, 31 BSRAM, 40 MHz-domänen klarar 84,5 MHz efter att luma-vägen pipelinats i tre steg. Bitströmmen `6b845e8/m4_dual_mix_digin.fs` på bänkgrenen. Snabbsviten 720 gröna; hela sviten kör inför sammanslagningen.
+- **Vad modellen säger om vägen:** med syntetiska staplar blir radlängden 1715–1717 byte (mixerns tolerans ±2), alla rader 360 ord, numreringen 0–243 och 0–242 per fält, en saknad synk ger en rad märkt dålig och numreringen går vidare, ett fashopp på 300 sampel låser om på fyra rader. Nivåföljaren hamnar inom tre koder från de syntetiska nivåerna.
+- **Måndag:** strömbrytning av XIAO:n, flash, synkhjulet av, tråden på MTMS, sex datatrådar och klockan till J5 enligt tabellen, `m4_dual_mix_digin.fs`: lysdiod 2 ska lysa (rader från B) och bilden från B ska synas när A saknas. Därefter `bench quality` och fältdumpen på B mot A.

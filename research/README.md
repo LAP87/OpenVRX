@@ -8,6 +8,7 @@ En rad per fil: datum, ämne, om den gäller, och vilket beslut eller vilken upp
 
 | Fil | Datum | Ämne | Status | Matar |
 |---|---|---|---|---|
+| [C5VRX_EKOSYSTEM_2026-10-24.md](C5VRX_EKOSYSTEM_2026-10-24.md) | 2026-10-24 | Vad andra gjort runt C5VRX: zerowidths 7+7-bitars IQ-tap till en ESP32-P4 (synklås 97 % vid C/N 3–5 dB), vrx-bridge (samma busstap som uppgift 64 i programvara, 22 av 64 koder använda), OpenPocket, upphovsmannens egna räckviddsärenden; förslag: mottagargräns C (IQ in i FPGA:n) som uppgift 67 | gällande | uppgift 64–67, beslut 9, ärendet Twotoz/C5VRX#256 |
 | [C5VRX_8BIT_HARDVARA_2026-10-24.md](C5VRX_8BIT_HARDVARA_2026-10-24.md) | 2026-10-24 | ESP32-C5-kort med stift för 8-bitars videobuss, sampelklocka och bredare IQ: stiftbudget, WROOM-1U-modul på eget kort, DevKitC-1 för bänken, firmwarens stifttabeller | gällande | uppgift 66 (rev B-riktning), GitHub-ärendet till C5VRX |
 | [DEKODRAR_KUNSKAPSUNDERLAG_2026-09-30.md](DEKODRAR_KUNSKAPSUNDERLAG_2026-09-30.md) | 2026-09-30, rensad 2026-10-12 | Dekoderval för rev A, FPV-förebilder, latensmål 50 ms | delvis ersatt: GPL-projekten som kodkälla (beslut 3, 2026-10-12: aldrig GPL-kod) | dekoder och ingångssteg på rev A; latensmålet |
 | [BANDPASSFILTER_DIVIMATH.md](BANDPASSFILTER_DIVIMATH.md) | 2026-10-01, rensad 2026-10-12 | SMA-bandpassfilter 5–6 GHz: data, vad det dämpar | historisk (försöket det var tänkt för finns inte i någon plan; filterfrågan förs vidare i RF-underlaget, åtgärd 6) | RF_DIVERSITY, avsnitt 5 |

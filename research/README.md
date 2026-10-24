@@ -26,6 +26,9 @@ En rad per fil: datum, ämne, om den gäller, och vilket beslut eller vilken upp
 | [UTGANG_1080P_2026-10.md](UTGANG_1080P_2026-10.md) | 2026-10-13 | Tre vägar till 1080p60 och vad som måste mätas för var och en | gällande | beslut 6; uppgift 12 |
 | [MOTTAGARKRETSAR_2026-10.md](MOTTAGARKRETSAR_2026-10.md) | 2026-10-17 | Mottagarkretsen i HDZero, SteadyView, rapidFIRE, Fusion och Fat Shark Scout, belagd med FCC, tillverkarens dokument, källkod och foton; RichWaves mottagarlista | gällande | uppgift 30; valet av mottagare för rev B |
 | [SDR_5G8_MOTTAGNING_2026-10-19.md](SDR_5G8_MOTTAGNING_2026-10-19.md) | 2026-10-19 | SDR-kort med AD9361/AD9364 för ett prov av 5,8 GHz analog video på datorn: plattformar, bandbredd, programvara; priser daterade | gällande | ägarens fråga 2026-10-19 om AD-kretsar; rådets P5 (väntar) |
+| [C5VRX_8BIT_HARDVARA_2026-10-24.md](C5VRX_8BIT_HARDVARA_2026-10-24.md) | 2026-10-24 | ESP32-C5-hårdvara för en digital C5VRX-väg med 8 bitar | gällande | uppgift 66, rev B-planen |
+| [C5VRX_EKOSYSTEM_2026-10-24.md](C5VRX_EKOSYSTEM_2026-10-24.md) | 2026-10-24 | C5VRX-ekosystemet: zerowidth/P4USB, vrx-bridge, OpenPocket, modellresultat | gällande | uppgift 64, 67, mottagargräns C |
+| [KOMPONENT_OCH_ARKITEKTUR_ALTERNATIV_2026-10-24.md](KOMPONENT_OCH_ARKITEKTUR_ALTERNATIV_2026-10-24.md) | 2026-10-24 | Omfattande komponent- och arkitekturkatalog: RF, avkodare, FPGA/SoC, HDMI, XR och matning | gällande | rev B-arkitektur, display- och mottagarval |
 
 ## Komponentregistret och råunderlag
 

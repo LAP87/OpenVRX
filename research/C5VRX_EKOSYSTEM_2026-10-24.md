@@ -37,6 +37,29 @@ hittat tre repon till. Allt är GPL-3.0 (eller olicensierat) och läses som unde
    Upphovsmannens egna räckviddsärenden pekar på samma 4-bitars-IQ som taket, så IQ-vägen angriper
    rätt led.
 
+## Resultat ur modellen (uppgift 67, 2026-10-24 kväll)
+
+Core `gateware/model/iq_demod_ref.py` (numpy): syntetisk NTSC-komposit → FM med 2,8 MHz/V → 12 MHz kanal →
+brus vid givet C/N → AGC och kvantisering till 4 eller 7 bitar per axel → fasderivata som demodulator →
+videofilter. Luma-SNR mot den rena videon och andelen rader där synkflanken hittas inom ±3 sampel med en
+fast slicer. 60–90 rader gråstaplar; en dum demodulator, alltså en undre gräns.
+
+| C/N (dB) | 4-bitars IQ | 7-bitars IQ | 4-bitars IQ, 6-bitars utgång |
+|---|---|---|---|
+| 8 | 10,7 dB, synk 7 % | 11,4 dB, 6 % | 10,7 dB, 7 % |
+| 12 | 14,8 dB, 19 % | 15,7 dB, 38 % | 14,8 dB, 22 % |
+| 20 | 20,1 dB, 63 % | 23,7 dB, 99 % | 20,1 dB, 63 % |
+| 30 | 22,4 dB, 87 % | 33,0 dB, 100 % | 22,3 dB, 87 % |
+
+Samma bild med deviation 2,0 och 4,0 MHz/V och med 16 MHz kanal: 4 bitar stannar på 20–29 dB hur stark
+signalen än är, 7 bitar når 30–36 dB och hittar synken i alla rader från 20 dB C/N; 6-bitars utgången
+kostar under 1 dB. Slutsatsen: **taket i kompositvägen är IQ-bitarna i C5VRX:s demodulator, inte DAC:en
+eller TVP:n**, och en egen demodulering ur 7-bitars IQ lyfter det med cirka 10 dB vid stark signal. Under
+10 dB C/N är båda dåliga i den här enkla modellen; där ligger vinsten i demodulatorn (begränsare,
+fasföljning), som zerowidths 97 % synklås vid 3–5 dB visar. Testet `gateware/sim/test_iq_demod.py` låser
+egenskaperna (SNR stiger med C/N, 7 bitar minst 8 dB över 4, utgången under 1 dB, negativa kontroller med
+2 bitar och fel deviation).
+
 ## Förslag till planen
 
 - Uppgift 67 (ny): mottagargräns C i simulering: Python-modell av FM-demodulering ur 7 + 7-bitars IQ i

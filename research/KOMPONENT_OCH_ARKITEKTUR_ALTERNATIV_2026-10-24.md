@@ -1,225 +1,101 @@
-# Komponent- och arkitekturkatalog för OpenVRX (2026-10-24)
+# Komponent- och arkitekturalternativ för OpenVRX
 
-Underlag och komponentresearch för OpenVRX rev B, Puck och framtida goggle-/dockningsvarianter.
-Dokumentet kartlägger komponenter, kretsar, processorer och arkitekturer för att utvärdera:
-1. **RF-mottagning:** Från klassisk RichWave RTC6715/RX5808 till mjukvarudefinierad radio (ESP32-C5 och diskreta SDR-frontends).
-2. **Signalöverföring:** Analog CVBS vs. direkt digital buss (PARLIO / BT.656 / MIPI-CSI / I/Q).
-3. **Signalbehandling & Linjemixning:** FPGA (Gowin/Lattice/Efinix) vs. högpresterande applikationsprocessor (ESP32-P4 / RP2350 / Linux-SoC).
-4. **Videoutgång & Displaykompatibilitet:** Från 720p60 till native 1080p60 HDMI/DVI samt USB-C DisplayPort Alt Mode för XR-glasögon (XREAL, Viture, Rokid), FPV-glasögon, fältmonitorer och TV.
+Ursprungligt AI-underlag 2026-10-24, faktagranskat och omarbetat 2026-10-25. Originalet finns i Git, navcommit `fee21c0`. **Det var en kandidatlista, inte ett verifierat konstruktions- eller inköpsunderlag.** Flera avgörande specifikationer var fel. Tabellen nedan skiljer tillverkaruppgifter från projektets simuleringar och sådant som fortfarande saknar stöd.
 
----
+Måndagens praktiska arbete: [fryst C5-bygge, kopplingsschema och körordning](../docs/bench/MANDAG_2026-10-26.md). Utgångsvalet behandlas mer utförligt i [extern skalare mot Primer 25K](HDMI_SKALNING_PRIMER_25K_2026-10-25.md).
 
-## 1. Kravprofil per målenhet (Display Matrix)
+## 1. Rättelser som påverkar våra beslut
 
-| Enhetstyp | Typiska modeller | Ingångsformat | Krav på tidsbas / synk | Känslighet för signalbortfall |
-|---|---|---|---|---|
-| **XR-glasögon** | XREAL Air / Air 2 Pro, Viture Pro XR, Rokid Max | Strikt 1080p60 (CEA-861 VIC 16, 148,5 MHz pixelklocka) via DP Alt Mode / HDMI-adapter | Extremt strikt: konstant radantal (1125 rader), tolererar ej varierande radlängd | Kraschar/visar "rainbow screen" eller "no signal" vid minsta synkglitch. Kräver full TBC och fältbuffert |
-| **FPV-goggles (HDMI)** | Walksnail Avatar HD, HDZero Goggles, Skyzone SKY04X, Fat Shark HDO2 | 720p60 eller 1080p60 HDMI | Måttlig till strikt: HDMI-mottagarkretsarna låser snabbt, men vill ha standardtiming | Föredrar låg latens (<20 ms) framför avancerad deinterlacing |
-| **Fältmonitorer** | Eachine, Feelworld, Lilliput | 720p50/60, 1080p50/60 HDMI | Förlåtande: accepterar ofta små avvikelser i radantal | Visar blåskärm vid totalt synktapp om ingen stabil TBC finns |
-| **Vanlig TV / Datorskärm** | Alla moderna HDMI-skärmar | 720p60, 1080p60 | Standard EDID-timing | Fördröjer ofta bild vid lägesbyten (100–500 ms handskakning) |
+| Ursprungligt antagande | Granskat läge / konsekvens |
+|---|---|
+| SKY65377-11 är en 5,8 GHz-LNA | **Fel frekvensband.** Skyworks beskriver den som en **450 MHz T/R-FEM**. Den tas bort ur 5,8 GHz-spåret. [Tillverkarens produktblad](https://www.skyworksinc.com/-/media/F08B6516C8B74C59A2F1D107028739C1.pdf). |
+| ADF4351 kan vara LO till ADL5380 på 5,8 GHz | **Inte direkt:** ADF4351 slutar vid 4,4 GHz. ADF4356 täcker till 6,8 GHz och är en möjlig LO-kandidat, med ny kontroll av fasbrus, drivnivå och filtrering. [ADF4351](https://www.analog.com/en/products/ADF4351.html), [ADF4356](https://www.analog.com/en/products/adf4356.html). |
+| ESP32-C5-WROOM ger redan full 8-bitars CVBS | Fler stift är en möjlighet, inte en färdig demodulator. Upstream säger **sex verkliga utgångsbitar**; utökad precision kräver nya LUT-/demodulatorprogram. [Utvecklarens svar](https://github.com/Twotoz/C5VRX/issues/256#issuecomment-6390572931). |
+| LT8912B är begränsad till 1080p30 | **Fel för själva kretsen:** tillverkaren anger 1080p60, upp till fyra DSI-lanes à 1,5 Gbit/s, kontinuerlig klocka. En viss P4-kombination måste ändå provas med sitt laneantal och RGB-format. [LT8912B produktblad](https://www.lontiumsemi.com/UploadFiles/2022-03/LT8912B_Brief_R1.3.pdf). |
+| ADV7513/LT8618 är färdiga uppskalare till Nano | De är HDMI-sändare för en redan skapad videoström. FPGA:n måste skapa 1080p-bilden och klara pixel-/minnestiming. [ADV7513](https://www.analog.com/en/products/adv7513.html). |
+| PS176 ger HDMI→USB-C DP Alt Mode | **Fel riktning:** PS176 tar DisplayPort in och ger HDMI ut. En sådan adapter kan inte bara vändas. [Parade PS176](https://www.paradetech.com/products/ps176/). |
+| Primer 25K har 25 000 LUT och måste ha DDR3 | Kortet har **23 040 LUT4** och externt minne som tillval. Sipeed erbjuder **SDR-SDRAM**. HDMI ansluts med separat PMOD_DVI, inte en inbyggd port. [Sipeed kort](https://en.wiki.sipeed.com/hardware/en/tang/tang-primer-25k/primer-25k.html), [moduler](https://wiki.sipeed.com/hardware/en/tang/tang-PMOD/FPGA_PMOD). |
+| LFE5U-25/45 har 3,2 Gbit/s SERDES | **Fel variant:** LFE5U har inga sådana SERDES-kanaler; de finns i LFE5UM/UM5G. Ett snabbt SERDES-tal räcker dessutom inte som verifiering av TMDS, DP eller D-PHY. [Lattices familjetabell](https://www.latticesemi.com/Products/FPGAandCPLD/ECP5). |
+| P4 har H.264-kodare/avkodare och egen Wi-Fi/BT | Tillverkaren anger **H.264-kodare**, JPEG-codec och PPA. P4 har ingen egen Wi-Fi-radio; sådan uppkoppling kräver en separat krets. [P4-datablad](https://documentation.espressif.com/esp32-p4_datasheet_en.html), [Olimex kortbeskrivning](https://www.olimex.com/Products/IoT/ESP32-P4/ESP32-P4-PC/open-source-hardware). |
+| P4 får oundvikligen minst 1–2 bildrutor | Inte ett hårdvarukrav som kan slås fast från databladet. Latensen följer DMA-/bufferdesignen, synkreglerna och programmet. Någon mätning av vår P4-mixer finns inte. |
+| TPS62840 kan matas direkt från 2S Li-ion | **Fel:** högsta inspänning är 6,5 V; full 2S Li-ion är 8,4 V. [TI TPS62840](https://www.ti.com/product/TPS62840). |
+| LT3045 eliminerar allt switchbrus | Ingen regulator gör det. ADI anger brus och PSRR vid bestämda villkor; layout, dropout, last och värme återstår. [ADI LT3045](https://www.analog.com/en/products/lt3045.html). |
+| Alla XR kräver full bildbuffert och alla skalare lägger till en bildruta | För kategoriska slutsatser. Konstant korrekt utgångstiming behöver säkras, men line buffers/genlock kan vara möjliga. Format och latens verifieras per glasögon, brygga och skalarläge. Se [latensnoten](HDMI_SKALNING_PRIMER_25K_2026-10-25.md). |
 
----
+Siffror som ”−98 dBm”, ”4–6 dB bättre” eller ”aldrig blåskärm” tas inte vidare utan källa, modulation, bandbredd, bildkriterium och mätvillkor. Video-SNR, RF C/N och dBm-känslighet är olika mått.
 
-## 2. Kategori 1: 5,8 GHz RF-Frontends & Mottagarchip
+## 2. Mottagarvägarna, rangordnade för vårt nästa steg
 
-### 2.1 Analoga FM-mottagarchip (Superheterodyn)
+| Spår | Vad vi har | Vad som återstår | Roll |
+|---|---|---|---|
+| **C5, digital komposit → Nano** | M4 `DIGIN=1`, sex bitar, modell och sparad byggd bitström. Privat C5-klockbygge från `388d2d1`. | Måndagens klock-/gråskaleprov, verkliga sampel och färgavkodning. | Första praktiska spåret; hoppar över DAC och TVP för denna kanal. |
+| **C5, rå IQ → FPGA** | Core `iq_demod_ref.py`, syntetisk FM-/brusmodell. | RF-gränssnitt, fasföljning/begränsning, verkliga sampel, RTL, resurser och ny bänk. | Nästa kvalitetsundersökning, ingen färdig mottagare ännu. |
+| **C5/RX5808 → TVP5150 → Nano** | En C5/DAC/TVP-kamerabild har visats på HDMI enligt bänknoten 22 oktober. | RX5808 och tvåkanalsdiversity på hårdvara. | Referens och återgångsväg; behöver inte byggas bort nu. |
+| **ADL5380 + LO + dual ADC → FPGA** | Dokumenterade byggblock, nedan. | En hel RF-/analog-/digitaldesign och mätning. | Långsiktig RichWave-fri egen mottagare, inte en billig drop-in-modul. |
+| **AD9361/AD9364 → FPGA/SoC** | Integrerade SDR-kretsar med ADC och frekvenssyntes. | Kort, RF-ingång, klockor, styrprogram, FM-demod och kostnadsbudget. | Referensarkitektur; inget skäl att köpa en dyr SDR-plattform för måndagsprovet. |
 
-| Komponent / Modul | Typ / Funktion | Frekvensband | Gränssnitt | Känslighet (typ) | Styrkor & Svagheter | Lämplighet |
-|---|---|---|---|---|---|---|
-| **RichWave RTC6715** | Integrerad FM-mottagare (QFN-48) | 5,725–5,875 GHz (kan trimmas bredare) | Analog CVBS ut, analog RSSI, 25-bit SPI (kanaltabell) | −85 till −90 dBm (standard), upp till −98 dBm med extern LNA/filter | **+** Industristandard i 10+ år, beprövad, noll mjukvarulatens.<br>**−** Begränsad känslighet utan skärmad LNA, global komponentbrist periodvis. | **Referens / Baslinje** (Modul RX5808) |
-| **RichWave RTC6716S** | FM-mottagare för 1,2 / 6,5 GHz (QFN-48) | 1,2 GHz & 6,5 GHz | Analog CVBS, RSSI, SPI | Obelagd vid 5,8 GHz | Alternativ för framtida bandexpansion, men saknar officiellt 5,8 GHz-stöd. | Forskningsspår |
-| **Skyzone RX5G-modul** | Skärmad dubbelmottagarmodul | 5,3–5,9 GHz | Analog CVBS, I2C/SPI | −98 dBm ±1 dB | **+** Utmärkt känslighet och selektivitet.<br>**−** Proprietär modul, sluten leveranskedja. | Referensprodukt |
+C5-spåret är ett användande av Wi-Fi-kretsens diagnostikfunktioner; det ska inte beskrivas som ett av tillverkaren garanterat analog-FPV-gränssnitt. [C5VRX](https://github.com/Twotoz/C5VRX) är extern GPL-firmware. Ingen kod därifrån kopieras in i OpenVRX:s CERN-OHL-källor.
 
-### 2.2 ESP32 som RF-mottagare (Wi-Fi PHY SDR-approach)
+## 3. AD-spåret: vad som faktiskt måste tillkomma
 
-| Krets / Modul | Hårdvarukonfiguration | Dataformat ut | Samplingsfrekvens | Känslighet & Prestanda | Styrkor & Svagheter | Lämplighet |
-|---|---|---|---|---|---|---|
-| **ESP32-C5** (Seeed XIAO) | Wi-Fi 6 PHY (`MODEM_DIAG`), BitScrambler WBFM | 6-bit CVBS på PARLIO TX (D4–D9) + motståndsstege | 40 MS/s IQ in, 20 MS/s CVBS ut | C/N ~8 dB ger synklås, brusgolv ~−93 dBm | **+** Billig (<$5), kräver ingen extern tuner.<br>**−** Endast 15 tillgängliga pinnar på XIAO; 6-bitars upplösning ger stegning; Wi-Fi-AGC kräver anti-hunt (Direct Gain V5). | **Experiment / Bas-C5** |
-| **ESP32-C5-WROOM-1U** (Modul med U.FL) | Wi-Fi 6 PHY, 22 tillgängliga GPIO:er | Full 8-bit digital CVBS eller 7+7 bit rå IQ på PARLIO | 40 MS/s eller 80 MS/s | Betydligt högre tak med 8-bit luma eller extern demodulering | **+** Tillräckligt med stift för både databuss, klocka, UART och antennväxel.<br>**−** Kräver eget kretskort. | **Huvudkandidat för Rev B (C5-spår)** |
-| **Waveshare ESP32-C5-Zero** | ESP32-C5-HF4, ingen PSRAM, U.FL/IPEX-1 | 7+7 bit rå IQ ut (zerowidth P4USB-layout) | 80 MS/s modembuss | 97 % synklås vid C/N 3–5 dB i extern demodulator | **+** Bevisad av zerowidth att leverera rå IQ till extern processor.<br>**−** Kräver extern FM-demodulator. | **Bästa dev-kort för IQ-forskning** |
-
-### 2.3 RF Front-End Moduler (LNA & SAW-filter)
-
-| Komponent | Funktion | Frekvens | Förstärkning / Brusfaktor (NF) | Gränssnitt / Styrning | Kommentar |
-|---|---|---|---|---|---|
-| **Skyworks SKY65377-11** | Lågbrusig förstärkare (LNA) | 5,15–5,85 GHz | Förstärkning: 16 dB, NF: 1,3 dB | Bypass-läge via 1 GPIO | Perfekt frontend framför RTC6715 eller ESP32-C5 för att lyfta svagsignalkänsligheten med 4–6 dB. |
-| **Qorvo QPF4528** | Wi-Fi 6 FEM (LNA + PA + Switch) | 5,15–5,925 GHz | LNA Gain: 14 dB, NF: 1,8 dB | 3,3 V logikstyrning | Mycket kompakt, integrerade switchar för antenndiversity. |
-| **Tai-Saw TA1248A** | SAW Bandpassfilter | 5,725–5,875 GHz | Insättningsdämpning: ~2,5 dB | 50 Ω impedans, SMD | Dämpar 2,4 GHz (RC-länk / ELRS) med >40 dB och 5,2 GHz Wi-Fi med >30 dB. Minskar intermodulation drastiskt. |
-
-### 2.4 Reella SDR-Kretsar (Software Defined Radio Transceivers)
-
-| Komponent | Arkitektur | Frekvensomfång | Bandbredd | RF-kanaler | Gränssnitt | Kommentar |
-|---|---|---|---|---|---|---|
-| **ADI AD9361** | Bredbandig RF Agile Transceiver | 70 MHz – 6,0 GHz | 200 kHz – 56 MHz | 2x RX, 2x TX | Dual LVDS eller 12-bit CMOS | **Guldstandarden för äkta RF-diversity.** Kan sampla båda 5,8 GHz-antennerna fas-koherent. Dyr ($150+), drar 1–2 W, kräver stor FPGA. |
-| **ADI AD9364** | Bredbandig RF Agile Transceiver | 70 MHz – 6,0 GHz | 200 kHz – 56 MHz | 1x RX, 1x TX | 12-bit LVDS/CMOS | Enkanalsversion av AD9361. Något lägre effekt, samma RF-prestanda. |
-| **ADI ADL5380** | Bredbandig I/Q-demodulator | 400 MHz – 6,0 GHz | Basband upp till 390 MHz | 1x RX (I/Q) | Differentiell analog I/Q ut | Kräver extern lokaloscillator (t.ex. ADF4351) och snabba ADC:er. Byggblock för egen diskret mottagare. |
-
----
-
-## 3. Kategori 2: Video-Avkodare (CVBS till Digital BT.656 / MIPI)
-
-När mottagaren levererar analog kompositvideo (CVBS) krävs en avkodare för att digitalisera linjerna till komponentvideo (YCbCr).
-
-| Komponent | ADC-upplösning | Utgångsformat | Klocka | Effektförbrukning | Synkegenskaper | Status & Kommentar |
-|---|---|---|---|---|---|---|
-| **TI TVP5150AM1** | 9-bit ADC | 8-bit BT.656 (YCbCr 4:2:2) | 27 MHz | **115 mW** (ultralåg) | Godkänd synk vid måttligt brus; tappar färglås och fas vid djup snö | **Nuvarande baslinje i OpenVRX Rev A.** Beprövad och fungerar i simulering. |
-| **ADI ADV7180** | 10-bit ADC | 8-bit BT.656 | 27 MHz | ~200 mW | Adaptivt 4H-kamfilter, godkänd låsning vid brus | Finns i fordon och industri. Ersättare till TVP5150 med bättre färgåtergivning. |
-| **ADI ADV7280 / ADV7282-M** | 10-bit ADC | **ADV7280:** 8-bit BT.656<br>**ADV7282-M:** MIPI-CSI-2 (1 lane) | 27 MHz / MIPI D-PHY | ~180 mW | **"Fast Lock"-läge:** låser på under 1 fält efter signalbortfall | **Mycket intressant för P4:** ADV7282-M kan mata CVBS direkt in i ESP32-P4:s MIPI-CSI-port utan FPGA! |
-| **Techpoint TP2825** | 10-bit ADC | 8/16-bit BT.656 / Digital RGB | 27 / 54 MHz | ~350 mW | Extremt aggressiv synkföljning vid dålig RF | **Används i HDZero BoxPro och Goggle 2** för analog ingång. Bevisad i FPV-sammanhang. |
-| **Renesas / Intersil TW9912** | 10-bit ADC | 8-bit BT.656 | 27 MHz | ~250 mW | Automotive grade, konstruerad för att aldrig krascha vid brutna synkpulser | Utmärkt alternativ till TVP5150 för tuffa RF-miljöer. |
-
----
-
-## 4. Kategori 3: FPGAs & Logikkretsar (Realtids DSP, Mixning & HDMI)
-
-| Komponent / Kort | Logikelement | Block-RAM / SDRAM | Högsta serialiserarhastighet | Verktygskedja | Typisk kostnad | Kommentar |
-|---|---|---|---|---|---|---|
-| **Gowin GW2AR-18** (Tang Nano 20K) | 20 736 LUT4 | 828 kbit B-RAM + **64 Mbit internt SDRAM** (32-bit buss) | 1 200 Mbit/s (LVDS/OSER10) | Öppen (Apicula, nextpnr) & Gowin EDA | ~$20 (devkit) | **Nuvarande plattform för M0–M6.** Genererar 720p60 native HDMI utan externa chip. Saknar bandbredd för 1080p60 TMDS. |
-| **Gowin GW5A-25** (Tang Primer 25K) | 25 000 LUT4 | 1 000 kbit B-RAM, extern DDR3/SDR | **2 000 Mbit/s** (OSER10) | Apicula (experimentell) & Gowin EDA | ~$25–35 (modul) | **Klarar native 1080p60 TMDS (1 485 Mbit/s)!** Den renaste vägen till direkt XR-glasögondrivning utan extern HDMI-sändarkrets. |
-| **Efinix Trion T20 / Ti35** | 20K–35K LE | 1–2 Mbit B-RAM, hårdvaru-MIPI | Upp till 1 500 Mbit/s per lane | Efinity | ~$15–30 | Extremt strömsnål. Har dedikerade hårda MIPI CSI/DSI-block. Idealisk för inbyggnad i små goggle-sidecars. |
-| **Lattice ECP5** (LFE5U-25F / 45F) | 24K–44K LUT | 1–2 Mbit B-RAM, extern SDRAM/DDR | **3 200 Mbit/s (SerDes)** | Helt öppen (Yosys + Project Trellis) | ~$30–45 | Guldstandarden för open-source FPGA. SerDes-blocken hanterar 1080p60 HDMI, DisplayPort och MIPI utan minsta ansträngning. |
-
----
-
-## 5. Kategori 4: Processorer, Mikrokontrollers & SoCs
-
-| Processor | Kärnor & Klocka | Displaygränssnitt ut | Videoingångar in | Hårdvaruacceleration | Latens (estimerad) | Roll i projektet |
-|---|---|---|---|---|---|---|
-| **Espressif ESP32-P4** | Dual-core RISC-V @ 400 MHz | **MIPI-DSI (2 lanes, 1,5 Gbps)**, stöder extern HDMI-brygga | MIPI-CSI (2 lanes), PARLIO RX (16-bit), DVP Camera | H.264 Encoder/Decoder, 2D Pixel Accelerator (PPA), DMA | 1–2 bildrutor (16–33 ms) | **Huvudkandidat för ren MCU-väg.** Kan ta emot digital video från C5 via PARLIO och driva HDMI via LT8912B. |
-| **Raspberry Pi RP2350** | Dual Cortex-M33 / Hazard3 @ 150+ MHz | **HSTX (High-Speed Serial Transmit)** för direkt DVI/HDMI (upp till 720p) | PIO (Programmerbar I/O) | Inga fasta videoenheter, men extremt flexibla PIO-state machines | 1 bildruta (16 ms) | Intressant som lågkostnadskontroller med direkt DVI-utgång, men saknar minnesbandbredd för dubbla videoströmmar. |
-| **Allwinner T113-S3** | Dual Cortex-A7 @ 1,2 GHz + HiFi4 DSP | Parallell RGB, LVDS, MIPI-DSI, CVBS ut | **Integrerad CVBS-videoingång (TVD)** direkt på chippet! | H.264/JPEG dekoder, 64 MB internt DDR3 | 40–80 ms (under Linux V4L2) | Kan ta analog CVBS direkt utan TVP5150 och spotta ut HDMI via RGB-brygga. Tyvärr hög mjukvarulatens. |
-| **Allwinner V853** | Cortex-A7 @ 1 GHz + 1 TOPS NPU + RISC-V E907 | MIPI-DSI, RGB | MIPI-CSI (4 lanes), DVP | H.264/H.265 enc/dec, internt DDR3 | 30–60 ms | IP-kamera-SoC. Kraftfull för digital videolänk, men överdrivet komplex för ren analog mottagning. |
-
----
-
-## 6. Kategori 5: HDMI-Sändare, Bryggor & Skalarkretsar
-
-| Komponent | Ingångsformat | Utgångsformat | Max upplösning | Kontrollgränssnitt | Kommentar |
-|---|---|---|---|---|---|
-| **Lontium LT8912B** | MIPI-DSI (1–4 lanes) | HDMI 1.4 / DVI | 1080p@30Hz, **720p@60Hz** | I2C | Standardbryggan på ESP32-P4-kort (t.ex. Olimex P4-PC). Kräver 3,3 V och 1,8 V. |
-| **Lontium LT8618SX / SXB** | 16-bit BT.1120 eller 24-bit RGB | HDMI 1.4 | **1080p@60Hz** (148,5 MHz) | I2C (enkel registerkarta) | **Perfekt följeslagare till Tang Nano 20K:** Låter FPGA:n skicka 1080p60 parallellt i 148,5 MHz medan LT8618 sköter TMDS-serialiseringen! Mycket strömsnål (~150 mW). |
-| **Analog Devices ADV7513** | 16-bit YCbCr 4:2:2 (BT.1120) eller 24-bit RGB | HDMI 1.4b med fulla Infoframes | **1080p@60Hz**, 165 MHz | I2C, fullt dokumenterad | Högkvalitativ sändare. Fullt stöd för AVI Infoframes (RGB/YCbCr, Full/Limited range) vilket löser alla färgomfångsproblem i skärmar och glasögon. |
-| **Texas Instruments TFP410** | 24-bit RGB eller 12-bit DDR RGB | DVI 1.0 (TMDS) | 1080p@60Hz (165 MHz) | Hårdvarukonfigurerad (inga register krävs!) | Mycket enkel att starta upp (noll I2C-kod behövs). Nackdel: Skickar ren DVI utan HDMI-paket, vilket kan få vissa TV-apparater att gissa fel färgomfång. |
-| **Parade PS176 / Realtek RTD2172** | HDMI 2.0 / DP 1.2 | **USB-C DisplayPort Alternate Mode** | 4K@60Hz / 1080p@120Hz | Autonom | Gör att pucken kan ha en direkt USB-C-port med DP Alt Mode och 5 V-matning direkt till XR-glasögon utan externa adapterdosor! |
-| **Macrosilicon MS1858 / MS1824** | Analog CVBS | HDMI 1080p (inbyggd skalare) | 1080p60 | I2C (eller intern ROM) | Finns i billiga AV2HDMI-dosor. **Rekommenderas ej:** Hög latens (60–120 ms) och blåskärmar vid minsta RF-brus. |
-
----
-
-## 7. Kategori 6: Strömförsörjning, USB-C PD & Lågbrusreglering
-
-Mottagare och ADC:er är extremt känsliga för switchrippel från DC/DC-omvandlare (vilket syns som diagonala ränder i videobilden).
-
-| Komponent | Funktion | Inspänning | Utspänning / Ström | Brustal / PSRR | Kommentar |
-|---|---|---|---|---|---|
-| **WCH CH224K** | USB-C PD Sink Controller | 4–22 V (USB-C) | Begär 9 V, 12 V, 15 V eller 20 V hårdvarumässigt via motstånd | — | Extremt liten (ESSOP-10), noll mjukvara krävs. Låter pucken matas från valfri USB-C PD powerbank. |
-| **Analog Devices LT3045** | Ultralågbrusig LDO | 1,8–20 V | Ställbar (t.ex. 3,3 V @ 500 mA) | **0,8 µVRMS brus**, 76 dB PSRR vid 1 MHz | **Bästa LDO:n för RF & Video-ADC:** Eliminerar allt switchbrus från batteriomvandlare. |
-| **TI TPS62840** | Högeffektiv Step-Down (Buck) | 1,8–6,5 V | 3,3 V / 1,8 V @ 750 mA | Mycket låg rippel vid lätt last, ultralåg IQ (60 nA) | Utmärkt som primärregulator från 1S/2S Li-ion batteri före LDO:er. |
-
----
-
-## 8. Djupdykning: De fyra arkitekturvägarna framåt
-
-### Arkitektur A: "Pure ESP32 Route" (Ingen FPGA)
+```text
+antenn → bandfilter/LNA → RF-balun → ADL5380 → I/Q-filter + ADC-drivning
+                                         ↑             ↓
+                             5,8 GHz-LO/PLL     två synkrona ADC-kanaler
+                                                       ↓
+                                           FPGA: FM → komposit → färg/mixer
 ```
-[Antenn] ──► [ESP32-C5] (RF + BitScrambler WBFM)
-                   │  (7+7 bit IQ eller 8-bit digital CVBS via PARLIO @ 40/80 MHz)
-                   ▼
-             [ESP32-P4] (Dual 400 MHz RISC-V, Synk/Line Buffer i PSRAM, LVGL OSD)
-                   │  (MIPI-DSI, 2 lanes)
-                   ▼
-             [LT8912B] (MIPI till HDMI-brygga)
-                   │
-                   ▼
-             [HDMI-port] (720p60 / 1080p30)
-```
-* **Fördelar:**
-  - Helt och hållet inom Espressifs ekosystem (ESP-IDF, ren C/C++, inga FPGA-verktyg behövs).
-  - ESP32-P4 har enorm CPU-kraft och 2D-accelerator för snygga menyer, kanalscanning och Wi-Fi/Bluetooth-telemetri.
-* **Kritiska flaskhalsar & Risker:**
-  - **Latens:** Att buffra frames i PSRAM och driva MIPI-DSI via DMA ger oundvikligen 1–2 bildrutors latens (minst 16–33 ms).
-  - **Diversity:** Att köra två ESP32-C5:or in i en ESP32-P4 och göra linje-för-linje-mixning i mjukvara på mikrosekundnivå pressar DMA-bussen till dess absoluta gräns.
-  - **XR-glasögon:** P4 + LT8912B är bevisad för 720p60 och 1080p30. Att nå stabil 1080p60 med konstant CEA-861-radantal för kräsna XR-glasögon är inte garanterat.
 
----
+- **ADL5380**, RF och LO 400 MHz–6 GHz, differentiell analog I/Q ut, 5 V-matning. Produktion / rekommenderad för nya konstruktioner på ADI:s sida 25 oktober. Den är en quadrature downconverter, **inte en komplett FM-videomottagare**. Många framhävda NF-/linjäritetstal gäller 900/1900 MHz och får inte märkas om till 5,8 GHz. [Produkt och datablad](https://www.analog.com/en/products/adl5380.html).
+- **ADF4356**, syntes till 6,8 GHz, rekommenderad för nya konstruktioner enligt ADI. Möjlig LO-kandidat där ADF4351 inte räcker. Kräver referens, loopfilter, matning och rätt LO-nivå. Ingen färdig komponentkombination är godkänd här. [Produkt](https://www.analog.com/en/products/adf4356.html).
+- **Nytt fynd: AD9231**, dual 12-bitars ADC med varianter 20/40/65/80 MS/s, differentiella ingångar och testmönster. ADI anger Production. Kandidat för synkron I/Q-infångning; analog drivning, common-mode, anti-aliasfilter, databusspinnar och klockjitter måste dimensioneras. En dual ADC räcker till I och Q för **en** RF-mottagare, inte två diversitetsmottagare. [Produkt](https://www.analog.com/en/products/ad9231.html).
+- **AD9361** integrerar 2×RX/2×TX, 12-bitars dataväg, RX 70 MHz–6 GHz och programmerbar bandbredd till 56 MHz. Antennfas, kalibrering och koherent kombination blir inte lösta automatiskt bara för att två kanaler finns. [Produkt](https://www.analog.com/en/products/ad9361.html).
 
-### Arkitektur B: "Direct Digital C5 till FPGA" (Det hybrida genombrottet)
-```
-[Antenn A] ──► [ESP32-C5-WROOM-1U #A] (RF) ──(8-bit CVBS + 40 MHz CLK)──┐
-                                                                         ├──► [Tang Nano 20K] (Mixer + TBC + SDRAM)
-[Antenn B] ──► [ESP32-C5-WROOM-1U #B] (RF) ──(8-bit CVBS + 40 MHz CLK)──┘         │ (TMDS native)
-                                                                                   ▼
-                                                                             [HDMI-port] (720p60)
-```
-* **Fördelar:**
-  - **Skippar både motstånds-DAC och analog TVP5150:** Inga analoga kvalitetsförluster eller felmatchade impedanser.
-  - Använder C5:ans interna BitScrambler-demodulering, men skickar rena digitala sampel direkt till FPGA:n.
-  - FPGA:n gör det den är bäst på: digital synkseparation, snömätning, mikrosekund-linjemixning och bergfast HDMI-generering med **<1 ms latens**.
-* **Kritiska flaskhalsar & Risker:**
-  - FPGA-gatewaren måste själv göra synkextraktion och färgdemodulering (PAL/NTSC subcarrier-lås) ur de digitala samplen (det arbete som startades i `DIGITAL_INGANG.md`).
+JLC-monterade komponenter kan minska monteringsarbetet, men ADL5380:s styckpris är inte en kostnad för en komplett mottagare. Vi behöver räkna PLL, referens, två ADC-kanaler, RF-/basbandsfilter, drivsteg, matningar, kontakter och kortets RF-layout innan ”under 1 000 kr” går att bedöma. Ingen aktuell inköpskorg är kontrollerad i denna granskning.
 
----
+### RF-filter och förstärkare
 
-### Arkitektur C: "Classic OpenVRX" (Tang Nano 20K + TVP5150 + RX5808 / C5)
-```
-[Antenn A] ──► [RX5808 / C5 Analog] ──► [TVP5150AM1 #A] (BT.656) ──┐
-                                                                     ├──► [Tang Nano 20K] (Mixer + SDRAM)
-[Antenn B] ──► [RX5808 / C5 Analog] ──► [TVP5150AM1 #B] (BT.656) ──┘         │ (TMDS native)
-                                                                               ▼
-                                                                         [HDMI-port] (720p60)
-```
-* **Fördelar:**
-  - **M0-testbilden fungerar redan fysiskt på bänken (bekräftat 2026-10-20).**
-  - 790+ godkända simuleringstester i repot. TVP5150 levererar färdigavkodad YCbCr 4:2:2 så FPGA:n slipper färgdemodulering.
-  - Lägst utvecklingsrisk på kort sikt.
-* **Kritiska flaskhalsar & Risker:**
-  - Kräver analoga mottagarmoduler (RX5808) som har osäker framtida tillgång, eller C5 med motstånds-DAC.
-  - TVP5150-avkodaren kan tappa färglåset vid djup snö.
+**QPF4528** är en riktig 4,9–5,925 GHz FEM med PA, switch och bypassbar LNA; Qorvo anger Production, cirka 15 dB RX-gain och 2 dB NF. Den tidigare katalogens 14 dB/1,8 dB ersätts av tillverkaruppgiften. Det är inte bara en LNA och PA-delen behövs inte för vår mottagare. Styrtillstånd, maximal insignal och filtrering måste granskas. [Qorvo](https://www.qorvo.com/products/p/QPF4528).
 
----
+En extern LNA kan hjälpa när systemets brusfaktor begränsar, men kan också överstyra C5 eller förstärka störningar. En angiven förbättring i dB kräver kaskadberäkning och mätning. **SKY65377-11 används inte i 5,8 GHz-designen.** Tai-Saw TA1248A:s tidigare påstådda 5,8 GHz-band och rejectiontal har inte verifierats mot ett tillverkarblad; de är borttagna som konstruktionsvärden.
 
-### Arkitektur D: "Next-Gen 1080p XR-Native" (Gowin GW5A / Tang Primer 25K)
-```
-2x Digital RF In (C5 eller SDR) ──► [Gowin GW5A-25] ──(2.0 Gbps OSER10)──► [HDMI / Type-C DP Alt Mode]
-                                    (Linjemix, 1080p skalare, TBC)         (Strikt 1080p60 CEA-861)
-                                                                                   │
-                                                                                   ▼
-                                                                         [XR-glasögon: XREAL / Viture]
-```
-* **Fördelar:**
-  - **Fulländad XR-kompatibilitet:** GW5A-25 har 2,0 Gbps serialiserare och driver äkta 1080p60 TMDS (148,5 MHz pixelklocka) direkt utan externa sändarkretsar.
-  - Kan skala 480i/576i direkt till 1080p60 med linjär interpolation och konstant 1125-raders timing.
-* **Kritiska flaskhalsar & Risker:**
-  - Kräver extern DDR3-krets (GW5A-25 har inte 64 Mbit internt SDRAM som GW2AR-18).
-  - Något dyrare FPGA-kort.
+## 4. Avkodare och processorer
 
----
+| Kandidat | Bedömning nu |
+|---|---|
+| TVP5150AM1 | Befintlig analog referens. Digital C5-komposit kan ersätta just denna omvandlingsväg, men FPGA:n måste då göra synk och färgavkodning. |
+| ADV7180 / ADV728x | Möjliga alternativa CVBS-avkodare. Exakt suffix avgör parallell respektive MIPI-utgång. Ingen bevisad kvalitetsvinst över vår TVP på snöig FPV finns här. |
+| ADV7280-M / ADV7282-M + P4 | Intressant MIPI-väg, men kompatibelt kontaktnamn räcker inte. ADI varnar för varierande fältlängder och buffer overflow i sökläge. I2P är linjeinterpolation, inte automatiskt en helbildsbuffert. [ADI AN-1337](https://ez.analog.com/cfs-file/__key/communityserver-discussions-components-files/331/AN_2D00_1337.pdf), [ADI:s applikationssvar](https://ez.analog.com/video/f/q-a/9323/adv7280-deinterlacing-question). |
+| ESP32-P4 | Har MIPI CSI/DSI, PPA, JPEG och H.264-kodare. Olimex P4-PC har HDMI-brygga på kortet och kan vara ett sidospår för UI, inspelning eller en receiver utan FPGA. Ingen garanti för dubbla C5-bussar, linjemixning eller viss latens utan en faktisk implementation. |
+| RP2350 | HSTX/PIO är användbart, men inget verifierat byte för dagens tvåkanalsmixer. 720p via överklockade exempel är inte ett garanterat standardläge för all last. [Raspberry Pi](https://www.raspberrypi.com/documentation/microcontrollers/microcontroller-chips.html). |
+| Allwinner T113/V853 | Möjliga SoC-spår men inte tillräckligt granskade för en bestämd latens, TVD-/displaykonfiguration eller kortrekommendation. Tidigare 30–80 ms-tal saknar en definierad pipeline och tas bort. |
+| TP2825, TW9912 och ”Skyzone RX5G” | Tidigare exakta egenskaper, användning i namngivna goggles och påstådda snöfördelar saknar tillräckligt primärstöd i underlaget. Inga inköp eller BOM-val baseras på dem. |
 
-## 9. Rekommenderade komponentval för inköp & framtida layout
+## 5. FPGA och videoutgång
 
-1. **För direkt digital C5-bänkprovning (Arkitektur B):**
-   - **Waveshare ESP32-C5-Zero** (eller DevKitC-1) med U.FL-kontakt, för att testa 8-bitars PARLIO-utgång och rå IQ utan XIAO:ns stiftbegränsningar.
-2. **För ren MCU-forskning (Arkitektur A):**
-   - **Olimex ESP32-P4-PC** (ESP32-P4 med integrerad LT8912B HDMI-utgång och Ethernet/USB).
-3. **För stabil RF-förstärkning:**
-   - **Skyworks SKY65377 LNA-modul** eller diskret RF-frontend med 5,8 GHz SAW-filter.
-4. **För 1080p-utgång till XR-glasögon på Tang Nano 20K:**
-   - Utvärderingsmodul med **Analog Devices ADV7513** eller **Lontium LT8618SX** (parallell BT.1120 in $\rightarrow$ 1080p60 HDMI ut).
-5. **För strömmatning:**
-   - **WCH CH224K** USB-C PD Sink-kort (begär 9 V / 12 V direkt från powerbank).
-   - **Analog Devices LT3045** ultralågbrusig LDO för 3,3 V-matning till RF-delarna.
+| Plattform / krets | Verifierbar möjlighet | Begränsning för oss |
+|---|---|---|
+| Nano 20K / GW2AR-18 | Befintlig 720p-kedja och SDRAM i kapseln. | Direkt 1080p60 kräver 1,485 Gbit/s per TMDS-par, över det tidigare dokumenterade 1,2 Gbit/s-taket för denna krets. |
+| Primer 25K / GW5A-25 | 23 040 LUT, 1 008 kbit BSRAM, PMOD_DVI och separat SDRAM-modul. Databladets OSER10-tak 2 Gbit/s passar 1080p60. | Ingen färdig OpenVRX-port eller uppmätt 1080p/XR-acceptans. Minneskontroller, Fmax och stiftbudget kräver arbete. |
+| ECP5 | Bra öppen verktygskedja; rätt UM/UM5G-variant har snabba SERDES. | U-varianten har inte dessa. TMDS, DP och MIPI har olika elektriska/protokollkrav och är inga automatiska följder av bitraten. |
+| Efinix Trion | T20 och andra utvalda kapslar har hårda MIPI-block enligt [Efinix](https://www.efinixinc.com/products-trion.html). | ”Trion T20 / Ti35” blandade familjer; verifiera exakt produkt/kapsel. Inget portningsarbete är gjort. |
+| ADV7513 | Dokumenterad 165 MHz HDMI-sändare med AVI-infoframes. | Ingen skalare. ADI anger också att köp kräver HDMI-adopterstatus; det måste utredas före produkt-BOM. |
+| TFP410 | TI anger Active och 165 MHz DVI-sändare, 24-bitars SDR eller 12-bitars DDR ingång. [TI](https://www.ti.com/product/TFP410). | Ingen skalare eller HDMI-infoframes. Kräver ändå snabb parallell video från FPGA:n. |
+| LT8912B | Tillverkarbladet anger 1080p60 HDMI. | DSI-brygga, inte en parallell videoutgång som kan kopplas rakt till nuvarande Nano-stiftplan. |
+| LT8618SX/SXB | Parallell-video-till-HDMI är ett möjligt arkitekturspår. | Startsekvensens ursprung/licens är fortfarande ett projekthinder. Den tidigare utelämnade M5c-koden blir inte godkänd av denna not. |
+| HDMI→USB-C | Behövs om glasögonen kräver DP Alt Mode. | Rätt riktning, matning och exakt glasögonmodell måste kontrolleras. PS176 är fel riktning för detta. |
 
----
+## 6. Displaykrav utan generella garantier
 
-## 10. Referenser & Källor
+1080p60 med standardtiming är ett rimligt gemensamt testmål för de aktuella XR-spåren, men är inte här en garanti för alla XREAL-, VITURE- eller Rokid-modeller. EDID, adapter, firmware, matning och fullt/begränsat RGB måste provas tillsammans.
 
-- **C5VRX Uppströms:** [github.com/Twotoz/C5VRX](https://github.com/Twotoz/C5VRX) (GPL-3.0)
-- **zerowidth P4USB PR #3:** [github.com/zerowidth/C5VRX/pull/3](https://github.com/zerowidth/C5VRX/pull/3) (7+7 bit IQ på 80 MS/s från C5 till P4)
-- **Espressif ESP32-C5 Datablad:** [documentation.espressif.com](https://documentation.espressif.com/esp32-c5-wroom-1_wroom-1u_datasheet_en.html)
-- **Espressif ESP32-P4 Datablad & EVB:** [docs.espressif.com](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/)
-- **Lontium LT8912B & LT8618SX:** [lontiumsemi.com](https://www.lontiumsemi.com)
-- **OpenVRX Interna underlag:**
-  - [`docs/design/2026-10-24/DIGITAL_INGANG.md`](../docs/design/2026-10-24/DIGITAL_INGANG.md)
-  - [`research/C5VRX_EKOSYSTEM_2026-10-24.md`](C5VRX_EKOSYSTEM_2026-10-24.md)
-  - [`research/C5VRX_8BIT_HARDVARA_2026-10-24.md`](C5VRX_8BIT_HARDVARA_2026-10-24.md)
-  - [`research/UTGANG_1080P_2026-10.md`](UTGANG_1080P_2026-10.md)
-  - [`research/XR_GLASOGON_KOMPATIBILITET.md`](XR_GLASOGON_KOMPATIBILITET.md)
+Den gamla listan blandade goggles med olika eller inga HDMI-ingångar. Vi använder därför ingen sådan generell produktmatris. Varje verklig skärm får en rad i mätprotokollet: exakt modell, ingång, EDID/timing, signal vid bortfall, tid till återlåsning och uppmätt latens. ”Behöver stabil timing” betyder inte att en viss produkt ovillkorligen måste ha en helbildsbuffert.
+
+## 7. Beslutsordning
+
+1. **Nu:** fryst C5 + Nano, sex bitar och klocka, gråskala. Inga nya komponenter för att besvara om direktvägen ger bild.
+2. **Efter bänken:** verkliga sampel i modellen, rätt digital hälsostatus och färgavkodning. Testa en mottagare innan tvåkanals-BOM bestäms.
+3. **När 1080p behövs:** välj mellan belagt snabb extern skalare och ett komplett Primer-kit enligt [latens-/portningsnoten](HDMI_SKALNING_PRIMER_25K_2026-10-25.md).
+4. **Parallellt framtidsspår:** rå IQ ur C5. Separat RF-kort med ADL5380 utreds först när totalbudget och mätmöjlighet är kända.
+
+Inga livscykelkontroller här ersätter en full BOM-granskning före layout eller beställning. Kandidatstatus är inte schemaacceptans, och simulering är inte uppmätt RF- eller flygprestanda.

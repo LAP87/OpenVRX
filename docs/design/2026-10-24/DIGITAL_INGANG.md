@@ -1,5 +1,7 @@
 # Digital videoingång från C5VRX: sex datatrådar och en klocka i stället för DAC och TVP
 
+**Körschema för måndag 26 oktober:** [fryst firmware, kontrollerade filer och koppling](../../bench/MANDAG_2026-10-26.md). Det provet använder fortfarande `388d2d1` + privat GPIO2-patch. Texten nedan är underlaget från 24 oktober; dess krav på M6:s B-logg/fältdump och ett omedelbart godkänt A/B-diversityprov gäller inte den byggda M4-toppen. Hälsogrinden och mätuttaget behöver separat arbete (arbetsplan uppgift 69).
+
 Underlag 2026-10-24 (Fable) för uppgift 63–66. Ägarens fråga: kan C5VRX med små ändringar ge en perfekt bild hos oss? Svaret avgörs av två saker som går att skilja åt: vad mottagaren själv levererar (dess tak) och vad vår väg från den gör med det (vår förlust). I dag går vägen genom en 6-bitars motstånds-DAC på kopplingsplatta och en TVP5150 som tappar färglåset. Den här noten beskriver vägen där FPGA:n tar samplen direkt.
 
 ## Vad källkoden säger (C5VRX-5, commit `388d2d1`, läst 2026-10-24; GPL-3.0, inget kopierat)

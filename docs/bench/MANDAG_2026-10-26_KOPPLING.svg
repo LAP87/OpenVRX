@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1060" viewBox="0 0 1280 1060" role="img" aria-labelledby="title desc">
+<title id="title">Koppling för måndag 26 oktober: XIAO C5 till Tang Nano 20K</title>
+<desc id="desc">Sex 3,3-volts dataledare och en klocka från det frysta C5-bygget 388d2d1 med GPIO2-patch till Tang-kortets digitala B-ingång. Gemensam jord, separat USB-matning, ingen sammankoppling av matningsstiften.</desc>
+<style>text{font-family:DejaVu Sans,Arial,sans-serif;fill:#17283c}.h{font-size:30px;font-weight:700}.sub{font-size:19px}.pin{font-size:20px}.small{font-size:17px}.bold{font-weight:700}</style>
+<rect width="1280" height="1060" fill="#fff"/>
+<rect width="1280" height="128" fill="#eaf2f8"/>
+<text x="40" y="49" class="h">Digital kanal B — koppling för måndagens prov</text>
+<text x="40" y="84" class="sub">Endast C5VRX 388d2d1 + privat GPIO2-klockpatch · M4 DIGIN ur 6b845e8</text>
+<text x="40" y="112" class="small">Elektriskt schema. Inte fysisk stiftordning eller en ritning av kortens ovansidor.</text>
+<rect x="38" y="155" width="360" height="580" rx="12" fill="#f1f7fb" stroke="#55778d" stroke-width="2"/>
+<rect x="862" y="155" width="380" height="580" rx="12" fill="#f0f8f3" stroke="#4f8061" stroke-width="2"/>
+<text x="60" y="190" class="sub bold">XIAO ESP32-C5</text>
+<text x="60" y="217" class="small">Utgångar · 3,3 V-logik</text>
+<text x="884" y="190" class="sub bold">Tang Nano 20K · rev 3923</text>
+<text x="884" y="217" class="small">Ingångar · dekoder B:s kontakt J5</text>
+
+<text x="60" y="281" class="pin">MTMS / GPIO2</text>
+<text x="884" y="281" class="pin">J5-4 / PIN80</text>
+<path d="M398 274 H862" fill="none" stroke="#b44124" stroke-width="3"/>
+<circle cx="398" cy="274" r="5" fill="#b44124"/><circle cx="862" cy="274" r="5" fill="#b44124"/>
+<rect x="505" y="248" width="250" height="23" fill="#fff"/><text x="630" y="266" text-anchor="middle" class="small bold">KLOCKA 40 MHz</text>
+<text x="60" y="335" class="pin">D4 / GPIO23</text>
+<text x="884" y="335" class="pin">J5-3 / PIN76</text>
+<path d="M398 328 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="328" r="5" fill="#1464a0"/><circle cx="862" cy="328" r="5" fill="#1464a0"/>
+<rect x="505" y="302" width="250" height="23" fill="#fff"/><text x="630" y="320" text-anchor="middle" class="small bold">D0 · bit 0</text>
+<text x="60" y="389" class="pin">D5 / GPIO24</text>
+<text x="884" y="389" class="pin">J5-5 / PIN42</text>
+<path d="M398 382 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="382" r="5" fill="#1464a0"/><circle cx="862" cy="382" r="5" fill="#1464a0"/>
+<rect x="505" y="356" width="250" height="23" fill="#fff"/><text x="630" y="374" text-anchor="middle" class="small bold">D1 · bit 1</text>
+<text x="60" y="443" class="pin">D6 / GPIO11</text>
+<text x="884" y="443" class="pin">J5-6 / PIN41</text>
+<path d="M398 436 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="436" r="5" fill="#1464a0"/><circle cx="862" cy="436" r="5" fill="#1464a0"/>
+<rect x="505" y="410" width="250" height="23" fill="#fff"/><text x="630" y="428" text-anchor="middle" class="small bold">D2 · bit 2</text>
+<text x="60" y="497" class="pin">D7 / GPIO12</text>
+<text x="884" y="497" class="pin">J5-10 / PIN48</text>
+<path d="M398 490 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="490" r="5" fill="#1464a0"/><circle cx="862" cy="490" r="5" fill="#1464a0"/>
+<rect x="505" y="464" width="250" height="23" fill="#fff"/><text x="630" y="482" text-anchor="middle" class="small bold">D3 · bit 3</text>
+<text x="60" y="551" class="pin">D8 / GPIO8</text>
+<text x="884" y="551" class="pin">J5-12 / PIN49</text>
+<path d="M398 544 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="544" r="5" fill="#1464a0"/><circle cx="862" cy="544" r="5" fill="#1464a0"/>
+<rect x="505" y="518" width="250" height="23" fill="#fff"/><text x="630" y="536" text-anchor="middle" class="small bold">D4 · bit 4</text>
+<text x="60" y="605" class="pin">D9 / GPIO9</text>
+<text x="884" y="605" class="pin">J5-13 / PIN86</text>
+<path d="M398 598 H862" fill="none" stroke="#1464a0" stroke-width="3"/>
+<circle cx="398" cy="598" r="5" fill="#1464a0"/><circle cx="862" cy="598" r="5" fill="#1464a0"/>
+<rect x="505" y="572" width="250" height="23" fill="#fff"/><text x="630" y="590" text-anchor="middle" class="small bold">D5 · bit 5</text>
+<text x="60" y="659" class="pin">GND</text>
+<text x="884" y="659" class="pin">J5-2 / GND</text>
+<path d="M398 652 H862" fill="none" stroke="#263947" stroke-width="3"/>
+<circle cx="398" cy="652" r="5" fill="#263947"/><circle cx="862" cy="652" r="5" fill="#263947"/>
+<rect x="505" y="626" width="250" height="23" fill="#fff"/><text x="630" y="644" text-anchor="middle" class="small bold">GEMENSAM JORD</text>
+<text x="60" y="706" class="small">MTMS är en pad på baksidan.</text>
+<text x="884" y="706" class="small">PINxx = FPGA:ns kapselstift.</text>
+<rect x="38" y="759" width="560" height="97" rx="10" fill="#fff4df" stroke="#b68a3f"/>
+<text x="58" y="790" class="sub bold">Matning och ledare</text>
+<text x="58" y="818" class="small">Egen USB till varje kort. Endast signaljord länkas.</text>
+<text x="58" y="843" class="small">Inga 5 V på signalerna. Länka inte 3V3 / 5V-stiften.</text>
+<rect x="622" y="759" width="620" height="97" rx="10" fill="#fff4df" stroke="#b68a3f"/>
+<text x="642" y="790" class="sub bold">Före start</text>
+<text x="642" y="818" class="small">Ström av vid koppling. TVP B och DAC-last bortkopplade.</text>
+<text x="642" y="843" class="small">Korta trådar + jordretur. Verifiera 40 MHz med prob.</text>
+<rect x="38" y="878" width="1204" height="110" rx="10" fill="#eaf2f8"/>
+<text x="58" y="910" class="sub bold">Bildvägen i första provet</text>
+<text x="58" y="945" class="pin">Kamera → sändare → RF → C5 → sex bitar + klocka → M4 DIGIN → HDMI-skärm</text>
+<text x="58" y="975" class="small">Bara gråskala förväntas. LED 2 visar rader, inte godkänd färg eller tvåkanalsmixning.</text>
+<text x="40" y="1020" class="small">Källa: Core 6b845e8, m4_dual_mix.cst + BRINGUP. Följ även körschemats versions- och filkontroll.</text>
+<text x="40" y="1047" class="small">Klockan byter data på fallande flank; FPGA:n samplar på stigande. Nyare C5-main ingår inte i provet.</text>
+</svg>

@@ -1,0 +1,127 @@
+{
+  "status": "PASS_FILE_CHECK_ONLY",
+  "base_commit": "388d2d17ff5582e698105eb0c1c62c29b8e17d11",
+  "changed_files": [
+    "main/CMakeLists.txt",
+    "main/transport.c"
+  ],
+  "saved_diff_matches_current_worktree": true,
+  "tree_diff_sha256": "0732572ee1adf89b068f585a1f6a281ab01de7e89107f2db1708758244b1a789",
+  "actual_transport_compile_has_gpio2": true,
+  "compile_records_sha256": "537cab3c49c8db7d854e6199a11b0ff4ed976bff32c19d3c5c25687508ef09a9",
+  "app_descriptor": {
+    "version": "5.0.0-dev",
+    "project": "c5vrx5",
+    "idf": "v6.0.2",
+    "date": "Oct 24 2026",
+    "time": "14:42:56"
+  },
+  "files": [
+    {
+      "name": "bootloader.bin",
+      "bytes": 23232,
+      "sha256": "92163cda491e3e2a553a4806bea1d5894364ab937b51e5394960aa0c1605df3a",
+      "matches_package_checksum": true,
+      "matches_build_copy": true
+    },
+    {
+      "name": "c5vrx5.bin",
+      "bytes": 1225360,
+      "sha256": "b0f430404ce3fd9021b5a83fbb36bbaa96759b0d3820cd8f814df3e0d54c5d22",
+      "matches_package_checksum": true,
+      "matches_build_copy": true
+    },
+    {
+      "name": "partition-table.bin",
+      "bytes": 3072,
+      "sha256": "e4fd61a2e47b7d36e663a40f7a49a0b9fbbb8b766d0f7a78201ae19471d67b75",
+      "matches_package_checksum": true,
+      "matches_build_copy": true
+    }
+  ],
+  "partitions": [
+    {
+      "type": 1,
+      "subtype": 2,
+      "offset": "0x9000",
+      "size": 24576,
+      "label": "nvs"
+    },
+    {
+      "type": 1,
+      "subtype": 1,
+      "offset": "0xf000",
+      "size": 4096,
+      "label": "phy_init"
+    },
+    {
+      "type": 0,
+      "subtype": 0,
+      "offset": "0x10000",
+      "size": 3145728,
+      "label": "factory"
+    },
+    {
+      "type": 1,
+      "subtype": 153,
+      "offset": "0x310000",
+      "size": 1572864,
+      "label": "flightlog"
+    }
+  ],
+  "package_flash_args_exists": false,
+  "build_flash_args_exists": true,
+  "remote_files_modified": false,
+  "flash_performed": false,
+  "build_performed": false,
+  "hardware_clock_verified": false,
+  "checked_date": "2026-10-25",
+  "scope": "Read-only SSH file/source/build-record check on the work laptop; no rebuild, flash or measured clock.",
+  "fpga_files_on_work_laptop": [
+    {
+      "file": "/root/openvrx-wt/digin/gateware/build/m4_dual_mix_digin.fs",
+      "bytes": 7261470,
+      "sha256": "5b2f0b9293a504b0fa1f2a4e068d685c4232255c3b28d9878e5fc44d897b4550",
+      "matches_planned_bitstream": true,
+      "manifest_exists": true,
+      "options": {
+        "devcmd": "0",
+        "digin": "1",
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "low": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "tvp_addr": "5C",
+        "uart_baud": "115200",
+        "vinterp": "0"
+      },
+      "declared_source_inputs_verified": 58
+    },
+    {
+      "file": "/mnt/c/Users/lenny/Desktop/Drönare/OpenVRX/OpenVRX-Core/gateware/build/m4_dual_mix_digin.fs",
+      "bytes": 7261470,
+      "sha256": "5b2f0b9293a504b0fa1f2a4e068d685c4232255c3b28d9878e5fc44d897b4550",
+      "matches_planned_bitstream": true,
+      "manifest_exists": true,
+      "options": {
+        "devcmd": "0",
+        "digin": "1",
+        "freq_mhz": "75",
+        "hdmi": "0",
+        "ioreg": "0",
+        "low": "0",
+        "mspi": "0",
+        "pull": "",
+        "sdram_phase": "",
+        "seed": "0",
+        "tvp_addr": "5C",
+        "uart_baud": "115200",
+        "vinterp": "0"
+      }
+    }
+  ]
+}

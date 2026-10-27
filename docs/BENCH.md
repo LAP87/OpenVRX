@@ -181,7 +181,7 @@ Med grabbern per läge `tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Int
 
 Gör så här tills orsaken är känd: läs loggen löpande (en `log` i bakgrunden) i stället för att låta den ligga oläst i timmar, och bryt strömmen (dra ur USB) när `log` ger 0 rader på 30 s med en bitström som ska skriva.
 
-2026-10-27: bryggan tystnade igen efter 7,7 kB i 921 600 baud (M7-probens dump), och en strömbrytning av Tang ensam hjälpte inte: med XIAO:n kopplad till J5 matas kortet svagt genom I/O-cellernas skyddsdioder från klock- och datatrådarna, så BL616 startar inte om förrän båda korten är strömlösa samtidigt. Håll 115 200 baud mot bryggan.
+2026-10-27: bryggan tystnade tre gånger. Efter 7,7 kB i 921 600 baud (M7-probens dump); efter ett enda USB-paket när proben hade sänt en sekund innan läsaren öppnades; och mitt i en dump med läsaren öppen, efter att 7,8 kB legat oläst i bryggan från den förra laddningen. Det gemensamma är oläst data i bryggan. Regel: öppna läsaren före laddningen, lämna aldrig en pratande bitström utan läsare, ladda en tyst bitström efter mätningen, håll 115 200 baud. En strömbrytning av Tang ensam hjälpte inte: med XIAO:n kopplad till J5 matas kortet svagt genom I/O-cellernas skyddsdioder från klock- och datatrådarna (alla lysdioder släckta först när båda korten är ur), så BL616 startar inte om förrän båda korten är strömlösa samtidigt. `wsl --shutdown` och ny attach ändrade inget.
 
 ## Orange Pi-proben (uppgift 70)
 
@@ -189,11 +189,14 @@ En Orange Pi 5 med ett RTL8852BE-kort i monitorläge ger 64 KiB råa I/Q-sampel 
 
 ## Den digitala bussen: M7-proben (uppgift 68/69)
 
-När kanal B tar C5VRX:s sampelbuss (`DIGIN=1`) finns ingen TVP-status att läsa, och M4 har ingen UART. Core `top/m7_digin_probe.v` (`gateware/build.sh m7_digin_probe`, bygget tar sekunder) fångar 65 536 sampel (1,6 ms, 26 NTSC-rader) på bussklockan från J5 och skickar dem som hex över USB-UART:en i 115 200 baud, en fångst per 12 s, med en rad `CAP …` emellan från en levande `cvbs_capture` på bussen: fönstrets längd, lås nu, låsväxlingar, radmarkörer, dåliga, kortaste och längsta rad, ord. Huvudraden `DIGIN <n> CLK <t>` ger bussklockan (`t` × 65 536 Hz).
+När kanal B tar C5VRX:s sampelbuss (`DIGIN=1`) finns ingen TVP-status att läsa, och M4 har ingen UART. Core `top/m7_digin_probe.v` (`gateware/build.sh m7_digin_probe`, bygget tar sekunder) fångar 65 536 sampel (1,6 ms, 26 NTSC-rader) på bussklockan från J5, från första breda pulsen (vertikalintervallet och raderna efter hamnar i dumpen), och skickar dem som hex över USB-UART:en i 115 200 baud, en fångst per 12 s, med en rad `CAP …` emellan från en levande `cvbs_capture` på bussen (med en ingångsvippa före, som `mixer2`): fönstrets längd, lås nu, låsväxlingar, radmarkörer, dåliga, kortaste och längsta rad, ord, och `x=` rader med längd utanför mixerns 1 716 ± 2. Huvudraden `DIGIN <n> CLK <t>` ger bussklockan (`t` × 65 536 Hz).
+
+**Läsaren först.** Bryggan låser sig när data ligger oläst i den (tre gånger 2026-10-27, se "När loggen tystnar"), och proben börjar skicka en sekund efter laddningen. Öppna läsaren, ladda sedan, och ladda en tyst bitström (M4) direkt efter mätningen:
 
 ```bash
-python tools/bench/bench.py flash m7_digin_probe --build-dir <Core>/gateware/build
-python tools/bench/uart_raw.py /dev/ttyUSB1 28 ../bench-logs/<dag>/digin-probe.txt      # rått, minst två fångster
+python tools/bench/uart_raw.py /dev/ttyUSB1 60 ../bench-logs/<dag>/digin-probe.txt &   # rått, öppnas först
+sleep 1; python tools/bench/bench.py flash m7_digin_probe --build-dir <Core>/gateware/build
+wait; python tools/bench/bench.py flash m4_dual_mix_digin --build-dir <Core>/gateware/build   # tyst igen
 python tools/bench/digin_decode.py ../bench-logs/<dag>/digin-probe.txt                   # nivåer, pulser, bild
 python tools/bench/digin_model.py <Core> ../bench-logs/<dag>/digin-probe.txt [synk släckning]   # samplen genom modellen
 ```

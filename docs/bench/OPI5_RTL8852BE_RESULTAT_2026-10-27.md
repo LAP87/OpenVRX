@@ -42,27 +42,31 @@ Bild 2: brus utan sändare på kanal 161 (5 805) med 20 MHz kanalbredd och 80 MH
 
 ## Analog RF (fas C)
 
-- Kameran på (ägaren 08:55, kanal okänd för ägaren): effekten steg 13 dB i väg B. Sändaren ligger **ovanför radions översta kanal**: på kanal 165 (LO 5 825) med 80 MHz sampling syns den som en bred FM-puckel vid +12 till +26 MHz i kanalfiltrets flank, med släckningsnivån vid +18,0 (09:12) till +19,5 MHz (09:28), alltså 5 843 till 5 844,5 MHz: **R6 (5 843)**, möjligen A2 (5 845). På kanal 161 (LO 5 805) finns ingen puckel, så den är verklig RF och inte en spegelbild. Vad kanalen heter på sändaren är inte verifierat.
+- Kameran på (ägaren 08:55, kanal okänd för ägaren): effekten steg 13 dB i väg B. Sändaren låg då **ovanför radions översta kanal**: på kanal 165 (LO 5 825) med 80 MHz sampling syntes den som en bred FM-puckel vid +12 till +26 MHz i kanalfiltrets flank, synktoppen vid 5 840 till 5 842 MHz. På kanal 161 (LO 5 805) fanns ingen puckel, så den var verklig RF och inte en spegelbild. Med sändarens frekvenskonvention nedan var kanalen troligen F6 (5 840).
 - Demodulering (momentanfrekvens efter bandbegränsning, `la_fm.py`): synkpuls 374 till 388 sampel vid 80 MHz (4,7 µs), radavstånd 5 084 till 5 085 sampel (63,55 µs), färgburst 3,58 MHz: **NTSC**. Bild 1 är en nästan tom bild (synkdjup 2,8 MHz), bild 3 har bildinnehåll och kroma. Synk- och radtakten mättes i sampel (`la_lines.py`) i fyra fångster med samma värden.
-- Alla tidigare värden från 20 MHz sampling (bärare "5 820", ton "5 822") var vikningar av samma signal och är strukna; de står kvar i bänkloggen som lärdom.
+- 10:11, sändaren satt på **F4 (5 800)** av ägaren och kontrollerad i Moneagle-glasögonen: på kanal 161 (LO 5 805) ligger hela signalen i kanalen, 25 dB över bruset i båda vägarna. Spektrumets fyra puckar är videonivåerna: synktopp −5,3, släckning +0,6 och vitt +4,9 MHz från LO, alltså synktoppen vid 5 799,7 MHz: kanalnumret är synktoppens frekvens hos den här sändaren, deviation synk till vitt cirka 10 MHz. Fångsten med 20 MHz sampling (index 2, 410 µs) ger **6,4 rena rader** med synk, burst, bakre platå och ett ljust parti i bilden (bild 4). Väg A klipper vid ±2 047, väg B inte: ingen AGC-verkan i det här läget med sändaren nära.
+- Alla tidigare värden från 20 MHz sampling med sändaren utanför kanalen (bärare "5 820", ton "5 822") var vikningar och är strukna; de står kvar i bänkloggen som lärdom. Klockindex 1 (40 MHz) ger motsägande tider i alla prov och används inte.
 
 ![Kanal 5 825 med sändaren i filterflanken, 80 MHz sampling](../img/opi5_2026-10-27/kanal5825_80mhz_092838.png)
 
 Bild 3: fångsten `la-ch5825-1027-092838` (102 µs). Överst spektrumet: puckeln vid +12 till +26 MHz är videosändaren, de smala topparna vid +5,5 och +6,6 MHz mottagarens egna. Under: en hel rad med synk, färgburst, bakre platå och bildinnehåll med kroma.
 
+![F4 i kanal 161, 20 MHz sampling, 410 µs](../img/opi5_2026-10-27/f4_kanal161_20mhz_101209.png)
+
+Bild 4: fångsten `la-ch5805-1027-101209` (410 µs) med sändaren på F4. Överst spektrumet med videonivåerna som puckar. Under: 6,4 rader, var och en med synk, burst, bakre platå och det ljusa partiet.
+
 ## Vad som inte är visat
 
 - Ingen kontinuerlig ström: 64 KiB per fångst och minst en sekund per omgång (timeout, pollning, utskrift). Fas D och E är inte påbörjade.
-- Sändaren inom kanalen: alla fångster togs i filterflanken eller vikta. En VTX-kanal inom 5 500 till 5 825 MHz (F4 5 800, R5 5 806, A4 5 805 eller lägre) ger ett rent prov; det kräver att ägaren kan byta kanal på sändaren.
-- Ingen siffra för ADC-upplösning eller ENOB; "12 bitar" är fältbredden i ordet.
+- Ingen siffra för ADC-upplösning eller ENOB; "12 bitar" är fältbredden i ordet. Väg A klipper med sändaren nära; nivåstyrningen är inte undersökt.
 - Kraschloggen från 16:55: pstore tömdes av strömbrytningen. Nästa gång: Alt+SysRq+B från ett tangentbord i Pi:n bevarar ramoops.
 
 ## Filer
 
-- Råfiler, loggar och bilder: `bench-logs/2026-10-26-digital-b/` på jobbdatorn, utanför repona; `NOTES.md` där har hela förloppet med tider, `SHA256SUMS-opi5.txt` hashar alla fångster. Tre nycklar: `la-cap-1027-085515.txt` (bild 1) `0b725f0594284811…`, `la-ch5825-1027-092838.txt` (bild 3), `la-cap-1027-084626.txt` (bild 2) `0011df0bd5db273c…`.
+- Råfiler, loggar och bilder: `bench-logs/2026-10-26-digital-b/` på jobbdatorn, utanför repona; `NOTES.md` där har hela förloppet med tider, `SHA256SUMS-opi5.txt` hashar alla fångster. Nycklar: `la-cap-1027-085515.txt` (bild 1) `0b725f0594284811…`, `la-ch5825-1027-092838.txt` (bild 3), `la-ch5805-1027-101209.txt` (bild 4), `la-cap-1027-084626.txt` (bild 2) `0011df0bd5db273c…`.
 - Skript hos agenten (scratchpad, flyttas till `tools/` om spåret fortsätter): `opi_swap.sh` (drivrutinsbytet steg för steg med spärrar), `opi_la_remote.sh` (`cap2`, `chan`, `sweep`, `cap20` på Pi:n), `opi_fetch.sh`, `la_decode.py` (ordstruktur), `la_fm.py` (spektrum och FM), `la_lines.py` (radtakt i sampel), `la_join.py` (skarvkontroll).
 - Återgång: omstart av Pi:n ger `rtw89` tillbaka; inget i `/boot` är ändrat. Installerat på Pi:n: linux-headers-vendor-rk35xx 26.8.3, make, git, flex, bison, libssl-dev.
 
 ## Nästa uppgift
 
-Fas D som mätning, med sändaren på en kanal inom radions band: hur tätt 64 KiB-fångster kan tas (`max_num` med drivrutinens 500 ms-timer, eller egen slinga) och hur stora luckorna är, tidsstämplade ur radsynken. Blir kadensen sekunder per fångst är LA-vägen en mätprobe och inte en mottagare, och spåret pausas med det beskedet.
+Fas D som mätning, med sändaren på F4 i kanal 161: hur tätt 64 KiB-fångster kan tas (`max_num` med drivrutinens 500 ms-timer, eller egen slinga) och hur stora luckorna är, tidsstämplade ur radsynken. Blir kadensen sekunder per fångst är LA-vägen en mätprobe och inte en mottagare, och spåret pausas med det beskedet.

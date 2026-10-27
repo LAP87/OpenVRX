@@ -28,7 +28,7 @@ I dag går bilden C5VRX → sex motstånd (DAC) → TVP5150 → Tang → HDMI. D
    | GND | J5-2 (GND) | jord |
 
    TVP-modulen får inte sitta på de stiften samtidigt (den hör till A:s plats, J6). Inga 5 V eller 3,3 V mellan korten, bara signaler och jord. Kontrollera J5:s numrering mot kortets schema innan du löder; tabellen står också i Core `gateware/BRINGUP.md`.
-4. **Gör kanal A tyst för första provet.** Dra ur TVP-modulens matning, eller RCA-kabeln från DAC-noden. Då syns bara B. Med bitströmmen `2fdc82e` kan A sitta kvar som ett andra prov: det blir det första A/B-provet.
+4. **Gör kanal A tyst för första provet.** Dra ur TVP-modulens matning (eller hela modulen). Bara RCA-kabeln räcker inte: en TVP5150 utan insignal frilöper och ger en helt platt blå ruta, och blandaren väljer den kanal vars rader har minst högfrekvent energi, så den platta rutan vinner mot B:s bild (grå ruta med svarta kanter i gråskala). Med bitströmmen `2fdc82e` kan A sitta kvar som ett andra prov: det blir det första A/B-provet.
 5. **Ström på båda korten**, egen USB var. Säg till Fable, som laddar `6b845e8/m4_dual_mix_digin.fs`. De första tre sekunderna visar lysdiod 1 och 2 SDRAM-självtestet; därefter betyder lysdiod 2 "rader från B". Kameran på.
 6. **Titta efter:** lysdiod 2 tänd; gråskalebild på HDMI med svarta kanter (4:3 i 720p); vifta med handen framför kameran, så att det är levande video och inte fryst fältminne. Låt det gå fem minuter: rullning, frysningar, svarta avbrott, förskjutning. Mobilbilder av skärmen till `bench-logs\2026-10-26-digital-b\`.
 7. **Avbrott:** sändaren av 5 s och på igen, tre gånger. Hur lång tid till levande bild?

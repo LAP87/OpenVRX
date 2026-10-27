@@ -104,7 +104,9 @@ python tools/bench/c5.py calibrate         # frågar om sändaren är av, skicka
 | `send`, `tail` | råa tangenter genom demonen, de senaste korta raderna |
 | `reboot --i-know`, `download --i-know` | sätter DTR/RTS med avsikt (demonen stoppad), efter en varning |
 
-Tolken läser varje känd rad strikt (`CONTROL`, `RX_LEVEL`, `HB`, `OUTPUT`, `FIRMWARE`, `FILTER`, `FILTER_CAL`, `FIELD_DIAG_EVENT`): ett fält som saknas eller har fel form ger fel i stället för ett gissat värde. Testat mot de tre sparade loggarna i `tools/bench/fixtures/` med negativ kontroll (sju förvanskade rader, var och en ger fel), och demonen mot en låtsas-C5VRX på en pty (`status`, `channel`, `level`, korta och långa loggen). Inte provat mot kortet.
+Tolken läser varje känd rad strikt (`CONTROL`, `RX_LEVEL`, `HB`, `OUTPUT`, `FIRMWARE`, `FILTER`, `FILTER_CAL`, `FIELD_DIAG_EVENT`): ett fält som saknas eller har fel form ger fel i stället för ett gissat värde. Testat mot de tre sparade loggarna i `tools/bench/fixtures/` med negativ kontroll (sju förvanskade rader, var och en ger fel), och demonen mot en låtsas-C5VRX på en pty (`status`, `channel`, `level`, korta och långa loggen). Privata byggen säger `version=5.0.0-dev` och `commit=<sha>-dirty`; tolken tar det sedan 2026-10-27.
+
+Mot kortet 2026-10-27: demonen öppnar porten och tar emot kommandon, men socketen kan inte ligga under `/mnt/c` (DrvFs ger "Operation not supported" för AF_UNIX), så den läggs under `/tmp` när loggmappen ligger på Windows-disken. Samma dag tog kortet inte emot ett enda byte via usbipd (esptool "Write timeout" både med och utan reset, demonens `T` utan svar, resetpuls utan verkan), medan Chromes webbterminal fungerade direkt efteråt; orsaken är inte utredd. Webbterminalen (`web/app.js`, `receiver-console.js` i C5VRX-källan) nekar själv tangenterna `U`, `m`, `K`, `k`, `j`, `P`, `O` och `H` ("[Web terminal] Unsupported key"), oavsett firmware, och `b`/`c` först när den sett raden `C5VRX5 version=`.
 
 **DTR/RTS på ESP32-C5:ans USB-serial-JTAG-port.**
 
@@ -179,9 +181,24 @@ Med grabbern per läge `tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Int
 
 Gör så här tills orsaken är känd: läs loggen löpande (en `log` i bakgrunden) i stället för att låta den ligga oläst i timmar, och bryt strömmen (dra ur USB) när `log` ger 0 rader på 30 s med en bitström som ska skriva.
 
+2026-10-27: bryggan tystnade igen efter 7,7 kB i 921 600 baud (M7-probens dump), och en strömbrytning av Tang ensam hjälpte inte: med XIAO:n kopplad till J5 matas kortet svagt genom I/O-cellernas skyddsdioder från klock- och datatrådarna, så BL616 startar inte om förrän båda korten är strömlösa samtidigt. Håll 115 200 baud mot bryggan.
+
 ## Orange Pi-proben (uppgift 70)
 
 En Orange Pi 5 med ett RTL8852BE-kort i monitorläge ger 64 KiB råa I/Q-sampel per fångst ur drivrutinens logikanalysator, 410 µs vid 20 MHz sampling. Skripten i `tools/opi5/` tar fångsterna över SSH och tolkar dem på datorn: spektrum, bärare, FM-demodulering med radsynk och burst, kanal och deviation för en sändare på några sekunder. Det är en mätprobe, inte en mottagare: som tätast 0,4 s mellan fångster. Krav på Pi:n, arbetsgång och gränser står i [tools/opi5/README.md](../tools/opi5/README.md); mätningarna i [bench/OPI5_RTL8852BE_RESULTAT_2026-10-27.md](bench/OPI5_RTL8852BE_RESULTAT_2026-10-27.md).
+
+## Den digitala bussen: M7-proben (uppgift 68/69)
+
+När kanal B tar C5VRX:s sampelbuss (`DIGIN=1`) finns ingen TVP-status att läsa, och M4 har ingen UART. Core `top/m7_digin_probe.v` (`gateware/build.sh m7_digin_probe`, bygget tar sekunder) fångar 65 536 sampel (1,6 ms, 26 NTSC-rader) på bussklockan från J5 och skickar dem som hex över USB-UART:en i 115 200 baud, en fångst per 12 s, med en rad `CAP …` emellan från en levande `cvbs_capture` på bussen: fönstrets längd, lås nu, låsväxlingar, radmarkörer, dåliga, kortaste och längsta rad, ord. Huvudraden `DIGIN <n> CLK <t>` ger bussklockan (`t` × 65 536 Hz).
+
+```bash
+python tools/bench/bench.py flash m7_digin_probe --build-dir <Core>/gateware/build
+python tools/bench/uart_raw.py /dev/ttyUSB1 28 ../bench-logs/<dag>/digin-probe.txt      # rått, minst två fångster
+python tools/bench/digin_decode.py ../bench-logs/<dag>/digin-probe.txt                   # nivåer, pulser, bild
+python tools/bench/digin_model.py <Core> ../bench-logs/<dag>/digin-probe.txt [synk släckning]   # samplen genom modellen
+```
+
+Mätt 2026-10-27 (bänkloggen `2026-10-26-digital-b/digin-probe-1027-*`): bussklockan 40,0 MHz, rader om 2 530–2 544 sampel, synkpuls 182 sampel, och C5VRX:s nivåer synktopp 22–24, släckning 30–32, video 40–56, vitt 62 med `OUTPUT 1.0x`; synktoppen brusar ±8 koder, samplen kommer parvis. Det var därför `6b845e8` inte gav rader: skiljaren startade på 12 och väntade synk vid 4. Sedan grenen `digin/levels` sveper `cvbs_capture` skiljaren tills en rad hittas. M3-proben (`m3_probe.fs`) duger för kabelkontrollen: B:s `sclk` visar räknarens tak (över 33,5 MHz) och `tog 3F` säger att alla sex bitar växlar.
 
 ## Mätt på hårdvara
 

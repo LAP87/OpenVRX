@@ -17,7 +17,8 @@ set the lines, on purpose. What is observed and what is assumed about this: hub 
 
 The daemon appends every line to DIR/full.log and the lines without FIELD_TRACE / FIELD_DIAG (but with
 FIELD_DIAG_EVENT) to DIR/short.log, each with the arrival time, and answers JSON requests on the Unix socket
-DIR/c5.sock (one request per connection): {"op": "send", "keys": "T"}, {"op": "status"} (sends T and parses the
+DIR/c5.sock, or under /tmp when DIR is a Windows drive under /mnt, which cannot hold a socket (one request per
+connection): {"op": "send", "keys": "T"}, {"op": "status"} (sends T and parses the
 answer), {"op": "tail", "n": 40}. DIR defaults to the hub's ../bench-logs/c5vrx. Linux only (termios, AF_UNIX);
 `parse` works anywhere. Not run against the board yet (hub docs/NATTPASS_2026-10-23.md, task 56).
 """
@@ -45,6 +46,16 @@ class ParseError(ValueError):
 
 def default_dir():
     return Path(os.environ.get('OPENVRX_BENCH_LOGS', HUB.parent / 'bench-logs')) / 'c5vrx'
+
+
+def sock_path(d):
+    """The daemon's socket for the log directory d. A Windows drive under /mnt (DrvFs) cannot hold an AF_UNIX
+    socket ("Operation not supported", bench 2026-10-27), so such a directory gets its socket under /tmp."""
+    import hashlib
+    d = Path(d)
+    if str(d).startswith('/mnt/'):
+        return Path('/tmp') / f'openvrx-c5vrx-{hashlib.md5(str(d).encode()).hexdigest()[:8]}.sock'
+    return d / 'c5.sock'
 
 
 def is_trace(line):
@@ -80,7 +91,9 @@ def _num(v, kind, key, line, pattern, conv):
 INT, FLOAT, BIT = (r'-?\d+', int), (r'-?\d+(\.\d+)?', float), (r'[01]', int)
 # per line kind: the fields read, with the pattern each must match (a damaged line raises ParseError)
 FIELDS = {
-    'FIRMWARE': {'version': (r'\d+\.\d+\.\d+', str), 'commit': (r'[0-9a-f]{7,40}', str), 'id': (r'\S+', str)},
+    # private builds say version=5.0.0-dev and commit=<sha>-dirty (bench 2026-10-27)
+    'FIRMWARE': {'version': (r'\d+\.\d+\.\d+(-[0-9A-Za-z.]+)?', str), 'commit': (r'[0-9a-f]{7,40}(-dirty)?', str),
+                 'id': (r'\S+', str)},
     'CONTROL': {'channel': (r'[A-Z][1-8]', str), 'freq': (r'\d{4}', int), 'afc_locked': BIT, 'standard': (r'\w+', str),
                 'detected': (r'\w+', str), 'signal': INT, 'menu': BIT, 'busy': BIT, 'cfo_khz': INT,
                 'offset_khz': INT},
@@ -252,7 +265,7 @@ class Daemon:
     def serve(self):
         self.fd = open_port(self.port)
         threading.Thread(target=self.reader, daemon=True).start()
-        path = self.dir / 'c5.sock'
+        path = sock_path(self.dir)
         if path.exists():
             path.unlink()
         srv = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
@@ -285,9 +298,9 @@ def request(d, req, timeout=30):
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     s.settimeout(timeout)
     try:
-        s.connect(str(Path(d) / 'c5.sock'))
+        s.connect(str(sock_path(d)))
     except OSError as e:
-        raise SystemExit(f'no c5 daemon at {d}/c5.sock ({e}); start it with: c5.py daemon')
+        raise SystemExit(f'no c5 daemon at {sock_path(d)} ({e}); start it with: c5.py daemon')
     with s:
         s.sendall((json.dumps(req) + '\n').encode())
         return json.loads(s.makefile().readline())
@@ -412,7 +425,7 @@ def main(argv=None):
         if not a.i_know:
             print('refused: add --i-know')
             return 1
-        if (Path(a.dir) / 'c5.sock').exists():
+        if sock_path(a.dir).exists():
             try:
                 request(a.dir, {'op': 'tail', 'n': 1}, timeout=2)
                 print('refused: the daemon holds the port; stop it first')

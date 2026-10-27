@@ -1,1 +1,4 @@
 tools/bench/fixtures/*.log -text
+tools/opi5/*.sh text eol=lf
+tools/opi5/*.py text eol=lf
+tools/opi5/sd/*.py text eol=lf

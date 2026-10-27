@@ -75,9 +75,9 @@ BB-triggen And0 på bit 0 av dbg-port 0x2002 stoppar lika snabbt (16 av 16). Tri
 ## Filer
 
 - Råfiler, loggar och bilder: `bench-logs/2026-10-26-digital-b/` på jobbdatorn, utanför repona; `NOTES.md` där har hela förloppet med tider, `SHA256SUMS-opi5.txt` hashar alla fångster. Nycklar: `la-cap-1027-085515.txt` (bild 1) `0b725f0594284811…`, `la-ch5825-1027-092838.txt` (bild 3), `la-ch5805-1027-101209.txt` (bild 4), `la-cap-1027-084626.txt` (bild 2) `0011df0bd5db273c…`.
-- Skript hos agenten (scratchpad, flyttas till `tools/` om spåret fortsätter): `opi_swap.sh` (drivrutinsbytet steg för steg med spärrar), `opi_la_remote.sh` (`cap2`, `chan`, `sweep`, `cap20` på Pi:n), `opi_fetch.sh`, `la_decode.py` (ordstruktur), `la_fm.py` (spektrum och FM), `la_lines.py` (radtakt i sampel), `la_join.py` (skarvkontroll).
+- Skripten ligger i navets [`tools/opi5/`](../../tools/opi5/README.md) (ägarens beslut 2026-10-27 11:10): `swap.sh` (drivrutinsbytet steg för steg med spärrar), `la.sh` med `la_remote.sh` (`chan`, `cap2`, `cap20`, `sweep`, `cad`, `dbg` på Pi:n), `fetch.sh`, `cal.sh`, `cadence.sh`, `find.sh`, `la_decode.py` (ordstruktur), `la_fm.py` (spektrum och FM), `la_lines.py` (radtakt i sampel), `la_join.py` (skarvkontroll), `sd/` (rå kortläsning från Windows). Provkörda från den platsen 11:19 (`cal.sh 2 5805`, fångst och demodulering).
 - Återgång: omstart av Pi:n ger `rtw89` tillbaka; inget i `/boot` är ändrat. Installerat på Pi:n: linux-headers-vendor-rk35xx 26.8.3, make, git, flex, bison, libssl-dev.
 
 ## Nästa uppgift
 
-Paus för mottagarspåret: inga fler motiverade försök i nuvarande omfattning. Kadensen i fas D sätter LA-vägen som mätprobe, och en drivrutinspatch ändrar inte att bufferten är 410 µs. Proben kan däremot användas som den är: spektrum, kanal, deviation och nivå för en VTX på några sekunder (`opi_cal.sh`, `la_fm.py`), vilket är mer än RX5808-vägen ger. Om ägaren vill ha det som verktyg flyttas skripten till navets `tools/`; det är ett eget beslut.
+Paus för mottagarspåret: inga fler motiverade försök i nuvarande omfattning. Kadensen i fas D sätter LA-vägen som mätprobe, och en drivrutinspatch ändrar inte att bufferten är 410 µs. Ägaren beslutade 2026-10-27 att behålla proben som verktyg: spektrum, kanal, deviation och nivå för en VTX på några sekunder (`tools/opi5/`, se [BENCH.md](../BENCH.md)), vilket är mer än RX5808-vägen ger.

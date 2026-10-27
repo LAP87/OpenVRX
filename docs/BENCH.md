@@ -179,6 +179,10 @@ Med grabbern per läge `tools\bench.ps1 quality -Device "<namn>" -Frames 30 -Int
 
 Gör så här tills orsaken är känd: läs loggen löpande (en `log` i bakgrunden) i stället för att låta den ligga oläst i timmar, och bryt strömmen (dra ur USB) när `log` ger 0 rader på 30 s med en bitström som ska skriva.
 
+## Orange Pi-proben (uppgift 70)
+
+En Orange Pi 5 med ett RTL8852BE-kort i monitorläge ger 64 KiB råa I/Q-sampel per fångst ur drivrutinens logikanalysator, 410 µs vid 20 MHz sampling. Skripten i `tools/opi5/` tar fångsterna över SSH och tolkar dem på datorn: spektrum, bärare, FM-demodulering med radsynk och burst, kanal och deviation för en sändare på några sekunder. Det är en mätprobe, inte en mottagare: som tätast 0,4 s mellan fångster. Krav på Pi:n, arbetsgång och gränser står i [tools/opi5/README.md](../tools/opi5/README.md); mätningarna i [bench/OPI5_RTL8852BE_RESULTAT_2026-10-27.md](bench/OPI5_RTL8852BE_RESULTAT_2026-10-27.md).
+
 ## Mätt på hårdvara
 
 | Datum | Vad | Resultat |

@@ -55,9 +55,20 @@ Bild 3: fångsten `la-ch5825-1027-092838` (102 µs). Överst spektrumet: puckeln
 
 Bild 4: fångsten `la-ch5805-1027-101209` (410 µs) med sändaren på F4. Överst spektrumet med videonivåerna som puckar. Under: 6,4 rader, var och en med synk, burst, bakre platå och det ljusa partiet.
 
+## Kontinuitet (fas D), 10:25 till 10:30
+
+Drivrutinen skriver inte ut automatiskt (`is_la_print` används aldrig) och hämtar inte bufferten i timeout-vägen, så `max_num` ger inget. Varje fångst drivs från användarrymden: `reset`, `buf 0`, `cmn`, `tmac` eller `mac`, `trig`, `get` vid timeout, `print 0`, vänta på `Dump_End`. Skriptet tar tid per steg och läser kärnans tidsstämpel för stoppet (`la_remote.sh cad`, loggar `opi5-cadence-*.txt`, fångsterna `la-cad-*.txt`).
+
+| Stopp | Fångster | `trig` | Per fångst i skriptet | Stopp till stopp i kärnan | Fulla buffertar |
+|---|---:|---:|---:|---:|---:|
+| MAC-timeout 1 s, ingen trigg | 8 | 1,10 s | 1,20 till 1,33 s | 1,39 till 1,51 s | 8 av 8 |
+| MAC-trigg CCA (`mac 0 1 0 0`), trigtid 404 µs | 20 | 0,14 s | 0,21 till 0,34 s, medel 0,23 | 0,40 till 0,62 s, medel 0,46 | 17 av 20 (tre med 8 086 till 8 123 ord) |
+
+BB-triggen And0 på bit 0 av dbg-port 0x2002 stoppar lika snabbt (16 av 16). Trigtid 0 eller 10 µs ger halvfulla buffertar (126 till 5 611 ord): bara tiden efter triggen sparas, så trigtiden ska täcka bufferten. Golvet med den här drivrutinen är pollrundan på 100 ms, `get` på 0,04 till 0,18 s och `print 0` på 16 ms: omkring 0,2 s per fångst, alltså högst cirka fem fångster per sekund à 410 µs. Det är 2 ms signal per sekund och 32 rader per sekund av 15 734. Luckan mellan två fångster är minst 0,4 s i dag. **Ingen gapfri ström: LA-vägen är en mätprobe, inte en mottagare.** En drivrutinspatch som läser bufferten binärt via proc och pollar med 1 ms skulle uppskattningsvis ge 50 till 100 fångster per sekund, fortfarande under 4 % av tiden; bufferten är 64 KiB och kan inte växa på 8852B cut B.
+
 ## Vad som inte är visat
 
-- Ingen kontinuerlig ström: 64 KiB per fångst och minst en sekund per omgång (timeout, pollning, utskrift). Fas D och E är inte påbörjade.
+- Ingen kontinuerlig ström (fas D ovan). Fas E är inte påbörjad och motiveras inte av fas D.
 - Ingen siffra för ADC-upplösning eller ENOB; "12 bitar" är fältbredden i ordet. Väg A klipper med sändaren nära; nivåstyrningen är inte undersökt.
 - Kraschloggen från 16:55: pstore tömdes av strömbrytningen. Nästa gång: Alt+SysRq+B från ett tangentbord i Pi:n bevarar ramoops.
 
@@ -69,4 +80,4 @@ Bild 4: fångsten `la-ch5805-1027-101209` (410 µs) med sändaren på F4. Övers
 
 ## Nästa uppgift
 
-Fas D som mätning, med sändaren på F4 i kanal 161: hur tätt 64 KiB-fångster kan tas (`max_num` med drivrutinens 500 ms-timer, eller egen slinga) och hur stora luckorna är, tidsstämplade ur radsynken. Blir kadensen sekunder per fångst är LA-vägen en mätprobe och inte en mottagare, och spåret pausas med det beskedet.
+Paus för mottagarspåret: inga fler motiverade försök i nuvarande omfattning. Kadensen i fas D sätter LA-vägen som mätprobe, och en drivrutinspatch ändrar inte att bufferten är 410 µs. Proben kan däremot användas som den är: spektrum, kanal, deviation och nivå för en VTX på några sekunder (`opi_cal.sh`, `la_fm.py`), vilket är mer än RX5808-vägen ger. Om ägaren vill ha det som verktyg flyttas skripten till navets `tools/`; det är ett eget beslut.

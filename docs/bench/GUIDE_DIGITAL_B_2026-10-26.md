@@ -16,18 +16,18 @@ I dag går bilden C5VRX → sex motstånd (DAC) → TVP5150 → Tang → HDMI. D
 2. **Löd klocktråden.** Strömlöst. MTMS-paden sitter på XIAO:ns baksida bland de små testpaddarna. Tunn tråd, lite tenn; kontrollera med multimetern att paden inte kortsluter mot grannpaden eller jord. Det är den enda lödningen.
 3. **Koppla sex datatrådar och jord**, fortfarande strömlöst. Trådarna kan tas från kopplingsplattans rader där XIAO:ns stift redan sitter; DAC-motstånden får sitta kvar.
 
-   | Från XIAO | Till Tang J5 | Signal |
+   | Från XIAO | Till Tang (stiftet tryckt på kortet) | Signal |
    |---|---|---|
-   | MTMS-pad (GPIO2) | J5-4 (PIN80) | klocka 40 MHz |
-   | D4 | J5-3 (PIN76) | bit 0 |
-   | D5 | J5-5 (PIN42) | bit 1 |
-   | D6 | J5-6 (PIN41) | bit 2 |
-   | D7 | J5-10 (PIN48) | bit 3 |
-   | D8 | J5-12 (PIN49) | bit 4 |
-   | D9 | J5-13 (PIN86) | bit 5 |
-   | GND | J5-2 (GND) | jord |
+   | MTMS-pad (GPIO2) | 80 | klocka 40 MHz |
+   | D4 | 76 | bit 0 |
+   | D5 | 42 | bit 1 |
+   | D6 | 41 | bit 2 |
+   | D7 | 48 | bit 3 |
+   | D8 | 49 | bit 4 |
+   | D9 | 86 | bit 5 |
+   | GND | GND | jord |
 
-   TVP-modulen får inte sitta på de stiften samtidigt (den hör till A:s plats, J6). Inga 5 V eller 3,3 V mellan korten, bara signaler och jord. Kontrollera J5:s numrering mot kortets schema innan du löder; tabellen står också i Core `gateware/BRINGUP.md`.
+   TVP-modulen får inte sitta på de stiften samtidigt (den hör till A:s plats, J6). Inga 5 V eller 3,3 V mellan korten, bara signaler och jord. Gå efter stiftnumren tryckta på Tang-kortet (det är FPGA-stiften), inte efter en räknad position i kontakten: på bänken 2026-10-28 visade sig det tredje stiftet i raden vara jord (0 Ω mot GND), och D4 satt där i två dagar. Tabellen står också i Core `gateware/BRINGUP.md`.
 4. **Gör kanal A tyst för första provet.** Dra ur TVP-modulens matning (eller hela modulen). Bara RCA-kabeln räcker inte: en TVP5150 utan insignal frilöper och ger en helt platt blå ruta, och blandaren väljer den kanal vars rader har minst högfrekvent energi, så den platta rutan vinner mot B:s bild (grå ruta med svarta kanter i gråskala). Med bitströmmen `2fdc82e` kan A sitta kvar som ett andra prov: det blir det första A/B-provet.
 5. **Ström på båda korten**, egen USB var. Säg till Fable, som laddar `6b845e8/m4_dual_mix_digin.fs`. De första tre sekunderna visar lysdiod 1 och 2 SDRAM-självtestet; därefter betyder lysdiod 2 "rader från B". Kameran på.
 6. **Titta efter:** lysdiod 2 tänd; gråskalebild på HDMI med svarta kanter (4:3 i 720p); vifta med handen framför kameran, så att det är levande video och inte fryst fältminne. Låt det gå fem minuter: rullning, frysningar, svarta avbrott, förskjutning. Mobilbilder av skärmen till `bench-logs\2026-10-26-digital-b\`.
@@ -39,7 +39,7 @@ I dag går bilden C5VRX → sex motstånd (DAC) → TVP5150 → Tang → HDMI. D
 
 | Tecken | Kolla först |
 |---|---|
-| Lysdiod 2 släckt | klocktråden (kontinuitet MTMS → J5-4), jorden, bitordningen (D4 = bit 0 … D9 = bit 5), `T` i konsolen (klockan på, synkhjulet av), att C5:an tar emot kameran (`cn_db` i `T`) |
+| Lysdiod 2 släckt | klocktråden (kontinuitet MTMS → stift 80), jorden, bitordningen (D4 = bit 0 … D9 = bit 5), `T` i konsolen (klockan på, synkhjulet av), att C5:an tar emot kameran (`cn_db` i `T`) |
 | Lysdiod 2 tänd men trasig eller ingen bild | bitordningen, trådlängden, att A verkligen är tyst |
 | Inget alls, inte ens självtestet | Tangs ström, HDMI-kabeln; säg till så laddas bitströmmen om |
 

@@ -43,6 +43,8 @@ def main(argv):
         prev_i, prev_l = i, l
     print(f'locked {locked_samples / len(x) * 100:.1f} % of the capture; final sync {cap.sync} blank {cap.blank} '
           f'hp {cap.hp}')
+    print(f'vertical: field {cap.field} seen_normal {cap.seen_normal} countdown {cap.countdown} numbered {cap.numbered} '
+          f'line_no {cap.line_no} miss {cap.miss}')
     markers = [e for e in cap.entries if e[0] == 'marker']
     words = sum(1 for e in cap.entries if e[0] == 'word')
     print(f'{len(markers)} line markers, {words} words ({words / max(1, len(markers)):.1f} per line)')

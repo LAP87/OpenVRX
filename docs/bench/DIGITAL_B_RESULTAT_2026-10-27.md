@@ -14,7 +14,8 @@ Kamera med VTX på F4 (5 800 MHz), XIAO ESP32-C5 med det frysta klockbygget av C
 | 13:35 | samma, kanalen rättad, mottagning C/N 20 dB | fortfarande grå, lysdiod 2 släckt | inga rader ur `cvbs_capture`: dess nivåskiljare startade på 12 och väntade synk vid kod 4, men C5VRX lägger synken på 23 |
 | 13:52 | bänkbygge med startnivåerna 23/31 | svartvit bild, hjärtslag 1 Hz (B låser) | nivåerna var enda spärren för rader |
 | 14:22 | `digin/levels` `bf50d5e` (svepande skiljare) | samma bild, lysdiod 2 fast; hackar och hoppar, extremt grynig | hacket mätt 15:24 (nedan); grynet är källans C/N plus vår förstärkning |
-| 15:55 | `digin/levels` (medelvärdesskiljare, sha `58cc180e…`) | laddad efter att ägaren gått; inte sedd | nästa bänkpass |
+| 15:55 | `digin/levels` (medelvärdesskiljare, sha `58cc180e…`) | laddad efter att ägaren gått | sedd 2026-10-28 08:50: "fast bild med några hoppande linjer, bästa hittills" |
+| 10-28 08:51 | `main` `28782a0` (radstart vid förutsägelsen, sha `194a45b9…`, nu även i Tangs SPI-flash) | "väldigt ren svartvit bild"; kvarvarande hopp när någon rör sig framför antennen, svart när antennen täcks | länken, inte fångsten; proben 09:55: två fönster à 13,6 s med 0 dåliga rader, 0 utanför längdtoleransen, 0 låsväxlingar (199 963 markörer per fönster, längder 1 715–1 717) |
 
 ## Mätt på bussen
 
@@ -48,7 +49,9 @@ Simulerat och byggt, inte sett på skärmen: bitströmmen med medelvärdet ladda
 2. **Förstärkningen:** `cvbs_capture` antar vitt − släckning = 2,5 × (släckning − synk); C5VRX ger 31/8 = 3,9. Allt över kod 51 klipps till vitt och bruset förstoras 1,55×. En parameter för den digitala källan.
 3. **Mätning med proben** kräver att bryggan inte låser sig: läsaren öppen före laddningen, aldrig en pratande bitström utan läsare, tyst bitström efteråt; efter en låsning hjälper bara ström till båda korten (XIAO:n matar Tang via skyddsdioderna när bara Tang dras ur).
 4. Guidens steg 7 (avbrott) och 8 (PR #257-paketet), sedan utkastet till Twotoz.
-5. `c5.py` mot kortet över usbipd: inga byte togs emot, Chrome fungerade. Oförklarat.
+5. `c5.py` mot kortet över usbipd: 2026-10-28 läser demonen raderna (HB, STATUS), men skrivning ger `Input/output error`, så tangenter går bara via Chrome. Oförklarat.
+6. D4 (J5-3) tappar kontakten vid varje omkoppling (alla koder jämna i fångsterna 10-27 13:43 och 10-28 09:20, 09:55): tråden behöver en fast förbindelse.
+7. Tangs SPI-flash håller sedan 10-28 08:58 den tysta M4 digin-bilden (`194a45b9…`), på ägarens ja: den gamla pratande flashbilden låste bryggan under natten.
 
 ## Filer
 

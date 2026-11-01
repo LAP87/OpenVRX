@@ -52,8 +52,25 @@ stapel är felet ~5 koder).
   med gränsen stängd låses den aldrig alls, `burst_lines == 0`).
 - `pack_words`: {Y1, Cr, Y0, Cb}-layout som `fb_display.v` läser.
 
+## RTL (klar 2026-10-30, Core `6fe4d6a`, samma gren/draft-PR #26)
+
+`gateware/rtl/colour_demod.v` speglar modellen heltal-för-heltal (NCO, burstlås, delad 1H-kam,
+boxcar, ROT/K-mappen) och sitter i `cvbs_capture.v` bakom `COLOUR=1` (ordens kromabyte fylls
+i stället för `8'h80`; `COLOUR=0` är bitidentiskt med tidigare). LUT-inkluder genereras av
+modellen (`write_lut_vh`) och kontrolleras av simtestet. Modellen emulerar nu RTL:ns 12-bitars
+err-register (wrap vid |est-err| >= 2048) och att nya NCO-inkrementet gäller en sampel efter
+låssampeln — mätten oförändrade (samma som tabellen ovan).
+
+Sim: `sim/tb_colour_demod.v` + `test_colour_demod_rtl.py` jämför RTL-ord för ord mot
+`expected_colour_entries()` (ren bildruta, brus+fasramp, `COLOUR=0`-kontroll, kam-av-kontroll).
+Kräver Icarus Verilog — finns inte i denna sandbox (4 test hoppas över där), körs på
+bänk/CI. Syntes (yowasp-yosys gw2a): `cvbs_capture` COLOUR=1 ≈ 985 LUT4 + 1437 ALU + 9 MULT
++ 2 DPB utöver COLOUR=0. Byggen: `DIGIN=1 m4_dual_mix` 6029 LUT4 / 29 BSRAM, `mix.b_clk`
+252 MHz PASS (oförändrat mot 59ac08b); `m7_digin_probe` 3149 LUT4, `cap.clk` 111,6 MHz PASS.
+
 ## Nästa steg (ej gjort)
 
-RTL:n själv (NCO + kam + boxcar + Cb/Cr i Verilog) med sim mot denna modell ord-för-ord;
-sedan jämförelse mot TVP-vägen med `bench quality` och fältdumpen på riktig C5VRX-signal
-(där mäts också om C5VRX:s burst verkligen är fasstabil — rampkolumnen ovan är just det).
+RTL-simman ord-för-ord mot modellen (Icarus, bänk/CI); sedan jämförelse mot TVP-vägen
+med `bench quality` och fältdumpen på riktig C5VRX-signal (där mäts också om C5VRX:s burst
+verkligen är fasstabil — rampkolumnen ovan är just det). På bänk: ev. kalibrera `CHROMA_K`
+från mätt burstamplitud i stället för `chroma_k(white-blank)`.

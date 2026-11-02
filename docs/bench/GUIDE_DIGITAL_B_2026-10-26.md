@@ -12,16 +12,16 @@ I dag går bilden C5VRX → sex motstånd (DAC) → TVP5150 → Tang → HDMI. D
 
 ## Steg för steg
 
-1. **Flasha C5:an.** Chrome, c5vrx.com, fliken C5VRX-5, Local File: `c5vrx5.bin` ur `c5vrx-clkout-2026-10-24\` på adress `0x10000`. Starta om kortet. I konsolen: `T` (spara raden), sedan `U` tills FLYWHEEL står OFF (det sparas). Kameran kan vara av. Alternativet för steg två: `c5vrx5.bin` ur `c5vrx-pr257-clock-2026-10-26\` på samma adress; `T` visar då `SAMPLE_CLOCK` och inget `U` behövs.
-2. **Löd klocktråden.** Strömlöst. MTMS-paden sitter på XIAO:ns baksida bland de små testpaddarna. Tunn tråd, lite tenn; kontrollera med multimetern att paden inte kortsluter mot grannpaden eller jord. Det är den enda lödningen.
+1. **Flasha C5:an.** Sedan 2026-10-31 (v5.0.573, Twotoz PR #297 efter vår bekräftelse i #256) behövs inget eget bygge: Chrome, c5vrx.com, fliken C5VRX-5, **Full firmware** v5.0.573 eller senare. Starta med sändaren av, vänta ut kalibreringen, kör CALIBRATE i menyn. Sätt sedan EXPERIMENTAL → **Clock Pin D10** på; det gäller från nästa start och sparas. `T` visar klockans begärda och aktiva läge. *Äldre väg (de privata byggena från 10-24/10-26, klockan på MTMS-paden, bit 2 på D6): står i protokollet `DIGITAL_B_RESULTAT_2026-10-27.md`.*
+2. **Ingen lödning behövs** med v5.0.573: klockan kommer på headerstiftet D10. (Den gamla vägen krävde en tråd på MTMS-paden på baksidan.)
 3. **Koppla sex datatrådar och jord**, fortfarande strömlöst. Trådarna kan tas från kopplingsplattans rader där XIAO:ns stift redan sitter; DAC-motstånden får sitta kvar.
 
    | Från XIAO | Till Tang (stiftet tryckt på kortet) | Signal |
    |---|---|---|
-   | MTMS-pad (GPIO2) | 80 | klocka 40 MHz |
+   | D10 | 80 | klocka 40 MHz (Clock Pin D10 på) |
    | D4 | 76 | bit 0 |
    | D5 | 42 | bit 1 |
-   | D6 | 41 | bit 2 |
+   | D3 | 41 | bit 2 (flyttad från D6 i v5.0.573; D6 lämnas lös) |
    | D7 | 48 | bit 3 |
    | D8 | 49 | bit 4 |
    | D9 | 86 | bit 5 |
@@ -39,10 +39,10 @@ I dag går bilden C5VRX → sex motstånd (DAC) → TVP5150 → Tang → HDMI. D
 
 | Tecken | Kolla först |
 |---|---|
-| Lysdiod 2 släckt | klocktråden (kontinuitet MTMS → stift 80), jorden, bitordningen (D4 = bit 0 … D9 = bit 5), `T` i konsolen (klockan på, synkhjulet av), att C5:an tar emot kameran (`cn_db` i `T`) |
+| Lysdiod 2 släckt | klocktråden (kontinuitet D10 → stift 80), att Clock Pin D10 är aktiv i `T` (kräver omstart efter valet), jorden, bitordningen (D4, D5, D3, D7, D8, D9 = bit 0…5), att C5:an tar emot kameran (`cn_db` i `T`) |
 | Lysdiod 2 tänd men trasig eller ingen bild | bitordningen, trådlängden, att A verkligen är tyst |
 | Inget alls, inte ens självtestet | Tangs ström, HDMI-kabeln; säg till så laddas bitströmmen om |
 
-**Återställning.** Tangs bitström ligger bara i SRAM: dra ur USB och kortet startar från flashbilden. C5:an går tillbaka med "Full firmware" i webbflasharen. Inget i provet ändrar något permanent utom tråden på MTMS.
+**Återställning.** Tangs bitström ligger bara i SRAM: dra ur USB och kortet startar från flashbilden. C5:an går tillbaka med "Full firmware" i webbflasharen. Inget i provet ändrar något permanent utom valet Clock Pin D10 i C5:an (stäng av det, starta om och flytta bit 2-tråden tillbaka till D6 för den gamla kopplingen).
 
 **Fables del.** Tang i WSL, bitströmmarna, M6-loggen före och efter, protokollet i `docs/bench/`, utkastet till Twotoz.

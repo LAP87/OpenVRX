@@ -279,6 +279,15 @@ Enligt [NATTPASS_2026-10-13.md](NATTPASS_2026-10-13.md), uppgift 16–20 i ordni
 | 19 | `gateware/BRINGUP.md` avsnitt 2.3: FILT, SCAN och CAL i menyn steg för steg, loggraden på 85 byte fält för fält, hur man ser att en inställning sparats och lästs (första loggraden efter start, strömavbrott, läsning av flashen med `--dump-flash`), radering av 7FE000h/7FF000h med openFPGALoader (8 KB FFh på adress 8380416) utan att röra bitströmmen, och vad M6 gör med tom, delvis trasig eller skräpig flash. Första hårdvaruprovet: MATPROTOKOLL blad 19 med bara Tang-kortet. Loggen har ingen särskild startrad, och `flash_store`:s felflagga visas ingenstans; båda står i texten | svit 757 gröna | — (ingen RTL) | openFPGALoader-kommandona och raderingsområdet är lästa ur dess källkod, inte provade; skräp i båda sektorerna är läst ur RTL, inte simulerat | Core `main` 2b67dea |
 | 20 | Codex har sedan nattpasset skrevs rootaccepterat Core `bf05ac0` (757 native, standardbyggen M0/M4/M6) och `46a1e4f` (sviten och alla optionsbyggen). Kvarvarande grindar listade i en [kommentar på navets `main`](https://github.com/LAP87/OpenVRX/commit/17d91821547feed81be3e8ec77c550e31b5a916c#commitcomment-204744668): C3:s 260 frön (sökvägarna till `p8_*`/`p8b_*` i WSL, som Codex sökning inte hittade), omkörningen `n9_*`, en källgranskning av Markdown-diffen `bf05ac0`..`072dbde` i stället för ny native, optionsbyggen på källa med RSSI/SCAN/flash, M2/M2s/M2a/M3/M1/M1s utan rootacceptans, Puck `aed469b` och Pucks Core-pinne. Båda Core-README anger nu commit för sviten (757 på `2b67dea`, Codex på `bf05ac0`) och för varje bygge | — (inga nya körningar; svitens fingeravtryck för `072dbde` är detsamma som för körningen på `b40b0ec`) | — | Codex grindar enligt kommentaren | Core `main` 072dbde |
 
+Efter passet, 2026-10-14: två eftersläpare från passets noteringar är
+rättade och granskade som PR. (1) `run_suite.py` räknar inte längre
+cocotb:s per-test-filer (`*.result.xml` i `gateware/sim`, git-ignorerad
+utdata som skrivs om varje körning) i källfingeravtrycket, så `--resume`
+inte vägrar efter en cocotb-omgång; regressionstestet planterar en sådan
+fil och återupptar det passerade (Core PR #20). (2) Pucks Core-pinne är
+flyttad till Core `main` `072dbde` och Pucks README-rad säger vad pinnen
+vilar på: sviten 757 grön på `2b67dea` (Puck PR #5).
+
 Avvikelser och misstag under passet:
 - Fullgeometriska frön med återhämtningsfält tar 830–1 460 s och ryms inte i ett anrop på tio minuter. WSL stänger distributionen när inget anrop är anslutet, så en frikopplad process dog (provat). De tolv fröna kördes därför som ett enda bakgrundsjobb under bygglåset och lästes av med korta anrop. Allt annat gick i förgrunden.
 - Fem fullgeometriska körningar stoppades av anropets tidsgräns när åtta eller sex frön kördes samtidigt; kampanjköraren sparade inget för dem och fröna kördes om, fyra åt gången.

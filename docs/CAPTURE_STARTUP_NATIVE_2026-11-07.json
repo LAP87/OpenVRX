@@ -1,0 +1,228 @@
+{
+  "status": "ACTUAL_RTL_SOURCE_ROW_COUNTEREXAMPLE",
+  "compiler_rc": 0,
+  "simulation_rc": 0,
+  "wrapper_rc": 1,
+  "wrapper_failure": "source_row_identity",
+  "model_bit_equal": true,
+  "entries": 351252,
+  "word_rows": 973,
+  "markers": 972,
+  "golden_violations": 243,
+  "mapping_groups": [
+    {
+      "frame": 0,
+      "source_half": 0,
+      "output_F": 1,
+      "label_offset": -1,
+      "rows": 243
+    },
+    {
+      "frame": 0,
+      "source_half": 1,
+      "output_F": 0,
+      "label_offset": 0,
+      "rows": 243
+    },
+    {
+      "frame": 1,
+      "source_half": 0,
+      "output_F": 1,
+      "label_offset": 0,
+      "rows": 244
+    },
+    {
+      "frame": 1,
+      "source_half": 1,
+      "output_F": 0,
+      "label_offset": 0,
+      "rows": 243
+    }
+  ],
+  "native_model_word_delay_samples": {
+    "5": 544,
+    "4": 429
+  },
+  "first_violation": {
+    "sample": 51220,
+    "entry_index": 0,
+    "field": 1,
+    "line": 0,
+    "source_global_line": 21,
+    "frame": 0,
+    "half": 0,
+    "truth_index": 1,
+    "offset": -1,
+    "phase": 376
+  },
+  "parameters": {
+    "ACT_START": 362,
+    "AVG": 8,
+    "BOOT_INIT": 12,
+    "COMB": 1,
+    "V_LINES": 16,
+    "WHITE_X8": 20
+  },
+  "driver_seconds": 31.727119715011213,
+  "source_bindings_unchanged": 4811,
+  "no_signals_or_timeout": true,
+  "all_original_processes_exited": true,
+  "golden_requirement_met": false,
+  "producer_changed": false,
+  "hardware": false,
+  "source_commit": "031bba053943ee04ce303ae75b5e701746169c97",
+  "source_tree": "83734acc12ba3c4708a002fef3fd85abd9279fc5",
+  "issue": "https://github.com/LAP87/OpenVRX-Core/issues/34",
+  "runtime": {
+    "python": "3.12.12 (main, Feb  3 2026, 22:51:04) [Clang 21.1.4 ]",
+    "tools": [
+      {
+        "name": "iverilog",
+        "version": "Icarus Verilog version 12.0 (stable) (v12_0)",
+        "sha256": "340ff90a5bf9e86c5af5a1a1ff60ee2c253fa3adbc3925f81458765c19d71ed0",
+        "size": 156944
+      },
+      {
+        "name": "vvp",
+        "version": "Icarus Verilog runtime version 12.0 (stable) (v12_0)",
+        "sha256": "54ec54b6ea8ad4fbc67d56341f09b8205f9c7c34666ab5df98f807812562f0c0",
+        "size": 9489736
+      }
+    ]
+  },
+  "main_dut_parity": {
+    "observed_utc": "2026-11-06T23:10:17.256590+00:00",
+    "remote_main": "a6e3c2bb473ef18442ac32a06e81c9bbb615029c",
+    "source_closure_equal": true,
+    "paths": [
+      {
+        "path": "gateware/rtl/cvbs_capture.v",
+        "size": 24767,
+        "sha256": "4d66697845eed8bbe3603b67431b95de0fd458cc1b15128d926b95d0c8598042"
+      },
+      {
+        "path": "gateware/rtl/cvbs_gain.vh",
+        "size": 5589,
+        "sha256": "8475c87c4fe3c7e3bba8b67f751fb26d1df162eec74da76142d98b0c2c8f0ad8"
+      },
+      {
+        "path": "gateware/rtl/cvbs_gain_c5.vh",
+        "size": 5581,
+        "sha256": "780d410eac11b7d19a1f39aaa1ba95a03b465fc3eaefd4817e70399297cba264"
+      }
+    ],
+    "not_fresh_main_suite_or_top_acceptance": true
+  },
+  "raw": [
+    {
+      "file": "native-data/samples.hex",
+      "size": 8007999,
+      "sha256": "2a3fa8fc492713115898d96fa5cd04ed37d745f6b966128a98501cf9aa32400b"
+    },
+    {
+      "file": "native-data/DIAGNOSTIC.json",
+      "size": 320627,
+      "sha256": "4bcd8d96ddc7a21d7b36d7a52f869d1076d8489e7bbaf12f7e6a9f59720a7910"
+    },
+    {
+      "file": "native-data/compile.stdout",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-data/compile.stderr",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-data/sim.vvp",
+      "size": 116119,
+      "sha256": "a3e19e864541fd9a9ec592f855bfbf1ea015ee40f72a72b473ffbddb55b3c308"
+    },
+    {
+      "file": "native-data/simulate.stdout",
+      "size": 417,
+      "sha256": "1890163249b853f7d20928c8efc5c700420d2d17eb3e6a92b6a76d488876d08e"
+    },
+    {
+      "file": "native-data/simulate.stderr",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-data/entries.txt",
+      "size": 7943970,
+      "sha256": "0530008314a127172b4b83a9c06563d8d01c155bdad6ef5000d8f68e8c363cb1"
+    },
+    {
+      "file": "native-data/lock.txt",
+      "size": 8,
+      "sha256": "3efc5a8bcb21b6b7bed565b1e7294ee06c529f8a569fc5e9f052f9bad69b71e8"
+    },
+    {
+      "file": "native-data/entries.bin",
+      "size": 5620032,
+      "sha256": "f5742442576e7e20d8211786c5ddb41d971e7dd3d787c21ec5f5c9250924a90b"
+    },
+    {
+      "file": "native-job/stdout.log",
+      "size": 71,
+      "sha256": "416c2416b9166bca5ff7d9f28e95f059065fa30113103398082d7deaf5a2dea8"
+    },
+    {
+      "file": "native-job/stderr.log",
+      "size": 333,
+      "sha256": "571dc1f6aa384b99bc671e3dd08dcd2a1926eeda453b82352f05ef5ddace2ff9"
+    },
+    {
+      "file": "native-job/START.json",
+      "size": 1373,
+      "sha256": "b75c36281f4e461a1253a047c06db36c3b9095ca49e5b93f190513235e6e0c81"
+    },
+    {
+      "file": "native-job/RESULT.json",
+      "size": 1286804,
+      "sha256": "cbbfe999f7b5f9e77a9d8a7b3a8a1d4d6dbe7a5ec53b9998faec2182da07e2a3"
+    },
+    {
+      "file": "runtime-job/stdout.log",
+      "size": 245,
+      "sha256": "c8cc68e035eebd974ce39d82043b8d6e46e8e011ce045bc3b50c52f6fa5b1fba"
+    },
+    {
+      "file": "runtime-job/stderr.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "runtime-job/START.json",
+      "size": 1253,
+      "sha256": "659ce4d345c645ec018552ab5a0e46d113d6d02c2a3db35169abdc10fdfefafa"
+    },
+    {
+      "file": "runtime-job/RESULT.json",
+      "size": 1284379,
+      "sha256": "792cf5d7b5407099c7e569caed4b9597acd7a626ce5cbecc185a6641f136c5be"
+    }
+  ],
+  "published_helpers": [
+    {
+      "file": "runtime_probe.py",
+      "size": 1149,
+      "sha256": "d03cc5d8ae9fee4d02b9e54992d8926a167b8b6c9eb7a11fd996eccf59bb9357"
+    },
+    {
+      "file": "native_witness.py",
+      "size": 6230,
+      "sha256": "d63d5380c1fd85e29997684c63d28a411c1c2f460a495389b2c677c21d2c1ec4"
+    },
+    {
+      "file": "tb_cvbs_capture_time.v",
+      "size": 3001,
+      "sha256": "23d45190b8c6ab8efb70966535c078d601bd947a05617a1cc00c4159bb46abf7"
+    }
+  ],
+  "model_replayed": false,
+  "RTL_modified": false,
+  "FPGA_built": false
+}

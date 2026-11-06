@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "model_only": true,
+  "hardware": false,
+  "source_commit": "031bba053943ee04ce303ae75b5e701746169c97",
+  "input_output_identical_to_task75": true,
+  "counts": {
+    "source_active_rows": 974,
+    "word_rows": 973,
+    "closed_rows": 972,
+    "missing_word_source_lines": [
+      20
+    ],
+    "missing_closed_source_lines": [
+      20,
+      1050
+    ],
+    "extra_word_source_lines": [],
+    "duplicated_word_source_lines": []
+  },
+  "mapping_groups": [
+    {
+      "frame": 0,
+      "source_half": 0,
+      "output_F": 1,
+      "line_label_offset": -1,
+      "rows": 243
+    },
+    {
+      "frame": 0,
+      "source_half": 1,
+      "output_F": 0,
+      "line_label_offset": 0,
+      "rows": 243
+    },
+    {
+      "frame": 1,
+      "source_half": 0,
+      "output_F": 1,
+      "line_label_offset": 0,
+      "rows": 244
+    },
+    {
+      "frame": 1,
+      "source_half": 1,
+      "output_F": 0,
+      "line_label_offset": 0,
+      "rows": 243
+    }
+  ],
+  "field_events": [
+    {
+      "sample": 10776,
+      "global_line": 5,
+      "source_line": 5,
+      "within_line": 607,
+      "countdown": 16,
+      "field": 1,
+      "locked": false,
+      "context": {
+        "last_start": 10177,
+        "cur_edge": 10177,
+        "pulse_start": 10177,
+        "pulse_width": 600,
+        "sync": 4,
+        "blank": 20,
+        "pos": 599
+      }
+    },
+    {
+      "sample": 676835,
+      "global_line": 267,
+      "source_line": 267,
+      "within_line": 604,
+      "countdown": 16,
+      "field": 0,
+      "locked": true,
+      "context": {
+        "last_start": 676230,
+        "cur_edge": 676236,
+        "pulse_start": 676236,
+        "pulse_width": 600,
+        "sync": 13,
+        "blank": 22,
+        "pos": 605
+      }
+    },
+    {
+      "sample": 1342897,
+      "global_line": 529,
+      "source_line": 4,
+      "within_line": 604,
+      "countdown": 16,
+      "field": 1,
+      "locked": true,
+      "context": {
+        "last_start": 1342292,
+        "cur_edge": 1342298,
+        "pulse_start": 1342298,
+        "pulse_width": 600,
+        "sync": 13,
+        "blank": 22,
+        "pos": 605
+      }
+    },
+    {
+      "sample": 2011502,
+      "global_line": 792,
+      "source_line": 267,
+      "within_line": 604,
+      "countdown": 16,
+      "field": 0,
+      "locked": true,
+      "context": {
+        "last_start": 2010897,
+        "cur_edge": 2010903,
+        "pulse_start": 2010903,
+        "pulse_width": 600,
+        "sync": 13,
+        "blank": 22,
+        "pos": 605
+      }
+    }
+  ],
+  "initial_state": {
+    "sample": -1,
+    "state": {
+      "locked": false,
+      "boot_slice": 12,
+      "field": 0,
+      "countdown": -1,
+      "numbered": false,
+      "line_no": 0,
+      "levels_fresh": false,
+      "boot_rejects": 0
+    },
+    "context": {
+      "last_start": 0,
+      "cur_edge": null,
+      "pulse_start": 0,
+      "pulse_width": 0,
+      "sync": 4,
+      "blank": 20,
+      "pos": -1
+    }
+  },
+  "boot_steps": [
+    [
+      -1,
+      12
+    ],
+    [
+      5083,
+      13
+    ],
+    [
+      10167,
+      14
+    ]
+  ],
+  "source_line4_flat_codes": {
+    "13": 936
+  },
+  "source_line4_start": 7627,
+  "broad_plateau_samples": 936,
+  "strict_slicer_comparison": "8*13 < 8*13 is false before the sweep reaches14",
+  "source_functions_unchanged": true,
+  "observer_driver_seconds": 5.579903033998562,
+  "source_bindings_unchanged": 4805,
+  "pixel_provenance_verified": false,
+  "RTL_executed": false,
+  "fix_applied": false,
+  "raw": [
+    {
+      "file": "codes.bin",
+      "size": 2669333,
+      "sha256": "9b5f8fd7b7592e240c20fad0b794b267406fcee1327e03ad4ccdd58320b38412"
+    },
+    {
+      "file": "entries.bin",
+      "size": 5620032,
+      "sha256": "f5742442576e7e20d8211786c5ddb41d971e7dd3d787c21ec5f5c9250924a90b"
+    },
+    {
+      "file": "observations.json",
+      "size": 869656,
+      "sha256": "d7ab243c0e0a2816058ee5340fdb24c3cf326a12f69d7b0938e938423a022aff"
+    },
+    {
+      "file": "source_geometry.json",
+      "size": 23889,
+      "sha256": "72645f664ce3b35347cb1b2462cf85012c2a4e3eca9278710ab039b4d8838879"
+    }
+  ],
+  "observer_sha256": "aff9f105bf31f82672f7bee0e138177fc2eac811c5fd827dd709d3439d58b7e9",
+  "published_baseline_compatible": true
+}

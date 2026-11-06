@@ -32,3 +32,11 @@ Synkdiagnostiken behåller originalets ±3 sampel: en ren flank hittas vid+1 med
 Snabbsviten avbröts när Baldur's Gate 3 startade. SIGTERM gick enbart till den egna sviten efter kontroll av PID, processgrupp, startticks och kommando; svitens städning avslutade arbetarna. Alla sparade egna processidentiteter var sedan borta och bygglåset ledigt. **43 begärda tester PASS;677 tester i 415 processer återstår**, rc 3. 4 792 käll-/runtime-/hjälparbindningar var oförändrade. Ingen Core-commit eller PR har publicerats: snabbsviten är ännu inte klar.
 
 Nästa start måste invänta att gamingpausen upphör och använda färsk kvotkontroll. Fortsätt endast svitens sparade pending-lista med originalets fingerprintgrind; kör inte om de 43 klara testerna. Ett framtida separat modellspår kan jämföra samma IQ-strömmar genom den befintliga pulsbredds- och periodföljande kompositdekodern. Det får inte ersätta eller skriva över det missade slicermålet i #28.
+
+## Publicerad modellgren 2026-11-06
+
+[Core draft PR #32](https://github.com/LAP87/OpenVRX-Core/pull/32), commit `81a448c4a464de7c7c90a2b035ee4e226925911a`, innehåller modellen, testerna och rapporten `docs/IQ_PLL_2026-11-06.*`. Synkmålet är fortfarande inte uppfyllt; #28 hålls öppet och fasdifferens är kvar som standard.
+
+Den förberedda återupptagningen slutfördes efter att spelet avslutats: **720 begärda PASS i 458 testenheter**. De 43 tidigare kvittona återanvändes exakt, endast 415 återstående enheter kördes i en ny identisk källkopia. Driver 89,841 s, rc 0; alla 5 191 bundna käll-/runtime-/hjälpar-/rådatafiler oförändrade. Originalets avbrutna byggfiler, loggar och spår är orörda. De 12 riktade testen passerar separat; de räknas inte som extra utfall i snabbsvitens 720.
+
+Slutgranskningen kontrollerade exakt utfallsidentitet, oförändrade ursprungliga IQ-definitioner och testfil, negativ orsak samt faktisk Gitblob/arkiv/källidentitet för commitens 259 filer. Fullsvit, Core-mainmerge, FPGA och hårdvara ingår inte. Ett experiment är avslutat och redovisat; önskad synkförbättring är ännu inte löst.

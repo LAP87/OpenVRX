@@ -74,6 +74,15 @@ Fryst 40 MS/s, 60 rader, seed 1, deviation 2,8 MHz/V, kanal 12 MHz, video-LP 4,2
 
 SNR förbättras men synkmålet i Core #28 missas vid 8/12 dB. Tolv riktade modelltester passerar; en separat felteckenkontroll tappar både SNR och synk. Snabbsviten har slutförts: 720 PASS, varav 43 tidigare kvitton återanvändes efter gamingstoppet. Modellen och den oförändrade sexfallstabellen är publicerade i [Core draft PR #32](https://github.com/LAP87/OpenVRX-Core/pull/32), `81a448c`; #28 hålls öppet. [Full begränsning och testhistorik](../docs/IQ_PLL_PARTIAL_2026-11-05.md). Ingen FPGA-, RF-, provtagnings- eller räckviddsgaranti.
 
+
+### IQ genom befintlig kompositdekoder, uppgift 75, 2026-11-06
+
+[Core draft PR #33](https://github.com/LAP87/OpenVRX-Core/pull/33), `031bba0`, provar samma IQ via fasdifferens eller PLL och vidare genom originalets Capture. Två syntetiska gråstapelramar, nominell 6-bitarsnivå, inga ändrade skydd eller predikat. Rena kontroller ger 972 hela giltiga rader och cirka 4,6–4,8 Y-koders RMS-fel. Fel looptecken ger 3 rader med 72,2 koders fel.
+
+Vid 4, 8 och 12 dB C/N finns rader med rätt struktur men ingen som också klarar den förutbestämda pixelgränsen <16 Y-koder. Det visar varför ett lås eller ett icke-tomt fält inte ensamt är bildacceptans. De gamla slicerpoängen och det missade målet i #28 behålls. Gråstaplarna verifierar inte källtid eller radidentitet: 974 aktiva inrader jämfört med 972 stängda utdata och ytterligare 360 ord utan markör kräver separat tidskodad kontroll.
+
+17 första modellfall och oberoende binär återläsning; 10 riktade och 720 quick PASS. [Tabell, metod och begränsningar](https://github.com/LAP87/OpenVRX-Core/blob/031bba053943ee04ce303ae75b5e701746169c97/docs/IQ_CAPTURE_2026-11-06.md). Inga mottagar-, FPGA- eller hårdvarumätningar.
+
 ## Förslag till planen
 
 - Uppgift 67 (ny): mottagargräns C i simulering: Python-modell av FM-demodulering ur 7 + 7-bitars IQ i

@@ -20,3 +20,15 @@ Riktad verifiering: 8 PASS och 2 FAIL på 1,37 s pytest (1,742 s driver). De sex
 Originalkod, kontrakt, XML och loggar är bevarade privat i `private/notes/dev_2026-11-05/iq-results/`. Oberoende återläsning kontrollerade de båda jobbens hashbindningar och exakt tio XML-utfall. Inga signaler eller omkörningar. Ingen quick/fullsvit, Core-commit, Core-mainmerge eller hårdvaruacceptans.
 
 Nästa motiverade steg är att granska fasrampens kvantiseringsfel och loopens tidsläge, innan ett separat experiment övervägs. Koefficienter och felgränser har inte ändrats efter utfallen. Detta är en sparad begränsning, inte en färdig PLL-leverans.
+
+## Fortsättning 2026-11-06
+
+Fasrampens medelfrekvensfel är 0 i båda riktningarna över det fasta slutliga 512-sampelfönstret. En separat oinlindad flyttalsrekursion av samma ekvationer avviker högst 1,414 heltalsfasenheter från heltalsloopen. Axlar avrundade till heltal på cirkelradie 100 tillåter redan ett fasfel asin(sqrt(0,5)/100), cirka 4 833 577 fasenheter. Det var inte motiverat att kräva momentant inkrementfel under 429 497. Den gamla felande testfilen och resultaten bevaras; inga loopkoefficienter eller videopredikat har ändrats.
+
+De nya testerna skiljer medelfrekvens från rippel. En härledd absolut impulssumma för LUT-avrundning samt frekvens- och proportionalavrundning ger en felbudget 6,8444, konservativt mindre än 7 fasenheter mot flyttalsekvationerna. **12 riktade tester passerar på 1,53 s**, inklusive de sex ursprungliga IQ-testerna. Det är modellverifiering, inte uppfyllt synkmål.
+
+Synkdiagnostiken behåller originalets ±3 sampel: en ren flank hittas vid+1 med båda metoderna. I brusfallet 4 bitar/CN 12 har PLL:n 20 av 59 sökfönster låga redan vid−40 sampel. Det visar tidiga passager, inte en fast extra latens eller en etablerad fysisk felorsak. Fel looptecken försämrar faktiskt bildmåtten:16,313 till 4,836 dB SNR och 5/59 till 0/59 synkträffar. Ett senare diagnostikutkast misslyckades vid JSON-export av ett komplext egenvärde, sparade inget resultat och används inte som bevis; det kördes inte om.
+
+Snabbsviten avbröts när Baldur's Gate 3 startade. SIGTERM gick enbart till den egna sviten efter kontroll av PID, processgrupp, startticks och kommando; svitens städning avslutade arbetarna. Alla sparade egna processidentiteter var sedan borta och bygglåset ledigt. **43 begärda tester PASS;677 tester i 415 processer återstår**, rc 3. 4 792 käll-/runtime-/hjälparbindningar var oförändrade. Ingen Core-commit eller PR har publicerats: snabbsviten är ännu inte klar.
+
+Nästa start måste invänta att gamingpausen upphör och använda färsk kvotkontroll. Fortsätt endast svitens sparade pending-lista med originalets fingerprintgrind; kör inte om de 43 klara testerna. Ett framtida separat modellspår kan jämföra samma IQ-strömmar genom den befintliga pulsbredds- och periodföljande kompositdekodern. Det får inte ersätta eller skriva över det missade slicermålet i #28.

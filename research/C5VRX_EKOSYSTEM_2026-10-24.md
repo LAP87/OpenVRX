@@ -42,7 +42,7 @@ hittat tre repon till. Allt är GPL-3.0 (eller olicensierat) och läses som unde
 Core `gateware/model/iq_demod_ref.py` (numpy): syntetisk NTSC-komposit → FM med 2,8 MHz/V → 12 MHz kanal →
 brus vid givet C/N → AGC och kvantisering till 4 eller 7 bitar per axel → fasderivata som demodulator →
 videofilter. Luma-SNR mot den rena videon och andelen rader där synkflanken hittas inom ±3 sampel med en
-fast slicer. 60–90 rader gråstaplar; en dum demodulator, alltså en undre gräns.
+fast slicer. 60–90 rader gråstaplar. Siffrorna gäller denna syntetiska kedja; de är ingen undre gräns för verklig hårdvara.
 
 | C/N (dB) | 4-bitars IQ | 7-bitars IQ | 4-bitars IQ, 6-bitars utgång |
 |---|---|---|---|
@@ -53,12 +53,26 @@ fast slicer. 60–90 rader gråstaplar; en dum demodulator, alltså en undre gr�
 
 Samma bild med deviation 2,0 och 4,0 MHz/V och med 16 MHz kanal: 4 bitar stannar på 20–29 dB hur stark
 signalen än är, 7 bitar når 30–36 dB och hittar synken i alla rader från 20 dB C/N; 6-bitars utgången
-kostar under 1 dB. Slutsatsen: **taket i kompositvägen är IQ-bitarna i C5VRX:s demodulator, inte DAC:en
-eller TVP:n**, och en egen demodulering ur 7-bitars IQ lyfter det med cirka 10 dB vid stark signal. Under
+kostar under 1 dB. I modellen begränsar 4-bitarskvantiseringen mer än den modellerade 6-bitarsutgången; 7 bitar ger cirka 10 dB högre SNR vid stark signal. Det fastställer inte vilket led som begränsar den fysiska C5VRX/DAC/TVP-kedjan. Under
 10 dB C/N är båda dåliga i den här enkla modellen; där ligger vinsten i demodulatorn (begränsare,
 fasföljning), som zerowidths 97 % synklås vid 3–5 dB visar. Testet `gateware/sim/test_iq_demod.py` låser
 egenskaperna (SNR stiger med C/N, 7 bitar minst 8 dB över 4, utgången under 1 dB, negativa kontroller med
 2 bitar och fel deviation).
+
+### Egen PLL-jämförelse, uppgift 74, 2026-11-05/06
+
+Fryst 40 MS/s, 60 rader, seed 1, deviation 2,8 MHz/V, kanal 12 MHz, video-LP 4,2 MHz. Samma hashbundna IQ per fall. PLL med kp 3/8, ki 1/32, amplitudvikt högst 2 och effekt-IIR 1/256. Siffrorna är simulering med originalets tidsaxel och synktolerans ±3. Ingen parameterjustering eller tidsförskjutning efter utfallet.
+
+| Bitar/axel | C/N | SNR fasdifferens/PLL | Synkträffar fasdifferens/PLL |
+|---|---|---|---|
+| 4 | 4 dB | 5.62/9.33 dB | 0.000/0.000 |
+| 4 | 8 dB | 10.59/12.93 dB | 0.034/0.017 |
+| 4 | 12 dB | 14.78/16.31 dB | 0.186/0.085 |
+| 7 | 4 dB | 5.15/9.92 dB | 0.000/0.000 |
+| 7 | 8 dB | 11.34/13.68 dB | 0.068/0.034 |
+| 7 | 12 dB | 15.65/17.44 dB | 0.305/0.068 |
+
+SNR förbättras men synkmålet i Core #28 missas vid 8/12 dB. Tolv riktade modelltester passerar; en separat felteckenkontroll tappar både SNR och synk. Snabbsviten är gamingavbruten, 43 PASS/677 pending, och modellen är ännu inte publicerad i Core. [Full begränsning och testhistorik](../docs/IQ_PLL_PARTIAL_2026-11-05.md). Ingen FPGA-, RF-, provtagnings- eller räckviddsgaranti.
 
 ## Förslag till planen
 

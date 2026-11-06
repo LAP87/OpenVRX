@@ -72,7 +72,7 @@ Fryst 40 MS/s, 60 rader, seed 1, deviation 2,8 MHz/V, kanal 12 MHz, video-LP 4,2
 | 7 | 8 dB | 11.34/13.68 dB | 0.068/0.034 |
 | 7 | 12 dB | 15.65/17.44 dB | 0.305/0.068 |
 
-SNR förbättras men synkmålet i Core #28 missas vid 8/12 dB. Tolv riktade modelltester passerar; en separat felteckenkontroll tappar både SNR och synk. Snabbsviten är gamingavbruten, 43 PASS/677 pending, och modellen är ännu inte publicerad i Core. [Full begränsning och testhistorik](../docs/IQ_PLL_PARTIAL_2026-11-05.md). Ingen FPGA-, RF-, provtagnings- eller räckviddsgaranti.
+SNR förbättras men synkmålet i Core #28 missas vid 8/12 dB. Tolv riktade modelltester passerar; en separat felteckenkontroll tappar både SNR och synk. Snabbsviten har slutförts: 720 PASS, varav 43 tidigare kvitton återanvändes efter gamingstoppet. Modellen och den oförändrade sexfallstabellen är publicerade i [Core draft PR #32](https://github.com/LAP87/OpenVRX-Core/pull/32), `81a448c`; #28 hålls öppet. [Full begränsning och testhistorik](../docs/IQ_PLL_PARTIAL_2026-11-05.md). Ingen FPGA-, RF-, provtagnings- eller räckviddsgaranti.
 
 ## Förslag till planen
 

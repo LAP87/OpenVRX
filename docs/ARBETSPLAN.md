@@ -133,6 +133,8 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 
 | 8 / 79 | Rad-/fältberoende testmönster och observerat sampelursprung genom oförändrad Capture. | Oberoende aritmetik och käll-/partneridentifiering för alla pixlar, verkliga skador upptäcks; timing redovisas separat. | stoppgranskat modellresultat: 701 280 pixlar, 973 slutna rader + en oavslutad, åtta skador avvisade. Root lade till en oförankrad timinggrind som föll för 301 första pixlar; ingen producentfix eller timingacceptans. [Resultat och begränsningar](CAPTURE_PIXEL_PROVENANCE_2026-11-07.md). |
 
+| 9 / 80 | Fasta stapelprofiler och spridning i befintliga brusiga råord från 75. Ingen modellomkörning. | Oberoende profiler/histogram och exakt feluppdelning från samma hashbundna rådata; inga nya kvalitets- eller orsaksanspråk. | klart, begränsad diagnostik: 17 fall, sex skador avvisade, ingen ny simulering. C/N12:s överlevande sjubitarsrader behåller stigande stapelmedel men stor variation inom raderna. [Profiler, spridning och begränsningar](IQ_NOISY_PIXEL_PROFILES_2026-11-07.md). |
+
 Varje steg får riktade tester, källrevision, körkommandon och sparade resultat. Snabbsviten krävs före Core-commit. Förslag publiceras som granskade grenar/PR; ingen `main`-merge utan hela sviten enligt repots regler. Resultat och nästa steg skrivs här efter varje avslut. Hårdvarustatus, stift, SDRAM/LOW-regler, licens och gamla accepterade paket ändras inte av modellpassen. Hub PR #7 är redan skriven och dubbelimplementeras inte.
 
 ## Kräver kortet

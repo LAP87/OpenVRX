@@ -131,6 +131,8 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 
 | 7 / 78 | Designråd för verkliga motexemplet Core #34 före producentändring. Granska frivillig efter-EQ-kalibrering av V-nedräkningen utan ny F-/startpolicy. | Fryst förslag: kvalificerad broad + exakt sex halvrads-EQ + normalpuls före ACT_CHECK kalibrerar kvarvarande countdown till 11; annars gammal väg. Två förvalda externa läsgranskare och root, fast nämnare 3; minst 70% kräver 3/3 YES. Saknade röster krymper inte nämnaren. Stoppa på första NO eller provider-/budgetfel, inga omförsök/byten. | stoppat utan godkännande: första externa anropet klassificerades quota_exhausted, 0/3 YES. Ingen retry, Mercury eller producentfix. Se [stopp och kvarvarande mjukvaruspår](KVARVARANDE_MJUKVARUSPAR_2026-11-07.md). |
 
+| 8 / 79 | Rad-/fältberoende testmönster och observerat sampelursprung genom oförändrad Capture. | Oberoende aritmetik och käll-/partneridentifiering för alla pixlar, verkliga skador upptäcks; timing redovisas separat. | stoppgranskat modellresultat: 701 280 pixlar, 973 slutna rader + en oavslutad, åtta skador avvisade. Root lade till en oförankrad timinggrind som föll för 301 första pixlar; ingen producentfix eller timingacceptans. [Resultat och begränsningar](CAPTURE_PIXEL_PROVENANCE_2026-11-07.md). |
+
 Varje steg får riktade tester, källrevision, körkommandon och sparade resultat. Snabbsviten krävs före Core-commit. Förslag publiceras som granskade grenar/PR; ingen `main`-merge utan hela sviten enligt repots regler. Resultat och nästa steg skrivs här efter varje avslut. Hårdvarustatus, stift, SDRAM/LOW-regler, licens och gamla accepterade paket ändras inte av modellpassen. Hub PR #7 är redan skriven och dubbelimplementeras inte.
 
 ## Kräver kortet

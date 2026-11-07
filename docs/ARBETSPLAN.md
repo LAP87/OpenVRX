@@ -141,6 +141,8 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 
 | 12 / 83 | Ett första redan källdefinierat AVG16-fall på sparade seed2 PLL-koder, ingen parametersökning. | Fördefinierad fältgrind och separat verklig V-maskad modellnegativ; oförändrade pixelmått, källtidsmappning och ingen defaultpromovering. | fältgrind uppfylld: 723 giltiga rader/3 V-armar, men0 pixel-PASS och377 förskjutna radetiketter. V-masknegativ0 V-armar/0 ord. Sex skador avvisade; ingen native/route/hårdvara/defaultändring. [Resultat och gränser](IQ_AVG16_EXPERIMENT_2026-11-07.md). |
 
+| 13 / 84 | Första RTL-kontroll av sparade AVG8/AVG16/V-maskfall. | Separata compile/vvp, exakt befintligt modellfacit och oberoende källtidsmappning; inga producentvärden ändras. | klart: sex nativeanrop rc0, tre fall byteidentiska. AVG16 har fortfarande377felradetiketter och0kvalitetsrader; V-mask ger0ord. Sex skador avvisade. [Resultat och begränsningar](IQ_NATIVE_FIDELITY_2026-11-07.md). |
+
 Varje steg får riktade tester, källrevision, körkommandon och sparade resultat. Snabbsviten krävs före Core-commit. Förslag publiceras som granskade grenar/PR; ingen `main`-merge utan hela sviten enligt repots regler. Resultat och nästa steg skrivs här efter varje avslut. Hårdvarustatus, stift, SDRAM/LOW-regler, licens och gamla accepterade paket ändras inte av modellpassen. Hub PR #7 är redan skriven och dubbelimplementeras inte.
 
 ## Kräver kortet

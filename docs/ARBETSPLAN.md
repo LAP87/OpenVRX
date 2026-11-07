@@ -137,6 +137,8 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 
 | 10 / 81 | Nytt seed2-fall med sparad faktisk IQ/kodström och pixel-/nivå-/gaintelemetri. | Samma IQ till båda demodulatorer; oberoende pixel-/tabellaritmetik och exakt A²+B²+2AB, inga ändrade kvalitetskrav. | begränsad diagnostik klar: fasdifferens164 giltiga rader/0 inom pixelbudgeten, PLL0 rader trots98,86% H-låst. Sex skador avvisade. Första argumentprefixfelet bevarat, separat fortsättning bara ejstartad generering. [Resultat och begränsningar](IQ_GAIN_TELEMETRY_2026-11-07.md). |
 
+| 11 / 82 | Nytt passivt puls-/V-tillståndsspår på sparade seed2 PLL-koder. | Exakt gammal utmatning/låshändelse, oberoende slicer/pulsparser och faktiskt exekverade V-villkor; inga producentändringar. | klar, lokal modellorsak: två pulser når600 men matchar varken aktuell eller väntande radpuls; V-arm0/countdown−1 genom1050 aktivkontroller. Åtta rå-/metadataskador avvisade. Ursprungligt tuple/list-jämförelsefel bevarat, root läste endast befintliga rådata. [Resultat och begränsningar](IQ_VERTICAL_STATE_2026-11-07.md). |
+
 Varje steg får riktade tester, källrevision, körkommandon och sparade resultat. Snabbsviten krävs före Core-commit. Förslag publiceras som granskade grenar/PR; ingen `main`-merge utan hela sviten enligt repots regler. Resultat och nästa steg skrivs här efter varje avslut. Hårdvarustatus, stift, SDRAM/LOW-regler, licens och gamla accepterade paket ändras inte av modellpassen. Hub PR #7 är redan skriven och dubbelimplementeras inte.
 
 ## Kräver kortet

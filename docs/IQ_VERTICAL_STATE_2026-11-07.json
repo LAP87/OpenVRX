@@ -1,0 +1,268 @@
+{
+  "task": 82,
+  "source_commit": "031bba053943ee04ce303ae75b5e701746169c97",
+  "source_tree": "83734acc12ba3c4708a002fef3fd85abd9279fc5",
+  "root": {
+    "status": "ROOT_REVIEWED_EXISTING_STATE_TRACE",
+    "summary": {
+      "cause": "broad_pulses_not_qualified_as_line_pulses",
+      "case_only": true,
+      "global_or_hardware_cause": false,
+      "v_arms": 0,
+      "act_checks": 1050,
+      "active_checks": 0,
+      "final_countdown": -1,
+      "completed_pulses": 3332,
+      "broad_crossings": 2,
+      "maximum_pulse_width": 827,
+      "qualified_current_broads": 0,
+      "qualified_pending_broads": 0,
+      "crossing_contexts": [
+        {
+          "n": 678108,
+          "pulse_start": 677509,
+          "cur_edge": 676243,
+          "pend_edge": null,
+          "width": 600,
+          "seen_normal": true
+        },
+        {
+          "n": 679771,
+          "pulse_start": 679172,
+          "cur_edge": 678735,
+          "pend_edge": null,
+          "width": 600,
+          "seen_normal": true
+        }
+      ],
+      "synthetic_source_broad_windows": [
+        {
+          "start": 7627,
+          "end": 8710,
+          "longest_detected_width": 28,
+          "fragment_count": 57
+        },
+        {
+          "start": 8898,
+          "end": 9981,
+          "longest_detected_width": 21,
+          "fragment_count": 56
+        },
+        {
+          "start": 10169,
+          "end": 11252,
+          "longest_detected_width": 33,
+          "fragment_count": 55
+        },
+        {
+          "start": 11440,
+          "end": 12523,
+          "longest_detected_width": 39,
+          "fragment_count": 51
+        },
+        {
+          "start": 12711,
+          "end": 13794,
+          "longest_detected_width": 38,
+          "fragment_count": 58
+        },
+        {
+          "start": 13982,
+          "end": 15065,
+          "longest_detected_width": 47,
+          "fragment_count": 48
+        },
+        {
+          "start": 674960,
+          "end": 676043,
+          "longest_detected_width": 281,
+          "fragment_count": 8
+        },
+        {
+          "start": 676231,
+          "end": 677314,
+          "longest_detected_width": 581,
+          "fragment_count": 4
+        },
+        {
+          "start": 677502,
+          "end": 678585,
+          "longest_detected_width": 827,
+          "fragment_count": 3
+        },
+        {
+          "start": 678773,
+          "end": 679856,
+          "longest_detected_width": 620,
+          "fragment_count": 3
+        },
+        {
+          "start": 680044,
+          "end": 681127,
+          "longest_detected_width": 327,
+          "fragment_count": 5
+        },
+        {
+          "start": 681316,
+          "end": 682399,
+          "longest_detected_width": 380,
+          "fragment_count": 5
+        },
+        {
+          "start": 1342293,
+          "end": 1343376,
+          "longest_detected_width": 418,
+          "fragment_count": 6
+        },
+        {
+          "start": 1343564,
+          "end": 1344647,
+          "longest_detected_width": 424,
+          "fragment_count": 7
+        },
+        {
+          "start": 1344836,
+          "end": 1345919,
+          "longest_detected_width": 256,
+          "fragment_count": 12
+        },
+        {
+          "start": 1346107,
+          "end": 1347190,
+          "longest_detected_width": 282,
+          "fragment_count": 11
+        },
+        {
+          "start": 1347378,
+          "end": 1348461,
+          "longest_detected_width": 234,
+          "fragment_count": 14
+        },
+        {
+          "start": 1348649,
+          "end": 1349732,
+          "longest_detected_width": 253,
+          "fragment_count": 19
+        },
+        {
+          "start": 2009627,
+          "end": 2010710,
+          "longest_detected_width": 192,
+          "fragment_count": 13
+        },
+        {
+          "start": 2010898,
+          "end": 2011981,
+          "longest_detected_width": 145,
+          "fragment_count": 14
+        },
+        {
+          "start": 2012169,
+          "end": 2013252,
+          "longest_detected_width": 137,
+          "fragment_count": 18
+        },
+        {
+          "start": 2013440,
+          "end": 2014523,
+          "longest_detected_width": 190,
+          "fragment_count": 14
+        },
+        {
+          "start": 2014711,
+          "end": 2015794,
+          "longest_detected_width": 205,
+          "fragment_count": 17
+        },
+        {
+          "start": 2015982,
+          "end": 2017065,
+          "longest_detected_width": 225,
+          "fragment_count": 16
+        }
+      ]
+    },
+    "controls": [
+      {
+        "name": "pulse_width",
+        "file": "pulse_width.json",
+        "reason": "pulse_width"
+      },
+      {
+        "name": "v_arm",
+        "file": "v_arm.json",
+        "reason": "v_arm"
+      },
+      {
+        "name": "countdown",
+        "file": "countdown.json",
+        "reason": "countdown"
+      },
+      {
+        "name": "output",
+        "file": "output.json",
+        "reason": "output_equivalence"
+      },
+      {
+        "name": "lock",
+        "file": "lock.json",
+        "reason": "lock_equivalence"
+      },
+      {
+        "name": "false_cause",
+        "file": "false_cause.json",
+        "reason": "cause"
+      },
+      {
+        "name": "native",
+        "file": "native.json",
+        "reason": "cause"
+      },
+      {
+        "name": "hardware",
+        "file": "hardware.json",
+        "reason": "cause"
+      }
+    ],
+    "original_equivalence_canonical": true,
+    "original_failed_comparator_preserved": true,
+    "model_evaluations": 1,
+    "model_retry": false,
+    "new_source_generated": false,
+    "native": false,
+    "hardware": false,
+    "producer_changed": false,
+    "source_files": 264
+  },
+  "verification": {
+    "status": "FINAL_REVIEWED_LOCAL_MODEL_ZERO_OUTPUT_CAUSE",
+    "case_only": true,
+    "native": false,
+    "hardware": false,
+    "producer_changed": false,
+    "model_evaluations": 1,
+    "controls_rejected": 8,
+    "controls_recreated": false,
+    "source_files": 264,
+    "existing_bindings": 471,
+    "raw_files": 31,
+    "raw_bytes": 39070187,
+    "jobs": {
+      "observe-job": {
+        "returncode": 1,
+        "elapsed_seconds": 6.228124049026519,
+        "signals": []
+      },
+      "root-job": {
+        "returncode": 0,
+        "elapsed_seconds": 1.8933013060013764,
+        "signals": []
+      }
+    },
+    "original_comparator_failure_preserved": true,
+    "canonical_output_and_lock_equal": true,
+    "pre_job_builtin_module_probe_failure_preserved": true,
+    "publication_pending": false
+  },
+  "private_package_sha256": "d1a50462e90b8b82904f6b02a50f3ba4f447ba589f3f002275957a974715167c"
+}

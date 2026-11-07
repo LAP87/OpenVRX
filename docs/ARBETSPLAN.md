@@ -139,6 +139,8 @@ Nya uppgifter läggs i tabellen här med löpande nummer, varför, klart när oc
 
 | 11 / 82 | Nytt passivt puls-/V-tillståndsspår på sparade seed2 PLL-koder. | Exakt gammal utmatning/låshändelse, oberoende slicer/pulsparser och faktiskt exekverade V-villkor; inga producentändringar. | klar, lokal modellorsak: två pulser når600 men matchar varken aktuell eller väntande radpuls; V-arm0/countdown−1 genom1050 aktivkontroller. Åtta rå-/metadataskador avvisade. Ursprungligt tuple/list-jämförelsefel bevarat, root läste endast befintliga rådata. [Resultat och begränsningar](IQ_VERTICAL_STATE_2026-11-07.md). |
 
+| 12 / 83 | Ett första redan källdefinierat AVG16-fall på sparade seed2 PLL-koder, ingen parametersökning. | Fördefinierad fältgrind och separat verklig V-maskad modellnegativ; oförändrade pixelmått, källtidsmappning och ingen defaultpromovering. | fältgrind uppfylld: 723 giltiga rader/3 V-armar, men0 pixel-PASS och377 förskjutna radetiketter. V-masknegativ0 V-armar/0 ord. Sex skador avvisade; ingen native/route/hårdvara/defaultändring. [Resultat och gränser](IQ_AVG16_EXPERIMENT_2026-11-07.md). |
+
 Varje steg får riktade tester, källrevision, körkommandon och sparade resultat. Snabbsviten krävs före Core-commit. Förslag publiceras som granskade grenar/PR; ingen `main`-merge utan hela sviten enligt repots regler. Resultat och nästa steg skrivs här efter varje avslut. Hårdvarustatus, stift, SDRAM/LOW-regler, licens och gamla accepterade paket ändras inte av modellpassen. Hub PR #7 är redan skriven och dubbelimplementeras inte.
 
 ## Kräver kortet

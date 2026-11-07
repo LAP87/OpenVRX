@@ -1,0 +1,303 @@
+{
+  "task": 81,
+  "source": {
+    "status": "SOURCE_COMPLETE_NO_CAPTURE",
+    "seed": 2,
+    "cn": 12,
+    "bits": 7,
+    "lines": 1050,
+    "first_line": 1,
+    "fs": 40000000.0,
+    "deviation": 2.8,
+    "channel_bw": 12000000.0,
+    "video_bw": 4200000.0,
+    "source_commit": "031bba053943ee04ce303ae75b5e701746169c97",
+    "files": {
+      "source.ire.f64": {
+        "file": "source.ire.f64",
+        "size": 21354664,
+        "sha256": "fee4d233a5be1940f20f934f81237a6cf49d5ef506ec4dc6629dd6e2a703e51d",
+        "dtype": "<f8"
+      },
+      "source.filtered.f64": {
+        "file": "source.filtered.f64",
+        "size": 21354664,
+        "sha256": "a99e954ab366610defa4ea132825d231674aeeec3fc37fa3f587feaa1b67c3a7",
+        "dtype": "<f8"
+      },
+      "source.clean.codes.u8": {
+        "file": "source.clean.codes.u8",
+        "size": 2669333,
+        "sha256": "9b5f8fd7b7592e240c20fad0b794b267406fcee1327e03ad4ccdd58320b38412",
+        "dtype": "<u1"
+      },
+      "iq.pairs.i16": {
+        "file": "iq.pairs.i16",
+        "size": 10677332,
+        "sha256": "ca8fc0ca6fe44363d1b464cdd53e60c7c00f2077f02a054aa423983b9f4b7ab1",
+        "dtype": "<i2"
+      },
+      "adjacent.demod.f64": {
+        "file": "adjacent.demod.f64",
+        "size": 21354664,
+        "sha256": "a532f2b76601b072cb6f27c720c69d14e943852d00503caeeabbf900453d6dab",
+        "dtype": "<f8"
+      },
+      "adjacent.filtered.f64": {
+        "file": "adjacent.filtered.f64",
+        "size": 21354664,
+        "sha256": "dc6050ad92aa200321f1f9d7830e35e3649a8b941cf30768605fe90e6e50588f",
+        "dtype": "<f8"
+      },
+      "adjacent.codes.u8": {
+        "file": "adjacent.codes.u8",
+        "size": 2669333,
+        "sha256": "91b6f11ce43a4e4dacb885d9e0e00beaaac3c6ee7536c20f3b255ac881a5575c",
+        "dtype": "<u1"
+      },
+      "gated.demod.f64": {
+        "file": "gated.demod.f64",
+        "size": 21354664,
+        "sha256": "efb907d8ba5660170d81f51ad8c34bbf232b2f0a2f2b239de91f87719d860747",
+        "dtype": "<f8"
+      },
+      "gated.filtered.f64": {
+        "file": "gated.filtered.f64",
+        "size": 21354664,
+        "sha256": "26fe4c34d2ad5952dd5731c203916c07cbbef43d907fe5b78430b2839f2274ed",
+        "dtype": "<f8"
+      },
+      "gated.codes.u8": {
+        "file": "gated.codes.u8",
+        "size": 2669333,
+        "sha256": "a5dea390c7b5c7527fefa31d8fc49b377a3e11845c6ae0a1bd8399bcf3462974",
+        "dtype": "<u1"
+      }
+    },
+    "paths": {
+      "adjacent": {
+        "node": "seed2/cn12/7bit/adjacent",
+        "iq_sha256": "ca8fc0ca6fe44363d1b464cdd53e60c7c00f2077f02a054aa423983b9f4b7ab1",
+        "code_sha256": "91b6f11ce43a4e4dacb885d9e0e00beaaac3c6ee7536c20f3b255ac881a5575c",
+        "samples": 2669333,
+        "codes_file": "adjacent.codes.u8"
+      },
+      "gated": {
+        "node": "seed2/cn12/7bit/gated",
+        "iq_sha256": "ca8fc0ca6fe44363d1b464cdd53e60c7c00f2077f02a054aa423983b9f4b7ab1",
+        "code_sha256": "a5dea390c7b5c7527fefa31d8fc49b377a3e11845c6ae0a1bd8399bcf3462974",
+        "samples": 2669333,
+        "codes_file": "gated.codes.u8"
+      }
+    },
+    "capture_executed": false,
+    "native": false,
+    "hardware": false,
+    "old_seed1_iq_sha256": "86a8bc44ae9ec8442edcad57b6d1eeef5dfe98b151b3f332f226549557afa543",
+    "samples": 2669333
+  },
+  "root": {
+    "status": "ROOT_REVIEWED_NEW_SEED2_DIAGNOSTIC",
+    "scope": {
+      "observed_model_only": true,
+      "causal_proof": false,
+      "quality_accepted": false,
+      "native": false,
+      "hardware": false,
+      "producer_changed": false
+    },
+    "paths": {
+      "adjacent": {
+        "moments": {
+          "all_emitted": {
+            "count": 119520,
+            "sum_a": 106821,
+            "sum_b": 1876804,
+            "a2": 112032321,
+            "b2": 52575754,
+            "ab": 3230129,
+            "residual2": 171068333
+          },
+          "valid_closed": {
+            "count": 118080,
+            "sum_a": 106074,
+            "sum_b": 1876804,
+            "a2": 111158042,
+            "b2": 52575754,
+            "ab": 3230129,
+            "residual2": 170194054
+          },
+          "valid_closed_centers": {
+            "count": 52480,
+            "sum_a": 45937,
+            "sum_b": 834825,
+            "a2": 49199161,
+            "b2": 23373791,
+            "ab": 1326333,
+            "residual2": 75225618
+          }
+        },
+        "emitted_pixels": 119520,
+        "closed_rows": 166,
+        "valid_rows": 164,
+        "valid_rows_within16": 0,
+        "blank_histogram": {
+          "19": 720,
+          "20": 2160,
+          "21": 94320,
+          "22": 22320
+        },
+        "sync_histogram": {
+          "12": 20880,
+          "13": 98640
+        }
+      },
+      "gated": {
+        "moments": {
+          "all_emitted": {
+            "count": 0,
+            "sum_a": 0,
+            "sum_b": 0,
+            "a2": 0,
+            "b2": 0,
+            "ab": 0,
+            "residual2": 0
+          },
+          "valid_closed": {
+            "count": 0,
+            "sum_a": 0,
+            "sum_b": 0,
+            "a2": 0,
+            "b2": 0,
+            "ab": 0,
+            "residual2": 0
+          },
+          "valid_closed_centers": {
+            "count": 0,
+            "sum_a": 0,
+            "sum_b": 0,
+            "a2": 0,
+            "b2": 0,
+            "ab": 0,
+            "residual2": 0
+          }
+        },
+        "emitted_pixels": 0,
+        "closed_rows": 0,
+        "valid_rows": 0,
+        "valid_rows_within16": 0,
+        "blank_histogram": {},
+        "sync_histogram": {}
+      }
+    },
+    "controls": [
+      {
+        "name": "pixel",
+        "file": "pixel.json",
+        "reason": "pixel_value"
+      },
+      {
+        "name": "gain",
+        "file": "gain.json",
+        "reason": "telemetry_gain"
+      },
+      {
+        "name": "source_byte",
+        "file": "source_byte.bin",
+        "reason": "codes_identity"
+      },
+      {
+        "name": "missing_cross",
+        "file": "missing_cross.json",
+        "reason": "cross_identity"
+      },
+      {
+        "name": "native",
+        "file": "native.json",
+        "reason": "scope"
+      },
+      {
+        "name": "hardware",
+        "file": "hardware.json",
+        "reason": "scope"
+      }
+    ],
+    "model_seconds_including_failed_prefix": 15.002254057995742,
+    "jobs": {
+      "source-job": {
+        "returncode": 1,
+        "elapsed_seconds": 0.8377814619743731,
+        "signals": []
+      },
+      "source-v2-job": {
+        "returncode": 0,
+        "elapsed_seconds": 4.67560465799761,
+        "signals": []
+      },
+      "adjacent-job": {
+        "returncode": 0,
+        "elapsed_seconds": 5.124142216023756,
+        "signals": []
+      },
+      "gated-job": {
+        "returncode": 0,
+        "elapsed_seconds": 4.364725722000003,
+        "signals": []
+      }
+    },
+    "source_files": 264,
+    "source_arrays_bytes": 146813315,
+    "original_generator_restarted": false,
+    "source_generated_once": true,
+    "observers_run_once_each": true
+  },
+  "verification": {
+    "status": "FINAL_REVIEWED_NEW_SEED2_DIAGNOSTIC",
+    "scope": {
+      "observed_model_only": true,
+      "causal_proof": false,
+      "quality_accepted": false,
+      "native": false,
+      "hardware": false,
+      "producer_changed": false
+    },
+    "source_files": 264,
+    "existing_bindings": 4809,
+    "controls_rejected": 6,
+    "controls_recreated": false,
+    "jobs": {
+      "source-job": {
+        "returncode": 1,
+        "elapsed_seconds": 0.8377814619743731,
+        "signals": []
+      },
+      "source-v2-job": {
+        "returncode": 0,
+        "elapsed_seconds": 4.67560465799761,
+        "signals": []
+      },
+      "adjacent-job": {
+        "returncode": 0,
+        "elapsed_seconds": 5.124142216023756,
+        "signals": []
+      },
+      "gated-job": {
+        "returncode": 0,
+        "elapsed_seconds": 4.364725722000003,
+        "signals": []
+      },
+      "root-job": {
+        "returncode": 0,
+        "elapsed_seconds": 6.9199538359825965,
+        "signals": []
+      }
+    },
+    "raw_files": 44,
+    "raw_bytes": 159367593,
+    "data_source_generated_once": true,
+    "each_observer_once": true,
+    "original_failed_prefix_preserved": true,
+    "publication_pending": false
+  },
+  "private_package_sha256": "7ee15ce5c9633cf3d94e7e3d4c71f63e5e4e80591f4769c458b34b41f53aafcb"
+}

@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "task": 79,
+  "source_commit": "031bba053943ee04ce303ae75b5e701746169c97",
+  "source_tree": "83734acc12ba3c4708a002fef3fd85abd9279fc5",
+  "status": "FINAL_STOP_REVIEWED_LIMITED_MODEL_OBSERVATION",
+  "accepted": false,
+  "findings": {
+    "status": "ROOT_STOP_REVIEWED_EXISTING_RAW",
+    "accepted": false,
+    "model_arithmetic_and_observed_dependencies_checked": true,
+    "independent_full_pixel_loop_completed_before_first_root_failure": true,
+    "pixels": 701280,
+    "emitted_rows": 974,
+    "closed_rows": 973,
+    "closed_pixels": 700560,
+    "trailing_pixels": 720,
+    "first_pixel_phase_histogram": {
+      "360": 25,
+      "361": 276,
+      "362": 667,
+      "363": 4,
+      "364": 2
+    },
+    "root_added_timing_window_met": false,
+    "outside_window": 301,
+    "timing_window_was_not_in_original_task": true,
+    "timing_correctness_or_production_bug_established": false,
+    "controls": [
+      {
+        "name": "pixel_flip",
+        "independent_reason": "pixel_value"
+      },
+      {
+        "name": "same_row_partner",
+        "independent_reason": "comb_source_row"
+      },
+      {
+        "name": "field_flip",
+        "independent_reason": "field_label"
+      },
+      {
+        "name": "duplicate_row_pixels",
+        "independent_reason": "pixel_value"
+      },
+      {
+        "name": "missing_partner",
+        "independent_reason": "missing_comb_partner"
+      },
+      {
+        "name": "wrong_option",
+        "independent_reason": "options"
+      },
+      {
+        "name": "false_hardware",
+        "independent_reason": "false_acceptance"
+      },
+      {
+        "name": "false_native",
+        "independent_reason": "false_acceptance"
+      }
+    ],
+    "source_files": 264,
+    "raw_files": 25,
+    "raw_bytes": 18472353,
+    "model_retry": false,
+    "original_root_retry": false,
+    "native": false,
+    "hardware": false
+  },
+  "jobs": {
+    "model-job": {
+      "returncode": 0,
+      "elapsed_seconds": 4.824214216991095,
+      "signals": []
+    },
+    "review-job": {
+      "returncode": 0,
+      "elapsed_seconds": 2.130359401984606,
+      "signals": []
+    },
+    "root-job": {
+      "returncode": 1,
+      "elapsed_seconds": 1.6377047930145636,
+      "signals": []
+    },
+    "stop-job": {
+      "returncode": 0,
+      "elapsed_seconds": 0.49080237399903126,
+      "signals": []
+    }
+  },
+  "unique_existing_bindings": 480,
+  "controls_recreated": false,
+  "source_fix": false,
+  "native": false,
+  "hardware": false,
+  "publication_pending": false,
+  "private_package_sha256": "8e6922a884380768d8c7eabc8695298245cda38bf5268c7ae99819338756b363"
+}

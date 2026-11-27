@@ -41,8 +41,9 @@ def late_rise(unique, bit):
     return s
 
 
-def early_fall(unique, bit):
-    """Mirror pattern: the falling edge shows inside the pair (set only in the first sample)."""
+def late_fall(unique, bit):
+    """Mirror pattern: the falling edge arrives one sample late (the first sample of the
+    pair keeps the old 1, so the bit is set only in the first sample)."""
     s = []
     prev = 0
     for u in unique:
@@ -76,13 +77,56 @@ class PairSkew(unittest.TestCase):
             self.assertEqual(c['bits'][k]['verdict'], 'symmetric')
             self.assertEqual(c['bits'][k]['first_only'] + c['bits'][k]['second_only'], 0)
 
-    def test_early_fall_bit_reported_with_direction(self):
+    def test_late_fall_bit_reported_with_direction(self):
         unique = [(k & 0x3B) | ((k & 1) << 2) for k in range(2048)]
-        c = pair_skew.analyze('synthetic', early_fall(unique, 2))
+        c = pair_skew.analyze('synthetic', late_fall(unique, 2))
         b2 = c['bits'][2]
-        self.assertEqual(b2['verdict'], 'early-fall')
+        self.assertEqual(b2['verdict'], 'late-fall')
         self.assertGreater(b2['first_only'], 0)
         self.assertEqual(b2['second_only'], 0)
+
+    @staticmethod
+    def _with_events(second_only, first_only, pairs=512, bit=2):
+        """A clean paired stream of varying codes with `bit` clear, and the given number
+        of pairs where `bit` is set only in the second / only in the first sample."""
+        rng = random.Random(11)
+        s = paired([rng.randrange(64) & ~(1 << bit) for _ in range(pairs)])
+        for i in range(second_only):
+            s[2 * (10 + i) + 1] |= 1 << bit
+        for i in range(first_only):
+            s[2 * (200 + i)] |= 1 << bit
+        return s
+
+    def test_three_events_and_no_opposite_are_too_few(self):
+        # 3 of 512 pairs is 0.586 %, over the 0.5 % share, but under MIN_EVENTS
+        c = pair_skew.analyze('synthetic', self._with_events(3, 0))
+        self.assertTrue(c['structure'])
+        self.assertEqual(c['bits'][2]['second_only'], 3)
+        self.assertEqual(c['bits'][2]['verdict'], 'too-few')
+
+    def test_four_events_and_no_opposite_give_a_direction(self):
+        c = pair_skew.analyze('synthetic', self._with_events(4, 0))
+        self.assertEqual(c['bits'][2]['verdict'], 'late-rise')
+        c = pair_skew.analyze('synthetic', self._with_events(0, 4))
+        self.assertEqual(c['bits'][2]['verdict'], 'late-fall')
+
+    def test_both_directions_under_the_ratio_are_asymmetric(self):
+        # 12 against 4 is 3x, under the 4x ratio; 16 against 4 is 4x and gets a direction
+        c = pair_skew.analyze('synthetic', self._with_events(12, 4))
+        self.assertEqual(c['bits'][2]['verdict'], 'asymmetric')
+        c = pair_skew.analyze('synthetic', self._with_events(16, 4))
+        self.assertEqual(c['bits'][2]['verdict'], 'late-rise')
+
+    def test_main_fails_when_no_capture_is_complete(self):
+        with tempfile.TemporaryDirectory() as d:
+            dump = Path(d) / 'probe.txt'
+            dump.write_text('DIGIN 8\n0a\n0a\nEND\n')  # 2 of 8 samples: the port opened mid-dump
+            out, err = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                rc = pair_skew.main(['pair_skew.py', '--json', str(dump)])
+            self.assertEqual(rc, 1)
+            self.assertEqual(json.loads(out.getvalue()), [])
+            self.assertIn('no complete capture', err.getvalue())
 
     def test_negative_control_no_pair_structure(self):
         rng = random.Random(1)

@@ -8,10 +8,16 @@ up to one clock (25 ns) late shows up as set in only one sample of a pair. The t
 the pair phase (which sample-index parity starts a pair), counts per bit how many pairs
 have the bit set only in the first or only in the second sample, counts whole-code
 mismatches, and prints one table per capture plus a one-line verdict per bit:
-symmetric / late-rise / early-fall. Verdict mapping, from the 2026-10-27/28 bench captures
-(bit 2 on GPIO11 was set only in the second sample of 5-8 % of the pairs and never only in
-the first; its rising edge is late, the falling edge on time): set only in the SECOND
-sample = late-rise, set only in the FIRST sample = early-fall.
+symmetric / late-rise / late-fall / asymmetric / too-few. Verdict mapping, from the
+2026-10-27/28 bench captures (bit 2 on GPIO11 was set only in the second sample of 5-8 % of
+the pairs and never only in the first; its rising edge is late, the falling edge on time):
+set only in the SECOND sample = late-rise (the first sample still shows the 0 of the code
+before), set only in the FIRST sample = late-fall (the first sample still shows the 1 of the
+code before). The tool reads both as a late edge; it does not look at the neighbouring
+pairs, so an edge that came a clock early would get the same verdict.
+
+Exit status: 0 when at least one capture was analysed, 1 when no file held a complete
+capture, 2 without arguments.
 
 Input: an M7 probe dump (header "DIGIN <n> [CLK <t>]", hex lines, "END"; one table per
 complete capture, read like tools/bench/digin_decode.py) or a plain hex file with one
@@ -33,11 +39,14 @@ MIN_PAIRS = 64          # below this many pairs no verdicts are given
 STRUCT_MAX_SHARE = 0.5
 STRUCT_CLEAN_SHARE = 0.01
 STRUCT_RATIO = 2.0
-# A bit gets a verdict above 0.5 % of pairs (clean bits measure 0.000 % on the fixture,
+# A bit gets a direction above 0.5 % of pairs (clean bits measure 0.000 % on the fixture,
 # the skewed bit 5-11 %) with the dominant direction at least 4x the other (the known
-# pattern has the other direction at 0).
+# pattern has the other direction at 0) and at least 4 events in the dominant direction.
+# Fewer events than that give 'too-few': in a short capture one or two pairs already
+# pass the share.
 VERDICT_SHARE = 0.005
 VERDICT_RATIO = 4.0
+MIN_EVENTS = 4
 
 
 def read_captures(path):
@@ -104,7 +113,7 @@ def analyze(name, s):
                     if (b >> k) & 1:
                         second_only[k] += 1  # set only in the second sample: late rise
                     else:
-                        first_only[k] += 1   # set only in the first sample: early fall
+                        first_only[k] += 1   # set only in the first sample: late fall
     div = npairs if npairs else 1
     bits = []
     for k in range(N_BITS):
@@ -114,12 +123,12 @@ def analyze(name, s):
             v = 'none'
         elif max(f, sk) < VERDICT_SHARE:
             v = 'symmetric'
-        elif sk >= VERDICT_SHARE and sk >= VERDICT_RATIO * max(f, 1.0 / div):
-            v = 'late-rise'
-        elif f >= VERDICT_SHARE and f >= VERDICT_RATIO * max(sk, 1.0 / div):
-            v = 'early-fall'
+        elif max(fo, so) < VERDICT_RATIO * min(fo, so):
+            v = 'asymmetric'    # both directions occur, neither 4x the other
+        elif max(fo, so) < MIN_EVENTS:
+            v = 'too-few'
         else:
-            v = 'asymmetric'
+            v = 'late-rise' if so > fo else 'late-fall'
         bits.append({'bit': k, 'first_only': fo, 'second_only': so, 'verdict': v})
     return {'name': name, 'samples': len(s), 'pairs': npairs, 'phase': phase,
             'structure': structure, 'mismatch_share': shares[phase], 'other_share': shares[other],
@@ -164,18 +173,20 @@ def main(argv):
         print(__doc__)
         return 2
     result = []
+    analysed = 0
     for path in args:
         caps = analyze_file(path)
         if not caps:
             print(f'{path}: no complete capture', file=sys.stderr)
             continue
+        analysed += len(caps)
         if as_json:
             result.append({'file': str(path), 'captures': caps})
         else:
             print(format_text(path, caps))
     if as_json:
         print(json.dumps(result, indent=1))
-    return 0
+    return 0 if analysed else 1
 
 
 if __name__ == '__main__':

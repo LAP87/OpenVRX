@@ -6,7 +6,7 @@
     "run_extended.py": "46f5d24332fb586962db0dc6678fe0a821f20ec14f79ccf6983897ed1ea56278"
   },
   "fixture_sha256": "384a039059e20735f0f69527dc9fab28b7fcb018287f39901a6531efca63d6ab",
-  "contract_sha256": "52c4f0f2b5bb95844d8ee16a3879032d34648e1b7add84a775c82bb71eeaa9a7",
+  "contract_sha256": "38fc370326938ad54ecb59b409c8c84c547002e529e736c1a7876a5caa502288",
   "cases": [
     "original A/B bytes retained",
     "original CTL bytes retained",

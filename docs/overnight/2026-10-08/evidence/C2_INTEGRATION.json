@@ -6,8 +6,8 @@
     "owner": "root",
     "state": "PASS_DOCS_ONLY_AFTER_NATIVE_ACCEPTANCE",
     "verified_source_revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
-    "suite_root_review_sha256": "6d69bd389ef79902a4dacc05449a7845f43c462ae4dfabd064778bf028cc6ca2",
-    "build_root_review_sha256": "095839414b98730eaf064027655dcfaae1f878c736e11559c71d892ccfd7beae",
+    "suite_root_review_sha256": "f7c8bb5c2c39beff18221ca4adaf51bb5db2fa23e22fba9b7483b255d6329521",
+    "build_root_review_sha256": "33cf7e3dcd3e1619e3d61015aef1242b21414edf57947ac973042d80adea4559",
     "docs": {
       "README.md": "13dfcf3d5d2f8c77fddce6d9a436e65ba7942994647ca8196052165f44111438",
       "gateware/README.md": "d0897de20edd1c00c8ec8ae16143b8d59529ab04185898c157f6099f81b2575c"

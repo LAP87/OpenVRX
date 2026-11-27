@@ -1230,7 +1230,7 @@
     {
       "fault": "revision",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/revision.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/revision.json",
       "identity": {
         "sha256": "411ce725e716a5355137d265fc5a6fad5c2ede4c214a72a321a638b4a93542d4",
         "size": 104636
@@ -1239,7 +1239,7 @@
     {
       "fault": "seed",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/seed.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/seed.json",
       "identity": {
         "sha256": "b44d4509656cf962ca054854117bcff9caaa9642bc842a4df7c514befc51e606",
         "size": 104672
@@ -1248,7 +1248,7 @@
     {
       "fault": "option",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/option.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/option.json",
       "identity": {
         "sha256": "047a7d9356f28cce3c14fe56ed3d6de0426317d19262ffff522ea651ab24527d",
         "size": 104672
@@ -1257,7 +1257,7 @@
     {
       "fault": "artifact_identity",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_identity.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_identity.json",
       "identity": {
         "sha256": "547a07a0379a0cc51abc5504fffb7fe501fd89638889449ce78a9ee77bb910f9",
         "size": 104672
@@ -1266,7 +1266,7 @@
     {
       "fault": "final_timing",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/final_timing.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/final_timing.json",
       "identity": {
         "sha256": "665a5caa734ed113f27aa2b20906929dd5092bb2df909a59ff967a1d0e544032",
         "size": 104754
@@ -1275,7 +1275,7 @@
     {
       "fault": "accepted",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/accepted.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/accepted.json",
       "identity": {
         "sha256": "5616d81989d518951c60880a1ced63d91f4d97f807442004fda4a99822b37aac",
         "size": 104671
@@ -1284,7 +1284,7 @@
     {
       "fault": "root_cause",
       "reason": "claim differs from original source/raw facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/root_cause.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/root_cause.json",
       "identity": {
         "sha256": "af8dba2c696056a56ba8279759af321f85b45695bfc99f621a3c8c9420637233",
         "size": 104671
@@ -1293,7 +1293,7 @@
     {
       "fault": "source_byte",
       "reason": "bound byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/source_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/source_byte.bytes",
       "identity": {
         "sha256": "b88fa633006afdd340df3fd93f33bf5c61d91172de23d1e7cef73fc1a451c7d9",
         "size": 16784
@@ -1306,7 +1306,7 @@
     {
       "fault": "artifact_byte",
       "reason": "bound byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/artifact_byte.bytes",
       "identity": {
         "sha256": "1f474869044c73dd712bab0360c44ee91fd89f27843b9ac6aff5062ee13af814",
         "size": 11684
@@ -1319,7 +1319,7 @@
     {
       "fault": "helper_byte",
       "reason": "bound byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/helper_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/helper_byte.bytes",
       "identity": {
         "sha256": "1f19302e5432b66ca946a5ba4acb9cf721ccb4dd0c5210470320682bb5410d55",
         "size": 12555
@@ -1332,7 +1332,7 @@
     {
       "fault": "contract_byte",
       "reason": "bound byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/contract_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-combined-placement-audit/owned-controls/contract_byte.bytes",
       "identity": {
         "sha256": "57b20f8fceaa59a3d6bb8cfb0dca11c6d3b825b623e15875dac818622f74e275",
         "size": 1423195

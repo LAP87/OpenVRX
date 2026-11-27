@@ -163,7 +163,7 @@
   },
   "entrypoint": "test_fuzz_chain.run_seed",
   "keep": true,
-  "work": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/sim/build/fuzz/overnight-replay-126-20261008",
+  "work": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/OpenVRX-Core/gateware/sim/build/fuzz/overnight-replay-126-20261008",
   "helper_sha256": "75a4d7ef579ce94f59eeedb0da8cddac1ba8c04910bafdbc9fb52f5767862aed",
   "hardware_verified": false,
   "visibility_comparison": {

@@ -3,7 +3,7 @@
   "owner": "root",
   "state": "PASS_SUITE_ROOT_REVIEWED_BUILDS_PENDING",
   "revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
-  "suite_receipt_sha256": "c783407e79a31e9a09f3bc82f76debff1160aebee80091c25368d261d1c09bfc",
+  "suite_receipt_sha256": "7c0d8672ee82ca199c43f90f9228cf64b27b500098b5ec1ec894538440a6222f",
   "raw_summary_sha256": "236867d6755d95ff2da57266fc452e320a110e25d9349725ce68b5c25be6f21d",
   "raw_runner_exit": 0,
   "passed": 604,

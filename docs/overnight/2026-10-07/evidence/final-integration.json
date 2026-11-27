@@ -27,7 +27,7 @@
   "puck_main_pushed": true,
   "core_and_puck_clean": true,
   "final_suite_summary": "432 passed, 2 xfailed in 5162.59s (1:26:02)",
-  "final_suite_json_sha256": "5b56b661d66894cc707734b32b2498643e4010e2836df082e819e05b0819764e",
+  "final_suite_json_sha256": "30dddacd392213b21d4066a5b919b772ca3a5ff6f9e233815068b7fdf5ccfdfe",
   "final_suite_log_sha256": "1238f2972cb2e842075495dfd82233519d29c9483b8a5c7f5137618063024f51",
   "puck_test_summary": "1 passed in 1.35s",
   "build_manifest_verification": {

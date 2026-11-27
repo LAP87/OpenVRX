@@ -10,7 +10,7 @@ import json
 import collections
 import subprocess
 
-ROOT = Path(sys.argv[1]) if len(sys.argv)>1 else Path('/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
+ROOT = Path(sys.argv[1]) if len(sys.argv)>1 else Path('/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
 CORE = ROOT / 'OpenVRX-Core'
 WORK = Path(__file__).resolve().parent
 

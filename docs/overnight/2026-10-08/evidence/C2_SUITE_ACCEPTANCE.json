@@ -132,14 +132,14 @@
       "sha256": "2fa78b9ea1bb6e7f5578537e906d0b571891b8cd0edb3c76b5ad37b8c7b469c1"
     }
   ],
-  "frozen_source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/frozen-core-c2-c3fda21",
+  "frozen_source": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/frozen-core-c2-c3fda21",
   "hardware_verified": false,
   "helper_sha256": "60f4d8fc9874fcfb7fc893241a5a4dd6a5e9c64901dc4b219012ba39f0232803",
   "helpers_sha256": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c1/accept_suite.py": "f98fb3f9370479d1c80daf9742b0f6691977b25ce5fbcb212718193fdf2b3186",
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/accept_gates-8d7b0e9.py": "e228aa3d1d1a23456d304e1bb83293d718718a27ca4ec233b06e7e56a4e7a588",
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/cocotb_binding_display.py": "021482567d7851f683d5bdb6aaf3aaeaf317508bdb5883b40cf6fb7d3aab699e",
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/run_suite.py": "4ca0f6200e7e34337f43cba658a298249df9012adf758fc6ba6b4f82cc6a4cb8"
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c1/accept_suite.py": "f98fb3f9370479d1c80daf9742b0f6691977b25ce5fbcb212718193fdf2b3186",
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/accept_gates-8d7b0e9.py": "e228aa3d1d1a23456d304e1bb83293d718718a27ca4ec233b06e7e56a4e7a588",
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/cocotb_binding_display.py": "021482567d7851f683d5bdb6aaf3aaeaf317508bdb5883b40cf6fb7d3aab699e",
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/run_suite.py": "4ca0f6200e7e34337f43cba658a298249df9012adf758fc6ba6b4f82cc6a4cb8"
   },
   "revision": "c3fda21d1437d695b75dadbb171ef4702e0e9353",
   "source_contract_sha256": "d4ae767700b2584e1f4d2764721aa72841bfc9bd49bcfcdc1f91ceb81bfb5722",
@@ -1910,9 +1910,9 @@
       "pytest_status": "PASSED",
       "pytest_test_file": "gateware/sim/test_sdram.py"
     },
-    "summary_path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/suite-c2-c3fda21/summary.json",
+    "summary_path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/suite-c2-c3fda21/summary.json",
     "summary_sha256": "236867d6755d95ff2da57266fc452e320a110e25d9349725ce68b5c25be6f21d"
   },
-  "suite_path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/suite-c2-c3fda21",
+  "suite_path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/suite-c2-c3fda21",
   "summary_sha256": "236867d6755d95ff2da57266fc452e320a110e25d9349725ce68b5c25be6f21d"
 }

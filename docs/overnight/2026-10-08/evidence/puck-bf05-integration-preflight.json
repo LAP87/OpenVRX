@@ -718,7 +718,7 @@
     {
       "fault": "candidate_identity",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_identity.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_identity.json",
       "identity": {
         "sha256": "f7cff378e1296d74d29244b0987df9ef493c6a90adb5535337d4f39be3ba79e4",
         "size": 13479
@@ -727,7 +727,7 @@
     {
       "fault": "old_pin",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/old_pin.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/old_pin.json",
       "identity": {
         "sha256": "be609c85110678a87fd3a31922231b9e9fe27596494fc86341ffdda8d8441b16",
         "size": 13512
@@ -736,7 +736,7 @@
     {
       "fault": "pin_mapping",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/pin_mapping.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/pin_mapping.json",
       "identity": {
         "sha256": "2d8949bc623a006905a91adab892809ec3c349a19e22e73617aa8ee35b797ed7",
         "size": 13512
@@ -745,7 +745,7 @@
     {
       "fault": "RSSI_field_alignment",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/RSSI_field_alignment.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/RSSI_field_alignment.json",
       "identity": {
         "sha256": "0bdc4c584f225b22af45dedaaa0f808446f7914dd0cc187befbb7133149b976e",
         "size": 13511
@@ -754,7 +754,7 @@
     {
       "fault": "candidate_Puck_pass",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_Puck_pass.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/candidate_Puck_pass.json",
       "identity": {
         "sha256": "13deeeade715acfb8c0b7a87a6e56d93af180d05ba354d75982652165b4c01fd",
         "size": 13508
@@ -763,7 +763,7 @@
     {
       "fault": "combined_acceptance",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/combined_acceptance.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/combined_acceptance.json",
       "identity": {
         "sha256": "c738771ca6dad12ee32d0ad252efa7331612afbc4b8d12e688ee0e83f9cea143",
         "size": 13511
@@ -772,7 +772,7 @@
     {
       "fault": "hardware_acceptance",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/hardware_acceptance.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/hardware_acceptance.json",
       "identity": {
         "sha256": "9ecc24869ce1038144ee8a7b24515d6580f27cf5b7027a1562c855cde0aef453",
         "size": 13511
@@ -781,7 +781,7 @@
     {
       "fault": "proposal_published",
       "reason": "claim differs from original Git/source/accepted packet facts",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_published.json",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_published.json",
       "identity": {
         "sha256": "8ac0f93d75eb208cdc832492651c53e874c5deec2db2c003a3a7965ac763851e",
         "size": 13511
@@ -790,7 +790,7 @@
     {
       "fault": "source_byte",
       "reason": "source/proposal/helper byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/source_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/source_byte.bytes",
       "identity": {
         "sha256": "38334c75f266371170028cd508a448495e2af50979f641b0eb5fc07183daf6df",
         "size": 13710
@@ -803,7 +803,7 @@
     {
       "fault": "proposal_byte",
       "reason": "source/proposal/helper byte identity differs",
-      "owned_copy": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_byte.bytes",
+      "owned_copy": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-integration-preflight/owned-controls/proposal_byte.bytes",
       "identity": {
         "sha256": "5b950b2b977f8fe430bf0b69fccd36a0155d4d039ed61b61b8ae1f4da7666811",
         "size": 2861

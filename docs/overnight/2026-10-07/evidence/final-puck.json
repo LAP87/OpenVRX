@@ -4,7 +4,7 @@
   "command": [
     "flock",
     "-n",
-    "/home/lenny/openvrx-review/build.lock",
+    "/home/owner/openvrx-review/build.lock",
     "../OpenVRX-Core/.venv/bin/python",
     "-m",
     "pytest",

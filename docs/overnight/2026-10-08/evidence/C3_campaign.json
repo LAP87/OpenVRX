@@ -104,7 +104,7 @@
   "interrupted_attempt": {
     "completed_result_rows": 0,
     "preserved": true,
-    "raw_evidence": "/home/lenny/openvrx-review/evidence/c3/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+    "raw_evidence": "/home/owner/openvrx-review/evidence/c3/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
     "state": "PAUSED_USER_JOB_TERMINATED"
   },
   "jobs": 10,
@@ -113,7 +113,7 @@
   "pause_reason": "User gaming on the development host; no intensive work until explicit user resume",
   "paused_utc": "2026-10-09T20:21:38.016364+00:00",
   "processes_terminated": 23,
-  "raw_evidence": "/home/lenny/openvrx-review/evidence/c3/restart-2026-10-09-after-gaming/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
+  "raw_evidence": "/home/owner/openvrx-review/evidence/c3/restart-2026-10-09-after-gaming/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "raw_evidence_preserved": true,
   "resume_contract_identical": true,
   "resume_policy": "Preserve interrupted rawout; review a fresh attempt with identical source and parameters. Do not blindly resume orphan rawout.",

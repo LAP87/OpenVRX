@@ -264,23 +264,23 @@
   "raw_files": 80,
   "raw_bytes": 534438,
   "private_receipts": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/PACKAGE_ACCEPTANCE_PREPUBLICATION.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/PACKAGE_ACCEPTANCE_PREPUBLICATION.json": {
       "sha256": "e3c48a0e7ef32eea7cc4dd82fd7ac1b027dc9b616c55dd0be47bcea56d545a16",
       "size_bytes": 10386
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/ROOT_REVIEW.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/ROOT_REVIEW.json": {
       "sha256": "bd18b52402f076ff1d9d748e3f4d3ba8553e9a3466bd98a2553fe068c56fa01a",
       "size_bytes": 7358
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FINAL_REVIEW.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FINAL_REVIEW.json": {
       "sha256": "f3732315d11762ef2fc4dff197aa49ad3a05dbe3c6b85c635b321b9b7f597f9b",
       "size_bytes": 7358
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/RAW_FINAL_INVENTORY.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/RAW_FINAL_INVENTORY.json": {
       "sha256": "ff7a09379b26e89d3668547287a8c75d6a4d52e8e1d334c58c8422539bcc0a25",
       "size_bytes": 22228
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FIRST_PUBLICATION_PREPARATION_GAP.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-targeted-gate/FIRST_PUBLICATION_PREPARATION_GAP.json": {
       "sha256": "cde2b9eacdf24dbf7255f85c781693f00f47e3d31c2d9ec2275b5965692e154e",
       "size_bytes": 741
     }

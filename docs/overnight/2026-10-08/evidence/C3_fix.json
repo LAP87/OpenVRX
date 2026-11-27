@@ -227,7 +227,7 @@
   "source": {
     "branch": "fix/c3-scaled-fallback-readstart",
     "clean": true,
-    "frozen_source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-8d7b0e9",
+    "frozen_source": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-8d7b0e9",
     "revision": "8d7b0e9e4d5df807af96f1acd13d44a6124e8b55",
     "source_contract_sha256": "a59078c6b33de8596ae9b0d313fe98aeaa985572b83384fb9e887be726ff5b9f",
     "source_file_count": 157

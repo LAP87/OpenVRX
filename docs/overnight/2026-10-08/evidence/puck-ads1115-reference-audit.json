@@ -84,63 +84,63 @@
     }
   ],
   "inventory": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/FIRST_REFERENCE_GAP.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/FIRST_REFERENCE_GAP.json": {
       "sha256": "c2756f2c2e25e96f44c43215582f0323b5eb0d90f0ac73c0c5002f17a2606f25",
       "size": 721
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FETCH.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FETCH.json": {
       "sha256": "a76f1c2272b87ece68c844304531ba4593de087dee58dd3322a17634692b552a",
       "size": 357
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FACTS.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/REFERENCE_FACTS.json": {
       "sha256": "669e1efffcf115601d4b658169508de3dc632e8425c1d4010fad898b40f3ea97",
       "size": 1243
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CLAIM_REVIEW.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CLAIM_REVIEW.json": {
       "sha256": "a44ef47765eb7403af5d8be5cd33a27ab0afbd820e579ab1aa6dc0bca7bfbc36",
       "size": 999
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/PARAMETERS.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/PARAMETERS.json": {
       "sha256": "7c8dd814b760bd355f197fd07683ad67ae0ea203aab05496a229989e48b014c8",
       "size": 413
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_CONTRACT.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_CONTRACT.json": {
       "sha256": "2bbe32fc29f34556a1fc9be2b61cce4a6ddbf029497251a1ac25793872b29d9f",
       "size": 3696
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_RESULT.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION_RESULT.json": {
       "sha256": "4a46f01d02d40fff3d06a96fe5637832bc5c5d0639ac711bba44900b55262740",
       "size": 1518
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/CALCULATION.log": {
       "sha256": "dd21e3fe68bca5de3187f4d280d61b130963bf9b8798afb1b8c7836ef30b9296",
       "size": 1332
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/ROOT_REVIEW_CONTRACT.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/ROOT_REVIEW_CONTRACT.json": {
       "sha256": "aa8275ba9541f1ee5ba73bc9d0e817d52bb69fbf79cd8e02a8e9028d066f9809",
       "size": 3063
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculate.py": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculate.py": {
       "sha256": "f683baf3e36ec8eaa480612ae5d21e9a881c95ed7a7be85abd9148277babe831",
       "size": 4446
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/calculation.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/calculation.json": {
       "sha256": "bd765c53d10cccbc79769043b317a46ade2fb8926999b2ffce29bfc830039e69",
       "size": 3735
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/claim.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/claim.json": {
       "sha256": "081439553723d77c3039db49f7c97f110e978c011fd8f4797ca4ede0bdd980ca",
       "size": 3735
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/reference.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/reference.json": {
       "sha256": "c56099325d697fa66bf90a9b3f9e41be5d87b1176c9bb51a4259c271984aec4a",
       "size": 3736
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/source.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/source.json": {
       "sha256": "9df1775730c1cf928c2eb398f66bb4eb00866667505691f923dada00e175520e",
       "size": 3736
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/valid.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-82444-ads1115-reference-audit/calculation-controls/valid.json": {
       "sha256": "f971b28be62cec849095c3ee4053e9baf0340150e057e40c7e17fb9a600da545",
       "size": 3736
     }

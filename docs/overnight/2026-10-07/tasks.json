@@ -76,7 +76,7 @@
         "Resume med samma kontrakt hoppar över färdiga seed-nycklar och kör endast saknade.",
         "Ändrat kontrakt eller legacy-JSONL utan manifest avvisas före simulering och före filändring.",
         "Enhetstest: samma kontrakt återupptas; ändrat geometry/density/fields/classes/force/hash avvisas och JSONL förblir byte-identisk.",
-        "Verifiering: flock /home/lenny/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_fuzz_campaign.py"
+        "Verifiering: flock /home/owner/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_fuzz_campaign.py"
       ],
       "evidence": [
         "evidence/campaign-contract-tests.log",
@@ -149,7 +149,7 @@
         "En meningsfull negativ kontroll med gamla current-channel-only-villkoret faller i det spegelvända fallet.",
         "Riktade pair-join-test och mixerfilen passerar.",
         "M4 och M6 har byggts från den verifierade källrevisionen, manifestet verifierar och PNR-loggarna saknar ERROR.",
-        "Kommandon körs ett i taget under flock /home/lenny/openvrx-review/build.lock."
+        "Kommandon körs ett i taget under flock /home/owner/openvrx-review/build.lock."
       ],
       "evidence": [
         "evidence/m4_dual_mix.build.json",

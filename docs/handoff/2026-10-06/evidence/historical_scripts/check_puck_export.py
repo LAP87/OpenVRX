@@ -39,7 +39,7 @@ before = {p.name: hashlib.sha256(canonical(p)).hexdigest() for p in files}
 generate('puck_generate_repeat.log')
 after = {p.name: hashlib.sha256(canonical(p)).hexdigest() for p in files}
 assert before == after, (before, after)
-assert '/home/lenny/' not in (OUT / 'dekoderkort.net').read_text()
+assert '/home/owner/' not in (OUT / 'dekoderkort.net').read_text()
 assert b'\r\n' not in (OUT / 'dekoderkort_bom.csv').read_bytes()
 report = (OUT / 'dekoderkort_kopplingar.md').read_text()
 assert '- 18 18: TVP_RESETB' in report and '- 10 10: TVP_RESETB' not in report

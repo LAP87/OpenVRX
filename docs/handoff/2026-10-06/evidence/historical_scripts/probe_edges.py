@@ -1,6 +1,6 @@
 from pathlib import Path
 import json,subprocess
-ROOT=Path('/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
+ROOT=Path('/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
 CORE=ROOT/'OpenVRX-Core';WORK=Path(__file__).resolve().parent
 BIN=CORE/'.tools/iverilog/bin'
 GENLOCK=r"""

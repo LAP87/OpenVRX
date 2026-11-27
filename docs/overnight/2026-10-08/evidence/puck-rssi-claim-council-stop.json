@@ -1,7 +1,7 @@
 {
   "state": "STOPPED_REVIEWER_CREDIT_ERROR_NOT_ACCEPTED",
   "closed_utc": "2026-10-13T10:17:35.424424+00:00",
-  "task": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/PUCK_RSSI_CLAIM_COUNCIL_TASK.md",
+  "task": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/PUCK_RSSI_CLAIM_COUNCIL_TASK.md",
   "puck_revision": "82444fabd580648c38eb9b2d6c00926b8bd553a3",
   "core_pin": "46a1e4f284605a9521f592faff33068986e92d25",
   "bound_input_count": 214,

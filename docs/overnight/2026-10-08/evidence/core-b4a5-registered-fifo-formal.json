@@ -95,11 +95,11 @@
   "signals": [],
   "retries": 0,
   "root_final_receipts": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/ROOT_REVIEW.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/ROOT_REVIEW.json": {
       "sha256": "199e8af9e0ee5b65656b27f312a23a5f28f95f2ed6d3b594a50245d0991e1da8",
       "size_bytes": 3259
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/FINAL_REVIEW.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-registered-fifo-formal/FINAL_REVIEW.json": {
       "sha256": "da8b458928fde974a859741a920e0bfcac11ccff85c9a38dc000ef5a8c052a13",
       "size_bytes": 3260
     }

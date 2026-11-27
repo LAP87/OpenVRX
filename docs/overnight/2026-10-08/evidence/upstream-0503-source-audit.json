@@ -65,7 +65,7 @@
     "gateware/tools/test_build_artifacts.py::test_io_registers_in_the_io_cells_by_top_and_recorded[m4_dual_mix-settings4--True]"
   ],
   "focused_command": [
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-0503-source-audit/source/.venv/bin/python",
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/upstream-0503-source-audit/source/.venv/bin/python",
     "-m",
     "pytest",
     "-q",

@@ -85,6 +85,6 @@
   "source_contract_sha256": "4053070b0af65ca278599d2b2ccb2245debe78e26edf4b1595f0e5238bc2cbd4",
   "source_inputs": 157,
   "state": "PASS_ROOT_REVIEWED_BEFORE_INTEGRATION",
-  "suite_receipt_sha256": "abe0f7de09f0500f3edecdc70a3ad2571e76463bf531a67c3390a788bf890692",
+  "suite_receipt_sha256": "52fc78c484d6435497f674883987de01afa83e72a1bd2cf73e1be1dfa909828b",
   "tmds_four_tiles_eight_comparisons": "same"
 }

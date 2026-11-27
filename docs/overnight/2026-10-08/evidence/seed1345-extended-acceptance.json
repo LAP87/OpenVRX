@@ -2,7 +2,7 @@
   "state": "PASS_ROOT_REVIEWED_NEW_SCENARIO_ONLY",
   "reviewed_utc": "2026-10-11T23:27:57.119949+00:00",
   "revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
-  "contract_sha256": "52c4f0f2b5bb95844d8ee16a3879032d34648e1b7add84a775c82bb71eeaa9a7",
+  "contract_sha256": "38fc370326938ad54ecb59b409c8c84c547002e529e736c1a7876a5caa502288",
   "result_sha256": "a8c47b4adc44f2bc9a0952004437c065d2557e27f0a053bb3543073863cb7d1d",
   "review_helper_sha256": "c9afcbcaa517333589d5192dffb353140d7c7f9f80bf47d5c98be123fe3e12c5",
   "baseline_review_sha256": "fa894502bedf7ddacf46be13707ddd5bcb580aead644717bbd8616cf840a8274",

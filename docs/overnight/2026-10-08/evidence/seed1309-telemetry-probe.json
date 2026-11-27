@@ -171,14 +171,14 @@
       {
         "fault": "hold",
         "error": "early recovery must be held",
-        "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_hold.txt",
+        "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_hold.txt",
         "sha256": "d392b86dc07457ad65a0ecfa01e10f0b89dc2ac68d2cbd74fa8fef6fdf7f0727",
         "actual_trace_bound": true
       },
       {
         "fault": "phase",
         "error": "early recovery phase/no-jump",
-        "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_phase.txt",
+        "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/seed1309-telemetry-probe/NEGATIVE_phase.txt",
         "sha256": "17141395a270b8e99744523f71416df43e6f0f82a5529adbed8e356266c996f2",
         "actual_trace_bound": true
       }

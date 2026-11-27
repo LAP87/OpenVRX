@@ -98,8 +98,8 @@
       },
       "outputs": {
         "m0_testpattern.fs": "61317c8adc8159739d8d275ac1148335923a9511a90eeb774e9e720697e4eed3",
-        "m0_testpattern.pnr.log": "27149e55c6dc884f6a0607d1d2ea067c32c36127eb7ebd6b663fdf9b3b5636aa",
-        "m0_testpattern.yosys.log": "4424204cdd0c1239ace8a09241d4950861c763a5390eaf60a4136906d621e580",
+        "m0_testpattern.pnr.log": "3af2fc9981dcdc0d9643475dd97446cf07d59c852d0193f75a6decb333bb9e57",
+        "m0_testpattern.yosys.log": "050a64aa7944d375bae922366cd586037af6413bf662abc10ea618c1d734c38e",
         "m0_testpattern.stat.txt": "0df461f9902290dc643e590591cb26ae30f57628ea5a42de76e319d6ee175500",
         "m0_testpattern.cst": "dceb5558fe1a74a3b6914e2457dd5a4c146332d2bd14267010b117476a244a3e",
         "m0_testpattern.executed.build.sh": "f925ba7cb9a0264483f8ec3c41d14fa0703d71507b6c079e6ca12fdbc0a56977"
@@ -205,8 +205,8 @@
       },
       "outputs": {
         "m3_probe.fs": "e97a67074506e65a1d5f8c81c5b9bbe13acec3b91841fda09b2fe5549e9eea56",
-        "m3_probe.pnr.log": "d1be17c874b0a5f1022a0c3c654608c394c0869ff746269b75d1692c312291a0",
-        "m3_probe.yosys.log": "e4fa0fad9aedc2c9c647edb40844a9ad15acfca6199fc7fd62a92259ad876059",
+        "m3_probe.pnr.log": "06503813cb3c5edecfe17603f19dba1a0ccfefa8c1ffbcd8c74cdabca1240956",
+        "m3_probe.yosys.log": "234ff847c7b849d169eb6d80958760f50d54d542f6702bcfecda501674b39106",
         "m3_probe.stat.txt": "9e3d7c115a94220796155e7529c8ca0cd6aa01109f309e0bdd73a4fe2f6d5aa6",
         "m3_probe.cst": "d67c3ea258862abf0b7a27de730d83d0161583e85b76bc7bfb424ba2595fcb6d",
         "m3_probe.executed.build.sh": "f925ba7cb9a0264483f8ec3c41d14fa0703d71507b6c079e6ca12fdbc0a56977"
@@ -325,8 +325,8 @@
       },
       "outputs": {
         "m4_dual_mix.fs": "39221332ea4539ea0d389aad541290856d192af00155bafb60f7ced3e9a0fd1a",
-        "m4_dual_mix.pnr.log": "f4b65aebd41541a85f1d269ceb6bf86f0e60e764a0fb9d9b5e2fd55b78b44be1",
-        "m4_dual_mix.yosys.log": "1dde67766de2b5a9e7e220c36caccadab57af7dafe0fd2e3854812f41185eb25",
+        "m4_dual_mix.pnr.log": "f90c523afbabbee47bda14bad33c64fef724a5b8fbcce228c9fa028d60839464",
+        "m4_dual_mix.yosys.log": "d0c99a83f6be8f6cbd1bbdb39eadc3b00106cc732eba0a933bbc51d2f15bdf39",
         "m4_dual_mix.stat.txt": "fd7e1a7415b2e334f1a7d877c97931baf9e4315cd6dca48de210d16ce25f4778",
         "m4_dual_mix.cst": "7270b54219aa235803b7aa2ce6a85cc59af062b9ed0c11ca8ffe4c8008717ddd",
         "m4_dual_mix.executed.build.sh": "f925ba7cb9a0264483f8ec3c41d14fa0703d71507b6c079e6ca12fdbc0a56977",
@@ -444,8 +444,8 @@
       },
       "outputs": {
         "m6_puck_proto.fs": "46a9f48e8d31580c4741f1395013d87bb009ffaada405be523b7a5a9272c4830",
-        "m6_puck_proto.pnr.log": "f98e9ac5a131fa231a27f5d5e7bc287826d3d5e724136140ccd384c898c6a9c8",
-        "m6_puck_proto.yosys.log": "cd4f4bab7678da0a556084d04a8f4b2f8d04b1ba65db51540a4f23bcfb9deddb",
+        "m6_puck_proto.pnr.log": "e854bc7706e6de037a0f892d833868a327f12bc30ea19e3493a6761d142ebc1a",
+        "m6_puck_proto.yosys.log": "7d96dc3e19b9e37c0ec11db11c247d71f4389255a6ae12d384eb236d15562dc5",
         "m6_puck_proto.stat.txt": "b34014db73bbe28cdd7b55c7946660c152268638587d071b36c369836701e89a",
         "m6_puck_proto.cst": "b2577317522e3b5e7be4ac1f45cc3ac6d2cea3772c2ae71819b466baa1baafd9",
         "m6_puck_proto.executed.build.sh": "07cc9fe4817089b03677c339dd550c44bb3b75163c6c36ecf2e6f3e31881f93b",

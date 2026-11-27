@@ -6,7 +6,7 @@
   "source_inputs": 209,
   "source_evidence": {
     "unconditional_input_pop": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
       "identity": {
         "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
         "size_bytes": 9364
@@ -15,7 +15,7 @@
       "text": "    assign in_pop = !in_empty;"
     },
     "full_gates_ring_write_not_pop": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
       "identity": {
         "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
         "size_bytes": 9364
@@ -24,7 +24,7 @@
       "text": "        .wclk(clk), .we(in_pop && !is_marker && !full), .waddr({wslot, in_data[40:32]}), .wdata(in_data[31:0]),"
     },
     "data_consumed_with_pop": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mix_chan.v",
       "identity": {
         "sha256": "4ef7d180fcfe878434a0efa636e38dff9b7ef8018db9fb4ed071b4349eb68243",
         "size_bytes": 9364
@@ -33,7 +33,7 @@
       "text": "        if (in_pop && !is_marker) begin"
     },
     "input_a_read_clock": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
       "identity": {
         "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
         "size_bytes": 8610
@@ -42,7 +42,7 @@
       "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(fa_pop), .rd_data(fa_data), .empty(fa_empty), .rd_level(fa_rl));"
     },
     "input_a_consumer": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
       "identity": {
         "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
         "size_bytes": 8610
@@ -51,7 +51,7 @@
       "text": "        .clk(sys_clk), .rst(srst), .ext_bad(ext_bad_a), .ext_weak(ext_weak_a), .in_empty(fa_empty), .in_data(fa_data), .in_pop(fa_pop),"
     },
     "input_b_read_clock": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
       "identity": {
         "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
         "size_bytes": 8610
@@ -60,7 +60,7 @@
       "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(fb_pop), .rd_data(fb_data), .empty(fb_empty), .rd_level(fb_rl));"
     },
     "output_pop_gate": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
       "identity": {
         "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
         "size_bytes": 4151
@@ -69,7 +69,7 @@
       "text": "    wire        out_pop = !out_empty && pc == 0;"
     },
     "output_pop_clock_counter": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
       "identity": {
         "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
         "size_bytes": 4151
@@ -78,7 +78,7 @@
       "text": "    always @(posedge sys_clk) pc <= (pc >= POP_DIV - 1) ? 0 : pc + 1;"
     },
     "output_fifo_read_port": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/mixer2.v",
       "identity": {
         "sha256": "240c9b521fd15e08da82a9b38c0d1e2d1395bd3a0a5a108b209bf0bef193f91d",
         "size_bytes": 8610
@@ -87,7 +87,7 @@
       "text": "        .rclk(sys_clk), .rrst(srst), .rd_en(out_pop), .rd_data(out_data), .empty(out_empty), .rd_level(o_rl));"
     },
     "original_rd_next": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
       "identity": {
         "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
         "size_bytes": 5442
@@ -96,7 +96,7 @@
       "text": "    wire [AW-1:0] rd_next = rrst ? {AW{1'b0}} : rbin_n[AW-1:0];   // rbin after this clock"
     },
     "original_rd_q": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
       "identity": {
         "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
         "size_bytes": 5442
@@ -105,7 +105,7 @@
       "text": "        always @(posedge rclk) rd_q <= mem[rd_next];"
     },
     "rbin_update": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/async_fifo.v",
       "identity": {
         "sha256": "5e4d92a5005177e9bc18d7ac672d23e5df4adab74be8a4788b7cb9a065941ecd",
         "size_bytes": 5442
@@ -114,7 +114,7 @@
       "text": "        else begin rbin <= rbin_n; rgray <= rgray_n; end"
     },
     "word_packing": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/word_packer.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/word_packer.v",
       "identity": {
         "sha256": "abfd93acdb9f45791e8140c30311faae72e52c75881d9e8265dbc515a33e99c6",
         "size_bytes": 1245
@@ -123,7 +123,7 @@
       "text": "                2'd3: begin"
     },
     "marker_collision_comment": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
       "identity": {
         "sha256": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
         "size_bytes": 2820
@@ -132,7 +132,7 @@
       "text": "    // Words come at most every 4th cycle; a marker that collides with a word"
     },
     "marker_pending": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/rtl/chan_capture.v",
       "identity": {
         "sha256": "501fbf113628154450f3843bdaeb460f6688c372d20dc5de9e30432495a329f2",
         "size_bytes": 2820
@@ -141,7 +141,7 @@
       "text": "        end else if (pend) begin"
     },
     "unit_stall_comment": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_async_fifo.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_async_fifo.v",
       "identity": {
         "sha256": "3e41d88145b322a773c76f164073066e6cecff2a8d7f875f0b14f44105519136",
         "size_bytes": 3558
@@ -150,7 +150,7 @@
       "text": "// The reader stalls for random stretches and then pops back to back, so that several words are"
     },
     "observed_decision_log_fields": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
       "identity": {
         "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
         "size_bytes": 4151
@@ -159,7 +159,7 @@
       "text": "        if (dec_valid) $fwrite(fd, \"%0d %0d %0d %0d %0d %0d\\n\", dec_use, dec_pop, dec_field, dec_line, cur, $realtime);"
     },
     "observed_word_log_fields": {
-      "file": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
+      "file": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-b4a5-mixer-fifo-gate/source/gateware/sim/tb_mixer.v",
       "identity": {
         "sha256": "2b263d58256e9b9c744c93d64454c10d35742116652a03364898e4e32b12aeba",
         "size_bytes": 4151

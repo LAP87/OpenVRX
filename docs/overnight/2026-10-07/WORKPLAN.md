@@ -58,7 +58,7 @@ Användarens redan körande Vibe-session har lämnat `VIBE_REPORT.md` och ändra
 ## Körregler och återupptagning
 
 - Läs `COORDINATION.md`, `tasks.json`, `STATUS.md` om root hunnit skapa den och aktuell `git status` före varje paket. Bekräfta levande processer och låset innan ett tungt jobb.
-- Högst ett tungt test- eller byggjobb åt gången, mellan alla tre repona. Kör det under `flock /home/lenny/openvrx-review/build.lock <kommando>`. Rootens pågående baslinje har företräde.
+- Högst ett tungt test- eller byggjobb åt gången, mellan alla tre repona. Kör det under `flock /home/owner/openvrx-review/build.lock <kommando>`. Rootens pågående baslinje har företräde.
 - Använd en ny round-identitet för varje kombination av geometri, density, fältantal, klasser, force och källversion. Nuvarande runner kan annars hoppa över frön med fel kontrakt. Bevara äldre JSONL och misslyckade simkataloger.
 - Ingen parallell fuzz från två arbetare. Kontrollera status innan en runda; om samma fröintervall och kontrakt redan körs, invänta det och läs resultatet i stället för att starta en kopia. Vibe är tilldelad dokumentation och kör inga tunga jobb.
 - Ändringar ska vara lokala. Vid RTL-fel ändras modellen först eller samtidigt, sedan riktat regressionstest, meningsfull negativ kontroll, relevanta tester och M4/M6-bygge för den ändrade vägen. Mixer/fältminnes-RTL berör M4 och M6; M6 UI/dekoderlogik berör M6. Inga stora omskrivningar.
@@ -108,7 +108,7 @@ Granska diffen `main..origin/fuzz/chain-2026-10-07` commit för commit, särskil
 **Kör seedarna var för sig under flock.** Använd en ny, ännu ej existerande katalog för varje seed; `test_chain_seed` utan egen work-path använder standardkatalogen `build/fuzz/seed<id>` och den tas bort före körning.
 
 ```sh
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python - <<'PY'
+flock /home/owner/openvrx-review/build.lock .venv/bin/python - <<'PY'
 import json
 from pathlib import Path
 from gateware.sim.test_fuzz_chain import run_seed
@@ -116,7 +116,7 @@ work = Path('gateware/sim/build/fuzz/overnight-main-pair-join-48')
 assert not work.exists(), work
 print(json.dumps(run_seed(48, work=work, keep=True, density=2.5)))
 PY
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python - <<'PY'
+flock /home/owner/openvrx-review/build.lock .venv/bin/python - <<'PY'
 import json
 from pathlib import Path
 from gateware.sim.test_fuzz_chain import run_seed
@@ -139,8 +139,8 @@ Kör befintligt positivt test `test_returning_channel_starts_the_next_field` och
 **Riktade tester:**
 
 ```sh
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_mixer.py::test_returning_channel_starts_the_next_field gateware/sim/test_mixer.py::test_returning_channel_check_is_tested
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_mixer.py
+flock /home/owner/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_mixer.py::test_returning_channel_starts_the_next_field gateware/sim/test_mixer.py::test_returning_channel_check_is_tested
+flock /home/owner/openvrx-review/build.lock .venv/bin/python -m pytest -q gateware/sim/test_mixer.py
 ```
 
 Bygg M4 och M6 från ändringen, ett bygge i taget, och verifiera färsk manifest/PNR-logg utan `ERROR`. M6 innehåller samma mixer och kan inte åberopa README:s äldre M6-build som verifiering av pair-join-ändringen.
@@ -154,8 +154,8 @@ Bygg M4 och M6 från ändringen, ett bygge i taget, och verifiera färsk manifes
 Starta inte om gamla rundor för totalsiffran. Nattgrenen fortsatte till `6f45f1a` vid kontroll 04:02 och har fler densitetsrundor än planutkastet kände till. R05 skjuts därför upp för att undvika överlappning. Exemplet nedan får bara användas efter en ny jämförelse som visar att intervallet och kontraktet inte redan ägs av Opus. Riktade reproduktionsfrön i R03 har företräde.
 
 ```sh
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python gateware/sim/fuzz_campaign.py run overnight-density25-s50-99-main-7cc4eda 50-99 --density 2.5 --fields 10 --jobs 1 --budget 540
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python gateware/sim/fuzz_campaign.py summary overnight-density25-s50-99-main-7cc4eda
+flock /home/owner/openvrx-review/build.lock .venv/bin/python gateware/sim/fuzz_campaign.py run overnight-density25-s50-99-main-7cc4eda 50-99 --density 2.5 --fields 10 --jobs 1 --budget 540
+flock /home/owner/openvrx-review/build.lock .venv/bin/python gateware/sim/fuzz_campaign.py summary overnight-density25-s50-99-main-7cc4eda
 ```
 
 Kör dessa rader bara om de granskade flaggorna finns på `main`, kontraktet fungerar och ingen annan kör samma seeds/kontrakt. Om ändringen inte tas in ersätts inte det med en hel 50-seedsrunda; spara tiden eller kör ett enda reproduktionsfrö med godkänt kontrakt.
@@ -171,7 +171,7 @@ Gör en riktad fullgeometrikörning som tvingar PAL och lägesbyte till LOW. Fr�
 Om CLI-stödet fortfarande saknas, använd:
 
 ```sh
-flock /home/lenny/openvrx-review/build.lock .venv/bin/python - <<'PY'
+flock /home/owner/openvrx-review/build.lock .venv/bin/python - <<'PY'
 from pathlib import Path
 from gateware.sim.test_fuzz_chain import run_seed
 r = run_seed(49, ['pal', 'mode_switch'], force=('pal', 'mode_switch'), geometry='full', n_fields=8,
@@ -206,7 +206,7 @@ Root granskar egna diffar, alla claims mot rå evidence och Vibe-rapporten om de
 ## Kopierbart uppdrag för fortsatt arbete
 
 ```text
-Fortsätt OpenVRX-nattplanen till 2026-10-08 08:00 Europe/Stockholm. Läs COORDINATION.md, STATUS.md och tasks.json före varje paket. Arbeta på main; root äger granskning, verifiering, Git och push. Luna på max har lämnat planen men avbröts av kreditfel: gör inga automatiska omförsök eller providerbyten. Användarens Vibe-session arbetar självständigt; starta eller styr den inte. Ett tungt sim- eller byggjobb åt gången under /home/lenny/openvrx-review/build.lock. Återanvänd inte resultat med ändrade källor eller inställningar. Reproducera relevanta frön och kontrollera pair-join med modell, negativ kontroll och aktuella M4/M6-byggen. Rätta lokal RTL bara med belägg och berörda acceptanstester. Ändra inte bildlägen, IOB, SDC, stift, licens eller BOM. Lämna #17 och #18 utan ny beteendepolicy. Starta inga paket efter 08:00; spara checkpoint, slutrapport och avsluta automationen. Påstå ingen hårdvaruverifiering och använd inte reset/stash/force-push.
+Fortsätt OpenVRX-nattplanen till 2026-10-08 08:00 Europe/Stockholm. Läs COORDINATION.md, STATUS.md och tasks.json före varje paket. Arbeta på main; root äger granskning, verifiering, Git och push. Luna på max har lämnat planen men avbröts av kreditfel: gör inga automatiska omförsök eller providerbyten. Användarens Vibe-session arbetar självständigt; starta eller styr den inte. Ett tungt sim- eller byggjobb åt gången under /home/owner/openvrx-review/build.lock. Återanvänd inte resultat med ändrade källor eller inställningar. Reproducera relevanta frön och kontrollera pair-join med modell, negativ kontroll och aktuella M4/M6-byggen. Rätta lokal RTL bara med belägg och berörda acceptanstester. Ändra inte bildlägen, IOB, SDC, stift, licens eller BOM. Lämna #17 och #18 utan ny beteendepolicy. Starta inga paket efter 08:00; spara checkpoint, slutrapport och avsluta automationen. Påstå ingen hårdvaruverifiering och använd inte reset/stash/force-push.
 ```
 
 ## Små, färdiga Luna-prompter

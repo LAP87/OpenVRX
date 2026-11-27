@@ -39,7 +39,7 @@ och granskar egna kontrolländringar ovanpå den nya basen. Fynd OVN-F1 och
 rättelsen av antagandet om blank LOW→BUF-bild finns i `LOW_BUF_FINDING.md`.
 
 Ett tungt test- eller byggjobb åt gången mellan repona, under
-`flock /home/lenny/openvrx-review/build.lock <kommando>`. Ändra inga
+`flock /home/owner/openvrx-review/build.lock <kommando>`. Ändra inga
 bildlägen, stift, IOB-register, SDC, licens- eller BOM-beslut.
 
 ## Återupptagning

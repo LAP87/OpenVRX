@@ -14,7 +14,7 @@
       "command": [
         "bash",
         "-x",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
         "m0_testpattern"
       ],
       "rc": 0,
@@ -26,7 +26,7 @@
       "command": [
         "bash",
         "-x",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
         "m4_dual_mix"
       ],
       "rc": 0,
@@ -38,7 +38,7 @@
       "command": [
         "bash",
         "-x",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/build.sh",
         "m6_puck_proto"
       ],
       "rc": 0,
@@ -48,8 +48,8 @@
     {
       "phase": "tmds",
       "command": [
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/.venv/bin/python",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/tools/tmds_fuses.py",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/.venv/bin/python",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/tools/tmds_fuses.py",
         "m0_testpattern",
         "m4_dual_mix",
         "m6_puck_proto"
@@ -203,13 +203,13 @@
   },
   "actual_pack_invocations": {
     "m0_testpattern": [
-      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m0_testpattern.fs m0_testpattern.pnr.json"
+      "+ /home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m0_testpattern.fs m0_testpattern.pnr.json"
     ],
     "m4_dual_mix": [
-      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m4_dual_mix.fs m4_dual_mix.pnr.json"
+      "+ /home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C -o m4_dual_mix.fs m4_dual_mix.pnr.json"
     ],
     "m6_puck_proto": [
-      "+ /home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C --mspi_as_gpio -o m6_puck_proto.fs m6_puck_proto.pnr.json"
+      "+ /home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-bf05-default-builds/source/gateware/../.venv/bin/gowin_pack -c -d GW2A-18C --mspi_as_gpio -o m6_puck_proto.fs m6_puck_proto.pnr.json"
     ]
   },
   "TMDS_pairs": [

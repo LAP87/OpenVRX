@@ -102,7 +102,7 @@
       "declared_source_inputs_verified": 58
     },
     {
-      "file": "/mnt/c/Users/lenny/Desktop/Drönare/OpenVRX/OpenVRX-Core/gateware/build/m4_dual_mix_digin.fs",
+      "file": "/mnt/c/Users/owner/Desktop/Drönare/OpenVRX/OpenVRX-Core/gateware/build/m4_dual_mix_digin.fs",
       "bytes": 7261470,
       "sha256": "5b2f0b9293a504b0fa1f2a4e068d685c4232255c3b28d9878e5fc44d897b4550",
       "matches_planned_bitstream": true,

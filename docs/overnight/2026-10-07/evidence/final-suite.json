@@ -1,8 +1,8 @@
 {
   "revision": "aece6eb6e4a5a74e92795de4067eb1565ccc82fb",
-  "directory": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/overnight_2026-10-07/final-core-aece6eb",
+  "directory": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/overnight_2026-10-07/final-core-aece6eb",
   "command": [
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/overnight_2026-10-07/final-core-aece6eb/.venv/bin/python",
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/overnight_2026-10-07/final-core-aece6eb/.venv/bin/python",
     "-m",
     "pytest",
     "-q",

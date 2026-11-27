@@ -2,7 +2,7 @@ from pathlib import Path
 import importlib.util
 import builtins
 import json,subprocess
-root=Path('/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
+root=Path('/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos')
 work=Path(__file__).resolve().parent
 src=root/'OpenVRX-Puck/design/rev_a/dekoderkort.py'
 s=importlib.util.spec_from_file_location('decoder_audit',src)

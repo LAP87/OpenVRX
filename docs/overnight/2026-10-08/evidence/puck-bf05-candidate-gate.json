@@ -45,7 +45,7 @@
     {
       "fault": "core_pin",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/core_pin.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/core_pin.json",
       "identity": {
         "sha256": "e40c2a0cda57bcaeb7bae5a789099971d04a830a96d7091364f740fe53f7ac2a",
         "size": 1330
@@ -54,7 +54,7 @@
     {
       "fault": "candidate_commit",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/candidate_commit.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/candidate_commit.json",
       "identity": {
         "sha256": "d94470dd113931c2d6c266c4ce1335dfdbbee363d6eb8b1e4db1fad7c91a24b3",
         "size": 1330
@@ -63,7 +63,7 @@
     {
       "fault": "false_pass",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/false_pass.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/false_pass.json",
       "identity": {
         "sha256": "b6796a3ff877b09e73c573926742dff62bdc4341e970d1dd600dc8894c357323",
         "size": 1330
@@ -72,7 +72,7 @@
     {
       "fault": "main_promotion",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/main_promotion.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/main_promotion.json",
       "identity": {
         "sha256": "5fb5d95f84bc907c1391addc325d5e8996477e474acc92f4afa8de564d14dd32",
         "size": 1329
@@ -81,7 +81,7 @@
     {
       "fault": "combined_claim",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/combined_claim.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/combined_claim.json",
       "identity": {
         "sha256": "606cfd718f52d998fd009ad8f65e57974f5eeb3d97a99d5c06acba69e62c7b75",
         "size": 1329
@@ -90,7 +90,7 @@
     {
       "fault": "hardware_claim",
       "reason": "candidate claim differs from original source/pytest/Git facts",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/hardware_claim.json",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/hardware_claim.json",
       "identity": {
         "sha256": "88738e417549c739cba71ce2a146cc35c86bf466367e1824bdacfe2c1797445c",
         "size": 1329
@@ -99,7 +99,7 @@
     {
       "fault": "XML_missing",
       "reason": "JUnit requested identities are missing or foreign",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_missing.xml",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_missing.xml",
       "identity": {
         "sha256": "9e4c5ed863cb743835d0b08aa95208336a56ae21886acbbe7b49fce037cf11aa",
         "size": 435
@@ -108,7 +108,7 @@
     {
       "fault": "XML_skip",
       "reason": "JUnit case has skipped/failure/error or foreign content",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_skip.xml",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/XML_skip.xml",
       "identity": {
         "sha256": "84c9ddfac3d446cfa608181edccd7b955be27193fe0c816dde96f9b0463d24c0",
         "size": 574
@@ -117,7 +117,7 @@
     {
       "fault": "source_byte",
       "reason": "candidate source byte identity differs",
-      "path": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/source_byte.bytes",
+      "path": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/puck-bf05-candidate-gate/owned-controls/source_byte.bytes",
       "identity": {
         "sha256": "38334c75f266371170028cd508a448495e2af50979f641b0eb5fc07183daf6df",
         "size": 13710

@@ -2,7 +2,7 @@
   "state": "PASS_ROOT_REVIEWED_CORE_PUCK_MERGED_PUSHED",
   "reviewed_utc": "2026-10-12T00:54:25.553333+00:00",
   "base_revision": "a1247abbcc834b1249b8f7d0ad0ec21023d69668",
-  "core_checkout": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-bench-drain",
+  "core_checkout": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-bench-drain",
   "focused_tests": 68,
   "helper_tests": 25,
   "existing_tests": 43,

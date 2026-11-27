@@ -8,10 +8,10 @@
     "coordinator_exit_code": 2,
     "coordinator_sha256": "5add552738d450531b0e180107af02ef57d2ca0a0ee3a001531a8cab2bf5c276",
     "expected_seeds": 260,
-    "lock": "/home/lenny/openvrx-review/build.lock",
+    "lock": "/home/owner/openvrx-review/build.lock",
     "manifest_sha256": "c35cc92321260a7460407fb8eb5d10b8fca8f716ffc0930b4d423325ead9ffc1",
     "max_workers": 10,
-    "output": "/home/lenny/openvrx-review/evidence/c3/active-display-accepted-2026-10-10/db0035fddabc2ca1c45767c552ca2fbee2af925e",
+    "output": "/home/owner/openvrx-review/evidence/c3/active-display-accepted-2026-10-10/db0035fddabc2ca1c45767c552ca2fbee2af925e",
     "progress": {
       "completed": 200,
       "counts": {
@@ -35,7 +35,7 @@
     },
     "revision": "db0035fddabc2ca1c45767c552ca2fbee2af925e",
     "session": null,
-    "source": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-db0035f",
+    "source": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/evening_2026-10-08/c3/core-db0035f",
     "started_utc": "2026-10-10T13:28:25+00:00",
     "state": "STOPPED_ON_COVERAGE_FINDING_NOT_ACCEPTED"
   },

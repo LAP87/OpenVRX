@@ -49,5 +49,5 @@
   "development_acceptance_date": "2026-10-05",
   "handoff_branch": "codex/handoff-2026-10-06",
   "build_archive": "../artifacts/core-builds-1a1e5c7.tar.gz",
-  "build_archive_sha256": "d953b3219a802b6f23175f8012b4d87e88deb5361ffa8899ca2955a75a6a069e"
+  "build_archive_sha256": "5e5bd73584c6b48f899d98711ed90f03b072835d0e6fc63d65c1b518d49533b4"
 }

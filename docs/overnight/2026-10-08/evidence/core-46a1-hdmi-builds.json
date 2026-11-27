@@ -162,7 +162,7 @@
       "phase": "m0_testpattern",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
         "m0_testpattern"
       ],
       "rc": 0,
@@ -173,7 +173,7 @@
       "phase": "m4_dual_mix",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
         "m4_dual_mix"
       ],
       "rc": 0,
@@ -184,7 +184,7 @@
       "phase": "m6_puck_proto",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build.sh",
         "m6_puck_proto"
       ],
       "rc": 0,
@@ -194,8 +194,8 @@
     {
       "phase": "tmds",
       "command": [
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/.venv/bin/python",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/tools/tmds_fuses.py",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/.venv/bin/python",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/tools/tmds_fuses.py",
         "m0_testpattern_hdmi",
         "m4_dual_mix_hdmi",
         "m6_puck_proto_hdmi"
@@ -286,99 +286,99 @@
   "native_suite_repeated": false,
   "final_root_review_sha256": "dbcf65474182ae0380fb5bb89e3df544b24c93864117f7f2d3ecb86bd6df931c",
   "inventory": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.build.json": {
       "sha256": "205375f8b884a741209b80ea1ff7ae4249db57dec5b4ba0a6a1d3bab2264042b",
       "size": 6241
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.cst": {
       "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
       "size": 1527
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.fs": {
       "sha256": "e9ad5310bdcae5f2a2cbbf1b3ca82d5484d9513f76b6078666ce41058d745eda",
       "size": 899758
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.json": {
       "sha256": "4c5c97e76b1357ddb5d8a60f1835b2042e31e385e685c51ed337c310000d44d1",
       "size": 2573746
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.pnr.log": {
       "sha256": "2a44d912e398d3ac983df1de60e1271e30ebaf576da5fb53950cdcc3c6ebf060",
       "size": 17164
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.stat.txt": {
       "sha256": "4ab8c349fd8d1469e17617467842ee2a24eb390cada88ecaf824ec3dde6ddb8d",
       "size": 631
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.synth.json": {
       "sha256": "98ca40130fa327dcaa8c3a9f71e33ee307b38524a96985f8347b9b3dbb5938ff",
       "size": 2447138
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m0_testpattern_hdmi.yosys.log": {
       "sha256": "a03d23939d5bfc9980bbfa85c1b6c8d5014aa4acc864d0fb8ba6dac010824898",
       "size": 385742
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.build.json": {
       "sha256": "bb208d06dd46202ae7a7aa7b8f641c71b10d63188b148ea3972a9518fc77c56c",
       "size": 6615
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.cst": {
       "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
       "size": 10237
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.fs": {
       "sha256": "0474becb05fadb3352f703d8173b9ec3c58020362049fbdde368aa4c8d31439c",
       "size": 7261470
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.json": {
       "sha256": "15cbf400b48e4228722e96e94b7bac58ba8e55dbc3d0cf5b31bf76a336b8ceba",
       "size": 19797618
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.pnr.log": {
       "sha256": "0e08aa0ec91c3aad6f8ee1666c118ddaff57ccc9e5de0a7d0106f0947c0a0daa",
       "size": 107038
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.stat.txt": {
       "sha256": "c32777bb832a9637408a6afae9d9c51e66c7ba5485bcb2644944923a8fc5d2f5",
       "size": 805
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.synth.json": {
       "sha256": "87f7cbfc76794f7f009ff52793e4fcab38c772d45ebf6cd8f3bdb633c89784f9",
       "size": 12367053
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m4_dual_mix_hdmi.yosys.log": {
       "sha256": "6390e2b58cd1a09cdc8c4973b5c2018a03a314f1b89f5e8432a5d2cd74af5ad0",
       "size": 1836861
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.build.json": {
       "sha256": "4247e55add9238dc11ba55994231a9c200dcc9b065eee5578855306537a463f5",
       "size": 6745
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.cst": {
       "sha256": "cafb83fc08e9cfdccbf08ac68d835c78fb2286b9a184d7cd608b740c01026219",
       "size": 10869
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.fs": {
       "sha256": "2c9baa1b2a0ae7350ff6f842d7e2eb3ea2a9c36f479b44d914c415f00c087550",
       "size": 7261470
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.json": {
       "sha256": "0e08c5aac7882b44b99900af49befbdfbeba95f5c536a5d362db24a6bb0853fc",
       "size": 30653763
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.pnr.log": {
       "sha256": "967eaa765202dee69f0f795ed0950bad097f5de14d88d6e14781007676ed9163",
       "size": 73172
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.stat.txt": {
       "sha256": "0f4f77a69efe9ef6f19359c948c755210a9187a0b9c5924ba1bdfa28b62227f3",
       "size": 829
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.synth.json": {
       "sha256": "a267ef022201ae219ea9877c16c4f1eb8ab213a3b5cf24fe59362573b8d3b3e5",
       "size": 19367706
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-hdmi-builds/source/gateware/build/m6_puck_proto_hdmi.yosys.log": {
       "sha256": "6755dbe292e76d8593d7dcf177063c80613f894151be600cfc2d4c3dd3d06dfc",
       "size": 3278179
     }

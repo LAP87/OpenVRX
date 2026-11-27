@@ -107,7 +107,7 @@
     }
   ],
   "observed_utc": "2026-10-09T20:58:55.205286+00:00",
-  "result_file": "/home/lenny/openvrx-review/evidence/c3/restart-2026-10-09-after-gaming/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e/scaled-d1/c3_s1200_1299_d1_f10.jsonl",
+  "result_file": "/home/owner/openvrx-review/evidence/c3/restart-2026-10-09-after-gaming/edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e/scaled-d1/c3_s1200_1299_d1_f10.jsonl",
   "result_file_sha256_at_snapshot": "8acef02435e37ebb8c1a7a63411a8f34a26e05add33d17f5ff99f3c73e33d181",
   "revision": "edb85d01ef60ca49a7e71fac97a2f3cfb77b2a2e",
   "root_status": "No RTL cause or waiver established; read-only triage against raw logs and current trigger-only LOW policy is pending.",

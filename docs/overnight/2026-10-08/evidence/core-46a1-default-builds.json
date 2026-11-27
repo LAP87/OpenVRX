@@ -158,7 +158,7 @@
       "phase": "m0_testpattern",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
         "m0_testpattern"
       ],
       "rc": 0,
@@ -169,7 +169,7 @@
       "phase": "m4_dual_mix",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
         "m4_dual_mix"
       ],
       "rc": 0,
@@ -180,7 +180,7 @@
       "phase": "m6_puck_proto",
       "command": [
         "bash",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build.sh",
         "m6_puck_proto"
       ],
       "rc": 0,
@@ -190,8 +190,8 @@
     {
       "phase": "tmds",
       "command": [
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/.venv/bin/python",
-        "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/tools/tmds_fuses.py",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/.venv/bin/python",
+        "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/tools/tmds_fuses.py",
         "m0_testpattern",
         "m4_dual_mix",
         "m6_puck_proto"
@@ -213,99 +213,99 @@
   "native_suite_repeated": false,
   "final_root_review_sha256": "9ad7cb3e5e8cb26cdf124216ab20b8faa65a0c81633c43ee1bb742bc8f6a38ee",
   "inventory": {
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.build.json": {
       "sha256": "babf310626b9eeaf6c8d20d2b43ca34a93b25764b99ab9164cc8058fa4c9c7a6",
       "size": 6200
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.cst": {
       "sha256": "5e0c2e23cfed522933a02451ee566d555f03ebb6b3cb9cd849879238c0b7c596",
       "size": 1527
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.fs": {
       "sha256": "f7635b9f00f4e4a5222918ea1c2fb18d718fa3ce419ea4fd3f361df28f8cf118",
       "size": 844718
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.pnr.json": {
       "sha256": "db3b3ec5ef8f7d3c579100523067ef37c3dd90696c1911ab94ffe6b6a812100b",
       "size": 1849901
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.pnr.log": {
       "sha256": "2a836d569d5872093aca9c7a1345da11fb630e3269674f904b0d3f82b9269422",
       "size": 15265
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.stat.txt": {
       "sha256": "bec0ad9e339f752e405a6c9e1033458a67a60365f52bac76de286e63138d9c75",
       "size": 631
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.synth.json": {
       "sha256": "4ad73a78c5366fd1434c24a6f71622d30855963c91cf6618014732206900b3ec",
       "size": 2092154
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m0_testpattern.yosys.log": {
       "sha256": "1faa7ecf65e279e64a0325e5e84b15f7c52f522a92dc3a1f7932243988f39630",
       "size": 285787
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.build.json": {
       "sha256": "19c79f5d3cd21f5d5a3d192a96d77a74594b73f4148dd83216e6ead723981953",
       "size": 6574
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.cst": {
       "sha256": "ab81e0b6c9f7a74ce527740978883f27c1bf127165f8c71aa10dedd7d4272bee",
       "size": 10237
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.fs": {
       "sha256": "17d6acc7a171d6dc618d355e4441019666367dc91a34f18538ccc311db0963da",
       "size": 7261470
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.pnr.json": {
       "sha256": "d8f9bbcf3b337ce7e970e19b3add6f6ed0540dd4e0e024c4257fc592f45b1cea",
       "size": 18959894
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.pnr.log": {
       "sha256": "6c7e850a77d180236a64eb4c9a24948f43f186f2d1064aebdc6c0074b84d8d41",
       "size": 77026
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.stat.txt": {
       "sha256": "b3a9b0dcf3bd5709a8ce66a4de43d0d75683cee0752b71b8f51361184c819a95",
       "size": 805
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.synth.json": {
       "sha256": "8bb59e5d7379554d35a4012a159ced6c59761afdf8b33ac3bdda647a2487eec4",
       "size": 11963836
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m4_dual_mix.yosys.log": {
       "sha256": "e47ab568e7a412a4a63b8443ea0fe3430591e3ebaa3dbc4d423c7178c7a4f639",
       "size": 1741504
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.build.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.build.json": {
       "sha256": "75d6f72b05d23b167acb2f5e35d460613c49a52fc6390e08557e4087305e82f8",
       "size": 6705
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.cst": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.cst": {
       "sha256": "cafb83fc08e9cfdccbf08ac68d835c78fb2286b9a184d7cd608b740c01026219",
       "size": 10869
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.fs": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.fs": {
       "sha256": "3cd6a62f0d3f84439f703c11c080a9e3bf898fb3d118c9fd40542999db1f4cb1",
       "size": 7261470
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.pnr.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.pnr.json": {
       "sha256": "e975f33e10cada02bd65e0c2dddf7247a95f3475f961f2237779393de0c3cc94",
       "size": 29919961
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.pnr.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.pnr.log": {
       "sha256": "8ed654be9b04857fc43dea6b05b6e95e4145362517de6028156d6996aa2d33ee",
       "size": 91877
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.stat.txt": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.stat.txt": {
       "sha256": "8a4a3f382978a2dfd64abe676822673b5f9fa0e08e74ec69e09233ac339e9d53",
       "size": 829
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.synth.json": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.synth.json": {
       "sha256": "f1d78d4e1daf37fd0c916b56c238f5ddcd9b02ed197346da5135be54a6c9011b",
       "size": 19113104
     },
-    "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.yosys.log": {
+    "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/core-46a1-default-builds/source/gateware/build/m6_puck_proto.yosys.log": {
       "sha256": "25f813edbe43e8b11f9fb135535c355c24fc91bf283249f219af9513e147215f",
       "size": 3077662
     }

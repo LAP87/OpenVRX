@@ -11,7 +11,7 @@ assert q['api']['ordinaryUsageAllowed'] is True and 0<=time.time()-q['observed_e
 bit=P/'bitstreams'/(top+'.fs')
 assert sha(bit)==c['tops'][top]['bitstream_sha256']
 for name,record in c['source_bindings'].items():assert sha(P/'source'/name)==record['sha256'],name
-lock=open('/home/lenny/openvrx-review/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+lock=open('/home/owner/openvrx-review/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 fd=os.open(c['port'],os.O_RDONLY|os.O_NOCTTY|os.O_NONBLOCK)
 try:
     fcntl.ioctl(fd,termios.TIOCEXCL)

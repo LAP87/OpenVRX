@@ -14,21 +14,21 @@
   "metadata_files_scanned": 132,
   "searched_roots": [
     {
-      "root": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos",
+      "root": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos",
       "exists": true,
       "files_listed": 104,
       "stderr": "",
       "enumeration_complete": true
     },
     {
-      "root": "/home/lenny/openvrx-review",
+      "root": "/home/owner/openvrx-review",
       "exists": true,
       "files_listed": 14,
       "stderr": "",
       "enumeration_complete": true
     },
     {
-      "root": "/home/lenny/.codex/worktrees",
+      "root": "/home/owner/.codex/worktrees",
       "exists": true,
       "files_listed": 0,
       "stderr": "",

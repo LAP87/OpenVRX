@@ -6,28 +6,28 @@
       "voter": "root",
       "vote": "YES",
       "confidence": 0.98,
-      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_root.json",
+      "ballot": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_root.json",
       "sha256": "9929241800e26c5d2c791f9902e677ecb2fdc1b40a477b99e6a41912e6dd2138"
     },
     {
       "voter": "correctness",
       "vote": "YES",
       "confidence": 0.99,
-      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_correctness.json",
+      "ballot": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_correctness.json",
       "sha256": "10c55cc6c651509ec23c7c30f891e76ed97ae190380b1ba563127e23686010cd"
     },
     {
       "voter": "evidence",
       "vote": "YES",
       "confidence": 0.96,
-      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_evidence.json",
+      "ballot": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_evidence.json",
       "sha256": "cbf331876407de6ef952bb0f80d8d782b808aabc511ddc6de33aa5354aef3243"
     },
     {
       "voter": "scope",
       "vote": "YES",
       "confidence": 0.99,
-      "ballot": "/home/lenny/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_scope.json",
+      "ballot": "/home/owner/Projekt/DIY_Drone_Lab/projects/OpenVRX-repos/private/notes/council_2026-10-10/up-run-01-council/ballot_scope.json",
       "sha256": "97bd393e04cfe845e8608ec3c87d955d552bbfb9f59f4458a54672e3b06e46c0"
     }
   ],

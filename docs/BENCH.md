@@ -203,6 +203,17 @@ python tools/bench/digin_model.py <Core> ../bench-logs/<dag>/digin-probe.txt [sy
 
 Mätt 2026-10-27 (bänkloggen `2026-10-26-digital-b/digin-probe-1027-*`): bussklockan 40,0 MHz, rader om 2 530–2 544 sampel, synkpuls 182 sampel, och C5VRX:s nivåer synktopp 22–24, släckning 30–32, video 40–56, vitt 62 med `OUTPUT 1.0x`; synktoppen brusar ±8 koder, samplen kommer parvis. Det var därför `6b845e8` inte gav rader: skiljaren startade på 12 och väntade synk vid 4. Sedan grenen `digin/levels` sveper `cvbs_capture` skiljaren tills en rad hittas. M3-proben (`m3_probe.fs`) duger för kabelkontrollen: B:s `sclk` visar räknarens tak (över 33,5 MHz) och `tog 3F` säger att alla sex bitar växlar.
 
+### Par-skev per bit: `pair_skew.py` (ärende #6, Twotoz fråga om D3)
+
+```bash
+python tools/bench/pair_skew.py [--json] <digin-probe-dump eller .hex> [...]   # en tabell per fångst
+python -m unittest discover -s tools/bench -p 'test_pair_skew.py'              # 11 tester, syntetiska strömmar
+```
+
+Verktyget hittar parfasen (vilken sampelparitet som börjar ett par), räknar per bit hur många par där biten är satt bara i första / bara i andra sampeln, räknar hela kodmissar, och skriver ett besked per bit: `symmetric`, `late-rise` (satt bara i andra sampeln: första sampeln visar ännu förra kodens nolla), `late-fall` (bara i första: första sampeln visar ännu förra kodens etta). Grannparen läses inte, så en flank som kom en klocka för tidigt får samma besked. Trösklar med siffrorna nedan som underlag: riktning ges över 0,5 % av paren när ena riktningen är minst 4x den andra och har minst 4 händelser; färre händelser ger `too-few`, båda riktningarna under 4x ger `asymmetric`. Utgångsstatus 1 när ingen fil innehöll en hel fångst (porten öppnad mitt i en dump); parstruktur anses finnas när fel paritet ger minst 2x så många kodmissar (eller när båda pariteter är rena). `--json` skriver samma sak för protokollet. Endast stdlib, ingen hårdvara.
+
+Kört 2026-11-03 på Core-fixturen `gateware/vectors/digin_bench_2026-10-28_1251.hex` (65 536 sampel, 32 768 par, parfas 0, kodmiss 10,855 % här mot 56,267 % på andra pariteten): bit 2 satt bara i andra sampeln i 3 557 par (10,855 %), aldrig bara i första, besked `late-rise`; bitar 0, 1, 3, 4, 5 exakt noll missar, `symmetric`; alla 3 557 kodmissar ligger på bit 2. Samma mönster som bänkdumparna 2026-10-27/28 (5–8 % bara i andra sampeln, då på GPIO11). På bänken: kör verktyget på D3-dumparna från v5.0.573 och svara Twotoz i Twotoz/C5VRX#256 med `--json`-utskriften: försvinner den sena stigande flanken på bit 2 när den ligger på D3/GPIO7 i stället för D6/GPIO11?
+
 ## Mätt på hårdvara
 
 | Datum | Vad | Resultat |
